@@ -1,7 +1,8 @@
 /**
  * Server-side AI evaluation. Runs only in the serverless function — the API key never reaches the browser.
  * Provider-independent: talks to any OpenAI-compatible Chat Completions endpoint (Groq, Google Gemini's
- * OpenAI-compatible endpoint, OpenRouter, a local server, ...).
+ * OpenAI-compatible endpoint, OpenRouter, a local server, ...) and optionally Cloudflare Workers AI.
+ * Providers are tried in order until one returns a valid report: primary → AI2 → fallback models → Workers AI.
  *
  * Privacy: request bodies, transcripts and model outputs are never logged.
  */
@@ -25,7 +26,28 @@ export interface AiEnv {
   AI_TIMEOUT_MS?: string;
   AI_MAX_REQUESTS_PER_MINUTE?: string;
   AI_MAX_OUTPUT_TOKENS?: string;
+  /** Total time for the whole fallback chain. */
+  AI_TOTAL_TIMEOUT_MS?: string;
+  /** Extra models on the primary provider, tried after AI2: "model=Label,model2=Label2" (label optional). */
+  AI_FALLBACK_MODELS?: string;
+  /** Optional second OpenAI-compatible provider (e.g. Google Gemini), tried right after the primary model. */
+  AI2_API_KEY?: string;
+  AI2_BASE_URL?: string;
+  AI2_MODEL?: string;
+  AI2_PROVIDER_LABEL?: string;
+  /** Optional Cloudflare Workers AI binding, tried last. Needs `[ai] binding = "AI"` in wrangler.toml. */
+  AI?: WorkersAiBinding;
+  WORKERS_AI_MODEL?: string;
+  WORKERS_AI_LABEL?: string;
 }
+
+export interface WorkersAiBinding {
+  run(model: string, input: Record<string, unknown>): Promise<unknown>;
+}
+
+export type Target =
+  | { kind: 'openai'; label: string; baseUrl: string; apiKey: string; model: string }
+  | { kind: 'workers-ai'; label: string; model: string };
 
 export interface Config {
   apiKey: string;
@@ -34,8 +56,11 @@ export interface Config {
   providerLabel: string;
   dataNotice: string | null;
   timeoutMs: number;
+  totalTimeoutMs: number;
   maxPerMinute: number;
   maxOutputTokens: number;
+  /** Providers in the order they are tried. The first is always the primary model. */
+  targets: Target[];
 }
 
 const int = (v: string | undefined, fallback: number, min: number, max: number) => {
@@ -45,21 +70,44 @@ const int = (v: string | undefined, fallback: number, min: number, max: number) 
 
 export function readConfig(env: AiEnv): Config | null {
   if (!env.AI_API_KEY || !env.AI_BASE_URL || !env.AI_MODEL) return null;
+  const baseUrl = env.AI_BASE_URL.replace(/\/+$/, '');
+  const providerLabel = env.AI_PROVIDER_LABEL || 'AI provider';
+  const targets: Target[] = [{ kind: 'openai', label: providerLabel, baseUrl, apiKey: env.AI_API_KEY, model: env.AI_MODEL }];
+  if (env.AI2_API_KEY && env.AI2_BASE_URL && env.AI2_MODEL) {
+    targets.push({
+      kind: 'openai',
+      label: env.AI2_PROVIDER_LABEL || 'Second AI provider',
+      baseUrl: env.AI2_BASE_URL.replace(/\/+$/, ''),
+      apiKey: env.AI2_API_KEY,
+      model: env.AI2_MODEL,
+    });
+  }
+  for (const entry of (env.AI_FALLBACK_MODELS ?? '').split(',')) {
+    const [model, label] = entry.split('=').map((s) => s.trim());
+    if (model) targets.push({ kind: 'openai', label: label || model, baseUrl, apiKey: env.AI_API_KEY, model });
+  }
+  if (env.AI && env.WORKERS_AI_MODEL) {
+    targets.push({ kind: 'workers-ai', label: env.WORKERS_AI_LABEL || 'Cloudflare Workers AI', model: env.WORKERS_AI_MODEL });
+  }
   return {
     apiKey: env.AI_API_KEY,
-    baseUrl: env.AI_BASE_URL.replace(/\/+$/, ''),
+    baseUrl,
     model: env.AI_MODEL,
-    providerLabel: env.AI_PROVIDER_LABEL || 'AI provider',
+    providerLabel,
     dataNotice: env.AI_DATA_NOTICE || null,
     timeoutMs: int(env.AI_TIMEOUT_MS, 25_000, 2_000, 60_000),
+    totalTimeoutMs: int(env.AI_TOTAL_TIMEOUT_MS, 80_000, 5_000, 120_000),
     maxPerMinute: int(env.AI_MAX_REQUESTS_PER_MINUTE, 6, 1, 600),
     maxOutputTokens: int(env.AI_MAX_OUTPUT_TOKENS, 1800, 256, 8000),
+    targets,
   };
 }
 
 export function statusFor(env: AiEnv): StatusResponse {
   const cfg = readConfig(env);
-  return { configured: cfg !== null, providerLabel: cfg?.providerLabel ?? null, dataNotice: cfg?.dataNotice ?? null };
+  const backups = (cfg?.targets.length ?? 1) - 1;
+  const label = cfg && (backups > 0 ? `${cfg.providerLabel} + ${backups} backup${backups > 1 ? 's' : ''}` : cfg.providerLabel);
+  return { configured: cfg !== null, providerLabel: label ? label.slice(0, 120) : null, dataNotice: cfg?.dataNotice ?? null };
 }
 
 /** Best-effort, per-instance sliding-window limiter. Use a platform rate-limit rule for real protection. */
@@ -183,12 +231,14 @@ export interface HandlerDeps {
   limiter: MemoryRateLimiter;
 }
 
-const fail = (code: AiErrorCode, message: string, status: number, retryAfterSec?: number) => ({
+type Failure = { status: number; body: Extract<EvaluateResponse, { ok: false }> };
+
+const fail = (code: AiErrorCode, message: string, status: number, retryAfterSec?: number): Failure => ({
   status,
-  body: { ok: false, code, message, ...(retryAfterSec ? { retryAfterSec } : {}) } satisfies EvaluateResponse,
+  body: { ok: false, code, message, ...(retryAfterSec ? { retryAfterSec } : {}) },
 });
 
-/** Pure-ish request handler, independent of the hosting platform. */
+/** Pure-ish request handler, independent of the hosting platform. Tries each configured provider in order. */
 export async function handleEvaluate(
   rawBody: unknown,
   clientKey: string,
@@ -211,17 +261,82 @@ export async function handleEvaluate(
     return fail('rate-limited', 'Too many evaluations. Please wait a moment.', 429, limit.retryAfterSec);
   }
 
+  const messages = buildMessages(parsed.data);
+  const deadline = Date.now() + cfg.totalTimeoutMs;
+  const failures: Failure[] = [];
+  for (const target of cfg.targets) {
+    const remaining = deadline - Date.now();
+    if (remaining < 3_000) break;
+    const result = await attempt(target, messages, cfg, Math.min(cfg.timeoutMs, remaining), env, deps);
+    if ('assessment' in result) {
+      const grounded = groundAssessment(result.assessment, parsed.data);
+      return {
+        status: 200,
+        body: { ok: true, providerLabel: target.label, assessment: grounded.assessment, ungroundedDropped: grounded.dropped },
+      };
+    }
+    failures.push(result);
+  }
+  // Every provider failed. A rate limit is the most useful thing to report: waiting fixes it.
+  return (
+    failures.find((f) => f.body.code === 'rate-limited') ??
+    failures.find((f) => f.body.code === 'timeout') ??
+    failures.at(-1) ??
+    fail('timeout', 'The AI providers took too long to respond.', 504)
+  );
+}
+
+type Messages = ReturnType<typeof buildMessages>;
+
+async function attempt(
+  target: Target,
+  messages: Messages,
+  cfg: Config,
+  timeoutMs: number,
+  env: AiEnv,
+  deps: HandlerDeps,
+): Promise<{ assessment: AiAssessment } | Failure> {
+  const raw =
+    target.kind === 'workers-ai'
+      ? await callWorkersAi(target, messages, cfg, timeoutMs, env)
+      : await callOpenAiCompatible(target, messages, cfg, timeoutMs, deps);
+  if (!('text' in raw)) return raw;
+
+  let content: unknown;
+  try {
+    content = typeof raw.text === 'string' ? JSON.parse(stripFences(raw.text)) : raw.text;
+  } catch {
+    console.error(`[evaluate] ${target.label}: malformed JSON`);
+    return fail('invalid-response', 'The AI provider returned malformed JSON.', 502);
+  }
+  const assessment = AiAssessmentSchema.safeParse(fitToLimits(content));
+  if (!assessment.success) {
+    // Field paths only, never values: values can contain transcript quotes.
+    const paths = assessment.error.issues.slice(0, 5).map((i) => i.path.join('.') || '(root)');
+    console.error(`[evaluate] ${target.label}: output failed schema validation at: ${paths.join(', ')}`);
+    return fail('invalid-response', 'The AI response did not match the expected format.', 502);
+  }
+  return { assessment: assessment.data };
+}
+
+async function callOpenAiCompatible(
+  target: Extract<Target, { kind: 'openai' }>,
+  messages: Messages,
+  cfg: Config,
+  timeoutMs: number,
+  deps: HandlerDeps,
+): Promise<{ text: unknown } | Failure> {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), cfg.timeoutMs);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   let res: Response;
   try {
-    res = await deps.fetch(`${cfg.baseUrl}/chat/completions`, {
+    res = await deps.fetch(`${target.baseUrl}/chat/completions`, {
       method: 'POST',
       signal: controller.signal,
-      headers: { 'content-type': 'application/json', authorization: `Bearer ${cfg.apiKey}` },
+      headers: { 'content-type': 'application/json', authorization: `Bearer ${target.apiKey}` },
       body: JSON.stringify({
-        model: cfg.model,
-        messages: buildMessages(parsed.data),
+        model: target.model,
+        messages,
         temperature: 0.2,
         max_tokens: cfg.maxOutputTokens,
         response_format: { type: 'json_object' },
@@ -230,7 +345,7 @@ export async function handleEvaluate(
   } catch (err) {
     clearTimeout(timer);
     const aborted = err instanceof Error && err.name === 'AbortError';
-    console.error(`[evaluate] provider request failed: ${aborted ? 'timeout' : 'network'}`);
+    console.error(`[evaluate] ${target.label}: request failed: ${aborted ? 'timeout' : 'network'}`);
     return aborted
       ? fail('timeout', 'The AI provider took too long to respond.', 504)
       : fail('upstream-error', 'The AI provider could not be reached.', 502);
@@ -238,42 +353,69 @@ export async function handleEvaluate(
   clearTimeout(timer);
 
   if (res.status === 429) {
+    console.error(`[evaluate] ${target.label}: rate limited`);
     const ra = Number.parseInt(res.headers.get('retry-after') ?? '', 10);
     return fail('rate-limited', 'The AI provider rate limit was reached. Try again later or use local feedback.', 429, Number.isFinite(ra) ? ra : 30);
   }
   if (!res.ok) {
-    console.error(`[evaluate] provider status ${res.status}`);
+    console.error(`[evaluate] ${target.label}: provider status ${res.status}`);
     return res.status === 401 || res.status === 403
       ? fail('not-configured', 'The AI provider rejected the server credentials.', 503)
       : fail('upstream-error', 'The AI provider returned an error.', 502);
   }
 
-  let content: unknown;
   try {
     const json = (await res.json()) as { choices?: Array<{ message?: { content?: string }; finish_reason?: string }> };
     const choice = json.choices?.[0];
     if (choice?.finish_reason === 'length') {
+      console.error(`[evaluate] ${target.label}: output cut off`);
       return fail('invalid-response', 'The AI response was cut off (token limit). Try a shorter answer.', 502);
     }
-    content = JSON.parse(stripFences(choice?.message?.content ?? ''));
+    return { text: choice?.message?.content ?? '' };
   } catch {
     return fail('invalid-response', 'The AI provider returned malformed JSON.', 502);
   }
+}
 
-  const assessment = AiAssessmentSchema.safeParse(fitToLimits(content));
-  if (!assessment.success) {
-    // Field paths only, never values: values can contain transcript quotes.
-    const paths = assessment.error.issues.slice(0, 5).map((i) => i.path.join('.') || '(root)');
-    console.error(`[evaluate] provider output failed schema validation at: ${paths.join(', ')}`);
-    return fail('invalid-response', 'The AI response did not match the expected format.', 502);
+async function callWorkersAi(
+  target: Extract<Target, { kind: 'workers-ai' }>,
+  messages: Messages,
+  cfg: Config,
+  timeoutMs: number,
+  env: AiEnv,
+): Promise<{ text: unknown } | Failure> {
+  if (!env.AI) return fail('not-configured', 'Workers AI is not bound to this deployment.', 503);
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<'timeout'>((resolve) => {
+    timer = setTimeout(() => resolve('timeout'), timeoutMs);
+  });
+  try {
+    const out = await Promise.race([
+      env.AI.run(target.model, { messages, max_tokens: cfg.maxOutputTokens, temperature: 0.2 }),
+      timeout,
+    ]);
+    if (out === 'timeout') {
+      console.error(`[evaluate] ${target.label}: timeout`);
+      return fail('timeout', 'The AI provider took too long to respond.', 504);
+    }
+    // Workers AI text models return { response }; OpenAI-style models return { choices }.
+    const o = out as { response?: unknown; choices?: Array<{ message?: { content?: string } }> };
+    return { text: o.response ?? o.choices?.[0]?.message?.content ?? '' };
+  } catch (err) {
+    const limited = err instanceof Error && /limit|quota|429|neuron/i.test(err.message);
+    console.error(`[evaluate] ${target.label}: ${limited ? 'usage limit reached' : 'run failed'}`);
+    return limited
+      ? fail('rate-limited', 'The AI provider limit was reached. Try again later or use local feedback.', 429, 60)
+      : fail('upstream-error', 'The AI provider returned an error.', 502);
+  } finally {
+    clearTimeout(timer);
   }
-  const grounded = groundAssessment(assessment.data, parsed.data);
-  return {
-    status: 200,
-    body: { ok: true, providerLabel: cfg.providerLabel, assessment: grounded.assessment, ungroundedDropped: grounded.dropped },
-  };
 }
 
 function stripFences(text: string): string {
-  return text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
+  const t = text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
+  // Some models put a sentence before the JSON; keep the outermost object.
+  const start = t.indexOf('{');
+  const end = t.lastIndexOf('}');
+  return start > 0 && end > start ? t.slice(start, end + 1) : t;
 }

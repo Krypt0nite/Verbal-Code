@@ -1,0 +1,15 @@
+# Cloudflare Pages config. Secrets (AI_API_KEY, AI2_API_KEY, ...) are NOT stored here:
+# set them with `npx wrangler pages secret put <NAME> --project-name verbal-code`.
+name = "verbal-code"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-09-01"
+
+# Cloudflare Workers AI: last AI fallback before local feedback. Free plan: 10,000 neurons/day.
+[ai]
+binding = "AI"
+
+[vars]
+AI_FALLBACK_MODELS = "openai/gpt-oss-20b=Groq (GPT-OSS 20B),qwen/qwen3.8-27b=Groq (Qwen 3.8 27B)"
+WORKERS_AI_MODEL = "@cf/openai/gpt-oss-20b"
+WORKERS_AI_LABEL = "Cloudflare Workers AI (GPT-OSS 20B)"
+AI_TOTAL_TIMEOUT_MS = "80000"

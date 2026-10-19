@@ -117,6 +117,56 @@ describe('handleEvaluate', () => {
     expect(r.body.assessment.nextSteps).toEqual(['a', 'b', 'c']);
   });
 
+  it('falls back to the next provider and reports which one answered', async () => {
+    const chain: AiEnv = {
+      ...env,
+      AI2_API_KEY: 'second-key',
+      AI2_BASE_URL: 'https://second.example/v1',
+      AI2_MODEL: 'second-model',
+      AI2_PROVIDER_LABEL: 'Second',
+      AI_FALLBACK_MODELS: 'small-model=Small, tiny-model',
+    };
+    expect(readConfig(chain)?.targets.map((t) => t.label)).toEqual(['Test Provider', 'Second', 'Small', 'tiny-model']);
+    expect(statusFor(chain).providerLabel).toBe('Test Provider + 3 backups');
+
+    const f = vi
+      .fn()
+      .mockResolvedValueOnce(new Response('{}', { status: 429 }))
+      .mockResolvedValueOnce(providerResponse(assessment));
+    const r = await handleEvaluate(request, 'ip', chain, deps(f));
+    expect(r.body).toMatchObject({ ok: true, providerLabel: 'Second' });
+    expect(f.mock.calls[1]![0]).toBe('https://second.example/v1/chat/completions');
+    expect(f.mock.calls[1]![1].headers.authorization).toBe('Bearer second-key');
+  });
+
+  it('reports a rate limit when every provider fails', async () => {
+    const chain: AiEnv = { ...env, AI_FALLBACK_MODELS: 'small-model' };
+    const f = vi
+      .fn()
+      .mockResolvedValueOnce(new Response('{}', { status: 503 }))
+      .mockResolvedValueOnce(new Response('{}', { status: 429, headers: { 'retry-after': '7' } }));
+    const r = await handleEvaluate(request, 'ip', chain, deps(f));
+    expect(r).toMatchObject({ status: 429, body: { code: 'rate-limited', retryAfterSec: 7 } });
+    expect(f).toHaveBeenCalledTimes(2);
+  });
+
+  it('uses the Workers AI binding as the last resort', async () => {
+    const run = vi.fn().mockResolvedValue({ response: assessment });
+    const chain: AiEnv = { ...env, AI: { run }, WORKERS_AI_MODEL: '@cf/test/model', WORKERS_AI_LABEL: 'Workers' };
+    const r = await handleEvaluate(request, 'ip', chain, deps(vi.fn().mockResolvedValue(new Response('{}', { status: 500 }))));
+    expect(r.body).toMatchObject({ ok: true, providerLabel: 'Workers' });
+    expect(run.mock.calls[0]![0]).toBe('@cf/test/model');
+
+    const limited = vi.fn().mockRejectedValue(new Error('4006: you have used up your daily free allocation of 10,000 neurons'));
+    const r2 = await handleEvaluate(request, 'ip', { ...chain, AI: { run: limited } }, deps(vi.fn().mockResolvedValue(new Response('{}', { status: 500 }))));
+    expect(r2.body).toMatchObject({ code: 'rate-limited' });
+  });
+
+  it('accepts JSON wrapped in a sentence', async () => {
+    const f = vi.fn().mockResolvedValue(providerResponse(`Here is the report: ${JSON.stringify(assessment)}`));
+    expect((await handleEvaluate(request, 'ip', env, deps(f))).body.ok).toBe(true);
+  });
+
   it('maps provider rate limits, auth failures, outages and timeouts', async () => {
     const limited = await handleEvaluate(request, 'ip', env, deps(vi.fn().mockResolvedValue(new Response('{}', { status: 429, headers: { 'retry-after': '12' } }))));
     expect(limited).toMatchObject({ status: 429, body: { code: 'rate-limited', retryAfterSec: 12 } });

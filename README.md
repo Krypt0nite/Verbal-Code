@@ -55,7 +55,7 @@ Run on 19 Oct 2026 in a Linux sandbox, Node 22.22:
 | --- | --- |
 | `npm run lint` | 0 errors, 0 warnings |
 | `npm run typecheck` | passes (strict, `noUncheckedIndexedAccess`) |
-| `npm test` | **111 tests passed** in 10 files |
+| `npm test` | **116 tests passed** in 10 files |
 | `npm run build` | passes, ~159 kB gzipped JS |
 | `npm run test:e2e` | **10/10 passed** (5 scenarios × desktop + mobile) |
 
@@ -82,6 +82,7 @@ The app is a static site plus one optional function, which fits Cloudflare Pages
 The AI evaluator is **off by default** and needs a server-side key.
 
 - The endpoint talks to any **OpenAI-compatible** Chat Completions API, for example Groq or Google Gemini's OpenAI-compatible endpoint.
+- **Fallback chain.** When a provider is rate-limited, down or returns an unusable report, the next one is tried: primary model → second provider (`AI2_*`, e.g. Gemini) → extra models on the primary provider (`AI_FALLBACK_MODELS`) → Cloudflare Workers AI (`WORKERS_AI_MODEL`, via the `[ai]` binding in `wrangler.toml`). The report names the model that answered. See `.env.example`.
 - Copy `.env.example` → `.dev.vars` for local use (`npm run dev:api` plus `npm run dev`), or set the variables in Cloudflare (mark `AI_API_KEY` as a secret).
 - The browser sends only: question prompt, category, difficulty, rubric id and transcript. Never audio.
 - The model must return JSON. It is validated with Zod, and any quoted excerpt that does not appear in your transcript is dropped. Word count, pace and fillers are always measured locally.

@@ -39,7 +39,8 @@ export async function fetchAiStatus(fetchImpl: typeof fetch = fetch, signal?: Ab
   }
 }
 
-export function createAiEvaluator(fetchImpl: typeof fetch = (...a) => fetch(...a), timeoutMs = 35_000): Evaluator {
+export function createAiEvaluator(fetchImpl: typeof fetch = (...a) => fetch(...a), timeoutMs = 90_000): Evaluator {
+  // Longer than the server's whole fallback chain (AI_TOTAL_TIMEOUT_MS, 80 s by default).
   return {
     id: 'ai',
     async evaluate(input, signal) {
