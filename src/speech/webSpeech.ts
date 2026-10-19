@@ -116,6 +116,10 @@ class WebSpeechSession implements TranscriptionSession {
   private rec: SRInstance | null = null;
   private committed: string[] = [];
   private instanceFinal = '';
+  /** Unconfirmed text of the current instance; kept if the browser never flushes it on finish. */
+  private interim = '';
+  /** The current instance has fired `end` (after pause it can still be flushing results). */
+  private recEnded = false;
   private restarts: number[] = [];
   private finishResolvers: Array<(t: string) => void> = [];
   private finishTimer: ReturnType<typeof setTimeout> | null = null;
@@ -167,6 +171,7 @@ class WebSpeechSession implements TranscriptionSession {
     }
     this.rec = rec;
     this.instanceFinal = '';
+    this.recEnded = false;
     let started = false;
     // A restarted instance that fails before starting must not leave the session silently deaf.
     const failBeforeStart = (err: RecognitionError) => {
@@ -193,7 +198,8 @@ class WebSpeechSession implements TranscriptionSession {
         else interim += ` ${text}`;
       }
       this.instanceFinal = normalise(finalPart);
-      this.cb.onUpdate({ finalText: this.fullText(), interimText: normalise(interim) });
+      this.interim = normalise(interim);
+      this.cb.onUpdate({ finalText: this.fullText(), interimText: this.interim });
     };
     rec.onerror = (e) => {
       if (this.rec !== rec) return;
@@ -210,6 +216,7 @@ class WebSpeechSession implements TranscriptionSession {
     };
     rec.onend = () => {
       if (this.rec !== rec) return;
+      this.recEnded = true;
       this.commitInstance();
       if (!started) {
         if (this.phase === 'listening' || this.phase === 'starting') {
@@ -243,6 +250,7 @@ class WebSpeechSession implements TranscriptionSession {
   private commitInstance(): void {
     if (this.instanceFinal) this.committed.push(this.instanceFinal);
     this.instanceFinal = '';
+    this.interim = '';
     this.cb.onUpdate({ finalText: this.fullText(), interimText: '' });
   }
 
@@ -265,22 +273,25 @@ class WebSpeechSession implements TranscriptionSession {
 
   finish(): Promise<string> {
     if (this.phase === 'done') return Promise.resolve(this.fullText());
-    const wasActive = this.phase === 'listening';
+    const wasListening = this.phase === 'listening';
+    // After pause() the stopped instance may still be flushing its last results, so wait for its end.
+    const stillFlushing = this.phase === 'paused' && !this.recEnded;
     this.phase = 'finishing';
     const p = new Promise<string>((resolve) => this.finishResolvers.push(resolve));
-    if (wasActive && this.rec) {
-      this.rec.stop();
-      this.finishTimer = setTimeout(() => this.resolveFinish(), FINISH_FLUSH_TIMEOUT_MS);
+    if ((wasListening || stillFlushing) && this.rec) {
+      if (wasListening) this.rec.stop();
+      this.finishTimer = setTimeout(() => this.resolveFinish(true), FINISH_FLUSH_TIMEOUT_MS);
     } else {
       this.resolveFinish();
     }
     return p;
   }
 
-  private resolveFinish(): void {
+  /** `timedOut`: the browser never flushed, so keep its unconfirmed words rather than dropping them. */
+  private resolveFinish(timedOut = false): void {
     if (this.finishTimer) clearTimeout(this.finishTimer);
     this.finishTimer = null;
-    const text = this.fullText();
+    const text = timedOut ? normalise(`${this.fullText()} ${this.interim}`) : this.fullText();
     this.teardown();
     this.phase = 'done';
     const resolvers = this.finishResolvers;
@@ -293,6 +304,7 @@ class WebSpeechSession implements TranscriptionSession {
     this.phase = 'done';
     this.committed = [];
     this.instanceFinal = '';
+    this.interim = '';
     const resolvers = this.finishResolvers;
     this.finishResolvers = [];
     resolvers.forEach((r) => r(''));

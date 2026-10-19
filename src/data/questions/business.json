@@ -107,7 +107,1431 @@
           ]
         }
       ],
-      "modelAnswer": "Start from the goal for the quarter (e.g. activation). Score each request with a framework such as RICE (reach \u00d7 impact \u00d7 confidence \u00f7 effort) or a simple impact-vs-effort grid, validate the top items with user evidence, and sequence by dependencies. Limitations: scores rest on uncertain estimates, can undervalue strategic bets or tech debt, and need judgement and stakeholder alignment on top."
+      "modelAnswer": "Start from the goal for the quarter (e.g. activation). Score each request with a framework such as RICE (reach × impact × confidence ÷ effort) or a simple impact-vs-effort grid, validate the top items with user evidence, and sequence by dependencies. Limitations: scores rest on uncertain estimates, can undervalue strategic bets or tech debt, and need judgement and stakeholder alignment on top."
+    },
+    {
+      "id": "biz-porters-five-forces",
+      "title": "Porter's five forces",
+      "prompt": "Explain Michael Porter's five forces framework for analysing an industry's competitiveness and profitability. Describe each force and apply the framework to an industry you know, such as food delivery, airlines or smartphones.",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "business",
+        "strategy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "rivalry",
+          "label": "Rivalry among existing competitors",
+          "criterion": "accuracy",
+          "keywords": [
+            "rivalry",
+            "competitors",
+            "competition",
+            "price war"
+          ]
+        },
+        {
+          "id": "entrants",
+          "label": "Threat of new entrants and barriers to entry",
+          "criterion": "accuracy",
+          "keywords": [
+            "new entrants",
+            "barriers to entry",
+            "capital",
+            "economies of scale"
+          ]
+        },
+        {
+          "id": "subs",
+          "label": "Threat of substitutes",
+          "criterion": "accuracy",
+          "keywords": [
+            "substitute",
+            "alternative",
+            "replace"
+          ]
+        },
+        {
+          "id": "buyers",
+          "label": "Bargaining power of buyers",
+          "criterion": "accuracy",
+          "keywords": [
+            "buyer power",
+            "bargaining power of buyers",
+            "customers",
+            "switching cost"
+          ]
+        },
+        {
+          "id": "suppliers",
+          "label": "Bargaining power of suppliers",
+          "criterion": "accuracy",
+          "keywords": [
+            "supplier power",
+            "suppliers",
+            "bargaining power of suppliers"
+          ]
+        },
+        {
+          "id": "apply",
+          "label": "Applies the framework to a real industry",
+          "criterion": "accuracy",
+          "keywords": [
+            "airline",
+            "food delivery",
+            "smartphone",
+            "for example",
+            "industry"
+          ]
+        }
+      ],
+      "modelAnswer": "Porter argued that an industry's long-run profitability depends on five forces, not just on direct competitors. Rivalry among existing competitors: many similar firms competing on price lowers profits. Threat of new entrants: if barriers such as capital needs, regulation, brand loyalty or economies of scale are low, newcomers compete profits away. Threat of substitutes: products from other industries that meet the same need cap prices. Bargaining power of buyers: concentrated or price-sensitive customers with low switching costs push prices down. Bargaining power of suppliers: few suppliers of a critical input can raise costs. Airlines are a classic example of a tough industry: intense rivalry on price, powerful suppliers (two big aircraft makers, airports, fuel), price-sensitive buyers comparing fares online, substitutes like trains for short routes, and though entry needs capital, new airlines keep appearing - which is why airline profits are thin. Food delivery shows strong network effects as an entry barrier, but restaurants and delivery partners have alternatives and customers switch apps easily. The framework helps decide which industries to enter and where to build defences."
+    },
+    {
+      "id": "biz-competitive-moats",
+      "title": "Competitive advantage and economic moats",
+      "prompt": "What is a sustainable competitive advantage, sometimes called an economic moat? Explain the main sources - network effects, switching costs, economies of scale, brands, intangible assets and cost advantages - with a company example for each, and explain how moats erode.",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "business",
+        "strategy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Advantage that lets a firm earn above-normal returns for a long time",
+          "criterion": "accuracy",
+          "keywords": [
+            "sustainable",
+            "moat",
+            "defend",
+            "above average",
+            "long term"
+          ]
+        },
+        {
+          "id": "network",
+          "label": "Network effects",
+          "criterion": "accuracy",
+          "keywords": [
+            "network effect",
+            "more users",
+            "whatsapp",
+            "marketplace"
+          ]
+        },
+        {
+          "id": "switch",
+          "label": "Switching costs",
+          "criterion": "accuracy",
+          "keywords": [
+            "switching cost",
+            "lock in",
+            "hard to leave",
+            "migrate"
+          ]
+        },
+        {
+          "id": "scale",
+          "label": "Economies of scale and cost advantages",
+          "criterion": "accuracy",
+          "keywords": [
+            "economies of scale",
+            "cost advantage",
+            "lowest cost",
+            "scale"
+          ]
+        },
+        {
+          "id": "brand",
+          "label": "Brands and intangibles: patents, licences",
+          "criterion": "accuracy",
+          "keywords": [
+            "brand",
+            "patent",
+            "license",
+            "licence",
+            "trust"
+          ]
+        },
+        {
+          "id": "erode",
+          "label": "Moats erode through technology shifts and complacency",
+          "criterion": "accuracy",
+          "keywords": [
+            "erode",
+            "disrupt",
+            "technology change",
+            "complacen",
+            "competition"
+          ]
+        }
+      ],
+      "modelAnswer": "A competitive advantage lets a company earn higher returns than rivals; it is sustainable - a moat - when competitors cannot easily copy it. Network effects: a product becomes more valuable as more people use it, like WhatsApp or a marketplace such as Amazon connecting buyers and sellers, so a newcomer with few users cannot compete. Switching costs: customers find it costly or painful to leave, as with enterprise software where data, integrations and staff training are tied to the product. Economies of scale: large volume lowers unit costs, as with Walmart or a big cement manufacturer, so smaller rivals cannot match prices. Brands that customers trust or pay premiums for, like Apple or Amul. Intangible assets such as patents in pharmaceuticals or government licences in telecom or banking. Unique cost advantages from location or processes. Moats are not permanent: technology shifts can make them irrelevant (Nokia's scale in feature phones meant little after smartphones), regulation can remove protections, and companies that become complacent stop innovating. Strategy is about building and continually deepening moats."
+    },
+    {
+      "id": "biz-swot-analysis",
+      "title": "SWOT analysis",
+      "prompt": "Explain SWOT analysis - strengths, weaknesses, opportunities and threats. Walk through a SWOT for a business you know, explain the difference between internal and external factors, and discuss how to turn a SWOT into decisions and the common ways it is misused.",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "business",
+        "strategy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "parts",
+          "label": "Strengths, weaknesses, opportunities, threats",
+          "criterion": "accuracy",
+          "keywords": [
+            "strength",
+            "weakness",
+            "opportunit",
+            "threat"
+          ]
+        },
+        {
+          "id": "intext",
+          "label": "Internal (S, W) vs external (O, T)",
+          "criterion": "accuracy",
+          "keywords": [
+            "internal",
+            "external",
+            "within the company",
+            "market"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Concrete example",
+          "criterion": "accuracy",
+          "keywords": [
+            "for example",
+            "company",
+            "startup",
+            "restaurant",
+            "brand"
+          ]
+        },
+        {
+          "id": "action",
+          "label": "Turn into strategy: use strengths for opportunities, fix weaknesses",
+          "criterion": "accuracy",
+          "keywords": [
+            "strategy",
+            "action",
+            "prioritiz",
+            "match strengths"
+          ]
+        },
+        {
+          "id": "misuse",
+          "label": "Misuse: vague lists, no prioritisation, no follow-up",
+          "criterion": "accuracy",
+          "keywords": [
+            "vague",
+            "no action",
+            "generic",
+            "evidence"
+          ]
+        }
+      ],
+      "modelAnswer": "SWOT is a simple framework for assessing a business or project. Strengths and weaknesses are internal - things the organisation controls, such as skills, brand, technology, costs or cash. Opportunities and threats are external - market trends, competitors, regulation, technology changes. For a local café chain: strengths might be loyal customers and prime locations; weaknesses, high staff turnover and no online ordering; opportunities, growing demand for delivery and healthier menus; threats, new coffee chains, rising rents and milk prices. The value comes from connecting the quadrants into actions: use strengths to capture opportunities (use loyal customers to launch a subscription), fix weaknesses that expose you to threats (add online ordering before competitors dominate delivery), and prioritise a few moves. SWOT is often misused as a brainstorming list of vague items like \"good team\" with no evidence, no ranking by importance and no follow-up; it works best with specific, evidence-based points, compared against competitors, and revisited regularly."
+    },
+    {
+      "id": "biz-pricing-strategy",
+      "title": "Pricing strategies",
+      "prompt": "Explain the main pricing strategies a business can use: cost-plus, value-based, competitive pricing, penetration and skimming, freemium, subscriptions and dynamic pricing. When does each make sense, and what psychological factors influence how customers perceive price?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "business",
+        "pricing"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "cost",
+          "label": "Cost-plus vs value-based pricing",
+          "criterion": "accuracy",
+          "keywords": [
+            "cost plus",
+            "markup",
+            "value based",
+            "willingness to pay"
+          ]
+        },
+        {
+          "id": "entry",
+          "label": "Penetration vs skimming",
+          "criterion": "accuracy",
+          "keywords": [
+            "penetration",
+            "skimming",
+            "low price to gain",
+            "early adopters"
+          ]
+        },
+        {
+          "id": "models",
+          "label": "Freemium, subscription, tiered pricing",
+          "criterion": "accuracy",
+          "keywords": [
+            "freemium",
+            "subscription",
+            "tier",
+            "recurring"
+          ]
+        },
+        {
+          "id": "dynamic",
+          "label": "Dynamic pricing based on demand",
+          "criterion": "accuracy",
+          "keywords": [
+            "dynamic pricing",
+            "surge",
+            "demand",
+            "airline",
+            "real time"
+          ]
+        },
+        {
+          "id": "psych",
+          "label": "Psychology: anchoring, charm pricing, decoy",
+          "criterion": "accuracy",
+          "keywords": [
+            "anchor",
+            "99",
+            "decoy",
+            "psycholog",
+            "perceived value"
+          ]
+        }
+      ],
+      "modelAnswer": "Cost-plus pricing adds a markup to the cost of producing something: simple and common in retail and manufacturing, but it ignores what customers are willing to pay. Value-based pricing sets prices according to the value customers perceive - software that saves a company lakhs of rupees can charge far more than it costs to build. Competitive pricing follows market rates when products are similar. For new products, penetration pricing starts low to win market share quickly (common for telecom and apps), while skimming starts high to capture early adopters before lowering prices (new smartphones, game consoles). Freemium gives a basic version free and charges for premium features; subscriptions create recurring revenue and predictable cash flow; tiered plans let different customers self-select. Dynamic pricing changes prices with demand and time, as with airlines, hotels and ride-hailing surge pricing, but can feel unfair if not transparent. Psychology matters: a high anchor price makes the next option look reasonable, prices ending in 99 feel cheaper, and a decoy option can steer customers to a target plan. Good pricing is tested and revisited, not set once."
+    },
+    {
+      "id": "biz-blue-ocean",
+      "title": "Blue ocean strategy",
+      "prompt": "Explain the idea of blue ocean strategy compared with competing in a red ocean. What is value innovation, how does the eliminate-reduce-raise-create framework work, and what are well-known examples? What criticisms does the approach face?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "business",
+        "strategy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "red",
+          "label": "Red oceans: crowded markets, competing on the same factors",
+          "criterion": "accuracy",
+          "keywords": [
+            "red ocean",
+            "crowded",
+            "existing market",
+            "bloody competition"
+          ]
+        },
+        {
+          "id": "blue",
+          "label": "Blue oceans: uncontested market space, new demand",
+          "criterion": "accuracy",
+          "keywords": [
+            "blue ocean",
+            "uncontested",
+            "new demand",
+            "non customers"
+          ]
+        },
+        {
+          "id": "value",
+          "label": "Value innovation: lower cost and higher value together",
+          "criterion": "accuracy",
+          "keywords": [
+            "value innovation",
+            "lower cost",
+            "differentiat",
+            "at the same time"
+          ]
+        },
+        {
+          "id": "errc",
+          "label": "Eliminate, reduce, raise, create",
+          "criterion": "accuracy",
+          "keywords": [
+            "eliminate",
+            "reduce",
+            "raise",
+            "create"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Examples: Cirque du Soleil, Nintendo Wii; criticisms",
+          "criterion": "accuracy",
+          "keywords": [
+            "cirque du soleil",
+            "wii",
+            "example",
+            "hindsight",
+            "copied"
+          ]
+        }
+      ],
+      "modelAnswer": "In a red ocean, companies fight over existing customers in a defined market, competing on the same factors - price, features - so profits shrink. Blue ocean strategy, described by Kim and Mauborgne, argues for creating uncontested market space by reaching non-customers and making competition irrelevant. The core idea is value innovation: pursuing differentiation and low cost at the same time by rethinking which factors matter. Their eliminate-reduce-raise-create grid asks which factors the industry takes for granted that can be eliminated, which can be reduced well below the standard, which should be raised above it, and what new factors should be created. Cirque du Soleil eliminated animal acts and star performers (expensive), reduced thrills and danger, raised the artistic venue experience, and created theatrical storylines and music - attracting adults and corporate clients who did not go to circuses. Nintendo's Wii targeted non-gamers with simple motion controls instead of competing on graphics power. Criticisms: many examples are identified only in hindsight, successful blue oceans attract imitators and turn red, and the framework gives limited guidance on execution."
+    },
+    {
+      "id": "biz-build-buy-partner",
+      "title": "Build, buy or partner",
+      "prompt": "A company needs a new capability, such as payments or AI features. Explain how it should decide whether to build in-house, buy a company or product, or partner with another firm. Discuss core versus non-core capabilities, speed, cost, control, integration risk, and real examples of each choice.",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "business",
+        "strategy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "core",
+          "label": "Build what is core and differentiating",
+          "criterion": "accuracy",
+          "keywords": [
+            "core",
+            "differentiat",
+            "competitive advantage",
+            "in house"
+          ]
+        },
+        {
+          "id": "buy",
+          "label": "Buy/acquire for speed; integration and culture risks",
+          "criterion": "accuracy",
+          "keywords": [
+            "acquire",
+            "acquisition",
+            "speed",
+            "integration",
+            "culture"
+          ]
+        },
+        {
+          "id": "partner",
+          "label": "Partner/license for non-core needs; dependency risk",
+          "criterion": "accuracy",
+          "keywords": [
+            "partner",
+            "vendor",
+            "license",
+            "dependency",
+            "outsource"
+          ]
+        },
+        {
+          "id": "factors",
+          "label": "Factors: time to market, cost, control, talent, risk",
+          "criterion": "accuracy",
+          "keywords": [
+            "time to market",
+            "control",
+            "talent"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Real examples",
+          "criterion": "accuracy",
+          "keywords": [
+            "for example",
+            "acquired",
+            "google",
+            "flipkart",
+            "walmart"
+          ]
+        }
+      ],
+      "modelAnswer": "Start by asking whether the capability is core - a source of competitive advantage that customers choose you for - or a necessary but generic function. Core, differentiating capabilities are usually worth building in-house despite cost and time, because you need control and deep expertise: a ride-hailing company builds its own matching and pricing systems. Non-core needs such as payroll, email or standard payments are often better bought as products or obtained through partnerships, letting the team focus elsewhere; the risks are vendor dependency, less control over roadmap and pricing, and data sharing. Acquiring a company buys speed, talent and an existing customer base - Google bought Android and YouTube, Walmart acquired Flipkart to enter Indian e-commerce at scale - but acquisitions are expensive and often struggle with integration, culture clashes and departing founders. Partnerships and licensing, such as co-branded credit cards or using a cloud AI API, are fast and cheap to start and easy to exit, but offer limited differentiation. Decision factors: time to market, total cost over years, strategic control, available talent, integration complexity and reversibility; many firms partner first to learn, then build or buy once the capability proves strategic."
+    },
+    {
+      "id": "ent-mvp-lean-startup",
+      "title": "The minimum viable product and lean startup",
+      "prompt": "Explain the lean startup method and the idea of a minimum viable product. What is the build-measure-learn loop, what does an MVP look like in practice, and what mistakes do founders make, such as building too much or calling a poor product an MVP?",
+      "categoryId": "business",
+      "subcategoryId": "entrepreneurship",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "entrepreneurship",
+        "startups"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "mvp",
+          "label": "MVP: smallest thing that tests a key assumption with real users",
+          "criterion": "accuracy",
+          "keywords": [
+            "minimum viable product",
+            "mvp",
+            "smallest",
+            "assumption"
+          ]
+        },
+        {
+          "id": "loop",
+          "label": "Build-measure-learn loop",
+          "criterion": "accuracy",
+          "keywords": [
+            "build measure learn",
+            "feedback loop",
+            "iterate",
+            "experiment"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Examples: landing page, concierge, Wizard of Oz",
+          "criterion": "accuracy",
+          "keywords": [
+            "landing page",
+            "concierge",
+            "wizard of oz",
+            "waitlist",
+            "manual"
+          ]
+        },
+        {
+          "id": "learn",
+          "label": "Validated learning and pivot or persevere",
+          "criterion": "accuracy",
+          "keywords": [
+            "validated learning",
+            "pivot",
+            "persevere",
+            "metrics"
+          ]
+        },
+        {
+          "id": "mistakes",
+          "label": "Mistakes: over-building, vanity metrics, low quality",
+          "criterion": "accuracy",
+          "keywords": [
+            "over build",
+            "vanity metric",
+            "perfect",
+            "too many features",
+            "quality"
+          ]
+        }
+      ],
+      "modelAnswer": "The lean startup, popularised by Eric Ries, treats a startup as a search for a business model under extreme uncertainty. Instead of spending a year building a full product, founders identify their riskiest assumptions - do people have this problem, will they pay, can we reach them - and test them as cheaply and quickly as possible through the build-measure-learn loop: build a small experiment, measure how real users behave, learn whether the assumption holds, then pivot (change direction) or persevere. A minimum viable product is the smallest thing that produces that learning: a landing page collecting sign-ups or pre-orders, a concierge MVP where founders deliver the service manually to a few customers, or a \"Wizard of Oz\" product that looks automated while humans work behind the scenes. Dropbox famously validated demand with an explainer video. Common mistakes: building too many features before talking to users, measuring vanity metrics such as page views instead of retention or payment, and confusing \"minimum\" with \"bad\" - an MVP must still deliver enough value for the experiment to be meaningful."
+    },
+    {
+      "id": "ent-validating-idea",
+      "title": "Validating a startup idea",
+      "prompt": "You have an idea for a startup. Explain how you would validate it before building much: identifying the customer and their problem, conducting customer interviews without leading questions, estimating market size, checking competitors and willingness to pay. What signals show real demand?",
+      "categoryId": "business",
+      "subcategoryId": "entrepreneurship",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "entrepreneurship",
+        "startups"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "problem",
+          "label": "Start from a specific customer and painful problem",
+          "criterion": "accuracy",
+          "keywords": [
+            "problem",
+            "pain",
+            "target customer",
+            "who exactly"
+          ]
+        },
+        {
+          "id": "interview",
+          "label": "Customer interviews about past behaviour, not hypotheticals",
+          "criterion": "accuracy",
+          "keywords": [
+            "interview",
+            "past behavior",
+            "mom test",
+            "leading question",
+            "listen"
+          ]
+        },
+        {
+          "id": "market",
+          "label": "Market size estimates (TAM/SAM/SOM) and competitors",
+          "criterion": "accuracy",
+          "keywords": [
+            "market size",
+            "tam",
+            "competitor",
+            "alternative",
+            "existing solution"
+          ]
+        },
+        {
+          "id": "pay",
+          "label": "Willingness to pay: pre-orders, deposits, pilots",
+          "criterion": "accuracy",
+          "keywords": [
+            "pay",
+            "pre order",
+            "deposit",
+            "pilot",
+            "letter of intent"
+          ]
+        },
+        {
+          "id": "signals",
+          "label": "Signals: urgency, workarounds, repeat use, referrals",
+          "criterion": "accuracy",
+          "keywords": [
+            "workaround",
+            "urgent",
+            "retention",
+            "referral",
+            "pull"
+          ]
+        }
+      ],
+      "modelAnswer": "Start by naming a specific customer and the problem you believe they have - \"small clinic owners in tier-2 cities struggle to manage appointments\" - rather than a solution. Interview 20 to 30 potential customers. Ask about their actual past behaviour: how do they handle this today, when did it last happen, what did it cost them, what have they tried? Avoid pitching or asking leading questions like \"would you use an app that...\", because people are polite and say yes (the idea behind the book The Mom Test). Look for evidence that the problem is frequent, painful and that people already spend time or money on workarounds such as spreadsheets or extra staff. Estimate the market: total addressable market, the part you can serve, and what you can realistically capture early, and study competitors and alternatives - competition often confirms demand. Then test willingness to pay with commitment, not compliments: pre-orders, deposits, paid pilots or signed letters of intent. Strong signals are customers asking when they can buy, using a rough prototype repeatedly, and referring others. Weak signals are enthusiasm without commitment."
+    },
+    {
+      "id": "ent-bootstrapping-vs-vc",
+      "title": "Bootstrapping versus venture capital",
+      "prompt": "Compare bootstrapping a company with raising venture capital. Explain how venture capital works and what investors expect in return, dilution and control, which kinds of businesses suit each path, and other options such as angel investors, revenue-based financing and grants.",
+      "categoryId": "business",
+      "subcategoryId": "entrepreneurship",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "entrepreneurship",
+        "funding"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "boot",
+          "label": "Bootstrapping: funded by revenue/savings; control, slower",
+          "criterion": "accuracy",
+          "keywords": [
+            "bootstrap",
+            "own money",
+            "revenue",
+            "control",
+            "profitab"
+          ]
+        },
+        {
+          "id": "vc",
+          "label": "VC: equity for capital; expects huge outcomes (power law)",
+          "criterion": "accuracy",
+          "keywords": [
+            "venture capital",
+            "equity",
+            "hundred x",
+            "power law",
+            "big outcome"
+          ]
+        },
+        {
+          "id": "dilution",
+          "label": "Dilution, board seats, pressure to grow",
+          "criterion": "accuracy",
+          "keywords": [
+            "dilution",
+            "board",
+            "ownership",
+            "pressure",
+            "growth"
+          ]
+        },
+        {
+          "id": "fit",
+          "label": "Fit: winner-take-all markets vs niche profitable businesses",
+          "criterion": "accuracy",
+          "keywords": [
+            "winner take all",
+            "niche",
+            "capital intensive",
+            "lifestyle business",
+            "fit"
+          ]
+        },
+        {
+          "id": "other",
+          "label": "Alternatives: angels, revenue-based financing, grants, debt",
+          "criterion": "accuracy",
+          "keywords": [
+            "angel",
+            "revenue based",
+            "grant",
+            "loan",
+            "crowdfunding"
+          ]
+        }
+      ],
+      "modelAnswer": "Bootstrapping means funding the business from personal savings and, as soon as possible, customer revenue. Founders keep full ownership and control and must build something customers pay for early, which enforces discipline; the trade-off is slower growth and limited ability to invest ahead of revenue. Venture capital funds invest money in exchange for equity in startups that could become very large. Because most startups fail, VCs rely on a few huge successes to return the whole fund (a power law), so they look for companies that can grow very fast in very large markets and they expect founders to pursue aggressive growth rather than a modest, profitable business. Each round dilutes the founders' ownership, investors often take board seats and protective rights, and the company is effectively committed to an exit such as an acquisition or IPO. VC suits capital-intensive or winner-take-all markets where speed matters - marketplaces, deep tech, fintech at scale. Many good businesses - agencies, niche software, local services - are better bootstrapped. Other options include angel investors (individuals investing early, often with mentoring), revenue-based financing repaid as a share of revenue, bank or government-backed loans, grants and startup programmes, and crowdfunding."
+    },
+    {
+      "id": "ent-unit-economics",
+      "title": "Unit economics: CAC, LTV and payback",
+      "prompt": "Explain unit economics for a startup. Define customer acquisition cost, lifetime value, contribution margin and payback period, show how to calculate them with a simple example, and explain why a company can grow fast and still be heading for failure if its unit economics are bad.",
+      "categoryId": "business",
+      "subcategoryId": "entrepreneurship",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "entrepreneurship",
+        "finance"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "cac",
+          "label": "CAC: sales and marketing spend per new customer",
+          "criterion": "accuracy",
+          "keywords": [
+            "customer acquisition cost",
+            "cac",
+            "marketing spend",
+            "per new customer"
+          ]
+        },
+        {
+          "id": "ltv",
+          "label": "LTV: margin per customer over their lifetime; churn",
+          "criterion": "accuracy",
+          "keywords": [
+            "lifetime value",
+            "ltv",
+            "churn",
+            "retention",
+            "how long they stay"
+          ]
+        },
+        {
+          "id": "margin",
+          "label": "Contribution margin after variable costs",
+          "criterion": "accuracy",
+          "keywords": [
+            "contribution margin",
+            "gross margin",
+            "variable cost",
+            "per order"
+          ]
+        },
+        {
+          "id": "ratio",
+          "label": "LTV:CAC around 3:1; payback period",
+          "criterion": "accuracy",
+          "keywords": [
+            "ltv to cac",
+            "three to one",
+            "payback",
+            "months to recover"
+          ]
+        },
+        {
+          "id": "danger",
+          "label": "Growth with negative unit economics burns cash; discounts",
+          "criterion": "accuracy",
+          "keywords": [
+            "lose money on every",
+            "burn",
+            "discount",
+            "subsid",
+            "scale makes it worse"
+          ]
+        }
+      ],
+      "modelAnswer": "Unit economics asks whether the business makes money on each customer or order, before fixed costs like rent and salaries. Customer acquisition cost (CAC) is total sales and marketing spend divided by new customers acquired: Rs 10 lakh spent bringing 2,000 customers is a CAC of Rs 500. Contribution margin is revenue minus variable costs per unit - for a subscription at Rs 300 a month with Rs 100 of delivery and payment costs, the margin is Rs 200 a month. Lifetime value (LTV) is the margin a customer generates over their whole relationship; if monthly churn is 5%, the average customer stays about 20 months, so LTV is about 200 x 20 = Rs 4,000. The LTV to CAC ratio here is 8:1, comfortably above the commonly cited healthy level of about 3:1, and the payback period - how long until a customer's margin repays their CAC - is 500 / 200 = 2.5 months. If instead heavy discounts mean each order loses money, or customers churn before paying back their CAC, then growth just multiplies losses: more customers means faster cash burn. Several food delivery and quick commerce businesses grew rapidly on subsidies, then had to cut discounts and costs to fix unit economics."
+    },
+    {
+      "id": "ent-pivoting",
+      "title": "When and how startups pivot",
+      "prompt": "Explain what a pivot is in a startup and how founders decide whether to pivot or persevere. Describe common types of pivots, the warning signs that something is not working, how to pivot without wasting everything learned, and famous examples such as Slack, Instagram or YouTube.",
+      "categoryId": "business",
+      "subcategoryId": "entrepreneurship",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "entrepreneurship",
+        "startups"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Pivot: structured change in strategy while keeping learnings",
+          "criterion": "accuracy",
+          "keywords": [
+            "pivot",
+            "change direction",
+            "strategy",
+            "keep what works"
+          ]
+        },
+        {
+          "id": "signs",
+          "label": "Signs: flat growth, low retention, weak engagement despite effort",
+          "criterion": "accuracy",
+          "keywords": [
+            "retention",
+            "no growth",
+            "flat",
+            "engagement",
+            "not working"
+          ]
+        },
+        {
+          "id": "types",
+          "label": "Types: customer segment, problem, product feature, business model",
+          "criterion": "accuracy",
+          "keywords": [
+            "customer segment",
+            "zoom in",
+            "business model",
+            "platform",
+            "feature"
+          ]
+        },
+        {
+          "id": "how",
+          "label": "Use data and customer insight; set a deadline; reuse assets",
+          "criterion": "accuracy",
+          "keywords": [
+            "insight",
+            "deadline",
+            "reuse",
+            "experiments"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Examples: Slack from a game, Instagram from Burbn, YouTube from dating",
+          "criterion": "accuracy",
+          "keywords": [
+            "slack",
+            "instagram",
+            "burbn",
+            "youtube",
+            "game"
+          ]
+        }
+      ],
+      "modelAnswer": "A pivot is a deliberate change in one part of the strategy - target customer, problem, product or business model - based on what the team has learned, while keeping what works. It differs from random flailing because it is driven by evidence. Warning signs include growth that stays flat despite effort, users who sign up but do not come back, customers who like the product but will not pay, and every sale requiring heroic effort. Common pivot types: a zoom-in pivot, where one feature becomes the whole product; a customer-segment pivot, solving the same problem for a different customer; a problem pivot; or a business-model pivot, such as moving from consumers to enterprises or from one-time sales to subscriptions. To decide, look at retention and engagement data and talk to the most enthusiastic users - their behaviour often points to the real opportunity - and set a time limit for current experiments. Famous examples: Slack began as an internal chat tool for a failed online game, Instagram stripped down a check-in app called Burbn to its photo-sharing feature, and YouTube reportedly started as a video dating site."
+    },
+    {
+      "id": "ent-cofounders-equity",
+      "title": "Co-founders and splitting equity",
+      "prompt": "Explain how to choose co-founders and split equity in an early-stage startup. Why do co-founder conflicts kill so many startups, what are vesting schedules and cliffs, why are equal splits debated, and what should founders agree in writing early on?",
+      "categoryId": "business",
+      "subcategoryId": "entrepreneurship",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "entrepreneurship",
+        "startups",
+        "teams"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "choose",
+          "label": "Choose co-founders with complementary skills and shared values",
+          "criterion": "accuracy",
+          "keywords": [
+            "complementary",
+            "skills",
+            "trust",
+            "shared values",
+            "worked together"
+          ]
+        },
+        {
+          "id": "vesting",
+          "label": "Vesting over four years with a one-year cliff",
+          "criterion": "accuracy",
+          "keywords": [
+            "vesting",
+            "four years",
+            "cliff",
+            "one year"
+          ]
+        },
+        {
+          "id": "split",
+          "label": "Equal vs unequal splits based on future contribution",
+          "criterion": "accuracy",
+          "keywords": [
+            "equal split",
+            "contribution",
+            "future",
+            "commitment",
+            "percentage"
+          ]
+        },
+        {
+          "id": "agreement",
+          "label": "Founders agreement: roles, decisions, IP, exits",
+          "criterion": "accuracy",
+          "keywords": [
+            "founders agreement",
+            "roles",
+            "decision",
+            "intellectual property",
+            "in writing"
+          ]
+        },
+        {
+          "id": "conflict",
+          "label": "Conflicts and departures are a leading cause of failure",
+          "criterion": "accuracy",
+          "keywords": [
+            "conflict",
+            "leave",
+            "dispute",
+            "fail",
+            "dead equity"
+          ]
+        }
+      ],
+      "modelAnswer": "A strong co-founding team combines complementary skills - for example product and engineering with sales and operations - with shared values, similar ambition and commitment, and trust; ideally people who have worked together under pressure before. Co-founder conflict is one of the most common reasons startups fail, because disagreements about direction, roles, effort or money paralyse the company. Equity should reflect expected future contributions over many years more than who had the idea; many advisers favour equal or near-equal splits among full-time founders to signal partnership and avoid resentment, while others argue for differences when commitment, risk or roles truly differ. Whatever the split, use vesting: shares are earned over time, typically four years with a one-year cliff, so a founder who leaves after six months gets nothing and one who leaves after two years keeps about half. This prevents \"dead equity\" held by people no longer working on the company, which also scares investors. Agree in writing early: roles and titles, how decisions and deadlocks are resolved, salaries, assignment of intellectual property to the company, and what happens if someone leaves."
+    },
+    {
+      "id": "pf-compound-interest",
+      "title": "The power of compound interest",
+      "prompt": "Explain compound interest and why starting to save or invest early makes such a big difference. Use a simple numerical example, explain the rule of 72, and describe how compounding also works against you with credit card debt.",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "personal-finance",
+        "investing"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Earning returns on previous returns",
+          "criterion": "accuracy",
+          "keywords": [
+            "interest on interest",
+            "returns on returns",
+            "compound",
+            "reinvest"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Numerical example of growth",
+          "criterion": "accuracy",
+          "keywords": [
+            "for example",
+            "lakh",
+            "per year",
+            "percent",
+            "doubles"
+          ]
+        },
+        {
+          "id": "early",
+          "label": "Time matters most: start early",
+          "criterion": "accuracy",
+          "keywords": [
+            "start early",
+            "years",
+            "longer"
+          ]
+        },
+        {
+          "id": "rule72",
+          "label": "Rule of 72: years to double",
+          "criterion": "accuracy",
+          "keywords": [
+            "rule of 72",
+            "double",
+            "72 divided"
+          ]
+        },
+        {
+          "id": "debt",
+          "label": "Compounding on debt (credit cards ~36-42% a year)",
+          "criterion": "accuracy",
+          "keywords": [
+            "credit card",
+            "debt",
+            "against you",
+            "minimum payment"
+          ]
+        }
+      ],
+      "modelAnswer": "With simple interest you earn returns only on the original amount; with compound interest you also earn returns on past returns, so growth accelerates over time. If you invest Rs 1 lakh at 10% a year, after one year you have 1.10 lakh, after two years 1.21 lakh, and after 20 years about 6.7 lakh - most of it earned in the later years. That is why time matters more than the amount: someone who invests Rs 5,000 a month from age 25 to 35 and then stops can end up with more at 60 than someone who invests the same monthly amount from 35 to 60, because the early money compounds for longer (assuming similar returns). The rule of 72 estimates doubling time: divide 72 by the annual return - at 8% money doubles in about 9 years, at 12% in about 6. Compounding works against you on debt: credit card balances in India often carry interest of around 3-3.5% a month, roughly 40% a year, so paying only the minimum lets a balance balloon. The lesson: start investing early, stay invested, and clear high-interest debt first."
+    },
+    {
+      "id": "pf-emergency-fund",
+      "title": "Building an emergency fund",
+      "prompt": "Explain what an emergency fund is and why financial planners recommend building one before investing in riskier assets. How large should it be, where should it be kept, how do you build it up, and how is it different from insurance?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "personal-finance",
+        "saving"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "what",
+          "label": "Money set aside for unexpected expenses or income loss",
+          "criterion": "accuracy",
+          "keywords": [
+            "unexpected",
+            "job loss",
+            "medical",
+            "emergency",
+            "income"
+          ]
+        },
+        {
+          "id": "size",
+          "label": "Typically 3-6 months (or more) of essential expenses",
+          "criterion": "accuracy",
+          "keywords": [
+            "three to six months",
+            "6 months",
+            "expenses",
+            "months of"
+          ]
+        },
+        {
+          "id": "where",
+          "label": "Keep liquid and safe: savings account, liquid funds, FDs",
+          "criterion": "accuracy",
+          "keywords": [
+            "liquid",
+            "savings account",
+            "fixed deposit",
+            "safe",
+            "not stocks"
+          ]
+        },
+        {
+          "id": "build",
+          "label": "Build automatically in small amounts",
+          "criterion": "accuracy",
+          "keywords": [
+            "automat",
+            "every month",
+            "small amounts"
+          ]
+        },
+        {
+          "id": "vs",
+          "label": "Not a substitute for insurance; avoids selling investments or borrowing",
+          "criterion": "accuracy",
+          "keywords": [
+            "insurance",
+            "borrow",
+            "sell investments",
+            "credit card",
+            "loan"
+          ]
+        }
+      ],
+      "modelAnswer": "An emergency fund is money set aside only for unexpected events - losing a job, a medical bill, urgent home or vehicle repairs, or supporting family. Without one, people are forced to borrow on credit cards or personal loans at high interest, or sell investments at a bad time, such as during a market crash. A common guideline is three to six months of essential expenses (rent, food, EMIs, insurance premiums, school fees), and more if your income is irregular, you are self-employed or you are the sole earner. Because it must be available quickly and must not lose value when you need it, keep it in safe, liquid places: a savings account, sweep-in fixed deposits or liquid mutual funds - not in stocks. Build it gradually by automatically transferring a fixed amount each month, prioritising it before riskier investing, and refill it after use. It complements rather than replaces insurance: health and term life insurance cover large catastrophic costs that no emergency fund could, while the fund covers smaller shocks and deductibles."
+    },
+    {
+      "id": "pf-index-funds-diversification",
+      "title": "Index funds and diversification",
+      "prompt": "Explain diversification and why many experts recommend low-cost index funds for long-term investors. Compare active and passive funds, explain expense ratios and why most active funds underperform their benchmark over long periods, and discuss the role of SIPs and asset allocation.",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "personal-finance",
+        "investing"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "div",
+          "label": "Diversification spreads risk across many assets",
+          "criterion": "accuracy",
+          "keywords": [
+            "diversif",
+            "spread",
+            "eggs in one basket",
+            "many companies",
+            "reduce risk"
+          ]
+        },
+        {
+          "id": "index",
+          "label": "Index funds track a market index like Nifty 50 / Sensex",
+          "criterion": "accuracy",
+          "keywords": [
+            "index fund",
+            "nifty",
+            "sensex",
+            "track",
+            "passive"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Low expense ratios; costs compound",
+          "criterion": "accuracy",
+          "keywords": [
+            "expense ratio",
+            "fees",
+            "low cost",
+            "compound"
+          ]
+        },
+        {
+          "id": "active",
+          "label": "Most active funds underperform after fees long term",
+          "criterion": "accuracy",
+          "keywords": [
+            "active fund",
+            "underperform",
+            "benchmark",
+            "fund manager",
+            "after fees"
+          ]
+        },
+        {
+          "id": "sip",
+          "label": "SIPs and asset allocation across equity, debt, gold",
+          "criterion": "accuracy",
+          "keywords": [
+            "sip",
+            "systematic",
+            "asset allocation",
+            "equity",
+            "debt",
+            "rupee cost averaging"
+          ]
+        }
+      ],
+      "modelAnswer": "Diversification means spreading money across many investments so that a disaster in one company or sector does not wreck your portfolio. Owning one stock exposes you to its specific risks; owning hundreds averages them out, leaving mainly overall market risk. An index fund simply buys all the stocks in a market index such as the Nifty 50 or Sensex in the same proportions, giving instant diversification. Because it needs no research team, its expense ratio is very low, often around 0.1-0.3% a year compared with 1-2% for many actively managed funds, and that difference compounds into a large amount over decades. Active fund managers try to beat the index, but after fees, and over long periods, a majority underperform their benchmark, and it is hard to predict in advance which ones will outperform. Investing through a systematic investment plan (SIP) - a fixed amount every month - builds discipline and averages the purchase price across market ups and downs. Asset allocation between equity, debt and gold based on your goals, time horizon and risk tolerance matters more than picking funds; rebalance occasionally. This is general education, not personal advice."
+    },
+    {
+      "id": "pf-good-bad-debt-credit-score",
+      "title": "Good debt, bad debt and credit scores",
+      "prompt": "Explain the difference between \"good\" and \"bad\" debt, how loans like home loans, education loans, personal loans and credit cards compare, what a credit score such as CIBIL measures and how to improve it, and the warning signs of a debt trap.",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "personal-finance",
+        "credit"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "good",
+          "label": "Good debt finances appreciating assets or income at low rates",
+          "criterion": "accuracy",
+          "keywords": [
+            "good debt",
+            "home loan",
+            "education loan",
+            "appreciat",
+            "increase income"
+          ]
+        },
+        {
+          "id": "bad",
+          "label": "Bad debt funds consumption at high rates",
+          "criterion": "accuracy",
+          "keywords": [
+            "bad debt",
+            "credit card",
+            "personal loan",
+            "consumption",
+            "high interest"
+          ]
+        },
+        {
+          "id": "score",
+          "label": "Credit score from repayment history, utilisation, length, enquiries",
+          "criterion": "accuracy",
+          "keywords": [
+            "credit score",
+            "cibil",
+            "repayment history",
+            "utilization",
+            "enquir"
+          ]
+        },
+        {
+          "id": "improve",
+          "label": "Improve: pay on time, keep utilisation low, avoid many applications",
+          "criterion": "accuracy",
+          "keywords": [
+            "pay on time",
+            "below 30",
+            "low utilization",
+            "fewer applications",
+            "check your report"
+          ]
+        },
+        {
+          "id": "trap",
+          "label": "Debt trap: borrowing to repay, minimum payments, EMIs above ~40% of income",
+          "criterion": "accuracy",
+          "keywords": [
+            "debt trap",
+            "minimum payment",
+            "emi",
+            "borrow to repay",
+            "buy now pay later"
+          ]
+        }
+      ],
+      "modelAnswer": "Debt is not automatically bad; what matters is what it pays for and what it costs. \"Good\" debt generally finances something that grows in value or raises your income, at a reasonable interest rate - a home loan at single-digit interest with tax benefits, or an education loan that leads to a better-paying career. \"Bad\" debt finances consumption that loses value, at high interest - credit card balances carried month to month (often around 40% a year), personal loans for holidays or gadgets, and easy buy-now-pay-later schemes that encourage overspending. A credit score such as CIBIL (300 to 900) summarises how risky you are as a borrower: repayment history matters most, then how much of your credit limit you use (credit utilisation), the length of your credit history, the mix of credit, and recent loan applications. Improve it by paying every EMI and card bill on time, keeping utilisation below about 30% of your limits, not applying for many loans at once, and checking your report for errors. Warning signs of a debt trap: paying only minimum dues, taking new loans to repay old ones, and EMIs consuming more than about 40% of take-home income."
+    },
+    {
+      "id": "pf-insurance-term-vs-endowment",
+      "title": "Term insurance versus investment-linked policies",
+      "prompt": "Explain the purpose of life insurance and why many financial planners prefer pure term insurance over endowment or money-back policies and ULIPs. How much cover might a person need, why is health insurance separate and essential, and what mistakes do people commonly make with insurance?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "personal-finance",
+        "insurance"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "purpose",
+          "label": "Life insurance replaces income for dependants",
+          "criterion": "accuracy",
+          "keywords": [
+            "replace income",
+            "dependants",
+            "dependents",
+            "family",
+            "protect"
+          ]
+        },
+        {
+          "id": "term",
+          "label": "Term insurance: pure cover, low premium, no maturity benefit",
+          "criterion": "accuracy",
+          "keywords": [
+            "term insurance",
+            "pure protection",
+            "low premium",
+            "no maturity"
+          ]
+        },
+        {
+          "id": "endow",
+          "label": "Endowment/money-back/ULIP mix insurance and investment; low returns, high costs",
+          "criterion": "accuracy",
+          "keywords": [
+            "endowment",
+            "money back",
+            "ulip",
+            "low returns",
+            "mixing"
+          ]
+        },
+        {
+          "id": "cover",
+          "label": "Cover ~10-15x annual income plus liabilities",
+          "criterion": "accuracy",
+          "keywords": [
+            "10 to 15 times",
+            "annual income",
+            "liabilities",
+            "how much cover"
+          ]
+        },
+        {
+          "id": "health",
+          "label": "Separate health insurance; mistakes: under-insurance, hiding facts",
+          "criterion": "accuracy",
+          "keywords": [
+            "health insurance",
+            "medical",
+            "under insured",
+            "disclose",
+            "employer cover"
+          ]
+        }
+      ],
+      "modelAnswer": "Life insurance exists to replace your income for people who depend on you if you die early - to repay loans and fund your family's living costs and children's education. Term insurance does exactly this: you pay a relatively low premium for a large sum assured over a fixed period, and if you survive the term you get nothing back, just as you get nothing back from car insurance if you do not crash. Endowment, money-back and many traditional policies combine insurance with savings: premiums are much higher, the life cover is usually small, and long-term returns have historically been low after costs; ULIPs link the savings part to markets but have their own charges and lock-ins. That is why many planners advise \"buy term and invest the difference\" in suitable investments. A common rule of thumb for cover is around 10 to 15 times annual income plus outstanding loans, adjusted for goals and existing assets. Health insurance is separate and essential, since one hospitalisation can wipe out savings, and employer group cover may end when you change jobs. Common mistakes: buying insurance as an investment, being under-insured, not disclosing medical history (which can lead to claim rejection), and not telling family about policies."
+    },
+    {
+      "id": "pf-budgeting",
+      "title": "Budgeting and the 50/30/20 rule",
+      "prompt": "Explain how to create a simple personal budget. Describe tracking income and expenses, the 50/30/20 rule for needs, wants and savings, paying yourself first, and how to adapt a budget to real situations such as a first job in an expensive city or supporting family.",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "personal-finance",
+        "budgeting"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "track",
+          "label": "Track income and spending first",
+          "criterion": "accuracy",
+          "keywords": [
+            "track",
+            "expenses",
+            "income",
+            "where the money goes",
+            "app"
+          ]
+        },
+        {
+          "id": "rule",
+          "label": "50/30/20: needs, wants, savings",
+          "criterion": "accuracy",
+          "keywords": [
+            "50 30 20",
+            "needs",
+            "wants",
+            "savings",
+            "fifty"
+          ]
+        },
+        {
+          "id": "first",
+          "label": "Pay yourself first: automate savings",
+          "criterion": "accuracy",
+          "keywords": [
+            "pay yourself first",
+            "automat",
+            "salary day"
+          ]
+        },
+        {
+          "id": "adapt",
+          "label": "Adapt to rent, family support, goals; review monthly",
+          "criterion": "accuracy",
+          "keywords": [
+            "adapt",
+            "rent",
+            "family",
+            "review",
+            "flexible"
+          ]
+        }
+      ],
+      "modelAnswer": "Budgeting starts with knowing where money actually goes: track one or two months of income and spending using a notebook, spreadsheet or app, grouping expenses into categories. Many people are surprised by small recurring costs like food delivery and subscriptions. The 50/30/20 rule is a simple starting framework: roughly 50% of take-home pay for needs (rent, groceries, utilities, transport, EMIs, insurance), 30% for wants (eating out, shopping, entertainment, travel) and 20% for savings and investments, including the emergency fund and paying down high-interest debt. \"Pay yourself first\" means automatically moving the savings amount on salary day, before spending, so saving does not depend on willpower. The percentages are guidelines, not laws: someone in their first job in Mumbai or Bengaluru may spend more than half on needs because of rent, and someone supporting parents or siblings will allocate differently, so adjust the split to fit reality while keeping some savings rate, even 10%, and raise it with every salary increase. Review the budget monthly and adjust for goals such as buying a vehicle or higher studies."
     }
   ]
 }

@@ -128,6 +128,37 @@ describe('start', () => {
     expect(FakeRecognition.instances[2]!.aborted).toBe(true); // microphone released
   });
 
+  it('finishing right after pause waits for the browser to flush the last words', async () => {
+    const r = createWebSpeechRecognizer(makeWindow());
+    const session = await r.start({ lang: 'en-US', location: 'cloud', onUpdate: vi.fn(), onError: vi.fn() });
+    const rec = FakeRecognition.instances[0]!;
+    rec.stop = () => {}; // the browser ends the instance later, after flushing results
+    rec.emit([['hello', true], ['world', false]]);
+    session.pause();
+    const finished = session.finish();
+    rec.emit([['hello', true], ['world', true]]); // flushed final result arrives after Finish
+    rec.onend?.();
+    expect(await finished).toBe('hello world');
+    expect(rec.aborted).toBe(true);
+  });
+
+  it('keeps unconfirmed words if the browser never flushes before the timeout', async () => {
+    vi.useFakeTimers();
+    try {
+      const r = createWebSpeechRecognizer(makeWindow());
+      const session = await r.start({ lang: 'en-US', location: 'cloud', onUpdate: vi.fn(), onError: vi.fn() });
+      const rec = FakeRecognition.instances[0]!;
+      rec.stop = () => {}; // never ends
+      rec.emit([['hello', true], ['world', false]]);
+      const finished = session.finish();
+      await vi.advanceTimersByTimeAsync(3000);
+      expect(await finished).toBe('hello world');
+      expect(rec.aborted).toBe(true);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it('abort drops text, ignores late events and releases the microphone', async () => {
     const onUpdate = vi.fn();
     const r = createWebSpeechRecognizer(makeWindow());

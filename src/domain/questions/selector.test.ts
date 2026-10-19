@@ -91,12 +91,13 @@ describe('selectQuestion', () => {
 
   it('does not return the same question twice in a row when a single alternative exists', () => {
     const f: QuestionFilter = { ...all, categoryId: 'tech-ai', subcategoryId: 'networking' };
-    const pool = filterQuestions(questions, f).map((q) => q.id);
-    expect(pool.length).toBe(2);
+    // Exactly two candidates, independent of how many networking questions the bank ships.
+    const two = filterQuestions(questions, f).slice(0, 2);
+    expect(two.length).toBe(2);
     let recent: string[] = [];
     let last = '';
     for (let i = 0; i < 10; i++) {
-      const r = selectQuestion(taxonomy, questions, f, { recentIds: recent, random: seededRandom(i) });
+      const r = selectQuestion(taxonomy, two, f, { recentIds: recent, random: seededRandom(i) });
       if (r.kind !== 'ok') throw new Error('expected ok');
       expect(r.question.id).not.toBe(last);
       last = r.question.id;

@@ -10,6 +10,7 @@ interface PagesContext {
 }
 
 let limiter: MemoryRateLimiter | null = null;
+const MAX_BODY_CHARS = 64_000;
 
 const json = (body: unknown, status = 200, extra: Record<string, string> = {}) =>
   new Response(JSON.stringify(body), {
@@ -23,12 +24,15 @@ export const onRequestPost = async ({ request, env }: PagesContext) => {
   if (!(request.headers.get('content-type') ?? '').includes('application/json')) {
     return json({ ok: false, code: 'bad-request', message: 'Expected JSON.' }, 415);
   }
-  const length = Number(request.headers.get('content-length') ?? '0');
-  if (length > 64_000) return json({ ok: false, code: 'too-large', message: 'Request too large.' }, 413);
+  const tooLarge = () => json({ ok: false, code: 'too-large', message: 'Request too large.' }, 413);
+  if (Number(request.headers.get('content-length') ?? '0') > MAX_BODY_CHARS) return tooLarge();
 
   let body: unknown;
   try {
-    body = await request.json();
+    // Checked again after reading: a chunked request has no content-length header.
+    const text = await request.text();
+    if (text.length > MAX_BODY_CHARS) return tooLarge();
+    body = JSON.parse(text);
   } catch {
     return json({ ok: false, code: 'bad-request', message: 'Malformed JSON.' }, 400);
   }

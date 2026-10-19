@@ -219,15 +219,29 @@ export default function App({ recognizer: injectedRecognizer, aiEvaluator: injec
                 </button>
               )}
 
-              {mode === 'deep-research' && q.researchContext && ['ready', 'preparing'].includes(state.status) && (
+              {mode === 'deep-research' && ['ready', 'preparing'].includes(state.status) && (
                 <aside className="research" aria-label="Preparation notes">
                   <h2>Preparation notes</h2>
-                  <p className="fineprint">Curated notes for this question. VerbalCode does not search the web.</p>
-                  <ul>
-                    {q.researchContext.map((n) => (
-                      <li key={n}>{n}</li>
-                    ))}
-                  </ul>
+                  {q.researchContext ? (
+                    <>
+                      <p className="fineprint">Curated notes for this question. VerbalCode does not search the web.</p>
+                      <ul>
+                        {q.researchContext.map((n) => (
+                          <li key={n}>{n}</li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <p className="fineprint">This question has no curated notes yet, and VerbalCode does not search the web. Use the time to plan your answer:</p>
+                      <ul>
+                        <li>Start with a one-sentence definition or summary.</li>
+                        <li>Explain how it works, step by step.</li>
+                        <li>Give one concrete example.</li>
+                        <li>Name the trade-offs, limits or common mistakes.</li>
+                      </ul>
+                    </>
+                  )}
                 </aside>
               )}
 

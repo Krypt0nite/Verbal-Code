@@ -39,6 +39,40 @@ describe('shipped question bank', () => {
     }
   });
 
+  it('avoids generic keywords that would credit a concept without explaining it', () => {
+    // Short keywords match whole words anywhere in the transcript, so everyday words inflate coverage.
+    const generic = new Set(
+      'a an the and or is it in on of to new any try get ok fix hot due odd first like top wait short slow post set list sea code data cost risk time memory test start use way one two good bad well fast more less big small high low flag pin lock map key log sum max min tie gap box api cpu work'.split(' '),
+    );
+    // The word is the technical term itself in these questions.
+    const allowed = new Set([
+      'phys-energy-work:work', 'math-integrals:sum', 'math-integrals:work', 'fe-react-rendering:key', 'ml-attention-transformers:key',
+      'py-collections-complexity:set', 'py-collections-complexity:list', 'py-mutability-references:list', 'cpp-iterator-invalidation:map',
+      'cpp-iterator-invalidation:list', 'rust-traits-generics:box', 'rust-smart-pointers:box', 'go-interface-internals:box',
+      'ds-mapreduce-spark:map', 'db-redis-internals:list', 'db-redis-internals:set',
+    ]);
+    const offenders = questionBank.questions.flatMap((q) =>
+      q.expectedConcepts.flatMap((c) =>
+        c.keywords.map((k) => `${q.id}:${k.toLowerCase().trim()}`).filter((key) => generic.has(key.split(':')[1]!) && !allowed.has(key)),
+      ),
+    );
+    expect(offenders).toEqual([]);
+  });
+
+  it('keeps advanced questions out of off-the-cuff mode for new questions', () => {
+    // Off-the-cuff gives no preparation time. Older advanced questions predate this rule and are listed explicitly.
+    const legacy = new Set([
+      'cpp-undefined-behavior', 'cpp-templates-constexpr', 'cpp-exceptions-safety', 'cpp-memory-order', 'go-context-cancellation',
+      'go-gc-escape-analysis', 'py-asyncio', 'py-memory-gc', 'rust-send-sync', 'rust-lifetimes', 'rust-async', 'rust-unsafe',
+      'java-concurrency-basics', 'java-generics-type-erasure', 'ts-generics-utility-types', 'semi-photolithography-moores-law',
+      'qm-entanglement-tunneling', 'mat-crystal-defects', 'phys-special-relativity', 'math-eigenvectors', 'nano-carbon-materials',
+    ]);
+    const offenders = questionBank.questions
+      .filter((q) => q.difficulty === 'advanced' && q.modes.includes('off-the-cuff') && !legacy.has(q.id))
+      .map((q) => q.id);
+    expect(offenders).toEqual([]);
+  });
+
   it('every interview-mode question is in English and asks for an explanation', () => {
     for (const q of questionBank.questions) {
       expect(q.prompt).toMatch(/^[\x20-\x7E–—₹²√·×÷≤≥']+$/u);
@@ -91,6 +125,16 @@ describe('buildQuestionBank validation', () => {
     expect(bank.questions).toHaveLength(1);
     expect(bank.issues.map((i) => i.message).join(' ')).toMatch(/duplicate question id/);
     expect(bank.issues.some((i) => i.source === 'b.json')).toBe(true);
+  });
+
+  it('drops only the invalid question, not the rest of its file', () => {
+    const bad = { ...base, id: 'bad-question', expectedConcepts: [{ ...base.expectedConcepts[0], id: 'x' }] };
+    const bank = buildQuestionBank(taxonomy, [
+      { source: 'f.json', data: { categoryId: 'tech-ai', questions: [base, bad, { ...base, id: 'another-question' }] } },
+    ]);
+    expect(bank.questions.map((q) => q.id)).toEqual(['sample-question', 'another-question']);
+    expect(bank.issues).toHaveLength(1);
+    expect(bank.issues[0]?.message).toMatch(/questions\.1 \(bad-question\)/);
   });
 
   it('throws on an invalid taxonomy', () => {

@@ -102,6 +102,12 @@ export const QuestionFileSchema = z.object({
 });
 export type QuestionFile = z.infer<typeof QuestionFileSchema>;
 
+/** File shape with questions left unparsed, so each question can be validated (and rejected) on its own. */
+export const QuestionFileEnvelopeSchema = z.object({
+  categoryId: slug,
+  questions: z.array(z.unknown()).min(1),
+});
+
 /** User-selected filter. `categoryId`/`subcategoryId` of null mean "all". */
 export interface QuestionFilter {
   categoryId: string | null;

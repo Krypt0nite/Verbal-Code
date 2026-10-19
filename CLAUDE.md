@@ -16,7 +16,7 @@ Privacy-first speaking practice app. React 19 + TypeScript (strict) + Vite, Zod,
 - All UI copy is English, sentence case, active voice.
 
 ## Where things are
-See ARCHITECTURE.md. The state machine is `src/session/machine.ts` (pure reducer); orchestration is `src/hooks/usePracticeSession.ts`; rubrics are `src/evaluation/rubrics/index.ts`.
+See ARCHITECTURE.md; question rules are in docs/QUESTION_AUTHORING_GUIDE.md. The state machine is `src/session/machine.ts` (pure reducer); orchestration is `src/hooks/usePracticeSession.ts`; rubrics are `src/evaluation/rubrics/index.ts`.
 
 ## Roadmap ideas
 Mock-interview follow-up questions; typed-answer fallback for unsupported browsers; more questions (Go, Rust, Kubernetes, HFT/low-latency); progress history stored as scores only (opt-in).

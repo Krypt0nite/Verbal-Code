@@ -49,17 +49,17 @@ For E2E tests, install the browser once: `npx playwright install chromium`.
 
 ## Test results (actually run)
 
-Run on 19 Oct 2026 in a Linux sandbox, Node 22.22:
+Run on 19 Oct 2026 on Windows 11, Node 24.22:
 
 | Check | Result |
 | --- | --- |
 | `npm run lint` | 0 errors, 0 warnings |
 | `npm run typecheck` | passes (strict, `noUncheckedIndexedAccess`) |
-| `npm test` | **116 tests passed** in 10 files |
-| `npm run build` | passes, ~159 kB gzipped JS |
-| `npm run test:e2e` | **10/10 passed** (5 scenarios × desktop + mobile) |
+| `npm test` | **124 tests passed** in 10 files |
+| `npm run build` | passes; app chunk ~117 kB gzipped, question bank chunk ~418 kB gzipped |
+| `npm run test:e2e` | **12/12 passed** (6 scenarios × desktop + mobile Chromium); also 12/12 on installed Chrome and Edge |
 
-The E2E suite ran in one go with Playwright's bundled Chromium (`PW_CHROMIUM_PATH` pointed at the preinstalled build). On your machine, run `npx playwright install chromium` once, then `npm run test:e2e`.
+On your machine, run `npx playwright install chromium` once, then `npm run test:e2e`. See [docs/DEPLOYMENT_CHECKLIST.md](docs/DEPLOYMENT_CHECKLIST.md) for the full release checks.
 
 What the tests cover is listed in [EVALUATION.md](EVALUATION.md#tests) and [ARCHITECTURE.md](ARCHITECTURE.md).
 
@@ -99,7 +99,7 @@ The AI evaluator is **off by default** and needs a server-side key.
 - **Local evaluator is heuristic.** Concept coverage is keyword-based. Mentioning a term doesn't prove it was explained correctly, and correct paraphrases may be missed. It cannot check facts; use the model answer or AI feedback for that.
 - **Mock interview** is a basic sequence of 2–6 questions with a score summary; there are no follow-up questions yet.
 - **Deep research** uses curated notes stored with each question. It does not search the web.
-- The question bank (179 questions) is deliberately small and reviewed rather than large. Every Tech & AI and Programming Languages subcategory has at least one question; non-technical categories have a few starter questions.
+- The question bank has 564 hand-written questions, deepest in C++, Go, DSA, system design, API design, databases, operating systems, networking, distributed systems, AI/ML and GenAI. Every subcategory has at least one question; some (security, cloud, interview skills, English) still have only a few. See [docs/QUESTION_BANK_AUDIT.md](docs/QUESTION_BANK_AUDIT.md).
 
 ## Manual verification checklist
 
@@ -141,5 +141,8 @@ Use desktop Chrome with a real microphone.
 - [ARCHITECTURE.md](ARCHITECTURE.md): modules, state machine, key decisions
 - [PRIVACY.md](PRIVACY.md): data flows and guarantees (and their limits)
 - [EVALUATION.md](EVALUATION.md): rubrics, scoring, AI contract, tests
-- [docs/QUESTION_AUTHORING.md](docs/QUESTION_AUTHORING.md): taxonomy and how to add questions
+- [docs/QUESTION_AUTHORING_GUIDE.md](docs/QUESTION_AUTHORING_GUIDE.md): taxonomy, rubrics, keywords and how to add questions
+- [docs/QUESTION_BANK_AUDIT.md](docs/QUESTION_BANK_AUDIT.md): question counts, gaps and quality findings
+- [docs/PRIVACY_AUDIT.md](docs/PRIVACY_AUDIT.md): what the code actually does with speech and data
+- [docs/DEPLOYMENT_CHECKLIST.md](docs/DEPLOYMENT_CHECKLIST.md): verifying and deploying a release
 - [CLAUDE.md](CLAUDE.md): project context for AI coding assistants

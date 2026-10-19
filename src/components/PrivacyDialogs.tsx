@@ -10,6 +10,10 @@ export function PrivacyDialog({ open, onClose, onClearData }: { open: boolean; o
           On-device recognition is used by default when your browser offers it. VerbalCode never switches to a cloud service on its own: cloud recognition
           only runs after you agree to it, and the session shows which one is active.
         </li>
+        <li>
+          On-device recognition is built by your browser vendor. VerbalCode asks the browser to keep speech on this device and refuses to start if it
+          can't, but it can't independently verify what the browser does internally.
+        </li>
         <li>Cloud recognition means your browser sends audio to its vendor (for example Google for Chrome). VerbalCode can't control what the vendor does with it.</li>
         <li>Feedback is computed on this device by default. AI feedback is optional, sends only the question, category, difficulty, rubric and transcript, and asks for your consent first.</li>
         <li>Only your settings and the IDs of recently practised questions are stored in this browser, so topics don't repeat.</li>

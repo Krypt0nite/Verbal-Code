@@ -188,10 +188,8 @@
           "label": "Physical limits, cost, heat; chiplets, 3D stacking, new transistors",
           "criterion": "accuracy",
           "keywords": [
-            "slow",
             "atoms",
             "heat",
-            "cost",
             "chiplet",
             "3d",
             "gate-all-around",
@@ -2491,8 +2489,7 @@
             "at scale",
             "expensive",
             "defects",
-            "band gap",
-            "cost"
+            "band gap"
           ]
         }
       ],

@@ -1,5 +1,6 @@
 import {
-  QuestionFileSchema,
+  QuestionFileEnvelopeSchema,
+  QuestionSchema,
   TaxonomySchema,
   type Category,
   type Question,
@@ -38,15 +39,25 @@ export function buildQuestionBank(
   const seen = new Set<string>();
 
   for (const { source, data } of rawFiles) {
-    const parsed = QuestionFileSchema.safeParse(data);
-    if (!parsed.success) {
-      for (const issue of parsed.error.issues) {
+    // Validate the envelope first, then each question on its own, so one bad question cannot drop a whole file.
+    const envelope = QuestionFileEnvelopeSchema.safeParse(data);
+    if (!envelope.success) {
+      for (const issue of envelope.error.issues) {
         issues.push({ source, message: `${issue.path.join('.')}: ${issue.message}` });
       }
       continue;
     }
-    for (const q of parsed.data.questions) {
-      const problem = checkQuestion(q, taxonomy, parsed.data.categoryId, seen);
+    for (const [index, raw] of envelope.data.questions.entries()) {
+      const parsed = QuestionSchema.safeParse(raw);
+      if (!parsed.success) {
+        const id = (raw as { id?: unknown } | null)?.id;
+        for (const issue of parsed.error.issues) {
+          issues.push({ source, message: `questions.${index}${typeof id === 'string' ? ` (${id})` : ''}.${issue.path.join('.')}: ${issue.message}` });
+        }
+        continue;
+      }
+      const q = parsed.data;
+      const problem = checkQuestion(q, taxonomy, envelope.data.categoryId, seen);
       if (problem) {
         issues.push({ source, message: `${q.id}: ${problem}` });
         continue;

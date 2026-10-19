@@ -51,7 +51,7 @@
           ]
         }
       ],
-      "modelAnswer": "Progressive overload means gradually increasing the demand on muscles \u2014 more weight, reps, sets or better control \u2014 so the body keeps adapting. Beginners can add small increments when they complete all target reps with good form. Adaptation happens during recovery, so sleep, rest days and adequate food matter as much as the workouts; jumping too fast raises injury risk."
+      "modelAnswer": "Progressive overload means gradually increasing the demand on muscles — more weight, reps, sets or better control — so the body keeps adapting. Beginners can add small increments when they complete all target reps with good form. Adaptation happens during recovery, so sleep, rest days and adequate food matter as much as the workouts; jumping too fast raises injury risk."
     },
     {
       "id": "fit-sleep-habits",
@@ -76,7 +76,6 @@
           "label": "Memory consolidation",
           "criterion": "accuracy",
           "keywords": [
-            "memory",
             "consolidat",
             "learning"
           ]
@@ -105,6 +104,954 @@
         }
       ],
       "modelAnswer": "During sleep the brain consolidates what you learned and the body repairs tissue, so poor sleep hurts both focus and training progress. Habits: a consistent sleep and wake time, cutting caffeine in the afternoon and screens before bed, and a cool, dark, quiet room."
+    },
+    {
+      "id": "ss-energy-systems",
+      "title": "Energy systems: aerobic and anaerobic",
+      "prompt": "Explain how muscles produce energy during exercise. Describe ATP, the phosphocreatine system, anaerobic glycolysis and the aerobic system, which activities rely on each, what lactate really is, and how this knowledge shapes training for a sprinter versus a marathon runner.",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "sports-science",
+        "physiology"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "atp",
+          "label": "ATP is the immediate energy currency; limited stores",
+          "criterion": "accuracy",
+          "keywords": [
+            "atp",
+            "adenosine triphosphate",
+            "energy currency",
+            "few seconds"
+          ]
+        },
+        {
+          "id": "pcr",
+          "label": "Phosphocreatine system for ~10 seconds of maximal effort",
+          "criterion": "accuracy",
+          "keywords": [
+            "phosphocreatine",
+            "creatine",
+            "10 seconds",
+            "sprint",
+            "explosive"
+          ]
+        },
+        {
+          "id": "glyco",
+          "label": "Anaerobic glycolysis: fast, produces lactate",
+          "criterion": "accuracy",
+          "keywords": [
+            "anaerobic",
+            "glycolysis",
+            "lactate",
+            "without oxygen",
+            "400 metres"
+          ]
+        },
+        {
+          "id": "aerobic",
+          "label": "Aerobic system: carbs and fat with oxygen; long duration",
+          "criterion": "accuracy",
+          "keywords": [
+            "aerobic",
+            "oxygen",
+            "mitochondria",
+            "fat",
+            "endurance"
+          ]
+        },
+        {
+          "id": "train",
+          "label": "Training specificity: sprinter vs marathoner",
+          "criterion": "accuracy",
+          "keywords": [
+            "specific",
+            "interval",
+            "long runs",
+            "sprinter",
+            "marathon"
+          ]
+        }
+      ],
+      "modelAnswer": "Muscles run on ATP, but they store only enough for a couple of seconds, so three systems regenerate it. The phosphocreatine system uses stored creatine phosphate to rebuild ATP almost instantly; it powers maximal efforts of up to about 10 seconds such as a 100 m sprint, a jump or a heavy lift, and recovers within a few minutes. Anaerobic glycolysis breaks down glucose and glycogen without needing oxygen, producing ATP quickly but in limited amounts; it dominates high-intensity efforts from roughly 10 seconds to two minutes, like a 400 m race. It produces lactate, which is not simply a waste product causing soreness - it is recycled as fuel by muscles, heart and liver; the burning sensation and fatigue come mainly from accumulating hydrogen ions and other metabolic changes. The aerobic system uses oxygen in the mitochondria to burn carbohydrates and fat, producing large amounts of ATP slowly; it powers anything longer than a few minutes, from a 5 km run to a marathon. All systems work together, with the balance shifting by intensity and duration. Training is specific: sprinters emphasise maximal short efforts with full recovery, strength and power, while marathon runners build aerobic capacity with high volumes of easier running plus tempo and interval work."
+    },
+    {
+      "id": "ss-muscle-hypertrophy",
+      "title": "How muscles grow",
+      "prompt": "Explain how resistance training makes muscles bigger and stronger. Describe mechanical tension, progressive overload, muscle protein synthesis, the role of protein and sleep in recovery, why beginners gain strength quickly through neural adaptations, and common myths about muscle building.",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "sports-science",
+        "strength"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "tension",
+          "label": "Mechanical tension and training close to failure drive growth",
+          "criterion": "accuracy",
+          "keywords": [
+            "mechanical tension",
+            "close to failure",
+            "heavy",
+            "effort"
+          ]
+        },
+        {
+          "id": "overload",
+          "label": "Progressive overload over time",
+          "criterion": "accuracy",
+          "keywords": [
+            "progressive overload",
+            "increase",
+            "more weight",
+            "more reps"
+          ]
+        },
+        {
+          "id": "mps",
+          "label": "Muscle protein synthesis exceeds breakdown with protein intake",
+          "criterion": "accuracy",
+          "keywords": [
+            "protein synthesis",
+            "protein",
+            "repair",
+            "amino acids"
+          ]
+        },
+        {
+          "id": "neural",
+          "label": "Early strength gains are neural",
+          "criterion": "accuracy",
+          "keywords": [
+            "neural",
+            "nervous system",
+            "coordination",
+            "beginner gains",
+            "motor units"
+          ]
+        },
+        {
+          "id": "myths",
+          "label": "Myths: toning, spot reduction, soreness = growth",
+          "criterion": "accuracy",
+          "keywords": [
+            "toning",
+            "spot reduction",
+            "soreness",
+            "myth",
+            "bulky"
+          ]
+        }
+      ],
+      "modelAnswer": "Muscle growth (hypertrophy) is mainly driven by mechanical tension: lifting challenging loads, with sets taken reasonably close to muscular failure, signals muscle fibres to adapt. After training, muscle protein synthesis rises for a day or two; when synthesis exceeds breakdown over weeks, muscle fibres add contractile proteins and grow. That requires enough dietary protein - a commonly cited range for people trying to build muscle is about 1.6 grams per kilogram of body weight per day - sufficient total calories, and sleep, when much recovery and hormone release happen. Progressive overload is the principle that the stimulus must gradually increase - more weight, reps or sets - or the body has no reason to keep adapting. Beginners gain strength very quickly in the first weeks largely through neural adaptations: the nervous system learns to recruit more motor units and coordinate muscles, before significant size changes. Myths: you cannot \"tone\" a muscle separately from building it and losing fat; spot reduction of fat by exercising one area does not work; soreness is not a reliable sign of a good workout; and women rarely get \"bulky\" by accident because building large muscles takes years of deliberate effort."
+    },
+    {
+      "id": "ss-recovery-overtraining",
+      "title": "Recovery and overtraining",
+      "prompt": "Explain why recovery is part of training rather than a break from it. Describe the supercompensation idea, the roles of sleep, nutrition and rest days, the difference between functional overreaching and overtraining syndrome, and the warning signs athletes and coaches should watch for.",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "sports-science",
+        "recovery"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "adapt",
+          "label": "Adaptation happens during recovery (supercompensation)",
+          "criterion": "accuracy",
+          "keywords": [
+            "supercompensation",
+            "adaptation",
+            "during recovery",
+            "rebuild",
+            "stronger"
+          ]
+        },
+        {
+          "id": "sleep",
+          "label": "Sleep is the most powerful recovery tool",
+          "criterion": "accuracy",
+          "keywords": [
+            "sleep",
+            "seven to nine",
+            "growth hormone",
+            "rest"
+          ]
+        },
+        {
+          "id": "nutrition",
+          "label": "Nutrition: carbs to refuel, protein to repair, hydration",
+          "criterion": "accuracy",
+          "keywords": [
+            "carbohydrate",
+            "glycogen",
+            "protein",
+            "hydration",
+            "refuel"
+          ]
+        },
+        {
+          "id": "ot",
+          "label": "Overreaching vs overtraining syndrome",
+          "criterion": "accuracy",
+          "keywords": [
+            "overreaching",
+            "overtraining",
+            "months",
+            "deload",
+            "chronic"
+          ]
+        },
+        {
+          "id": "signs",
+          "label": "Warning signs: declining performance, fatigue, mood, resting heart rate, illness",
+          "criterion": "accuracy",
+          "keywords": [
+            "performance drop",
+            "fatigue",
+            "mood",
+            "resting heart rate",
+            "injury",
+            "illness"
+          ]
+        }
+      ],
+      "modelAnswer": "Training is a stress that temporarily lowers performance by causing fatigue and minor muscle damage; the body then rebuilds slightly stronger than before during recovery - often called supercompensation. If the next hard session comes after recovery, fitness climbs; if hard sessions keep coming before recovery, fatigue accumulates and performance falls. Sleep is the most powerful recovery tool: most adults need around seven to nine hours, and athletes often benefit from more; poor sleep impairs strength, reaction time, decision-making and immune function. Nutrition supplies the materials: carbohydrates to refill muscle glycogen, protein to repair muscle, and fluids and electrolytes. Planned rest days, easy sessions and lighter \"deload\" weeks let adaptation happen. Short-term functional overreaching - a hard training block followed by rest that produces a performance boost - is normal. Overtraining syndrome is a long-lasting state, taking weeks to months to recover, caused by excessive training load with inadequate recovery, often combined with life stress and under-eating. Warning signs: performance declining despite training, persistent fatigue, heavy legs, elevated resting heart rate, poor sleep, irritability or low mood, frequent illnesses and injuries. The answer is reducing load early and addressing sleep and nutrition."
+    },
+    {
+      "id": "ss-vo2-max",
+      "title": "VO2 max and endurance performance",
+      "prompt": "Explain what VO2 max is, how it is measured, what limits it, and how trainable it is. Why is VO2 max alone not enough to predict who wins an endurance race, and what other factors such as lactate threshold and running economy matter? Why is it also linked to long-term health?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "sports-science",
+        "endurance"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Maximum rate of oxygen uptake during intense exercise",
+          "criterion": "accuracy",
+          "keywords": [
+            "maximum oxygen",
+            "oxygen uptake",
+            "ml per kg",
+            "aerobic capacity"
+          ]
+        },
+        {
+          "id": "measure",
+          "label": "Measured in a lab with gas analysis; estimated by watches/tests",
+          "criterion": "accuracy",
+          "keywords": [
+            "lab",
+            "treadmill",
+            "gas analysis",
+            "estimate",
+            "smartwatch"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "Limited mainly by heart output and oxygen delivery; genetics",
+          "criterion": "accuracy",
+          "keywords": [
+            "cardiac output",
+            "heart",
+            "stroke volume",
+            "genetic",
+            "blood"
+          ]
+        },
+        {
+          "id": "others",
+          "label": "Lactate threshold and running economy also decide performance",
+          "criterion": "accuracy",
+          "keywords": [
+            "lactate threshold",
+            "economy",
+            "efficiency",
+            "percentage of vo2"
+          ]
+        },
+        {
+          "id": "health",
+          "label": "Higher cardiorespiratory fitness is linked to lower mortality",
+          "criterion": "accuracy",
+          "keywords": [
+            "mortality",
+            "longevity",
+            "health",
+            "cardiorespiratory fitness"
+          ]
+        }
+      ],
+      "modelAnswer": "VO2 max is the maximum rate at which the body can take in and use oxygen during intense exercise, usually expressed in millilitres of oxygen per kilogram of body weight per minute. It is measured accurately in a lab by analysing exhaled gases during an incremental treadmill or cycling test to exhaustion, and estimated more roughly by field tests and smartwatches. In healthy people it is limited mainly by how much oxygen-rich blood the heart can pump (cardiac output), along with blood haemoglobin and muscle capillary and mitochondrial capacity. It is substantially influenced by genetics but trainable, typically improving by around 10-20% or more in untrained people with endurance and high-intensity interval training. Among elite athletes, who all have high VO2 max values, it does not decide the winner on its own: the lactate threshold - the percentage of VO2 max you can sustain without rapidly accumulating fatigue - and running or cycling economy - how much oxygen you need at a given speed - matter a great deal, along with pacing and mental toughness. Beyond sport, higher cardiorespiratory fitness is one of the strongest predictors of lower risk of death from all causes in large studies, which is a good reason for everyone to include aerobic exercise."
+    },
+    {
+      "id": "ss-warmup-injury-prevention",
+      "title": "Warming up and preventing injuries",
+      "prompt": "Explain what a good warm-up does and how to structure one. Compare static and dynamic stretching before exercise, describe common causes of sports injuries such as sudden increases in training load, and outline practical ways athletes reduce injury risk.",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "sports-science",
+        "injury-prevention"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "warm",
+          "label": "Warm-up raises muscle temperature, heart rate, prepares movement",
+          "criterion": "accuracy",
+          "keywords": [
+            "muscle temperature",
+            "heart rate",
+            "blood flow",
+            "prepare",
+            "warm up"
+          ]
+        },
+        {
+          "id": "dynamic",
+          "label": "Dynamic stretching and sport-specific drills before; static after or separately",
+          "criterion": "accuracy",
+          "keywords": [
+            "dynamic stretching",
+            "static stretching",
+            "leg swings",
+            "drills",
+            "after exercise"
+          ]
+        },
+        {
+          "id": "load",
+          "label": "Injuries often from sudden spikes in training load",
+          "criterion": "accuracy",
+          "keywords": [
+            "training load",
+            "too much too soon",
+            "sudden increase",
+            "ten percent",
+            "spike"
+          ]
+        },
+        {
+          "id": "prevent",
+          "label": "Prevention: strength training, gradual progression, rest, technique",
+          "criterion": "accuracy",
+          "keywords": [
+            "strength training",
+            "gradual",
+            "technique",
+            "rest",
+            "footwear"
+          ]
+        }
+      ],
+      "modelAnswer": "A warm-up prepares the body for harder work. Five to fifteen minutes of light activity raises heart rate, blood flow and muscle temperature, which makes muscles and tendons more pliable and nerve signals faster, and it rehearses the movements to come. A good structure: light cardio such as jogging or skipping, then dynamic stretches and mobility drills - leg swings, lunges with rotation, arm circles - then sport-specific movements that build gradually to full intensity, like strides before a race or practice throws. Long static stretches held for a minute or more right before explosive activity can slightly reduce power, so they are better done after training or in separate flexibility sessions, though short holds are fine. Many overuse injuries such as shin splints and tendon problems come from doing too much too soon - sudden spikes in training volume or intensity that tissues have not adapted to - so increase load gradually (the often quoted guideline is about 10% per week). Other protective habits: strength training, especially for hips, hamstrings and core, which reduces injury rates in many sports; good technique; adequate rest and sleep; appropriate footwear and equipment; and not ignoring persistent pain."
+    },
+    {
+      "id": "ss-hydration-electrolytes",
+      "title": "Hydration and electrolytes in sport",
+      "prompt": "Explain why hydration matters for performance and safety during exercise, especially in hot and humid conditions like an Indian summer. How much should athletes drink, what roles do sodium and other electrolytes play, when are sports drinks useful, and what are the risks of both dehydration and drinking too much water?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "sports-science",
+        "nutrition"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "why",
+          "label": "Sweat cools the body; fluid loss reduces performance",
+          "criterion": "accuracy",
+          "keywords": [
+            "sweat",
+            "cool",
+            "body temperature",
+            "performance",
+            "two percent"
+          ]
+        },
+        {
+          "id": "how",
+          "label": "Drink to thirst / weigh before and after; individual sweat rates",
+          "criterion": "accuracy",
+          "keywords": [
+            "thirst",
+            "weigh",
+            "sweat rate",
+            "individual",
+            "urine colour"
+          ]
+        },
+        {
+          "id": "electro",
+          "label": "Sodium and electrolytes lost in sweat",
+          "criterion": "accuracy",
+          "keywords": [
+            "sodium",
+            "electrolyte",
+            "salt",
+            "potassium",
+            "cramps"
+          ]
+        },
+        {
+          "id": "drinks",
+          "label": "Sports drinks for long or intense sessions",
+          "criterion": "accuracy",
+          "keywords": [
+            "sports drink",
+            "more than an hour",
+            "carbohydrate",
+            "ors",
+            "long sessions"
+          ]
+        },
+        {
+          "id": "risk",
+          "label": "Risks: heat illness from dehydration; hyponatraemia from overdrinking",
+          "criterion": "accuracy",
+          "keywords": [
+            "heat stroke",
+            "heat exhaustion",
+            "hyponatremia",
+            "too much water",
+            "low sodium"
+          ]
+        }
+      ],
+      "modelAnswer": "During exercise, the body cools itself by sweating, and in hot, humid weather sweat rates can exceed one to two litres per hour. Losing more than about 2% of body weight as fluid typically reduces endurance performance, concentration and the ability to regulate temperature, increasing the risk of heat exhaustion and heat stroke, which is a medical emergency. Fluid needs vary widely between individuals, so a practical approach is to start sessions well hydrated, drink according to thirst during exercise, and for serious athletes, weigh themselves before and after training to estimate sweat loss and replace it over the following hours; pale yellow urine is a rough sign of good hydration. Sweat contains sodium and smaller amounts of potassium, and heavy sweaters lose a lot of salt, so for sessions longer than about an hour or in intense heat, sports drinks or oral rehydration solutions that contain sodium and some carbohydrate help replace losses and provide fuel; for short, easy workouts water is enough. Drinking far more water than you lose, especially during long events, can dangerously dilute blood sodium (hyponatraemia), causing confusion, seizures or worse, so more is not always better."
+    },
+    {
+      "id": "nut-macronutrients",
+      "title": "Macronutrients: carbohydrates, protein and fat",
+      "prompt": "Explain the three macronutrients - carbohydrates, protein and fat. What does each do in the body, how many calories does each provide per gram, what are good food sources in a typical Indian diet, and why is the quality of each macronutrient as important as the quantity?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "nutrition",
+        "basics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "carb",
+          "label": "Carbohydrates: main energy source; fibre",
+          "criterion": "accuracy",
+          "keywords": [
+            "carbohydrate",
+            "energy",
+            "glucose",
+            "fibre",
+            "fiber"
+          ]
+        },
+        {
+          "id": "protein",
+          "label": "Protein: building and repairing tissues, enzymes",
+          "criterion": "accuracy",
+          "keywords": [
+            "protein",
+            "muscle",
+            "repair",
+            "amino acids",
+            "enzymes"
+          ]
+        },
+        {
+          "id": "fat",
+          "label": "Fat: energy, hormones, vitamin absorption",
+          "criterion": "accuracy",
+          "keywords": [
+            "fat",
+            "hormones",
+            "vitamins a d e k",
+            "absorb",
+            "essential fatty"
+          ]
+        },
+        {
+          "id": "calories",
+          "label": "4, 4 and 9 calories per gram",
+          "criterion": "accuracy",
+          "keywords": [
+            "4 calories",
+            "9 calories",
+            "per gram",
+            "calories"
+          ]
+        },
+        {
+          "id": "quality",
+          "label": "Quality: whole grains, pulses, unsaturated fats vs refined/trans fats",
+          "criterion": "accuracy",
+          "keywords": [
+            "whole grain",
+            "dal",
+            "refined",
+            "trans fat",
+            "quality"
+          ]
+        }
+      ],
+      "modelAnswer": "Macronutrients are the nutrients we need in large amounts, and they provide energy measured in calories. Carbohydrates (4 kcal per gram) are the body's main fuel, especially for the brain and intense exercise; they include starches and sugars and also fibre, which supports digestion and blood sugar control. Indian sources include rice, wheat roti, millets like ragi and jowar, fruits, vegetables and pulses. Protein (4 kcal per gram) builds and repairs muscles and tissues and makes enzymes, hormones and antibodies; it is made of amino acids, some of which must come from food. Sources include dal and other pulses, paneer, curd and milk, eggs, fish, chicken, soya and nuts; combining cereals and pulses, as in dal-rice or idli, improves the amino acid mix for vegetarians. Fat (9 kcal per gram) is a dense energy source, needed for hormones, cell membranes and absorbing vitamins A, D, E and K, and provides essential fatty acids. Quality matters as much as quantity: whole grains and pulses over refined flour and sugar; unsaturated fats from nuts, seeds and vegetable oils in moderation over trans fats found in some vanaspati and repeatedly reheated fried snacks."
+    },
+    {
+      "id": "nut-protein-needs",
+      "title": "How much protein do you need?",
+      "prompt": "Explain how much protein people need and why needs differ for sedentary adults, athletes, older adults and pregnant women. Discuss protein quality, why many Indian diets are low in protein, how vegetarians can meet their needs, and whether high-protein diets or supplements are necessary or harmful.",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "nutrition",
+        "protein"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "rda",
+          "label": "Baseline about 0.8-1 g per kg body weight per day",
+          "criterion": "accuracy",
+          "keywords": [
+            "0 8",
+            "gram per kilogram",
+            "per kg",
+            "body weight",
+            "recommended"
+          ]
+        },
+        {
+          "id": "higher",
+          "label": "Higher needs for athletes, older adults, pregnancy",
+          "criterion": "accuracy",
+          "keywords": [
+            "athlete",
+            "older adults",
+            "pregnan",
+            "1 6",
+            "muscle loss"
+          ]
+        },
+        {
+          "id": "india",
+          "label": "Many Indian diets are cereal-heavy and low in protein",
+          "criterion": "accuracy",
+          "keywords": [
+            "cereal",
+            "rice",
+            "low protein",
+            "india",
+            "deficien"
+          ]
+        },
+        {
+          "id": "veg",
+          "label": "Vegetarian sources and combining pulses with cereals",
+          "criterion": "accuracy",
+          "keywords": [
+            "dal",
+            "paneer",
+            "soya",
+            "curd",
+            "combine"
+          ]
+        },
+        {
+          "id": "supp",
+          "label": "Supplements optional; food first; kidney concerns mainly with existing disease",
+          "criterion": "accuracy",
+          "keywords": [
+            "supplement",
+            "whey",
+            "food first",
+            "kidney",
+            "not necessary"
+          ]
+        }
+      ],
+      "modelAnswer": "For healthy adults, a common baseline recommendation is around 0.8 to 1 gram of protein per kilogram of body weight per day, so a 60 kg adult needs roughly 50 to 60 grams. Needs are higher for people doing regular strength or endurance training (around 1.2 to 2 g/kg, with about 1.6 g/kg often cited for muscle gain), for older adults to slow age-related muscle loss, and during pregnancy and breastfeeding. Protein quality depends on the amino acid profile and digestibility: animal proteins and soya are complete, while most plant foods are low in one or more essential amino acids, which is why combining cereals and pulses improves quality. Surveys suggest many Indian diets are dominated by rice or wheat and fall short on protein, especially in lower-income and vegetarian households. Vegetarians can meet their needs by including protein at every meal: dal, chana, rajma, soya chunks, tofu, paneer, curd, milk, peanuts, seeds and, for those who eat them, eggs. Supplements such as whey are convenient but not necessary if food intake is adequate. For healthy people, higher protein intakes within common ranges are generally considered safe, but people with kidney disease should follow medical advice."
+    },
+    {
+      "id": "nut-glycemic-index",
+      "title": "Carbohydrates, glycaemic index and blood sugar",
+      "prompt": "Explain how different carbohydrate foods affect blood sugar. What are the glycaemic index and glycaemic load, why do refined carbohydrates and sugary drinks spike blood sugar, how do fibre, protein and fat change the response, and why does this matter in a country with high rates of diabetes like India?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "nutrition",
+        "diabetes"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "gi",
+          "label": "Glycaemic index ranks how fast a food raises blood glucose",
+          "criterion": "accuracy",
+          "keywords": [
+            "glycemic index",
+            "glycaemic index",
+            "blood sugar",
+            "blood glucose",
+            "how fast"
+          ]
+        },
+        {
+          "id": "gl",
+          "label": "Glycaemic load accounts for portion size",
+          "criterion": "accuracy",
+          "keywords": [
+            "glycemic load",
+            "glycaemic load",
+            "portion",
+            "amount of carbohydrate"
+          ]
+        },
+        {
+          "id": "refined",
+          "label": "Refined carbs and sugary drinks spike sugar and insulin",
+          "criterion": "accuracy",
+          "keywords": [
+            "refined",
+            "white bread",
+            "sugary drink",
+            "spike",
+            "insulin"
+          ]
+        },
+        {
+          "id": "modify",
+          "label": "Fibre, protein, fat and whole foods slow absorption",
+          "criterion": "accuracy",
+          "keywords": [
+            "fibre",
+            "fiber",
+            "protein",
+            "whole grain"
+          ]
+        },
+        {
+          "id": "india",
+          "label": "Diabetes burden in India; insulin resistance; lifestyle",
+          "criterion": "accuracy",
+          "keywords": [
+            "diabetes",
+            "india",
+            "insulin resistance",
+            "type 2",
+            "prediabetes"
+          ]
+        }
+      ],
+      "modelAnswer": "When we eat carbohydrates, they are digested into glucose that enters the blood; the pancreas releases insulin to move it into cells. The glycaemic index ranks carbohydrate foods by how quickly they raise blood glucose compared with pure glucose: white bread, polished white rice, many packaged snacks and sugary drinks have a high GI because they are digested fast; whole grains, pulses, most fruits and vegetables have lower values. Glycaemic load also accounts for how much carbohydrate a typical portion contains, so watermelon has a high GI but a modest load per serving, while a large plate of white rice has a high load. Repeated large spikes force high insulin output, and over time, along with excess weight and inactivity, can contribute to insulin resistance and type 2 diabetes. Fibre, protein and fat slow digestion: eating rice with dal, vegetables and curd, choosing whole grains or millets, and eating whole fruit instead of juice all blunt the response. India has one of the largest numbers of people with diabetes in the world, often developing at younger ages and lower body weights, so reducing refined carbohydrates and sugary drinks, along with exercise, is an important public health message."
+    },
+    {
+      "id": "nut-micronutrient-deficiencies",
+      "title": "Common micronutrient deficiencies in India",
+      "prompt": "Explain the most common micronutrient deficiencies in India, such as iron, vitamin D, vitamin B12 and iodine. For each, describe why it happens, the symptoms or consequences, which groups are most at risk, and how diet, fortification and supplements can help.",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "nutrition",
+        "public-health",
+        "india"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "iron",
+          "label": "Iron deficiency anaemia: fatigue; women and children at risk",
+          "criterion": "accuracy",
+          "keywords": [
+            "iron",
+            "anaemia",
+            "anemia",
+            "haemoglobin",
+            "fatigue"
+          ]
+        },
+        {
+          "id": "vitd",
+          "label": "Vitamin D deficiency despite sunshine: indoor lives, skin cover",
+          "criterion": "accuracy",
+          "keywords": [
+            "vitamin d",
+            "sunlight",
+            "bones",
+            "indoor",
+            "calcium"
+          ]
+        },
+        {
+          "id": "b12",
+          "label": "B12 deficiency common in vegetarians",
+          "criterion": "accuracy",
+          "keywords": [
+            "b12",
+            "vegetarian",
+            "nerves",
+            "animal foods"
+          ]
+        },
+        {
+          "id": "iodine",
+          "label": "Iodine and iodised salt for thyroid",
+          "criterion": "accuracy",
+          "keywords": [
+            "iodine",
+            "iodised salt",
+            "iodized",
+            "thyroid",
+            "goitre"
+          ]
+        },
+        {
+          "id": "fix",
+          "label": "Solutions: diverse diet, vitamin C with iron, fortification, testing and supplements",
+          "criterion": "accuracy",
+          "keywords": [
+            "vitamin c",
+            "fortif",
+            "supplement",
+            "diverse diet"
+          ]
+        }
+      ],
+      "modelAnswer": "Iron deficiency is the most widespread: national health surveys have reported anaemia in over half of women and young children in India. Causes include diets low in absorbable iron, blood loss through menstruation, pregnancy, and infections such as worms; consequences are fatigue, poor concentration, reduced work capacity and complications in pregnancy. Iron from plant foods like green leafy vegetables, pulses and jaggery is absorbed better with vitamin C (lemon, amla, guava) and worse with tea taken at meals. Vitamin D deficiency is surprisingly common despite abundant sunshine, because of indoor jobs, pollution, covered skin and darker skin needing more exposure; it affects bone health and muscle function. Vitamin B12 comes almost entirely from animal foods, so vegetarians, especially those consuming little dairy, are at high risk, with symptoms including fatigue, anaemia and nerve problems such as tingling. Iodine deficiency causes goitre and impairs children's brain development; universal salt iodisation has greatly reduced it. Solutions include diverse diets, food fortification (iodised salt, fortified rice and oils, double-fortified salt), government supplementation programmes for children and pregnant women, and testing and supplements under medical guidance."
+    },
+    {
+      "id": "nut-reading-food-labels",
+      "title": "Reading nutrition labels on packaged food",
+      "prompt": "Explain how to read the nutrition label and ingredient list on a packaged food in India. What do serving size, energy, total and added sugars, fats, sodium and the ingredient order tell you, and what marketing tricks such as \"no added sugar\" or \"multigrain\" should consumers look out for?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "nutrition",
+        "consumer"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "serving",
+          "label": "Serving size vs whole pack; per 100 g comparisons",
+          "criterion": "accuracy",
+          "keywords": [
+            "serving size",
+            "per 100 grams",
+            "whole pack",
+            "per serving"
+          ]
+        },
+        {
+          "id": "nutrients",
+          "label": "Check energy, sugar, saturated and trans fat, sodium",
+          "criterion": "accuracy",
+          "keywords": [
+            "sugar",
+            "sodium",
+            "saturated fat",
+            "trans fat",
+            "calories"
+          ]
+        },
+        {
+          "id": "ingredients",
+          "label": "Ingredients listed by weight; first items dominate",
+          "criterion": "accuracy",
+          "keywords": [
+            "ingredient list",
+            "by weight",
+            "first ingredient",
+            "descending order"
+          ]
+        },
+        {
+          "id": "tricks",
+          "label": "Marketing tricks: multigrain, no added sugar, baked, natural",
+          "criterion": "accuracy",
+          "keywords": [
+            "multigrain",
+            "no added sugar",
+            "baked",
+            "natural",
+            "marketing"
+          ]
+        },
+        {
+          "id": "hidden",
+          "label": "Hidden sugars and salt under other names",
+          "criterion": "accuracy",
+          "keywords": [
+            "hidden sugar",
+            "maltodextrin",
+            "glucose syrup",
+            "other names",
+            "invert sugar"
+          ]
+        }
+      ],
+      "modelAnswer": "Start with the serving size: nutrition values are often given per serving, which may be far smaller than what people actually eat from a packet, so check the per 100 gram column to compare products fairly. Look at energy (kcal), total and added sugars, fats - especially saturated and trans fats - and sodium. Many namkeens, instant noodles and biscuits are high in sodium and fat, and many drinks, cereals and \"health\" bars are high in sugar. The ingredient list is ordered by weight, largest first, so if sugar, refined wheat flour (maida) or palm oil appears near the top, that is what you are mainly eating. Sugar hides under many names: glucose syrup, invert sugar, maltodextrin, fructose, dextrose, honey and jaggery, and spreading sugar across several names can push each one lower in the list. Watch for marketing claims: \"multigrain\" may mean mostly maida with small amounts of other grains; \"no added sugar\" products can still be high in natural or concentrated fruit sugars; \"baked not fried\" snacks may still be high in fat and salt; \"natural\" has little meaning. Comparing two similar products using the per 100 g values is the quickest way to choose better."
+    },
+    {
+      "id": "nut-energy-balance",
+      "title": "Energy balance and weight management",
+      "prompt": "Explain energy balance: calories in versus calories out. How does the body use energy through basal metabolic rate, physical activity and digestion, why do crash diets often fail, what roles do protein, fibre and sleep play in appetite, and why is weight management more complicated than simple arithmetic?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "nutrition",
+        "weight"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "balance",
+          "label": "Weight changes when intake differs from expenditure",
+          "criterion": "accuracy",
+          "keywords": [
+            "energy balance",
+            "calories in",
+            "calories out",
+            "deficit",
+            "surplus"
+          ]
+        },
+        {
+          "id": "tdee",
+          "label": "Expenditure: BMR, activity (including NEAT), thermic effect of food",
+          "criterion": "accuracy",
+          "keywords": [
+            "basal metabolic rate",
+            "bmr",
+            "neat",
+            "thermic effect",
+            "activity"
+          ]
+        },
+        {
+          "id": "crash",
+          "label": "Crash diets: muscle loss, adaptation, rebound",
+          "criterion": "accuracy",
+          "keywords": [
+            "crash diet",
+            "muscle loss",
+            "adaptive",
+            "metabolism slows",
+            "regain"
+          ]
+        },
+        {
+          "id": "appetite",
+          "label": "Protein, fibre, sleep and ultra-processed foods affect appetite",
+          "criterion": "accuracy",
+          "keywords": [
+            "protein",
+            "fibre",
+            "fiber",
+            "sleep",
+            "ultra processed",
+            "hunger"
+          ]
+        },
+        {
+          "id": "complex",
+          "label": "Complexity: hormones, genetics, environment, sustainable habits",
+          "criterion": "accuracy",
+          "keywords": [
+            "hormone",
+            "genetic",
+            "environment",
+            "sustainable",
+            "habits"
+          ]
+        }
+      ],
+      "modelAnswer": "Body weight changes when energy intake from food differs from energy expenditure over time: a sustained deficit leads to weight loss, a surplus to gain. Expenditure has three parts. Basal metabolic rate - energy to keep the body alive at rest - is the largest, often around 60-70% of the total for sedentary people. Physical activity includes exercise and non-exercise activity such as walking, standing and household work (NEAT), which varies hugely between people. The thermic effect of food is the energy used to digest it, higher for protein. Crash diets with very low calories often fail: they cause muscle loss along with fat, the body adapts by reducing energy expenditure and increasing hunger hormones, and people usually regain the weight once normal eating resumes. Sustainable approaches use a moderate deficit, enough protein and strength training to preserve muscle, high-fibre whole foods that are filling, and adequate sleep, since poor sleep increases appetite and cravings. Highly processed, energy-dense foods make it easy to overeat. Weight is also influenced by genetics, hormones, medications, stress and the food environment, so while energy balance is the underlying principle, real-world weight management depends on building habits people can keep for years."
     }
   ]
 }

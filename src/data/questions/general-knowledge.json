@@ -117,6 +117,1887 @@
         }
       ],
       "modelAnswer": "Inflation is a sustained rise in the general price level, so money buys less. Demand-pull inflation happens when spending grows faster than the economy can produce; cost-push inflation comes from rising input costs such as oil or supply disruptions. Central banks (like the RBI) usually raise policy interest rates to cool borrowing and spending, aiming to bring inflation back to target."
+    },
+    {
+      "id": "gk-how-vaccines-work",
+      "title": "How vaccines work",
+      "prompt": "Explain how vaccines train the immune system to protect against a disease. Describe antigens, antibodies and memory cells, the main types of vaccines, what herd immunity means, and why booster doses are sometimes needed.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "science",
+        "health"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "antigen",
+          "label": "Vaccine presents a harmless antigen",
+          "criterion": "accuracy",
+          "keywords": [
+            "antigen",
+            "weakened",
+            "inactivated",
+            "harmless",
+            "piece of the virus"
+          ]
+        },
+        {
+          "id": "memory",
+          "label": "Immune response creates antibodies and memory cells",
+          "criterion": "accuracy",
+          "keywords": [
+            "antibod",
+            "memory cell",
+            "b cell",
+            "t cell",
+            "remember"
+          ]
+        },
+        {
+          "id": "types",
+          "label": "Types: live attenuated, inactivated, subunit, mRNA",
+          "criterion": "accuracy",
+          "keywords": [
+            "mrna",
+            "live attenuated",
+            "subunit",
+            "viral vector",
+            "toxoid"
+          ]
+        },
+        {
+          "id": "herd",
+          "label": "Herd immunity protects those who cannot be vaccinated",
+          "criterion": "accuracy",
+          "keywords": [
+            "herd immunity",
+            "community",
+            "cannot be vaccinated",
+            "spread"
+          ]
+        },
+        {
+          "id": "booster",
+          "label": "Boosters because immunity wanes or pathogens change",
+          "criterion": "accuracy",
+          "keywords": [
+            "booster",
+            "wane",
+            "mutat",
+            "variant"
+          ]
+        }
+      ],
+      "modelAnswer": "A vaccine exposes the immune system to an antigen - a weakened or inactivated pathogen, a piece of it such as a protein, or instructions (mRNA) for cells to make that protein - without causing the disease. The immune system responds as it would to an infection: B cells produce antibodies that recognise the antigen, T cells learn to kill infected cells, and long-lived memory cells remain. If the real pathogen arrives later, memory cells respond much faster and stronger, often stopping illness or making it milder. Types include live attenuated (measles), inactivated (polio injection), subunit or toxoid (tetanus), viral vector and mRNA vaccines. When enough people are immune, a disease cannot spread easily, protecting those who cannot be vaccinated, such as newborns - herd immunity. Boosters are needed when protection fades over time or when a pathogen changes, as influenza does every year."
+    },
+    {
+      "id": "gk-greenhouse-effect",
+      "title": "The greenhouse effect and climate change",
+      "prompt": "Explain the greenhouse effect in simple terms. Why does Earth need some greenhouse effect, how do human activities strengthen it, which gases matter most, and what are the main consequences of global warming?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "science",
+        "climate"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "mech",
+          "label": "Sunlight warms the surface; greenhouse gases trap outgoing heat",
+          "criterion": "accuracy",
+          "keywords": [
+            "infrared",
+            "trap heat",
+            "sunlight",
+            "absorb",
+            "outgoing"
+          ]
+        },
+        {
+          "id": "natural",
+          "label": "Natural effect keeps Earth habitable",
+          "criterion": "accuracy",
+          "keywords": [
+            "habitable",
+            "minus 18",
+            "too cold",
+            "natural greenhouse"
+          ]
+        },
+        {
+          "id": "gases",
+          "label": "CO2, methane, nitrous oxide, water vapour",
+          "criterion": "accuracy",
+          "keywords": [
+            "carbon dioxide",
+            "methane",
+            "nitrous oxide",
+            "water vapour",
+            "water vapor"
+          ]
+        },
+        {
+          "id": "human",
+          "label": "Burning fossil fuels, deforestation, agriculture",
+          "criterion": "accuracy",
+          "keywords": [
+            "fossil fuel",
+            "coal",
+            "deforestation",
+            "agriculture",
+            "emissions"
+          ]
+        },
+        {
+          "id": "effects",
+          "label": "Consequences: heatwaves, sea level rise, extreme weather",
+          "criterion": "accuracy",
+          "keywords": [
+            "sea level",
+            "heatwave",
+            "extreme weather",
+            "glacier",
+            "monsoon"
+          ]
+        }
+      ],
+      "modelAnswer": "Sunlight passes through the atmosphere and warms Earth's surface, which then radiates heat back as infrared radiation. Greenhouse gases - water vapour, carbon dioxide, methane and nitrous oxide - absorb much of that infrared and re-emit it in all directions, keeping heat near the surface like a blanket. This natural greenhouse effect is essential: without it Earth's average temperature would be about minus 18 degrees Celsius instead of around 15. Since the Industrial Revolution, burning coal, oil and gas, cutting forests and some farming practices have increased CO2 concentrations by about 50% and methane even more, strengthening the effect and raising global temperatures by over 1 degree Celsius. Consequences include more frequent and intense heatwaves, melting glaciers and ice sheets, rising sea levels, changing rainfall and monsoon patterns, stronger storms and stress on crops and ecosystems. Reducing emissions and adapting to changes already under way are the two main responses."
+    },
+    {
+      "id": "gk-natural-selection",
+      "title": "Evolution by natural selection",
+      "prompt": "Explain how evolution by natural selection works. Describe variation, inheritance, differential survival and reproduction, give a real example, and clear up common misconceptions such as \"survival of the strongest\" or animals evolving because they need to.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "science",
+        "biology"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "variation",
+          "label": "Individuals vary, partly due to genetic mutation",
+          "criterion": "accuracy",
+          "keywords": [
+            "variation",
+            "differ",
+            "mutation",
+            "genetic"
+          ]
+        },
+        {
+          "id": "inherit",
+          "label": "Traits are inherited",
+          "criterion": "accuracy",
+          "keywords": [
+            "inherit",
+            "offspring",
+            "passed on",
+            "genes"
+          ]
+        },
+        {
+          "id": "select",
+          "label": "Better-adapted individuals leave more offspring",
+          "criterion": "accuracy",
+          "keywords": [
+            "survive",
+            "reproduce",
+            "more offspring",
+            "advantage",
+            "environment"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Examples: peppered moth, antibiotic resistance, finches",
+          "criterion": "accuracy",
+          "keywords": [
+            "peppered moth",
+            "antibiotic",
+            "finch",
+            "resistance"
+          ]
+        },
+        {
+          "id": "myth",
+          "label": "Misconceptions: fittest = best reproducer; no intention",
+          "criterion": "accuracy",
+          "keywords": [
+            "fittest",
+            "not strongest",
+            "no goal",
+            "do not choose",
+            "random"
+          ]
+        }
+      ],
+      "modelAnswer": "Natural selection rests on three facts. First, individuals in a population vary - in size, colour, disease resistance - partly because of random genetic mutations and recombination. Second, many of these traits are inherited by offspring. Third, more individuals are born than can survive, so those whose traits suit the current environment tend to survive and reproduce more. Over generations, helpful heritable traits become more common: the population evolves. Example: during England's industrial pollution, soot-darkened trees made dark peppered moths harder for birds to spot, and dark moths became common; when air cleaned up, pale moths returned. Bacteria evolving antibiotic resistance is the same process happening fast. Misconceptions: \"fittest\" means best at leaving offspring in a given environment, not strongest; individuals do not evolve during their lives, populations do; and organisms do not develop traits because they need them - mutations are random, and selection only filters what variation already exists."
+    },
+    {
+      "id": "gk-antibiotic-resistance",
+      "title": "Antibiotic resistance",
+      "prompt": "Explain what antibiotic resistance is and why it is considered a major global health threat. How do bacteria become resistant, how do misuse and overuse of antibiotics accelerate it, and what can individuals, doctors and governments do about it?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "science",
+        "health"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "what",
+          "label": "Bacteria survive drugs that used to kill them",
+          "criterion": "accuracy",
+          "keywords": [
+            "resistant",
+            "survive",
+            "no longer work",
+            "superbug"
+          ]
+        },
+        {
+          "id": "how",
+          "label": "Mutation and selection; gene transfer between bacteria",
+          "criterion": "accuracy",
+          "keywords": [
+            "mutation",
+            "natural selection",
+            "gene transfer",
+            "plasmid",
+            "survivors multiply"
+          ]
+        },
+        {
+          "id": "misuse",
+          "label": "Misuse: antibiotics for viral infections, incomplete courses, livestock",
+          "criterion": "accuracy",
+          "keywords": [
+            "viral",
+            "cold",
+            "incomplete course",
+            "livestock",
+            "over the counter"
+          ]
+        },
+        {
+          "id": "threat",
+          "label": "Threat: untreatable infections, risky surgeries",
+          "criterion": "accuracy",
+          "keywords": [
+            "untreatable",
+            "surgery",
+            "deaths",
+            "last resort"
+          ]
+        },
+        {
+          "id": "action",
+          "label": "Actions: prescribe wisely, hygiene, vaccines, new drugs",
+          "criterion": "accuracy",
+          "keywords": [
+            "prescription",
+            "hygiene",
+            "vaccin",
+            "new antibiotics",
+            "stewardship"
+          ]
+        }
+      ],
+      "modelAnswer": "Antibiotic resistance means bacteria survive drugs that previously killed them. It is evolution in action: when antibiotics are used, susceptible bacteria die but any with a random mutation that helps them survive multiply, and bacteria can also share resistance genes with each other through plasmids. Every unnecessary use speeds this up: taking antibiotics for colds and flu (which are viral, so antibiotics do nothing), buying them without prescription, stopping courses early or not following medical advice, and using them heavily to promote growth in livestock. The danger is that common infections - urinary tract infections, pneumonia, tuberculosis - become hard or impossible to treat, and routine surgeries, cancer chemotherapy and childbirth become riskier because they rely on preventing infections. Responses include prescribing antibiotics only when needed, following medical instructions, good hygiene and sanitation, vaccination to prevent infections, restricting farm use, surveillance, and investing in new antibiotics and alternatives."
+    },
+    {
+      "id": "gk-dna-genes",
+      "title": "DNA, genes and how traits are inherited",
+      "prompt": "Explain what DNA and genes are and how they carry instructions for building living things. Describe how genes become proteins, how children inherit traits from both parents, why siblings differ, and give one example of how genetics is used in medicine or daily life.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "science",
+        "biology"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "dna",
+          "label": "DNA is a double helix code of four bases",
+          "criterion": "accuracy",
+          "keywords": [
+            "double helix",
+            "four bases",
+            "a t c g",
+            "adenine"
+          ]
+        },
+        {
+          "id": "gene",
+          "label": "Genes are sections that code for proteins",
+          "criterion": "accuracy",
+          "keywords": [
+            "gene",
+            "protein",
+            "instructions",
+            "chromosome"
+          ]
+        },
+        {
+          "id": "express",
+          "label": "DNA -> RNA -> protein",
+          "criterion": "accuracy",
+          "keywords": [
+            "rna",
+            "transcription",
+            "translation",
+            "protein"
+          ]
+        },
+        {
+          "id": "inherit",
+          "label": "Half from each parent; recombination makes siblings differ",
+          "criterion": "accuracy",
+          "keywords": [
+            "half from each parent",
+            "recombination",
+            "siblings",
+            "dominant",
+            "recessive"
+          ]
+        },
+        {
+          "id": "use",
+          "label": "Uses: genetic testing, forensics, crops, gene therapy",
+          "criterion": "accuracy",
+          "keywords": [
+            "genetic test",
+            "forensic",
+            "dna fingerprint",
+            "gene therapy",
+            "crispr"
+          ]
+        }
+      ],
+      "modelAnswer": "DNA is a long molecule shaped like a twisted ladder, the double helix; its rungs are pairs of four chemical bases - A, T, C and G - whose sequence spells out instructions. Human DNA is packed into 23 pairs of chromosomes in almost every cell. A gene is a stretch of DNA that contains the instructions for making a particular protein; cells copy the gene into messenger RNA (transcription), and ribosomes read the RNA to assemble the protein (translation). Proteins do most of the work in the body - enzymes, muscle fibres, hormones - so genes influence traits like blood group or eye colour, usually together with environment. Children receive one set of chromosomes from each parent. When eggs and sperm form, chromosomes shuffle and exchange pieces (recombination), so each child gets a different mix, which is why siblings differ unless they are identical twins. Some versions of genes are dominant and mask recessive ones. Genetics is used in DNA fingerprinting for forensics and paternity, screening for inherited diseases, breeding better crops, and new treatments such as gene therapy and CRISPR editing."
+    },
+    {
+      "id": "gk-why-seasons",
+      "title": "Why Earth has seasons",
+      "prompt": "Explain why Earth has seasons. Many people think summer happens because Earth is closer to the Sun - why is that wrong? Describe the role of Earth's axial tilt, day length and the angle of sunlight, and why seasons are reversed in the two hemispheres.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "astronomy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "tilt",
+          "label": "Earth's axis is tilted about 23.5 degrees",
+          "criterion": "accuracy",
+          "keywords": [
+            "tilt",
+            "23",
+            "axis",
+            "axial"
+          ]
+        },
+        {
+          "id": "angle",
+          "label": "Direct sunlight concentrates energy; longer days",
+          "criterion": "accuracy",
+          "keywords": [
+            "angle",
+            "direct",
+            "concentrated",
+            "longer days",
+            "day length"
+          ]
+        },
+        {
+          "id": "myth",
+          "label": "Distance is not the cause; Earth is closest in January",
+          "criterion": "accuracy",
+          "keywords": [
+            "distance",
+            "closest in january",
+            "not because",
+            "perihelion"
+          ]
+        },
+        {
+          "id": "hemi",
+          "label": "Hemispheres have opposite seasons",
+          "criterion": "accuracy",
+          "keywords": [
+            "hemisphere",
+            "opposite",
+            "australia",
+            "southern"
+          ]
+        }
+      ],
+      "modelAnswer": "Earth's axis is tilted about 23.5 degrees relative to its orbit, and the tilt keeps pointing the same direction in space as Earth goes around the Sun. For part of the year the northern hemisphere leans toward the Sun: sunlight hits it more directly, so the same energy is concentrated on a smaller area, and days are longer, so it warms up - summer. Six months later it leans away: sunlight arrives at a low angle, spreads over a larger area, days are short, and it is winter. Distance is not the reason: Earth's orbit is nearly circular and Earth is actually closest to the Sun in early January, during the northern winter. Because the hemispheres lean in opposite directions, their seasons are reversed - when Delhi has summer, Australia has winter. Near the equator, the Sun is high all year, so places like Singapore have little seasonal temperature change and instead experience wet and dry seasons."
+    },
+    {
+      "id": "lit-narrative-structure",
+      "title": "How stories are structured",
+      "prompt": "Explain the basic structure of a story. Describe exposition, rising action, climax, falling action and resolution, the role of conflict and character arcs, and illustrate them with a well-known book or film.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "literature",
+        "storytelling"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "parts",
+          "label": "Exposition, rising action, climax, falling action, resolution",
+          "criterion": "accuracy",
+          "keywords": [
+            "exposition",
+            "rising action",
+            "climax",
+            "falling action",
+            "resolution"
+          ]
+        },
+        {
+          "id": "conflict",
+          "label": "Conflict drives the plot",
+          "criterion": "accuracy",
+          "keywords": [
+            "conflict",
+            "obstacle",
+            "tension",
+            "stakes"
+          ]
+        },
+        {
+          "id": "arc",
+          "label": "Character arc: the protagonist changes",
+          "criterion": "accuracy",
+          "keywords": [
+            "character arc",
+            "protagonist",
+            "changes",
+            "grows"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Uses a concrete example",
+          "criterion": "accuracy",
+          "keywords": [
+            "for example",
+            "film",
+            "novel",
+            "harry potter",
+            "ramayana"
+          ]
+        }
+      ],
+      "modelAnswer": "Most stories follow a shape often drawn as a mountain. The exposition introduces the setting, the main characters and their normal world. An inciting incident starts the conflict - the problem the protagonist must face - and the rising action raises the stakes through obstacles and complications. The climax is the turning point of greatest tension, where the central conflict is confronted. The falling action shows the consequences, and the resolution ties up loose ends and shows the new normal. Conflict is the engine: without something the character wants and something in the way, there is no story. Good stories also have a character arc - the protagonist changes, learning something or becoming someone new. In Harry Potter and the Philosopher's Stone, for example, we meet Harry with the Dursleys (exposition), discover he is a wizard (inciting incident), uncover the plot around the stone (rising action), face Quirrell and Voldemort (climax), and end with Harry belonging at Hogwarts (resolution), more confident than at the start."
+    },
+    {
+      "id": "lit-figurative-language",
+      "title": "Metaphor, simile and other figurative language",
+      "prompt": "Explain the most common types of figurative language used in poetry and prose: metaphor, simile, personification, hyperbole, alliteration and imagery. Give a short example of each and explain why writers use figurative language at all.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "literature",
+        "poetry",
+        "language"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "metaphor",
+          "label": "Metaphor says something is something else",
+          "criterion": "accuracy",
+          "keywords": [
+            "metaphor",
+            "implicit comparison",
+            "time is a thief"
+          ]
+        },
+        {
+          "id": "simile",
+          "label": "Simile compares using like or as",
+          "criterion": "accuracy",
+          "keywords": [
+            "simile",
+            "as brave as",
+            "compare using"
+          ]
+        },
+        {
+          "id": "person",
+          "label": "Personification gives human qualities to things",
+          "criterion": "accuracy",
+          "keywords": [
+            "personification",
+            "human qualities",
+            "the wind whispered"
+          ]
+        },
+        {
+          "id": "others",
+          "label": "Hyperbole, alliteration, imagery",
+          "criterion": "accuracy",
+          "keywords": [
+            "hyperbole",
+            "exaggerat",
+            "alliteration",
+            "imagery",
+            "senses"
+          ]
+        },
+        {
+          "id": "why",
+          "label": "Purpose: vivid, emotional, memorable meaning",
+          "criterion": "accuracy",
+          "keywords": [
+            "vivid",
+            "emotion",
+            "memorable",
+            "picture",
+            "meaning"
+          ]
+        }
+      ],
+      "modelAnswer": "Figurative language means words used beyond their literal meaning to create effect. A metaphor states that one thing is another: \"time is a thief\" suggests time steals our moments without using a comparison word. A simile makes the comparison explicit with \"like\" or \"as\": \"she was as brave as a lion\". Personification gives human qualities to non-human things: \"the wind whispered through the trees\". Hyperbole is deliberate exaggeration: \"I have told you a million times\". Alliteration repeats initial consonant sounds for rhythm and emphasis: \"Peter Piper picked a peck of pickled peppers\". Imagery uses sensory detail - sight, sound, smell, taste, touch - so readers can experience a scene: \"the sharp smell of wet earth after the first monsoon rain\". Writers use these devices because they compress complex feelings into a few words, help readers see and feel rather than just understand, make lines memorable, and reveal fresh connections between ideas."
+    },
+    {
+      "id": "lit-tagore-legacy",
+      "title": "Rabindranath Tagore and his legacy",
+      "prompt": "Who was Rabindranath Tagore and why is he important in world literature? Describe his major works, his Nobel Prize, his contributions beyond poetry such as songs, education and national anthems, and the themes that run through his writing.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "literature",
+        "india",
+        "history"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "who",
+          "label": "Bengali poet, writer, composer, philosopher (1861-1941)",
+          "criterion": "accuracy",
+          "keywords": [
+            "bengali",
+            "poet",
+            "polymath",
+            "1861",
+            "kolkata"
+          ]
+        },
+        {
+          "id": "nobel",
+          "label": "First non-European Nobel laureate in Literature, 1913, for Gitanjali",
+          "criterion": "accuracy",
+          "keywords": [
+            "nobel",
+            "1913",
+            "gitanjali",
+            "first non european",
+            "first asian"
+          ]
+        },
+        {
+          "id": "works",
+          "label": "Works: Gitanjali, Gora, The Home and the World, short stories",
+          "criterion": "accuracy",
+          "keywords": [
+            "gora",
+            "home and the world",
+            "kabuliwala",
+            "short stories",
+            "ghare baire"
+          ]
+        },
+        {
+          "id": "beyond",
+          "label": "Rabindra Sangeet, Santiniketan/Visva-Bharati, national anthems",
+          "criterion": "accuracy",
+          "keywords": [
+            "rabindra sangeet",
+            "santiniketan",
+            "visva bharati",
+            "jana gana mana",
+            "amar shonar bangla"
+          ]
+        },
+        {
+          "id": "themes",
+          "label": "Themes: spirituality, nature, humanism, freedom, critique of narrow nationalism",
+          "criterion": "accuracy",
+          "keywords": [
+            "spiritual",
+            "nature",
+            "humanism",
+            "nationalism",
+            "universal"
+          ]
+        }
+      ],
+      "modelAnswer": "Rabindranath Tagore (1861-1941) was a Bengali poet, novelist, playwright, composer, painter and educator - a polymath who reshaped Bengali literature and music. In 1913 he became the first non-European to win the Nobel Prize in Literature, largely for Gitanjali (\"Song Offerings\"), devotional poems he translated into English. His novels include Gora and Ghare Baire (The Home and the World), and his short stories such as Kabuliwala capture ordinary lives with great tenderness; many were adapted into films by Satyajit Ray. He wrote over 2,000 songs, known as Rabindra Sangeet, and wrote the national anthems of both India (Jana Gana Mana) and Bangladesh (Amar Shonar Bangla). He founded a school at Santiniketan that grew into Visva-Bharati University, promoting learning in harmony with nature and across cultures. His recurring themes are spiritual longing, love of nature, human dignity and freedom; he also criticised narrow, aggressive nationalism, and returned his knighthood in protest after the 1919 Jallianwala Bagh massacre."
+    },
+    {
+      "id": "lit-dystopian-fiction",
+      "title": "Dystopian fiction and why it matters",
+      "prompt": "Explain what dystopian fiction is and why it has remained so popular. Discuss classic examples such as George Orwell's Nineteen Eighty-Four and Aldous Huxley's Brave New World, the warnings each one offers, and how dystopian stories connect to concerns about technology and surveillance today.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "literature",
+        "society"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Imagined societies that look ideal or controlled but are oppressive",
+          "criterion": "accuracy",
+          "keywords": [
+            "dystopia",
+            "oppressive",
+            "imagined society",
+            "utopia",
+            "warning"
+          ]
+        },
+        {
+          "id": "orwell",
+          "label": "1984: surveillance, Big Brother, propaganda, doublethink",
+          "criterion": "accuracy",
+          "keywords": [
+            "big brother",
+            "surveillance",
+            "thought police",
+            "newspeak",
+            "doublethink"
+          ]
+        },
+        {
+          "id": "huxley",
+          "label": "Brave New World: control through pleasure and conditioning",
+          "criterion": "accuracy",
+          "keywords": [
+            "brave new world",
+            "pleasure",
+            "soma",
+            "conditioning",
+            "distraction"
+          ]
+        },
+        {
+          "id": "today",
+          "label": "Modern parallels: data surveillance, misinformation, algorithmic control",
+          "criterion": "accuracy",
+          "keywords": [
+            "social media",
+            "misinformation",
+            "privacy",
+            "algorithm"
+          ]
+        },
+        {
+          "id": "why",
+          "label": "Purpose: exaggerate present trends to warn and provoke thought",
+          "criterion": "accuracy",
+          "keywords": [
+            "exaggerat",
+            "present trends",
+            "critique",
+            "think critically"
+          ]
+        }
+      ],
+      "modelAnswer": "Dystopian fiction imagines a society that has gone badly wrong - often one that claims to be ideal - to warn readers about trends in their own world. In Orwell's Nineteen Eighty-Four (1949), the Party controls citizens through constant surveillance by Big Brother, rewriting history, fear, and Newspeak, a language designed to make rebellious thoughts impossible; \"doublethink\" means holding contradictory beliefs at once. Huxley's Brave New World (1932) offers a different nightmare: people are controlled not by pain but by pleasure, consumerism, genetic engineering, conditioning and a happiness drug called soma, so they never want to resist. The two are often contrasted - Orwell feared what we hate would ruin us, Huxley that what we love would. Other examples include The Handmaid's Tale and The Hunger Games. These stories stay popular because they exaggerate present tendencies to make them visible: today readers connect them to mass data collection, facial recognition, misinformation, censorship and attention-maximising algorithms. Their value is in making us question what we accept as normal."
+    },
+    {
+      "id": "lit-unreliable-narrator",
+      "title": "The unreliable narrator",
+      "prompt": "Explain the literary technique of the unreliable narrator. Why might a narrator be unreliable, how do readers detect it, what effects does it create, and can you give examples from novels or films?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "literature",
+        "technique"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Narrator whose account cannot be fully trusted",
+          "criterion": "accuracy",
+          "keywords": [
+            "unreliable",
+            "cannot be trusted",
+            "narrator",
+            "credibility"
+          ]
+        },
+        {
+          "id": "why",
+          "label": "Reasons: lying, self-deception, limited knowledge, bias, madness",
+          "criterion": "accuracy",
+          "keywords": [
+            "lying",
+            "self deception",
+            "child",
+            "biased",
+            "mental"
+          ]
+        },
+        {
+          "id": "detect",
+          "label": "Clues: contradictions, other characters' reactions, gaps",
+          "criterion": "accuracy",
+          "keywords": [
+            "contradiction",
+            "inconsistent",
+            "other characters",
+            "clues"
+          ]
+        },
+        {
+          "id": "effect",
+          "label": "Effects: suspense, twists, reader participation",
+          "criterion": "accuracy",
+          "keywords": [
+            "twist",
+            "suspense",
+            "reader",
+            "reread",
+            "irony"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Examples: Gone Girl, Fight Club, The Catcher in the Rye",
+          "criterion": "accuracy",
+          "keywords": [
+            "gone girl",
+            "fight club",
+            "catcher in the rye",
+            "life of pi",
+            "agatha christie"
+          ]
+        }
+      ],
+      "modelAnswer": "An unreliable narrator tells the story in a way readers cannot fully trust. The reason varies: the narrator may deliberately lie, as in Agatha Christie's The Murder of Roger Ackroyd or Gillian Flynn's Gone Girl; may deceive themselves out of pride or guilt; may be a child or naive person who misunderstands what they see; may be strongly biased, like Holden Caulfield in The Catcher in the Rye; or may be mentally unstable, as in Fight Club. Readers detect unreliability through contradictions within the story, details that do not add up, the way other characters react to the narrator, and gaps where important events are skipped. The technique creates suspense and memorable twists, forces readers to read actively and question what they are told, and often reveals more about the narrator's mind than about events. Life of Pi plays with this directly by offering two versions of the story and letting the reader choose. Many readers reread such books to spot the clues they missed."
+    },
+    {
+      "id": "lit-why-read-classics",
+      "title": "Why read classic literature?",
+      "prompt": "Make the case for reading classic literature in an age of short videos and social media. What makes a book a classic, what can readers gain from works written centuries ago, and how would you recommend someone start reading classics?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "literature",
+        "reading"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Classics endure across generations and cultures",
+          "criterion": "accuracy",
+          "keywords": [
+            "endure",
+            "generations",
+            "timeless",
+            "stood the test of time"
+          ]
+        },
+        {
+          "id": "gain",
+          "label": "Gains: empathy, perspective on human nature, language",
+          "criterion": "accuracy",
+          "keywords": [
+            "empathy",
+            "human nature",
+            "perspective",
+            "vocabulary",
+            "history"
+          ]
+        },
+        {
+          "id": "attention",
+          "label": "Builds deep attention vs short-form media",
+          "criterion": "accuracy",
+          "keywords": [
+            "attention",
+            "focus",
+            "deep reading",
+            "patience",
+            "short videos"
+          ]
+        },
+        {
+          "id": "start",
+          "label": "Start: shorter works, translations, audiobooks, discuss with others",
+          "criterion": "accuracy",
+          "keywords": [
+            "shorter",
+            "translation",
+            "audiobook",
+            "book club",
+            "accessible"
+          ]
+        }
+      ],
+      "modelAnswer": "A classic is a work that keeps being read long after its time because it speaks to people across generations and cultures - the Mahabharata, Homer's Odyssey, Shakespeare, Premchand's Godaan, Jane Austen or Tolstoy. Such books survive because they explore lasting questions: love, power, ambition, justice, loss and what makes a good life. Reading them builds empathy, since you live for hours inside minds very different from your own; gives historical perspective, showing how people in other times thought and lived; and enriches your vocabulary and sense of language. In an age of short videos, long books also train sustained attention and patience, skills that matter in study and work. To start, choose shorter or more accessible classics such as Animal Farm, The Little Prince or R. K. Narayan's Malgudi Days, read good modern translations, combine text with audiobooks, read alongside a friend or book club, and do not feel guilty about putting down a book that does not work for you yet."
+    },
+    {
+      "id": "geo-indian-monsoon",
+      "title": "The Indian monsoon",
+      "prompt": "Explain what causes the Indian summer monsoon. Describe the role of differential heating of land and sea, the shift of winds, the influence of the Himalayas and the Western Ghats, the timing of onset and withdrawal, and why the monsoon matters so much to India's economy.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "geography",
+        "india",
+        "climate"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "heat",
+          "label": "Land heats faster than sea, creating low pressure over land",
+          "criterion": "accuracy",
+          "keywords": [
+            "land heats",
+            "low pressure",
+            "differential heating",
+            "indian ocean",
+            "cooler sea"
+          ]
+        },
+        {
+          "id": "winds",
+          "label": "Moist south-west winds blow in from the ocean",
+          "criterion": "accuracy",
+          "keywords": [
+            "south west",
+            "moist winds",
+            "reverse",
+            "wind direction",
+            "itcz"
+          ]
+        },
+        {
+          "id": "relief",
+          "label": "Western Ghats and Himalayas force uplift; rain shadow",
+          "criterion": "accuracy",
+          "keywords": [
+            "western ghats",
+            "himalaya",
+            "rain shadow",
+            "orographic",
+            "uplift"
+          ]
+        },
+        {
+          "id": "timing",
+          "label": "Onset in Kerala around 1 June, withdrawal by October",
+          "criterion": "accuracy",
+          "keywords": [
+            "kerala",
+            "june",
+            "onset",
+            "withdraw",
+            "october"
+          ]
+        },
+        {
+          "id": "economy",
+          "label": "Importance: agriculture, water, economy; El Nino variability",
+          "criterion": "accuracy",
+          "keywords": [
+            "agriculture",
+            "kharif",
+            "farmers",
+            "reservoir",
+            "el nino"
+          ]
+        }
+      ],
+      "modelAnswer": "In summer, the Indian landmass heats up much faster than the surrounding Indian Ocean, creating an area of low pressure over north-west India, while pressure stays higher over the sea. The intertropical convergence zone shifts northward, and winds reverse direction: moist south-west winds blow from the ocean towards the land, carrying huge amounts of water vapour. When these winds hit the Western Ghats they are forced upward, cool and drop heavy rain on the coast, leaving the leeward side drier (a rain shadow); the Bay of Bengal branch is funnelled towards the north-east and along the Gangetic plain by the Himalayas, which also stop the winds escaping north. The monsoon usually reaches Kerala around 1 June, covers the country by early July and withdraws by October. It brings about 70-80% of India's annual rainfall, so it decides the success of kharif crops, refills reservoirs and groundwater, and affects rural incomes, food prices and economic growth. Events like El Nino can weaken it, causing droughts."
+    },
+    {
+      "id": "geo-himalaya-formation",
+      "title": "How the Himalayas were formed",
+      "prompt": "Explain how the Himalayas were formed through plate tectonics. Describe the movement of the Indian plate, the collision with the Eurasian plate, why the mountains are still rising, and how this process explains earthquakes in the region.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "geography",
+        "geology"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "plates",
+          "label": "Earth's crust is made of moving tectonic plates",
+          "criterion": "accuracy",
+          "keywords": [
+            "tectonic plate",
+            "crust",
+            "plates move",
+            "mantle"
+          ]
+        },
+        {
+          "id": "india",
+          "label": "Indian plate drifted north after Gondwana broke up",
+          "criterion": "accuracy",
+          "keywords": [
+            "indian plate",
+            "drift",
+            "north",
+            "gondwana",
+            "island"
+          ]
+        },
+        {
+          "id": "collision",
+          "label": "Collision with Eurasia ~50 million years ago folded and uplifted crust",
+          "criterion": "accuracy",
+          "keywords": [
+            "collision",
+            "eurasian plate",
+            "fold",
+            "uplift",
+            "50 million"
+          ]
+        },
+        {
+          "id": "rising",
+          "label": "Still rising a few millimetres per year",
+          "criterion": "accuracy",
+          "keywords": [
+            "still rising",
+            "millimetres",
+            "millimeters",
+            "per year",
+            "continuing"
+          ]
+        },
+        {
+          "id": "quakes",
+          "label": "Stress release causes earthquakes (Nepal 2015)",
+          "criterion": "accuracy",
+          "keywords": [
+            "earthquake",
+            "stress",
+            "fault",
+            "nepal",
+            "seismic"
+          ]
+        }
+      ],
+      "modelAnswer": "Earth's outer shell is broken into tectonic plates that move slowly over the hotter, softer mantle. About 140 million years ago India was part of the southern supercontinent Gondwana; after it broke away, the Indian plate moved north unusually fast, as fast as about 15 centimetres a year. The ocean floor between India and Asia, the Tethys Sea, was gradually pushed down beneath Asia. Around 50 million years ago the Indian continent itself collided with the Eurasian plate. Continental crust is too light to sink, so the rocks crumpled, folded and were thrust upward, building the Himalayas and the Tibetan Plateau - which is why marine fossils are found high in the mountains. India is still pushing north by about 4-5 centimetres a year, so the Himalayas continue to rise by a few millimetres annually. The enormous stress builds up along faults and is released suddenly as earthquakes, such as the 2015 Nepal earthquake, making the Himalayan belt one of the most seismically active regions in the world."
+    },
+    {
+      "id": "geo-why-deserts-form",
+      "title": "Why deserts form where they do",
+      "prompt": "Explain why deserts form. Describe the main causes, including subtropical high-pressure belts, rain shadows, distance from the ocean and cold ocean currents, and give an example of a desert produced by each cause. Are all deserts hot?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "geography",
+        "climate"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "high",
+          "label": "Subtropical high pressure: sinking dry air (Sahara, Thar)",
+          "criterion": "accuracy",
+          "keywords": [
+            "high pressure",
+            "sinking air",
+            "subtropical",
+            "sahara",
+            "thar"
+          ]
+        },
+        {
+          "id": "shadow",
+          "label": "Rain shadow behind mountains (Atacama partly, Ladakh, Patagonia)",
+          "criterion": "accuracy",
+          "keywords": [
+            "rain shadow",
+            "mountains",
+            "ladakh",
+            "leeward"
+          ]
+        },
+        {
+          "id": "inland",
+          "label": "Continentality: far from the sea (Gobi)",
+          "criterion": "accuracy",
+          "keywords": [
+            "far from the sea",
+            "interior",
+            "gobi",
+            "continental"
+          ]
+        },
+        {
+          "id": "current",
+          "label": "Cold ocean currents (Atacama, Namib)",
+          "criterion": "accuracy",
+          "keywords": [
+            "cold current",
+            "atacama",
+            "namib",
+            "humboldt"
+          ]
+        },
+        {
+          "id": "cold",
+          "label": "Not all deserts are hot; defined by low rainfall (Antarctica)",
+          "criterion": "accuracy",
+          "keywords": [
+            "antarctica",
+            "cold desert",
+            "low rainfall",
+            "250 mm",
+            "not hot"
+          ]
+        }
+      ],
+      "modelAnswer": "A desert is defined by very low precipitation - typically under about 250 mm a year - not by heat. Several mechanisms create them. Around 30 degrees north and south of the equator, air that rose near the equator sinks; sinking air warms and dries, so clouds rarely form - producing the Sahara, the Arabian desert and India's Thar. In a rain shadow, moist winds drop their rain on the windward side of a mountain range and arrive dry on the other side, as in Ladakh behind the Himalayas or Patagonia behind the Andes. Places deep inside continents, far from any ocean moisture, are dry, such as the Gobi in central Asia. Along some west coasts, cold ocean currents cool the air near the surface, stabilising it so it does not rise to form rain clouds - the Atacama in Chile, one of the driest places on Earth, and the Namib in south-west Africa. Not all deserts are hot: the Gobi has freezing winters, and Antarctica is the largest desert on Earth."
+    },
+    {
+      "id": "geo-rivers-civilisations",
+      "title": "Why early civilisations grew along rivers",
+      "prompt": "Explain why many of the earliest civilisations, such as the Indus Valley, Mesopotamia, Egypt and China, developed along major rivers. Discuss water, fertile soil, transport and trade, and the challenges such as floods that pushed societies to organise.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "geography",
+        "history"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "examples",
+          "label": "Indus, Tigris-Euphrates, Nile, Yellow River",
+          "criterion": "accuracy",
+          "keywords": [
+            "indus",
+            "mesopotamia",
+            "nile",
+            "yellow river",
+            "tigris"
+          ]
+        },
+        {
+          "id": "soil",
+          "label": "Floods deposited fertile silt; reliable water for farming",
+          "criterion": "accuracy",
+          "keywords": [
+            "fertile",
+            "silt",
+            "flood",
+            "irrigation",
+            "farming"
+          ]
+        },
+        {
+          "id": "surplus",
+          "label": "Food surplus allowed cities and specialised jobs",
+          "criterion": "accuracy",
+          "keywords": [
+            "surplus",
+            "cities",
+            "specializ",
+            "population"
+          ]
+        },
+        {
+          "id": "trade",
+          "label": "Rivers as transport and trade routes",
+          "criterion": "accuracy",
+          "keywords": [
+            "transport",
+            "trade",
+            "boats",
+            "route"
+          ]
+        },
+        {
+          "id": "organise",
+          "label": "Managing floods/irrigation encouraged government, writing, calendars",
+          "criterion": "accuracy",
+          "keywords": [
+            "government",
+            "writing",
+            "calendar",
+            "organiz",
+            "canal"
+          ]
+        }
+      ],
+      "modelAnswer": "The Indus Valley civilisation (Harappa, Mohenjo-daro), Mesopotamia between the Tigris and Euphrates, ancient Egypt on the Nile and early Chinese states on the Yellow River all grew beside large rivers. Rivers supplied reliable fresh water for drinking and irrigation in otherwise dry regions. Their seasonal floods spread fertile silt across the plains, renewing the soil and allowing farmers to grow large harvests. Food surpluses meant not everyone had to farm, so populations grew, cities appeared, and people specialised as craftspeople, traders, priests and rulers. Rivers were also highways: boats carried grain, timber and goods, connecting settlements and enabling trade - Harappan goods have been found in Mesopotamia. Rivers created challenges too: unpredictable floods and droughts required building canals, dykes and granaries, sharing water and predicting seasons, which encouraged organised government, record keeping and writing, and calendars - the Egyptians tracked the Nile flood by the stars. Changes in rivers could also contribute to a civilisation's decline, as is thought for the Indus."
+    },
+    {
+      "id": "geo-time-zones",
+      "title": "Time zones and why India has only one",
+      "prompt": "Explain why the world is divided into time zones. Describe how Earth's rotation relates to time, the role of the Greenwich meridian and UTC, what the International Date Line is, and the debate about India using a single time zone despite its width.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "geography",
+        "time"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "rotation",
+          "label": "Earth rotates 15 degrees per hour",
+          "criterion": "accuracy",
+          "keywords": [
+            "rotation",
+            "15 degrees",
+            "per hour",
+            "360 degrees",
+            "sun"
+          ]
+        },
+        {
+          "id": "utc",
+          "label": "Greenwich meridian and UTC as reference",
+          "criterion": "accuracy",
+          "keywords": [
+            "greenwich",
+            "utc",
+            "prime meridian",
+            "gmt"
+          ]
+        },
+        {
+          "id": "dateline",
+          "label": "International Date Line at 180 degrees",
+          "criterion": "accuracy",
+          "keywords": [
+            "date line",
+            "180",
+            "pacific",
+            "lose a day",
+            "gain a day"
+          ]
+        },
+        {
+          "id": "india",
+          "label": "IST = UTC+5:30 based on 82.5 degrees E",
+          "criterion": "accuracy",
+          "keywords": [
+            "ist",
+            "5 30",
+            "five and a half",
+            "82",
+            "mirzapur"
+          ]
+        },
+        {
+          "id": "debate",
+          "label": "Debate: north-east sunrise much earlier; proposals for two zones",
+          "criterion": "accuracy",
+          "keywords": [
+            "north east",
+            "assam",
+            "two time zones",
+            "sunrise",
+            "daylight"
+          ]
+        }
+      ],
+      "modelAnswer": "Earth rotates 360 degrees in 24 hours, or 15 degrees of longitude per hour, so noon - when the Sun is highest - arrives at different moments in different places. Before railways, towns kept their own local solar time, which made timetables chaotic, so standard time zones were adopted, each roughly 15 degrees wide. The reference is the prime meridian through Greenwich in London; world time is coordinated as UTC, and zones are offsets from it. On the opposite side of the globe, roughly along 180 degrees longitude in the Pacific, the International Date Line marks where the calendar date changes: travelling west across it you skip a day. India spans about 30 degrees of longitude, which would justify two time zones, but uses one, Indian Standard Time, UTC+5:30, based on the 82.5 degree east meridian near Mirzapur. As a result the sun rises in Arunachal Pradesh nearly two hours earlier than in Gujarat, and people in the north-east lose useful daylight hours; proposals for a separate north-east zone exist, while supporters of a single zone cite simplicity and national unity."
+    },
+    {
+      "id": "geo-ocean-currents",
+      "title": "Ocean currents and their effect on climate",
+      "prompt": "Explain what drives ocean currents and how they affect climate. Describe surface currents driven by winds, the global thermohaline circulation, how the Gulf Stream keeps western Europe mild, how cold currents affect coasts, and what El Nino is.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "geography",
+        "oceans",
+        "climate"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "wind",
+          "label": "Surface currents driven by winds and Earth's rotation (gyres)",
+          "criterion": "accuracy",
+          "keywords": [
+            "wind",
+            "gyre",
+            "coriolis",
+            "surface current"
+          ]
+        },
+        {
+          "id": "thermo",
+          "label": "Thermohaline circulation from temperature and salinity differences",
+          "criterion": "accuracy",
+          "keywords": [
+            "thermohaline",
+            "salinity",
+            "dense",
+            "deep water",
+            "conveyor belt"
+          ]
+        },
+        {
+          "id": "gulf",
+          "label": "Gulf Stream carries heat to western Europe",
+          "criterion": "accuracy",
+          "keywords": [
+            "gulf stream",
+            "north atlantic",
+            "western europe",
+            "mild winters"
+          ]
+        },
+        {
+          "id": "cold",
+          "label": "Cold currents create cooler, drier coasts and rich fisheries",
+          "criterion": "accuracy",
+          "keywords": [
+            "cold current",
+            "humboldt",
+            "upwelling",
+            "fisheries",
+            "fog"
+          ]
+        },
+        {
+          "id": "enso",
+          "label": "El Nino: Pacific warming disrupts weather worldwide",
+          "criterion": "accuracy",
+          "keywords": [
+            "el nino",
+            "la nina",
+            "pacific",
+            "monsoon",
+            "drought"
+          ]
+        }
+      ],
+      "modelAnswer": "Ocean currents are continuous movements of seawater. Surface currents are driven mainly by prevailing winds and deflected by Earth's rotation (the Coriolis effect), forming large circular gyres in each ocean basin. Deeper down, the thermohaline circulation is driven by differences in density: in the North Atlantic, cold and salty water sinks and flows along the ocean floor, slowly circulating around the globe like a conveyor belt over centuries. Currents move enormous amounts of heat from the tropics towards the poles. The Gulf Stream and its extension, the North Atlantic Drift, carry warm water north-east, which is why western Europe has much milder winters than places at the same latitude in Canada. Cold currents, like the Humboldt off Peru and Chile, cool coastal air, reduce rainfall and create fog, while upwelling of nutrient-rich water makes them excellent fishing grounds. El Nino is a periodic warming of the eastern tropical Pacific when trade winds weaken; it shifts rainfall patterns worldwide, often weakening the Indian monsoon and causing droughts in Australia and floods in South America; La Nina is the opposite phase."
+    },
+    {
+      "id": "ca-spotting-misinformation",
+      "title": "Spotting misinformation online",
+      "prompt": "Explain why misinformation spreads so quickly online and how an ordinary person can check whether a viral claim, image or video is true. Describe practical verification steps, the role of deepfakes and AI-generated content, and what platforms and governments are doing about it.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "current-affairs",
+        "media-literacy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "why",
+          "label": "Spread: emotion, algorithms rewarding engagement, forwarding in groups",
+          "criterion": "accuracy",
+          "keywords": [
+            "emotion",
+            "algorithm",
+            "engagement",
+            "forward",
+            "whatsapp"
+          ]
+        },
+        {
+          "id": "check",
+          "label": "Check the source, look for other reliable reports, fact-checkers",
+          "criterion": "accuracy",
+          "keywords": [
+            "source",
+            "fact check",
+            "reliable outlets",
+            "cross check",
+            "original"
+          ]
+        },
+        {
+          "id": "image",
+          "label": "Reverse image search, check dates and context",
+          "criterion": "accuracy",
+          "keywords": [
+            "reverse image search",
+            "old photo",
+            "context",
+            "date",
+            "location"
+          ]
+        },
+        {
+          "id": "ai",
+          "label": "Deepfakes and AI content make fakes cheaper; look for signs and provenance",
+          "criterion": "accuracy",
+          "keywords": [
+            "deepfake",
+            "ai generated",
+            "synthetic",
+            "watermark",
+            "provenance"
+          ]
+        },
+        {
+          "id": "response",
+          "label": "Platforms and governments: labels, takedowns, media literacy; free speech balance",
+          "criterion": "accuracy",
+          "keywords": [
+            "label",
+            "takedown",
+            "media literacy",
+            "free speech",
+            "regulation"
+          ]
+        }
+      ],
+      "modelAnswer": "Misinformation spreads fast because false stories are often novel, emotional and outrage-inducing, recommendation algorithms reward engagement, and closed messaging groups make forwarding effortless with little context. Before sharing, pause when a post makes you very angry or excited. Check the source: is it a known, accountable outlet or an anonymous account? Search whether reliable news organisations or fact-checking sites have reported the claim. For photos, use a reverse image search to find where an image first appeared - many viral images are old pictures from another country or event. Check dates, locations and whether quotes appear in the original speech or document. Generative AI makes convincing fake images, voice clips and videos cheap; look for visual glitches, unusual audio, missing original sources, and whether content carries provenance labels, but remember detection is getting harder, so source-checking matters more than spotting artefacts. Platforms respond with labels, reduced distribution, takedowns and fact-checking partnerships; governments with regulations, which raise debates about free speech and censorship. Long-term, media literacy education is the most durable defence."
+    },
+    {
+      "id": "ca-ai-regulation-debate",
+      "title": "The debate over regulating artificial intelligence",
+      "prompt": "Governments around the world are debating how to regulate artificial intelligence. Explain the main risks people worry about, the different regulatory approaches such as risk-based rules like the EU AI Act versus lighter-touch or voluntary frameworks, and the trade-offs between innovation, safety and rights.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "current-affairs",
+        "technology",
+        "policy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "risks",
+          "label": "Risks: bias, privacy, misinformation, jobs, safety, misuse",
+          "criterion": "accuracy",
+          "keywords": [
+            "bias",
+            "privacy",
+            "misinformation",
+            "jobs",
+            "misuse",
+            "safety"
+          ]
+        },
+        {
+          "id": "eu",
+          "label": "Risk-based approach (EU AI Act): bans, high-risk obligations",
+          "criterion": "accuracy",
+          "keywords": [
+            "eu ai act",
+            "risk based",
+            "high risk",
+            "banned",
+            "obligations"
+          ]
+        },
+        {
+          "id": "other",
+          "label": "Other approaches: voluntary commitments, sector rules, guidelines",
+          "criterion": "accuracy",
+          "keywords": [
+            "voluntary",
+            "sector",
+            "guidelines",
+            "executive order",
+            "light touch"
+          ]
+        },
+        {
+          "id": "trade",
+          "label": "Trade-offs: innovation vs safety, compliance cost, global coordination",
+          "criterion": "accuracy",
+          "keywords": [
+            "innovation",
+            "compliance",
+            "trade off",
+            "global",
+            "small companies"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "Tools: transparency, audits, testing, accountability",
+          "criterion": "accuracy",
+          "keywords": [
+            "transparency",
+            "audit",
+            "testing",
+            "accountab",
+            "disclosure"
+          ]
+        }
+      ],
+      "modelAnswer": "AI is spreading into hiring, lending, healthcare, policing, education and media, so governments are deciding how to manage its risks. Commonly cited concerns include biased or unfair decisions, privacy and surveillance, misinformation and deepfakes, job disruption, safety failures in critical systems, copyright, and misuse of powerful models for cyberattacks or weapons. Approaches differ. The European Union's AI Act takes a risk-based approach: a few uses deemed unacceptable are banned (such as social scoring), high-risk uses such as hiring tools or medical devices face obligations for risk management, data quality, human oversight and documentation, and general-purpose models face transparency duties. Other countries have preferred sector-specific rules, guidelines, voluntary commitments from companies, or national AI safety institutes that test advanced models, and India has generally emphasised innovation alongside guidelines on responsible AI. The trade-offs: strict rules can protect rights and build trust but raise compliance costs that favour large firms and may slow innovation; light rules move fast but risk harm and public backlash. Because AI development is global, international coordination on testing and standards is a major open question. Common tools include transparency, independent audits, incident reporting and clear accountability."
+    },
+    {
+      "id": "ca-energy-transition",
+      "title": "The transition to renewable energy",
+      "prompt": "Explain the global shift from fossil fuels to renewable energy. Why have solar and wind become so much cheaper, what challenges come from their intermittency, what roles do batteries, grids and other technologies play, and what makes the transition especially important and difficult for a fast-growing country like India?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "current-affairs",
+        "energy",
+        "climate"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "why",
+          "label": "Drivers: climate change, energy security, falling costs",
+          "criterion": "accuracy",
+          "keywords": [
+            "climate",
+            "emissions",
+            "energy security",
+            "imports",
+            "cheaper"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Solar and wind costs fell dramatically",
+          "criterion": "accuracy",
+          "keywords": [
+            "solar",
+            "wind",
+            "cost fell",
+            "cheapest",
+            "learning curve"
+          ]
+        },
+        {
+          "id": "intermit",
+          "label": "Intermittency requires storage, grids, flexible supply",
+          "criterion": "accuracy",
+          "keywords": [
+            "intermittent",
+            "storage",
+            "battery",
+            "grid",
+            "night"
+          ]
+        },
+        {
+          "id": "india",
+          "label": "India: growing demand, coal dependence, renewable targets",
+          "criterion": "accuracy",
+          "keywords": [
+            "india",
+            "coal",
+            "growing demand",
+            "target",
+            "gigawatt"
+          ]
+        },
+        {
+          "id": "challenges",
+          "label": "Challenges: financing, land, minerals, jobs in coal regions",
+          "criterion": "accuracy",
+          "keywords": [
+            "financ",
+            "land",
+            "critical minerals",
+            "jobs",
+            "just transition"
+          ]
+        }
+      ],
+      "modelAnswer": "The world is shifting from coal, oil and gas towards renewable energy for three reasons: burning fossil fuels is the main cause of climate change, many countries want to reduce dependence on imported fuel, and renewables have become cheap. Solar panel prices fell by around 90% in the decade to 2020 thanks to mass manufacturing and technology improvements, and wind became much cheaper too, so new solar and wind are now among the cheapest sources of electricity in many places. Their challenge is intermittency: the sun sets and wind varies, so grids need batteries and pumped hydro for storage, stronger transmission networks to move power between regions, demand flexibility, and some dispatchable sources (hydro, gas, nuclear) for reliability. India is central to the story: its electricity demand is growing rapidly with its economy, it still relies heavily on coal, and it has set ambitious targets for non-fossil capacity, becoming one of the largest solar markets. Difficulties include financing huge investments, acquiring land, securing critical minerals for batteries, keeping the grid stable, and supporting workers and regions that depend on coal - often called a just transition."
+    },
+    {
+      "id": "ca-digital-public-infrastructure",
+      "title": "India's digital public infrastructure",
+      "prompt": "Explain what is meant by digital public infrastructure, using India's examples such as Aadhaar, UPI and DigiLocker. How did they change payments and access to services, why are other countries interested in the model, and what concerns exist about privacy, exclusion and security?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "current-affairs",
+        "india",
+        "technology"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Shared digital systems as public goods others can build on",
+          "criterion": "accuracy",
+          "keywords": [
+            "public good",
+            "open",
+            "interoperable",
+            "platform",
+            "build on"
+          ]
+        },
+        {
+          "id": "aadhaar",
+          "label": "Aadhaar digital identity",
+          "criterion": "accuracy",
+          "keywords": [
+            "aadhaar",
+            "biometric",
+            "identity",
+            "kyc"
+          ]
+        },
+        {
+          "id": "upi",
+          "label": "UPI instant interoperable payments, small merchants, QR codes",
+          "criterion": "accuracy",
+          "keywords": [
+            "upi",
+            "instant payment",
+            "qr code",
+            "interoperab",
+            "small merchants"
+          ]
+        },
+        {
+          "id": "impact",
+          "label": "Impact: financial inclusion, direct benefit transfer, lower costs",
+          "criterion": "accuracy",
+          "keywords": [
+            "financial inclusion",
+            "direct benefit transfer",
+            "jan dhan",
+            "lower cost",
+            "leakage"
+          ]
+        },
+        {
+          "id": "concerns",
+          "label": "Concerns: privacy, exclusion, outages, fraud, data protection",
+          "criterion": "accuracy",
+          "keywords": [
+            "privacy",
+            "exclusion",
+            "fraud",
+            "data protection",
+            "surveillance"
+          ]
+        }
+      ],
+      "modelAnswer": "Digital public infrastructure means shared digital systems - identity, payments, data exchange - built as public goods with open standards, on which governments and private companies can build services. India's \"India Stack\" is the best-known example. Aadhaar gives residents a unique digital identity linked to biometrics, enabling quick electronic verification (e-KYC) for bank accounts and SIM cards. Combined with Jan Dhan bank accounts and mobile phones, it allowed government benefits to be paid directly into accounts (direct benefit transfer), reducing leakage through middlemen. UPI, run by the National Payments Corporation of India, lets anyone send money instantly between any banks and apps using a phone number or QR code, at no cost to users; it made digital payments common even for street vendors and now handles billions of transactions a month. DigiLocker stores official documents digitally. Other countries are studying or adopting the model because it achieved inclusion at low cost and encourages competition among apps. Concerns include privacy and potential surveillance, people excluded when biometric authentication fails, dependence on connectivity, data breaches and payment fraud, which is why strong data protection law and grievance systems matter."
+    },
+    {
+      "id": "ca-supply-chain-resilience",
+      "title": "Global supply chains and resilience",
+      "prompt": "Explain how global supply chains work and why events such as the pandemic, wars and shipping disruptions caused shortages and price rises around the world. What are strategies like diversification, near-shoring and \"China plus one\", and what are their costs?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "current-affairs",
+        "economics",
+        "trade"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "global",
+          "label": "Production split across countries for efficiency",
+          "criterion": "accuracy",
+          "keywords": [
+            "global supply chain",
+            "components",
+            "many countries",
+            "efficien",
+            "specializ"
+          ]
+        },
+        {
+          "id": "jit",
+          "label": "Just-in-time and concentration leave little buffer",
+          "criterion": "accuracy",
+          "keywords": [
+            "just in time",
+            "low inventory",
+            "concentrat",
+            "single supplier",
+            "buffer"
+          ]
+        },
+        {
+          "id": "shocks",
+          "label": "Shocks: pandemic, chip shortage, conflicts, shipping routes",
+          "criterion": "accuracy",
+          "keywords": [
+            "pandemic",
+            "semiconductor",
+            "chip shortage",
+            "war",
+            "shipping"
+          ]
+        },
+        {
+          "id": "strategy",
+          "label": "Diversification, near-shoring, China plus one, inventories",
+          "criterion": "accuracy",
+          "keywords": [
+            "diversif",
+            "near shoring",
+            "china plus one",
+            "reshoring",
+            "stockpile"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Costs: higher prices, less efficiency; opportunities for India",
+          "criterion": "accuracy",
+          "keywords": [
+            "higher cost",
+            "inflation",
+            "trade off",
+            "india",
+            "manufacturing"
+          ]
+        }
+      ],
+      "modelAnswer": "Modern products are made through global supply chains: a smartphone combines chips, screens, batteries and minerals from dozens of countries, each specialising in what it does most efficiently. Companies also adopted just-in-time production, holding little inventory and often relying on one low-cost supplier or region, which cut costs but removed buffers. When shocks hit, these chains broke: pandemic lockdowns closed factories and ports, demand swings caused a global semiconductor shortage that halted car production, wars disrupted energy, grain and fertiliser supplies, and blockages or attacks on key shipping routes raised freight costs. The result was shortages, delays and inflation worldwide. Companies and governments now prioritise resilience: diversifying suppliers, building inventory of critical parts, near-shoring production closer to customers, and \"China plus one\" strategies that add factories in other countries - India, Vietnam and Mexico among the beneficiaries, supported in India by incentive schemes for manufacturing. Resilience has a price: duplicate capacity and higher inventories raise costs, and fragmentation of trade can reduce efficiency, so the challenge is balancing cost with security."
+    },
+    {
+      "id": "ca-commercial-space",
+      "title": "The new space race",
+      "prompt": "Space exploration has changed from a contest between superpowers to an industry with private companies and many new national programmes. Explain what changed, including reusable rockets and cheaper satellites, India's achievements such as the Chandrayaan missions, and the opportunities and risks such as space debris.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "current-affairs",
+        "space",
+        "technology"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "then",
+          "label": "Cold War race between USA and USSR",
+          "criterion": "accuracy",
+          "keywords": [
+            "cold war",
+            "apollo",
+            "soviet",
+            "superpower",
+            "moon landing"
+          ]
+        },
+        {
+          "id": "now",
+          "label": "Private companies and reusable rockets cut launch costs",
+          "criterion": "accuracy",
+          "keywords": [
+            "private",
+            "reusable",
+            "spacex",
+            "launch cost",
+            "commercial"
+          ]
+        },
+        {
+          "id": "india",
+          "label": "ISRO achievements: Chandrayaan-3 south pole landing, Mangalyaan, low cost",
+          "criterion": "accuracy",
+          "keywords": [
+            "chandrayaan",
+            "south pole",
+            "mangalyaan",
+            "isro",
+            "low cost"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "Uses: satellite internet, navigation, earth observation",
+          "criterion": "accuracy",
+          "keywords": [
+            "satellite internet",
+            "navigation",
+            "weather",
+            "earth observation",
+            "gps"
+          ]
+        },
+        {
+          "id": "risks",
+          "label": "Risks: debris, crowded orbits, militarisation",
+          "criterion": "accuracy",
+          "keywords": [
+            "space debris",
+            "kessler",
+            "crowded orbit",
+            "military",
+            "collision"
+          ]
+        }
+      ],
+      "modelAnswer": "The original space race was a Cold War contest between the United States and the Soviet Union, run by governments and culminating in the Apollo moon landings. Today the field is very different. Private companies build rockets, satellites and spacecraft, and reusable rocket boosters that land and fly again have sharply reduced the cost of reaching orbit. Small, mass-produced satellites made huge constellations practical, especially for satellite internet. Many more countries have capable programmes. India's ISRO is known for achieving ambitious missions at low cost: Mangalyaan reached Mars orbit on its first attempt in 2014, and in 2023 Chandrayaan-3 made India the first country to land near the Moon's south pole, followed by the Aditya-L1 solar observatory; India has also opened its space sector to private startups. Space now underpins everyday life through navigation, weather forecasting, crop and disaster monitoring, and communications. Risks are growing: thousands of active satellites and fragments of debris crowd low Earth orbit, raising collision risks that could cascade, and space is increasingly seen as a military domain, so rules on debris and responsible behaviour are a pressing international issue."
     }
   ]
 }

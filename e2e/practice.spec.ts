@@ -126,6 +126,26 @@ test('keyboard users can operate the main controls', async ({ page }) => {
   await expect(page.getByRole('dialog')).toBeHidden();
 });
 
+test('production build loads the whole question bank without runtime errors or failed requests', async ({ page }) => {
+  const problems: string[] = [];
+  page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
+  page.on('console', (m) => {
+    // `vite preview` has no /api function, so the AI status probe 404s by design; the app treats that as "not configured".
+    if (m.type() === 'error' && !m.location().url.includes('/api/')) problems.push(`console: ${m.text()}`);
+    if (m.type() === 'warning' && m.text().includes('failed validation')) problems.push(`bank: ${m.text()}`);
+  });
+  page.on('requestfailed', (r) => problems.push(`request failed: ${r.url()}`));
+  await installFakeSpeech(page, { local: 'available' });
+  await page.goto('/');
+  await expect(page.getByText(/\d+ questions in the bank/)).toBeVisible();
+  await page.getByRole('radio', { name: 'Deep research' }).click();
+  await page.getByRole('button', { name: /give me a question/i }).click();
+  await expect(page.getByRole('complementary', { name: 'Preparation notes' })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  expect(problems).toEqual([]);
+});
+
 test('layout has no horizontal overflow', async ({ page }) => {
   await installFakeSpeech(page, { local: 'available' });
   await page.goto('/');

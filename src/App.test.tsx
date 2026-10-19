@@ -31,6 +31,17 @@ describe('App', () => {
     expect(screen.getByRole('timer')).toHaveTextContent('1:00');
   });
 
+  it('shows preparation notes in deep research mode, or an outline when a question has none', async () => {
+    const { user } = setup();
+    await user.click(screen.getByRole('radio', { name: /deep research/i }));
+    await user.selectOptions(screen.getByLabelText('Subcategory'), 'operating-systems');
+    await user.click(screen.getByRole('button', { name: /give me a question/i }));
+    const notes = await screen.findByRole('complementary', { name: 'Preparation notes' });
+    // Operating systems questions ship without curated notes, so the generic outline is shown.
+    expect(within(notes).getByText(/no curated notes yet/i)).toBeInTheDocument();
+    expect(within(notes).getByText(/one concrete example/i)).toBeInTheDocument();
+  });
+
   it('prevents choosing a subcategory without a category', async () => {
     const { user } = setup();
     await user.selectOptions(screen.getByLabelText('Category'), '');

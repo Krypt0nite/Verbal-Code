@@ -21,7 +21,7 @@
         "off-the-cuff"
       ],
       "expectedConcepts": [],
-      "modelAnswer": "Present: 'I'm a backend engineer with two years of experience building C++ and Go systems.' Past: one or two highlights with impact \u2014 a project, a measurable result, a skill it demonstrates. Future: why this role and company are the logical next step. Keep it to about 60\u201390 seconds, avoid reciting your CV line by line, and end with a hook the interviewer can ask about."
+      "modelAnswer": "Present: 'I'm a backend engineer with two years of experience building C++ and Go systems.' Past: one or two highlights with impact — a project, a measurable result, a skill it demonstrates. Future: why this role and company are the logical next step. Keep it to about 60–90 seconds, avoid reciting your CV line by line, and end with a hook the interviewer can ask about."
     },
     {
       "id": "is-project-deep-dive",
@@ -192,7 +192,7 @@
           ]
         }
       ],
-      "modelAnswer": "Situation: a specific technical disagreement (e.g. adding a cache vs fixing a query). Task: why it was your concern. Actions: you gathered data, proposed a small experiment or wrote a short comparison, listened to their constraints, and agreed on criteria. Result: the decision taken and its measurable effect \u2014 and the relationship stayed good. Reflection: e.g. 'I now bring data before opinions.' Avoid blaming the other person."
+      "modelAnswer": "Situation: a specific technical disagreement (e.g. adding a cache vs fixing a query). Task: why it was your concern. Actions: you gathered data, proposed a small experiment or wrote a short comparison, listened to their constraints, and agreed on criteria. Result: the decision taken and its measurable effect — and the relationship stayed good. Reflection: e.g. 'I now bring data before opinions.' Avoid blaming the other person."
     },
     {
       "id": "is-failure",
@@ -281,7 +281,7 @@
           ]
         }
       ],
-      "modelAnswer": "Choose a real but recoverable failure. Situation and impact in one or two sentences. Own your part clearly ('I shipped a change without a load test'). Actions: how you mitigated quickly (rollback, hotfix, communication). Result: impact contained, root cause fixed. Reflection: the durable change you made \u2014 a test, an alert, a checklist \u2014 showing you learn systematically."
+      "modelAnswer": "Choose a real but recoverable failure. Situation and impact in one or two sentences. Own your part clearly ('I shipped a change without a load test'). Actions: how you mitigated quickly (rollback, hotfix, communication). Result: impact contained, root cause fixed. Reflection: the durable change you made — a test, an alert, a checklist — showing you learn systematically."
     },
     {
       "id": "is-tight-deadline",
@@ -392,7 +392,7 @@
         "off-the-cuff"
       ],
       "expectedConcepts": [],
-      "modelAnswer": "Lead with the purpose: 'An API is the way two pieces of software ask each other for things.' Analogy: a restaurant menu and waiter \u2014 you order from the menu without entering the kitchen. Tie it to their world: 'When our app shows delivery status, it's asking the courier's system through their API.' Close with why it matters: speed, reuse, and depending on another company's system."
+      "modelAnswer": "Lead with the purpose: 'An API is the way two pieces of software ask each other for things.' Analogy: a restaurant menu and waiter — you order from the menu without entering the kitchen. Tie it to their world: 'When our app shows delivery status, it's asking the courier's system through their API.' Close with why it matters: speed, reuse, and depending on another company's system."
     },
     {
       "id": "is-think-aloud-two-sum",
@@ -438,7 +438,7 @@
         },
         {
           "id": "hash",
-          "label": "Hash map of value \u2192 index",
+          "label": "Hash map of value → index",
           "criterion": "correctness",
           "keywords": [
             "hash map",
@@ -463,8 +463,7 @@
           "criterion": "space-complexity",
           "keywords": [
             "o of n space",
-            "extra space",
-            "memory"
+            "extra space"
           ]
         },
         {
@@ -479,12 +478,12 @@
           ]
         }
       ],
-      "modelAnswer": "Clarify: return indices, exactly one solution? Can the same element be used twice? Brute force: check every pair, O(n\u00b2) time, O(1) space. Improve: one pass with a hash map from value to index; for each x check whether target \u2212 x is already in the map, otherwise insert x. O(n) time, O(n) space. Edge cases: duplicates like [3,3] (check before inserting), negative numbers, no valid pair. Then test with a small example aloud."
+      "modelAnswer": "Clarify: return indices, exactly one solution? Can the same element be used twice? Brute force: check every pair, O(n²) time, O(1) space. Improve: one pass with a hash map from value to index; for each x check whether target − x is already in the map, otherwise insert x. O(n) time, O(n) space. Edge cases: duplicates like [3,3] (check before inserting), negative numbers, no valid pair. Then test with a small example aloud."
     },
     {
       "id": "is-leadership-mentoring",
       "title": "Helping a teammate grow",
-      "prompt": "Describe a time you helped a teammate become more effective \u2014 through mentoring, documentation or code review. What did you do and what changed?",
+      "prompt": "Describe a time you helped a teammate become more effective — through mentoring, documentation or code review. What did you do and what changed?",
       "categoryId": "interview-skills",
       "subcategoryId": "leadership-and-teamwork",
       "difficulty": "intermediate",
@@ -566,7 +565,7 @@
           ]
         }
       ],
-      "modelAnswer": "Situation: who needed help and why. Task: your role (not formally a mentor is fine). Actions: specific things \u2014 pairing sessions, a written guide, structured review feedback. Result: what they could do independently afterwards, time saved, fewer review cycles. Reflection: what you learned about teaching."
+      "modelAnswer": "Situation: who needed help and why. Task: your role (not formally a mentor is fine). Actions: specific things — pairing sessions, a written guide, structured review feedback. Result: what they could do independently afterwards, time saved, fewer review cycles. Reflection: what you learned about teaching."
     },
     {
       "id": "is-tradeoff-decision",
@@ -626,7 +625,6 @@
           "criterion": "results",
           "keywords": [
             "gave up",
-            "cost",
             "result",
             "outcome"
           ]
@@ -643,7 +641,7 @@
           ]
         }
       ],
-      "modelAnswer": "Context: the constraint forcing a choice. Options: two or three realistic ones. Criteria: e.g. latency, delivery time, operational cost, team familiarity \u2014 say which mattered most. Decision and what you consciously gave up. Outcome with evidence. Reflection: with today's knowledge, same or different, and why."
+      "modelAnswer": "Context: the constraint forcing a choice. Options: two or three realistic ones. Criteria: e.g. latency, delivery time, operational cost, team familiarity — say which mattered most. Decision and what you consciously gave up. Outcome with evidence. Reflection: with today's knowledge, same or different, and why."
     }
   ]
 }

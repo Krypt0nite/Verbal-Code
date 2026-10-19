@@ -4,8 +4,16 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  // The validated question bank and schemas ship in the main bundle (~160 kB gzipped total).
-  build: { chunkSizeWarningLimit: 700 },
+  build: {
+    // The question bank is large and changes on a different schedule from the app code, so it gets its own
+    // chunk: browsers download both in parallel, and editing questions does not invalidate the cached app.
+    chunkSizeWarningLimit: 1500,
+    rolldownOptions: {
+      output: {
+        codeSplitting: { groups: [{ name: 'questions', test: /[\\/]src[\\/]data[\\/]questions[\\/]/ }] },
+      },
+    },
+  },
   server: {
     // During local development, `npm run dev:api` (wrangler) serves /api on 8788.
     proxy: { '/api': 'http://127.0.0.1:8788' },
