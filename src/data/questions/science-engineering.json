@@ -54,7 +54,7 @@
           ]
         }
       ],
-      "modelAnswer": "A semiconductor such as silicon has a small band gap, so its conductivity sits between metals and insulators and can be controlled. Doping with phosphorus adds free electrons (n-type); with boron it creates holes (p-type). Where they meet, carriers diffuse and recombine, leaving a depletion region with a built-in field. Forward bias shrinks that region and current flows; reverse bias widens it and blocks current \u2014 the diode, the basis of transistors."
+      "modelAnswer": "A semiconductor such as silicon has a small band gap, so its conductivity sits between metals and insulators and can be controlled. Doping with phosphorus adds free electrons (n-type); with boron it creates holes (p-type). Where they meet, carriers diffuse and recombine, leaving a depletion region with a built-in field. Forward bias shrinks that region and current flows; reverse bias widens it and blocks current — the diode, the basis of transistors."
     },
     {
       "id": "sci-quantum-superposition",
@@ -107,12 +107,12 @@
           ]
         }
       ],
-      "modelAnswer": "A quantum system's state can be a combination of basis states, each with a complex amplitude. Measurement yields one definite outcome, with probabilities given by the squared magnitudes of the amplitudes (Born rule), and the state afterwards is consistent with that outcome. Amplitudes can interfere, which is what makes quantum algorithms work. Misconception: a quantum computer does not simply 'try all answers at once' and read off the right one \u2014 useful algorithms must arrange interference so wrong answers cancel."
+      "modelAnswer": "A quantum system's state can be a combination of basis states, each with a complex amplitude. Measurement yields one definite outcome, with probabilities given by the squared magnitudes of the amplitudes (Born rule), and the state afterwards is consistent with that outcome. Amplitudes can interfere, which is what makes quantum algorithms work. Misconception: a quantum computer does not simply 'try all answers at once' and read off the right one — useful algorithms must arrange interference so wrong answers cancel."
     },
     {
       "id": "sci-materials-stress-strain",
       "title": "Stress-strain curves",
-      "prompt": "Explain what a stress\u2013strain curve tells an engineer about a material. Cover elastic region, yield strength, ultimate tensile strength and ductility.",
+      "prompt": "Explain what a stress–strain curve tells an engineer about a material. Cover elastic region, yield strength, ultimate tensile strength and ductility.",
       "categoryId": "science-engineering",
       "subcategoryId": "materials-science",
       "difficulty": "beginner",
@@ -160,7 +160,354 @@
           ]
         }
       ],
-      "modelAnswer": "In a tensile test, stress (force per area) is plotted against strain (relative elongation). In the elastic region the curve is linear \u2014 its slope is Young's modulus \u2014 and the material returns to shape when unloaded. At the yield strength permanent plastic deformation begins. Stress rises with work hardening to the ultimate tensile strength, then necking localises deformation until fracture. Ductility is how much plastic strain occurs before fracture: steel stretches, glass doesn't."
+      "modelAnswer": "In a tensile test, stress (force per area) is plotted against strain (relative elongation). In the elastic region the curve is linear — its slope is Young's modulus — and the material returns to shape when unloaded. At the yield strength permanent plastic deformation begins. Stress rises with work hardening to the ultimate tensile strength, then necking localises deformation until fracture. Ductility is how much plastic strain occurs before fracture: steel stretches, glass doesn't."
+    },
+    {
+      "id": "chem-chemical-bonding",
+      "title": "Ionic, covalent and metallic bonds",
+      "prompt": "Explain the main types of chemical bonds: ionic, covalent and metallic. How does electronegativity decide which one forms, and how do bond types explain properties such as melting point and electrical conductivity?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "chemistry",
+        "bonding"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "ionic",
+          "label": "Ionic: electron transfer, ions held by electrostatic attraction",
+          "criterion": "accuracy",
+          "keywords": [
+            "ionic",
+            "transfer",
+            "ions",
+            "sodium chloride",
+            "electrostatic"
+          ]
+        },
+        {
+          "id": "covalent",
+          "label": "Covalent: shared electron pairs, polar bonds",
+          "criterion": "accuracy",
+          "keywords": [
+            "covalent",
+            "sharing",
+            "shared pair",
+            "polar"
+          ]
+        },
+        {
+          "id": "metallic",
+          "label": "Metallic: cations in a sea of delocalised electrons",
+          "criterion": "accuracy",
+          "keywords": [
+            "metallic",
+            "sea of electrons",
+            "delocali",
+            "free electrons"
+          ]
+        },
+        {
+          "id": "electronegativity",
+          "label": "Electronegativity difference decides the bond type",
+          "criterion": "accuracy",
+          "keywords": [
+            "electronegativity",
+            "electronegative",
+            "difference"
+          ]
+        }
+      ],
+      "modelAnswer": "Atoms bond to reach more stable electron arrangements. In an ionic bond, an electron moves from a metal to a non-metal, as from sodium to chlorine, forming ions held together by strong electrostatic attraction in a lattice: high melting points, and conductive when molten or dissolved, because the ions can move. In a covalent bond, non-metal atoms share pairs of electrons; if their electronegativities differ, the sharing is unequal and the bond is polar, as in water. Metallic bonding is a lattice of positive ions in a sea of delocalised electrons, which explains why metals conduct electricity and can be bent without breaking. A large electronegativity difference favours ionic bonding and a small one favours covalent. Small covalent molecules have weak forces between molecules and low melting points, while giant covalent structures such as diamond are very hard."
+    },
+    {
+      "id": "chem-acids-bases-ph",
+      "title": "Acids, bases and the pH scale",
+      "prompt": "Explain what acids and bases are, how the pH scale works, and the difference between a strong and a weak acid. Give everyday examples and explain what a buffer does.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "chemistry",
+        "acids"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "definition",
+          "label": "Acids donate protons (H+), bases accept them",
+          "criterion": "accuracy",
+          "keywords": [
+            "proton",
+            "hydrogen ion",
+            "donor",
+            "donate",
+            "accept"
+          ]
+        },
+        {
+          "id": "ph",
+          "label": "pH is logarithmic; 7 is neutral",
+          "criterion": "accuracy",
+          "keywords": [
+            "logarithmic",
+            "factor of ten",
+            "times ten",
+            "neutral",
+            "seven"
+          ]
+        },
+        {
+          "id": "strength",
+          "label": "Strong acids dissociate fully, weak ones partially",
+          "criterion": "accuracy",
+          "keywords": [
+            "dissociat",
+            "ioniz",
+            "ionis",
+            "completely",
+            "partially",
+            "fully"
+          ]
+        },
+        {
+          "id": "buffer",
+          "label": "Buffers resist pH change",
+          "criterion": "accuracy",
+          "keywords": [
+            "buffer",
+            "resist",
+            "blood",
+            "bicarbonate"
+          ]
+        }
+      ],
+      "modelAnswer": "In the Bronsted-Lowry view, an acid donates a proton (a hydrogen ion) and a base accepts one. pH is the negative logarithm of the hydrogen-ion concentration, so each step of 1 is a factor of ten; at 25 degrees Celsius pure water is 7 (neutral), below 7 is acidic and above 7 is basic. A strong acid such as hydrochloric acid dissociates almost completely in water, while a weak acid such as acetic acid in vinegar dissociates only partially, so at the same concentration it has a higher pH. Lemon juice and vinegar are acidic; baking soda and soap are basic. A buffer, a weak acid mixed with its conjugate base, resists changes in pH when small amounts of acid or base are added; blood is kept near pH 7.4 by the carbonic acid and bicarbonate buffer."
+    },
+    {
+      "id": "chem-reaction-rates-catalysts",
+      "title": "Reaction rates, activation energy and catalysts",
+      "prompt": "Explain what controls the rate of a chemical reaction using collision theory. Cover concentration, temperature, surface area and activation energy, and explain how a catalyst speeds up a reaction without being used up.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "chemistry",
+        "kinetics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "collisions",
+          "label": "Particles must collide with enough energy and the right orientation",
+          "criterion": "accuracy",
+          "keywords": [
+            "collision",
+            "collide",
+            "orientation",
+            "enough energy"
+          ]
+        },
+        {
+          "id": "factors",
+          "label": "Concentration, pressure, temperature, surface area",
+          "criterion": "accuracy",
+          "keywords": [
+            "concentration",
+            "temperature",
+            "surface area",
+            "pressure"
+          ]
+        },
+        {
+          "id": "activation",
+          "label": "Activation energy is the minimum energy needed",
+          "criterion": "accuracy",
+          "keywords": [
+            "activation energy",
+            "energy barrier",
+            "minimum energy",
+            "threshold"
+          ]
+        },
+        {
+          "id": "catalyst",
+          "label": "A catalyst offers a lower-energy pathway and is regenerated",
+          "criterion": "accuracy",
+          "keywords": [
+            "catalyst",
+            "alternative pathway",
+            "alternative route",
+            "enzyme",
+            "not used up",
+            "regenerat"
+          ]
+        }
+      ],
+      "modelAnswer": "Particles react only when they collide with at least the activation energy and in a suitable orientation. Higher concentration, or higher pressure for gases, means more collisions per second. Greater surface area, a powder instead of a lump, exposes more particles to collisions. Higher temperature makes particles move faster and, more importantly, gives a much larger fraction of collisions enough energy, so rates often rise steeply with temperature. A catalyst provides an alternative pathway with a lower activation energy, so more collisions succeed; it is regenerated at the end, so it is not used up, and it does not change the position of an equilibrium. Enzymes are biological catalysts, and a car's catalytic converter is an everyday example."
+    },
+    {
+      "id": "chem-equilibrium-le-chatelier",
+      "title": "Chemical equilibrium and Le Chatelier's principle",
+      "prompt": "Explain dynamic chemical equilibrium and Le Chatelier's principle. Use an example such as the Haber process to show how changing concentration, pressure or temperature shifts the equilibrium.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "chemistry",
+        "equilibrium"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "dynamic",
+          "label": "Forward and reverse reactions at equal rates",
+          "criterion": "accuracy",
+          "keywords": [
+            "dynamic",
+            "forward",
+            "reverse",
+            "same rate",
+            "equal rate",
+            "reversible"
+          ]
+        },
+        {
+          "id": "principle",
+          "label": "The system shifts to oppose a change",
+          "criterion": "accuracy",
+          "keywords": [
+            "le chatelier",
+            "oppose",
+            "counteract",
+            "shifts"
+          ]
+        },
+        {
+          "id": "haber",
+          "label": "Haber process: nitrogen + hydrogen <=> ammonia",
+          "criterion": "accuracy",
+          "keywords": [
+            "haber",
+            "ammonia",
+            "nitrogen",
+            "hydrogen"
+          ]
+        },
+        {
+          "id": "conditions",
+          "label": "Pressure favours fewer gas molecules; temperature and exothermic reactions",
+          "criterion": "accuracy",
+          "keywords": [
+            "exothermic",
+            "fewer molecules",
+            "fewer moles",
+            "high pressure",
+            "lower temperature",
+            "compromise"
+          ]
+        }
+      ],
+      "modelAnswer": "In a closed system, a reversible reaction reaches dynamic equilibrium when the forward and reverse reactions run at the same rate, so concentrations stay constant even though both reactions continue. Le Chatelier's principle says that if conditions change, the equilibrium shifts to partly oppose the change. In the Haber process, nitrogen plus three hydrogen form two ammonia, and the forward reaction is exothermic. Adding nitrogen or removing ammonia shifts the equilibrium to the right. Higher pressure favours the side with fewer gas molecules, four on the left versus two on the right, so it raises the ammonia yield. Lower temperature favours the exothermic forward reaction and also raises the yield, but makes the reaction slow, so industry compromises at about 400 to 450 degrees Celsius and around 200 atmospheres with an iron catalyst. The catalyst helps reach equilibrium faster but does not shift it."
+    },
+    {
+      "id": "chem-redox",
+      "title": "Oxidation and reduction",
+      "prompt": "Explain oxidation and reduction. Define them in terms of electrons and oxidation states, and use examples such as rusting and batteries to show why the two always happen together.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "chemistry",
+        "redox",
+        "electrochemistry"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "definition",
+          "label": "Oxidation is loss of electrons, reduction is gain (OIL RIG)",
+          "criterion": "accuracy",
+          "keywords": [
+            "loss of electrons",
+            "loses electrons",
+            "gain of electrons",
+            "gains electrons",
+            "oil rig",
+            "oxidation state",
+            "oxidation number"
+          ]
+        },
+        {
+          "id": "together",
+          "label": "Electrons lost by one species are gained by another",
+          "criterion": "accuracy",
+          "keywords": [
+            "together",
+            "simultaneous",
+            "at the same time",
+            "transferred",
+            "redox"
+          ]
+        },
+        {
+          "id": "rusting",
+          "label": "Rusting: iron oxidised, oxygen reduced",
+          "criterion": "accuracy",
+          "keywords": [
+            "rust",
+            "iron",
+            "oxygen",
+            "corrosion",
+            "galvani"
+          ]
+        },
+        {
+          "id": "battery",
+          "label": "Batteries: oxidation at the anode, reduction at the cathode",
+          "criterion": "accuracy",
+          "keywords": [
+            "battery",
+            "anode",
+            "cathode",
+            "external circuit",
+            "electrical energy"
+          ]
+        }
+      ],
+      "modelAnswer": "Oxidation is the loss of electrons, which raises an element's oxidation state; reduction is the gain of electrons, which lowers it: OIL RIG, oxidation is loss, reduction is gain. Electrons lost by one species must be gained by another, so oxidation and reduction always happen together, which is why the reactions are called redox. In rusting, iron is oxidised to iron ions while oxygen is reduced, with water involved, forming hydrated iron oxide. Salt water speeds this up, and a zinc coating (galvanising) protects iron because zinc is oxidised first. In a battery the redox reaction is split in two: oxidation at the anode releases electrons that flow through the external circuit to the cathode, where reduction takes place, so chemical energy becomes electrical energy."
     }
   ]
 }

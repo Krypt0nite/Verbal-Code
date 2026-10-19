@@ -1,0 +1,2174 @@
+{
+  "categoryId": "programming-languages",
+  "questions": [
+    {
+      "id": "cpp-raii-smart-pointers",
+      "title": "RAII and smart pointers in C++",
+      "prompt": "Explain RAII in C++ and how smart pointers apply it. Compare unique_ptr, shared_ptr and weak_ptr, give an example of each, and name a common pitfall.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "raii",
+          "label": "Resource lifetime tied to object lifetime",
+          "criterion": "correctness",
+          "keywords": [
+            "resource acquisition",
+            "destructor",
+            "scope",
+            "lifetime"
+          ]
+        },
+        {
+          "id": "unique",
+          "label": "unique_ptr: sole ownership, move-only",
+          "criterion": "terminology",
+          "keywords": [
+            "unique pointer",
+            "unique ptr",
+            "move only",
+            "sole owner",
+            "exclusive"
+          ]
+        },
+        {
+          "id": "shared",
+          "label": "shared_ptr: reference counting",
+          "criterion": "terminology",
+          "keywords": [
+            "shared pointer",
+            "shared ptr",
+            "reference count"
+          ]
+        },
+        {
+          "id": "weak",
+          "label": "weak_ptr breaks cycles",
+          "criterion": "terminology",
+          "keywords": [
+            "weak pointer",
+            "weak ptr",
+            "cycle"
+          ]
+        },
+        {
+          "id": "exceptions",
+          "label": "Exception safety / no leaks on early return",
+          "criterion": "practical-implications",
+          "keywords": [
+            "exception",
+            "early return",
+            "leak"
+          ]
+        },
+        {
+          "id": "pitfall",
+          "label": "Pitfalls: cycles, atomic refcount cost, raw new",
+          "criterion": "pitfalls",
+          "keywords": [
+            "cycle",
+            "atomic",
+            "make shared",
+            "make unique",
+            "raw new"
+          ]
+        }
+      ],
+      "modelAnswer": "RAII (Resource Acquisition Is Initialization) ties a resource — memory, file, mutex lock — to an object: acquire in the constructor, release in the destructor. Because destructors run when scope exits, including on exceptions and early returns, resources never leak. unique_ptr expresses sole ownership, cannot be copied, only moved, and has zero overhead. shared_ptr shares ownership with an atomic reference count; the object dies when the last owner goes. weak_ptr observes without owning and breaks reference cycles (e.g. a child pointing back to its parent). Pitfalls: shared_ptr cycles leak, atomic refcounting costs, and using raw new instead of make_unique/make_shared."
+    },
+    {
+      "id": "cpp-stack-vs-heap",
+      "title": "Stack versus heap allocation",
+      "prompt": "Compare stack and heap allocation in C++. Explain lifetime, allocation cost, size limits and cache behaviour, and when you would choose each.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "cpp",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "stack-life",
+          "label": "Stack: automatic lifetime tied to scope",
+          "criterion": "correctness",
+          "keywords": [
+            "automatic",
+            "scope",
+            "function returns",
+            "stack frame"
+          ]
+        },
+        {
+          "id": "heap-life",
+          "label": "Heap: dynamic lifetime managed explicitly",
+          "criterion": "correctness",
+          "keywords": [
+            "dynamic",
+            "new",
+            "delete",
+            "malloc",
+            "free store"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Stack allocation is a pointer bump; heap uses an allocator",
+          "criterion": "practical-implications",
+          "keywords": [
+            "pointer",
+            "allocator",
+            "faster",
+            "cheap",
+            "fragmentation"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "Stack size limits → overflow",
+          "criterion": "pitfalls",
+          "keywords": [
+            "stack overflow",
+            "limited",
+            "megabytes",
+            "large arrays",
+            "recursion"
+          ]
+        },
+        {
+          "id": "dangling",
+          "label": "Returning pointer to stack variable is dangling",
+          "criterion": "pitfalls",
+          "keywords": [
+            "dangling",
+            "returning a pointer",
+            "reference to local"
+          ]
+        }
+      ],
+      "modelAnswer": "Stack objects live in the function's frame: allocation is just moving the stack pointer, they are destroyed automatically when scope ends, and they are cache-friendly — but the stack is small (often 1–8 MB), so huge arrays or deep recursion overflow it, and returning a pointer to a local creates a dangling pointer. Heap allocation (new/make_unique) goes through an allocator — slower, can fragment, possibly contended across threads — but supports large sizes, runtime-determined sizes and lifetimes beyond the scope. Prefer stack and value semantics; use the heap via smart pointers or containers when size or lifetime demands it."
+    },
+    {
+      "id": "cpp-mutex-atomics-races",
+      "title": "Mutexes, atomics and race conditions",
+      "prompt": "Explain what a data race is, and compare protecting shared state with a mutex versus std::atomic. Mention memory ordering and when a lock-free approach is worth it.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "cpp",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "race",
+          "label": "Data race: concurrent unsynchronised access with a write",
+          "criterion": "correctness",
+          "keywords": [
+            "data race",
+            "race condition",
+            "two threads",
+            "same memory"
+          ]
+        },
+        {
+          "id": "ub",
+          "label": "Data races are undefined behaviour",
+          "criterion": "terminology",
+          "keywords": [
+            "undefined behavior",
+            "undefined behaviour"
+          ]
+        },
+        {
+          "id": "mutex",
+          "label": "Mutex gives mutual exclusion over a critical section",
+          "criterion": "terminology",
+          "keywords": [
+            "mutex",
+            "lock guard",
+            "critical section",
+            "mutual exclusion"
+          ]
+        },
+        {
+          "id": "atomic",
+          "label": "Atomics for single variables / counters",
+          "criterion": "terminology",
+          "keywords": [
+            "atomic",
+            "fetch add",
+            "compare and swap",
+            "cas"
+          ]
+        },
+        {
+          "id": "ordering",
+          "label": "Memory ordering: seq_cst, acquire/release, relaxed",
+          "criterion": "practical-implications",
+          "keywords": [
+            "memory order",
+            "acquire",
+            "release",
+            "relaxed",
+            "sequentially consistent"
+          ]
+        },
+        {
+          "id": "pitfall",
+          "label": "Pitfalls: deadlock, ABA, false sharing, contention",
+          "criterion": "pitfalls",
+          "keywords": [
+            "deadlock",
+            "aba",
+            "false sharing",
+            "contention"
+          ]
+        }
+      ],
+      "modelAnswer": "A data race occurs when two threads access the same memory concurrently, at least one writes, and there is no synchronisation — in C++ that is undefined behaviour. A mutex (with lock_guard/scoped_lock RAII) serialises a critical section of any size; simple, but threads block and contention hurts latency. std::atomic makes single-variable operations indivisible (fetch_add, compare_exchange) without blocking, and memory orders control visibility: seq_cst by default, acquire/release for publish-consume handoffs, relaxed for counters. Lock-free structures (e.g. SPSC ring buffers) pay off on hot, latency-critical paths but bring ABA problems, false sharing and hard-to-verify correctness."
+    },
+    {
+      "id": "cpp-move-semantics",
+      "title": "Move semantics",
+      "prompt": "Explain move semantics in C++. Cover rvalue references, what a move constructor does, when std::move is needed, and what state a moved-from object is in.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "rvalue",
+          "label": "Rvalue references bind to temporaries",
+          "criterion": "terminology",
+          "keywords": [
+            "rvalue",
+            "temporary",
+            "double ampersand"
+          ]
+        },
+        {
+          "id": "steal",
+          "label": "Move steals resources instead of copying",
+          "criterion": "correctness",
+          "keywords": [
+            "steal",
+            "transfer",
+            "instead of copying",
+            "pointer"
+          ]
+        },
+        {
+          "id": "std-move",
+          "label": "std::move is a cast, doesn't move by itself",
+          "criterion": "terminology",
+          "keywords": [
+            "cast",
+            "std move",
+            "does not move",
+            "doesn't move"
+          ]
+        },
+        {
+          "id": "moved-from",
+          "label": "Moved-from object: valid but unspecified",
+          "criterion": "practical-implications",
+          "keywords": [
+            "valid but unspecified",
+            "moved from",
+            "empty"
+          ]
+        },
+        {
+          "id": "pitfall",
+          "label": "Pitfalls: moving from const, using after move, noexcept",
+          "criterion": "pitfalls",
+          "keywords": [
+            "const",
+            "use after move",
+            "noexcept",
+            "return value optimization",
+            "rvo"
+          ]
+        }
+      ],
+      "modelAnswer": "Copying a std::vector duplicates its heap buffer; moving just transfers the pointer and leaves the source empty. Rvalue references (T&&) bind to temporaries and to objects explicitly marked as movable. A move constructor takes T&&, steals the resources and resets the source. std::move is only a cast to an rvalue — the move happens in the constructor or assignment it selects. The moved-from object remains valid but unspecified: you may destroy it or assign to it. Pitfalls: std::move on a const object silently copies, using objects after moving, missing noexcept (vectors then copy on reallocation), and writing std::move on return values, which blocks RVO."
+    },
+    {
+      "id": "cpp-ownership-lifetime",
+      "title": "Memory ownership and lifetime",
+      "prompt": "Explain how you reason about ownership and lifetime in a C++ codebase. How do function signatures communicate ownership, and what bugs result when ownership is unclear?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "design"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "owner",
+          "label": "Exactly one owner responsible for destruction",
+          "criterion": "correctness",
+          "keywords": [
+            "owner",
+            "responsible",
+            "destroys",
+            "ownership"
+          ]
+        },
+        {
+          "id": "signatures",
+          "label": "Signatures express ownership: unique_ptr by value, references, raw pointers non-owning",
+          "criterion": "terminology",
+          "keywords": [
+            "by value",
+            "const reference",
+            "non owning",
+            "raw pointer",
+            "span",
+            "string view"
+          ]
+        },
+        {
+          "id": "bugs",
+          "label": "Use-after-free, double free, leaks, dangling",
+          "criterion": "pitfalls",
+          "keywords": [
+            "use after free",
+            "double free",
+            "leak",
+            "dangling"
+          ]
+        },
+        {
+          "id": "views",
+          "label": "Views (string_view/span) must not outlive owner",
+          "criterion": "practical-implications",
+          "keywords": [
+            "outlive",
+            "string view",
+            "span",
+            "view"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "Sanitizers and static analysis",
+          "criterion": "practical-implications",
+          "keywords": [
+            "sanitizer",
+            "asan",
+            "valgrind",
+            "static analysis"
+          ]
+        }
+      ],
+      "modelAnswer": "Every resource should have one clear owner responsible for destroying it. Signatures communicate this: passing std::unique_ptr by value transfers ownership; T& or const T& borrows; a raw T* or std::span/string_view is non-owning and must not outlive its source; returning unique_ptr hands ownership to the caller. Unclear ownership causes leaks, double frees, use-after-free and dangling views (e.g. a string_view into a temporary string). Tools: AddressSanitizer, Valgrind, clang-tidy lifetime checks, and Rust-style discipline in code review."
+    },
+    {
+      "id": "cpp-virtual-dispatch",
+      "title": "Virtual functions and dynamic dispatch in C++",
+      "prompt": "Explain how virtual functions work in C++. Describe the vtable and vptr, why a base class needs a virtual destructor, and the cost of dynamic dispatch compared with templates.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "oop",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "vtable",
+          "label": "Per-class vtable and a hidden vptr in each object",
+          "criterion": "correctness",
+          "keywords": [
+            "vtable",
+            "virtual table",
+            "vptr",
+            "table of function pointers",
+            "function pointer"
+          ]
+        },
+        {
+          "id": "dispatch",
+          "label": "Dynamic dispatch / late binding through a base pointer",
+          "criterion": "terminology",
+          "keywords": [
+            "dynamic dispatch",
+            "late binding",
+            "runtime polymorphism",
+            "override",
+            "base pointer",
+            "base class pointer"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Indirect call, no inlining; templates give static polymorphism",
+          "criterion": "practical-implications",
+          "keywords": [
+            "indirect call",
+            "inline",
+            "template",
+            "static polymorphism",
+            "crtp",
+            "compile time"
+          ]
+        },
+        {
+          "id": "destructor",
+          "label": "Missing virtual destructor is UB; object slicing",
+          "criterion": "pitfalls",
+          "keywords": [
+            "virtual destructor",
+            "slicing",
+            "undefined behavior",
+            "undefined behaviour",
+            "constructor"
+          ]
+        }
+      ],
+      "researchContext": [
+        "The C++ standard does not mention vtables; they are the usual implementation (Itanium ABI on Linux/macOS, MSVC ABI on Windows).",
+        "Calling a virtual function inside a constructor or destructor calls the version of the class currently being constructed or destroyed, not the most-derived override.",
+        "Mark overrides with `override` so the compiler catches signature mismatches, and `final` to stop further overriding (which can also enable devirtualisation)."
+      ],
+      "modelAnswer": "When a class has virtual functions, compilers typically create a vtable for it: a per-class table of function pointers. Each object stores a hidden vptr to its class's table. Calling a virtual function through a base pointer or reference loads the vptr, looks up the slot and makes an indirect call, so the derived override runs (dynamic dispatch, or late binding). The cost is one pointer per object and an indirect call that usually cannot be inlined. Templates and CRTP give static polymorphism instead: calls are resolved at compile time and can be inlined, at the cost of code size and compile time. Pitfalls: deleting a derived object through a base pointer without a virtual destructor is undefined behaviour; passing a derived object by value slices off the derived part; and a virtual call inside a constructor does not reach the derived override."
+    },
+    {
+      "id": "cpp-undefined-behavior",
+      "title": "Undefined behaviour in C++",
+      "prompt": "Explain what undefined behaviour is in C++. Give three common examples, explain why the optimiser can make an undefined behaviour bug show up far from where it happens, and describe how you catch these bugs.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "cpp",
+        "correctness",
+        "tooling"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "definition",
+          "label": "The standard places no requirements on the result",
+          "criterion": "correctness",
+          "keywords": [
+            "undefined behavior",
+            "undefined behaviour",
+            "no requirements",
+            "anything can happen",
+            "the standard"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Signed overflow, out-of-bounds, dangling, null, uninitialised reads, data races",
+          "criterion": "terminology",
+          "keywords": [
+            "signed overflow",
+            "integer overflow",
+            "out of bounds",
+            "dangling",
+            "null pointer",
+            "uninitiali",
+            "data race"
+          ]
+        },
+        {
+          "id": "optimiser",
+          "label": "The compiler assumes UB never happens and optimises on that",
+          "criterion": "practical-implications",
+          "keywords": [
+            "optimiz",
+            "optimis",
+            "assume",
+            "release build",
+            "removes the check"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "Sanitizers, warnings, static analysis",
+          "criterion": "pitfalls",
+          "keywords": [
+            "sanitizer",
+            "sanitiser",
+            "asan",
+            "ubsan",
+            "valgrind",
+            "static analysis",
+            "warning"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Undefined behaviour is different from unspecified behaviour (one of several allowed results, e.g. evaluation order of function arguments) and implementation-defined behaviour (documented by the compiler, e.g. sizeof(int)).",
+        "Classic optimiser example: after `int x = *p;` the compiler may delete a later `if (p == nullptr)` check, because dereferencing null would already have been UB.",
+        "Build flags: `-fsanitize=address,undefined` (ASan + UBSan), `-fsanitize=thread` (TSan, not combinable with ASan), plus `-Wall -Wextra`."
+      ],
+      "modelAnswer": "Undefined behaviour means the C++ standard places no requirements on what the program does: it may appear to work, crash, or produce wrong results, and the result can change with the compiler or flags. Common examples are signed integer overflow, reading or writing out of bounds, using a dangling pointer or reference after the object is destroyed, dereferencing a null pointer, reading an uninitialised variable, and data races. Because compilers may assume UB never happens, they optimise on that assumption: for example, after dereferencing a pointer they may delete a later null check, or assume a signed loop counter never overflows. So the symptom can appear somewhere else, or only in release builds. To catch it: AddressSanitizer and UndefinedBehaviorSanitizer (-fsanitize=address,undefined), ThreadSanitizer for races, compiler warnings, static analysis, and safer constructs such as std::vector::at, std::span and smart pointers."
+    },
+    {
+      "id": "cpp-vector-internals",
+      "title": "How std::vector grows",
+      "prompt": "Explain how std::vector stores its elements and grows. Cover amortised constant-time push_back, capacity versus size, iterator invalidation, and when reserve helps.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "cpp",
+        "stl",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "contiguous",
+          "label": "One contiguous heap buffer; reallocation when full",
+          "criterion": "correctness",
+          "keywords": [
+            "contiguous",
+            "heap",
+            "reallocat",
+            "new buffer",
+            "bigger array"
+          ]
+        },
+        {
+          "id": "growth",
+          "label": "Size vs capacity, geometric growth, amortised O(1)",
+          "criterion": "terminology",
+          "keywords": [
+            "capacity",
+            "amortized",
+            "amortised",
+            "geometric",
+            "double"
+          ]
+        },
+        {
+          "id": "reserve",
+          "label": "reserve avoids reallocations; cache-friendly; noexcept moves",
+          "criterion": "practical-implications",
+          "keywords": [
+            "reserve",
+            "cache",
+            "noexcept",
+            "move constructor"
+          ]
+        },
+        {
+          "id": "invalidation",
+          "label": "Reallocation invalidates iterators, pointers and references",
+          "criterion": "pitfalls",
+          "keywords": [
+            "invalidat",
+            "dangling",
+            "iterator",
+            "pointer to an element"
+          ]
+        }
+      ],
+      "researchContext": [
+        "libstdc++ and libc++ grow capacity by 2x; MSVC grows by 1.5x. The standard only requires amortised constant time.",
+        "During reallocation, elements are moved only if the move constructor is noexcept (or the type is not copyable); otherwise they are copied to keep the strong exception guarantee.",
+        "shrink_to_fit is a non-binding request; `std::vector<bool>` is a special bit-packed case and does not behave like a normal container."
+      ],
+      "modelAnswer": "std::vector keeps its elements in one contiguous heap buffer and tracks size (elements in use) and capacity (slots allocated). When push_back needs more room than the capacity, it allocates a larger buffer, typically 1.5x or 2x, moves or copies the elements over, and frees the old one. Because growth is geometric, the total copying is spread over many insertions, so push_back is amortised O(1). Contiguity makes iteration cache-friendly. If you know the final size, reserve(n) avoids repeated reallocations. Elements are moved during growth only if their move constructor is noexcept; otherwise they are copied. The main pitfall is invalidation: a reallocation invalidates every iterator, pointer and reference into the vector, and insert or erase invalidate those at or after the position."
+    },
+    {
+      "id": "go-goroutines-channels",
+      "title": "Goroutines and channels in Go",
+      "prompt": "Explain how goroutines and channels work in Go. Compare buffered and unbuffered channels, describe how the Go scheduler runs goroutines, and name a common concurrency bug.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "goroutine",
+          "label": "Lightweight green threads with small stacks",
+          "criterion": "correctness",
+          "keywords": [
+            "lightweight",
+            "green thread",
+            "small stack",
+            "growable",
+            "go keyword"
+          ]
+        },
+        {
+          "id": "scheduler",
+          "label": "M:N scheduler (G, M, P)",
+          "criterion": "terminology",
+          "keywords": [
+            "scheduler",
+            "m to n",
+            "m n",
+            "os thread",
+            "processor"
+          ]
+        },
+        {
+          "id": "unbuffered",
+          "label": "Unbuffered channels synchronise sender and receiver",
+          "criterion": "terminology",
+          "keywords": [
+            "unbuffered",
+            "synchronous",
+            "blocks until"
+          ]
+        },
+        {
+          "id": "buffered",
+          "label": "Buffered channels decouple up to capacity",
+          "criterion": "terminology",
+          "keywords": [
+            "buffered",
+            "capacity"
+          ]
+        },
+        {
+          "id": "csp",
+          "label": "Share memory by communicating; select",
+          "criterion": "practical-implications",
+          "keywords": [
+            "communicating",
+            "select",
+            "share memory"
+          ]
+        },
+        {
+          "id": "leak",
+          "label": "Goroutine leaks, deadlocks, closing channels",
+          "criterion": "pitfalls",
+          "keywords": [
+            "leak",
+            "deadlock",
+            "close",
+            "context",
+            "nil channel"
+          ]
+        }
+      ],
+      "modelAnswer": "Goroutines are functions running concurrently, started with the go keyword; they begin with a few KB of growable stack, so you can run hundreds of thousands. The runtime multiplexes them onto OS threads (M:N scheduling with G, M, P) and preempts long-running ones. Channels pass values between goroutines: an unbuffered send blocks until a receiver is ready (a synchronisation point); a buffered channel lets senders proceed until it is full. select waits on several channel operations. Common bugs: goroutine leaks (a goroutine blocked forever on a channel nobody reads — use context cancellation), sending on a closed channel, and deadlocks."
+    },
+    {
+      "id": "go-interfaces-nil",
+      "title": "Interfaces and the nil interface trap in Go",
+      "prompt": "Explain how interfaces work in Go. Cover implicit satisfaction, the interface value as a pair of a dynamic type and a value, and why an interface holding a nil pointer is not equal to nil.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "types",
+        "interfaces"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "implicit",
+          "label": "Satisfied implicitly by having the methods",
+          "criterion": "correctness",
+          "keywords": [
+            "implicit",
+            "method set",
+            "no implements",
+            "satisf",
+            "has the methods"
+          ]
+        },
+        {
+          "id": "pair",
+          "label": "Interface value = dynamic type + value",
+          "criterion": "terminology",
+          "keywords": [
+            "type and value",
+            "dynamic type",
+            "itab",
+            "two words",
+            "concrete type",
+            "type assertion",
+            "type switch"
+          ]
+        },
+        {
+          "id": "small",
+          "label": "Small consumer-defined interfaces; easy fakes in tests",
+          "criterion": "practical-implications",
+          "keywords": [
+            "small interface",
+            "io.reader",
+            "reader",
+            "accept interfaces",
+            "decoupl",
+            "mock",
+            "fake"
+          ]
+        },
+        {
+          "id": "nil",
+          "label": "A nil pointer inside an interface makes it non-nil",
+          "criterion": "pitfalls",
+          "keywords": [
+            "nil pointer",
+            "not nil",
+            "non-nil",
+            "typed nil",
+            "not equal to nil"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Idiom: \"accept interfaces, return structs\". Define the interface where it is used, not where the type is implemented.",
+        "The empty interface `any` (interface{}) holds any value; use type switches or generics (Go 1.18+) instead of passing `any` around.",
+        "Classic bug: `func f() error { var e *MyErr = nil; return e }` returns a non-nil error. Return a literal `nil` on success."
+      ],
+      "modelAnswer": "A Go type satisfies an interface simply by having its methods; there is no implements keyword. So interfaces are usually small and defined by the code that consumes them, like io.Reader, which decouples packages and makes it easy to pass fakes in tests (accept interfaces, return structs). At runtime an interface value is a pair: a dynamic type and a value. It is nil only when both are nil. If a function returns a nil *MyError as an error, the interface holds the type *MyError with a nil value, so err != nil is true: the error is not nil even though the pointer inside it is a nil pointer. This is a classic bug. Return a literal nil instead. Type assertions and type switches recover the concrete type."
+    },
+    {
+      "id": "go-slices-append",
+      "title": "Slices, append and shared backing arrays in Go",
+      "prompt": "Explain how slices work in Go. Describe the slice header, how append grows the backing array, and a bug caused by two slices sharing the same array.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "memory",
+        "data-structures"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "header",
+          "label": "Header: pointer, length, capacity over a backing array",
+          "criterion": "correctness",
+          "keywords": [
+            "pointer",
+            "length",
+            "capacity",
+            "backing array",
+            "header",
+            "underlying array"
+          ]
+        },
+        {
+          "id": "append",
+          "label": "append writes in place or reallocates; use the result",
+          "criterion": "terminology",
+          "keywords": [
+            "append",
+            "reslic",
+            "len",
+            "cap",
+            "new array",
+            "reallocat"
+          ]
+        },
+        {
+          "id": "prealloc",
+          "label": "make with capacity, copy, full slice expression",
+          "criterion": "practical-implications",
+          "keywords": [
+            "preallocat",
+            "copy",
+            "full slice",
+            "three index"
+          ]
+        },
+        {
+          "id": "aliasing",
+          "label": "Shared arrays: overwrites, silent divergence, retained memory",
+          "criterion": "pitfalls",
+          "keywords": [
+            "share",
+            "alias",
+            "overwrit",
+            "same array",
+            "memory leak",
+            "keeps the whole array"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Since Go 1.18, append roughly doubles capacity for small slices and grows by about 1.25x plus a constant for large ones; never rely on the exact factor.",
+        "A nil slice and an empty slice both have length 0 and work with append and range; they differ only in == nil and JSON encoding (null vs []).",
+        "Arrays ([4]int) are values and are copied on assignment; slices are references to an array."
+      ],
+      "modelAnswer": "A slice is a small header: a pointer into a backing array, a length and a capacity. Slicing with s[a:b] makes a new header over the same array without copying. append writes in place if len < cap; otherwise it allocates a bigger array (about double for small slices, less for large ones), copies the elements, and returns a header to the new array, which is why you must write s = append(s, x). Bug: b := a[:2]; b = append(b, 9) overwrites a[2], because both share the array, while after a reallocation the two slices silently stop sharing. Fixes: copy into a new slice, use a full slice expression a[:2:2] to limit capacity, or preallocate with make([]T, 0, n). Also, keeping a small slice of a huge array keeps the whole array in memory."
+    },
+    {
+      "id": "go-errors-defer",
+      "title": "Errors, defer, panic and recover in Go",
+      "prompt": "Explain error handling in Go. Cover errors as values, wrapping with %w and checking with errors.Is or errors.As, and how defer, panic and recover fit in.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "go",
+        "errors"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "values",
+          "label": "Errors are returned values checked with if err != nil",
+          "criterion": "correctness",
+          "keywords": [
+            "error value",
+            "errors are values",
+            "return an error",
+            "if err",
+            "multiple return",
+            "no exceptions"
+          ]
+        },
+        {
+          "id": "wrapping",
+          "label": "Wrap with %w; errors.Is / errors.As; sentinel errors",
+          "criterion": "terminology",
+          "keywords": [
+            "wrap",
+            "errors.is",
+            "errors is",
+            "errors.as",
+            "errors as",
+            "percent w",
+            "sentinel"
+          ]
+        },
+        {
+          "id": "defer",
+          "label": "defer for cleanup, runs in LIFO order",
+          "criterion": "practical-implications",
+          "keywords": [
+            "defer",
+            "cleanup",
+            "close",
+            "unlock",
+            "lifo",
+            "last in first out"
+          ]
+        },
+        {
+          "id": "misuse",
+          "label": "Ignored errors, panic for normal errors, defer in loops",
+          "criterion": "pitfalls",
+          "keywords": [
+            "panic",
+            "recover",
+            "ignor",
+            "underscore",
+            "in a loop"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Deferred call arguments are evaluated when the defer statement runs, not when the deferred function executes.",
+        "recover only works when called directly inside a deferred function, and only in the goroutine that is panicking. A panic in another goroutine crashes the program.",
+        "errors.Join (Go 1.20) combines several errors; errors.Is and errors.As look through all of them."
+      ],
+      "modelAnswer": "Go functions return an error as a normal value, usually last, and the caller checks if err != nil right away: explicit control flow with no exceptions. Add context while keeping the cause with fmt.Errorf(\"reading config: %w\", err); callers test with errors.Is for sentinel values like io.EOF, or errors.As to extract a typed error. defer schedules a call to run when the function returns, which is ideal for Close, Unlock and other cleanup; deferred calls run in LIFO order. panic is for truly unrecoverable programmer errors, and recover, called inside a deferred function, stops a panic, for example at a server's request boundary. Pitfalls: ignoring errors with _, using panic for ordinary failures, and defer inside a long loop, which delays every cleanup until the function returns."
+    },
+    {
+      "id": "go-context-cancellation",
+      "title": "context.Context, cancellation and deadlines in Go",
+      "prompt": "Explain the context package in Go. How do cancellation and deadlines propagate through a call tree, why is the context the first parameter, and what goes wrong if you ignore it?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "concurrency",
+        "backend"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "signal",
+          "label": "Carries cancellation, deadline and request-scoped values",
+          "criterion": "correctness",
+          "keywords": [
+            "cancel",
+            "deadline",
+            "timeout",
+            "done channel",
+            "ctx.done",
+            "ctx done"
+          ]
+        },
+        {
+          "id": "derive",
+          "label": "WithCancel / WithTimeout / WithDeadline; parent cancels children",
+          "criterion": "terminology",
+          "keywords": [
+            "withcancel",
+            "with cancel",
+            "withtimeout",
+            "with timeout",
+            "with deadline",
+            "background",
+            "parent",
+            "child"
+          ]
+        },
+        {
+          "id": "propagate",
+          "label": "First parameter, passed to HTTP and DB calls, select on Done",
+          "criterion": "practical-implications",
+          "keywords": [
+            "first parameter",
+            "first argument",
+            "propagat",
+            "http request",
+            "database",
+            "select"
+          ]
+        },
+        {
+          "id": "leaks",
+          "label": "Goroutine leaks, missing defer cancel, contexts in structs",
+          "criterion": "pitfalls",
+          "keywords": [
+            "leak",
+            "defer cancel",
+            "struct",
+            "context values",
+            "keeps running"
+          ]
+        }
+      ],
+      "researchContext": [
+        "An HTTP server gives each request r.Context(), which is cancelled when the client disconnects or the handler returns.",
+        "ctx.Err() returns context.Canceled or context.DeadlineExceeded once Done is closed.",
+        "Use context values only for request-scoped data that crosses API boundaries (trace IDs, auth info), not for optional function parameters."
+      ],
+      "modelAnswer": "A context.Context carries a cancellation signal, an optional deadline and request-scoped values down a call tree. You derive children with context.WithCancel, WithTimeout or WithDeadline, and cancelling a parent cancels all of its children. Long-running work watches ctx.Done() in a select, and blocking calls such as HTTP requests and database queries take the ctx so they stop early and return ctx.Err(). By convention ctx is the first parameter, so it flows explicitly through every layer. Always defer cancel() after creating one, or its resources stay alive until the parent ends. If you ignore the context, goroutines keep working after the client has gone, which wastes resources and leaks goroutines. Don't store contexts in structs, and don't use context values for optional parameters."
+    },
+    {
+      "id": "go-maps-concurrency",
+      "title": "Maps and shared state between goroutines",
+      "prompt": "Explain why Go maps are not safe for concurrent use, and compare the options for sharing state between goroutines: sync.Mutex, sync.RWMutex, sync.Map and channels. When would you choose each?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "unsafe",
+          "label": "No internal locking; concurrent writes are a race and may crash",
+          "criterion": "correctness",
+          "keywords": [
+            "not safe",
+            "concurrent map",
+            "fatal error",
+            "race",
+            "crash",
+            "no locking"
+          ]
+        },
+        {
+          "id": "options",
+          "label": "Mutex, RWMutex, sync.Map, channels",
+          "criterion": "terminology",
+          "keywords": [
+            "mutex",
+            "rwmutex",
+            "rw mutex",
+            "sync.map",
+            "sync map",
+            "channel"
+          ]
+        },
+        {
+          "id": "choose",
+          "label": "Read-heavy, write-once caches, owner goroutine",
+          "criterion": "practical-implications",
+          "keywords": [
+            "read heavy",
+            "read-heavy",
+            "mostly reads",
+            "cache",
+            "owns the map",
+            "single goroutine"
+          ]
+        },
+        {
+          "id": "mistakes",
+          "label": "Race detector; copying mutexes; holding locks during I/O",
+          "criterion": "pitfalls",
+          "keywords": [
+            "race detector",
+            "dash race",
+            "copy",
+            "deadlock",
+            "defer unlock",
+            "slow i/o"
+          ]
+        }
+      ],
+      "researchContext": [
+        "The runtime detects many unsynchronised map writes and aborts with \"fatal error: concurrent map writes\", which cannot be recovered.",
+        "sync.Map is optimised for two cases: keys written once and read many times, and goroutines working on disjoint sets of keys. Otherwise a map plus Mutex is usually simpler and as fast.",
+        "Run tests with `go test -race`; `go vet` flags copying values that contain a sync.Mutex."
+      ],
+      "modelAnswer": "Built-in maps have no internal locking. Concurrent writes, or a write during a read, are a data race, and the runtime often detects this and aborts with \"concurrent map writes\". Options: guard the map with a sync.Mutex, the simple default; use a sync.RWMutex when reads vastly outnumber writes; use sync.Map for specific cases like caches whose keys are written once and read many times, or goroutines working on disjoint keys; or let one goroutine own the map and receive requests over channels. Find races with go test -race. Pitfalls: copying a struct that contains a mutex, forgetting to unlock (use defer), and holding a lock during slow I/O."
+    },
+    {
+      "id": "py-gil-concurrency",
+      "title": "The GIL, threads, processes and asyncio in Python",
+      "prompt": "Explain the Global Interpreter Lock in CPython. How does it affect threads for CPU-bound versus I/O-bound work, and when would you use threading, multiprocessing or asyncio?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "python",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "gil",
+          "label": "Only one thread runs Python bytecode at a time",
+          "criterion": "correctness",
+          "keywords": [
+            "global interpreter lock",
+            "gil",
+            "one thread at a time",
+            "bytecode",
+            "reference counting"
+          ]
+        },
+        {
+          "id": "bound",
+          "label": "CPU-bound vs I/O-bound work",
+          "criterion": "terminology",
+          "keywords": [
+            "cpu bound",
+            "cpu-bound",
+            "io bound",
+            "io-bound",
+            "i/o bound",
+            "released while waiting"
+          ]
+        },
+        {
+          "id": "choose",
+          "label": "asyncio / threading for I/O, multiprocessing for CPU",
+          "criterion": "practical-implications",
+          "keywords": [
+            "multiprocessing",
+            "asyncio",
+            "threading",
+            "process pool",
+            "numpy"
+          ]
+        },
+        {
+          "id": "myths",
+          "label": "GIL is not thread safety; process overhead; free-threaded builds",
+          "criterion": "pitfalls",
+          "keywords": [
+            "thread safe",
+            "race condition",
+            "free-threaded",
+            "free threaded",
+            "no gil",
+            "pickl",
+            "overhead"
+          ]
+        }
+      ],
+      "modelAnswer": "In CPython, the Global Interpreter Lock lets only one thread execute Python bytecode at a time, which keeps memory management (reference counting) simple. Threads still help for I/O-bound work, because the GIL is released while a thread waits on a socket or file. For CPU-bound pure-Python code, threads give no speed-up. Use asyncio for many concurrent I/O tasks in one thread, threading for blocking I/O libraries, and multiprocessing or ProcessPoolExecutor for CPU-bound work, at the cost of process start-up and pickling data between processes. C extensions such as NumPy can release the GIL during heavy computation. The GIL does not make your code thread-safe: compound operations like counter += 1 can still race. Since Python 3.13 there is also an optional free-threaded build without the GIL."
+    },
+    {
+      "id": "py-generators",
+      "title": "Generators and iterators in Python",
+      "prompt": "Explain generators and iterators in Python. How does yield work, why are generators memory-efficient, and how do generator expressions differ from list comprehensions?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "python",
+        "iteration",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "yield",
+          "label": "yield pauses the function and resumes on next()",
+          "criterion": "correctness",
+          "keywords": [
+            "yield",
+            "pause",
+            "resume",
+            "lazy",
+            "lazily",
+            "local state"
+          ]
+        },
+        {
+          "id": "protocol",
+          "label": "Iterator protocol: __iter__, __next__, StopIteration",
+          "criterion": "terminology",
+          "keywords": [
+            "iterator",
+            "dunder next",
+            "stopiteration",
+            "stop iteration",
+            "iterable"
+          ]
+        },
+        {
+          "id": "memory",
+          "label": "Constant memory for large or infinite streams; pipelines",
+          "criterion": "practical-implications",
+          "keywords": [
+            "memory",
+            "large file",
+            "stream",
+            "pipeline",
+            "infinite",
+            "one at a time"
+          ]
+        },
+        {
+          "id": "exhausted",
+          "label": "Generators can only be iterated once",
+          "criterion": "pitfalls",
+          "keywords": [
+            "exhaust",
+            "only once",
+            "single use",
+            "consumed",
+            "iterate again"
+          ]
+        }
+      ],
+      "modelAnswer": "An iterator is an object with __next__ (and __iter__) that returns the next item or raises StopIteration when it is done; a for loop uses this protocol. A generator function contains yield: calling it returns a generator object, and each next() runs the body until the next yield, hands back the value and pauses with its local state saved. Values are produced lazily, one at a time, so you can process a huge file line by line, chain processing pipelines, or represent infinite sequences in constant memory. A generator expression such as (x * x for x in data) is lazy, while a list comprehension [x * x for x in data] builds the whole list at once. Pitfall: generators are single-use, so once one is exhausted, iterating it again yields nothing."
+    },
+    {
+      "id": "py-mutability-references",
+      "title": "References, mutability and copying in Python",
+      "prompt": "Explain how Python variables, references and mutability work. Why does a mutable default argument cause bugs, and what is the difference between a shallow and a deep copy?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "python",
+        "memory",
+        "bugs"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "names",
+          "label": "Names are references bound to objects; assignment does not copy",
+          "criterion": "correctness",
+          "keywords": [
+            "reference",
+            "bound to",
+            "binds",
+            "same object",
+            "does not copy",
+            "doesn't copy"
+          ]
+        },
+        {
+          "id": "mutability",
+          "label": "Mutable vs immutable types",
+          "criterion": "terminology",
+          "keywords": [
+            "mutable",
+            "immutable",
+            "tuple",
+            "string",
+            "list",
+            "dict"
+          ]
+        },
+        {
+          "id": "copying",
+          "label": "Shallow copy vs deepcopy",
+          "criterion": "practical-implications",
+          "keywords": [
+            "shallow",
+            "deep copy",
+            "deepcopy",
+            "copy module",
+            "nested"
+          ]
+        },
+        {
+          "id": "default",
+          "label": "Mutable default argument evaluated once",
+          "criterion": "pitfalls",
+          "keywords": [
+            "default argument",
+            "mutable default",
+            "evaluated once",
+            "defined once",
+            "use none"
+          ]
+        }
+      ],
+      "modelAnswer": "Python names are references bound to objects; assignment never copies, it binds another name to the same object. Immutable objects (int, str, tuple) cannot change, so an operation that seems to modify them creates a new object. Mutable objects (list, dict, set) change in place, and every reference sees the change; function arguments are passed as references to the same objects. A default argument is evaluated once, when the function is defined, so def f(x, items=[]) shares one list across all calls; use items=None and create the list inside the function. copy.copy makes a shallow copy: a new outer container holding the same inner objects. copy.deepcopy recursively copies nested objects too."
+    },
+    {
+      "id": "py-decorators",
+      "title": "Decorators and closures in Python",
+      "prompt": "Explain how decorators work in Python. Cover functions as first-class objects, closures, and functools.wraps, with an example such as timing or caching.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "python",
+        "functions"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "wrapping",
+          "label": "A decorator takes a function and returns a new one",
+          "criterion": "correctness",
+          "keywords": [
+            "first class",
+            "first-class",
+            "takes a function",
+            "returns a function",
+            "returns a new function",
+            "wrapper"
+          ]
+        },
+        {
+          "id": "closure",
+          "label": "The wrapper is a closure over the original function",
+          "criterion": "terminology",
+          "keywords": [
+            "closure",
+            "enclosing scope",
+            "higher order",
+            "higher-order",
+            "args",
+            "kwargs"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "lru_cache, timing, logging, retries",
+          "criterion": "practical-implications",
+          "keywords": [
+            "lru_cache",
+            "lru cache",
+            "cache",
+            "timing",
+            "logging",
+            "retry"
+          ]
+        },
+        {
+          "id": "wraps",
+          "label": "functools.wraps keeps the name and docstring",
+          "criterion": "pitfalls",
+          "keywords": [
+            "functools.wraps",
+            "wraps",
+            "metadata",
+            "docstring"
+          ]
+        }
+      ],
+      "modelAnswer": "Functions in Python are first-class objects, so you can pass them in and return them. A decorator is a callable that takes a function and returns a new one: writing @timer above def f is the same as f = timer(f). The returned wrapper is a closure: it remembers the original function from the enclosing scope, usually accepts *args and **kwargs, does something before or after, and calls the original. Real uses include functools.lru_cache for memoisation, timing, logging, retries and access checks in web frameworks. Apply functools.wraps to the wrapper; otherwise the decorated function loses its __name__, docstring and signature, which hurts debugging. A decorator that takes arguments adds one more layer: a function that returns the decorator."
+    },
+    {
+      "id": "rust-ownership-borrowing",
+      "title": "Ownership and borrowing in Rust",
+      "prompt": "Explain ownership and borrowing in Rust. Cover move semantics, the rule of many shared borrows or one mutable borrow, and how this prevents data races and use-after-free without a garbage collector.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "rust",
+        "memory",
+        "safety"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "ownership",
+          "label": "One owner; value dropped when the owner goes out of scope; moves",
+          "criterion": "correctness",
+          "keywords": [
+            "owner",
+            "ownership",
+            "drop",
+            "out of scope",
+            "moved",
+            "move"
+          ]
+        },
+        {
+          "id": "borrowing",
+          "label": "Many &T or one &mut T; borrow checker",
+          "criterion": "terminology",
+          "keywords": [
+            "borrow",
+            "mutable reference",
+            "shared reference",
+            "borrow checker",
+            "ampersand mut"
+          ]
+        },
+        {
+          "id": "guarantees",
+          "label": "No GC; prevents use-after-free and data races at compile time",
+          "criterion": "practical-implications",
+          "keywords": [
+            "garbage collector",
+            "data race",
+            "use after free",
+            "compile time",
+            "double free"
+          ]
+        },
+        {
+          "id": "escape-hatches",
+          "label": "Excess cloning; Rc<RefCell<T>> moves checks to runtime",
+          "criterion": "pitfalls",
+          "keywords": [
+            "clone",
+            "refcell",
+            "lifetime",
+            "runtime panic",
+            "learning curve"
+          ]
+        }
+      ],
+      "modelAnswer": "Every value in Rust has exactly one owner, and when the owner goes out of scope the value is dropped, freeing its memory deterministically without a garbage collector. Assigning or passing a non-Copy value moves ownership, so the old variable can no longer be used. Instead of moving, you can borrow: any number of shared references (&T) or exactly one mutable reference (&mut T) at a time, and a reference can never outlive the value. The borrow checker enforces these rules at compile time, which rules out use-after-free, double free and data races, since a data race needs two aliases where at least one writes. The cost is a learning curve and sometimes restructuring code. Pitfalls are cloning everything to silence the compiler, and overusing Rc<RefCell<T>>, which moves borrow checks to runtime where they can panic."
+    },
+    {
+      "id": "rust-result-option",
+      "title": "Option, Result and the ? operator in Rust",
+      "prompt": "Explain how Rust handles errors and missing values with Option and Result. Cover pattern matching, the question mark operator, and when panicking with unwrap is acceptable.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "rust",
+        "errors"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "types",
+          "label": "Option (Some/None) and Result (Ok/Err) instead of null and exceptions",
+          "criterion": "correctness",
+          "keywords": [
+            "option",
+            "result",
+            "no null",
+            "no exceptions",
+            "null"
+          ]
+        },
+        {
+          "id": "matching",
+          "label": "Enums handled with match / if let; the ? operator",
+          "criterion": "terminology",
+          "keywords": [
+            "match",
+            "pattern matching",
+            "if let",
+            "question mark",
+            "enum"
+          ]
+        },
+        {
+          "id": "propagation",
+          "label": "Early return with ?, From conversion, thiserror/anyhow",
+          "criterion": "practical-implications",
+          "keywords": [
+            "propagat",
+            "early return",
+            "anyhow",
+            "thiserror",
+            "map err"
+          ]
+        },
+        {
+          "id": "unwrap",
+          "label": "unwrap/expect panic; fine in tests, not on untrusted input",
+          "criterion": "pitfalls",
+          "keywords": [
+            "unwrap",
+            "expect",
+            "panic",
+            "production",
+            "crash"
+          ]
+        }
+      ],
+      "modelAnswer": "Rust has no null and no exceptions. Option<T> is either Some(value) or None, and Result<T, E> is either Ok(value) or Err(error). Both are enums, so the compiler makes you handle each case, usually with match or if let, or with combinators like map and and_then. The ? operator returns early with the error, converting it through From, or gives you the success value, which makes propagating errors concise. Libraries often define error enums (for example with thiserror), and applications often use anyhow. unwrap and expect panic on None or Err: fine in tests, prototypes, or when failure is truly impossible (document it with expect), but avoid them on input you don't control in production."
+    },
+    {
+      "id": "rust-traits-generics",
+      "title": "Traits, generics and dyn in Rust",
+      "prompt": "Explain traits in Rust. Compare generics with trait bounds, which use static dispatch, against trait objects with dyn, which use dynamic dispatch, and describe the trade-offs.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "rust",
+        "types",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "trait",
+          "label": "A trait defines shared behaviour, like an interface",
+          "criterion": "correctness",
+          "keywords": [
+            "trait",
+            "shared behavior",
+            "shared behaviour",
+            "interface",
+            "default method",
+            "implement"
+          ]
+        },
+        {
+          "id": "dispatch",
+          "label": "Monomorphised generics vs dyn trait objects with a vtable",
+          "criterion": "terminology",
+          "keywords": [
+            "trait bound",
+            "monomorphiz",
+            "monomorphis",
+            "dyn",
+            "trait object",
+            "vtable",
+            "fat pointer"
+          ]
+        },
+        {
+          "id": "trade-offs",
+          "label": "Inlining and speed vs binary size and heterogeneous collections",
+          "criterion": "practical-implications",
+          "keywords": [
+            "static dispatch",
+            "dynamic dispatch",
+            "inline",
+            "binary size",
+            "compile time",
+            "different types",
+            "box"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "Only dyn-compatible (object-safe) traits; code bloat",
+          "criterion": "pitfalls",
+          "keywords": [
+            "object safe",
+            "object-safe",
+            "dyn compatible",
+            "sized",
+            "code bloat",
+            "generic method"
+          ]
+        }
+      ],
+      "modelAnswer": "A trait defines shared behaviour: a set of methods a type can implement, much like an interface, optionally with default methods. Generics with trait bounds, such as fn show<T: Display>(x: T), are monomorphised: the compiler generates a specialised copy for each concrete type, giving static dispatch, inlining and no runtime cost, but larger binaries and longer compile times. A trait object, &dyn Trait or Box<dyn Trait>, is a fat pointer to the data plus a vtable, giving dynamic dispatch: one copy of the code and the ability to keep different types in one collection, at the cost of an indirect call and no inlining. Only dyn-compatible (formerly object-safe) traits can be trait objects; for example, generic methods are not allowed unless restricted with where Self: Sized."
+    },
+    {
+      "id": "rust-send-sync",
+      "title": "Send, Sync, Arc and Mutex in Rust",
+      "prompt": "Explain the Send and Sync traits in Rust and how they make threads safe. Why are Rc and RefCell not thread-safe, and what do Arc and Mutex provide instead?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "rust",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "markers",
+          "label": "Send = can move to another thread; Sync = &T can be shared",
+          "criterion": "correctness",
+          "keywords": [
+            "send",
+            "sync",
+            "marker trait",
+            "auto trait",
+            "another thread",
+            "between threads"
+          ]
+        },
+        {
+          "id": "types",
+          "label": "Rc/RefCell vs Arc/Mutex, atomic reference counting",
+          "criterion": "terminology",
+          "keywords": [
+            "arc",
+            "mutex",
+            "refcell",
+            "atomic",
+            "reference count",
+            "rwlock"
+          ]
+        },
+        {
+          "id": "compile",
+          "label": "thread::spawn requires Send; unsafe sharing is a compile error",
+          "criterion": "practical-implications",
+          "keywords": [
+            "spawn",
+            "compile error",
+            "won't compile",
+            "fearless concurrency",
+            "static lifetime"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "Deadlocks and lock poisoning are still possible",
+          "criterion": "pitfalls",
+          "keywords": [
+            "deadlock",
+            "poison",
+            "lock order",
+            "logic race"
+          ]
+        }
+      ],
+      "modelAnswer": "Send means a value can be moved to another thread; Sync means a shared reference &T can be used from several threads (T is Sync if &T is Send). Both are auto marker traits: a type gets them automatically when all its fields have them. thread::spawn requires its closure to be Send and 'static, so unsafe sharing becomes a compile error rather than a runtime bug. Rc uses a non-atomic reference count, so it is neither Send nor Sync, and RefCell does borrow checks at runtime without synchronisation, so it is not Sync. Across threads, use Arc, an atomically reference-counted pointer, for shared ownership, and Mutex or RwLock for mutation: Arc<Mutex<T>>. Rust prevents data races, but not deadlocks or higher-level logic races, and a Mutex becomes poisoned if a thread panics while holding it."
+    },
+    {
+      "id": "java-jvm-gc",
+      "title": "The JVM, JIT and garbage collection",
+      "prompt": "Explain how Java code runs on the JVM and how garbage collection works. Cover bytecode and JIT compilation, the heap and generational collection, and what causes GC pauses.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "java",
+        "jvm",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "bytecode",
+          "label": "javac compiles to bytecode run by the JVM",
+          "criterion": "correctness",
+          "keywords": [
+            "bytecode",
+            "jvm",
+            "virtual machine",
+            "class file",
+            "javac"
+          ]
+        },
+        {
+          "id": "jit-gc",
+          "label": "JIT; reachability from GC roots; young and old generations",
+          "criterion": "terminology",
+          "keywords": [
+            "jit",
+            "just in time",
+            "gc roots",
+            "reachable",
+            "young generation",
+            "old generation",
+            "generational"
+          ]
+        },
+        {
+          "id": "pauses",
+          "label": "Stop-the-world pauses, G1/ZGC, heap sizing",
+          "criterion": "practical-implications",
+          "keywords": [
+            "pause",
+            "stop the world",
+            "latency",
+            "g1",
+            "zgc",
+            "heap size"
+          ]
+        },
+        {
+          "id": "leaks",
+          "label": "Leaks via unintended references; OutOfMemoryError",
+          "criterion": "pitfalls",
+          "keywords": [
+            "memory leak",
+            "static map",
+            "listener",
+            "outofmemory",
+            "out of memory"
+          ]
+        }
+      ],
+      "modelAnswer": "javac compiles Java into platform-independent bytecode. The JVM loads classes, interprets the bytecode at first, profiles it, and JIT-compiles hot methods into optimised machine code. Objects live on the heap, and the garbage collector frees objects that are no longer reachable from GC roots such as thread stacks and static fields. Most objects die young, so collectors are generational: frequent, cheap collections of the young generation and rarer collections of the old generation. Modern collectors such as G1 (the default) and ZGC do much of their work concurrently to keep pauses short, but stop-the-world pauses still happen and grow with live data and allocation rate. Java can still leak memory: objects kept reachable by mistake, for example in static maps, caches or listeners that are never removed, until an OutOfMemoryError."
+    },
+    {
+      "id": "java-equals-hashcode",
+      "title": "equals, hashCode and HashMap in Java",
+      "prompt": "Explain the contract between equals and hashCode in Java, how HashMap uses them, and what goes wrong if you override one without the other or use mutable fields in a key.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "java",
+        "collections"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "contract",
+          "label": "Equal objects must have equal hash codes",
+          "criterion": "correctness",
+          "keywords": [
+            "contract",
+            "same hash",
+            "equal hash",
+            "equal objects",
+            "must return the same"
+          ]
+        },
+        {
+          "id": "hashmap",
+          "label": "hashCode picks the bucket, equals finds the key",
+          "criterion": "terminology",
+          "keywords": [
+            "hashcode",
+            "hash code",
+            "equals",
+            "bucket",
+            "hashmap",
+            "collision"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "Objects.hash / Objects.equals, records",
+          "criterion": "practical-implications",
+          "keywords": [
+            "objects.hash",
+            "objects hash",
+            "record",
+            "lombok",
+            "generate"
+          ]
+        },
+        {
+          "id": "bugs",
+          "label": "Missed lookups, duplicates, mutable keys",
+          "criterion": "pitfalls",
+          "keywords": [
+            "mutable",
+            "can't find",
+            "cannot find",
+            "duplicate",
+            "lost",
+            "unreachable"
+          ]
+        }
+      ],
+      "modelAnswer": "The contract: if a.equals(b) is true, then a.hashCode() must equal b.hashCode(). The reverse need not hold, because collisions are allowed. HashMap and HashSet use hashCode to choose a bucket, then equals to find the matching key inside it. If you override equals but not hashCode, two equal keys usually land in different buckets, so lookups miss and a set can hold \"duplicates\". If a key's fields change after it is inserted, its hash changes and the entry becomes unreachable. Base both methods on the same immutable fields, use Objects.hash and Objects.equals, or use records, which generate both correctly."
+    },
+    {
+      "id": "java-concurrency-basics",
+      "title": "Visibility, volatile and executors in Java",
+      "prompt": "Explain the basics of the Java memory model: visibility, the volatile keyword, synchronized and happens-before. When would you use an ExecutorService or virtual threads instead of creating threads by hand?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "java",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "visibility",
+          "label": "Writes may be invisible or reordered without happens-before",
+          "criterion": "correctness",
+          "keywords": [
+            "visibility",
+            "visible",
+            "happens before",
+            "happens-before",
+            "reorder",
+            "memory model"
+          ]
+        },
+        {
+          "id": "keywords",
+          "label": "volatile, synchronized, atomics",
+          "criterion": "terminology",
+          "keywords": [
+            "volatile",
+            "synchronized",
+            "atomicinteger",
+            "atomic integer",
+            "monitor",
+            "locking"
+          ]
+        },
+        {
+          "id": "executors",
+          "label": "Thread pools, futures, virtual threads",
+          "criterion": "practical-implications",
+          "keywords": [
+            "executorservice",
+            "executor service",
+            "thread pool",
+            "virtual thread",
+            "completablefuture",
+            "future"
+          ]
+        },
+        {
+          "id": "races",
+          "label": "volatile is not atomic; check-then-act; deadlocks",
+          "criterion": "pitfalls",
+          "keywords": [
+            "not atomic",
+            "count plus plus",
+            "check then act",
+            "deadlock",
+            "race condition"
+          ]
+        }
+      ],
+      "modelAnswer": "Without synchronisation, one thread's writes may never become visible to another, and operations can be reordered. The Java memory model defines happens-before rules: unlocking a monitor happens-before every later lock of the same monitor, and a write to a volatile field happens-before later reads of that field. volatile gives visibility and ordering, but not atomicity: count++ on a volatile int is still a race, so use AtomicInteger or a lock. synchronized gives mutual exclusion plus visibility. Rather than creating threads by hand, submit tasks to an ExecutorService, which manages a thread pool, returns futures and shuts down cleanly. Since Java 21, virtual threads make one thread per task cheap for blocking I/O. Pitfalls: check-then-act races and deadlocks from inconsistent lock ordering."
+    },
+    {
+      "id": "js-event-loop",
+      "title": "The JavaScript event loop",
+      "prompt": "Explain the JavaScript event loop. Cover the call stack, the task queue and the microtask queue, and why a Promise callback runs before a setTimeout callback scheduled with zero delay.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "javascript",
+        "async",
+        "runtime"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "single-thread",
+          "label": "One thread and call stack; async work handled by the runtime",
+          "criterion": "correctness",
+          "keywords": [
+            "single thread",
+            "single-threaded",
+            "call stack",
+            "event loop",
+            "non-blocking",
+            "non blocking"
+          ]
+        },
+        {
+          "id": "queues",
+          "label": "Task (macrotask) queue vs microtask queue",
+          "criterion": "terminology",
+          "keywords": [
+            "microtask",
+            "macrotask",
+            "task queue",
+            "callback queue",
+            "promise"
+          ]
+        },
+        {
+          "id": "ordering",
+          "label": "Microtasks drain after each task, so promises run before timeouts",
+          "criterion": "practical-implications",
+          "keywords": [
+            "settimeout",
+            "set timeout",
+            "await",
+            "after each task",
+            "before the timeout"
+          ]
+        },
+        {
+          "id": "blocking",
+          "label": "Long synchronous work blocks the loop; use workers",
+          "criterion": "pitfalls",
+          "keywords": [
+            "block",
+            "freeze",
+            "starv",
+            "web worker",
+            "worker thread",
+            "cpu heavy"
+          ]
+        }
+      ],
+      "modelAnswer": "JavaScript runs your code on a single thread with one call stack. Slow operations such as timers, network requests and file I/O are handled by the browser or Node, which queue a callback when they finish. The event loop runs one task (macrotask) at a time, such as a setTimeout callback or an event handler, and after each task it drains the whole microtask queue: Promise reactions, queueMicrotask callbacks and code after an await. That's why Promise.resolve().then(a) runs before setTimeout(b, 0): a is a microtask processed as soon as the current script finishes, while b waits for a later task. Pitfalls: long synchronous work blocks the loop, freezing the UI or stalling a server, and endless microtask chains can starve rendering. Move CPU-heavy work to Web Workers or worker threads."
+    },
+    {
+      "id": "js-closures-this",
+      "title": "Closures and this in JavaScript",
+      "prompt": "Explain closures in JavaScript and how the value of this is determined. Give an example of a closure, and explain how arrow functions differ from regular functions.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "javascript",
+        "functions"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "closure",
+          "label": "A function keeps access to variables of the scope where it was created",
+          "criterion": "correctness",
+          "keywords": [
+            "closure",
+            "lexical scope",
+            "outer function",
+            "remembers",
+            "enclosing scope"
+          ]
+        },
+        {
+          "id": "this",
+          "label": "this depends on the call site; arrow functions use lexical this",
+          "criterion": "terminology",
+          "keywords": [
+            "call site",
+            "arrow function",
+            "lexical this",
+            "bind",
+            "value of this",
+            "strict mode"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "Private state, counters, callbacks, event handlers",
+          "criterion": "practical-implications",
+          "keywords": [
+            "private",
+            "counter",
+            "callback",
+            "event handler",
+            "module",
+            "memoiz"
+          ]
+        },
+        {
+          "id": "gotchas",
+          "label": "Losing this in callbacks; var in loops; retained memory",
+          "criterion": "pitfalls",
+          "keywords": [
+            "lose this",
+            "loses this",
+            "var in a loop",
+            "use let",
+            "memory",
+            "undefined"
+          ]
+        }
+      ],
+      "modelAnswer": "A closure is a function together with the variables from the scope where it was created; it can keep using them after the outer function has returned. Example: function counter() { let n = 0; return () => ++n; }. Each counter has its own private n. Closures power callbacks, event handlers, module privacy and memoisation. For regular functions, this is decided at the call site: obj.method() sets this to obj, a plain call gives undefined in strict mode, new sets it to the new object, and call, apply and bind set it explicitly. Arrow functions have no this of their own; they use the this of the enclosing scope, which makes them handy as callbacks inside methods. Pitfalls: losing this when passing obj.method as a callback, var in loops sharing one variable (use let), and closures keeping large objects alive."
+    },
+    {
+      "id": "ts-type-system",
+      "title": "TypeScript's type system",
+      "prompt": "Explain TypeScript's type system. Cover structural typing, type inference, union types with narrowing, and why types are erased at runtime, including what that means for validating API data.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "typescript",
+        "types"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "structural",
+          "label": "Static, structural typing checked at compile time",
+          "criterion": "correctness",
+          "keywords": [
+            "structural",
+            "shape",
+            "compile time",
+            "static type",
+            "duck typing"
+          ]
+        },
+        {
+          "id": "features",
+          "label": "Inference, unions, narrowing, type guards, generics",
+          "criterion": "terminology",
+          "keywords": [
+            "union",
+            "narrow",
+            "inference",
+            "infer",
+            "type guard",
+            "discriminated",
+            "generic"
+          ]
+        },
+        {
+          "id": "validation",
+          "label": "Validate untrusted data at runtime, e.g. with Zod",
+          "criterion": "practical-implications",
+          "keywords": [
+            "zod",
+            "validat",
+            "runtime check",
+            "api response",
+            "json",
+            "unknown"
+          ]
+        },
+        {
+          "id": "escape",
+          "label": "Types are erased; any and as assertions hide bugs",
+          "criterion": "pitfalls",
+          "keywords": [
+            "erased",
+            "type erasure",
+            "type assertion",
+            "as any",
+            "any type",
+            "no runtime"
+          ]
+        }
+      ],
+      "modelAnswer": "TypeScript adds static types that are checked at compile time and then erased: the output is plain JavaScript. Typing is structural, so a value fits a type if it has the required shape, whatever its declared name. The compiler infers most types from initial values and return statements. Union types, such as string | number or discriminated unions like { kind: 'ok' } | { kind: 'error' }, are narrowed with typeof, in, checks on the discriminant, or custom type guards. Because types vanish at runtime, data from fetch or JSON.parse is untrusted: type it as unknown and validate it with a schema library such as Zod before using it. Pitfalls: any and as assertions silence the checker and let wrong data through."
+    }
+  ]
+}

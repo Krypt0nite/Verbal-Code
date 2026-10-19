@@ -2,16 +2,17 @@
 
 ## Taxonomy
 
-`src/data/taxonomy.json` defines 7 categories and their subcategories. The dropdowns are generated from it, so adding a subcategory there makes it selectable immediately.
+`src/data/taxonomy.json` defines 8 categories and their subcategories. The dropdowns are generated from it, so adding a subcategory there makes it selectable immediately.
 
 | Category id | Subcategories |
 | --- | --- |
-| `tech-ai` | programming-languages, dsa, system-design, backend-engineering, frontend-engineering, databases-and-storage, networking, operating-systems, cloud-and-devops, distributed-systems, api-design, security, software-architecture, testing-and-quality-engineering, performance-engineering, ai-ml, genai-llms, data-engineering, compilers-and-build-systems, developer-tools |
+| `tech-ai` | programming-languages (concepts shared by all languages), dsa, system-design, backend-engineering, frontend-engineering, databases-and-storage, networking, operating-systems, cloud-and-devops, distributed-systems, api-design, security, software-architecture, testing-and-quality-engineering, performance-engineering, ai-ml, genai-llms, data-engineering, compilers-and-build-systems, developer-tools |
+| `programming-languages` | cpp, go, python, rust, java, javascript-typescript |
 | `interview-skills` | personal-introduction, project-deep-dives, behavioral-questions, technical-communication, problem-solving-explanations, leadership-and-teamwork, trade-offs-and-decision-making |
 | `communication-english` | grammar, vocabulary, conciseness, explaining-complex-ideas, impromptu-speaking, professional-communication |
 | `general-knowledge` | science, history, literature, geography, economics, current-affairs |
 | `business` | startups, product-management, business-strategy, entrepreneurship, personal-finance |
-| `science-engineering` | mathematics, physics, quantum-mechanics, semiconductor-technology, materials-science, nanotechnology |
+| `science-engineering` | mathematics, physics, chemistry, quantum-mechanics, semiconductor-technology, materials-science, nanotechnology |
 | `fitness-nutrition` | sports-science, exercise-fundamentals, nutrition-education, healthy-habits |
 
 ## Adding a question

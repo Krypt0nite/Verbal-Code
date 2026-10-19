@@ -10,12 +10,12 @@ describe('shipped question bank', () => {
     expect(questionBank.questions.length).toBeGreaterThan(50);
   });
 
-  it('covers every Tech & AI subcategory', () => {
-    const tech = questionBank.taxonomy.categories.find((c) => c.id === 'tech-ai');
-    expect(tech).toBeDefined();
-    for (const sub of tech!.subcategories) {
-      const count = questionBank.questions.filter((q) => q.subcategoryId === sub.id).length;
-      expect(count, `no questions for ${sub.id}`).toBeGreaterThan(0);
+  it.each(['tech-ai', 'programming-languages'])('covers every %s subcategory', (categoryId) => {
+    const category = questionBank.taxonomy.categories.find((c) => c.id === categoryId);
+    expect(category).toBeDefined();
+    for (const sub of category!.subcategories) {
+      const count = questionBank.questions.filter((q) => q.categoryId === categoryId && q.subcategoryId === sub.id).length;
+      expect(count, `no questions for ${categoryId}/${sub.id}`).toBeGreaterThan(0);
     }
   });
 

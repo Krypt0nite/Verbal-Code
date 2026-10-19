@@ -8,7 +8,7 @@
       "subcategories": [
         {
           "id": "programming-languages",
-          "label": "Programming Languages"
+          "label": "Programming concepts (all languages)"
         },
         {
           "id": "dsa",
@@ -85,6 +85,37 @@
         {
           "id": "developer-tools",
           "label": "Developer Tools"
+        }
+      ]
+    },
+    {
+      "id": "programming-languages",
+      "label": "Programming Languages",
+      "description": "Language-specific interview topics: C++, Go, Python, Rust, Java and JavaScript/TypeScript.",
+      "subcategories": [
+        {
+          "id": "cpp",
+          "label": "C++"
+        },
+        {
+          "id": "go",
+          "label": "Go (Golang)"
+        },
+        {
+          "id": "python",
+          "label": "Python"
+        },
+        {
+          "id": "rust",
+          "label": "Rust"
+        },
+        {
+          "id": "java",
+          "label": "Java"
+        },
+        {
+          "id": "javascript-typescript",
+          "label": "JavaScript & TypeScript"
         }
       ]
     },
@@ -215,7 +246,7 @@
     {
       "id": "science-engineering",
       "label": "Science & Engineering",
-      "description": "Mathematics, physics and materials.",
+      "description": "Mathematics, physics, chemistry and materials.",
       "subcategories": [
         {
           "id": "mathematics",
@@ -224,6 +255,10 @@
         {
           "id": "physics",
           "label": "Physics"
+        },
+        {
+          "id": "chemistry",
+          "label": "Chemistry"
         },
         {
           "id": "quantum-mechanics",

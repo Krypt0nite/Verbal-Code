@@ -99,7 +99,7 @@ The AI evaluator is **off by default** and needs a server-side key.
 - **Local evaluator is heuristic.** Concept coverage is keyword-based. Mentioning a term doesn't prove it was explained correctly, and correct paraphrases may be missed. It cannot check facts; use the model answer or AI feedback for that.
 - **Mock interview** is a basic sequence of 2–6 questions with a score summary; there are no follow-up questions yet.
 - **Deep research** uses curated notes stored with each question. It does not search the web.
-- The question bank (77 questions) is deliberately small and reviewed rather than large. Every Tech & AI subcategory has at least one question; non-technical categories have a few starter questions.
+- The question bank (106 questions) is deliberately small and reviewed rather than large. Every Tech & AI and Programming Languages subcategory has at least one question; non-technical categories have a few starter questions.
 
 ## Manual verification checklist
 

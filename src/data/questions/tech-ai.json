@@ -93,12 +93,12 @@
           ]
         }
       ],
-      "modelAnswer": "Sliding window maintains a contiguous range [left, right] and a running summary (sum, counts in a hash map). Move right to expand; while the window violates the constraint, move left to shrink. Example: longest substring without repeating characters. Each index is added and removed at most once, so time is O(n); space is O(1) or O(alphabet/k) for the count map. It needs a monotonic property \u2014 shrinking must never make a valid window invalid \u2014 so it fails for sums with negative numbers, where prefix sums + hash map are used instead. Edge cases: empty input, k larger than n.",
+      "modelAnswer": "Sliding window maintains a contiguous range [left, right] and a running summary (sum, counts in a hash map). Move right to expand; while the window violates the constraint, move left to shrink. Example: longest substring without repeating characters. Each index is added and removed at most once, so time is O(n); space is O(1) or O(alphabet/k) for the count map. It needs a monotonic property — shrinking must never make a valid window invalid — so it fails for sums with negative numbers, where prefix sums + hash map are used instead. Edge cases: empty input, k larger than n.",
       "researchContext": [
-        "Fixed-size windows (max sum of k elements) vs variable-size windows (smallest subarray with sum \u2265 S).",
+        "Fixed-size windows (max sum of k elements) vs variable-size windows (smallest subarray with sum ≥ S).",
         "Key invariant: shrinking the window must move it toward validity; with negative numbers that monotonicity breaks.",
         "Typical state: running sum, frequency map, count of distinct elements.",
-        "Complexity argument: amortised analysis \u2014 each pointer moves at most n times."
+        "Complexity argument: amortised analysis — each pointer moves at most n times."
       ]
     },
     {
@@ -178,7 +178,7 @@
           ]
         }
       ],
-      "modelAnswer": "Binary search works on sorted (more generally, monotonic) data. Compare the target with the middle element and discard the half that cannot contain it. After k steps n/2^k elements remain, so it finishes in about log2(n) steps: O(log n) time. Iterative uses O(1) extra space; recursive uses O(log n) stack. Pitfalls: computing mid as (lo+hi)/2 can overflow \u2014 use lo + (hi-lo)/2; off-by-one loop bounds; duplicates when you need the first/last occurrence; empty arrays.",
+      "modelAnswer": "Binary search works on sorted (more generally, monotonic) data. Compare the target with the middle element and discard the half that cannot contain it. After k steps n/2^k elements remain, so it finishes in about log2(n) steps: O(log n) time. Iterative uses O(1) extra space; recursive uses O(log n) stack. Pitfalls: computing mid as (lo+hi)/2 can overflow — use lo + (hi-lo)/2; off-by-one loop bounds; duplicates when you need the first/last occurrence; empty arrays.",
       "researchContext": [
         "Generalisation: binary search on the answer (e.g. minimum capacity to ship packages in D days).",
         "Loop invariant thinking avoids off-by-one bugs: decide whether hi is inclusive or exclusive.",
@@ -270,7 +270,7 @@
           ]
         }
       ],
-      "modelAnswer": "DFS goes as deep as possible before backtracking, using recursion or an explicit stack; BFS explores neighbours level by level using a queue. Both run in O(V + E) with an adjacency list and need a visited set to handle cycles. Memory: BFS holds the frontier (can be wide), DFS holds the current path (can be deep \u2014 risk of stack overflow). Use BFS for shortest path in an unweighted graph (minimum moves in a grid); use DFS for topological sort, cycle detection, connected components and backtracking.",
+      "modelAnswer": "DFS goes as deep as possible before backtracking, using recursion or an explicit stack; BFS explores neighbours level by level using a queue. Both run in O(V + E) with an adjacency list and need a visited set to handle cycles. Memory: BFS holds the frontier (can be wide), DFS holds the current path (can be deep — risk of stack overflow). Use BFS for shortest path in an unweighted graph (minimum moves in a grid); use DFS for topological sort, cycle detection, connected components and backtracking.",
       "researchContext": [
         "Grid problems: treat cells as nodes, 4-directional neighbours as edges.",
         "Iterative DFS avoids recursion depth limits.",
@@ -311,7 +311,7 @@
         },
         {
           "id": "heap-property",
-          "label": "Heap property: parent \u2264 children (min-heap)",
+          "label": "Heap property: parent ≤ children (min-heap)",
           "criterion": "correctness",
           "keywords": [
             "heap property",
@@ -365,7 +365,7 @@
           ]
         }
       ],
-      "modelAnswer": "A binary heap is a complete binary tree stored in an array: children of index i are 2i+1 and 2i+2. The heap property (min-heap: parent \u2264 children) means the minimum is at index 0, so peek is O(1). Insert appends and sifts up; extract-min moves the last element to the root and sifts down \u2014 both O(log n) because the tree height is log n. Bottom-up heapify is O(n) because most nodes are near the leaves and sift down a short distance. Compared with a sorted array (O(n) insert) or balanced BST (O(log n) everything but more overhead), heaps are compact and cache-friendly. Uses: Dijkstra, top-k, merging k sorted lists, schedulers."
+      "modelAnswer": "A binary heap is a complete binary tree stored in an array: children of index i are 2i+1 and 2i+2. The heap property (min-heap: parent ≤ children) means the minimum is at index 0, so peek is O(1). Insert appends and sifts up; extract-min moves the last element to the root and sifts down — both O(log n) because the tree height is log n. Bottom-up heapify is O(n) because most nodes are near the leaves and sift down a short distance. Compared with a sorted array (O(n) insert) or balanced BST (O(log n) everything but more overhead), heaps are compact and cache-friendly. Uses: Dijkstra, top-k, merging k sorted lists, schedulers."
     },
     {
       "id": "dsa-dynamic-programming",
@@ -429,7 +429,7 @@
         },
         {
           "id": "complexity",
-          "label": "Complexity = states \u00d7 transition cost",
+          "label": "Complexity = states × transition cost",
           "criterion": "time-complexity",
           "keywords": [
             "number of states",
@@ -553,7 +553,7 @@
           ]
         }
       ],
-      "modelAnswer": "A hash function turns the key into an integer, reduced modulo the bucket count to pick a slot. Different keys can land in the same slot: chaining stores a list per bucket; open addressing probes for the next free slot. With a good hash and a bounded load factor (entries / buckets, e.g. \u2264 0.75) buckets stay short, so lookup is O(1) on average. When the load factor is exceeded the table grows (usually doubling) and rehashes everything \u2014 O(n) once, amortised O(1). Worst case is O(n) if many keys collide (bad hash or adversarial input). Tree maps give O(log n) and ordered iteration."
+      "modelAnswer": "A hash function turns the key into an integer, reduced modulo the bucket count to pick a slot. Different keys can land in the same slot: chaining stores a list per bucket; open addressing probes for the next free slot. With a good hash and a bounded load factor (entries / buckets, e.g. ≤ 0.75) buckets stay short, so lookup is O(1) on average. When the load factor is exceeded the table grows (usually doubling) and rehashes everything — O(n) once, amortised O(1). Worst case is O(n) if many keys collide (bad hash or adversarial input). Tree maps give O(log n) and ordered iteration."
     },
     {
       "id": "sd-load-balancer",
@@ -640,7 +640,7 @@
           ]
         }
       ],
-      "modelAnswer": "A load balancer sits in front of a pool of servers and picks one per request/connection. Round robin is simple; least-connections adapts to uneven request cost; consistent hashing keeps a key on the same server (useful for caches). Health checks take failing servers out of rotation. Layer 4 balancers route TCP connections cheaply; layer 7 balancers understand HTTP and can route by path, terminate TLS and retry. Sticky sessions simplify stateful apps but unbalance load and complicate failover \u2014 prefer stateless servers with external session storage. The balancer itself needs redundancy (pairs with failover, or anycast/DNS)."
+      "modelAnswer": "A load balancer sits in front of a pool of servers and picks one per request/connection. Round robin is simple; least-connections adapts to uneven request cost; consistent hashing keeps a key on the same server (useful for caches). Health checks take failing servers out of rotation. Layer 4 balancers route TCP connections cheaply; layer 7 balancers understand HTTP and can route by path, terminate TLS and retry. Sticky sessions simplify stateful apps but unbalance load and complicate failover — prefer stateless servers with external session storage. The balancer itself needs redundancy (pairs with failover, or anycast/DNS)."
     },
     {
       "id": "sd-url-shortener",
@@ -758,17 +758,17 @@
           ]
         }
       ],
-      "modelAnswer": "Requirements: create short link, redirect, optional custom alias/expiry; ~100:1 reads to writes. IDs: a distributed counter (pre-allocated ranges per server) encoded in base62 gives short collision-free codes but is guessable; hashing the URL needs collision checks. Store code \u2192 URL in a key-value store partitioned by code, replicated. Read path: client \u2192 LB \u2192 service \u2192 cache (Redis/CDN) \u2192 DB, returning 301 (cacheable) or 302 (if you need analytics). Bottlenecks: hot links (cache), write ID allocation (ranges), abuse (rate limits, malware checks). New links should be readable immediately \u2014 write-through cache or read from primary briefly.",
+      "modelAnswer": "Requirements: create short link, redirect, optional custom alias/expiry; ~100:1 reads to writes. IDs: a distributed counter (pre-allocated ranges per server) encoded in base62 gives short collision-free codes but is guessable; hashing the URL needs collision checks. Store code → URL in a key-value store partitioned by code, replicated. Read path: client → LB → service → cache (Redis/CDN) → DB, returning 301 (cacheable) or 302 (if you need analytics). Bottlenecks: hot links (cache), write ID allocation (ranges), abuse (rate limits, malware checks). New links should be readable immediately — write-through cache or read from primary briefly.",
       "researchContext": [
-        "7 base62 characters \u2248 3.5 trillion codes.",
-        "301 is cached by browsers \u2014 fewer hits but lost analytics; 302 keeps every click visible.",
+        "7 base62 characters ≈ 3.5 trillion codes.",
+        "301 is cached by browsers — fewer hits but lost analytics; 302 keeps every click visible.",
         "Analytics should be asynchronous (queue) so it never slows redirects."
       ]
     },
     {
       "id": "sd-cache-invalidation",
       "title": "Cache invalidation strategies",
-      "prompt": "Explain common cache invalidation and update strategies \u2014 such as TTL, write-through, write-behind and cache-aside. Describe the consistency problems each one can cause and how you would choose between them.",
+      "prompt": "Explain common cache invalidation and update strategies — such as TTL, write-through, write-behind and cache-aside. Describe the consistency problems each one can cause and how you would choose between them.",
       "categoryId": "tech-ai",
       "subcategoryId": "system-design",
       "difficulty": "intermediate",
@@ -862,7 +862,7 @@
     {
       "id": "sd-sql-vs-nosql",
       "title": "SQL versus NoSQL for a workload",
-      "prompt": "Compare SQL and NoSQL databases for a specific workload of your choice \u2014 for example, an e-commerce order system or a high-volume event log. Justify your choice by data model, query patterns, consistency needs and scaling.",
+      "prompt": "Compare SQL and NoSQL databases for a specific workload of your choice — for example, an e-commerce order system or a high-volume event log. Justify your choice by data model, query patterns, consistency needs and scaling.",
       "categoryId": "tech-ai",
       "subcategoryId": "system-design",
       "difficulty": "intermediate",
@@ -946,7 +946,7 @@
           ]
         }
       ],
-      "modelAnswer": "Orders: strongly relational (customers, orders, line items, inventory), needs multi-row ACID transactions and ad-hoc reporting \u2014 PostgreSQL fits; scale with read replicas, partitioning by time, and later sharding by customer. Event log: append-heavy, queried by key and time range, no joins, tolerates eventual consistency \u2014 a wide-column store (Cassandra) or a log system partitions writes horizontally. Trade-off: NoSQL gives write scalability and flexible schemas but pushes joins/denormalisation and integrity checks into the application."
+      "modelAnswer": "Orders: strongly relational (customers, orders, line items, inventory), needs multi-row ACID transactions and ad-hoc reporting — PostgreSQL fits; scale with read replicas, partitioning by time, and later sharding by customer. Event log: append-heavy, queried by key and time range, no joins, tolerates eventual consistency — a wide-column store (Cassandra) or a log system partitions writes horizontally. Trade-off: NoSQL gives write scalability and flexible schemas but pushes joins/denormalisation and integrity checks into the application."
     },
     {
       "id": "sd-sharding",
@@ -1289,7 +1289,7 @@
         },
         {
           "id": "flow",
-          "label": "API \u2192 validation \u2192 preferences \u2192 queue \u2192 workers \u2192 provider",
+          "label": "API → validation → preferences → queue → workers → provider",
           "criterion": "architecture",
           "keywords": [
             "template",
@@ -1431,7 +1431,7 @@
           ]
         }
       ],
-      "modelAnswer": "An operation is idempotent if repeating it has the same effect as doing it once. By HTTP semantics GET, HEAD, PUT and DELETE are idempotent; POST is not. It matters because clients retry after timeouts without knowing whether the first request succeeded \u2014 a retried payment could charge twice. Fix: the client sends an Idempotency-Key; the server stores key \u2192 result in a table with a unique constraint, and on a repeat returns the stored response instead of reprocessing. Handle concurrent duplicates with the unique constraint or a lock, and expire keys after a window."
+      "modelAnswer": "An operation is idempotent if repeating it has the same effect as doing it once. By HTTP semantics GET, HEAD, PUT and DELETE are idempotent; POST is not. It matters because clients retry after timeouts without knowing whether the first request succeeded — a retried payment could charge twice. Fix: the client sends an Idempotency-Key; the server stores key → result in a table with a unique constraint, and on a repeat returns the stored response instead of reprocessing. Handle concurrent duplicates with the unique constraint or a lock, and expire keys after a window."
     },
     {
       "id": "be-authn-vs-authz",
@@ -1510,7 +1510,7 @@
           ]
         }
       ],
-      "modelAnswer": "Authentication proves identity (password + 2FA, SSO); authorization decides whether that identity may perform an action on a resource. Example: logging in to a bank app is authentication; being allowed to view only your own account is authorization. After login, identity travels as a session cookie or a signed token (JWT). Authorization must be enforced on the server for every request and every resource \u2014 checking ownership, roles (RBAC) or attributes \u2014 never just by hiding UI buttons. Broken object-level authorization is a top API vulnerability."
+      "modelAnswer": "Authentication proves identity (password + 2FA, SSO); authorization decides whether that identity may perform an action on a resource. Example: logging in to a bank app is authentication; being allowed to view only your own account is authorization. After login, identity travels as a session cookie or a signed token (JWT). Authorization must be enforced on the server for every request and every resource — checking ownership, roles (RBAC) or attributes — never just by hiding UI buttons. Broken object-level authorization is a top API vulnerability."
     },
     {
       "id": "be-connection-pooling-isolation",
@@ -1588,7 +1588,7 @@
           ]
         }
       ],
-      "modelAnswer": "Opening a DB connection costs a TCP + TLS handshake, authentication and server-side memory, so pools keep a set of open connections and lend them out. Size small: roughly cores \u00d7 2-ish on the DB side and total across all app instances below the DB's max \u2014 oversized pools cause contention, not speed. Isolation: read committed prevents dirty reads; repeatable read prevents non-repeatable reads (and in PostgreSQL snapshot isolation, phantoms); serializable prevents write skew. Stronger levels mean more locking or serialization failures that the app must retry."
+      "modelAnswer": "Opening a DB connection costs a TCP + TLS handshake, authentication and server-side memory, so pools keep a set of open connections and lend them out. Size small: roughly cores × 2-ish on the DB side and total across all app instances below the DB's max — oversized pools cause contention, not speed. Isolation: read committed prevents dirty reads; repeatable read prevents non-repeatable reads (and in PostgreSQL snapshot isolation, phantoms); serializable prevents write skew. Stronger levels mean more locking or serialization failures that the app must retry."
     },
     {
       "id": "be-monolith-vs-microservices",
@@ -1664,7 +1664,7 @@
           ]
         }
       ],
-      "modelAnswer": "A modular monolith is one deployable with strict internal module boundaries \u2014 simple deploys, in-process calls, one database, easy transactions. Microservices are independently deployable services that own their data, enabling independent scaling and team autonomy, at the cost of network latency and failures, distributed transactions (sagas), versioned APIs, and heavy observability needs. Start with a modular monolith for small teams; split a module when it needs independent scaling, release cadence or ownership. Migrate with the strangler-fig pattern, extracting one bounded context at a time."
+      "modelAnswer": "A modular monolith is one deployable with strict internal module boundaries — simple deploys, in-process calls, one database, easy transactions. Microservices are independently deployable services that own their data, enabling independent scaling and team autonomy, at the cost of network latency and failures, distributed transactions (sagas), versioned APIs, and heavy observability needs. Start with a modular monolith for small teams; split a module when it needs independent scaling, release cadence or ownership. Migrate with the strangler-fig pattern, extracting one bounded context at a time."
     },
     {
       "id": "be-retries-timeouts-circuit-breakers",
@@ -1815,7 +1815,7 @@
           ]
         }
       ],
-      "modelAnswer": "A component renders when its state changes, its parent re-renders, or a context it reads changes. In the render phase React calls components (which must be pure) to produce a new element tree, then reconciles it against the previous tree \u2014 comparing types and keys \u2014 to compute minimal DOM changes. In the commit phase React applies those changes; layout effects run synchronously after, regular effects after paint, each with cleanup before the next run. Unnecessary renders often come from passing newly created objects/functions as props to memoised children; React.memo, useMemo/useCallback or restructuring state fixes it."
+      "modelAnswer": "A component renders when its state changes, its parent re-renders, or a context it reads changes. In the render phase React calls components (which must be pure) to produce a new element tree, then reconciles it against the previous tree — comparing types and keys — to compute minimal DOM changes. In the commit phase React applies those changes; layout effects run synchronously after, regular effects after paint, each with cleanup before the next run. Unnecessary renders often come from passing newly created objects/functions as props to memoised children; React.memo, useMemo/useCallback or restructuring state fixes it."
     },
     {
       "id": "fe-ssr-vs-csr",
@@ -1890,7 +1890,7 @@
           ]
         }
       ],
-      "modelAnswer": "CSR ships a mostly empty HTML page and a JS bundle; the browser fetches data and renders, so first paint waits for JS \u2014 fine for app-like dashboards behind login. SSR renders HTML on the server per request, giving fast first contentful paint and crawlable content, then hydration attaches event handlers (time-to-interactive still depends on JS). SSR costs server CPU and adds latency per request. Static generation renders at build time and serves from a CDN \u2014 best for content that changes rarely; incremental regeneration or streaming SSR sits in between."
+      "modelAnswer": "CSR ships a mostly empty HTML page and a JS bundle; the browser fetches data and renders, so first paint waits for JS — fine for app-like dashboards behind login. SSR renders HTML on the server per request, giving fast first contentful paint and crawlable content, then hydration attaches event handlers (time-to-interactive still depends on JS). SSR costs server CPU and adds latency per request. Static generation renders at build time and serves from a CDN — best for content that changes rarely; incremental regeneration or streaming SSR sits in between."
     },
     {
       "id": "fe-event-propagation",
@@ -1914,7 +1914,7 @@
       "expectedConcepts": [
         {
           "id": "phases",
-          "label": "Capture \u2192 target \u2192 bubble",
+          "label": "Capture → target → bubble",
           "criterion": "correctness",
           "keywords": [
             "capture",
@@ -1963,7 +1963,7 @@
           ]
         }
       ],
-      "modelAnswer": "An event travels from the window down to the target (capture phase), fires on the target, then bubbles back up through ancestors. Listeners run in bubble phase by default. Event delegation puts one listener on a parent and uses event.target to handle many children \u2014 efficient and works for dynamically added elements. stopPropagation stops the event from reaching further ancestors; preventDefault cancels the browser's default action (following a link, submitting a form) without stopping propagation. Overusing stopPropagation breaks things like outside-click handlers."
+      "modelAnswer": "An event travels from the window down to the target (capture phase), fires on the target, then bubbles back up through ancestors. Listeners run in bubble phase by default. Event delegation puts one listener on a parent and uses event.target to handle many children — efficient and works for dynamically added elements. stopPropagation stops the event from reaching further ancestors; preventDefault cancels the browser's default action (following a link, submitting a form) without stopping propagation. Overusing stopPropagation breaks things like outside-click handlers."
     },
     {
       "id": "fe-state-and-caching",
@@ -2037,7 +2037,7 @@
           ]
         }
       ],
-      "modelAnswer": "Separate server state (data owned by the backend: cached, can be stale) from UI state (modal open, form inputs) and URL state (filters, page). Keep UI state local and lift it only when shared. Use a query cache (TanStack Query/SWR) for server state: keyed caching, stale-while-revalidate, background refetch, invalidation after mutations, and optimistic updates with rollback. Reserve a global store for genuinely global client state (auth session, theme) \u2014 putting server data in a global store recreates a cache badly."
+      "modelAnswer": "Separate server state (data owned by the backend: cached, can be stale) from UI state (modal open, form inputs) and URL state (filters, page). Keep UI state local and lift it only when shared. Use a query cache (TanStack Query/SWR) for server state: keyed caching, stale-while-revalidate, background refetch, invalidation after mutations, and optimistic updates with rollback. Reserve a global store for genuinely global client state (auth session, theme) — putting server data in a global store recreates a cache badly."
     },
     {
       "id": "fe-performance-bottlenecks",
@@ -2119,426 +2119,91 @@
       "modelAnswer": "Measure first: Lighthouse for lab data, real-user monitoring for field Core Web Vitals (LCP for loading, INP for responsiveness, CLS for visual stability). Common causes: large JS bundles (code-split routes, tree-shake, drop heavy libs), unoptimised images and fonts (responsive sizes, preloading), long main-thread tasks (break up work, web workers), layout thrashing from interleaved reads/writes, and excessive React re-renders or huge lists (memoisation, virtualisation). Fix the biggest measured bottleneck, then re-measure."
     },
     {
-      "id": "cpp-raii-smart-pointers",
-      "title": "RAII and smart pointers in C++",
-      "prompt": "Explain RAII in C++ and how smart pointers apply it. Compare unique_ptr, shared_ptr and weak_ptr, give an example of each, and name a common pitfall.",
+      "id": "pl-memory-management-models",
+      "title": "How languages manage memory",
+      "prompt": "Compare the main ways programming languages manage memory: manual allocation, reference counting, tracing garbage collection and Rust-style ownership. Give the trade-offs of each and a language that uses it.",
       "categoryId": "tech-ai",
       "subcategoryId": "programming-languages",
       "difficulty": "intermediate",
-      "suggestedDurationSec": 150,
-      "tags": [
-        "cpp",
-        "memory"
-      ],
-      "rubricId": "programming-language",
-      "modes": [
-        "interview",
-        "deep-research",
-        "mock-interview",
-        "off-the-cuff"
-      ],
-      "expectedConcepts": [
-        {
-          "id": "raii",
-          "label": "Resource lifetime tied to object lifetime",
-          "criterion": "correctness",
-          "keywords": [
-            "resource acquisition",
-            "destructor",
-            "scope",
-            "lifetime"
-          ]
-        },
-        {
-          "id": "unique",
-          "label": "unique_ptr: sole ownership, move-only",
-          "criterion": "terminology",
-          "keywords": [
-            "unique pointer",
-            "unique ptr",
-            "move only",
-            "sole owner",
-            "exclusive"
-          ]
-        },
-        {
-          "id": "shared",
-          "label": "shared_ptr: reference counting",
-          "criterion": "terminology",
-          "keywords": [
-            "shared pointer",
-            "shared ptr",
-            "reference count"
-          ]
-        },
-        {
-          "id": "weak",
-          "label": "weak_ptr breaks cycles",
-          "criterion": "terminology",
-          "keywords": [
-            "weak pointer",
-            "weak ptr",
-            "cycle"
-          ]
-        },
-        {
-          "id": "exceptions",
-          "label": "Exception safety / no leaks on early return",
-          "criterion": "practical-implications",
-          "keywords": [
-            "exception",
-            "early return",
-            "leak"
-          ]
-        },
-        {
-          "id": "pitfall",
-          "label": "Pitfalls: cycles, atomic refcount cost, raw new",
-          "criterion": "pitfalls",
-          "keywords": [
-            "cycle",
-            "atomic",
-            "make shared",
-            "make unique",
-            "raw new"
-          ]
-        }
-      ],
-      "modelAnswer": "RAII (Resource Acquisition Is Initialization) ties a resource \u2014 memory, file, mutex lock \u2014 to an object: acquire in the constructor, release in the destructor. Because destructors run when scope exits, including on exceptions and early returns, resources never leak. unique_ptr expresses sole ownership, cannot be copied, only moved, and has zero overhead. shared_ptr shares ownership with an atomic reference count; the object dies when the last owner goes. weak_ptr observes without owning and breaks reference cycles (e.g. a child pointing back to its parent). Pitfalls: shared_ptr cycles leak, atomic refcounting costs, and using raw new instead of make_unique/make_shared."
-    },
-    {
-      "id": "cpp-stack-vs-heap",
-      "title": "Stack versus heap allocation",
-      "prompt": "Compare stack and heap allocation in C++. Explain lifetime, allocation cost, size limits and cache behaviour, and when you would choose each.",
-      "categoryId": "tech-ai",
-      "subcategoryId": "programming-languages",
-      "difficulty": "beginner",
-      "suggestedDurationSec": 90,
-      "tags": [
-        "cpp",
-        "memory"
-      ],
-      "rubricId": "programming-language",
-      "modes": [
-        "interview",
-        "deep-research",
-        "mock-interview",
-        "off-the-cuff"
-      ],
-      "expectedConcepts": [
-        {
-          "id": "stack-life",
-          "label": "Stack: automatic lifetime tied to scope",
-          "criterion": "correctness",
-          "keywords": [
-            "automatic",
-            "scope",
-            "function returns",
-            "stack frame"
-          ]
-        },
-        {
-          "id": "heap-life",
-          "label": "Heap: dynamic lifetime managed explicitly",
-          "criterion": "correctness",
-          "keywords": [
-            "dynamic",
-            "new",
-            "delete",
-            "malloc",
-            "free store"
-          ]
-        },
-        {
-          "id": "cost",
-          "label": "Stack allocation is a pointer bump; heap uses an allocator",
-          "criterion": "practical-implications",
-          "keywords": [
-            "pointer",
-            "allocator",
-            "faster",
-            "cheap",
-            "fragmentation"
-          ]
-        },
-        {
-          "id": "limits",
-          "label": "Stack size limits \u2192 overflow",
-          "criterion": "pitfalls",
-          "keywords": [
-            "stack overflow",
-            "limited",
-            "megabytes",
-            "large arrays",
-            "recursion"
-          ]
-        },
-        {
-          "id": "dangling",
-          "label": "Returning pointer to stack variable is dangling",
-          "criterion": "pitfalls",
-          "keywords": [
-            "dangling",
-            "returning a pointer",
-            "reference to local"
-          ]
-        }
-      ],
-      "modelAnswer": "Stack objects live in the function's frame: allocation is just moving the stack pointer, they are destroyed automatically when scope ends, and they are cache-friendly \u2014 but the stack is small (often 1\u20138 MB), so huge arrays or deep recursion overflow it, and returning a pointer to a local creates a dangling pointer. Heap allocation (new/make_unique) goes through an allocator \u2014 slower, can fragment, possibly contended across threads \u2014 but supports large sizes, runtime-determined sizes and lifetimes beyond the scope. Prefer stack and value semantics; use the heap via smart pointers or containers when size or lifetime demands it."
-    },
-    {
-      "id": "cpp-mutex-atomics-races",
-      "title": "Mutexes, atomics and race conditions",
-      "prompt": "Explain what a data race is, and compare protecting shared state with a mutex versus std::atomic. Mention memory ordering and when a lock-free approach is worth it.",
-      "categoryId": "tech-ai",
-      "subcategoryId": "programming-languages",
-      "difficulty": "advanced",
       "suggestedDurationSec": 180,
       "tags": [
-        "cpp",
-        "concurrency"
+        "memory",
+        "languages",
+        "garbage-collection"
       ],
       "rubricId": "programming-language",
       "modes": [
         "interview",
         "deep-research",
-        "mock-interview"
+        "mock-interview",
+        "off-the-cuff"
       ],
       "expectedConcepts": [
         {
-          "id": "race",
-          "label": "Data race: concurrent unsynchronised access with a write",
+          "id": "approaches",
+          "label": "Manual, reference counting, tracing GC, ownership",
           "criterion": "correctness",
           "keywords": [
-            "data race",
-            "race condition",
-            "two threads",
-            "same memory"
-          ]
-        },
-        {
-          "id": "ub",
-          "label": "Data races are undefined behaviour",
-          "criterion": "terminology",
-          "keywords": [
-            "undefined behavior",
-            "undefined behaviour"
-          ]
-        },
-        {
-          "id": "mutex",
-          "label": "Mutex gives mutual exclusion over a critical section",
-          "criterion": "terminology",
-          "keywords": [
-            "mutex",
-            "lock guard",
-            "critical section",
-            "mutual exclusion"
-          ]
-        },
-        {
-          "id": "atomic",
-          "label": "Atomics for single variables / counters",
-          "criterion": "terminology",
-          "keywords": [
-            "atomic",
-            "fetch add",
-            "compare and swap",
-            "cas"
-          ]
-        },
-        {
-          "id": "ordering",
-          "label": "Memory ordering: seq_cst, acquire/release, relaxed",
-          "criterion": "practical-implications",
-          "keywords": [
-            "memory order",
-            "acquire",
-            "release",
-            "relaxed",
-            "sequentially consistent"
-          ]
-        },
-        {
-          "id": "pitfall",
-          "label": "Pitfalls: deadlock, ABA, false sharing, contention",
-          "criterion": "pitfalls",
-          "keywords": [
-            "deadlock",
-            "aba",
-            "false sharing",
-            "contention"
-          ]
-        }
-      ],
-      "modelAnswer": "A data race occurs when two threads access the same memory concurrently, at least one writes, and there is no synchronisation \u2014 in C++ that is undefined behaviour. A mutex (with lock_guard/scoped_lock RAII) serialises a critical section of any size; simple, but threads block and contention hurts latency. std::atomic makes single-variable operations indivisible (fetch_add, compare_exchange) without blocking, and memory orders control visibility: seq_cst by default, acquire/release for publish-consume handoffs, relaxed for counters. Lock-free structures (e.g. SPSC ring buffers) pay off on hot, latency-critical paths but bring ABA problems, false sharing and hard-to-verify correctness."
-    },
-    {
-      "id": "cpp-move-semantics",
-      "title": "Move semantics",
-      "prompt": "Explain move semantics in C++. Cover rvalue references, what a move constructor does, when std::move is needed, and what state a moved-from object is in.",
-      "categoryId": "tech-ai",
-      "subcategoryId": "programming-languages",
-      "difficulty": "intermediate",
-      "suggestedDurationSec": 150,
-      "tags": [
-        "cpp",
-        "performance"
-      ],
-      "rubricId": "programming-language",
-      "modes": [
-        "interview",
-        "deep-research",
-        "mock-interview"
-      ],
-      "expectedConcepts": [
-        {
-          "id": "rvalue",
-          "label": "Rvalue references bind to temporaries",
-          "criterion": "terminology",
-          "keywords": [
-            "rvalue",
-            "temporary",
-            "double ampersand"
-          ]
-        },
-        {
-          "id": "steal",
-          "label": "Move steals resources instead of copying",
-          "criterion": "correctness",
-          "keywords": [
-            "steal",
-            "transfer",
-            "instead of copying",
-            "pointer"
-          ]
-        },
-        {
-          "id": "std-move",
-          "label": "std::move is a cast, doesn't move by itself",
-          "criterion": "terminology",
-          "keywords": [
-            "cast",
-            "std move",
-            "does not move",
-            "doesn't move"
-          ]
-        },
-        {
-          "id": "moved-from",
-          "label": "Moved-from object: valid but unspecified",
-          "criterion": "practical-implications",
-          "keywords": [
-            "valid but unspecified",
-            "moved from",
-            "empty"
-          ]
-        },
-        {
-          "id": "pitfall",
-          "label": "Pitfalls: moving from const, using after move, noexcept",
-          "criterion": "pitfalls",
-          "keywords": [
-            "const",
-            "use after move",
-            "noexcept",
-            "return value optimization",
-            "rvo"
-          ]
-        }
-      ],
-      "modelAnswer": "Copying a std::vector duplicates its heap buffer; moving just transfers the pointer and leaves the source empty. Rvalue references (T&&) bind to temporaries and to objects explicitly marked as movable. A move constructor takes T&&, steals the resources and resets the source. std::move is only a cast to an rvalue \u2014 the move happens in the constructor or assignment it selects. The moved-from object remains valid but unspecified: you may destroy it or assign to it. Pitfalls: std::move on a const object silently copies, using objects after moving, missing noexcept (vectors then copy on reallocation), and writing std::move on return values, which blocks RVO."
-    },
-    {
-      "id": "cpp-ownership-lifetime",
-      "title": "Memory ownership and lifetime",
-      "prompt": "Explain how you reason about ownership and lifetime in a C++ codebase. How do function signatures communicate ownership, and what bugs result when ownership is unclear?",
-      "categoryId": "tech-ai",
-      "subcategoryId": "programming-languages",
-      "difficulty": "advanced",
-      "suggestedDurationSec": 150,
-      "tags": [
-        "cpp",
-        "design"
-      ],
-      "rubricId": "programming-language",
-      "modes": [
-        "interview",
-        "deep-research",
-        "mock-interview"
-      ],
-      "expectedConcepts": [
-        {
-          "id": "owner",
-          "label": "Exactly one owner responsible for destruction",
-          "criterion": "correctness",
-          "keywords": [
-            "owner",
-            "responsible",
-            "destroys",
+            "manual",
+            "malloc",
+            "reference count",
+            "garbage collect",
             "ownership"
           ]
         },
         {
-          "id": "signatures",
-          "label": "Signatures express ownership: unique_ptr by value, references, raw pointers non-owning",
+          "id": "terms",
+          "label": "Mark and sweep, generational GC, RAII, smart pointers",
           "criterion": "terminology",
           "keywords": [
-            "by value",
-            "const reference",
-            "non owning",
-            "raw pointer",
-            "span",
-            "string view"
+            "tracing",
+            "mark and sweep",
+            "generational",
+            "raii",
+            "smart pointer",
+            "shared_ptr",
+            "shared pointer"
           ]
         },
         {
-          "id": "bugs",
-          "label": "Use-after-free, double free, leaks, dangling",
+          "id": "trade-offs",
+          "label": "Pauses, overhead, predictability, productivity",
+          "criterion": "practical-implications",
+          "keywords": [
+            "pause",
+            "latency",
+            "throughput",
+            "predictable",
+            "overhead",
+            "deterministic"
+          ]
+        },
+        {
+          "id": "failures",
+          "label": "Leaks, cycles, dangling pointers, double free",
           "criterion": "pitfalls",
           "keywords": [
-            "use after free",
-            "double free",
+            "cycle",
             "leak",
-            "dangling"
-          ]
-        },
-        {
-          "id": "views",
-          "label": "Views (string_view/span) must not outlive owner",
-          "criterion": "practical-implications",
-          "keywords": [
-            "outlive",
-            "string view",
-            "span",
-            "view"
-          ]
-        },
-        {
-          "id": "tools",
-          "label": "Sanitizers and static analysis",
-          "criterion": "practical-implications",
-          "keywords": [
-            "sanitizer",
-            "asan",
-            "valgrind",
-            "static analysis"
+            "dangling",
+            "double free",
+            "use after free"
           ]
         }
       ],
-      "modelAnswer": "Every resource should have one clear owner responsible for destroying it. Signatures communicate this: passing std::unique_ptr by value transfers ownership; T& or const T& borrows; a raw T* or std::span/string_view is non-owning and must not outlive its source; returning unique_ptr hands ownership to the caller. Unclear ownership causes leaks, double frees, use-after-free and dangling views (e.g. a string_view into a temporary string). Tools: AddressSanitizer, Valgrind, clang-tidy lifetime checks, and Rust-style discipline in code review."
+      "modelAnswer": "Manual management (malloc and free in C, new and delete in C++) gives full control and no runtime overhead, but risks leaks, double frees and use-after-free; modern C++ reduces this with RAII and smart pointers. Reference counting (Swift, CPython, C++ shared_ptr) frees an object as soon as its count reaches zero, which is predictable, but every copy updates a counter, and cycles are never freed without help such as weak references or a cycle collector. Tracing garbage collection (Java, Go, C#, JavaScript) periodically marks objects reachable from roots and frees the rest. It handles cycles and is productive, but uses extra memory and introduces pauses, which modern concurrent and generational collectors keep short. Rust's ownership frees each value deterministically when its owner goes out of scope, checked at compile time, so there are no GC pauses or counters, at the cost of a stricter programming model."
     },
     {
-      "id": "go-goroutines-channels",
-      "title": "Goroutines and channels in Go",
-      "prompt": "Explain how goroutines and channels work in Go. Compare buffered and unbuffered channels, describe how the Go scheduler runs goroutines, and name a common concurrency bug.",
+      "id": "pl-static-dynamic-typing",
+      "title": "Static vs dynamic, strong vs weak typing",
+      "prompt": "Explain the difference between static and dynamic typing, and between strong and weak typing. Give examples of languages, and the trade-offs for large codebases.",
       "categoryId": "tech-ai",
       "subcategoryId": "programming-languages",
-      "difficulty": "intermediate",
-      "suggestedDurationSec": 150,
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
       "tags": [
-        "go",
-        "concurrency"
+        "types",
+        "languages"
       ],
       "rubricId": "programming-language",
       "modes": [
@@ -2549,72 +2214,59 @@
       ],
       "expectedConcepts": [
         {
-          "id": "goroutine",
-          "label": "Lightweight green threads with small stacks",
+          "id": "when",
+          "label": "Static: checked before running; dynamic: checked at runtime",
           "criterion": "correctness",
           "keywords": [
-            "lightweight",
-            "green thread",
-            "small stack",
-            "growable",
-            "go keyword"
+            "compile time",
+            "before it runs",
+            "runtime",
+            "run time",
+            "checked"
           ]
         },
         {
-          "id": "scheduler",
-          "label": "M:N scheduler (G, M, P)",
+          "id": "terms",
+          "label": "Static/dynamic, strong/weak, type inference, implicit conversion",
           "criterion": "terminology",
           "keywords": [
-            "scheduler",
-            "m to n",
-            "m n",
-            "os thread",
-            "processor"
+            "static",
+            "dynamic",
+            "strong",
+            "weak",
+            "type inference",
+            "implicit conversion",
+            "coercion"
           ]
         },
         {
-          "id": "unbuffered",
-          "label": "Unbuffered channels synchronise sender and receiver",
-          "criterion": "terminology",
-          "keywords": [
-            "unbuffered",
-            "synchronous",
-            "blocks until"
-          ]
-        },
-        {
-          "id": "buffered",
-          "label": "Buffered channels decouple up to capacity",
-          "criterion": "terminology",
-          "keywords": [
-            "buffered",
-            "capacity"
-          ]
-        },
-        {
-          "id": "csp",
-          "label": "Share memory by communicating; select",
+          "id": "scale",
+          "label": "Refactoring, tooling and documentation vs prototyping speed",
           "criterion": "practical-implications",
           "keywords": [
-            "communicating",
-            "select",
-            "share memory"
+            "refactor",
+            "tooling",
+            "autocomplete",
+            "large codebase",
+            "prototyp",
+            "documentation"
           ]
         },
         {
-          "id": "leak",
-          "label": "Goroutine leaks, deadlocks, closing channels",
+          "id": "gotchas",
+          "label": "Runtime type errors; gradual typing with type hints",
           "criterion": "pitfalls",
           "keywords": [
-            "leak",
-            "deadlock",
-            "close",
-            "context",
-            "nil channel"
+            "type hints",
+            "gradual",
+            "mypy",
+            "typescript",
+            "runtime error",
+            "type error"
           ]
         }
       ],
-      "modelAnswer": "Goroutines are functions running concurrently, started with the go keyword; they begin with a few KB of growable stack, so you can run hundreds of thousands. The runtime multiplexes them onto OS threads (M:N scheduling with G, M, P) and preempts long-running ones. Channels pass values between goroutines: an unbuffered send blocks until a receiver is ready (a synchronisation point); a buffered channel lets senders proceed until it is full. select waits on several channel operations. Common bugs: goroutine leaks (a goroutine blocked forever on a channel nobody reads \u2014 use context cancellation), sending on a closed channel, and deadlocks."
+      "modelAnswer": "Static typing checks types before the program runs (C++, Go, Rust, Java, TypeScript); dynamic typing checks them at runtime, because types belong to values (Python, JavaScript, Ruby). Strong versus weak describes how much implicit conversion happens, and it is a spectrum: Python is dynamic but fairly strong, since \"1\" + 1 raises an error, while JavaScript coerces it to \"11\". Static types catch many bugs earlier, document intent and enable safe refactoring and autocompletion in large codebases, and type inference keeps them from being verbose. Dynamic typing is quicker for prototypes and scripts, but type errors appear at runtime and you need more tests. Gradual typing, such as Python type hints with mypy or TypeScript over JavaScript, offers a middle ground."
     },
     {
       "id": "ml-overfitting-regularization",
@@ -2695,7 +2347,7 @@
           ]
         }
       ],
-      "modelAnswer": "Overfitting is when a model fits noise in the training data and performs worse on unseen data. Detect it with a held-out validation set: training loss keeps falling while validation loss rises. Remedies: more or augmented data, a simpler model, regularisation, dropout, early stopping, cross-validation. L2 regularisation adds \u03bb\u00b7\u03a3w\u00b2 to the loss, pushing weights toward small values so the model can't rely on extreme weights to fit individual points \u2014 trading a little bias for lower variance. Too much regularisation causes underfitting."
+      "modelAnswer": "Overfitting is when a model fits noise in the training data and performs worse on unseen data. Detect it with a held-out validation set: training loss keeps falling while validation loss rises. Remedies: more or augmented data, a simpler model, regularisation, dropout, early stopping, cross-validation. L2 regularisation adds λ·Σw² to the loss, pushing weights toward small values so the model can't rely on extreme weights to fit individual points — trading a little bias for lower variance. Too much regularisation causes underfitting."
     },
     {
       "id": "ml-classification-vs-clustering",
@@ -2774,7 +2426,7 @@
           ]
         }
       ],
-      "modelAnswer": "Classification is supervised: you learn a mapping from features to known labels (spam vs not spam) with algorithms like logistic regression or gradient-boosted trees, evaluated on held-out data with precision, recall, F1 or ROC-AUC. Clustering is unsupervised: no labels, you group similar points (customer segmentation) with k-means or DBSCAN; evaluation is harder \u2014 silhouette score, cluster stability, and whether segments are useful to the business."
+      "modelAnswer": "Classification is supervised: you learn a mapping from features to known labels (spam vs not spam) with algorithms like logistic regression or gradient-boosted trees, evaluated on held-out data with precision, recall, F1 or ROC-AUC. Clustering is unsupervised: no labels, you group similar points (customer segmentation) with k-means or DBSCAN; evaluation is harder — silhouette score, cluster stability, and whether segments are useful to the business."
     },
     {
       "id": "ml-attention-transformers",
@@ -2851,7 +2503,7 @@
           ]
         }
       ],
-      "modelAnswer": "Each token is projected into a query, a key and a value. A token's attention weights are the softmax of its query's dot products with all keys, scaled by \u221ad; its output is the weighted sum of values \u2014 so each token gathers information from the tokens most relevant to it. All positions are computed at once with matrix multiplications, unlike sequential RNNs, which is why transformers train efficiently on GPUs. Multiple heads let the model attend to different relations (syntax, coreference) in parallel subspaces. Cost is O(n\u00b2) in sequence length for compute and memory, which motivates techniques such as FlashAttention, sparse attention and KV caching at inference."
+      "modelAnswer": "Each token is projected into a query, a key and a value. A token's attention weights are the softmax of its query's dot products with all keys, scaled by √d; its output is the weighted sum of values — so each token gathers information from the tokens most relevant to it. All positions are computed at once with matrix multiplications, unlike sequential RNNs, which is why transformers train efficiently on GPUs. Multiple heads let the model attend to different relations (syntax, coreference) in parallel subspaces. Cost is O(n²) in sequence length for compute and memory, which motivates techniques such as FlashAttention, sparse attention and KV caching at inference."
     },
     {
       "id": "ml-embeddings-rag",
@@ -2886,7 +2538,7 @@
         },
         {
           "id": "pipeline",
-          "label": "Chunk \u2192 embed \u2192 index \u2192 retrieve top-k \u2192 prompt",
+          "label": "Chunk → embed → index → retrieve top-k → prompt",
           "criterion": "mechanism",
           "keywords": [
             "chunk",
@@ -3101,7 +2753,7 @@
           ]
         }
       ],
-      "modelAnswer": "LLMs are trained to produce likely continuations of text; fluency is rewarded, not verified truth. When the training data lacks or conflicts on a fact \u2014 or it is past the cutoff \u2014 the model can still generate a plausible-sounding answer, and sampling at higher temperature increases variety (and errors). Mitigations: ground answers with retrieval and require citations, use tools for facts and calculations, constrain outputs with schemas, let the model say it doesn't know, evaluate on a test set, and keep humans reviewing high-stakes outputs."
+      "modelAnswer": "LLMs are trained to produce likely continuations of text; fluency is rewarded, not verified truth. When the training data lacks or conflicts on a fact — or it is past the cutoff — the model can still generate a plausible-sounding answer, and sampling at higher temperature increases variety (and errors). Mitigations: ground answers with retrieval and require citations, use tools for facts and calculations, constrain outputs with schemas, let the model say it doesn't know, evaluate on a test set, and keep humans reviewing high-stakes outputs."
     },
     {
       "id": "db-indexes",
@@ -3179,7 +2831,7 @@
           ]
         }
       ],
-      "modelAnswer": "A B-tree index stores keys in sorted order in a balanced tree of pages, so the database finds a value in O(log n) page reads instead of scanning every row, and can also serve range queries and ORDER BY. A composite index on (a, b) is sorted by a, then b \u2014 it helps queries filtering on a, or a and b, but not b alone (the leftmost-prefix rule); put equality columns before range columns. Every index slows inserts/updates and uses storage, so add indexes for real query patterns and verify with EXPLAIN ANALYZE."
+      "modelAnswer": "A B-tree index stores keys in sorted order in a balanced tree of pages, so the database finds a value in O(log n) page reads instead of scanning every row, and can also serve range queries and ORDER BY. A composite index on (a, b) is sorted by a, then b — it helps queries filtering on a, or a and b, but not b alone (the leftmost-prefix rule); put equality columns before range columns. Every index slows inserts/updates and uses storage, so add indexes for real query patterns and verify with EXPLAIN ANALYZE."
     },
     {
       "id": "db-acid",
@@ -3263,7 +2915,7 @@
           ]
         }
       ],
-      "modelAnswer": "Bank transfer of \u20b9500 from A to B. Atomicity: both the debit and the credit happen, or neither (rollback on failure). Consistency: constraints hold before and after \u2014 balances never negative, total money conserved. Isolation: two concurrent transfers behave as if run one after another, according to the isolation level. Durability: once committed, the transfer survives a crash. Databases implement atomicity and durability with a write-ahead log: changes are appended and fsynced to the log before commit is acknowledged, and recovery replays or undoes log records."
+      "modelAnswer": "Bank transfer of ₹500 from A to B. Atomicity: both the debit and the credit happen, or neither (rollback on failure). Consistency: constraints hold before and after — balances never negative, total money conserved. Isolation: two concurrent transfers behave as if run one after another, according to the isolation level. Durability: once committed, the transfer survives a crash. Databases implement atomicity and durability with a write-ahead log: changes are appended and fsynced to the log before commit is acknowledged, and recovery replays or undoes log records."
     },
     {
       "id": "net-what-happens-url",
@@ -3351,7 +3003,7 @@
           ]
         }
       ],
-      "modelAnswer": "The browser parses the URL, checks its caches, then resolves the domain via DNS (browser/OS cache \u2192 recursive resolver \u2192 root, TLD, authoritative servers) to an IP. It opens a TCP connection (SYN, SYN-ACK, ACK) \u2014 or QUIC for HTTP/3 \u2014 and performs a TLS handshake, verifying the server certificate and agreeing keys. It sends an HTTP GET; the request may hit a CDN or load balancer before the origin. The response HTML is parsed into the DOM, CSS into the CSSOM, scripts run, further resources are fetched, then layout and paint display the page."
+      "modelAnswer": "The browser parses the URL, checks its caches, then resolves the domain via DNS (browser/OS cache → recursive resolver → root, TLD, authoritative servers) to an IP. It opens a TCP connection (SYN, SYN-ACK, ACK) — or QUIC for HTTP/3 — and performs a TLS handshake, verifying the server certificate and agreeing keys. It sends an HTTP GET; the request may hit a CDN or load balancer before the origin. The response HTML is parsed into the DOM, CSS into the CSSOM, scripts run, further resources are fetched, then layout and paint display the page."
     },
     {
       "id": "net-tcp-vs-udp",
@@ -3427,7 +3079,7 @@
           ]
         }
       ],
-      "modelAnswer": "TCP sets up a connection with a handshake and gives a reliable, ordered byte stream using sequence numbers, ACKs and retransmission, plus flow and congestion control. UDP sends independent datagrams with no handshake, ordering or retransmission \u2014 lower latency and overhead. TCP suits web, APIs, databases and file transfer; UDP suits real-time voice/video and games (late data is useless), DNS lookups, and QUIC/HTTP3, which builds its own reliability over UDP to avoid TCP head-of-line blocking."
+      "modelAnswer": "TCP sets up a connection with a handshake and gives a reliable, ordered byte stream using sequence numbers, ACKs and retransmission, plus flow and congestion control. UDP sends independent datagrams with no handshake, ordering or retransmission — lower latency and overhead. TCP suits web, APIs, databases and file transfer; UDP suits real-time voice/video and games (late data is useless), DNS lookups, and QUIC/HTTP3, which builds its own reliability over UDP to avoid TCP head-of-line blocking."
     },
     {
       "id": "os-process-vs-thread",
@@ -3504,7 +3156,7 @@
           ]
         }
       ],
-      "modelAnswer": "A process is a running program with its own virtual address space, file descriptors and resources; a thread is an execution path inside a process sharing that memory. Threads communicate cheaply through shared memory but need synchronisation (locks, atomics) to avoid races; processes communicate via IPC (pipes, sockets, shared-memory segments). Thread switches within a process are cheaper because the address space (page tables, TLB) stays. Processes give failure isolation \u2014 a crashing thread takes down its whole process \u2014 which is why browsers run tabs in separate processes."
+      "modelAnswer": "A process is a running program with its own virtual address space, file descriptors and resources; a thread is an execution path inside a process sharing that memory. Threads communicate cheaply through shared memory but need synchronisation (locks, atomics) to avoid races; processes communicate via IPC (pipes, sockets, shared-memory segments). Thread switches within a process are cheaper because the address space (page tables, TLB) stays. Processes give failure isolation — a crashing thread takes down its whole process — which is why browsers run tabs in separate processes."
     },
     {
       "id": "os-virtual-memory",
@@ -3653,7 +3305,7 @@
           ]
         }
       ],
-      "modelAnswer": "A VM virtualises hardware via a hypervisor and runs a full guest OS kernel \u2014 strong isolation, slower boot, more overhead. A container is a process tree on the host kernel isolated with namespaces (PID, network, mount, user) and resource-limited by cgroups; images are stacks of read-only layers built from a Dockerfile and cached. Containers start in milliseconds to seconds and pack densely, but share the kernel, so a kernel exploit can escape \u2014 mitigated with non-root users, seccomp, or sandboxed runtimes like gVisor/Firecracker microVMs."
+      "modelAnswer": "A VM virtualises hardware via a hypervisor and runs a full guest OS kernel — strong isolation, slower boot, more overhead. A container is a process tree on the host kernel isolated with namespaces (PID, network, mount, user) and resource-limited by cgroups; images are stacks of read-only layers built from a Dockerfile and cached. Containers start in milliseconds to seconds and pack densely, but share the kernel, so a kernel exploit can escape — mitigated with non-root users, seccomp, or sandboxed runtimes like gVisor/Firecracker microVMs."
     },
     {
       "id": "ds-cap-theorem",
@@ -3727,7 +3379,7 @@
           ]
         }
       ],
-      "modelAnswer": "CAP says that when a network partition occurs, a distributed data store must choose between consistency (every read sees the latest write, linearizability) and availability (every request to a non-failed node gets a response). Partitions are unavoidable, so 'pick two of three' is misleading \u2014 the choice only bites during a partition. CP systems (etcd, ZooKeeper) refuse some requests to stay consistent; AP systems (Cassandra, Dynamo-style) keep answering and reconcile later. PACELC adds: Else, in normal operation, you trade latency against consistency."
+      "modelAnswer": "CAP says that when a network partition occurs, a distributed data store must choose between consistency (every read sees the latest write, linearizability) and availability (every request to a non-failed node gets a response). Partitions are unavoidable, so 'pick two of three' is misleading — the choice only bites during a partition. CP systems (etcd, ZooKeeper) refuse some requests to stay consistent; AP systems (Cassandra, Dynamo-style) keep answering and reconcile later. PACELC adds: Else, in normal operation, you trade latency against consistency."
     },
     {
       "id": "ds-consensus-raft",
@@ -3793,7 +3445,7 @@
         },
         {
           "id": "failure",
-          "label": "Leader failure \u2192 new election; tolerate f of 2f+1",
+          "label": "Leader failure → new election; tolerate f of 2f+1",
           "criterion": "trade-offs",
           "keywords": [
             "leader fails",
@@ -3884,7 +3536,7 @@
           ]
         }
       ],
-      "modelAnswer": "Model resources as plural nouns (/orders/{id}/items) and use methods for actions: GET reads, POST creates (201 + Location), PUT replaces, PATCH updates partially, DELETE removes. Use precise status codes \u2014 400 validation, 401 unauthenticated, 403 forbidden, 404, 409 conflict, 429 throttled. Paginate collections; cursor pagination is stable under inserts, offset is simple but slow and inconsistent on large sets. Evolve additively and version breaking changes (/v2 or header) with deprecation notices. Return a consistent error body with a machine-readable code, message and field details."
+      "modelAnswer": "Model resources as plural nouns (/orders/{id}/items) and use methods for actions: GET reads, POST creates (201 + Location), PUT replaces, PATCH updates partially, DELETE removes. Use precise status codes — 400 validation, 401 unauthenticated, 403 forbidden, 404, 409 conflict, 429 throttled. Paginate collections; cursor pagination is stable under inserts, offset is simple but slow and inconsistent on large sets. Evolve additively and version breaking changes (/v2 or header) with deprecation notices. Return a consistent error body with a machine-readable code, message and field details."
     },
     {
       "id": "sec-xss-csrf-sqli",
@@ -4048,7 +3700,7 @@
           ]
         }
       ],
-      "modelAnswer": "Hexagonal architecture keeps business rules in a core that knows nothing about HTTP, databases or queues. The core defines ports (interfaces such as OrderRepository); adapters implement them (Postgres repository, REST controller). Dependency inversion makes dependencies point inward \u2014 infrastructure depends on the domain, not the reverse \u2014 so you can unit-test the core with in-memory fakes and swap infrastructure. For simple CRUD apps the extra layers add indirection and boilerplate without much benefit."
+      "modelAnswer": "Hexagonal architecture keeps business rules in a core that knows nothing about HTTP, databases or queues. The core defines ports (interfaces such as OrderRepository); adapters implement them (Postgres repository, REST controller). Dependency inversion makes dependencies point inward — infrastructure depends on the domain, not the reverse — so you can unit-test the core with in-memory fakes and swap infrastructure. For simple CRUD apps the extra layers add indirection and boilerplate without much benefit."
     },
     {
       "id": "test-pyramid",
@@ -4282,7 +3934,7 @@
           ]
         }
       ],
-      "modelAnswer": "Batch jobs process bounded datasets on a schedule (nightly Spark jobs) \u2014 simple, easy to reprocess, but results are hours old. Stream processing handles an unbounded flow of events continuously (Kafka + Flink) with seconds of latency, using windows over event time and watermarks to handle late, out-of-order data. Exactly-once results require checkpointing plus idempotent or transactional sinks. Choose streaming for fraud detection or live dashboards; batch for reporting, backfills and heavy aggregations \u2014 many systems combine both."
+      "modelAnswer": "Batch jobs process bounded datasets on a schedule (nightly Spark jobs) — simple, easy to reprocess, but results are hours old. Stream processing handles an unbounded flow of events continuously (Kafka + Flink) with seconds of latency, using windows over event time and watermarks to handle late, out-of-order data. Exactly-once results require checkpointing plus idempotent or transactional sinks. Choose streaming for fraud detection or live dashboards; batch for reporting, backfills and heavy aggregations — many systems combine both."
     },
     {
       "id": "compiler-pipeline",
@@ -4359,7 +4011,7 @@
           ]
         }
       ],
-      "modelAnswer": "The lexer turns characters into tokens; the parser builds an abstract syntax tree according to the grammar; semantic analysis resolves names with symbol tables and checks types. The front end lowers the AST into an intermediate representation (e.g. LLVM IR in SSA form), where target-independent optimisations run \u2014 constant folding, inlining, dead-code elimination, loop optimisations. The back end selects instructions, allocates registers and emits machine code into object files, which the linker combines with libraries into an executable."
+      "modelAnswer": "The lexer turns characters into tokens; the parser builds an abstract syntax tree according to the grammar; semantic analysis resolves names with symbol tables and checks types. The front end lowers the AST into an intermediate representation (e.g. LLVM IR in SSA form), where target-independent optimisations run — constant folding, inlining, dead-code elimination, loop optimisations. The back end selects instructions, allocates registers and emits machine code into object files, which the linker combines with libraries into an executable."
     },
     {
       "id": "devtools-git-rebase-merge",
@@ -4433,7 +4085,7 @@
           ]
         }
       ],
-      "modelAnswer": "git merge combines branches by creating a merge commit with two parents, preserving exactly what happened. git rebase replays your commits on top of another base, producing new commits and a linear history. Use rebase (often interactive) to tidy a local feature branch before review; merge (or squash-merge) into main. Golden rule: never rebase commits others have already pulled \u2014 it rewrites history and forces them to reconcile; if you must, use --force-with-lease."
+      "modelAnswer": "git merge combines branches by creating a merge commit with two parents, preserving exactly what happened. git rebase replays your commits on top of another base, producing new commits and a linear history. Use rebase (often interactive) to tidy a local feature branch before review; merge (or squash-merge) into main. Golden rule: never rebase commits others have already pulled — it rewrites history and forces them to reconcile; if you must, use --force-with-lease."
     }
   ]
 }
