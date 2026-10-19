@@ -647,6 +647,787 @@
       "modelAnswer": "std::vector keeps its elements in one contiguous heap buffer and tracks size (elements in use) and capacity (slots allocated). When push_back needs more room than the capacity, it allocates a larger buffer, typically 1.5x or 2x, moves or copies the elements over, and frees the old one. Because growth is geometric, the total copying is spread over many insertions, so push_back is amortised O(1). Contiguity makes iteration cache-friendly. If you know the final size, reserve(n) avoids repeated reallocations. Elements are moved during growth only if their move constructor is noexcept; otherwise they are copied. The main pitfall is invalidation: a reallocation invalidates every iterator, pointer and reference into the vector, and insert or erase invalidate those at or after the position."
     },
     {
+      "id": "cpp-references-pointers-const",
+      "title": "References, pointers and const in C++",
+      "prompt": "Explain the difference between references and pointers in C++, and how const works with both. When should a function take a parameter by value, by const reference, or by pointer?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "cpp",
+        "basics",
+        "api-design"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "difference",
+          "label": "A reference is an alias that cannot be null or reseated; a pointer holds an address",
+          "criterion": "correctness",
+          "keywords": [
+            "alias",
+            "cannot be null",
+            "can be null",
+            "reseat",
+            "address",
+            "nullptr"
+          ]
+        },
+        {
+          "id": "const",
+          "label": "Pointer to const vs const pointer; const member functions",
+          "criterion": "terminology",
+          "keywords": [
+            "const reference",
+            "pointer to const",
+            "const pointer",
+            "const member",
+            "const correct"
+          ]
+        },
+        {
+          "id": "passing",
+          "label": "Small types by value, large by const reference, optional by pointer",
+          "criterion": "practical-implications",
+          "keywords": [
+            "by value",
+            "const reference",
+            "avoid a copy",
+            "avoid copying",
+            "optional",
+            "out parameter"
+          ]
+        },
+        {
+          "id": "dangling",
+          "label": "Dangling references to temporaries or locals",
+          "criterion": "pitfalls",
+          "keywords": [
+            "dangling",
+            "returning a reference",
+            "local variable",
+            "temporary",
+            "lifetime"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Read declarations right to left: `const int* p` is a pointer to const int; `int* const p` is a const pointer to int.",
+        "A const reference can bind to a temporary and extends its lifetime to the reference's scope (only for a local const reference, not a member or a returned reference).",
+        "Core Guidelines F.16: pass cheap-to-copy types (roughly up to 2-3 words) by value, others by const reference."
+      ],
+      "modelAnswer": "A reference is an alias for an existing object: it must be initialised, cannot be null and cannot be reseated to refer to something else. A pointer holds an address; it can be null (nullptr), can be changed to point elsewhere, and supports pointer arithmetic. With const, read declarations right to left: const int* p is a pointer to a const int, while int* const p is a const pointer. A const member function promises not to modify the object. For parameters: pass small, cheap-to-copy types such as int or a small struct by value; pass large objects you only read by const reference to avoid a copy; use a pointer when the argument is optional and may be null. Pitfall: returning a reference or pointer to a local variable or a temporary creates a dangling reference, which is undefined behaviour."
+    },
+    {
+      "id": "cpp-rule-of-five",
+      "title": "Rule of zero, three and five",
+      "prompt": "Explain the rule of three, the rule of five and the rule of zero in C++. Which special member functions do they cover, and why is the rule of zero the preferred default?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "classes",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "members",
+          "label": "Destructor, copy/move constructor and assignment",
+          "criterion": "correctness",
+          "keywords": [
+            "destructor",
+            "copy constructor",
+            "copy assignment",
+            "move constructor",
+            "move assignment"
+          ]
+        },
+        {
+          "id": "rules",
+          "label": "Rule of three, five and zero",
+          "criterion": "terminology",
+          "keywords": [
+            "rule of three",
+            "rule of five",
+            "rule of zero",
+            "special member"
+          ]
+        },
+        {
+          "id": "zero",
+          "label": "Let RAII members (vector, unique_ptr) manage resources",
+          "criterion": "practical-implications",
+          "keywords": [
+            "unique_ptr",
+            "unique pointer",
+            "vector",
+            "raii",
+            "default",
+            "compiler generated"
+          ]
+        },
+        {
+          "id": "bugs",
+          "label": "Shallow copies, double free; user destructor suppresses moves",
+          "criterion": "pitfalls",
+          "keywords": [
+            "double free",
+            "shallow copy",
+            "suppress",
+            "no longer generated",
+            "copies instead of moves"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Declaring a destructor, copy constructor or copy assignment suppresses the implicit move operations, so the class silently copies instead of moving.",
+        "`= default` and `= delete` let you state intent explicitly; a move-only type deletes its copy operations (like std::unique_ptr).",
+        "The copy-and-swap idiom gives copy assignment the strong exception guarantee."
+      ],
+      "modelAnswer": "The special member functions are the destructor, copy constructor, copy assignment, move constructor and move assignment. The rule of three says that if a class needs a custom destructor, copy constructor or copy assignment, usually because it owns a raw resource, it probably needs all three. C++11 added moves, giving the rule of five: define or delete all five together. The rule of zero is the preferred default: don't manage resources by hand at all; hold them in RAII members such as std::vector, std::string or std::unique_ptr, so the compiler-generated special members are correct automatically. Pitfalls: a class owning a raw pointer with the default copy constructor makes a shallow copy and leads to a double free, and declaring a destructor or copy operation suppresses the implicit move operations, so the class silently copies instead of moving."
+    },
+    {
+      "id": "cpp-templates-constexpr",
+      "title": "Templates and compile-time programming",
+      "prompt": "Explain how templates work in C++. Cover instantiation, why template code usually lives in headers, how constexpr moves work to compile time, and how C++20 concepts improve template errors.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "cpp",
+        "templates",
+        "generic-programming"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "instantiation",
+          "label": "The compiler generates code per set of template arguments",
+          "criterion": "correctness",
+          "keywords": [
+            "instantiat",
+            "generates code",
+            "for each type",
+            "compile time"
+          ]
+        },
+        {
+          "id": "terms",
+          "label": "Headers, constexpr, concepts, requires",
+          "criterion": "terminology",
+          "keywords": [
+            "header",
+            "constexpr",
+            "concept",
+            "requires",
+            "specializ",
+            "specialis"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "Zero-cost generic containers and algorithms; compile-time computation",
+          "criterion": "practical-implications",
+          "keywords": [
+            "zero cost",
+            "zero-cost",
+            "generic",
+            "stl",
+            "inline",
+            "lookup table"
+          ]
+        },
+        {
+          "id": "costs",
+          "label": "Code bloat, long compile times, unreadable errors",
+          "criterion": "pitfalls",
+          "keywords": [
+            "code bloat",
+            "binary size",
+            "compile time",
+            "error message",
+            "slow build"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Templates must be visible where they are instantiated, so definitions usually live in headers (or you use explicit instantiation).",
+        "constexpr functions may run at compile time when given constant inputs; consteval (C++20) forces compile-time evaluation.",
+        "Concepts such as `std::integral` or a custom `requires` clause constrain templates, so errors appear at the call site in readable form."
+      ],
+      "modelAnswer": "A template is a blueprint: when you use std::vector<int> or call max(a, b), the compiler instantiates the template, generating a separate version for that set of argument types at compile time. Because the compiler needs the full definition to do that, template code usually lives in headers. This gives zero-cost generic code: the STL's containers and algorithms are as fast as hand-written code and can be inlined. constexpr marks variables and functions that can be evaluated at compile time, so values like lookup tables are computed during the build rather than at runtime. C++20 concepts and requires clauses state what a type must support, such as std::integral, so a wrong type gives a short error at the call site instead of pages of errors from deep inside the template. Costs: code bloat from many instantiations, longer compile times and, without concepts, hard-to-read errors."
+    },
+    {
+      "id": "cpp-lambdas",
+      "title": "Lambdas and captures in C++",
+      "prompt": "Explain lambdas in C++. Cover capture by value and by reference, what the compiler generates for a lambda, and how std::function differs from passing a lambda as a template parameter.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "functions"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "closure-object",
+          "label": "A lambda is an unnamed class with operator()",
+          "criterion": "correctness",
+          "keywords": [
+            "closure object",
+            "unnamed class",
+            "function object",
+            "functor",
+            "operator call",
+            "call operator"
+          ]
+        },
+        {
+          "id": "captures",
+          "label": "Capture by value or reference; mutable; init captures",
+          "criterion": "terminology",
+          "keywords": [
+            "capture by value",
+            "capture by reference",
+            "capture list",
+            "mutable",
+            "init capture",
+            "move capture"
+          ]
+        },
+        {
+          "id": "function",
+          "label": "std::function type-erases (allocation, indirect call); templates can inline",
+          "criterion": "practical-implications",
+          "keywords": [
+            "std::function",
+            "std function",
+            "type erasure",
+            "type-erasure",
+            "template parameter",
+            "inline",
+            "heap allocation"
+          ]
+        },
+        {
+          "id": "dangling",
+          "label": "Reference captures that outlive the scope; capturing this",
+          "criterion": "pitfalls",
+          "keywords": [
+            "dangling",
+            "outlive",
+            "capture this",
+            "capturing this",
+            "goes out of scope"
+          ]
+        }
+      ],
+      "researchContext": [
+        "[=] captures used variables by copy, [&] by reference, [x, &y] explicitly; [p = std::move(ptr)] is an init capture (C++14).",
+        "Captured-by-value members are const inside operator() unless the lambda is marked `mutable`.",
+        "Before C++20, [=] implicitly captured `this` (a pointer), not a copy of the object; use [*this] to copy the object."
+      ],
+      "modelAnswer": "A lambda is shorthand for a function object: the compiler generates an unnamed class whose captured variables become data members and whose body becomes operator(). The capture list controls what it stores: [x] copies x, [&x] stores a reference, [=] and [&] capture everything used by copy or by reference, and init captures like [p = std::move(ptr)] can move objects in. Captured copies are const inside the body unless the lambda is marked mutable. std::function can hold any callable with a given signature through type erasure, which is flexible but may heap-allocate and makes an indirect call; passing the lambda as a template parameter, as std::sort does, keeps its exact type so the call can be inlined. Pitfalls: capturing locals by reference in a lambda that outlives the scope, for example one stored as a callback or run on another thread, gives dangling references; capturing this has the same risk if the object is destroyed first."
+    },
+    {
+      "id": "cpp-map-vs-unordered-map",
+      "title": "std::map versus std::unordered_map",
+      "prompt": "Compare std::map and std::unordered_map. Explain the data structure behind each, their time complexity, iteration order and memory use, and when you would choose one over the other.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "cpp",
+        "stl",
+        "data-structures"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "structures",
+          "label": "map is a balanced tree (red-black); unordered_map is a hash table",
+          "criterion": "correctness",
+          "keywords": [
+            "red black",
+            "red-black",
+            "balanced tree",
+            "binary search tree",
+            "hash table",
+            "buckets"
+          ]
+        },
+        {
+          "id": "complexity",
+          "label": "O(log n) ordered vs average O(1) unordered",
+          "criterion": "terminology",
+          "keywords": [
+            "log n",
+            "constant time",
+            "average",
+            "sorted order",
+            "ordered",
+            "load factor"
+          ]
+        },
+        {
+          "id": "choose",
+          "label": "Ordered iteration and range queries vs fast lookup; reserve",
+          "criterion": "practical-implications",
+          "keywords": [
+            "range",
+            "lower_bound",
+            "lower bound",
+            "sorted",
+            "reserve",
+            "cache"
+          ]
+        },
+        {
+          "id": "gotchas",
+          "label": "Worst-case O(n), rehash invalidation, operator[] inserts",
+          "criterion": "pitfalls",
+          "keywords": [
+            "worst case",
+            "rehash",
+            "collision",
+            "operator[] inserts",
+            "inserts a default",
+            "bad hash"
+          ]
+        }
+      ],
+      "researchContext": [
+        "std::map is usually a red-black tree: one heap node per element, so iteration chases pointers and is less cache-friendly.",
+        "unordered_map rehashes when size exceeds bucket_count * max_load_factor; rehashing invalidates iterators but not references to elements.",
+        "`m[key]` default-constructs and inserts a value when the key is missing; use find or contains (C++20) to only look."
+      ],
+      "modelAnswer": "std::map is a balanced binary search tree, usually a red-black tree, so keys stay sorted and lookup, insert and erase are O(log n). It supports ordered iteration and range queries with lower_bound and upper_bound. std::unordered_map is a hash table with buckets: lookups are O(1) on average, but there is no useful order, and the worst case is O(n) when many keys collide. Both allocate a node per element, so memory overhead is significant; the hash table also keeps a bucket array and rehashes when the load factor gets too high, which you can avoid with reserve. Choose unordered_map for fast lookups by key, and map when you need sorted order, range queries or predictable worst-case time. Pitfalls: operator[] inserts a default value when the key is missing, a poor hash function destroys performance, and rehashing invalidates iterators."
+    },
+    {
+      "id": "cpp-exceptions-safety",
+      "title": "Exceptions and exception safety in C++",
+      "prompt": "Explain how exceptions work in C++, including stack unwinding and RAII. Describe the basic, strong and nothrow exception-safety guarantees, and why noexcept matters for performance.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "cpp",
+        "errors",
+        "raii"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "unwinding",
+          "label": "Throw unwinds the stack, running destructors",
+          "criterion": "correctness",
+          "keywords": [
+            "stack unwinding",
+            "unwind",
+            "destructors run",
+            "destructor",
+            "catch"
+          ]
+        },
+        {
+          "id": "guarantees",
+          "label": "Basic, strong and nothrow guarantees",
+          "criterion": "terminology",
+          "keywords": [
+            "basic guarantee",
+            "strong guarantee",
+            "nothrow",
+            "no-throw",
+            "commit or rollback"
+          ]
+        },
+        {
+          "id": "noexcept",
+          "label": "noexcept moves let vector move instead of copy",
+          "criterion": "practical-implications",
+          "keywords": [
+            "noexcept",
+            "move constructor",
+            "copy and swap",
+            "copy-and-swap",
+            "vector"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Throwing from destructors, leaks without RAII, std::terminate",
+          "criterion": "pitfalls",
+          "keywords": [
+            "throw from a destructor",
+            "throwing destructor",
+            "terminate",
+            "leak",
+            "raw new"
+          ]
+        }
+      ],
+      "researchContext": [
+        "If an exception escapes a noexcept function, std::terminate is called; destructors are noexcept by default.",
+        "std::vector uses std::move_if_noexcept during reallocation to keep the strong guarantee.",
+        "Many codebases (games, embedded, Google style) disable exceptions and use error codes or std::expected (C++23)."
+      ],
+      "modelAnswer": "When code throws, the runtime unwinds the stack: it leaves each scope in turn, running destructors of local objects, until it finds a matching catch. That's why RAII matters: resources held by objects such as unique_ptr or lock_guard are released automatically during unwinding, while raw new and delete would leak. Exception-safety guarantees describe what holds if an operation throws: the basic guarantee means no leaks and the object stays valid but possibly changed; the strong guarantee means commit or rollback, so the state is unchanged, often achieved with copy-and-swap; the nothrow guarantee means the operation never throws. Marking moves noexcept matters because std::vector moves elements during reallocation only if the move constructor is noexcept; otherwise it copies them to keep the strong guarantee. Pitfalls: throwing from a destructor during unwinding calls std::terminate, and an exception escaping a noexcept function also terminates the program."
+    },
+    {
+      "id": "cpp-compilation-linking",
+      "title": "Compilation, linking and the one-definition rule",
+      "prompt": "Explain what happens when a C++ program is built: preprocessing, compilation of translation units, and linking. What is the one-definition rule, and what causes undefined reference and multiple definition errors?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "build",
+        "tooling"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "stages",
+          "label": "Preprocess, compile each .cpp to an object file, link",
+          "criterion": "correctness",
+          "keywords": [
+            "preprocess",
+            "object file",
+            "translation unit",
+            "linker",
+            "linking"
+          ]
+        },
+        {
+          "id": "terms",
+          "label": "Declarations vs definitions, ODR, inline, include guards",
+          "criterion": "terminology",
+          "keywords": [
+            "one definition rule",
+            "declaration",
+            "definition",
+            "include guard",
+            "pragma once",
+            "inline"
+          ]
+        },
+        {
+          "id": "build-speed",
+          "label": "Headers drive rebuilds; forward declarations; static vs dynamic libraries",
+          "criterion": "practical-implications",
+          "keywords": [
+            "forward declaration",
+            "build time",
+            "recompil",
+            "static library",
+            "shared library",
+            "dynamic library"
+          ]
+        },
+        {
+          "id": "errors",
+          "label": "Undefined reference, multiple definition, ODR violations",
+          "criterion": "pitfalls",
+          "keywords": [
+            "undefined reference",
+            "multiple definition",
+            "unresolved",
+            "not linked",
+            "odr violation"
+          ]
+        }
+      ],
+      "researchContext": [
+        "#include is textual copy-paste; each .cpp plus everything it includes is one translation unit compiled independently.",
+        "Functions defined in a header must be inline (templates and in-class member definitions are implicitly inline), otherwise every including file defines them.",
+        "C++20 modules aim to replace textual headers and reduce rebuild times."
+      ],
+      "modelAnswer": "Building C++ has three main stages. The preprocessor handles #include and macros, pasting headers in as text, so each .cpp file plus its headers becomes one translation unit. The compiler turns each translation unit independently into an object file containing machine code and a list of symbols it defines and needs. The linker then combines the object files and libraries, resolving each symbol to exactly one definition. The one-definition rule says a function or variable may be declared many times but defined once in the whole program; inline functions and templates may be defined in several translation units as long as the definitions are identical. An undefined reference error means something was declared and used but its definition was never compiled or linked, for example a missing .cpp or library. A multiple definition error usually means a non-inline function or global variable was defined in a header included by several files. Include guards stop double inclusion within one file, and forward declarations reduce rebuild times."
+    },
+    {
+      "id": "cpp-string-view-span",
+      "title": "string_view, span and non-owning views",
+      "prompt": "Explain std::string_view and std::span. Why are they useful as function parameters, and how can they lead to dangling references?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "cpp",
+        "performance",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "views",
+          "label": "Non-owning pointer + length over existing data",
+          "criterion": "correctness",
+          "keywords": [
+            "non-owning",
+            "does not own",
+            "doesn't own",
+            "pointer and a length",
+            "pointer and length",
+            "view"
+          ]
+        },
+        {
+          "id": "terms",
+          "label": "string_view, span, contiguous range",
+          "criterion": "terminology",
+          "keywords": [
+            "string_view",
+            "string view",
+            "span",
+            "contiguous",
+            "substr"
+          ]
+        },
+        {
+          "id": "benefits",
+          "label": "No copies or allocations; accepts many input types",
+          "criterion": "practical-implications",
+          "keywords": [
+            "no copy",
+            "no allocation",
+            "cheap to copy",
+            "by value",
+            "any contiguous",
+            "c string"
+          ]
+        },
+        {
+          "id": "dangling",
+          "label": "Views of temporaries dangle; string_view is not null-terminated",
+          "criterion": "pitfalls",
+          "keywords": [
+            "dangling",
+            "temporary",
+            "null terminated",
+            "null-terminated",
+            "outlive"
+          ]
+        }
+      ],
+      "modelAnswer": "std::string_view (C++17) and std::span (C++20) are non-owning views: just a pointer and a length over data that lives somewhere else. string_view refers to characters, from a std::string, a string literal or a buffer; span refers to any contiguous sequence of elements, such as a vector, an array or a C array. As parameters they accept many input types without copying or allocating, and they are cheap to pass by value; substr on a string_view creates another view instead of a new string. The danger is lifetime: a view never keeps the data alive. Returning a string_view to a local string, storing a view of a temporary such as a function's returned std::string, or keeping a view while the underlying vector reallocates all leave it dangling. Also, string_view is not guaranteed to be null-terminated, so don't pass .data() to C functions that expect a C string."
+    },
+    {
+      "id": "cpp-memory-order",
+      "title": "std::atomic and memory ordering",
+      "prompt": "Explain memory ordering for std::atomic in C++. Compare sequentially consistent, acquire-release and relaxed ordering, and give an example where acquire-release is needed to publish data safely.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "cpp",
+        "concurrency",
+        "low-latency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "reordering",
+          "label": "Compilers and CPUs reorder memory operations",
+          "criterion": "correctness",
+          "keywords": [
+            "reorder",
+            "visibility",
+            "happens before",
+            "happens-before",
+            "memory model"
+          ]
+        },
+        {
+          "id": "orders",
+          "label": "seq_cst, acquire/release, relaxed",
+          "criterion": "terminology",
+          "keywords": [
+            "sequentially consistent",
+            "seq_cst",
+            "acquire",
+            "release",
+            "relaxed"
+          ]
+        },
+        {
+          "id": "publish",
+          "label": "Release store of a flag, acquire load before reading data",
+          "criterion": "practical-implications",
+          "keywords": [
+            "flag",
+            "publish",
+            "producer",
+            "consumer",
+            "counter",
+            "lock-free",
+            "lock free"
+          ]
+        },
+        {
+          "id": "hard",
+          "label": "Data races are UB; relaxed is easy to misuse; test with TSan",
+          "criterion": "pitfalls",
+          "keywords": [
+            "data race",
+            "undefined behavior",
+            "undefined behaviour",
+            "threadsanitizer",
+            "thread sanitizer",
+            "hard to test"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Default ordering for std::atomic operations is memory_order_seq_cst: one global order all threads agree on.",
+        "On x86, acquire and release loads/stores are plain MOVs; seq_cst stores need a full fence (XCHG or MFENCE). ARM needs barriers or special instructions for acquire/release.",
+        "Relaxed is fine for independent counters (statistics), not for flags that guard other data."
+      ],
+      "modelAnswer": "Compilers and CPUs reorder memory operations for speed, so without synchronisation another thread may see writes in a different order or not at all. std::atomic operations take a memory order. Sequentially consistent, the default, gives one global order of atomic operations that all threads agree on: easiest to reason about, but it needs extra fences on some hardware. Acquire-release is cheaper: a release store makes all writes before it visible to a thread whose acquire load reads that value. Relaxed guarantees only atomicity of that variable, with no ordering of other memory, which is fine for an independent statistics counter. Example: a producer fills a buffer, then does ready.store(true, memory_order_release); the consumer spins on ready.load(memory_order_acquire) and only then reads the buffer, which is guaranteed to be complete. With relaxed ordering, the consumer could see the flag but stale data. Pitfalls: plain non-atomic shared variables are a data race and undefined behaviour, and subtle ordering bugs are hard to reproduce; test with ThreadSanitizer."
+    },
+    {
+      "id": "cpp-modern-features",
+      "title": "Modern C++: auto, ranges, optional and more",
+      "prompt": "Describe the modern C++ features you use most from C++11 to C++20, such as auto, range-based for, smart pointers, std::optional, std::variant, structured bindings and ranges, and explain what problem each one solves.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "modern-cpp"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "features",
+          "label": "auto, range-for, smart pointers, move semantics",
+          "criterion": "correctness",
+          "keywords": [
+            "auto",
+            "range based for",
+            "range-based for",
+            "smart pointer",
+            "unique_ptr",
+            "move semantics"
+          ]
+        },
+        {
+          "id": "vocab",
+          "label": "optional, variant, structured bindings, ranges",
+          "criterion": "terminology",
+          "keywords": [
+            "optional",
+            "variant",
+            "structured binding",
+            "ranges",
+            "constexpr",
+            "concepts"
+          ]
+        },
+        {
+          "id": "why",
+          "label": "Safer, shorter code that expresses intent",
+          "criterion": "practical-implications",
+          "keywords": [
+            "safer",
+            "less boilerplate",
+            "intent",
+            "readab",
+            "no raw pointer",
+            "type safe"
+          ]
+        },
+        {
+          "id": "misuse",
+          "label": "auto hiding types, dangling ranges, overusing new features",
+          "criterion": "pitfalls",
+          "keywords": [
+            "hide",
+            "hides the type",
+            "dangle",
+            "dangling",
+            "older compilers",
+            "compiler support",
+            "overuse"
+          ]
+        }
+      ],
+      "modelAnswer": "C++11 brought auto for type deduction, range-based for loops, lambdas, move semantics and smart pointers such as unique_ptr and shared_ptr, which replaced most raw new and delete. C++17 added std::optional for a value that may be missing instead of sentinel values or null pointers, std::variant as a type-safe union handled with std::visit, structured bindings like auto [key, value] when iterating a map, and if constexpr. C++20 added concepts to constrain templates, ranges for composable pipelines like views::filter and views::transform, std::span, and the three-way comparison operator. Together they make code shorter, safer and clearer about intent: ownership is explicit and missing values are visible in the type. Pitfalls: auto can hide an important type such as a proxy or a copy instead of a reference, range views can dangle if the underlying container is a temporary, and older compilers may not support every C++20 feature."
+    },
+    {
       "id": "go-goroutines-channels",
       "title": "Goroutines and channels in Go",
       "prompt": "Explain how goroutines and channels work in Go. Compare buffered and unbuffered channels, describe how the Go scheduler runs goroutines, and name a common concurrency bug.",
@@ -1137,6 +1918,702 @@
       "modelAnswer": "Built-in maps have no internal locking. Concurrent writes, or a write during a read, are a data race, and the runtime often detects this and aborts with \"concurrent map writes\". Options: guard the map with a sync.Mutex, the simple default; use a sync.RWMutex when reads vastly outnumber writes; use sync.Map for specific cases like caches whose keys are written once and read many times, or goroutines working on disjoint keys; or let one goroutine own the map and receive requests over channels. Find races with go test -race. Pitfalls: copying a struct that contains a mutex, forgetting to unlock (use defer), and holding a lock during slow I/O."
     },
     {
+      "id": "go-generics",
+      "title": "Generics in Go",
+      "prompt": "Explain generics in Go. Cover type parameters, constraints such as comparable and union types, when generics are better than interfaces, and their current limitations.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "types",
+        "generics"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "type-params",
+          "label": "Type parameters in square brackets, checked at compile time",
+          "criterion": "correctness",
+          "keywords": [
+            "type parameter",
+            "square bracket",
+            "go 1.18",
+            "compile time",
+            "type argument"
+          ]
+        },
+        {
+          "id": "constraints",
+          "label": "Constraints: any, comparable, union sets, ~T",
+          "criterion": "terminology",
+          "keywords": [
+            "constraint",
+            "comparable",
+            "any constraint",
+            "union",
+            "tilde",
+            "cmp.ordered",
+            "ordered"
+          ]
+        },
+        {
+          "id": "when",
+          "label": "Containers and algorithms over many types; interfaces for behaviour",
+          "criterion": "practical-implications",
+          "keywords": [
+            "container",
+            "slices package",
+            "maps package",
+            "behavior",
+            "behaviour",
+            "type safety",
+            "no type assertion"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "No generic methods; over-engineering",
+          "criterion": "pitfalls",
+          "keywords": [
+            "no generic methods",
+            "method type parameter",
+            "over-engineer",
+            "overuse",
+            "harder to read",
+            "gc shape"
+          ]
+        }
+      ],
+      "researchContext": [
+        "Generics arrived in Go 1.18 (March 2022). Methods cannot declare their own type parameters; only the type can.",
+        "`~int` in a constraint matches any type whose underlying type is int, e.g. `type Celsius int`.",
+        "The standard library's slices and maps packages (Go 1.21) are the best examples of idiomatic generic code."
+      ],
+      "modelAnswer": "Since Go 1.18, functions and types can take type parameters in square brackets, such as func Map[T, U any](s []T, f func(T) U) []U, checked at compile time. Each type parameter has a constraint, which is an interface: any allows every type, comparable allows == and map keys, and constraints can list union sets like ~int | ~float64, where the tilde includes types whose underlying type matches; cmp.Ordered allows < and >. Generics fit containers and algorithms that work the same on many types, as in the slices and maps packages, giving type safety without interface{} and type assertions. Interfaces remain better when you care about behaviour, meaning what methods a value has. Limitations: methods cannot have their own type parameters, and generic code can be harder to read, so avoid it when a simple function or interface works."
+    },
+    {
+      "id": "go-struct-embedding",
+      "title": "Structs, embedding and composition in Go",
+      "prompt": "Go has no classes or inheritance. Explain how structs, methods and embedding give you composition instead, how promoted methods work, and how this differs from inheritance.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "go",
+        "types",
+        "design"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "composition",
+          "label": "Structs plus methods; composition over inheritance",
+          "criterion": "correctness",
+          "keywords": [
+            "composition",
+            "no inheritance",
+            "no classes",
+            "struct",
+            "method"
+          ]
+        },
+        {
+          "id": "embedding",
+          "label": "Embedded fields and promoted methods",
+          "criterion": "terminology",
+          "keywords": [
+            "embed",
+            "promoted",
+            "anonymous field",
+            "outer struct",
+            "inner struct"
+          ]
+        },
+        {
+          "id": "use",
+          "label": "Reuse behaviour, satisfy interfaces, wrap types",
+          "criterion": "practical-implications",
+          "keywords": [
+            "reuse",
+            "satisfy an interface",
+            "satisfies the interface",
+            "wrap",
+            "decorat",
+            "sync.mutex"
+          ]
+        },
+        {
+          "id": "differences",
+          "label": "No polymorphism via the embedded type; name conflicts",
+          "criterion": "pitfalls",
+          "keywords": [
+            "not polymorphism",
+            "not inheritance",
+            "not a subclass",
+            "conflict",
+            "ambiguous",
+            "receiver is the inner"
+          ]
+        }
+      ],
+      "researchContext": [
+        "A method promoted from an embedded field still runs with the embedded value as its receiver; it knows nothing about the outer struct.",
+        "Embedding an interface in a struct is a way to wrap an implementation and override only some methods.",
+        "Embedding sync.Mutex exposes Lock and Unlock as part of your type's API; often a named field is clearer."
+      ],
+      "modelAnswer": "Go has structs and methods but no classes or inheritance; you build types by composition. If a struct embeds another type, writing just the type name as a field, the inner type's fields and methods are promoted, so you can call outer.Method() directly, and the outer struct also satisfies any interface the inner type's methods satisfy. This lets you reuse behaviour and wrap types, for example embedding an io.Reader and overriding only Read. It is not inheritance: a promoted method still runs with the inner value as its receiver and knows nothing about the outer struct, so there is no virtual dispatch back to the outer type, and an outer struct cannot be used where the inner struct type is required. Polymorphism in Go comes from interfaces instead. Pitfalls: two embedded types with the same method name make it ambiguous, and embedding something like sync.Mutex exposes Lock and Unlock as part of your public API."
+    },
+    {
+      "id": "go-pointer-value-receivers",
+      "title": "Value and pointer receivers in Go",
+      "prompt": "Explain the difference between value receivers and pointer receivers on Go methods. How do they affect mutation, copying, method sets and interface satisfaction, and how do you choose?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "go",
+        "methods",
+        "interfaces"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "copy",
+          "label": "Value receivers get a copy; pointer receivers can mutate",
+          "criterion": "correctness",
+          "keywords": [
+            "copy",
+            "mutate",
+            "modify",
+            "pointer receiver",
+            "value receiver"
+          ]
+        },
+        {
+          "id": "method-sets",
+          "label": "Method sets: *T has both, T only value methods",
+          "criterion": "terminology",
+          "keywords": [
+            "method set",
+            "addressable",
+            "implements the interface",
+            "satisfies"
+          ]
+        },
+        {
+          "id": "choose",
+          "label": "Pointer for mutation, large structs, or a mutex inside; be consistent",
+          "criterion": "practical-implications",
+          "keywords": [
+            "large struct",
+            "consistent",
+            "mutex",
+            "avoid copying",
+            "small value"
+          ]
+        },
+        {
+          "id": "bugs",
+          "label": "Changes lost on a copy; T does not implement an interface with pointer methods",
+          "criterion": "pitfalls",
+          "keywords": [
+            "change is lost",
+            "changes are lost",
+            "does not implement",
+            "doesn't implement",
+            "copies the mutex",
+            "copy of the struct"
+          ]
+        }
+      ],
+      "modelAnswer": "A value receiver, func (c Counter) Inc(), gets a copy of the value, so changes inside the method are lost when it returns. A pointer receiver, func (c *Counter) Inc(), gets a pointer and can modify the original, and avoids copying a large struct. Go automatically takes the address when you call a pointer method on an addressable variable, so c.Inc() works either way. Method sets matter for interfaces: the method set of *T includes both pointer and value methods, but the method set of T only includes value methods, so if Inc has a pointer receiver, Counter does not implement an interface that requires Inc, while *Counter does. Choose pointer receivers when the method mutates, when the struct is large, or when it contains a sync.Mutex that must not be copied; use value receivers for small, immutable values. Be consistent within a type. Classic bugs: a mutation that silently does nothing, and the error that a type does not implement an interface because its methods have pointer receivers."
+    },
+    {
+      "id": "go-select-worker-pool",
+      "title": "select, timeouts and worker pools in Go",
+      "prompt": "Explain how select works in Go and how you use it for timeouts and cancellation. Then describe how to build a worker pool with a fixed number of goroutines, and how to shut it down cleanly.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "go",
+        "concurrency",
+        "patterns"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "select",
+          "label": "select waits on several channel operations, picks a ready one",
+          "criterion": "correctness",
+          "keywords": [
+            "select",
+            "ready",
+            "random",
+            "multiple channels",
+            "several channels",
+            "default case"
+          ]
+        },
+        {
+          "id": "patterns",
+          "label": "time.After, ctx.Done, jobs and results channels, WaitGroup",
+          "criterion": "terminology",
+          "keywords": [
+            "time.after",
+            "time after",
+            "ctx.done",
+            "jobs channel",
+            "results channel",
+            "waitgroup",
+            "wait group"
+          ]
+        },
+        {
+          "id": "pool",
+          "label": "Fixed workers bound concurrency and apply back-pressure",
+          "criterion": "practical-implications",
+          "keywords": [
+            "fixed number",
+            "bound",
+            "limit concurrency",
+            "back pressure",
+            "backpressure",
+            "rate limit"
+          ]
+        },
+        {
+          "id": "shutdown",
+          "label": "Close the jobs channel; avoid leaks and sends on closed channels",
+          "criterion": "pitfalls",
+          "keywords": [
+            "close the jobs",
+            "close the channel",
+            "closed channel",
+            "leak",
+            "deadlock",
+            "sender closes"
+          ]
+        }
+      ],
+      "researchContext": [
+        "If several cases are ready, select picks one at random; a default case makes select non-blocking.",
+        "Only the sender should close a channel; receiving from a closed channel returns the zero value immediately, and `v, ok := <-ch` tells you it was closed.",
+        "golang.org/x/sync/errgroup with SetLimit is a common alternative to a hand-written pool."
+      ],
+      "modelAnswer": "select waits on several channel operations at once and runs whichever case becomes ready first, choosing randomly if several are ready; a default case makes it non-blocking. For a timeout, add a case <-time.After(2 * time.Second), or better, a case <-ctx.Done() so cancellation and deadlines come from the context. A worker pool starts a fixed number of goroutines that all range over a shared jobs channel and send to a results channel. The fixed size bounds concurrency, protecting databases or APIs, and an unbuffered or small buffered jobs channel gives natural back-pressure to the producer. To shut down cleanly, the producer closes the jobs channel when it has sent everything; each worker's range loop then ends, and a sync.WaitGroup waits for all workers before closing the results channel. Pitfalls: closing a channel from the receiving side or twice causes a panic, forgetting to close leaves workers blocked forever (a goroutine leak), and not draining results can deadlock the workers."
+    },
+    {
+      "id": "go-waitgroup-errgroup",
+      "title": "WaitGroup, errgroup and sync.Once",
+      "prompt": "Explain how sync.WaitGroup, errgroup and sync.Once are used to coordinate goroutines in Go. How do you collect the first error and cancel the remaining work?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "waitgroup",
+          "label": "Add before starting, Done when finished, Wait blocks",
+          "criterion": "correctness",
+          "keywords": [
+            "waitgroup",
+            "wait group",
+            "wg.add",
+            "wg add",
+            "wg.done",
+            "wg done",
+            "wg.wait",
+            "wg wait"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "errgroup.WithContext, sync.Once",
+          "criterion": "terminology",
+          "keywords": [
+            "errgroup",
+            "error group",
+            "withcontext",
+            "with context",
+            "sync.once",
+            "sync once"
+          ]
+        },
+        {
+          "id": "first-error",
+          "label": "First error cancels the shared context; SetLimit bounds concurrency",
+          "criterion": "practical-implications",
+          "keywords": [
+            "first error",
+            "cancel",
+            "setlimit",
+            "set limit",
+            "lazy init",
+            "initialize once"
+          ]
+        },
+        {
+          "id": "mistakes",
+          "label": "Add inside the goroutine, copying a WaitGroup, ignoring errors",
+          "criterion": "pitfalls",
+          "keywords": [
+            "inside the goroutine",
+            "copy the waitgroup",
+            "pass by value",
+            "negative counter",
+            "loop variable"
+          ]
+        }
+      ],
+      "modelAnswer": "sync.WaitGroup waits for a group of goroutines: call wg.Add(1) before starting each goroutine, defer wg.Done() inside it, and wg.Wait() blocks until the counter reaches zero. It does not collect errors. errgroup from golang.org/x/sync adds that: g, ctx := errgroup.WithContext(parent); each g.Go(func() error {...}) runs a task, g.Wait() returns the first non-nil error, and that first error cancels ctx so the other tasks can stop early if they watch it. g.SetLimit(n) bounds how many tasks run at once. sync.Once runs a function exactly once even when called from many goroutines, which is useful for lazy initialisation of a shared client or config. Pitfalls: calling Add inside the goroutine instead of before it (Wait may return too early), passing a WaitGroup by value so Done affects a copy, and, before Go 1.22, capturing the loop variable in goroutines started in a loop."
+    },
+    {
+      "id": "go-gc-escape-analysis",
+      "title": "Go's garbage collector and escape analysis",
+      "prompt": "Explain how memory is managed in Go. Cover stack versus heap allocation, escape analysis, how the concurrent garbage collector works, and how you reduce allocations in hot code.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "go",
+        "memory",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "escape",
+          "label": "Escape analysis decides stack or heap",
+          "criterion": "correctness",
+          "keywords": [
+            "escape analysis",
+            "escapes",
+            "stack",
+            "heap",
+            "compiler decides"
+          ]
+        },
+        {
+          "id": "gc",
+          "label": "Concurrent tri-color mark and sweep; GOGC",
+          "criterion": "terminology",
+          "keywords": [
+            "concurrent",
+            "mark and sweep",
+            "tri-color",
+            "tricolor",
+            "gogc",
+            "gomemlimit",
+            "write barrier"
+          ]
+        },
+        {
+          "id": "reduce",
+          "label": "Preallocate, reuse buffers, sync.Pool, profile with pprof",
+          "criterion": "practical-implications",
+          "keywords": [
+            "sync.pool",
+            "sync pool",
+            "preallocat",
+            "reuse",
+            "pprof",
+            "benchmem",
+            "gcflags"
+          ]
+        },
+        {
+          "id": "costs",
+          "label": "Allocation rate drives GC CPU; pointers in interfaces escape",
+          "criterion": "pitfalls",
+          "keywords": [
+            "allocation rate",
+            "cpu",
+            "latency",
+            "interface",
+            "returning a pointer",
+            "pointer to a local"
+          ]
+        }
+      ],
+      "researchContext": [
+        "`go build -gcflags=-m` prints the compiler's escape-analysis decisions.",
+        "GOGC=100 (default) starts a cycle when the heap has grown 100% since the last collection; GOMEMLIMIT (Go 1.19) sets a soft memory cap.",
+        "Go's GC is non-generational and non-moving; pauses are usually well under a millisecond, but marking uses CPU (about 25% of GOMAXPROCS during a cycle)."
+      ],
+      "modelAnswer": "In Go you don't choose stack or heap: the compiler's escape analysis decides. A value that never outlives its function stays on the goroutine's stack, which is cheap and freed automatically; a value whose address escapes, for example returned as a pointer, stored in a global, captured by a long-lived closure or often put in an interface, goes on the heap. You can see the decisions with go build -gcflags=-m. The heap is managed by a concurrent, non-moving, tri-color mark-and-sweep collector: it marks reachable objects while your goroutines keep running, using write barriers, with very short stop-the-world pauses. GOGC controls how much the heap may grow between cycles, and GOMEMLIMIT sets a soft memory limit. The real cost is CPU: the more you allocate, the more often the collector runs. In hot code, preallocate slices and maps, reuse buffers, use sync.Pool for short-lived objects, avoid unnecessary pointers and interface conversions, and measure with pprof and benchmarks using -benchmem."
+    },
+    {
+      "id": "go-strings-runes-bytes",
+      "title": "Strings, bytes and runes in Go",
+      "prompt": "Explain how strings work in Go. Cover immutability, UTF-8 encoding, the difference between bytes and runes, what ranging over a string returns, and how to build strings efficiently.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "go",
+        "strings",
+        "unicode"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "utf8",
+          "label": "Immutable sequence of bytes, usually UTF-8",
+          "criterion": "correctness",
+          "keywords": [
+            "immutable",
+            "utf-8",
+            "utf 8",
+            "sequence of bytes",
+            "read-only",
+            "read only"
+          ]
+        },
+        {
+          "id": "rune",
+          "label": "byte vs rune (int32 code point); range decodes runes",
+          "criterion": "terminology",
+          "keywords": [
+            "rune",
+            "code point",
+            "int32",
+            "range over a string",
+            "byte index"
+          ]
+        },
+        {
+          "id": "build",
+          "label": "strings.Builder, bytes.Buffer, avoid += in loops",
+          "criterion": "practical-implications",
+          "keywords": [
+            "strings.builder",
+            "strings builder",
+            "bytes.buffer",
+            "byte slice",
+            "concatenat"
+          ]
+        },
+        {
+          "id": "gotchas",
+          "label": "len counts bytes; indexing gives bytes; conversions copy",
+          "criterion": "pitfalls",
+          "keywords": [
+            "len counts bytes",
+            "number of bytes",
+            "not characters",
+            "indexing",
+            "conversion copies",
+            "copies the data"
+          ]
+        }
+      ],
+      "modelAnswer": "A Go string is an immutable, read-only sequence of bytes, almost always holding UTF-8 text. A byte is a uint8; a rune is an int32 holding one Unicode code point, which may take one to four bytes in UTF-8. So len(s) counts bytes, not characters, and s[i] returns a byte, which may be the middle of a multi-byte character. Ranging over a string decodes UTF-8 for you: for i, r := range s gives the byte index and the rune at that position. To count characters use utf8.RuneCountInString, or convert to []rune. Because strings are immutable, s += x in a loop creates a new string each time; use strings.Builder, or bytes.Buffer, to build strings efficiently. Converting between string and []byte usually copies the data, so avoid doing it repeatedly in hot paths."
+    },
+    {
+      "id": "go-testing",
+      "title": "Testing and benchmarking in Go",
+      "prompt": "Explain how you test Go code. Cover the testing package, table-driven tests, subtests, test doubles through interfaces, benchmarks, and the race detector.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "testing"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "basics",
+          "label": "_test.go files, TestXxx(t *testing.T), go test",
+          "criterion": "correctness",
+          "keywords": [
+            "testing package",
+            "go test",
+            "_test.go",
+            "test file",
+            "t.error",
+            "t.fatal"
+          ]
+        },
+        {
+          "id": "table",
+          "label": "Table-driven tests and subtests with t.Run",
+          "criterion": "terminology",
+          "keywords": [
+            "table driven",
+            "table-driven",
+            "subtest",
+            "t.run",
+            "test cases"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "Fakes via interfaces, httptest, benchmarks, coverage",
+          "criterion": "practical-implications",
+          "keywords": [
+            "interface",
+            "fake",
+            "mock",
+            "httptest",
+            "benchmark",
+            "coverage",
+            "fuzz"
+          ]
+        },
+        {
+          "id": "flaky",
+          "label": "Race detector, flaky tests from timing and shared state",
+          "criterion": "pitfalls",
+          "keywords": [
+            "race detector",
+            "dash race",
+            "flaky",
+            "sleep",
+            "shared state",
+            "global state"
+          ]
+        }
+      ],
+      "modelAnswer": "Go has testing built in: tests live in _test.go files next to the code, as functions like func TestParse(t *testing.T), and go test runs them; t.Errorf reports a failure and continues, while t.Fatalf stops the test. The idiomatic style is table-driven tests: a slice of cases with inputs and expected outputs, looped over with t.Run(name, ...) so each case is a named subtest that can run on its own. Dependencies are replaced through small interfaces, so you pass a fake store or clock instead of a real database, and net/http/httptest gives fake servers and recorders. Benchmarks are func BenchmarkX(b *testing.B), run with go test -bench and -benchmem; go test -cover reports coverage and fuzz tests find edge cases. Run go test -race in CI to catch data races. Avoid flaky tests: don't rely on time.Sleep or global state shared between tests."
+    },
+    {
+      "id": "go-modules-packages",
+      "title": "Packages, modules and visibility in Go",
+      "prompt": "Explain how Go organises code into packages and modules. Cover exported versus unexported names, the go.mod file and versioning, internal packages, and how you avoid import cycles.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "go",
+        "tooling",
+        "architecture"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "packages",
+          "label": "A package is a directory; a module is a versioned set of packages",
+          "criterion": "correctness",
+          "keywords": [
+            "directory",
+            "package",
+            "module",
+            "go.mod",
+            "go mod"
+          ]
+        },
+        {
+          "id": "visibility",
+          "label": "Capitalised names are exported; internal packages",
+          "criterion": "terminology",
+          "keywords": [
+            "exported",
+            "unexported",
+            "capital letter",
+            "uppercase",
+            "internal package",
+            "internal directory"
+          ]
+        },
+        {
+          "id": "versions",
+          "label": "Semantic versioning, go.sum, minimal version selection",
+          "criterion": "practical-implications",
+          "keywords": [
+            "semantic version",
+            "go.sum",
+            "go sum",
+            "minimal version",
+            "go get",
+            "major version"
+          ]
+        },
+        {
+          "id": "cycles",
+          "label": "Import cycles are errors; break them with interfaces or new packages",
+          "criterion": "pitfalls",
+          "keywords": [
+            "import cycle",
+            "circular",
+            "interface",
+            "util package",
+            "utils"
+          ]
+        }
+      ],
+      "modelAnswer": "In Go, a package is a directory of .go files that share a package name; a module is a versioned collection of packages defined by a go.mod file, which names the module path and lists dependency versions. go.sum records checksums so builds are reproducible. Visibility is by capitalisation: identifiers starting with an uppercase letter are exported from the package, lowercase ones are private to it. Packages under a directory named internal can only be imported by code inside the parent of internal, which hides implementation details from other modules. Go uses semantic versioning, and from v2 onwards the major version becomes part of the import path; minimal version selection picks the lowest versions that satisfy every requirement, so builds are predictable. Import cycles are compile errors; break them by moving shared types into a separate package, or by having the lower-level package define an interface that the higher-level one implements. Avoid catch-all util packages."
+    },
+    {
       "id": "py-gil-concurrency",
       "title": "The GIL, threads, processes and asyncio in Python",
       "prompt": "Explain the Global Interpreter Lock in CPython. How does it affect threads for CPU-bound versus I/O-bound work, and when would you use threading, multiprocessing or asyncio?",
@@ -1430,6 +2907,602 @@
         }
       ],
       "modelAnswer": "Functions in Python are first-class objects, so you can pass them in and return them. A decorator is a callable that takes a function and returns a new one: writing @timer above def f is the same as f = timer(f). The returned wrapper is a closure: it remembers the original function from the enclosing scope, usually accepts *args and **kwargs, does something before or after, and calls the original. Real uses include functools.lru_cache for memoisation, timing, logging, retries and access checks in web frameworks. Apply functools.wraps to the wrapper; otherwise the decorated function loses its __name__, docstring and signature, which hurts debugging. A decorator that takes arguments adds one more layer: a function that returns the decorator."
+    },
+    {
+      "id": "py-dict-internals",
+      "title": "How Python dictionaries work",
+      "prompt": "Explain how a Python dict works internally. Cover hashing, collisions, why keys must be hashable, the average and worst-case complexity, and why dicts keep insertion order.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "python",
+        "data-structures"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "hash-table",
+          "label": "Hash table: hash the key to find a slot",
+          "criterion": "correctness",
+          "keywords": [
+            "hash table",
+            "hash function",
+            "slot",
+            "bucket",
+            "hash of the key"
+          ]
+        },
+        {
+          "id": "terms",
+          "label": "Hashable keys, __hash__ and __eq__, open addressing",
+          "criterion": "terminology",
+          "keywords": [
+            "hashable",
+            "__hash__",
+            "dunder hash",
+            "open addressing",
+            "probing",
+            "collision"
+          ]
+        },
+        {
+          "id": "order",
+          "label": "Average O(1); compact layout keeps insertion order",
+          "criterion": "practical-implications",
+          "keywords": [
+            "constant time",
+            "insertion order",
+            "python 3.7",
+            "compact",
+            "resiz"
+          ]
+        },
+        {
+          "id": "pitfalls",
+          "label": "Unhashable mutable keys; modifying a dict while iterating",
+          "criterion": "pitfalls",
+          "keywords": [
+            "unhashable",
+            "mutable key",
+            "list as a key",
+            "while iterating",
+            "changed size during iteration",
+            "worst case"
+          ]
+        }
+      ],
+      "modelAnswer": "A Python dict is a hash table. To store a key, Python calls hash(key), uses the hash to pick a slot, and on a collision probes other slots (open addressing) until it finds a free one; lookups repeat the probe and use == to confirm the key. That's why keys must be hashable: immutable types like str, int and tuple work, while lists and dicts don't, and custom classes need consistent __hash__ and __eq__. Lookups, inserts and deletes are O(1) on average and O(n) in the rare worst case of many collisions. The table resizes as it fills to keep probes short. Since Python 3.7, dicts keep insertion order as a language guarantee, because CPython stores entries in a compact array in insertion order with a separate sparse index table. Pitfalls: using a mutable object as a key, and adding or removing keys while iterating, which raises RuntimeError: dictionary changed size during iteration."
+    },
+    {
+      "id": "py-collections-complexity",
+      "title": "Choosing Python collections",
+      "prompt": "Compare Python's list, tuple, set and dict, plus collections.deque and heapq. Explain the time complexity of common operations and how you choose the right one.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "python",
+        "data-structures",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "basics",
+          "label": "list mutable sequence, tuple immutable, set unique, dict key-value",
+          "criterion": "correctness",
+          "keywords": [
+            "list",
+            "tuple",
+            "set",
+            "dict",
+            "immutable",
+            "unique"
+          ]
+        },
+        {
+          "id": "complexity",
+          "label": "O(1) append and lookup by index; O(n) membership in a list",
+          "criterion": "terminology",
+          "keywords": [
+            "constant time",
+            "linear",
+            "membership",
+            "append",
+            "big o",
+            "o 1",
+            "o n"
+          ]
+        },
+        {
+          "id": "specialised",
+          "label": "deque for queues, heapq for priority queues, Counter/defaultdict",
+          "criterion": "practical-implications",
+          "keywords": [
+            "deque",
+            "heapq",
+            "priority queue",
+            "counter",
+            "defaultdict",
+            "queue"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "list.pop(0) and 'in list' are O(n); sets are unordered",
+          "criterion": "pitfalls",
+          "keywords": [
+            "pop 0",
+            "pop from the front",
+            "insert at the front",
+            "in a list is slow",
+            "unordered",
+            "no order"
+          ]
+        }
+      ],
+      "modelAnswer": "A list is a dynamic array: append and index access are O(1) (append amortised), but inserting or popping at the front and checking x in list are O(n). A tuple is an immutable list, hashable if its items are, so it can be a dict key and signals fixed records. A set stores unique hashable items with O(1) average membership tests, adds and removes, but has no order. A dict maps keys to values with O(1) average lookups and keeps insertion order. collections.deque is a double-ended queue with O(1) appends and pops at both ends, which is right for queues and BFS. heapq turns a list into a binary heap with O(log n) push and pop of the smallest item, a priority queue. Counter and defaultdict simplify counting and grouping. Common mistakes: using list.pop(0) as a queue, and testing membership in a large list inside a loop instead of converting it to a set."
+    },
+    {
+      "id": "py-classes-dunder-mro",
+      "title": "Classes, dunder methods and the MRO in Python",
+      "prompt": "Explain how classes work in Python. Cover __init__ and self, special dunder methods such as __repr__, __eq__ and __len__, inheritance with super(), and the method resolution order.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "python",
+        "oop"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "basics",
+          "label": "__init__ initialises; self is the instance",
+          "criterion": "correctness",
+          "keywords": [
+            "__init__",
+            "dunder init",
+            "self",
+            "instance",
+            "constructor"
+          ]
+        },
+        {
+          "id": "dunder",
+          "label": "Dunder methods plug into built-in operations",
+          "criterion": "terminology",
+          "keywords": [
+            "dunder",
+            "magic method",
+            "special method",
+            "__repr__",
+            "__eq__",
+            "operator overloading"
+          ]
+        },
+        {
+          "id": "inheritance",
+          "label": "super() and the C3 method resolution order",
+          "criterion": "practical-implications",
+          "keywords": [
+            "super",
+            "method resolution order",
+            "mro",
+            "multiple inheritance",
+            "mixin"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Class vs instance attributes; __eq__ without __hash__",
+          "criterion": "pitfalls",
+          "keywords": [
+            "class attribute",
+            "shared between instances",
+            "__hash__",
+            "unhashable",
+            "composition"
+          ]
+        }
+      ],
+      "modelAnswer": "A class defines a type; calling it creates an instance and runs __init__ to set up attributes, with self referring to that instance. Special dunder methods let your objects work with built-in syntax: __repr__ controls how they print in the console and logs, __eq__ defines ==, __lt__ supports sorting, __len__ and __getitem__ make them behave like containers, and __enter__ and __exit__ make them context managers. A subclass calls super().__init__() to reuse the parent's setup. With multiple inheritance, Python uses the C3 linearisation, the method resolution order shown by Class.__mro__, so each class appears once and super() calls the next class in that order, which makes cooperative mixins work. Pitfalls: a mutable class attribute is shared by all instances, defining __eq__ without __hash__ makes instances unhashable, and deep inheritance trees are harder to follow than composition."
+    },
+    {
+      "id": "py-context-managers-exceptions",
+      "title": "Exceptions and context managers in Python",
+      "prompt": "Explain exception handling in Python with try, except, else and finally, and how context managers and the with statement guarantee cleanup. How would you write your own context manager?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "python",
+        "errors",
+        "resources"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "try",
+          "label": "try / except / else / finally",
+          "criterion": "correctness",
+          "keywords": [
+            "try",
+            "except",
+            "finally",
+            "raise",
+            "exception"
+          ]
+        },
+        {
+          "id": "with",
+          "label": "with calls __enter__ and __exit__",
+          "criterion": "terminology",
+          "keywords": [
+            "with statement",
+            "context manager",
+            "__enter__",
+            "__exit__",
+            "dunder enter",
+            "dunder exit"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "Files, locks, connections; contextlib.contextmanager",
+          "criterion": "practical-implications",
+          "keywords": [
+            "contextlib",
+            "contextmanager decorator",
+            "yield",
+            "file",
+            "lock",
+            "connection",
+            "cleanup"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Bare except, swallowing errors, catching too broadly",
+          "criterion": "pitfalls",
+          "keywords": [
+            "bare except",
+            "catch everything",
+            "swallow",
+            "too broad",
+            "keyboardinterrupt",
+            "pass"
+          ]
+        }
+      ],
+      "modelAnswer": "Code that may fail goes in try; except catches specific exception types; else runs only if no exception occurred; finally always runs, for cleanup. raise throws an exception, and raise ... from err chains the original cause. A context manager packages setup and cleanup: the with statement calls __enter__ at the start and __exit__ at the end, even if an exception is raised, so with open(path) as f closes the file and with lock: releases the lock. You can write one as a class with __enter__ and __exit__, or more simply with the contextlib.contextmanager decorator: a generator that does setup, yields the resource, and does cleanup in a finally block. Pitfalls: a bare except: also catches KeyboardInterrupt and SystemExit; catching Exception too broadly and doing pass swallows real bugs. Catch the narrowest exception you can handle."
+    },
+    {
+      "id": "py-dataclasses-type-hints",
+      "title": "Type hints and dataclasses in Python",
+      "prompt": "Explain type hints in Python and what tools like mypy do with them. Then explain dataclasses: what they generate for you, and when you would use them instead of a plain class, a dict or a named tuple.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "python",
+        "types"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "hints",
+          "label": "Hints are not enforced at runtime; checked by mypy/pyright",
+          "criterion": "correctness",
+          "keywords": [
+            "type hint",
+            "annotation",
+            "not enforced",
+            "runtime",
+            "mypy",
+            "pyright"
+          ]
+        },
+        {
+          "id": "dataclass",
+          "label": "@dataclass generates __init__, __repr__, __eq__",
+          "criterion": "terminology",
+          "keywords": [
+            "dataclass",
+            "__init__",
+            "__repr__",
+            "__eq__",
+            "frozen",
+            "field"
+          ]
+        },
+        {
+          "id": "when",
+          "label": "Structured records vs dicts; Pydantic for validation",
+          "criterion": "practical-implications",
+          "keywords": [
+            "instead of a dict",
+            "named tuple",
+            "namedtuple",
+            "pydantic",
+            "validation",
+            "autocomplete"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Mutable defaults need default_factory; hints don't validate",
+          "criterion": "pitfalls",
+          "keywords": [
+            "default_factory",
+            "default factory",
+            "mutable default",
+            "doesn't validate",
+            "does not validate",
+            "any"
+          ]
+        }
+      ],
+      "modelAnswer": "Type hints, such as def total(items: list[float]) -> float, document the expected types but are not enforced when the code runs. Static checkers like mypy or pyright read them and report mismatches before runtime, and editors use them for autocompletion and refactoring. A dataclass is a class decorated with @dataclass: from annotated fields, it generates __init__, __repr__ and __eq__, and can generate ordering, immutability with frozen=True, and lighter objects with slots=True. Use it instead of a dict for structured records, so typos become errors and fields are discoverable; a NamedTuple suits small immutable tuples; Pydantic is better when you must validate untrusted data such as JSON, because dataclasses don't check types at runtime. Pitfall: a mutable default like a list must use field(default_factory=list), and Any in hints quietly switches checking off."
+    },
+    {
+      "id": "py-asyncio",
+      "title": "async and await in Python",
+      "prompt": "Explain how async and await work in Python. Cover coroutines, the event loop, running tasks concurrently with gather, and what happens if you call blocking code inside a coroutine.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "python",
+        "async",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "coroutines",
+          "label": "async def creates coroutines; await suspends until a result is ready",
+          "criterion": "correctness",
+          "keywords": [
+            "coroutine",
+            "async def",
+            "await",
+            "suspend",
+            "single thread"
+          ]
+        },
+        {
+          "id": "loop",
+          "label": "Event loop, tasks, gather",
+          "criterion": "terminology",
+          "keywords": [
+            "event loop",
+            "task",
+            "gather",
+            "create_task",
+            "asyncio.run",
+            "taskgroup"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "Many concurrent I/O operations: HTTP calls, sockets, web servers",
+          "criterion": "practical-implications",
+          "keywords": [
+            "i/o bound",
+            "io bound",
+            "network",
+            "http",
+            "aiohttp",
+            "httpx",
+            "fastapi"
+          ]
+        },
+        {
+          "id": "blocking",
+          "label": "Blocking calls freeze the loop; use to_thread or async libraries",
+          "criterion": "pitfalls",
+          "keywords": [
+            "blocking",
+            "time.sleep",
+            "freezes",
+            "to_thread",
+            "run_in_executor",
+            "forgot to await"
+          ]
+        }
+      ],
+      "modelAnswer": "async def defines a coroutine function; calling it returns a coroutine object that does nothing until it is awaited or scheduled. await suspends the current coroutine until the awaited operation, such as a network response, is ready, and hands control back to the event loop, which runs other coroutines in the meantime, all on a single thread. asyncio.run starts the loop; asyncio.create_task schedules a coroutine to run concurrently, and asyncio.gather or a TaskGroup waits for several at once, so ten HTTP requests take about as long as the slowest one. This suits I/O-bound work with many connections, like web servers in FastAPI or clients using httpx. The big pitfall is blocking: calling time.sleep, requests.get or heavy CPU work inside a coroutine freezes the whole loop, so every other task stops. Use await asyncio.sleep, async libraries, or asyncio.to_thread for blocking calls. Forgetting await is another common bug: the coroutine never runs."
+    },
+    {
+      "id": "py-memory-gc",
+      "title": "Memory management in CPython",
+      "prompt": "Explain how CPython manages memory. Cover reference counting, the cyclic garbage collector, when objects are freed, and how memory leaks can still happen in Python.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "python",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "refcount",
+          "label": "Reference counting frees objects at zero references",
+          "criterion": "correctness",
+          "keywords": [
+            "reference count",
+            "refcount",
+            "drops to zero",
+            "reaches zero",
+            "freed immediately"
+          ]
+        },
+        {
+          "id": "gc",
+          "label": "Generational cyclic garbage collector",
+          "criterion": "terminology",
+          "keywords": [
+            "cyclic",
+            "cycle",
+            "gc module",
+            "generational",
+            "garbage collector",
+            "weakref"
+          ]
+        },
+        {
+          "id": "practice",
+          "label": "Deterministic cleanup, weak references, profiling tools",
+          "criterion": "practical-implications",
+          "keywords": [
+            "weak reference",
+            "tracemalloc",
+            "memory profiler",
+            "with statement",
+            "del"
+          ]
+        },
+        {
+          "id": "leaks",
+          "label": "Leaks via caches, globals, closures; __del__ surprises",
+          "criterion": "pitfalls",
+          "keywords": [
+            "leak",
+            "global",
+            "cache",
+            "unbounded",
+            "__del__",
+            "growing list"
+          ]
+        }
+      ],
+      "modelAnswer": "CPython mainly uses reference counting: every object counts how many references point to it, and when the count drops to zero the object is freed immediately, which is why files are often closed as soon as the last reference goes away (though you should still use with). Reference counting cannot free cycles, such as two objects referring to each other, so CPython also has a generational cyclic garbage collector that periodically finds unreachable groups of objects and frees them; the gc module controls it. Leaks still happen when objects stay reachable by mistake: unbounded caches or global lists that keep growing, closures or callbacks holding large objects, or objects registered somewhere and never removed. Use weakref for caches and observers, and find leaks with tracemalloc or a memory profiler. Large small-object pools may also not return memory to the operating system right away."
+    },
+    {
+      "id": "py-scope-args",
+      "title": "Scopes, args and kwargs in Python",
+      "prompt": "Explain how name lookup works in Python with the LEGB rule, what global and nonlocal do, and how *args and **kwargs, keyword-only and positional-only parameters work.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "python",
+        "functions"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "legb",
+          "label": "Local, Enclosing, Global, Built-in lookup",
+          "criterion": "correctness",
+          "keywords": [
+            "legb",
+            "local",
+            "enclosing",
+            "global",
+            "built-in",
+            "builtin"
+          ]
+        },
+        {
+          "id": "keywords",
+          "label": "global, nonlocal, *args, **kwargs",
+          "criterion": "terminology",
+          "keywords": [
+            "nonlocal",
+            "global keyword",
+            "star args",
+            "args",
+            "kwargs",
+            "keyword argument"
+          ]
+        },
+        {
+          "id": "params",
+          "label": "Keyword-only after *, positional-only before /",
+          "criterion": "practical-implications",
+          "keywords": [
+            "keyword only",
+            "keyword-only",
+            "positional only",
+            "positional-only",
+            "forwarding",
+            "wrapper"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "UnboundLocalError; shadowing built-ins",
+          "criterion": "pitfalls",
+          "keywords": [
+            "unboundlocalerror",
+            "unbound local",
+            "shadow",
+            "assignment makes it local",
+            "list as a variable name"
+          ]
+        }
+      ],
+      "modelAnswer": "Python resolves a name using the LEGB rule: Local scope of the current function, then Enclosing functions, then the Global module scope, then Built-ins. Assigning to a name inside a function makes it local for the whole function, so reading it before the assignment raises UnboundLocalError; global makes the name refer to the module-level variable, and nonlocal to a variable in an enclosing function, which is how closures update counters. In a function definition, *args collects extra positional arguments into a tuple and **kwargs collects extra keyword arguments into a dict, which is handy for wrappers that forward everything. Parameters after a bare * are keyword-only, which makes calls clearer, and parameters before / are positional-only. Pitfalls: shadowing built-ins by naming variables list, dict or id, and overusing global state."
     },
     {
       "id": "rust-ownership-borrowing",
@@ -1726,6 +3799,600 @@
       "modelAnswer": "Send means a value can be moved to another thread; Sync means a shared reference &T can be used from several threads (T is Sync if &T is Send). Both are auto marker traits: a type gets them automatically when all its fields have them. thread::spawn requires its closure to be Send and 'static, so unsafe sharing becomes a compile error rather than a runtime bug. Rc uses a non-atomic reference count, so it is neither Send nor Sync, and RefCell does borrow checks at runtime without synchronisation, so it is not Sync. Across threads, use Arc, an atomically reference-counted pointer, for shared ownership, and Mutex or RwLock for mutation: Arc<Mutex<T>>. Rust prevents data races, but not deadlocks or higher-level logic races, and a Mutex becomes poisoned if a thread panics while holding it."
     },
     {
+      "id": "rust-lifetimes",
+      "title": "Lifetimes in Rust",
+      "prompt": "Explain lifetimes in Rust. What problem do lifetime annotations solve, how do elision rules let you omit them most of the time, and what does a signature like fn longest<'a>(x: &'a str, y: &'a str) -> &'a str mean?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "rust",
+        "memory",
+        "safety"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "purpose",
+          "label": "References must not outlive the data they point to",
+          "criterion": "correctness",
+          "keywords": [
+            "outlive",
+            "dangling",
+            "valid for",
+            "borrow checker",
+            "how long"
+          ]
+        },
+        {
+          "id": "terms",
+          "label": "Lifetime parameters, elision, 'static",
+          "criterion": "terminology",
+          "keywords": [
+            "lifetime annotation",
+            "lifetime parameter",
+            "elision",
+            "static lifetime",
+            "tick a"
+          ]
+        },
+        {
+          "id": "meaning",
+          "label": "Annotations relate lifetimes; they don't change them",
+          "criterion": "practical-implications",
+          "keywords": [
+            "relationship",
+            "shorter of the two",
+            "doesn't change",
+            "does not change",
+            "describe"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Returning references to locals; structs holding references",
+          "criterion": "pitfalls",
+          "keywords": [
+            "reference to a local",
+            "struct with a reference",
+            "owned type",
+            "clone",
+            "string instead"
+          ]
+        }
+      ],
+      "modelAnswer": "A lifetime is the region of code during which a reference is valid. The borrow checker uses lifetimes to make sure no reference outlives the data it points to, which prevents dangling references. Annotations like 'a don't change how long anything lives; they describe relationships between lifetimes so the compiler can check them. In fn longest<'a>(x: &'a str, y: &'a str) -> &'a str, the returned reference is valid for no longer than the shorter of x and y, so the caller can't use the result after either input is dropped. Most of the time you don't write lifetimes because of elision rules: each reference parameter gets its own lifetime; if there is exactly one input lifetime, it is used for outputs; and for methods taking &self, outputs get self's lifetime. 'static means the data lives for the whole program, like string literals. Pitfalls: trying to return a reference to a local variable, which can never work, and putting references in structs too early; often an owned type like String is simpler."
+    },
+    {
+      "id": "rust-smart-pointers",
+      "title": "Box, Rc and RefCell in Rust",
+      "prompt": "Explain Rust's smart pointers Box, Rc and RefCell. What does each one solve, how does interior mutability work, and how can Rc create memory leaks?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "rust",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "box",
+          "label": "Box: single owner on the heap; recursive types, trait objects",
+          "criterion": "correctness",
+          "keywords": [
+            "box",
+            "heap",
+            "recursive type",
+            "trait object",
+            "single owner"
+          ]
+        },
+        {
+          "id": "rc-refcell",
+          "label": "Rc shared ownership; RefCell interior mutability",
+          "criterion": "terminology",
+          "keywords": [
+            "shared ownership",
+            "reference count",
+            "interior mutability",
+            "refcell",
+            "borrow_mut",
+            "borrow mut"
+          ]
+        },
+        {
+          "id": "patterns",
+          "label": "Graphs and trees; Weak for parent links; Arc/Mutex across threads",
+          "criterion": "practical-implications",
+          "keywords": [
+            "graph",
+            "tree",
+            "weak",
+            "parent",
+            "arc",
+            "single threaded"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Rc cycles leak; RefCell panics at runtime",
+          "criterion": "pitfalls",
+          "keywords": [
+            "cycle",
+            "leak",
+            "panic",
+            "already borrowed",
+            "runtime check"
+          ]
+        }
+      ],
+      "modelAnswer": "Box<T> puts a value on the heap with a single owner; it is used for recursive types like linked lists and trees, for large values you want to move cheaply, and for trait objects such as Box<dyn Error>. Rc<T> gives shared ownership within one thread: cloning an Rc increments a reference count, and the value is dropped when the last Rc goes away. Because Rc only hands out shared references, you combine it with RefCell<T> for interior mutability: RefCell moves the borrow rules from compile time to runtime, so borrow() and borrow_mut() check at runtime that there is never a mutable borrow alongside others. Rc<RefCell<T>> is common for graphs and shared state; across threads the equivalents are Arc and Mutex. Pitfalls: two Rc values pointing at each other form a cycle whose counts never reach zero, leaking memory, so use Weak for back-pointers such as a child's link to its parent; and a second borrow_mut while one is active panics with \"already borrowed\"."
+    },
+    {
+      "id": "rust-iterators-closures",
+      "title": "Iterators and closures in Rust",
+      "prompt": "Explain iterators and closures in Rust. Cover lazy iterator adapters like map and filter, consumers like collect, the Fn, FnMut and FnOnce traits, and why iterator chains are zero-cost.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "rust",
+        "functional",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "lazy",
+          "label": "Adapters are lazy until a consumer runs them",
+          "criterion": "correctness",
+          "keywords": [
+            "lazy",
+            "lazily",
+            "nothing happens until",
+            "consumer",
+            "collect",
+            "next"
+          ]
+        },
+        {
+          "id": "fn-traits",
+          "label": "Fn, FnMut, FnOnce; move closures",
+          "criterion": "terminology",
+          "keywords": [
+            "fnmut",
+            "fn mut",
+            "fnonce",
+            "fn once",
+            "move closure",
+            "capture"
+          ]
+        },
+        {
+          "id": "zero-cost",
+          "label": "Compiles to loops as fast as hand-written code",
+          "criterion": "practical-implications",
+          "keywords": [
+            "zero cost",
+            "zero-cost",
+            "as fast as a loop",
+            "inlin",
+            "bounds check",
+            "monomorphiz"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Unused lazy iterators; iter vs into_iter ownership",
+          "criterion": "pitfalls",
+          "keywords": [
+            "unused",
+            "must be used",
+            "into_iter",
+            "into iter",
+            "iter_mut",
+            "moves the collection"
+          ]
+        }
+      ],
+      "modelAnswer": "An iterator is anything implementing the Iterator trait, whose next() returns Some(item) or None. Adapters such as map, filter, enumerate and zip are lazy: they build a new iterator and do nothing until a consumer like collect, sum, for or count pulls items through. Closures are anonymous functions that capture variables from their environment. The compiler picks the most flexible trait: Fn if the closure only reads what it captures, FnMut if it mutates captured state, FnOnce if it consumes it; the move keyword forces captured values to be moved in, which is needed for threads. Iterator chains are zero-cost abstractions: thanks to monomorphisation and inlining, data.iter().filter(...).map(...).sum() usually compiles to the same tight loop you would write by hand, often without bounds checks. Pitfalls: building an iterator chain without consuming it does nothing (the compiler warns), and choosing between iter(), iter_mut() and into_iter() decides whether you borrow, mutably borrow or move the collection."
+    },
+    {
+      "id": "rust-enums-pattern-matching",
+      "title": "Enums and pattern matching in Rust",
+      "prompt": "Explain enums and pattern matching in Rust. How do enums with data differ from enums in C or Java, why must match be exhaustive, and how do you use them to make invalid states unrepresentable?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "rust",
+        "types"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "data",
+          "label": "Variants can carry data (algebraic data types)",
+          "criterion": "correctness",
+          "keywords": [
+            "carry data",
+            "hold data",
+            "variant",
+            "algebraic data type",
+            "sum type",
+            "tagged union"
+          ]
+        },
+        {
+          "id": "match",
+          "label": "Exhaustive match, if let, destructuring, guards",
+          "criterion": "terminology",
+          "keywords": [
+            "exhaustive",
+            "match",
+            "if let",
+            "destructur",
+            "guard",
+            "wildcard"
+          ]
+        },
+        {
+          "id": "design",
+          "label": "Make invalid states unrepresentable; state machines",
+          "criterion": "practical-implications",
+          "keywords": [
+            "invalid state",
+            "state machine",
+            "unrepresentable",
+            "compiler checks",
+            "refactor"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Catch-all _ hides new variants",
+          "criterion": "pitfalls",
+          "keywords": [
+            "catch-all",
+            "catch all",
+            "underscore",
+            "new variant",
+            "non_exhaustive"
+          ]
+        }
+      ],
+      "modelAnswer": "In C or Java an enum is mostly a set of named constants. In Rust each variant can carry its own data, making enums algebraic data types or tagged unions: enum Shape { Circle { r: f64 }, Rect { w: f64, h: f64 } }. Option and Result are ordinary enums. You take them apart with match, which destructures the data and can add guards like Some(x) if x > 0, or with if let for a single case. match must be exhaustive: the compiler rejects code that forgets a variant, so when you add a new variant, every place that needs updating becomes a compile error. That lets you make invalid states unrepresentable: instead of a struct with a status field plus optional fields that only make sense in some states, model each state as a variant that carries exactly its data, like a connection that is Connecting, Connected { session } or Failed { error }. Pitfall: a catch-all _ arm silences the exhaustiveness check, so new variants slip through unnoticed."
+    },
+    {
+      "id": "rust-async",
+      "title": "async and await in Rust",
+      "prompt": "Explain how async and await work in Rust. Cover futures being lazy and polled, why you need a runtime such as Tokio, and the difference between spawning a task and awaiting a future.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "rust",
+        "async",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "futures",
+          "label": "async fn returns a lazy Future that is polled",
+          "criterion": "correctness",
+          "keywords": [
+            "future",
+            "lazy",
+            "poll",
+            "state machine",
+            "nothing runs until"
+          ]
+        },
+        {
+          "id": "runtime",
+          "label": "Executor/runtime (Tokio), wakers, tasks",
+          "criterion": "terminology",
+          "keywords": [
+            "tokio",
+            "runtime",
+            "executor",
+            "waker",
+            "spawn",
+            "task"
+          ]
+        },
+        {
+          "id": "use",
+          "label": "Many I/O-bound connections; join for concurrency",
+          "criterion": "practical-implications",
+          "keywords": [
+            "i/o bound",
+            "io bound",
+            "connections",
+            "join",
+            "select",
+            "web server"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Blocking in async code; Send bounds; holding locks across await",
+          "criterion": "pitfalls",
+          "keywords": [
+            "blocking",
+            "spawn_blocking",
+            "spawn blocking",
+            "send bound",
+            "across an await",
+            "std mutex"
+          ]
+        }
+      ],
+      "modelAnswer": "An async fn returns a Future, a value representing work that hasn't finished. Futures in Rust are lazy: nothing happens until something polls them, and the compiler turns each async fn into a state machine that can pause at every await. The standard library defines Future but no executor, so you add a runtime such as Tokio, which polls futures, parks them while they wait on I/O, and uses wakers to resume them when sockets or timers are ready. Awaiting a future runs it as part of the current task, one step after another; join! runs several futures concurrently within the task; tokio::spawn creates an independent task the runtime can run in parallel on its worker threads, which therefore requires the future to be Send and 'static. Async shines for many I/O-bound connections, such as web servers. Pitfalls: calling blocking code or heavy CPU work inside async code stalls the runtime's threads, so use spawn_blocking; and holding a std::sync::Mutex guard across an await can deadlock or make the future non-Send."
+    },
+    {
+      "id": "rust-unsafe",
+      "title": "unsafe Rust",
+      "prompt": "Explain what unsafe means in Rust. What extra operations does it allow, what guarantees do you take responsibility for, and how should unsafe code be wrapped in safe abstractions?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "rust",
+        "safety",
+        "ffi"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "operations",
+          "label": "Raw pointer dereference, unsafe functions, FFI, mutable statics, unsafe traits",
+          "criterion": "correctness",
+          "keywords": [
+            "raw pointer",
+            "dereference",
+            "ffi",
+            "foreign function",
+            "mutable static",
+            "unsafe trait"
+          ]
+        },
+        {
+          "id": "contract",
+          "label": "You uphold the invariants; the borrow checker still runs",
+          "criterion": "terminology",
+          "keywords": [
+            "invariant",
+            "undefined behavior",
+            "undefined behaviour",
+            "still checks",
+            "safety comment",
+            "soundness"
+          ]
+        },
+        {
+          "id": "abstractions",
+          "label": "Small unsafe blocks inside safe APIs, like Vec",
+          "criterion": "practical-implications",
+          "keywords": [
+            "safe abstraction",
+            "safe wrapper",
+            "vec",
+            "standard library",
+            "encapsulat",
+            "c library"
+          ]
+        },
+        {
+          "id": "risks",
+          "label": "Aliasing violations, data races; test with Miri",
+          "criterion": "pitfalls",
+          "keywords": [
+            "miri",
+            "aliasing",
+            "data race",
+            "dangling",
+            "audit"
+          ]
+        }
+      ],
+      "modelAnswer": "unsafe doesn't turn off the borrow checker; it unlocks a few extra operations: dereferencing raw pointers, calling unsafe functions including foreign C functions over FFI, accessing mutable statics, implementing unsafe traits like Send or Sync by hand, and accessing union fields. In return you promise to uphold the invariants the compiler can't check, such as pointers being valid and aligned, no aliasing &mut, and no data races; breaking them is undefined behaviour. The idiom is to keep unsafe blocks small, document why they are sound with a SAFETY comment, and wrap them in a safe API that cannot be misused from safe code. The standard library does exactly this: Vec, String and Mutex use unsafe internally but expose safe interfaces. Unsafe is also how Rust binds to C libraries. Risks: subtle aliasing and lifetime bugs; test unsafe code with Miri and keep it small enough to audit."
+    },
+    {
+      "id": "rust-string-vs-str",
+      "title": "String versus &str in Rust",
+      "prompt": "Explain the difference between String and &str in Rust. Cover ownership, how string slices work, UTF-8 and why you cannot index a string by position, and which type to use in function parameters.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "rust",
+        "strings"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "ownership",
+          "label": "String owns a growable heap buffer; &str borrows a slice",
+          "criterion": "correctness",
+          "keywords": [
+            "owned",
+            "owns",
+            "heap",
+            "growable",
+            "borrowed",
+            "string slice"
+          ]
+        },
+        {
+          "id": "utf8",
+          "label": "Always valid UTF-8; chars vs bytes",
+          "criterion": "terminology",
+          "keywords": [
+            "utf-8",
+            "utf 8",
+            "chars",
+            "bytes",
+            "code point",
+            "string literal"
+          ]
+        },
+        {
+          "id": "params",
+          "label": "Take &str in parameters; deref coercion from &String",
+          "criterion": "practical-implications",
+          "keywords": [
+            "take a str",
+            "parameter",
+            "deref",
+            "coercion",
+            "to_string",
+            "to_owned"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "No indexing by position; slicing mid-character panics",
+          "criterion": "pitfalls",
+          "keywords": [
+            "cannot index",
+            "can't index",
+            "index",
+            "panic",
+            "char boundary",
+            "middle of a character"
+          ]
+        }
+      ],
+      "modelAnswer": "String is an owned, growable, heap-allocated buffer of text: you can push to it and it is freed when its owner goes out of scope. &str is a borrowed string slice, a pointer and a length pointing into text owned by something else: a String, or the program binary for string literals, which have type &'static str. Both are always valid UTF-8, so one character can take one to four bytes. That's why Rust doesn't let you index s[3]: a position in bytes might be the middle of a character, and a position in characters would be O(n). Use .chars() for Unicode scalar values and .bytes() for raw bytes, and byte-range slicing like &s[0..4] panics if it doesn't fall on a character boundary. For function parameters, take &str: it accepts string literals and, through deref coercion, &String, without forcing callers to allocate. Return String when you create new text, and convert with to_string or to_owned."
+    },
+    {
+      "id": "rust-copy-clone-drop",
+      "title": "Copy, Clone and Drop in Rust",
+      "prompt": "Explain the Copy, Clone and Drop traits in Rust. Which types are Copy, why can't a type be both Copy and Drop, and when does a value get dropped?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "rust",
+        "memory",
+        "traits"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "copy-clone",
+          "label": "Copy is an implicit bitwise copy; Clone is an explicit, possibly deep copy",
+          "criterion": "correctness",
+          "keywords": [
+            "implicit",
+            "bitwise",
+            "explicit",
+            "deep copy",
+            "clone()",
+            "instead of a move"
+          ]
+        },
+        {
+          "id": "drop",
+          "label": "Drop runs cleanup when a value goes out of scope",
+          "criterion": "terminology",
+          "keywords": [
+            "drop",
+            "destructor",
+            "out of scope",
+            "reverse order",
+            "raii"
+          ]
+        },
+        {
+          "id": "which",
+          "label": "Integers, bools, chars, shared references are Copy; String and Vec are not",
+          "criterion": "practical-implications",
+          "keywords": [
+            "integer",
+            "bool",
+            "shared reference",
+            "string is not",
+            "vec is not",
+            "derive"
+          ]
+        },
+        {
+          "id": "rules",
+          "label": "Copy and Drop are mutually exclusive; mem::forget; clone costs",
+          "criterion": "pitfalls",
+          "keywords": [
+            "mutually exclusive",
+            "can't be both",
+            "cannot be both",
+            "mem::forget",
+            "forget",
+            "expensive clone"
+          ]
+        }
+      ],
+      "modelAnswer": "By default, assigning or passing a value moves it. If a type implements Copy, the value is instead copied implicitly with a simple bitwise copy, and the original stays usable. Integers, floats, bool, char, shared references and tuples or arrays of Copy types are Copy; String, Vec and Box are not, because copying their bits would create two owners of the same heap buffer. Clone is an explicit .clone() that can do a deep copy, like duplicating a String's buffer, so its cost is visible in the code; you can derive both. Drop is Rust's destructor: its drop method runs automatically when a value goes out of scope, in reverse order of declaration, which is how RAII frees memory, closes files and releases locks. A type can't be both Copy and Drop, because implicit copies would make it unclear how many times cleanup runs. You can drop early with drop(x); std::mem::forget skips the destructor. Pitfall: cloning large values in hot loops just to satisfy the borrow checker."
+    },
+    {
       "id": "java-jvm-gc",
       "title": "The JVM, JIT and garbage collection",
       "prompt": "Explain how Java code runs on the JVM and how garbage collection works. Cover bytecode and JIT compilation, the heap and generational collection, and what causes GC pauses.",
@@ -1946,6 +4613,376 @@
         }
       ],
       "modelAnswer": "Without synchronisation, one thread's writes may never become visible to another, and operations can be reordered. The Java memory model defines happens-before rules: unlocking a monitor happens-before every later lock of the same monitor, and a write to a volatile field happens-before later reads of that field. volatile gives visibility and ordering, but not atomicity: count++ on a volatile int is still a race, so use AtomicInteger or a lock. synchronized gives mutual exclusion plus visibility. Rather than creating threads by hand, submit tasks to an ExecutorService, which manages a thread pool, returns futures and shuts down cleanly. Since Java 21, virtual threads make one thread per task cheap for blocking I/O. Pitfalls: check-then-act races and deadlocks from inconsistent lock ordering."
+    },
+    {
+      "id": "java-collections",
+      "title": "Java collections: ArrayList, LinkedList and HashMap",
+      "prompt": "Compare ArrayList and LinkedList in Java, and explain how HashMap works internally, including buckets, resizing and treeification. What are the time complexities, and when would you choose each collection?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "java",
+        "collections",
+        "data-structures"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "lists",
+          "label": "ArrayList is a resizable array; LinkedList is doubly linked",
+          "criterion": "correctness",
+          "keywords": [
+            "resizable array",
+            "dynamic array",
+            "doubly linked",
+            "linked list",
+            "random access"
+          ]
+        },
+        {
+          "id": "hashmap",
+          "label": "Buckets, load factor 0.75, resize, tree bins",
+          "criterion": "terminology",
+          "keywords": [
+            "bucket",
+            "load factor",
+            "resize",
+            "treeif",
+            "red-black",
+            "red black"
+          ]
+        },
+        {
+          "id": "choose",
+          "label": "ArrayList by default; ArrayDeque for queues; LinkedHashMap/TreeMap",
+          "criterion": "practical-implications",
+          "keywords": [
+            "arraydeque",
+            "array deque",
+            "linkedhashmap",
+            "treemap",
+            "cache locality",
+            "by default"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "ConcurrentModificationException; HashMap not thread-safe",
+          "criterion": "pitfalls",
+          "keywords": [
+            "concurrentmodification",
+            "concurrent modification",
+            "not thread safe",
+            "concurrenthashmap",
+            "remove while iterating"
+          ]
+        }
+      ],
+      "modelAnswer": "ArrayList is a resizable array: get(i) is O(1), adding at the end is amortised O(1), and inserting or removing in the middle is O(n) because elements shift. LinkedList is a doubly linked list: adding or removing at the ends is O(1), but get(i) is O(n), and every node is a separate object, so it uses more memory and has poor cache locality. In practice ArrayList is the default, and ArrayDeque is better than LinkedList for queues and stacks. HashMap is an array of buckets: it hashes the key, picks a bucket, and stores entries there; equals finds the right key within a bucket. When the size exceeds capacity times the load factor (0.75 by default), it doubles the array and redistributes entries. Since Java 8, a bucket with many collisions turns into a red-black tree, so the worst case is O(log n) instead of O(n). Use LinkedHashMap for insertion order or LRU caches and TreeMap for sorted keys. Pitfalls: modifying a collection while iterating throws ConcurrentModificationException (use the iterator's remove), and HashMap is not thread-safe; use ConcurrentHashMap."
+    },
+    {
+      "id": "java-generics-type-erasure",
+      "title": "Generics and type erasure in Java",
+      "prompt": "Explain generics in Java and type erasure. What can't you do because types are erased at runtime, and what do bounded wildcards like extends and super mean?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "java",
+        "types",
+        "generics"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "erasure",
+          "label": "Type parameters are checked at compile time, then erased",
+          "criterion": "correctness",
+          "keywords": [
+            "type erasure",
+            "erased",
+            "compile time",
+            "runtime",
+            "object"
+          ]
+        },
+        {
+          "id": "wildcards",
+          "label": "? extends, ? super, PECS",
+          "criterion": "terminology",
+          "keywords": [
+            "wildcard",
+            "extends",
+            "super",
+            "pecs",
+            "producer extends",
+            "bounded"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "Type-safe collections without casts; generic methods",
+          "criterion": "practical-implications",
+          "keywords": [
+            "type safe",
+            "type-safe",
+            "no casts",
+            "without casting",
+            "generic method",
+            "class token"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "No new T(), no instanceof List<String>, no primitives",
+          "criterion": "pitfalls",
+          "keywords": [
+            "new t",
+            "instanceof",
+            "primitive",
+            "raw type",
+            "heap pollution",
+            "unchecked"
+          ]
+        }
+      ],
+      "modelAnswer": "Generics let classes and methods take type parameters, like List<String>, so the compiler checks types and inserts casts for you, giving type-safe collections without manual casting. Java implements them with type erasure: after checking, the compiler replaces type parameters with their bounds, usually Object, so at runtime List<String> and List<Integer> are the same class. That's why you can't write new T(), check instanceof List<String>, create a generic array, or use primitives like List<int>; you pass a Class<T> token when you need the type at runtime. Wildcards express variance: List<? extends Number> can be read as Numbers but you can't add to it, while List<? super Integer> accepts Integers but reads as Object. The rule of thumb is PECS: producer extends, consumer super, as in Collections.copy. Pitfalls: raw types and unchecked casts bypass the checks and cause ClassCastException later."
+    },
+    {
+      "id": "java-exceptions",
+      "title": "Checked and unchecked exceptions in Java",
+      "prompt": "Explain Java's exception hierarchy and the difference between checked and unchecked exceptions. Cover try-with-resources, and the best practices for throwing and catching exceptions.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "java",
+        "errors"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "hierarchy",
+          "label": "Throwable: Error and Exception; RuntimeException",
+          "criterion": "correctness",
+          "keywords": [
+            "throwable",
+            "error class",
+            "outofmemoryerror",
+            "runtimeexception",
+            "runtime exception",
+            "hierarchy"
+          ]
+        },
+        {
+          "id": "checked",
+          "label": "Checked must be declared or caught; unchecked need not",
+          "criterion": "terminology",
+          "keywords": [
+            "checked",
+            "unchecked",
+            "throws clause",
+            "declare",
+            "compiler forces"
+          ]
+        },
+        {
+          "id": "resources",
+          "label": "try-with-resources closes AutoCloseable",
+          "criterion": "practical-implications",
+          "keywords": [
+            "try with resources",
+            "try-with-resources",
+            "autocloseable",
+            "auto closeable",
+            "finally"
+          ]
+        },
+        {
+          "id": "practice",
+          "label": "Don't swallow; keep the cause; avoid catching Exception broadly",
+          "criterion": "pitfalls",
+          "keywords": [
+            "swallow",
+            "empty catch",
+            "cause",
+            "wrap",
+            "catch exception",
+            "log and rethrow"
+          ]
+        }
+      ],
+      "modelAnswer": "Everything thrown in Java is a Throwable, which splits into Error, for serious JVM problems like OutOfMemoryError that you normally don't catch, and Exception. Checked exceptions, such as IOException, must be either caught or declared in the method's throws clause, so the compiler forces callers to think about them. Unchecked exceptions extend RuntimeException, such as NullPointerException or IllegalArgumentException, and usually signal programming errors; they don't need declaring. try-with-resources, try (var in = Files.newInputStream(path)) { ... }, closes any AutoCloseable automatically, even on exceptions, replacing error-prone finally blocks. Best practices: catch only what you can handle, at the right level; wrap low-level exceptions in meaningful ones while keeping the original as the cause; never leave an empty catch block; don't use exceptions for normal control flow; and avoid catching Exception or Throwable broadly, which hides bugs."
+    },
+    {
+      "id": "java-interfaces-abstract-classes",
+      "title": "Interfaces versus abstract classes in Java",
+      "prompt": "Compare interfaces and abstract classes in Java. Cover default methods, multiple inheritance of type, state, and how sealed interfaces and records are used in modern Java.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "java",
+        "oop",
+        "design"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "difference",
+          "label": "Class can implement many interfaces but extend one class; abstract classes hold state",
+          "criterion": "correctness",
+          "keywords": [
+            "implement many",
+            "multiple interfaces",
+            "extend one",
+            "single inheritance",
+            "state",
+            "constructor"
+          ]
+        },
+        {
+          "id": "features",
+          "label": "Default methods, sealed, records",
+          "criterion": "terminology",
+          "keywords": [
+            "default method",
+            "sealed",
+            "permits",
+            "record",
+            "static method"
+          ]
+        },
+        {
+          "id": "design",
+          "label": "Interfaces for contracts; abstract classes for shared implementation",
+          "criterion": "practical-implications",
+          "keywords": [
+            "contract",
+            "shared code",
+            "template method",
+            "pattern matching",
+            "switch"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Diamond conflicts with defaults; fragile base classes",
+          "criterion": "pitfalls",
+          "keywords": [
+            "diamond",
+            "conflict",
+            "fragile base",
+            "deep hierarchy",
+            "composition"
+          ]
+        }
+      ],
+      "modelAnswer": "An interface defines a contract: methods a class promises to provide. A class can implement many interfaces but extend only one class. An abstract class can hold state (fields), constructors and partly implemented methods, so it suits a family of closely related classes sharing code, as in the template method pattern. Since Java 8, interfaces can have default and static methods, which lets libraries add methods without breaking implementers, but interfaces still can't hold instance state. Modern Java adds records, concise immutable data carriers with generated constructor, accessors, equals, hashCode and toString, and sealed interfaces, which list exactly which classes may implement them; together with pattern matching in switch, the compiler can check that every case is handled. Prefer interfaces plus composition for flexibility. Pitfalls: two interfaces providing the same default method force you to override it to resolve the conflict, and deep abstract-class hierarchies become fragile when a base class changes."
+    },
+    {
+      "id": "java-streams-lambdas",
+      "title": "Streams and lambdas in Java",
+      "prompt": "Explain lambdas and the Stream API in Java. Cover functional interfaces, intermediate versus terminal operations, laziness, collectors, and when parallel streams or plain loops are a better choice.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "java",
+        "functional"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "lambdas",
+          "label": "Lambdas implement functional interfaces",
+          "criterion": "correctness",
+          "keywords": [
+            "functional interface",
+            "lambda",
+            "single abstract method",
+            "method reference",
+            "predicate",
+            "function"
+          ]
+        },
+        {
+          "id": "streams",
+          "label": "Intermediate (lazy) vs terminal operations; collectors",
+          "criterion": "terminology",
+          "keywords": [
+            "intermediate",
+            "terminal",
+            "lazy",
+            "collector",
+            "groupingby",
+            "grouping by"
+          ]
+        },
+        {
+          "id": "when",
+          "label": "Declarative pipelines; loops for simple or performance-critical code",
+          "criterion": "practical-implications",
+          "keywords": [
+            "declarative",
+            "readab",
+            "pipeline",
+            "plain loop",
+            "for loop",
+            "boxing"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Side effects, reusing streams, misused parallel streams",
+          "criterion": "pitfalls",
+          "keywords": [
+            "side effect",
+            "reuse a stream",
+            "already been operated",
+            "parallel stream",
+            "common pool",
+            "shared mutable"
+          ]
+        }
+      ],
+      "modelAnswer": "A lambda like x -> x * 2 is a short implementation of a functional interface, an interface with a single abstract method such as Function, Predicate, Supplier or Runnable; method references like String::length are shorthand for lambdas. The Stream API processes collections declaratively: list.stream().filter(...).map(...).collect(Collectors.toList()). Intermediate operations like filter, map and sorted are lazy and return a new stream; nothing runs until a terminal operation such as collect, forEach, count or reduce, which lets the pipeline stop early with findFirst. Collectors like groupingBy and joining build maps and strings. Streams are readable for transformations, but plain loops are fine, and sometimes faster, for simple or performance-critical code; use IntStream to avoid boxing. Pitfalls: side effects inside lambdas, reusing a stream after a terminal operation (IllegalStateException), and parallel streams, which share the common ForkJoinPool and only help for large, CPU-bound, independent work."
     },
     {
       "id": "js-event-loop",
@@ -2169,6 +5206,379 @@
         }
       ],
       "modelAnswer": "TypeScript adds static types that are checked at compile time and then erased: the output is plain JavaScript. Typing is structural, so a value fits a type if it has the required shape, whatever its declared name. The compiler infers most types from initial values and return statements. Union types, such as string | number or discriminated unions like { kind: 'ok' } | { kind: 'error' }, are narrowed with typeof, in, checks on the discriminant, or custom type guards. Because types vanish at runtime, data from fetch or JSON.parse is untrusted: type it as unknown and validate it with a schema library such as Zod before using it. Pitfalls: any and as assertions silence the checker and let wrong data through."
+    },
+    {
+      "id": "js-prototypes-classes",
+      "title": "Prototypes and classes in JavaScript",
+      "prompt": "Explain prototypal inheritance in JavaScript. How does property lookup follow the prototype chain, and how do ES6 classes relate to prototypes?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "javascript",
+        "oop"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "chain",
+          "label": "Lookup walks the prototype chain until found or null",
+          "criterion": "correctness",
+          "keywords": [
+            "prototype chain",
+            "walks up",
+            "looks up",
+            "object.prototype",
+            "until null"
+          ]
+        },
+        {
+          "id": "terms",
+          "label": "__proto__ / Object.getPrototypeOf, constructor .prototype, class, extends",
+          "criterion": "terminology",
+          "keywords": [
+            "prototype",
+            "getprototypeof",
+            "object.create",
+            "class",
+            "extends",
+            "syntactic sugar"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "Methods shared via the prototype save memory",
+          "criterion": "practical-implications",
+          "keywords": [
+            "shared",
+            "memory",
+            "one copy",
+            "method on the prototype",
+            "super"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Mutating built-in prototypes; class fields vs methods; this binding",
+          "criterion": "pitfalls",
+          "keywords": [
+            "monkey patch",
+            "modify built-in",
+            "array.prototype",
+            "class field",
+            "arrow function property",
+            "hasownproperty"
+          ]
+        }
+      ],
+      "modelAnswer": "Every JavaScript object has an internal link to another object, its prototype. When you read a property, the engine looks on the object itself, then on its prototype, then that object's prototype, up the prototype chain until it finds the property or reaches null; Object.prototype sits near the top, which is why every object has toString. Object.create(proto) makes an object with a chosen prototype, and Object.getPrototypeOf reads it. A constructor function's .prototype object becomes the prototype of instances created with new, so methods placed there are shared by all instances: one copy in memory. ES6 classes are mostly syntactic sugar over this: class methods go on the prototype, extends links the prototypes, and super calls the parent's version. Pitfalls: modifying built-in prototypes like Array.prototype breaks other code, arrow-function class fields create a separate function per instance rather than one shared method, and for...in also iterates inherited enumerable properties, so check hasOwnProperty or use Object.keys."
+    },
+    {
+      "id": "js-promises-async",
+      "title": "Promises and async/await in JavaScript",
+      "prompt": "Explain promises and async/await in JavaScript. Cover promise states, chaining, error handling, and the difference between Promise.all, Promise.allSettled and Promise.race.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "javascript",
+        "async"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "states",
+          "label": "Pending, fulfilled, rejected; settles once",
+          "criterion": "correctness",
+          "keywords": [
+            "pending",
+            "fulfilled",
+            "rejected",
+            "resolve",
+            "settled",
+            "eventual value"
+          ]
+        },
+        {
+          "id": "syntax",
+          "label": "then/catch chaining; async functions return promises; await",
+          "criterion": "terminology",
+          "keywords": [
+            "dot then",
+            "then method",
+            "catch",
+            "async function",
+            "await",
+            "chain",
+            "try catch"
+          ]
+        },
+        {
+          "id": "combinators",
+          "label": "all fails fast; allSettled waits for all; race takes the first",
+          "criterion": "practical-implications",
+          "keywords": [
+            "promise.all",
+            "promise all",
+            "allsettled",
+            "all settled",
+            "promise.race",
+            "race",
+            "in parallel"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Unhandled rejections; sequential awaits in loops; forgotten await",
+          "criterion": "pitfalls",
+          "keywords": [
+            "unhandled rejection",
+            "forget to await",
+            "forgot to await",
+            "await in a loop",
+            "sequential",
+            "foreach"
+          ]
+        }
+      ],
+      "modelAnswer": "A promise represents a value that will be available later. It starts pending and settles once, either fulfilled with a value or rejected with an error. then registers what to do with the value and returns a new promise, so steps chain; catch handles a rejection anywhere earlier in the chain. An async function always returns a promise, and await pauses that function until a promise settles, letting you write sequential-looking code with try/catch for errors. To run work concurrently, start the promises first and combine them: Promise.all waits for all and rejects as soon as any one fails, Promise.allSettled waits for every result and reports each outcome, and Promise.race settles with whichever finishes first, which is useful for timeouts; Promise.any takes the first success. Pitfalls: forgetting await, unhandled rejections that crash Node or are silently lost, awaiting inside a loop when the calls could run in parallel, and using async callbacks with forEach, which doesn't wait for them."
+    },
+    {
+      "id": "js-scope-hoisting-coercion",
+      "title": "var, let, const, hoisting and equality",
+      "prompt": "Explain the differences between var, let and const in JavaScript, including hoisting and the temporal dead zone. Then explain type coercion and why === is usually preferred over ==.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "javascript",
+        "basics"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "scope",
+          "label": "var is function-scoped; let and const are block-scoped",
+          "criterion": "correctness",
+          "keywords": [
+            "function scoped",
+            "function-scoped",
+            "block scoped",
+            "block-scoped",
+            "reassign"
+          ]
+        },
+        {
+          "id": "hoisting",
+          "label": "Hoisting and the temporal dead zone",
+          "criterion": "terminology",
+          "keywords": [
+            "hoist",
+            "temporal dead zone",
+            "tdz",
+            "undefined",
+            "referenceerror"
+          ]
+        },
+        {
+          "id": "equality",
+          "label": "== coerces types; === compares without coercion",
+          "criterion": "practical-implications",
+          "keywords": [
+            "coercion",
+            "triple equals",
+            "strict equality",
+            "loose equality",
+            "double equals"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "const objects are still mutable; NaN; surprising coercions",
+          "criterion": "pitfalls",
+          "keywords": [
+            "still mutable",
+            "can still change",
+            "freeze",
+            "nan",
+            "null and undefined",
+            "empty string"
+          ]
+        }
+      ],
+      "modelAnswer": "var is function-scoped and can be redeclared; let and const are block-scoped, so a variable declared inside an if or a loop stays there. const prevents reassigning the variable, but the object it points to can still be mutated unless you freeze it. All declarations are hoisted to the top of their scope, but differently: a var is initialised to undefined, so reading it early gives undefined, while let and const sit in the temporal dead zone until their line runs, so reading them early throws a ReferenceError. That makes bugs easier to spot. == compares after type coercion, with surprising results like 0 == '' and '1' == 1 being true, while === compares value and type without coercion, so it is predictable and preferred; a common exception is x == null, which checks for both null and undefined. Also, NaN is not equal to itself; use Number.isNaN. Default to const, use let when you must reassign, and avoid var."
+    },
+    {
+      "id": "js-modules",
+      "title": "ES modules versus CommonJS",
+      "prompt": "Explain JavaScript modules. Compare ES modules with CommonJS, covering import and export, static versus dynamic loading, tree shaking, and how Node.js decides which format a file uses.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "javascript",
+        "tooling",
+        "node"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "formats",
+          "label": "ESM import/export vs CommonJS require/module.exports",
+          "criterion": "correctness",
+          "keywords": [
+            "import",
+            "export",
+            "require",
+            "module.exports",
+            "module exports",
+            "commonjs"
+          ]
+        },
+        {
+          "id": "static",
+          "label": "ESM is static and async; CommonJS is dynamic and synchronous",
+          "criterion": "terminology",
+          "keywords": [
+            "static",
+            "dynamic import",
+            "synchronous",
+            "asynchronous",
+            "top-level await",
+            "live binding"
+          ]
+        },
+        {
+          "id": "bundlers",
+          "label": "Static structure enables tree shaking and code splitting",
+          "criterion": "practical-implications",
+          "keywords": [
+            "tree shaking",
+            "tree-shaking",
+            "dead code",
+            "code splitting",
+            "bundler",
+            "vite"
+          ]
+        },
+        {
+          "id": "node",
+          "label": "package.json type, .mjs/.cjs; interop headaches",
+          "criterion": "pitfalls",
+          "keywords": [
+            "type module",
+            "mjs",
+            "cjs",
+            "package.json",
+            "interop",
+            "dirname"
+          ]
+        }
+      ],
+      "modelAnswer": "CommonJS is Node's original module system: require() loads a module synchronously and returns its module.exports object, and because require is just a function call it can happen anywhere, even conditionally. ES modules are the standard: import and export declarations at the top level, so the dependency graph is known statically before the code runs; loading is asynchronous, imports are live bindings, top-level await is allowed, and import() loads a module dynamically when needed. Because the structure is static, bundlers like Vite, Rollup or webpack can tree-shake unused exports and split code into chunks. In Node, a .mjs file is always ESM and a .cjs file always CommonJS; for .js files, the nearest package.json's \"type\": \"module\" makes them ESM, otherwise CommonJS. Pitfalls: mixing the two is awkward, older Node versions can't require ESM, and __dirname doesn't exist in ESM, so you use import.meta.url instead."
+    },
+    {
+      "id": "ts-generics-utility-types",
+      "title": "Generics and utility types in TypeScript",
+      "prompt": "Explain generics in TypeScript and common utility types such as Partial, Pick, Omit and Record. How do keyof and mapped types work, and when do advanced types become a problem?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "typescript",
+        "types"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "generics",
+          "label": "Type parameters preserve the relationship between inputs and outputs",
+          "criterion": "correctness",
+          "keywords": [
+            "type parameter",
+            "generic",
+            "angle bracket",
+            "preserve",
+            "relationship"
+          ]
+        },
+        {
+          "id": "utility",
+          "label": "Partial, Pick, Omit, Record, keyof, mapped types",
+          "criterion": "terminology",
+          "keywords": [
+            "partial",
+            "pick",
+            "omit",
+            "record",
+            "keyof",
+            "mapped type"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "Derive types from one source of truth; constraints with extends",
+          "criterion": "practical-implications",
+          "keywords": [
+            "single source of truth",
+            "derive",
+            "extends",
+            "constraint",
+            "update payload",
+            "dto"
+          ]
+        },
+        {
+          "id": "traps",
+          "label": "Unreadable types, slow compiles, any leaking",
+          "criterion": "pitfalls",
+          "keywords": [
+            "unreadable",
+            "hard to read",
+            "slow",
+            "too clever",
+            "as any",
+            "any type",
+            "error messages"
+          ]
+        }
+      ],
+      "modelAnswer": "Generics let a function or type work with many types while keeping the relationship between them: function first<T>(items: T[]): T | undefined returns the same type the array holds, unlike returning any. Constraints narrow what T can be, as in <T extends { id: string }>. keyof T is the union of T's property names, and a mapped type like { [K in keyof T]?: T[K] } builds a new type by transforming each property; that is exactly how Partial<T> works. Built-in utility types cover common needs: Partial<T> makes all fields optional (good for update payloads), Required<T> the opposite, Pick<T, 'a' | 'b'> and Omit<T, 'password'> select fields, Record<K, V> types dictionaries, and ReturnType extracts a function's result type. They let you derive types from one source of truth instead of copying them. Pitfalls: deeply nested conditional and mapped types become unreadable, produce confusing error messages and slow the compiler; prefer simple, explicit types where possible."
     }
   ]
 }

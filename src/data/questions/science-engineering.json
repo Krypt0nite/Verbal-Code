@@ -57,6 +57,151 @@
       "modelAnswer": "A semiconductor such as silicon has a small band gap, so its conductivity sits between metals and insulators and can be controlled. Doping with phosphorus adds free electrons (n-type); with boron it creates holes (p-type). Where they meet, carriers diffuse and recombine, leaving a depletion region with a built-in field. Forward bias shrinks that region and current flows; reverse bias widens it and blocks current — the diode, the basis of transistors."
     },
     {
+      "id": "semi-mosfet-transistor",
+      "title": "How a MOSFET transistor works",
+      "prompt": "Explain how a MOSFET transistor works as a switch, including the source, drain, gate and channel. Why are transistors the building blocks of logic gates and computer chips?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "semiconductor-technology",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "semiconductors",
+        "electronics",
+        "computing"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "parts",
+          "label": "Source, drain, gate, insulating oxide",
+          "criterion": "accuracy",
+          "keywords": [
+            "source",
+            "drain",
+            "gate",
+            "oxide",
+            "insulat"
+          ]
+        },
+        {
+          "id": "channel",
+          "label": "Gate voltage forms a conducting channel",
+          "criterion": "accuracy",
+          "keywords": [
+            "channel",
+            "gate voltage",
+            "electric field",
+            "threshold voltage",
+            "turns on"
+          ]
+        },
+        {
+          "id": "logic",
+          "label": "On/off switches form logic gates; CMOS",
+          "criterion": "accuracy",
+          "keywords": [
+            "logic gate",
+            "cmos",
+            "zero and one",
+            "binary",
+            "nand",
+            "inverter"
+          ]
+        },
+        {
+          "id": "scale",
+          "label": "Billions of tiny transistors per chip",
+          "criterion": "accuracy",
+          "keywords": [
+            "billions",
+            "nanometre",
+            "nanometer",
+            "chip",
+            "processor"
+          ]
+        }
+      ],
+      "modelAnswer": "A MOSFET, metal-oxide-semiconductor field-effect transistor, has a source and a drain, two doped regions in a silicon substrate, separated by a region where the channel can form. Above that region sits the gate, separated from the silicon by a very thin insulating oxide layer, so almost no current flows into the gate. In an n-channel MOSFET, applying a positive gate voltage above the threshold creates an electric field that draws electrons to the surface, forming a conducting channel between source and drain: the switch is on. Remove the voltage and the channel disappears: the switch is off. Because a voltage controls a current with very little input power, transistors can represent binary ones and zeros and drive other transistors. CMOS pairs n-type and p-type transistors so that in steady state one of them is always off, which keeps static power low, and combinations form inverters, NAND gates and every other logic gate, then adders, memory and whole processors. Modern chips pack tens of billions of transistors with features only nanometres wide."
+    },
+    {
+      "id": "semi-photolithography-moores-law",
+      "title": "Chip manufacturing and Moore's law",
+      "prompt": "Explain how computer chips are manufactured using photolithography on silicon wafers. What is Moore's law, why has it slowed down, and how is the industry responding?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "semiconductor-technology",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "semiconductors",
+        "manufacturing"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "wafer",
+          "label": "Pure silicon wafers processed in cleanrooms",
+          "criterion": "accuracy",
+          "keywords": [
+            "wafer",
+            "silicon",
+            "cleanroom",
+            "clean room",
+            "crystal"
+          ]
+        },
+        {
+          "id": "lithography",
+          "label": "Light through a mask patterns photoresist; etch and deposit layers",
+          "criterion": "accuracy",
+          "keywords": [
+            "photolithography",
+            "photoresist",
+            "mask",
+            "etch",
+            "euv",
+            "extreme ultraviolet"
+          ]
+        },
+        {
+          "id": "moore",
+          "label": "Transistor count doubles about every two years",
+          "criterion": "accuracy",
+          "keywords": [
+            "moore",
+            "doubl",
+            "every two years",
+            "transistor count"
+          ]
+        },
+        {
+          "id": "slowing",
+          "label": "Physical limits, cost, heat; chiplets, 3D stacking, new transistors",
+          "criterion": "accuracy",
+          "keywords": [
+            "slow",
+            "atoms",
+            "heat",
+            "cost",
+            "chiplet",
+            "3d",
+            "gate-all-around",
+            "gate all around"
+          ]
+        }
+      ],
+      "modelAnswer": "Chips start as wafers sliced from a single crystal of ultra-pure silicon and are made in cleanrooms, because a speck of dust can ruin a circuit. Photolithography patterns each layer: the wafer is coated with light-sensitive photoresist, light is projected through a mask carrying the circuit pattern, the exposed resist is developed away, and the uncovered areas are etched, doped with ions, or covered with deposited material. Repeating this dozens of times builds transistors and the metal wiring above them; the smallest features need extreme ultraviolet light at 13.5 nanometres. Moore's law is Gordon Moore's observation that the number of transistors on a chip doubles roughly every two years, which held for decades and made computers cheaper and faster. It has slowed because features are approaching the size of atoms, leakage and heat limit performance, and each new factory costs billions. The industry responds with new transistor shapes like FinFETs and gate-all-around, 3D stacking, chiplets combined in one package, and specialised accelerators for AI."
+    },
+    {
       "id": "sci-quantum-superposition",
       "title": "Superposition without the hype",
       "prompt": "Explain quantum superposition accurately for a general audience, including what measurement does, and correct one common misconception.",
@@ -110,6 +255,150 @@
       "modelAnswer": "A quantum system's state can be a combination of basis states, each with a complex amplitude. Measurement yields one definite outcome, with probabilities given by the squared magnitudes of the amplitudes (Born rule), and the state afterwards is consistent with that outcome. Amplitudes can interfere, which is what makes quantum algorithms work. Misconception: a quantum computer does not simply 'try all answers at once' and read off the right one — useful algorithms must arrange interference so wrong answers cancel."
     },
     {
+      "id": "qm-uncertainty-principle",
+      "title": "The Heisenberg uncertainty principle",
+      "prompt": "Explain the Heisenberg uncertainty principle. What exactly can't be known together, why is it a property of nature rather than a limit of our instruments, and how does it relate to wave-particle duality?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "quantum-mechanics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "physics",
+        "quantum"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "statement",
+          "label": "Position and momentum can't both be sharply defined",
+          "criterion": "accuracy",
+          "keywords": [
+            "position and momentum",
+            "both precisely",
+            "at the same time",
+            "simultaneously"
+          ]
+        },
+        {
+          "id": "bound",
+          "label": "Product of uncertainties >= h-bar / 2",
+          "criterion": "accuracy",
+          "keywords": [
+            "planck",
+            "h bar",
+            "greater than or equal",
+            "product of the uncertainties",
+            "trade-off",
+            "trade off"
+          ]
+        },
+        {
+          "id": "nature",
+          "label": "Not a measurement flaw; follows from waves",
+          "criterion": "accuracy",
+          "keywords": [
+            "not a limitation",
+            "not a flaw",
+            "isnt a flaw",
+            "our instruments",
+            "property of nature",
+            "inherent",
+            "fundamental"
+          ]
+        },
+        {
+          "id": "waves",
+          "label": "Wave packets: localised waves need many wavelengths",
+          "criterion": "accuracy",
+          "keywords": [
+            "wave",
+            "wave packet",
+            "wavelength",
+            "wave-particle",
+            "wave particle"
+          ]
+        }
+      ],
+      "modelAnswer": "The uncertainty principle says certain pairs of properties, most famously position and momentum, can't both have sharply defined values at the same time. The more precisely a particle's position is defined, the more spread out its momentum must be, and vice versa: the product of the two uncertainties is at least h-bar over 2, Planck's reduced constant divided by two. It isn't a flaw in our instruments or just the measurement disturbing the particle; it comes from the wave nature of matter. A particle is described by a wave, and its momentum is tied to its wavelength. A wave with one precise wavelength stretches over all space, so its position is undefined; to build a wave packet localised in one place, you must add many wavelengths, which spreads the momentum. Planck's constant is tiny, so the effect is invisible for everyday objects but dominates for electrons. It explains why electrons don't collapse into the nucleus: confining one too tightly would give it a large momentum and energy."
+    },
+    {
+      "id": "qm-entanglement-tunneling",
+      "title": "Quantum tunnelling and entanglement",
+      "prompt": "Explain quantum tunnelling and quantum entanglement in plain language. Give a real technology or natural process that depends on tunnelling, and explain why entanglement cannot be used to send messages faster than light.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "quantum-mechanics",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "physics",
+        "quantum"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "tunnelling",
+          "label": "A particle can cross a barrier it classically couldn't",
+          "criterion": "accuracy",
+          "keywords": [
+            "tunnel",
+            "barrier",
+            "not enough energy",
+            "probability",
+            "wave function"
+          ]
+        },
+        {
+          "id": "tunnel-uses",
+          "label": "Fusion in the Sun, flash memory, scanning tunnelling microscope",
+          "criterion": "accuracy",
+          "keywords": [
+            "fusion",
+            "sun",
+            "flash memory",
+            "scanning tunnelling",
+            "scanning tunneling",
+            "radioactive decay"
+          ]
+        },
+        {
+          "id": "entanglement",
+          "label": "Entangled particles have correlated outcomes",
+          "criterion": "accuracy",
+          "keywords": [
+            "entangle",
+            "correlated",
+            "shared state",
+            "bell",
+            "measure one"
+          ]
+        },
+        {
+          "id": "no-signalling",
+          "label": "Outcomes are random, so no faster-than-light messages",
+          "criterion": "accuracy",
+          "keywords": [
+            "random",
+            "faster than light",
+            "no information",
+            "classical channel",
+            "cannot send",
+            "can't send"
+          ]
+        }
+      ],
+      "modelAnswer": "In quantum mechanics a particle is described by a wave function giving probabilities. When it meets an energy barrier it doesn't have enough energy to climb over, the wave doesn't stop dead; it decays inside the barrier, so if the barrier is thin there is a small probability of finding the particle on the other side. That's tunnelling. It lets hydrogen nuclei in the Sun fuse despite their repulsion, explains alpha decay, makes scanning tunnelling microscopes image individual atoms, and is how flash memory writes and erases charge; it is also a source of leakage in tiny transistors. Entanglement is when two particles share one quantum state, so measurements on them are correlated however far apart they are: measure one entangled photon's polarisation and you know what the other will show. Experiments testing Bell's inequalities show these correlations can't be explained by hidden pre-agreed values. But each individual outcome is random, so one side can't choose a result to encode a message; the correlation only appears when the results are compared over an ordinary, slower-than-light channel. That's why entanglement can't send information faster than light, though it is useful for quantum cryptography and computing."
+    },
+    {
       "id": "sci-materials-stress-strain",
       "title": "Stress-strain curves",
       "prompt": "Explain what a stress–strain curve tells an engineer about a material. Cover elastic region, yield strength, ultimate tensile strength and ductility.",
@@ -161,6 +450,152 @@
         }
       ],
       "modelAnswer": "In a tensile test, stress (force per area) is plotted against strain (relative elongation). In the elastic region the curve is linear — its slope is Young's modulus — and the material returns to shape when unloaded. At the yield strength permanent plastic deformation begins. Stress rises with work hardening to the ultimate tensile strength, then necking localises deformation until fracture. Ductility is how much plastic strain occurs before fracture: steel stretches, glass doesn't."
+    },
+    {
+      "id": "mat-crystal-defects",
+      "title": "Crystal structures and defects in metals",
+      "prompt": "Explain how atoms are arranged in crystalline metals, and how defects such as dislocations and grain boundaries control strength. How do alloying, work hardening and heat treatment change a metal's properties?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "materials-science",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "materials",
+        "metals"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "lattice",
+          "label": "Atoms in repeating lattices (FCC, BCC)",
+          "criterion": "accuracy",
+          "keywords": [
+            "lattice",
+            "crystal",
+            "face centred",
+            "face-centered",
+            "body centred",
+            "body-centered",
+            "repeating"
+          ]
+        },
+        {
+          "id": "dislocations",
+          "label": "Plastic deformation by dislocations moving",
+          "criterion": "accuracy",
+          "keywords": [
+            "dislocation",
+            "slip",
+            "plastic deformation",
+            "planes of atoms"
+          ]
+        },
+        {
+          "id": "grains",
+          "label": "Grain boundaries block dislocations",
+          "criterion": "accuracy",
+          "keywords": [
+            "grain boundar",
+            "grain size",
+            "smaller grains",
+            "polycrystal"
+          ]
+        },
+        {
+          "id": "strengthening",
+          "label": "Alloying, work hardening, heat treatment",
+          "criterion": "accuracy",
+          "keywords": [
+            "alloy",
+            "work harden",
+            "heat treatment",
+            "quench",
+            "anneal",
+            "steel"
+          ]
+        }
+      ],
+      "modelAnswer": "In a crystalline metal, atoms sit in a regular repeating lattice, such as face-centred cubic in aluminium and copper or body-centred cubic in iron at room temperature. Real crystals contain defects, and they control mechanical properties. Metals deform permanently not by whole planes of atoms sliding at once, which would need enormous force, but by dislocations, line defects that glide through the lattice one row of bonds at a time. So anything that obstructs dislocation motion makes a metal stronger but usually less ductile. A metal is made of many crystals, or grains, and grain boundaries block dislocations, so finer grains mean higher strength. Alloying adds atoms of a different size that distort the lattice and pin dislocations; carbon in iron makes steel. Work hardening, such as bending or rolling cold metal, multiplies and tangles dislocations, making it harder. Heat treatment changes the microstructure: annealing lets dislocations and grains rearrange, softening the metal, while quenching steel traps carbon in hard martensite, which is then tempered to reduce brittleness."
+    },
+    {
+      "id": "mat-polymers-composites",
+      "title": "Polymers and composite materials",
+      "prompt": "Explain what polymers are and the difference between thermoplastics and thermosets. Then explain composite materials such as carbon fibre reinforced plastic, and why they are used in aircraft and sports equipment.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "materials-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "materials",
+        "polymers"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "polymers",
+          "label": "Long chains of repeating monomers",
+          "criterion": "accuracy",
+          "keywords": [
+            "polymer",
+            "monomer",
+            "long chain",
+            "repeating unit",
+            "polymeris",
+            "polymeriz"
+          ]
+        },
+        {
+          "id": "thermo",
+          "label": "Thermoplastics remelt; thermosets are cross-linked",
+          "criterion": "accuracy",
+          "keywords": [
+            "thermoplastic",
+            "thermoset",
+            "cross-link",
+            "cross link",
+            "remelt",
+            "recycl"
+          ]
+        },
+        {
+          "id": "composites",
+          "label": "Fibres in a matrix combine properties",
+          "criterion": "accuracy",
+          "keywords": [
+            "composite",
+            "fibre",
+            "fiber",
+            "matrix",
+            "reinforc",
+            "epoxy"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "High strength-to-weight for aircraft, bikes, rackets",
+          "criterion": "accuracy",
+          "keywords": [
+            "strength to weight",
+            "strength-to-weight",
+            "lightweight",
+            "aircraft",
+            "bike",
+            "racket",
+            "fuel"
+          ]
+        }
+      ],
+      "modelAnswer": "A polymer is a very long chain molecule made by linking many small repeating units called monomers: ethene becomes polyethylene, for example. Thermoplastics such as polyethylene, PET and nylon have chains held together by weaker forces between them, so they soften when heated and can be remoulded and often recycled. Thermosets such as epoxy and the resin in old phone casings have chains cross-linked by strong covalent bonds into a network, so once cured they don't melt; they char instead, which makes them rigid and heat-resistant but hard to recycle. A composite combines two materials to get properties neither has alone, typically strong fibres embedded in a matrix that holds them in place and spreads the load. In carbon fibre reinforced plastic, stiff, strong carbon fibres carry the load and an epoxy matrix binds them, giving a strength-to-weight ratio far better than steel. That's why it is used in aircraft such as the Boeing 787, saving fuel, and in racing bikes, tennis rackets and Formula 1 cars. Drawbacks are cost, difficult repair and recycling, and weakness in directions without fibres."
     },
     {
       "id": "chem-chemical-bonding",
@@ -508,6 +943,1560 @@
         }
       ],
       "modelAnswer": "Oxidation is the loss of electrons, which raises an element's oxidation state; reduction is the gain of electrons, which lowers it: OIL RIG, oxidation is loss, reduction is gain. Electrons lost by one species must be gained by another, so oxidation and reduction always happen together, which is why the reactions are called redox. In rusting, iron is oxidised to iron ions while oxygen is reduced, with water involved, forming hydrated iron oxide. Salt water speeds this up, and a zinc coating (galvanising) protects iron because zinc is oxidised first. In a battery the redox reaction is split in two: oxidation at the anode releases electrons that flow through the external circuit to the cathode, where reduction takes place, so chemical energy becomes electrical energy."
+    },
+    {
+      "id": "chem-periodic-trends",
+      "title": "The periodic table and its trends",
+      "prompt": "Explain how the periodic table is organised by atomic number, groups and periods. Describe the trends in atomic radius, ionisation energy and reactivity, and explain them using electron shells.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "chemistry",
+        "periodic-table"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "organisation",
+          "label": "Atomic number; groups share outer electrons; periods are shells",
+          "criterion": "accuracy",
+          "keywords": [
+            "atomic number",
+            "protons",
+            "group",
+            "period",
+            "outer electrons",
+            "valence"
+          ]
+        },
+        {
+          "id": "radius",
+          "label": "Radius shrinks across a period, grows down a group",
+          "criterion": "accuracy",
+          "keywords": [
+            "atomic radius",
+            "smaller across",
+            "larger down",
+            "nuclear charge",
+            "shielding"
+          ]
+        },
+        {
+          "id": "ionisation",
+          "label": "Ionisation energy and electronegativity rise across, fall down",
+          "criterion": "accuracy",
+          "keywords": [
+            "ionisation energy",
+            "ionization energy",
+            "electronegativity",
+            "remove an electron"
+          ]
+        },
+        {
+          "id": "reactivity",
+          "label": "Alkali metals more reactive down; halogens less reactive down",
+          "criterion": "accuracy",
+          "keywords": [
+            "alkali metal",
+            "halogen",
+            "more reactive",
+            "less reactive",
+            "noble gas"
+          ]
+        }
+      ],
+      "modelAnswer": "The periodic table orders elements by atomic number, the number of protons. Elements in the same column, a group, have the same number of outer (valence) electrons, so they behave similarly: group 1 alkali metals, group 17 halogens, group 18 noble gases with full shells that rarely react. Each row, a period, corresponds to filling a new electron shell. Across a period, the nuclear charge increases while electrons go into the same shell, so atoms get smaller, and ionisation energy, the energy needed to remove an electron, and electronegativity both increase. Down a group, each element adds a shell, outer electrons are farther away and more shielded by inner electrons, so atoms get bigger and ionisation energy falls. That explains reactivity: alkali metals react by losing an electron, so they get more reactive down the group, with caesium more violent than lithium; halogens react by gaining one, so they get less reactive down the group, with fluorine the most reactive."
+    },
+    {
+      "id": "chem-mole-stoichiometry",
+      "title": "The mole and stoichiometry",
+      "prompt": "Explain what a mole is and why chemists use it, including Avogadro's number and molar mass. Then explain how a balanced equation lets you calculate the amounts of reactants and products, including the limiting reagent.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "chemistry",
+        "calculations"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "mole",
+          "label": "A mole is 6.022 x 10^23 particles",
+          "criterion": "accuracy",
+          "keywords": [
+            "avogadro",
+            "6.022",
+            "6 point 0 2",
+            "particles",
+            "counting unit"
+          ]
+        },
+        {
+          "id": "molar-mass",
+          "label": "Molar mass in grams per mole",
+          "criterion": "accuracy",
+          "keywords": [
+            "molar mass",
+            "grams per mole",
+            "relative atomic mass",
+            "atomic mass"
+          ]
+        },
+        {
+          "id": "ratios",
+          "label": "Balanced equations give mole ratios",
+          "criterion": "accuracy",
+          "keywords": [
+            "balanced equation",
+            "mole ratio",
+            "coefficient",
+            "conservation of mass"
+          ]
+        },
+        {
+          "id": "limiting",
+          "label": "Limiting reagent runs out first",
+          "criterion": "accuracy",
+          "keywords": [
+            "limiting reagent",
+            "limiting reactant",
+            "runs out",
+            "in excess",
+            "excess"
+          ]
+        }
+      ],
+      "modelAnswer": "Atoms are far too small to count individually, so chemists count them in moles. One mole is Avogadro's number, about 6.022 times 10 to the 23 particles, chosen so that the molar mass of a substance in grams per mole equals its relative atomic or formula mass: one mole of carbon-12 is 12 grams, and one mole of water is about 18 grams. A balanced equation tells you the ratio in which particles react, and therefore moles. In 2H2 + O2 -> 2H2O, two moles of hydrogen react with one mole of oxygen to make two moles of water, and atoms are conserved on both sides. To find how much product you get, convert masses to moles, use the mole ratio, and convert back to mass. If reactants are not in the exact ratio, the one that runs out first is the limiting reagent: it determines how much product forms, and the other reactant is left in excess."
+    },
+    {
+      "id": "chem-organic-functional-groups",
+      "title": "Organic chemistry and functional groups",
+      "prompt": "Explain why carbon forms so many compounds, the difference between alkanes, alkenes and alkynes, and what functional groups such as alcohols, carboxylic acids and esters are. Give everyday examples.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "chemistry",
+        "organic"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "carbon",
+          "label": "Carbon forms four bonds, chains and rings",
+          "criterion": "accuracy",
+          "keywords": [
+            "four bonds",
+            "four covalent",
+            "chains",
+            "rings",
+            "catenation"
+          ]
+        },
+        {
+          "id": "hydrocarbons",
+          "label": "Alkanes single, alkenes double, alkynes triple bonds",
+          "criterion": "accuracy",
+          "keywords": [
+            "alkane",
+            "alkene",
+            "alkyne",
+            "double bond",
+            "triple bond",
+            "saturated"
+          ]
+        },
+        {
+          "id": "groups",
+          "label": "Functional groups decide reactions",
+          "criterion": "accuracy",
+          "keywords": [
+            "functional group",
+            "alcohol",
+            "carboxylic acid",
+            "ester",
+            "hydroxyl"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Ethanol, vinegar, fruity esters, plastics",
+          "criterion": "accuracy",
+          "keywords": [
+            "ethanol",
+            "vinegar",
+            "acetic acid",
+            "fruity",
+            "polymer",
+            "plastic",
+            "methane"
+          ]
+        }
+      ],
+      "modelAnswer": "Carbon forms four covalent bonds and bonds strongly to other carbon atoms, so it builds long chains, branches and rings, giving millions of compounds; that's organic chemistry. Hydrocarbons contain only carbon and hydrogen. Alkanes, such as methane in natural gas, have only single bonds and are saturated. Alkenes, such as ethene, have a carbon-carbon double bond, which makes them more reactive and lets them join into polymers like polyethylene. Alkynes have a triple bond. A functional group is the reactive part of a molecule that largely decides how it behaves. Alcohols have an OH (hydroxyl) group, like ethanol in drinks and hand sanitiser. Carboxylic acids have a COOH group and are weak acids, like acetic acid in vinegar. An alcohol and a carboxylic acid react to form an ester and water; esters often smell fruity and are used in flavourings and perfumes, while the same reaction joined into chains makes polyester."
+    },
+    {
+      "id": "chem-enthalpy-energy",
+      "title": "Exothermic and endothermic reactions",
+      "prompt": "Explain exothermic and endothermic reactions in terms of breaking and making bonds. What is enthalpy change, what does an energy profile diagram show, and what are everyday examples of each type?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "chemistry",
+        "energy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "types",
+          "label": "Exothermic releases heat; endothermic absorbs it",
+          "criterion": "accuracy",
+          "keywords": [
+            "exothermic",
+            "endothermic",
+            "releases heat",
+            "absorbs heat",
+            "gets hotter",
+            "gets colder"
+          ]
+        },
+        {
+          "id": "bonds",
+          "label": "Breaking bonds takes energy; forming bonds releases it",
+          "criterion": "accuracy",
+          "keywords": [
+            "breaking bonds",
+            "making bonds",
+            "forming bonds",
+            "bond energy",
+            "requires energy"
+          ]
+        },
+        {
+          "id": "enthalpy",
+          "label": "Enthalpy change, delta H negative for exothermic",
+          "criterion": "accuracy",
+          "keywords": [
+            "enthalpy",
+            "delta h",
+            "negative",
+            "positive",
+            "energy profile",
+            "activation energy"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Combustion, hand warmers; cold packs, photosynthesis",
+          "criterion": "accuracy",
+          "keywords": [
+            "combustion",
+            "burning",
+            "hand warmer",
+            "cold pack",
+            "photosynthesis",
+            "respiration"
+          ]
+        }
+      ],
+      "modelAnswer": "In every reaction, bonds in the reactants break and new bonds form in the products. Breaking a bond always takes energy, and forming a bond always releases energy. If forming the new bonds releases more energy than breaking the old ones took, the extra is given out to the surroundings, usually as heat, and the reaction is exothermic: the surroundings get hotter. If breaking bonds takes more energy than forming releases, the reaction absorbs energy and is endothermic: the surroundings get colder. Enthalpy change, delta H, is the heat exchanged at constant pressure: negative for exothermic reactions and positive for endothermic ones. An energy profile diagram plots energy along the reaction: products lower than reactants for exothermic, higher for endothermic, with a hump in between showing the activation energy. Exothermic examples include combustion, respiration and hand warmers; endothermic examples include photosynthesis, thermal decomposition, and instant cold packs that dissolve ammonium nitrate."
+    },
+    {
+      "id": "chem-intermolecular-forces",
+      "title": "Intermolecular forces and states of matter",
+      "prompt": "Explain intermolecular forces such as London dispersion forces, dipole-dipole interactions and hydrogen bonding. How do they explain boiling points, and why does water have such unusual properties?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "chemistry",
+        "states-of-matter"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "forces",
+          "label": "Dispersion, dipole-dipole, hydrogen bonding",
+          "criterion": "accuracy",
+          "keywords": [
+            "london",
+            "dispersion",
+            "van der waals",
+            "dipole",
+            "hydrogen bond"
+          ]
+        },
+        {
+          "id": "between",
+          "label": "Forces between molecules, weaker than bonds within",
+          "criterion": "accuracy",
+          "keywords": [
+            "between molecules",
+            "weaker than",
+            "intermolecular",
+            "not covalent bonds"
+          ]
+        },
+        {
+          "id": "boiling",
+          "label": "Stronger forces mean higher boiling points",
+          "criterion": "accuracy",
+          "keywords": [
+            "boiling point",
+            "melting point",
+            "more energy",
+            "stronger forces",
+            "larger molecules"
+          ]
+        },
+        {
+          "id": "water",
+          "label": "Hydrogen bonds give water high boiling point, ice floats",
+          "criterion": "accuracy",
+          "keywords": [
+            "water",
+            "ice floats",
+            "less dense",
+            "surface tension",
+            "high boiling"
+          ]
+        }
+      ],
+      "modelAnswer": "Intermolecular forces act between molecules and are much weaker than the covalent bonds within them. Boiling or melting a molecular substance only overcomes these forces; the molecules themselves stay intact. London dispersion forces come from temporary dipoles as electron clouds fluctuate; every molecule has them, and they grow with molecular size, which is why larger alkanes have higher boiling points. Polar molecules also attract each other through permanent dipole-dipole forces. Hydrogen bonding is a particularly strong dipole attraction when hydrogen is bonded to nitrogen, oxygen or fluorine and is attracted to a lone pair on another such atom. The stronger the forces, the more energy is needed to separate molecules, so the higher the boiling point. Water is unusual because each molecule can form several hydrogen bonds: it boils at 100 degrees Celsius, far higher than similar-sized molecules like methane; it has high surface tension and heat capacity; and ice is less dense than liquid water because hydrogen bonds lock it into an open lattice, so ice floats."
+    },
+    {
+      "id": "chem-gas-laws",
+      "title": "The gas laws and the ideal gas equation",
+      "prompt": "Explain the relationships between pressure, volume and temperature of a gas, including Boyle's law and Charles's law, and the ideal gas equation PV = nRT. Use kinetic theory to explain why they hold.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "chemistry",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "chemistry",
+        "physics",
+        "gases"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "boyle",
+          "label": "Boyle: P inversely proportional to V at constant T",
+          "criterion": "accuracy",
+          "keywords": [
+            "boyle",
+            "inversely proportional",
+            "pressure doubles",
+            "halve the volume",
+            "syringe"
+          ]
+        },
+        {
+          "id": "charles",
+          "label": "Charles: V proportional to absolute temperature",
+          "criterion": "accuracy",
+          "keywords": [
+            "charles",
+            "proportional to temperature",
+            "kelvin",
+            "absolute temperature",
+            "balloon"
+          ]
+        },
+        {
+          "id": "ideal",
+          "label": "PV = nRT",
+          "criterion": "accuracy",
+          "keywords": [
+            "p v equals n r t",
+            "pv equals nrt",
+            "ideal gas",
+            "gas constant",
+            "moles"
+          ]
+        },
+        {
+          "id": "kinetic",
+          "label": "Kinetic theory: collisions with walls create pressure",
+          "criterion": "accuracy",
+          "keywords": [
+            "kinetic theory",
+            "collisions with the walls",
+            "collide with the walls",
+            "faster",
+            "average kinetic energy"
+          ]
+        }
+      ],
+      "modelAnswer": "Gas pressure comes from countless molecules colliding with the container walls; temperature measures their average kinetic energy. Boyle's law: at constant temperature, pressure is inversely proportional to volume, so halving the volume of a syringe doubles the pressure, because the same molecules hit the walls twice as often. Charles's law: at constant pressure, volume is proportional to absolute temperature in kelvin, so a balloon shrinks in the freezer, because slower molecules need less space to exert the same pressure. Gay-Lussac's law adds that at constant volume, pressure rises with temperature, which is why aerosol cans warn against heat. All of these combine into the ideal gas equation, PV = nRT, where n is the number of moles and R is the gas constant, 8.314 joules per mole per kelvin. Temperatures must be in kelvin. Real gases deviate at high pressure and low temperature, when molecular size and attractions start to matter."
+    },
+    {
+      "id": "phys-newtons-laws",
+      "title": "Newton's three laws of motion",
+      "prompt": "Explain Newton's three laws of motion with an everyday example for each. What does F = ma tell us, and why do objects in space keep moving without an engine?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "physics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "physics",
+        "mechanics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "inertia",
+          "label": "First law: inertia, constant velocity without net force",
+          "criterion": "accuracy",
+          "keywords": [
+            "inertia",
+            "constant velocity",
+            "keeps moving",
+            "stays at rest",
+            "net force"
+          ]
+        },
+        {
+          "id": "fma",
+          "label": "Second law: F = ma",
+          "criterion": "accuracy",
+          "keywords": [
+            "f equals m a",
+            "f equals ma",
+            "mass times acceleration",
+            "acceleration",
+            "proportional"
+          ]
+        },
+        {
+          "id": "action",
+          "label": "Third law: equal and opposite forces on different bodies",
+          "criterion": "accuracy",
+          "keywords": [
+            "equal and opposite",
+            "action and reaction",
+            "reaction force",
+            "pushes back"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Everyday examples: seatbelts, pushing a cart, rockets",
+          "criterion": "accuracy",
+          "keywords": [
+            "seatbelt",
+            "seat belt",
+            "rocket",
+            "car",
+            "cart",
+            "swimming"
+          ]
+        }
+      ],
+      "modelAnswer": "First law: an object stays at rest or keeps moving at constant velocity unless a net force acts on it. This is inertia; it's why passengers lurch forward when a car brakes and need seatbelts. Second law: the net force equals mass times acceleration, F = ma, so the same push accelerates an empty shopping cart more than a full one, and doubling the force doubles the acceleration. Third law: forces come in pairs; if A pushes B, B pushes A with an equal and opposite force, acting on different bodies, which is why a swimmer pushes water backwards to move forwards and a rocket pushes exhaust gas back to accelerate. In space there is almost no friction or air resistance, so no net force acts to slow a probe down; by the first law it keeps coasting, and engines are needed only to change its velocity."
+    },
+    {
+      "id": "phys-energy-work",
+      "title": "Work, energy and conservation of energy",
+      "prompt": "Explain work, kinetic energy and potential energy, and the law of conservation of energy. Use a roller coaster or a falling ball as an example, and explain where the energy goes when friction is present.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "physics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "physics",
+        "energy"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "work",
+          "label": "Work = force times distance moved in the force's direction",
+          "criterion": "accuracy",
+          "keywords": [
+            "work",
+            "force times distance",
+            "joule",
+            "transfer of energy"
+          ]
+        },
+        {
+          "id": "forms",
+          "label": "Kinetic (1/2 mv^2) and potential (mgh) energy",
+          "criterion": "accuracy",
+          "keywords": [
+            "kinetic",
+            "potential",
+            "half m v squared",
+            "mgh",
+            "height"
+          ]
+        },
+        {
+          "id": "conservation",
+          "label": "Energy is conserved, only converted",
+          "criterion": "accuracy",
+          "keywords": [
+            "conserv",
+            "cannot be created",
+            "converted",
+            "transformed",
+            "total energy"
+          ]
+        },
+        {
+          "id": "friction",
+          "label": "Friction turns mechanical energy into heat",
+          "criterion": "accuracy",
+          "keywords": [
+            "friction",
+            "heat",
+            "thermal",
+            "sound",
+            "air resistance"
+          ]
+        }
+      ],
+      "modelAnswer": "Work is done when a force moves something: work equals force times the distance moved in the direction of the force, measured in joules, and it transfers energy. Kinetic energy is the energy of motion, one half m v squared, so doubling speed quadruples it. Gravitational potential energy is stored energy due to height, m g h. The law of conservation of energy says energy cannot be created or destroyed, only converted between forms, so the total stays constant in a closed system. On a roller coaster, the chain lift does work to raise the car, storing potential energy at the top; as the car drops, potential energy turns into kinetic energy, and as it climbs the next hill, back into potential energy. With friction and air resistance, some mechanical energy turns into heat and sound, which is why each hill must be lower than the first and the ride eventually needs brakes or another lift."
+    },
+    {
+      "id": "phys-momentum-collisions",
+      "title": "Momentum and collisions",
+      "prompt": "Explain momentum and the conservation of momentum. Compare elastic and inelastic collisions, and explain how airbags and crumple zones reduce injuries using impulse.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "physics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "physics",
+        "mechanics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "momentum",
+          "label": "Momentum = mass x velocity, a vector",
+          "criterion": "accuracy",
+          "keywords": [
+            "mass times velocity",
+            "momentum",
+            "vector",
+            "p equals m v"
+          ]
+        },
+        {
+          "id": "conservation",
+          "label": "Total momentum is conserved without external forces",
+          "criterion": "accuracy",
+          "keywords": [
+            "conserv",
+            "total momentum",
+            "external force",
+            "before and after"
+          ]
+        },
+        {
+          "id": "collisions",
+          "label": "Elastic conserves kinetic energy; inelastic does not",
+          "criterion": "accuracy",
+          "keywords": [
+            "elastic",
+            "inelastic",
+            "kinetic energy",
+            "stick together"
+          ]
+        },
+        {
+          "id": "impulse",
+          "label": "Impulse: longer stopping time means smaller force",
+          "criterion": "accuracy",
+          "keywords": [
+            "impulse",
+            "longer time",
+            "increase the time",
+            "smaller force",
+            "crumple",
+            "airbag"
+          ]
+        }
+      ],
+      "modelAnswer": "Momentum is mass times velocity, p = mv, and it is a vector, so direction matters. If no external force acts on a system, its total momentum is conserved: the total before a collision equals the total after, which is why a gun recoils and two skaters pushing apart move off in opposite directions. In an elastic collision, kinetic energy is also conserved, as with billiard balls, approximately; in an inelastic collision some kinetic energy turns into heat, sound and deformation, and in a perfectly inelastic one the objects stick together, while momentum is still conserved. Impulse, force times time, equals the change in momentum. In a crash, the car's occupants must lose the same momentum whatever happens, so airbags, seatbelts and crumple zones increase the time over which they stop, which reduces the force on the body and therefore injuries."
+    },
+    {
+      "id": "phys-electric-circuits",
+      "title": "Voltage, current, resistance and Ohm's law",
+      "prompt": "Explain voltage, current and resistance, Ohm's law, and electrical power. Compare series and parallel circuits, and explain why houses are wired in parallel.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "physics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "physics",
+        "electricity"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "quantities",
+          "label": "Voltage pushes, current flows, resistance opposes",
+          "criterion": "accuracy",
+          "keywords": [
+            "voltage",
+            "potential difference",
+            "current",
+            "resistance",
+            "flow of charge"
+          ]
+        },
+        {
+          "id": "ohm",
+          "label": "V = IR and P = VI",
+          "criterion": "accuracy",
+          "keywords": [
+            "ohm",
+            "v equals i r",
+            "v equals ir",
+            "power",
+            "watt",
+            "p equals v i"
+          ]
+        },
+        {
+          "id": "series-parallel",
+          "label": "Series shares current; parallel shares voltage",
+          "criterion": "accuracy",
+          "keywords": [
+            "series",
+            "parallel",
+            "same current",
+            "same voltage",
+            "branches"
+          ]
+        },
+        {
+          "id": "houses",
+          "label": "Parallel wiring: independent appliances at full voltage",
+          "criterion": "accuracy",
+          "keywords": [
+            "independent",
+            "full voltage",
+            "one bulb",
+            "switch off",
+            "house",
+            "appliances"
+          ]
+        }
+      ],
+      "modelAnswer": "Voltage, or potential difference, is the energy given to each unit of charge, the push that drives it around a circuit, measured in volts. Current is the rate of flow of charge, in amperes. Resistance, in ohms, opposes the current. Ohm's law links them: V = IR, so for a fixed resistance, doubling the voltage doubles the current. Electrical power is P = VI, the rate of energy transfer in watts. In a series circuit, components form one loop: the same current flows through each, the voltages add up, and if one bulb fails, everything stops. In a parallel circuit, each component has its own branch across the supply: each gets the full voltage, the currents add up, and components work independently. That's why houses are wired in parallel: every appliance gets the full mains voltage and can be switched on or off without affecting the others."
+    },
+    {
+      "id": "phys-electromagnetic-induction",
+      "title": "Electromagnetism and induction",
+      "prompt": "Explain how electricity and magnetism are connected. Cover the magnetic field around a current, how electric motors work, and how electromagnetic induction makes generators and transformers possible.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "physics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "physics",
+        "electromagnetism"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "field",
+          "label": "A current creates a magnetic field; electromagnets",
+          "criterion": "accuracy",
+          "keywords": [
+            "magnetic field",
+            "electromagnet",
+            "current carrying",
+            "coil"
+          ]
+        },
+        {
+          "id": "motor",
+          "label": "Force on a current in a field turns a motor",
+          "criterion": "accuracy",
+          "keywords": [
+            "motor",
+            "force on a wire",
+            "rotate",
+            "spin",
+            "motor effect"
+          ]
+        },
+        {
+          "id": "induction",
+          "label": "Changing magnetic field induces a voltage (Faraday)",
+          "criterion": "accuracy",
+          "keywords": [
+            "induction",
+            "induce",
+            "faraday",
+            "changing magnetic field",
+            "moving magnet"
+          ]
+        },
+        {
+          "id": "devices",
+          "label": "Generators and transformers (AC only)",
+          "criterion": "accuracy",
+          "keywords": [
+            "generator",
+            "transformer",
+            "alternating current",
+            "step up",
+            "step down",
+            "turns"
+          ]
+        }
+      ],
+      "modelAnswer": "An electric current creates a magnetic field around the wire; coiling the wire concentrates the field, making an electromagnet that can be switched on and off. A current-carrying wire in a magnetic field feels a force, and in an electric motor that force acts on a coil in opposite directions on each side, making it rotate; a commutator or the drive electronics keep reversing the current so it keeps spinning. The reverse effect is electromagnetic induction, discovered by Faraday: a changing magnetic field through a coil induces a voltage in it. A generator spins a coil in a magnetic field, or a magnet inside a coil, converting mechanical energy to electricity. A transformer uses alternating current in one coil to create a changing field in an iron core, which induces a voltage in a second coil; the ratio of turns steps the voltage up for efficient long-distance transmission and down for homes. Transformers only work with alternating current, because a steady current doesn't change the field."
+    },
+    {
+      "id": "phys-waves-sound-doppler",
+      "title": "Waves, sound and the Doppler effect",
+      "prompt": "Explain what a wave is, the difference between transverse and longitudinal waves, and how wavelength, frequency and speed are related. Then explain the Doppler effect with an example.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "physics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "physics",
+        "waves"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "wave",
+          "label": "Waves transfer energy, not matter",
+          "criterion": "accuracy",
+          "keywords": [
+            "transfer energy",
+            "transfers energy",
+            "not matter",
+            "oscillat",
+            "vibrat"
+          ]
+        },
+        {
+          "id": "types",
+          "label": "Transverse vs longitudinal",
+          "criterion": "accuracy",
+          "keywords": [
+            "transverse",
+            "longitudinal",
+            "compression",
+            "perpendicular"
+          ]
+        },
+        {
+          "id": "equation",
+          "label": "Speed = frequency x wavelength",
+          "criterion": "accuracy",
+          "keywords": [
+            "frequency times wavelength",
+            "wavelength",
+            "frequency",
+            "hertz",
+            "v equals f lambda"
+          ]
+        },
+        {
+          "id": "doppler",
+          "label": "Doppler: pitch rises as the source approaches",
+          "criterion": "accuracy",
+          "keywords": [
+            "doppler",
+            "siren",
+            "ambulance",
+            "higher pitch",
+            "red shift",
+            "redshift"
+          ]
+        }
+      ],
+      "modelAnswer": "A wave is a disturbance that transfers energy from place to place without transferring matter; the particles of the medium just oscillate around fixed positions. In a transverse wave, like a wave on a rope or light, the oscillation is perpendicular to the direction of travel. In a longitudinal wave, like sound, the oscillation is along the direction of travel, producing compressions and rarefactions in the air. Wave speed equals frequency times wavelength: frequency is how many waves pass per second, in hertz, and wavelength is the distance between peaks. The Doppler effect is the change in observed frequency when the source and observer move relative to each other: as an ambulance approaches, its sound waves are squashed together, so you hear a higher pitch; as it moves away, they are stretched, so the pitch drops. The same effect shifts light from receding galaxies towards red, which is evidence that the universe is expanding, and radar speed guns use it too."
+    },
+    {
+      "id": "phys-thermodynamics",
+      "title": "The laws of thermodynamics and entropy",
+      "prompt": "Explain the first and second laws of thermodynamics in simple terms. What is entropy, why can no heat engine be 100 percent efficient, and how does a refrigerator move heat from cold to hot?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "physics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "physics",
+        "thermodynamics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "first",
+          "label": "First law: energy is conserved (heat + work)",
+          "criterion": "accuracy",
+          "keywords": [
+            "first law",
+            "conservation of energy",
+            "internal energy",
+            "heat added",
+            "work done"
+          ]
+        },
+        {
+          "id": "second",
+          "label": "Second law: heat flows hot to cold; entropy increases",
+          "criterion": "accuracy",
+          "keywords": [
+            "second law",
+            "hot to cold",
+            "entropy",
+            "disorder",
+            "number of arrangements"
+          ]
+        },
+        {
+          "id": "efficiency",
+          "label": "Heat engines must reject some heat",
+          "criterion": "accuracy",
+          "keywords": [
+            "efficien",
+            "heat engine",
+            "waste heat",
+            "carnot",
+            "100 percent"
+          ]
+        },
+        {
+          "id": "fridge",
+          "label": "Refrigerators use work to pump heat",
+          "criterion": "accuracy",
+          "keywords": [
+            "refrigerator",
+            "fridge",
+            "heat pump",
+            "compressor",
+            "refrigerant",
+            "requires work"
+          ]
+        }
+      ],
+      "modelAnswer": "The first law is conservation of energy: the change in a system's internal energy equals the heat added to it minus the work it does. You can't get energy for nothing. The second law says heat flows naturally from hot to cold, never the reverse on its own; equivalently, the total entropy of an isolated system never decreases. Entropy measures how many microscopic arrangements match a system's state, often described loosely as disorder. A heat engine, such as a car engine or power station, turns some heat from a hot source into work, but it must dump the rest as waste heat into a colder sink, so no engine can be 100 percent efficient; the Carnot limit, one minus the cold temperature over the hot temperature in kelvin, sets the maximum. A refrigerator is a heat pump run in reverse: a compressor does work on a refrigerant, which absorbs heat inside the fridge as it evaporates and releases it outside as it condenses. Moving heat from cold to hot is allowed, but only by doing work."
+    },
+    {
+      "id": "phys-special-relativity",
+      "title": "Special relativity basics",
+      "prompt": "Explain the two postulates of special relativity and their consequences: time dilation, length contraction and E = mc squared. Give a real-world example where these effects matter.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "physics",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "physics",
+        "relativity"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "postulates",
+          "label": "Same laws in all inertial frames; constant speed of light",
+          "criterion": "accuracy",
+          "keywords": [
+            "speed of light",
+            "same for all observers",
+            "inertial frame",
+            "postulate",
+            "constant"
+          ]
+        },
+        {
+          "id": "dilation",
+          "label": "Moving clocks run slow; lengths contract",
+          "criterion": "accuracy",
+          "keywords": [
+            "time dilation",
+            "clocks run slow",
+            "length contraction",
+            "shorter"
+          ]
+        },
+        {
+          "id": "energy",
+          "label": "E = mc^2: mass is a form of energy",
+          "criterion": "accuracy",
+          "keywords": [
+            "e equals m c squared",
+            "mc squared",
+            "mass energy",
+            "equivalence",
+            "nuclear"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "GPS satellites, muons, particle accelerators",
+          "criterion": "accuracy",
+          "keywords": [
+            "gps",
+            "muon",
+            "satellite",
+            "particle accelerator",
+            "cosmic ray"
+          ]
+        }
+      ],
+      "modelAnswer": "Special relativity rests on two postulates: the laws of physics are the same in every inertial, non-accelerating frame, and the speed of light in a vacuum is the same for all observers, whatever their motion. To keep light's speed constant, space and time must adjust. Time dilation: a clock moving relative to you runs slow by the factor gamma, which only becomes noticeable near the speed of light. Length contraction: a moving object is shorter along its direction of motion. Mass and energy are equivalent, E = mc squared, so a tiny mass corresponds to a huge energy, as in nuclear reactors and the Sun. Real examples: muons created by cosmic rays high in the atmosphere live long enough to reach the ground only because of time dilation, and GPS satellites must correct their clocks for relativity; without corrections, which also include general relativity's gravitational effect, position errors would grow by kilometres per day. Particle accelerators rely on these effects every day."
+    },
+    {
+      "id": "math-derivatives",
+      "title": "What a derivative really means",
+      "prompt": "Explain what a derivative is, both as a rate of change and as the slope of a tangent line. Describe how it is defined using limits, give real-world examples, and explain how derivatives help find maximum and minimum values.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "mathematics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "mathematics",
+        "calculus"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "rate",
+          "label": "Instantaneous rate of change",
+          "criterion": "accuracy",
+          "keywords": [
+            "rate of change",
+            "instantaneous",
+            "how fast",
+            "velocity",
+            "speed"
+          ]
+        },
+        {
+          "id": "slope",
+          "label": "Slope of the tangent line",
+          "criterion": "accuracy",
+          "keywords": [
+            "slope",
+            "tangent",
+            "gradient",
+            "steepness"
+          ]
+        },
+        {
+          "id": "limit",
+          "label": "Limit of the difference quotient",
+          "criterion": "accuracy",
+          "keywords": [
+            "limit",
+            "approaches zero",
+            "tends to zero",
+            "small change",
+            "difference quotient"
+          ]
+        },
+        {
+          "id": "optimization",
+          "label": "Derivative is zero at a max or min",
+          "criterion": "accuracy",
+          "keywords": [
+            "maximum",
+            "minimum",
+            "derivative is zero",
+            "equals zero",
+            "optimiz",
+            "optimis"
+          ]
+        }
+      ],
+      "modelAnswer": "A derivative measures how fast one quantity changes with respect to another at a single instant. If position depends on time, its derivative is velocity, and the derivative of velocity is acceleration. Geometrically, the derivative at a point is the slope of the tangent line to the curve there. It is defined with a limit: take the average rate of change between x and x plus h, that is f of x plus h minus f of x, divided by h, and let h approach zero. For example, the derivative of x squared is 2x, so at x equals 3 the curve rises 6 units per unit of x. Real-world uses include speed from distance, marginal cost in economics, and growth rates. At a smooth maximum or minimum, the tangent is flat, so the derivative is zero; setting the derivative to zero and checking the sign of the second derivative finds optimal values, such as the dimensions that minimise material for a can, and gradient descent in machine learning follows derivatives downhill."
+    },
+    {
+      "id": "math-integrals",
+      "title": "Integrals and the fundamental theorem of calculus",
+      "prompt": "Explain what an integral is as the area under a curve and as an accumulated total. How does the fundamental theorem of calculus connect integration and differentiation? Give practical examples.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "mathematics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "mathematics",
+        "calculus"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "area",
+          "label": "Area under a curve / accumulation",
+          "criterion": "accuracy",
+          "keywords": [
+            "area under",
+            "accumulat",
+            "total",
+            "sum"
+          ]
+        },
+        {
+          "id": "riemann",
+          "label": "Limit of sums of thin rectangles",
+          "criterion": "accuracy",
+          "keywords": [
+            "rectangles",
+            "riemann",
+            "thin strips",
+            "infinitely many",
+            "limit"
+          ]
+        },
+        {
+          "id": "ftc",
+          "label": "Integration reverses differentiation; antiderivatives",
+          "criterion": "accuracy",
+          "keywords": [
+            "fundamental theorem",
+            "antiderivative",
+            "inverse",
+            "reverse",
+            "opposite of differentiation"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Distance from velocity, work, probability",
+          "criterion": "accuracy",
+          "keywords": [
+            "distance from velocity",
+            "distance",
+            "work",
+            "probability",
+            "volume"
+          ]
+        }
+      ],
+      "modelAnswer": "A definite integral adds up a quantity that changes continuously. Geometrically, it is the signed area under a curve between two points. You can picture it as splitting the area into thin rectangles, adding their areas, and taking the limit as the rectangles become infinitely thin; that limit of sums is the Riemann integral. The same idea is accumulation: integrate velocity over time and you get distance travelled; integrate a power reading over time and you get energy used. The fundamental theorem of calculus connects integration and differentiation as inverse operations: if F is an antiderivative of f, meaning F's derivative is f, then the integral of f from a to b equals F of b minus F of a. So instead of summing rectangles, you find an antiderivative; for example, the integral of 2x from 0 to 3 is 3 squared minus 0 squared, which is 9. Integrals also give volumes, work done by a varying force, and probabilities as areas under a probability density curve."
+    },
+    {
+      "id": "math-probability-bayes",
+      "title": "Conditional probability and Bayes' theorem",
+      "prompt": "Explain conditional probability and Bayes' theorem. Use the example of a medical test with a small false positive rate for a rare disease, and explain why a positive result may still mean the disease is unlikely.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "mathematics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "mathematics",
+        "probability",
+        "statistics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "conditional",
+          "label": "P(A given B): probability once B is known",
+          "criterion": "accuracy",
+          "keywords": [
+            "conditional probability",
+            "given that",
+            "given b",
+            "probability of a given b",
+            "once we know"
+          ]
+        },
+        {
+          "id": "bayes",
+          "label": "Bayes: update a prior with evidence",
+          "criterion": "accuracy",
+          "keywords": [
+            "bayes",
+            "prior",
+            "posterior",
+            "likelihood",
+            "update"
+          ]
+        },
+        {
+          "id": "base-rate",
+          "label": "Base rate: rare disease means many false positives",
+          "criterion": "accuracy",
+          "keywords": [
+            "base rate",
+            "rare",
+            "false positive",
+            "out of 10,000",
+            "out of ten thousand",
+            "most positives"
+          ]
+        },
+        {
+          "id": "numbers",
+          "label": "Working through counts gives the answer",
+          "criterion": "accuracy",
+          "keywords": [
+            "sensitivity",
+            "specificity",
+            "about 9 percent",
+            "about nine percent",
+            "natural frequencies"
+          ]
+        }
+      ],
+      "modelAnswer": "Conditional probability, P(A given B), is the probability of A once we know B happened, and equals P(A and B) divided by P(B). Bayes' theorem reverses the condition: P(A given B) equals P(B given A) times P(A), divided by P(B). In words, start with a prior belief P(A), multiply by how likely the evidence is if A is true, and normalise to get the posterior. Take a disease that 1 in 1,000 people have, and a test that detects 99 percent of cases with a 1 percent false positive rate. Out of 100,000 people, 100 have the disease and about 99 test positive; of the 99,900 healthy people, about 999 also test positive. So of roughly 1,098 positives, only 99 are sick, about 9 percent. Because the disease is rare, false positives from the large healthy group outnumber the true positives; ignoring this is the base rate fallacy. This is why positive screening results are confirmed with a second, more specific test."
+    },
+    {
+      "id": "math-eigenvectors",
+      "title": "Matrices, eigenvectors and eigenvalues",
+      "prompt": "Explain what a matrix does as a linear transformation, and what eigenvectors and eigenvalues are. Give an intuitive picture, and describe where they are used, such as PCA or Google's PageRank.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "mathematics",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "mathematics",
+        "linear-algebra",
+        "machine-learning"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "transformation",
+          "label": "A matrix is a linear transformation: rotate, stretch, shear",
+          "criterion": "accuracy",
+          "keywords": [
+            "linear transformation",
+            "transformation",
+            "rotate",
+            "stretch",
+            "shear",
+            "maps vectors"
+          ]
+        },
+        {
+          "id": "eigen",
+          "label": "Eigenvectors keep their direction; eigenvalue is the scale factor",
+          "criterion": "accuracy",
+          "keywords": [
+            "eigenvector",
+            "same direction",
+            "direction unchanged",
+            "eigenvalue",
+            "scaled",
+            "a v equals lambda v"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "PCA, PageRank, vibrations, stability",
+          "criterion": "accuracy",
+          "keywords": [
+            "pca",
+            "principal component",
+            "pagerank",
+            "page rank",
+            "vibration",
+            "stability"
+          ]
+        },
+        {
+          "id": "intuition",
+          "label": "Natural axes of the transformation; repeated application",
+          "criterion": "accuracy",
+          "keywords": [
+            "axes",
+            "repeated",
+            "power iteration",
+            "dominant",
+            "variance"
+          ]
+        }
+      ],
+      "modelAnswer": "A matrix represents a linear transformation: multiplying a vector by it rotates, stretches, shears or reflects the vector, while keeping straight lines straight and the origin fixed. Most vectors change direction under the transformation, but some special vectors only get stretched or shrunk along their own line: these are eigenvectors, and the factor by which each is scaled is its eigenvalue, so A v equals lambda v. Intuitively, eigenvectors are the natural axes of the transformation: in their coordinates the matrix just scales each axis. They matter when you apply a transformation repeatedly, because the direction with the largest eigenvalue comes to dominate. Principal component analysis finds eigenvectors of the data's covariance matrix: the top ones are the directions of greatest variance, used to reduce dimensions. Google's original PageRank is the dominant eigenvector of the web's link matrix, found by repeated multiplication (power iteration). Engineers also use eigenvalues for vibration modes and to check whether systems are stable."
+    },
+    {
+      "id": "math-proof-by-induction",
+      "title": "Proof by mathematical induction",
+      "prompt": "Explain proof by mathematical induction using the domino analogy. Walk through proving that the sum of the first n natural numbers is n times n plus one over two, and mention where induction appears in computer science.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "mathematics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "mathematics",
+        "proof",
+        "computer-science"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "steps",
+          "label": "Base case and inductive step",
+          "criterion": "accuracy",
+          "keywords": [
+            "base case",
+            "inductive step",
+            "assume",
+            "n plus 1",
+            "next case"
+          ]
+        },
+        {
+          "id": "dominoes",
+          "label": "Domino analogy",
+          "criterion": "accuracy",
+          "keywords": [
+            "domino",
+            "falls",
+            "chain",
+            "ladder"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Sum formula proof",
+          "criterion": "accuracy",
+          "keywords": [
+            "n times n plus 1 over 2",
+            "sum of the first",
+            "formula",
+            "add n plus 1",
+            "gauss"
+          ]
+        },
+        {
+          "id": "cs",
+          "label": "Recursion and loop invariants",
+          "criterion": "accuracy",
+          "keywords": [
+            "recursion",
+            "recursive",
+            "loop invariant",
+            "algorithm correctness",
+            "correctness"
+          ]
+        }
+      ],
+      "modelAnswer": "Induction proves that a statement holds for every natural number in two steps. The base case shows it is true for the first value, usually n = 1. The inductive step shows that if it is true for some n, the inductive hypothesis, then it must also be true for n + 1. Like dominoes: the first one falls, and each falling domino knocks over the next, so they all fall. Example: claim 1 + 2 + ... + n = n(n + 1)/2. Base case: for n = 1, the left side is 1 and the right side is 1 times 2 over 2, which is 1. Inductive step: assume the formula holds for n. Then the sum up to n + 1 equals n(n + 1)/2 plus (n + 1), which is (n + 1)(n + 2)/2, exactly the formula with n + 1 in place of n. So it holds for all n. In computer science, the same reasoning proves recursive functions correct, where the base case and recursive case mirror the proof, and proves loops correct using loop invariants."
+    },
+    {
+      "id": "math-statistics-distributions",
+      "title": "Mean, median, variance and the normal distribution",
+      "prompt": "Explain the mean, median and mode, and when the median is a better summary than the mean. Then explain standard deviation, the normal distribution, and the 68-95-99.7 rule.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "mathematics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "mathematics",
+        "statistics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "averages",
+          "label": "Mean, median, mode",
+          "criterion": "accuracy",
+          "keywords": [
+            "the mean",
+            "arithmetic mean",
+            "median",
+            "mode",
+            "average",
+            "middle value"
+          ]
+        },
+        {
+          "id": "outliers",
+          "label": "Median resists outliers and skew",
+          "criterion": "accuracy",
+          "keywords": [
+            "outlier",
+            "skew",
+            "income",
+            "salaries",
+            "robust"
+          ]
+        },
+        {
+          "id": "spread",
+          "label": "Variance and standard deviation measure spread",
+          "criterion": "accuracy",
+          "keywords": [
+            "standard deviation",
+            "variance",
+            "spread",
+            "distance from the mean"
+          ]
+        },
+        {
+          "id": "normal",
+          "label": "Normal distribution and 68-95-99.7",
+          "criterion": "accuracy",
+          "keywords": [
+            "normal distribution",
+            "bell curve",
+            "68",
+            "95",
+            "three standard deviations"
+          ]
+        }
+      ],
+      "modelAnswer": "The mean is the sum of the values divided by how many there are; the median is the middle value when they are sorted; the mode is the most common value. The mean uses every value, but outliers pull it: if a billionaire walks into a cafe, the mean income in the room jumps while the median barely moves. So for skewed data such as incomes or house prices, the median is a better summary of a typical value. Spread is measured by variance, the average squared distance from the mean, and its square root, the standard deviation, which is in the original units. Many measurements, such as heights or measurement errors, roughly follow the normal distribution: a symmetric bell curve centred on the mean. For a normal distribution, about 68 percent of values lie within one standard deviation of the mean, about 95 percent within two, and about 99.7 percent within three, so a value three standard deviations away is unusual."
+    },
+    {
+      "id": "nano-scale-surface-area",
+      "title": "Why the nanoscale is different",
+      "prompt": "Explain what the nanoscale is and why materials behave differently at that size. Cover the surface-area-to-volume ratio, quantum effects such as quantum dots, and examples of nanotechnology in everyday products.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "nanotechnology",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "nanotechnology",
+        "materials"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "scale",
+          "label": "1 to 100 nanometres; a nanometre is a billionth of a metre",
+          "criterion": "accuracy",
+          "keywords": [
+            "nanometre",
+            "nanometer",
+            "billionth",
+            "1 to 100",
+            "one to a hundred"
+          ]
+        },
+        {
+          "id": "surface",
+          "label": "High surface-area-to-volume ratio boosts reactivity",
+          "criterion": "accuracy",
+          "keywords": [
+            "surface area",
+            "surface-area-to-volume",
+            "surface to volume",
+            "reactiv",
+            "catalyst"
+          ]
+        },
+        {
+          "id": "quantum",
+          "label": "Quantum confinement: size-dependent colour",
+          "criterion": "accuracy",
+          "keywords": [
+            "quantum dot",
+            "quantum effect",
+            "quantum confinement",
+            "colour depends on size",
+            "color depends on size"
+          ]
+        },
+        {
+          "id": "products",
+          "label": "Sunscreen, silver antibacterial, displays, chips",
+          "criterion": "accuracy",
+          "keywords": [
+            "sunscreen",
+            "titanium dioxide",
+            "zinc oxide",
+            "silver",
+            "display",
+            "transistor"
+          ]
+        }
+      ],
+      "modelAnswer": "The nanoscale is roughly 1 to 100 nanometres; a nanometre is a billionth of a metre, about the width of ten hydrogen atoms in a row, and a human hair is around 80,000 nanometres thick. Two things change at this scale. First, the surface-area-to-volume ratio becomes huge: a much larger fraction of atoms sits on the surface, so nanoparticles are far more reactive and make excellent catalysts. Gold, unreactive in bulk, becomes catalytic as nanoparticles. Second, quantum effects appear: in quantum dots, electrons are confined in a tiny space, so the energy gaps, and therefore the colour of light they emit, depend on particle size, which is used in QLED displays. Everyday examples include zinc oxide and titanium dioxide nanoparticles in clear sunscreens, silver nanoparticles in antibacterial coatings, and transistors in modern chips with features only tens of nanometres across. Open questions include the health and environmental effects of some nanoparticles, so they are studied and regulated carefully."
+    },
+    {
+      "id": "nano-carbon-materials",
+      "title": "Graphene and carbon nanotubes",
+      "prompt": "Explain what graphene and carbon nanotubes are, how their structure relates to graphite, and why they have remarkable strength and conductivity. What applications are realistic, and what has held them back?",
+      "categoryId": "science-engineering",
+      "subcategoryId": "nanotechnology",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "nanotechnology",
+        "materials",
+        "carbon"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "interview",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "structure",
+          "label": "One-atom-thick hexagonal carbon sheet; rolled into tubes",
+          "criterion": "accuracy",
+          "keywords": [
+            "one atom thick",
+            "single layer",
+            "hexagonal",
+            "honeycomb",
+            "rolled",
+            "graphite"
+          ]
+        },
+        {
+          "id": "properties",
+          "label": "Very strong, light, excellent conductor",
+          "criterion": "accuracy",
+          "keywords": [
+            "strong",
+            "conductiv",
+            "lightweight",
+            "flexible",
+            "stiff",
+            "delocali"
+          ]
+        },
+        {
+          "id": "applications",
+          "label": "Composites, batteries, sensors, electronics",
+          "criterion": "accuracy",
+          "keywords": [
+            "composite",
+            "battery",
+            "sensor",
+            "coating",
+            "electrodes",
+            "sports equipment"
+          ]
+        },
+        {
+          "id": "challenges",
+          "label": "Hard to manufacture at scale and quality; no band gap",
+          "criterion": "accuracy",
+          "keywords": [
+            "manufactur",
+            "at scale",
+            "expensive",
+            "defects",
+            "band gap",
+            "cost"
+          ]
+        }
+      ],
+      "modelAnswer": "Graphite is made of stacked sheets of carbon atoms arranged in hexagons. A single one-atom-thick sheet is graphene, first isolated in 2004 by peeling graphite with sticky tape, work that won a Nobel Prize. A carbon nanotube is like a sheet of graphene rolled into a seamless cylinder a few nanometres wide. Each carbon is strongly bonded to three neighbours in the plane, giving exceptional tensile strength and stiffness for very low weight, while the remaining electron of each atom is delocalised across the sheet, so graphene conducts electricity and heat extremely well; nanotubes can be metallic or semiconducting depending on how they are rolled. Realistic applications today are as additives: stronger, lighter composites in sports equipment and aerospace, conductive coatings, battery electrodes and sensors. What has held them back is manufacturing high-quality material cheaply at scale, controlling defects, and the fact that graphene has no band gap, so it can't simply replace silicon in transistors."
     }
   ]
 }
