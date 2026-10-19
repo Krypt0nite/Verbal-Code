@@ -124,10 +124,11 @@ describe('handleEvaluate', () => {
       AI2_BASE_URL: 'https://second.example/v1',
       AI2_MODEL: 'second-model',
       AI2_PROVIDER_LABEL: 'Second',
+      AI2_FALLBACK_MODELS: 'second-mini=Second mini',
       AI_FALLBACK_MODELS: 'small-model=Small, tiny-model',
     };
-    expect(readConfig(chain)?.targets.map((t) => t.label)).toEqual(['Test Provider', 'Second', 'Small', 'tiny-model']);
-    expect(statusFor(chain).providerLabel).toBe('Test Provider + 3 backups');
+    expect(readConfig(chain)?.targets.map((t) => t.label)).toEqual(['Test Provider', 'Second', 'Second mini', 'Small', 'tiny-model']);
+    expect(statusFor(chain).providerLabel).toBe('Test Provider + 4 backups');
 
     const f = vi
       .fn()
@@ -160,6 +161,18 @@ describe('handleEvaluate', () => {
     const limited = vi.fn().mockRejectedValue(new Error('4006: you have used up your daily free allocation of 10,000 neurons'));
     const r2 = await handleEvaluate(request, 'ip', { ...chain, AI: { run: limited } }, deps(vi.fn().mockResolvedValue(new Response('{}', { status: 500 }))));
     expect(r2.body).toMatchObject({ code: 'rate-limited' });
+  });
+
+  it('drops corrections with an unknown kind and softens an unknown certainty', async () => {
+    const odd = {
+      ...assessment,
+      corrections: [{ ...assessment.corrections[0]!, kind: 'clarity' }, assessment.corrections[0]!],
+      factualConcerns: [{ excerpt: 'runs in log n time', concern: 'Check this.', certainty: 'high' }],
+    };
+    const r = await handleEvaluate(request, 'ip', env, deps(vi.fn().mockResolvedValue(providerResponse(odd))));
+    if (!r.body.ok) throw new Error(`expected ok, got ${r.body.code}`);
+    expect(r.body.assessment.corrections.map((c) => c.kind)).toEqual(['phrasing']);
+    expect(r.body.assessment.factualConcerns[0]?.certainty).toBe('possible');
   });
 
   it('accepts JSON wrapped in a sentence', async () => {

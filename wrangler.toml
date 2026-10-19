@@ -13,3 +13,8 @@ AI_FALLBACK_MODELS = "openai/gpt-oss-20b=Groq (GPT-OSS 20B),qwen/qwen3.8-27b=Gro
 WORKERS_AI_MODEL = "@cf/openai/gpt-oss-20b"
 WORKERS_AI_LABEL = "Cloudflare Workers AI (GPT-OSS 20B)"
 AI_TOTAL_TIMEOUT_MS = "80000"
+# Second provider (Google Gemini). AI2_API_KEY is a secret.
+AI2_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai"
+AI2_MODEL = "gemini-3.8-flash"
+AI2_PROVIDER_LABEL = "Google Gemini (3.8 Flash)"
+AI2_FALLBACK_MODELS = "gemini-3.5-flash=Google Gemini (3.5 Flash)"

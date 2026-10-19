@@ -35,6 +35,8 @@ export interface AiEnv {
   AI2_BASE_URL?: string;
   AI2_MODEL?: string;
   AI2_PROVIDER_LABEL?: string;
+  /** Extra models on the second provider, tried right after AI2_MODEL. Same format as AI_FALLBACK_MODELS. */
+  AI2_FALLBACK_MODELS?: string;
   /** Optional Cloudflare Workers AI binding, tried last. Needs `[ai] binding = "AI"` in wrangler.toml. */
   AI?: WorkersAiBinding;
   WORKERS_AI_MODEL?: string;
@@ -73,19 +75,18 @@ export function readConfig(env: AiEnv): Config | null {
   const baseUrl = env.AI_BASE_URL.replace(/\/+$/, '');
   const providerLabel = env.AI_PROVIDER_LABEL || 'AI provider';
   const targets: Target[] = [{ kind: 'openai', label: providerLabel, baseUrl, apiKey: env.AI_API_KEY, model: env.AI_MODEL }];
+  const extraModels = (list: string | undefined, base: string, apiKey: string) => {
+    for (const entry of (list ?? '').split(',')) {
+      const [model, label] = entry.split('=').map((s) => s.trim());
+      if (model) targets.push({ kind: 'openai', label: label || model, baseUrl: base, apiKey, model });
+    }
+  };
   if (env.AI2_API_KEY && env.AI2_BASE_URL && env.AI2_MODEL) {
-    targets.push({
-      kind: 'openai',
-      label: env.AI2_PROVIDER_LABEL || 'Second AI provider',
-      baseUrl: env.AI2_BASE_URL.replace(/\/+$/, ''),
-      apiKey: env.AI2_API_KEY,
-      model: env.AI2_MODEL,
-    });
+    const base2 = env.AI2_BASE_URL.replace(/\/+$/, '');
+    targets.push({ kind: 'openai', label: env.AI2_PROVIDER_LABEL || 'Second AI provider', baseUrl: base2, apiKey: env.AI2_API_KEY, model: env.AI2_MODEL });
+    extraModels(env.AI2_FALLBACK_MODELS, base2, env.AI2_API_KEY);
   }
-  for (const entry of (env.AI_FALLBACK_MODELS ?? '').split(',')) {
-    const [model, label] = entry.split('=').map((s) => s.trim());
-    if (model) targets.push({ kind: 'openai', label: label || model, baseUrl, apiKey: env.AI_API_KEY, model });
-  }
+  extraModels(env.AI_FALLBACK_MODELS, baseUrl, env.AI_API_KEY);
   if (env.AI && env.WORKERS_AI_MODEL) {
     targets.push({ kind: 'workers-ai', label: env.WORKERS_AI_LABEL || 'Cloudflare Workers AI', model: env.WORKERS_AI_MODEL });
   }
@@ -165,6 +166,7 @@ export function buildMessages(req: EvaluateRequest): Array<{ role: 'system' | 'u
   ];
 }
 
+const CORRECTION_KINDS = new Set(['grammar', 'phrasing', 'vocabulary']);
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 const cut = (v: unknown, max: number) => (typeof v === 'string' && v.length > max ? `${v.slice(0, max - 1).trimEnd()}…` : v);
 const list = (v: unknown, max: number, each: (item: unknown) => unknown) => (Array.isArray(v) ? v.slice(0, max).map(each) : v);
@@ -183,9 +185,18 @@ export function fitToLimits(raw: unknown): unknown {
     criteria: list(raw.criteria, 12, (c) =>
       isRecord(c) ? { ...c, note: cut(c.note, 400), evidence: list(c.evidence, 4, (e) => cut(e, 300)) } : c,
     ),
-    corrections: list(raw.corrections, 8, (c) => fields(c, { before: 300, after: 300, explanation: 300 })),
+    // A correction with an unknown kind is dropped rather than relabelled, so nothing is invented.
+    corrections: list(
+      Array.isArray(raw.corrections) ? raw.corrections.filter((c) => isRecord(c) && CORRECTION_KINDS.has(String(c.kind))) : raw.corrections,
+      8,
+      (c) => fields(c, { before: 300, after: 300, explanation: 300 }),
+    ),
     conceptsMissing: list(raw.conceptsMissing, 10, (s) => cut(s, 160)),
-    factualConcerns: list(raw.factualConcerns, 6, (f) => fields(f, { excerpt: 300, concern: 400 })),
+    // An unknown certainty becomes the weaker "possible".
+    factualConcerns: list(raw.factualConcerns, 6, (f) => {
+      const capped = fields(f, { excerpt: 300, concern: 400 });
+      return isRecord(capped) && capped.certainty !== 'likely' ? { ...capped, certainty: 'possible' } : capped;
+    }),
     structureNotes: list(raw.structureNotes, 5, (s) => cut(s, 300)),
     improvedAnswer: cut(raw.improvedAnswer, 3000),
     nextSteps: list(raw.nextSteps, 3, (s) => cut(s, 300)),
