@@ -34,7 +34,8 @@ export const onRequestPost = async ({ request, env }: PagesContext) => {
   }
   limiter ??= new MemoryRateLimiter(readConfig(env)?.maxPerMinute ?? 6);
   const clientKey = request.headers.get('cf-connecting-ip') ?? 'anonymous';
-  const result = await handleEvaluate(body, clientKey, env, { fetch, limiter });
+  // Wrap fetch: Workers throws "Illegal invocation" if it is called as a method of another object.
+  const result = await handleEvaluate(body, clientKey, env, { fetch: (input, init) => fetch(input, init), limiter });
   const retry = !result.body.ok && result.body.retryAfterSec ? { 'retry-after': String(result.body.retryAfterSec) } : undefined;
   return json(result.body, result.status, retry);
 };
