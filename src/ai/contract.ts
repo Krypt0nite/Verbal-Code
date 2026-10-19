@@ -1,12 +1,15 @@
 import { z } from 'zod';
 import { DifficultySchema, RubricIdSchema } from '../domain/types';
 import { CorrectionSchema, FactualConcernSchema } from '../evaluation/types';
+import { TopicIdSchema } from '../evaluation/topics/types';
 
 /**
  * Contract between the browser and the optional /api/evaluate endpoint.
  * The browser sends only what evaluation needs — never audio, never identifiers about the user.
  */
 export const MAX_TRANSCRIPT_CHARS = 12_000;
+/** The question's reference answer is trimmed to this length before sending. */
+export const MAX_MODEL_ANSWER_CHARS = 2_000;
 
 export const EvaluateRequestSchema = z.object({
   prompt: z.string().min(10).max(1000),
@@ -14,6 +17,11 @@ export const EvaluateRequestSchema = z.object({
   difficulty: DifficultySchema,
   rubricId: RubricIdSchema,
   transcript: z.string().trim().min(1, 'Transcript is empty.').max(MAX_TRANSCRIPT_CHARS, 'Transcript is too long.'),
+  // Optional question context (question data, never user data). The server looks the topic rubric up by id,
+  // so a client cannot inject criteria; reference points and the model answer are fenced as reference material.
+  topicId: TopicIdSchema.optional(),
+  referencePoints: z.array(z.string().min(1).max(160)).max(12).optional(),
+  modelAnswer: z.string().max(MAX_MODEL_ANSWER_CHARS).optional(),
 });
 export type EvaluateRequest = z.infer<typeof EvaluateRequestSchema>;
 
@@ -37,6 +45,9 @@ export const AiAssessmentSchema = z.object({
   structureNotes: z.array(z.string().max(300)).max(5).default([]),
   improvedAnswer: z.string().min(1).max(3000),
   nextSteps: z.array(z.string().max(300)).min(1).max(3),
+  // Optional so older servers and models that omit them still validate.
+  strengths: z.array(z.object({ point: z.string().min(1).max(200), excerpt: z.string().min(1).max(300) })).max(4).default([]),
+  recognitionNotes: z.array(z.object({ excerpt: z.string().min(1).max(200), note: z.string().min(1).max(300) })).max(4).default([]),
 });
 export type AiAssessment = z.infer<typeof AiAssessmentSchema>;
 

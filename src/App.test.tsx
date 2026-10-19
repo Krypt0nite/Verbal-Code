@@ -64,6 +64,8 @@ describe('App', () => {
     const report = await screen.findByRole('article', { name: 'Feedback' });
     expect(within(report).getByText(/Local evaluator/)).toBeInTheDocument();
     expect(within(report).getByText('Rubric')).toBeInTheDocument();
+    expect(within(report).getByText('Topic rubric: Data structures & algorithms')).toBeInTheDocument();
+    expect(within(report).getByRole('heading', { name: 'What went well' })).toBeInTheDocument();
     expect(within(report).getByText(/How this was scored/)).toBeInTheDocument();
     expect(storageContains('Binary search finds a target')).toBe(false);
 

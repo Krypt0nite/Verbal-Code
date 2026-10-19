@@ -17,7 +17,7 @@ All four must pass. Last run on 19 October 2026 (Windows 11, Node 24.22):
 | --- | --- |
 | `npm run lint` | 0 errors, 0 warnings |
 | `npm run typecheck` | Passes (strict) |
-| `npm test` | 124 tests passed in 10 files |
+| `npm test` | 176 tests passed in 11 files |
 | `npm run build` | Passes. App chunk 117 KB gzip, questions chunk 418 KB gzip, CSS 4 KB gzip |
 | `npm run test:e2e` | 12/12 passed (6 scenarios × desktop and mobile Chromium) |
 | Same E2E suite on installed Google Chrome and Microsoft Edge | 12/12 passed |

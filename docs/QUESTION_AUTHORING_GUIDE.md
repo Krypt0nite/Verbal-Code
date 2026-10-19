@@ -23,6 +23,8 @@ Questions live in `src/data/questions/<category-id>.json` as `{ "categoryId": ".
 
 ## Which rubric to use
 
+The subcategory also selects a **topic profile** (`src/evaluation/topics/`) that rewords the rubric for the subject and adds common misconceptions; see EVALUATION.md. Questions need no extra fields for this. When you write keywords, remember that the local evaluator gives full credit only when a concept is explained ("because", "which", "so"… nearby), so keywords should name the concept, not the explanation.
+
 | Subcategory | `rubricId` | Concept criteria you may reference |
 | --- | --- | --- |
 | `tech-ai/dsa`, `interview-skills/problem-solving-explanations` | `dsa` | correctness, time-complexity, space-complexity, edge-cases, alternatives |

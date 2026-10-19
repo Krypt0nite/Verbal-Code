@@ -29,8 +29,31 @@ const respond = (body: unknown, status = 200) =>
 describe('AI evaluator client', () => {
   it('sends only the minimal payload', () => {
     const req = buildRequest(input);
-    expect(Object.keys(req).sort()).toEqual(['category', 'difficulty', 'prompt', 'rubricId', 'transcript']);
+    // Only the transcript comes from the user; everything else describes the question.
+    expect(Object.keys(req).sort()).toEqual(['category', 'difficulty', 'modelAnswer', 'prompt', 'referencePoints', 'rubricId', 'topicId', 'transcript']);
     expect(req.category).toBe('Data Structures & Algorithms');
+    expect(req.topicId).toBe('dsa');
+    expect(req.referencePoints).toEqual(question.expectedConcepts.map((c) => c.label));
+    expect(req.modelAnswer).toBe(question.modelAnswer.slice(0, 2000));
+  });
+
+  it('shows model strengths and recognition notes with their transcript quotes', async () => {
+    const body = {
+      ...okBody,
+      assessment: {
+        ...okBody.assessment,
+        strengths: [{ point: 'Stated the complexity', excerpt: 'log n time' }],
+        recognitionNotes: [{ excerpt: 'halves a sorted array', note: 'Clear despite missing punctuation.' }],
+      },
+    };
+    const report = await createAiEvaluator(respond(body)).evaluate(input);
+    expect(report.strengths).toEqual(['Stated the complexity: “log n time”']);
+    expect(report.recognitionNotes[0]).toMatch(/^“halves a sorted array”/);
+  });
+
+  it('rejects a malformed model report instead of showing it', async () => {
+    const bad = { ...okBody, assessment: { ...okBody.assessment, strengths: [{ point: 'no excerpt' }] } };
+    await expect(createAiEvaluator(respond(bad)).evaluate(input)).rejects.toMatchObject({ code: 'invalid-response' });
   });
 
   it('builds a schema-valid report with locally measured metrics', async () => {
@@ -42,6 +65,10 @@ describe('AI evaluator client', () => {
     expect(report.criteria.find((c) => c.id === 'time-complexity')).toMatchObject({ score: 90, confidence: 'model' });
     expect(report.criteria.find((c) => c.id === 'reasoning')).toMatchObject({ score: null, confidence: 'not-assessed' });
     expect(report.limitations.join(' ')).toMatch(/removed because the quoted text/);
+    // An older server sends no strengths or recognition notes; the report still validates with empty lists.
+    expect(report.strengths).toEqual([]);
+    expect(report.recognitionNotes).toEqual([]);
+    expect(report.rubricLabel).toBe('Data structures & algorithms');
     const init = f.mock.calls[0]![1] as RequestInit;
     expect(init.credentials).toBe('omit');
   });

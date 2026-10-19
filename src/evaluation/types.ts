@@ -52,6 +52,8 @@ export const FeedbackReportSchema = z.object({
   evaluator: z.enum(['local', 'ai']),
   evaluatorLabel: z.string().max(120),
   rubricId: RubricIdSchema,
+  /** The topic-specific rubric name shown to the user, e.g. "C++". */
+  rubricLabel: z.string().max(120).optional(),
   overallScore: z.number().min(0).max(100).nullable(),
   summary: z.string().max(600),
   criteria: z.array(CriterionResultSchema).min(1).max(12),
@@ -59,9 +61,22 @@ export const FeedbackReportSchema = z.object({
   corrections: z.array(CorrectionSchema).max(12),
   concisenessNotes: z.array(z.string().max(300)).max(6),
   structureNotes: z.array(z.string().max(300)).max(6),
-  conceptsCovered: z.array(z.object({ label: z.string(), evidence: z.string().max(300) })).max(20),
+  conceptsCovered: z
+    .array(
+      z.object({
+        label: z.string(),
+        evidence: z.string().max(300),
+        /** "named": the term appeared without any explanation around it. */
+        depth: z.enum(['explained', 'named']).optional(),
+      }),
+    )
+    .max(20),
   conceptsMissing: z.array(z.string().max(160)).max(20),
   factualConcerns: z.array(FactualConcernSchema).max(8),
+  /** What the answer did well, each backed by a transcript excerpt. */
+  strengths: z.array(z.string().max(300)).max(4).default([]),
+  /** Words that were probably misrecognised by speech recognition, and how they were treated. */
+  recognitionNotes: z.array(z.string().max(300)).max(6).default([]),
   improvedAnswer: z.string().max(3000),
   nextSteps: z.array(z.string().max(300)).min(1).max(3),
   limitations: z.array(z.string().max(300)).max(8),

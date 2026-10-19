@@ -64,6 +64,8 @@ Design rules:
 
 `FeedbackReportSchema` (Zod) is the single report shape for both; tests validate local reports against it.
 
+Both evaluators share the topic layer in `src/evaluation/topics/`: `selectTopic(question)` picks a profile from the subcategory (C++, Go, databases, networking, …) and `resolveRubric(rubricId, topicId)` returns the base rubric with the same criterion ids and weights but topic-specific wording. The local evaluator adds `src/evaluation/evidence.ts` (verbatim excerpts, explained versus named concepts, misconception patterns, recognition aliases); the AI endpoint receives only the topic id and looks the profile up server-side. See EVALUATION.md.
+
 ## AI endpoint
 
 `functions/_lib/evaluate.ts` takes `(body, clientKey, env, {fetch, limiter})` and returns `{status, body}`, so it is fully testable without Cloudflare. It validates input, applies a per-client limiter, calls the provider with a timeout, parses/strips fenced JSON, validates against `AiAssessmentSchema`, and **grounds** the result: corrections, factual concerns and evidence quotes that are not substrings of the transcript are removed and counted. It never logs bodies.

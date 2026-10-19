@@ -56,8 +56,20 @@ export function FeedbackReport({ report }: { report: Report }) {
       </header>
       <p className="report-summary">{report.summary}</p>
 
+      {report.strengths.length > 0 && (
+        <section className="report-section">
+          <h3>What went well</h3>
+          <ul className="notes strengths">
+            {report.strengths.map((s, i) => (
+              <li key={i}>{s}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <section className="report-section">
         <h3>Rubric</h3>
+        {report.rubricLabel && <p className="fineprint">Topic rubric: {report.rubricLabel}</p>}
         <ul className="criteria">
           {report.criteria.map((c) => (
             <Criterion key={c.id} c={c} />
@@ -127,6 +139,7 @@ export function FeedbackReport({ report }: { report: Report }) {
                 {report.conceptsCovered.map((c) => (
                   <li key={c.label}>
                     {c.label}
+                    {c.depth === 'named' && <span className="concept-depth"> (named, not explained)</span>}
                     <span className="concept-evidence">“{c.evidence}”</span>
                   </li>
                 ))}
@@ -149,6 +162,9 @@ export function FeedbackReport({ report }: { report: Report }) {
       {report.factualConcerns.length > 0 && (
         <section className="report-section">
           <h3>Possible factual issues</h3>
+          {report.evaluator === 'local' && (
+            <p className="fineprint">Found by matching common misconceptions for this topic. If you said something different, or were describing the mistake, ignore it.</p>
+          )}
           <ul className="corrections">
             {report.factualConcerns.map((f, i) => (
               <li key={i} className="correction">
@@ -158,6 +174,17 @@ export function FeedbackReport({ report }: { report: Report }) {
                   {f.concern}
                 </p>
               </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {report.recognitionNotes.length > 0 && (
+        <section className="report-section">
+          <h3>Possible speech recognition errors</h3>
+          <ul className="notes">
+            {report.recognitionNotes.map((n, i) => (
+              <li key={i}>{n}</li>
             ))}
           </ul>
         </section>

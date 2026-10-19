@@ -677,6 +677,13 @@ select {
 .concept-list.covered li::marker {
   color: var(--sage);
 }
+.concept-depth {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.notes.strengths li::marker {
+  color: var(--sage);
+}
 .notes,
 .next-steps {
   margin: 0;

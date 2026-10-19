@@ -1,6 +1,6 @@
-import { EvaluateResponseSchema, StatusResponseSchema, type AiErrorCode, type EvaluateRequest, type StatusResponse } from './contract';
+import { EvaluateResponseSchema, MAX_MODEL_ANSWER_CHARS, StatusResponseSchema, type AiErrorCode, type EvaluateRequest, type StatusResponse } from './contract';
 import { computeMetrics, type EvaluationInput, type Evaluator } from '../evaluation/localEvaluator';
-import { getRubric } from '../evaluation/rubrics';
+import { resolveRubric, selectTopic } from '../evaluation/topics';
 import type { FeedbackReport } from '../evaluation/types';
 import { questionBank } from '../domain/questions/bank';
 
@@ -15,16 +15,23 @@ export class AiEvaluationError extends Error {
   }
 }
 
-/** Builds the minimal payload: prompt, category, difficulty, rubric id and transcript. Nothing else. */
+/**
+ * Builds the minimal payload: the transcript plus data about the question (prompt, category, difficulty,
+ * rubric and topic ids, reference points and reference answer). Nothing about the user besides the transcript.
+ */
 export function buildRequest({ question, transcript }: EvaluationInput): EvaluateRequest {
   const category = questionBank.taxonomy.categories.find((c) => c.id === question.categoryId);
   const sub = category?.subcategories.find((s) => s.id === question.subcategoryId);
+  const referencePoints = question.expectedConcepts.map((c) => c.label.slice(0, 160)).slice(0, 12);
   return {
     prompt: question.prompt,
     category: sub?.label ?? category?.label ?? question.categoryId,
     difficulty: question.difficulty,
     rubricId: question.rubricId,
     transcript,
+    topicId: selectTopic(question).id,
+    ...(referencePoints.length ? { referencePoints } : {}),
+    modelAnswer: question.modelAnswer.slice(0, MAX_MODEL_ANSWER_CHARS),
   };
 }
 
@@ -89,7 +96,7 @@ export function mergeAssessment(
   a: Extract<import('./contract').EvaluateResponse, { ok: true }>['assessment'],
   dropped: number,
 ): FeedbackReport {
-  const rubric = getRubric(question.rubricId);
+  const rubric = resolveRubric(question.rubricId, selectTopic(question).id);
   const criteria = rubric.criteria.map((rc) => {
     const c = a.criteria.find((x) => x.id === rc.id);
     const score = c?.score ?? null;
@@ -128,6 +135,7 @@ export function mergeAssessment(
     evaluator: 'ai',
     evaluatorLabel: `AI evaluation — ${providerLabel}`,
     rubricId: question.rubricId,
+    rubricLabel: rubric.topicLabel,
     overallScore: w > 0 ? Math.round(total / w) : null,
     summary: a.summary,
     criteria,
@@ -138,6 +146,8 @@ export function mergeAssessment(
     conceptsCovered: [],
     conceptsMissing: a.conceptsMissing,
     factualConcerns: a.factualConcerns,
+    strengths: a.strengths.map((s) => `${s.point}: “${s.excerpt}”`.slice(0, 300)),
+    recognitionNotes: a.recognitionNotes.map((r) => `“${r.excerpt}”: ${r.note}`.slice(0, 300)),
     improvedAnswer: a.improvedAnswer,
     nextSteps: a.nextSteps,
     limitations,

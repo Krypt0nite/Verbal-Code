@@ -26,10 +26,12 @@ What the code does with speech, transcripts and stored data, checked against the
 
 ## Data that leaves the device
 
+The feedback engine update (topic rubrics, misconception checks, strengths) runs entirely on the device for local feedback and adds no storage or logging. Only the AI request gained fields, and they describe the question, not the user.
+
 | Data | Destination | When |
 | --- | --- | --- |
 | Audio | Browser vendor's speech service | Only in cloud mode, after consent; VerbalCode never receives it |
-| Question prompt, category label, difficulty, rubric id, transcript | `/api/evaluate`, then the configured AI providers | Only when AI feedback is turned on through its consent dialog |
+| Transcript, plus question data: prompt, category label, difficulty, rubric and topic ids, reference points, reference answer (≤ 2,000 characters) | `/api/evaluate`, then the configured AI providers | Only when AI feedback is turned on through its consent dialog, which lists these fields |
 | Nothing | – | Local recognition with local feedback |
 
 The live deployment's status endpoint names the providers (Groq, then Google Gemini or Cloudflare Workers AI as fallbacks) and warns that free-tier Gemini data may be used to improve Google's products. That notice comes from the `AI_DATA_NOTICE` secret and is shown in the consent dialog.

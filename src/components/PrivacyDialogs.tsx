@@ -15,7 +15,7 @@ export function PrivacyDialog({ open, onClose, onClearData }: { open: boolean; o
           can't, but it can't independently verify what the browser does internally.
         </li>
         <li>Cloud recognition means your browser sends audio to its vendor (for example Google for Chrome). VerbalCode can't control what the vendor does with it.</li>
-        <li>Feedback is computed on this device by default. AI feedback is optional, sends only the question, category, difficulty, rubric and transcript, and asks for your consent first.</li>
+        <li>Feedback is computed on this device by default. AI feedback is optional, asks for your consent first, and sends only your transcript plus details of the question (its text, category, difficulty, rubric and reference answer).</li>
         <li>Only your settings and the IDs of recently practised questions are stored in this browser, so topics don't repeat.</li>
       </ul>
       <button type="button" className="link-button" onClick={onClearData}>
@@ -72,7 +72,7 @@ export function AiConsentDialog({ open, onAccept, onDecline, providerLabel, data
       }
     >
       <p>
-        After each answer, the question, its category and difficulty, the rubric name and your transcript will be sent to {providerLabel ?? 'the configured AI provider'} through this site's server. Audio is never sent.
+        After each answer, your transcript and details of the question (its text, category, difficulty, rubric, reference points and reference answer) will be sent to {providerLabel ?? 'the configured AI provider'} through this site's server. Audio is never sent.
       </p>
       {dataNotice && <p>{dataNotice}</p>}
       <p>Free AI tiers often have strict limits and may use submitted text to improve their products. Don't speak anything you wouldn't want to share.</p>
