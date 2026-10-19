@@ -99,6 +99,24 @@ describe('handleEvaluate', () => {
     expect(fenced.body.ok).toBe(true);
   });
 
+  it('trims over-long lists and strings instead of rejecting the report', async () => {
+    const quote = 'halves the sorted array every step';
+    const long = `${request.transcript}${' '.repeat(400)}`;
+    const verbose = {
+      ...assessment,
+      criteria: [{ id: 'correctness', score: 80, evidence: [quote, quote, quote, quote, quote, quote], note: 'x'.repeat(500) }],
+      factualConcerns: [{ excerpt: long, concern: 'Too long.', certainty: 'possible' }],
+      nextSteps: ['a', 'b', 'c', 'd'],
+    };
+    const r = await handleEvaluate(request, 'ip', env, deps(vi.fn().mockResolvedValue(providerResponse(verbose))));
+    if (!r.body.ok) throw new Error(`expected ok, got ${r.body.code}`);
+    const correctness = r.body.assessment.criteria.find((c) => c.id === 'correctness')!;
+    expect(correctness.evidence).toHaveLength(4);
+    expect(correctness.note.length).toBeLessThanOrEqual(400);
+    expect(r.body.assessment.factualConcerns).toHaveLength(1); // a trimmed quote is still grounded
+    expect(r.body.assessment.nextSteps).toEqual(['a', 'b', 'c']);
+  });
+
   it('maps provider rate limits, auth failures, outages and timeouts', async () => {
     const limited = await handleEvaluate(request, 'ip', env, deps(vi.fn().mockResolvedValue(new Response('{}', { status: 429, headers: { 'retry-after': '12' } }))));
     expect(limited).toMatchObject({ status: 429, body: { code: 'rate-limited', retryAfterSec: 12 } });
