@@ -60,7 +60,7 @@ curl -sI $B$JS | grep -i cache-control                                # max-age=
 
 Then in desktop Chrome:
 
-- [ ] The footer shows the expected number of questions (564 for this release). A lower number means stale assets or a deploy of the wrong `dist/`.
+- [ ] The footer shows the expected number of questions (1,325 for this release). A lower number means stale assets or a deploy of the wrong `dist/`.
 - [ ] Pick DSA, start speaking, say a few sentences, finish: feedback appears.
 - [ ] With AI feedback on, a report names the model that answered.
 - [ ] DevTools Console shows no errors; the Network tab shows no failed requests.

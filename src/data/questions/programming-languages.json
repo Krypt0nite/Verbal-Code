@@ -10215,6 +10215,4608 @@
         }
       ],
       "modelAnswer": "Since Go 1.21 the standard library includes log/slog for structured logging: you log a message with key-value attributes (slog.Info(\"order created\", \"order_id\", id, \"amount\", amt)) and a handler renders JSON for log pipelines, with levels so debug logs can be disabled in production. Request-scoped data such as the request id and trace context travels in context.Context; middleware extracts or generates them, and a handler or helper attaches them to every log line so logs from one request can be found together. Metrics come from a Prometheus client: counters for requests and errors, histograms for latency (from which you compute p95 and p99), and gauges for things like queue depth or goroutine count, exposed on /metrics and scraped. OpenTelemetry instrumentation (otelhttp middleware, gRPC interceptors, database wrappers) creates spans and propagates the W3C traceparent header to downstream services, so a slow request can be followed across the system. Pitfalls: logging inside tight loops, or building expensive arguments for disabled log levels, costs CPU and allocations - use slog's LogAttrs or check Enabled; putting unbounded values such as user ids or URLs with ids into metric labels creates high cardinality that can overwhelm Prometheus; logging personal data or tokens is a privacy risk; and tracing every request at high volume needs sampling."
+    },
+    {
+      "id": "cpp-undefined-unspecified-and-implementation-defined-behaviour",
+      "title": "Undefined, unspecified and implementation-defined behaviour",
+      "prompt": "What is the difference between undefined, unspecified, and implementation-defined behavior?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0436"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Three categories defined by the C++ standard",
+          "criterion": "terminology",
+          "keywords": [
+            "undefined behavior",
+            "unspecified",
+            "implementation defined",
+            "standard"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Implementation-defined must be documented; unspecified need not be; undefined has no requirements",
+          "criterion": "correctness",
+          "keywords": [
+            "documented",
+            "no requirements",
+            "any result",
+            "choice"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "UB lets the optimiser assume it never happens, so whole programs break",
+          "criterion": "pitfalls",
+          "keywords": [
+            "optimizer",
+            "assume",
+            "signed overflow",
+            "null dereference"
+          ]
+        }
+      ],
+      "modelAnswer": "Implementation-defined behaviour is something the standard leaves to each compiler, which must document its choice, such as the size of int or whether char is signed. Unspecified behaviour also allows several valid outcomes, but the implementation need not document or be consistent, such as the order in which function arguments are evaluated; the program is still valid, it just must not depend on the order. Undefined behaviour means the standard places no requirements at all: signed integer overflow, dereferencing a null or dangling pointer, out-of-bounds access, or data races. Compilers optimise on the assumption that undefined behaviour never happens, so it can silently delete checks and break code far away from the bug."
+    },
+    {
+      "id": "cpp-when-std-move-does-not-move",
+      "title": "When std::move does not move",
+      "prompt": "When can std::move fail to move an object?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0438"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "std::move is only a cast to an rvalue reference",
+          "criterion": "terminology",
+          "keywords": [
+            "cast",
+            "rvalue reference",
+            "static_cast",
+            "does not move"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Const objects and types without move constructors fall back to copying",
+          "criterion": "correctness",
+          "keywords": [
+            "const",
+            "copy constructor",
+            "no move constructor",
+            "fallback"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Moving on return can block copy elision; moved-from objects are valid but unspecified:return std:",
+          "criterion": "pitfalls",
+          "keywords": [
+            "move",
+            "copy elision",
+            "moved from",
+            "valid but unspecified"
+          ]
+        }
+      ],
+      "modelAnswer": "std::move does not move anything; it is just a cast that turns an expression into an rvalue, telling overload resolution that the object may be moved from. The actual move happens only if a move constructor or move assignment is selected. If the object is const, the result is a const rvalue, which cannot bind to the move constructor's non-const parameter, so the copy constructor is silently used. The same happens for types whose move operations are deleted or not declared because a user-declared destructor or copy suppresses them. Another pitfall is writing return std::move(local), which prevents copy elision and can make code slower. After a real move, the source is valid but in an unspecified state."
+    },
+    {
+      "id": "cpp-dangling-references-from-returned-locals",
+      "title": "Dangling references from returned locals",
+      "prompt": "How can a dangling reference arise from a returned local object?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0440"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A dangling reference refers to an object whose lifetime has ended",
+          "criterion": "terminology",
+          "keywords": [
+            "dangling reference",
+            "lifetime ended",
+            "destroyed",
+            "stack"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Returning a reference or pointer to a local or temporary leaves it dangling",
+          "criterion": "correctness",
+          "keywords": [
+            "return reference",
+            "local variable",
+            "temporary",
+            "string_view"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Using it is undefined behaviour that often appears to work; return by value instead",
+          "criterion": "pitfalls",
+          "keywords": [
+            "undefined behavior",
+            "appears to work",
+            "return by value",
+            "warnings"
+          ]
+        }
+      ],
+      "modelAnswer": "Local variables live on the stack and are destroyed when the function returns. If a function returns a reference or pointer to one, such as const std::string& name() { std::string s = ...; return s; }, the caller receives a reference to an object that no longer exists. Subtler versions return a string_view or span into a local string or vector, or bind a reference to a member of a temporary, such as auto& x = makeObject().field. Using the dangling reference is undefined behaviour: it often seems to work until the stack memory is reused, then produces garbage or crashes. The fix is usually to return by value, which is cheap thanks to copy elision and move semantics. Compiler warnings and sanitizers catch many cases."
+    },
+    {
+      "id": "cpp-std-vector-versus-std-deque",
+      "title": "std::vector versus std::deque",
+      "prompt": "What are the trade-offs between std::vector and std::deque?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0441"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "vector is one contiguous array; deque is a sequence of fixed-size blocks",
+          "criterion": "terminology",
+          "keywords": [
+            "contiguous",
+            "blocks",
+            "chunks",
+            "index map"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "deque supports fast insertion at both ends and never relocates elements on growth",
+          "criterion": "correctness",
+          "keywords": [
+            "both ends",
+            "push_front",
+            "no reallocation",
+            "references stable"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "vector has better cache locality, contiguity for C APIs and usually wins",
+          "criterion": "practical-implications",
+          "keywords": [
+            "cache locality",
+            "data pointer",
+            "iteration speed",
+            "default choice"
+          ]
+        }
+      ],
+      "modelAnswer": "A std::vector stores elements in one contiguous block, so iteration is extremely cache-friendly, element access is a single pointer offset, and you can pass data() to C APIs. Appending at the end is amortised constant time, but inserting at the front is linear, and growth reallocates, invalidating all pointers and references. A std::deque stores elements in a series of fixed-size blocks with an index of pointers to them. It supports constant-time push and pop at both ends, and growing at the ends never moves existing elements, so references to them stay valid. The costs are an extra indirection on every access, worse locality, no contiguous storage and higher memory overhead for small deques. vector is the default; choose deque for queue-like use at both ends."
+    },
+    {
+      "id": "cpp-noexcept-move-constructors-and-container-performance",
+      "title": "noexcept move constructors and container performance",
+      "prompt": "How do noexcept move constructors affect container performance?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0444"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "noexcept declares that a function will not throw",
+          "criterion": "terminology",
+          "keywords": [
+            "noexcept",
+            "will not throw",
+            "specifier",
+            "declaration"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "vector moves elements on reallocation only if the move constructor is noexcept; otherwise it copies",
+          "criterion": "correctness",
+          "keywords": [
+            "reallocation",
+            "move_if_noexcept",
+            "copies instead",
+            "strong guarantee"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Mark move operations noexcept or default them so containers can move",
+          "criterion": "practical-implications",
+          "keywords": [
+            "mark noexcept",
+            "defaulted",
+            "performance",
+            "static_assert"
+          ]
+        }
+      ],
+      "modelAnswer": "When a std::vector grows, it allocates a larger buffer and transfers the existing elements. It must keep the strong exception guarantee: if anything throws, the original vector is unchanged. Moving elements destroys the originals' contents, so if a move threw halfway, the vector could not roll back. Therefore vector uses std::move_if_noexcept: it moves elements only if their move constructor is noexcept, or if the type cannot be copied, and otherwise copies them. A class with a perfectly good move constructor that is not marked noexcept will be copied on every reallocation, which can be dramatically slower for strings or large objects. So declare move operations noexcept, or let the compiler default them, and verify with static_assert and std::is_nothrow_move_constructible."
+    },
+    {
+      "id": "cpp-virtual-destructors",
+      "title": "Virtual destructors",
+      "prompt": "How do virtual destructors prevent resource leaks through base pointers?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0446"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A virtual destructor makes delete dispatch to the derived destructor",
+          "criterion": "terminology",
+          "keywords": [
+            "virtual destructor",
+            "dynamic dispatch",
+            "derived destructor",
+            "base pointer"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Without it, deleting through a base pointer is undefined behaviour and skips derived cleanup",
+          "criterion": "correctness",
+          "keywords": [
+            "undefined behavior",
+            "skips",
+            "derived members",
+            "leak"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Polymorphic base classes need a public virtual or protected non-virtual destructor",
+          "criterion": "practical-implications",
+          "keywords": [
+            "polymorphic base",
+            "protected destructor",
+            "unique_ptr",
+            "rule"
+          ]
+        }
+      ],
+      "modelAnswer": "When you delete an object through a pointer to its base class, as happens with std::unique_ptr<Base> holding a Derived, the compiler needs to know which destructor to call. If the base destructor is virtual, the call is dispatched dynamically: the derived destructor runs first, releasing the derived class's members and resources such as files or buffers, then the base destructor. If it is not virtual, the behaviour is undefined, and in practice only the base destructor runs, leaking whatever the derived part owned. The rule: a class designed to be used polymorphically should have a public virtual destructor, or a protected non-virtual one if deletion through the base should not be allowed."
+    },
+    {
+      "id": "cpp-object-slicing",
+      "title": "Object slicing",
+      "prompt": "What is object slicing, and how can it surprise a C++ developer?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0447"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Slicing copies only the base part of a derived object",
+          "criterion": "terminology",
+          "keywords": [
+            "slicing",
+            "base part",
+            "copy",
+            "derived"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Happens when passing or storing polymorphic objects by value",
+          "criterion": "correctness",
+          "keywords": [
+            "by value",
+            "vector of base",
+            "assignment",
+            "parameter"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Derived data and overrides are lost; use references, pointers or delete copying",
+          "criterion": "pitfalls",
+          "keywords": [
+            "virtual call",
+            "lost",
+            "references",
+            "smart pointers"
+          ]
+        }
+      ],
+      "modelAnswer": "Object slicing happens when a derived object is copied into a variable of its base class type: only the base subobject is copied, and the derived members and dynamic type are lost. It is easy to do accidentally, for example by passing a Derived to a function taking Base by value, storing derived objects in a std::vector<Base>, or assigning a derived object to a base variable. The surprise is that virtual calls on the copy now run the base implementation, and derived data is gone without any error. Avoid it by passing polymorphic objects by reference or pointer, storing them as std::unique_ptr<Base>, and making polymorphic base classes non-copyable, or providing a virtual clone function."
+    },
+    {
+      "id": "cpp-templates-versus-runtime-polymorphism",
+      "title": "Templates versus runtime polymorphism",
+      "prompt": "How do templates differ from runtime polymorphism?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0448"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Templates: compile-time; virtuals: runtime dispatch",
+          "criterion": "terminology",
+          "keywords": [
+            "compile time",
+            "static polymorphism",
+            "virtual",
+            "dynamic dispatch"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Per-type instantiation versus vtable calls",
+          "criterion": "correctness",
+          "keywords": [
+            "instantiation",
+            "per type",
+            "vtable",
+            "runtime"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Inlining and speed versus code bloat and flexibility",
+          "criterion": "practical-implications",
+          "keywords": [
+            "inlining",
+            "code bloat",
+            "heterogeneous",
+            "plugins"
+          ]
+        }
+      ],
+      "modelAnswer": "Both let one piece of code work with many types. Templates are resolved at compile time: the compiler generates a separate, specialised version of the code for each type used, so calls can be inlined and optimised with zero runtime overhead, and constraints are checked statically, especially with concepts. The costs are larger binaries, longer compile times, harder error messages and implementation in headers. Runtime polymorphism uses virtual functions: the actual function is chosen at runtime through the vtable. That allows heterogeneous collections, such as a vector of shapes of different types, choosing behaviour from configuration, and plugins loaded at runtime, at the cost of an indirect call that usually cannot be inlined."
+    },
+    {
+      "id": "cpp-constexpr-versus-consteval",
+      "title": "constexpr versus consteval",
+      "prompt": "How do constexpr and consteval differ?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0450"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "constexpr allows compile-time evaluation; consteval requires it",
+          "criterion": "terminology",
+          "keywords": [
+            "constexpr",
+            "consteval",
+            "immediate function",
+            "compile time"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A constexpr function can also run at runtime with runtime arguments",
+          "criterion": "correctness",
+          "keywords": [
+            "runtime arguments",
+            "both",
+            "constant expression",
+            "may"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use consteval for things that must never cost runtime, such as validating format strings",
+          "criterion": "practical-implications",
+          "keywords": [
+            "format string",
+            "lookup table",
+            "guarantee",
+            "constinit"
+          ]
+        }
+      ],
+      "modelAnswer": "A constexpr function may be evaluated at compile time when it is called with constant arguments in a context that needs a constant, such as an array size or a template argument, but the same function can also be called at runtime with ordinary values. So constexpr means \"can be used at compile time\", not \"is always computed at compile time\". A consteval function, introduced in C++20, is an immediate function: every call must produce a compile-time constant, and calling it with runtime values is a compile error. That gives a guarantee, useful for building lookup tables or validating things like format strings at compile time, as std::format does. constinit is a related keyword that ensures a variable is initialised at compile time."
+    },
+    {
+      "id": "cpp-atomics-versus-volatile",
+      "title": "Atomics versus volatile",
+      "prompt": "How do atomics differ from volatile in C++?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0454"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "volatile stops optimising away accesses",
+          "criterion": "terminology",
+          "keywords": [
+            "volatile",
+            "memory mapped",
+            "optimize away",
+            "hardware register"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "std::atomic: indivisible ops and ordering",
+          "criterion": "correctness",
+          "keywords": [
+            "atomic",
+            "indivisible",
+            "memory ordering",
+            "threads"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "volatile is not thread-safe",
+          "criterion": "pitfalls",
+          "keywords": [
+            "not thread safe",
+            "data race",
+            "no ordering",
+            "java volatile"
+          ]
+        }
+      ],
+      "modelAnswer": "volatile tells the compiler that every read and write of a variable is observable and must actually happen, so it is not cached in a register or removed; it exists for memory-mapped hardware registers and certain signal-handling cases. It gives no guarantees about threads: a volatile increment is still a separate read, add and write, which can interleave with other threads, and it imposes no ordering on other memory operations, so concurrent unsynchronised access is still a data race and undefined behaviour. std::atomic provides indivisible operations such as fetch_add and compare_exchange, and memory-ordering guarantees that make writes visible to other threads correctly. Unlike in Java or C#, volatile in C++ is not a synchronisation tool."
+    },
+    {
+      "id": "cpp-std-variant-versus-virtual-dispatch",
+      "title": "std::variant versus virtual dispatch",
+      "prompt": "How do std::variant and virtual dispatch compare for representing alternatives?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0463"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Closed set of types versus open hierarchy",
+          "criterion": "terminology",
+          "keywords": [
+            "closed set",
+            "open hierarchy",
+            "sum type",
+            "variant"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Inline storage and std::visit versus heap and vtables",
+          "criterion": "correctness",
+          "keywords": [
+            "visit",
+            "no heap",
+            "vtable"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "New operations versus new types",
+          "criterion": "practical-implications",
+          "keywords": [
+            "new operations",
+            "new types",
+            "extensibility",
+            "expression problem"
+          ]
+        }
+      ],
+      "modelAnswer": "Both model \"one of several kinds\", such as shapes or messages. std::variant is a closed set of types fixed at compile time; the value is stored inline without heap allocation, and you handle it with std::visit, where the compiler can check that every alternative is covered. Adding a new operation is easy, just write another visitor, but adding a new type means changing the variant and every visitor. Virtual dispatch through an inheritance hierarchy is open: new derived types can be added later, even in plugins, without touching existing code, but adding an operation means changing the base class, and objects usually live on the heap behind pointers. This is the classic expression problem: choose based on which kind of change is more likely."
+    },
+    {
+      "id": "cpp-fast-in-debug-but-slow-in-release",
+      "title": "Fast in debug but slow in release",
+      "prompt": "How would you diagnose a C++ program that is fast in debug but slow in release?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0468"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Builds differ in flags, macros and libraries",
+          "criterion": "terminology",
+          "keywords": [
+            "optimization level",
+            "ndebug",
+            "build flags",
+            "configuration"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "UB, different code paths or contention",
+          "criterion": "correctness",
+          "keywords": [
+            "undefined behavior",
+            "code path",
+            "contention",
+            "inlining"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Profile the release build and compare flags",
+          "criterion": "practical-implications",
+          "keywords": [
+            "profile",
+            "perf",
+            "compare flags",
+            "sanitizers"
+          ]
+        }
+      ],
+      "modelAnswer": "It is unusual, so treat it as a clue that the two builds differ in more than optimisation. First compare the configurations: flags, defined macros such as NDEBUG, linked libraries and allocators; sometimes a debug-only code path or setting is accidentally faster, or the release build enables extra logging, validation or a different implementation. Undefined behaviour can also change meaning under optimisation, for example turning a loop into an infinite one or removing a check, so run the code with sanitizers. In multithreaded code, faster release code can change timing and increase lock contention or false sharing. Then profile the release build itself with perf or a similar tool to see where time goes, and bisect flag differences until the slowdown appears."
+    },
+    {
+      "id": "cpp-how-sanitizers-miss-concurrency-bugs",
+      "title": "How sanitizers miss concurrency bugs",
+      "prompt": "How can sanitizers miss a concurrency bug?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0470"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "ThreadSanitizer is a dynamic tool: it only sees executions that actually happen",
+          "criterion": "terminology",
+          "keywords": [
+            "dynamic",
+            "threadsanitizer",
+            "executed",
+            "observed"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Races on paths or interleavings not exercised in tests go unnoticed",
+          "criterion": "correctness",
+          "keywords": [
+            "interleaving",
+            "not exercised",
+            "timing",
+            "schedule"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Logic bugs like deadlocks or atomicity violations with correct locking are not data races",
+          "criterion": "pitfalls",
+          "keywords": [
+            "deadlock",
+            "atomicity violation",
+            "check then act",
+            "lock free"
+          ]
+        }
+      ],
+      "modelAnswer": "Sanitizers instrument the program and check what happens while it runs, so they only find bugs in executions that actually occur. ThreadSanitizer detects data races when two threads access the same memory without synchronisation in a run, but if the racy code path is not covered by tests, or the threads never overlap in that run, nothing is reported. Its history window is also limited, so long-separated accesses can be missed. Many concurrency bugs are not data races at all: check-then-act atomicity violations where each access is properly locked, deadlocks that did not occur in this schedule, wrong memory-ordering assumptions on atomics, and lost wakeups. So combine sanitizers with stress tests, varied schedules, code review and design simplicity."
+    },
+    {
+      "id": "cpp-designing-a-thread-safe-cache-in-c",
+      "title": "Designing a thread-safe cache in C++",
+      "prompt": "How would you design a thread-safe cache in C++?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "vcn-0471"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Protect shared state with a mutex or shared_mutex",
+          "criterion": "terminology",
+          "keywords": [
+            "mutex",
+            "shared_mutex",
+            "thread safe"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Reduce contention by sharding the cache into independently locked segments",
+          "criterion": "correctness",
+          "keywords": [
+            "shard",
+            "segments",
+            "contention",
+            "striped"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Avoid returning references to entries; handle eviction and avoid computing under the lock",
+          "criterion": "practical-implications",
+          "keywords": [
+            "return copy",
+            "shared_ptr",
+            "eviction",
+            "compute outside lock"
+          ]
+        }
+      ],
+      "modelAnswer": "Start simple: an std::unordered_map guarded by a std::mutex, with every lookup and insertion done under std::lock_guard. If reads dominate, a std::shared_mutex allows many concurrent readers. To scale further, shard the cache: split it into, say, 16 or 64 independent maps, each with its own lock, choosing the shard by the key's hash, so threads rarely contend. Never return a reference or iterator into the map, because another thread may erase or rehash it; return a copy or a std::shared_ptr to an immutable value. Do not compute expensive values while holding the lock, and handle the case where two threads miss at the same time, and design eviction, such as LRU, so it does not become a global bottleneck."
+    },
+    {
+      "id": "go-nil-slices-versus-empty-slices",
+      "title": "Nil slices versus empty slices",
+      "prompt": "What is the difference between a nil slice and an empty slice in Go?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0476"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A nil slice has no backing array; an empty slice has length zero with a non-nil pointer",
+          "criterion": "terminology",
+          "keywords": [
+            "nil slice",
+            "empty slice",
+            "backing array",
+            "length zero"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Both have len 0, can be ranged over and appended to",
+          "criterion": "correctness",
+          "keywords": [
+            "len",
+            "append",
+            "range",
+            "behave the same"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "They differ in nil checks, reflect.DeepEqual and JSON encoding as null versus empty array",
+          "criterion": "pitfalls",
+          "keywords": [
+            "json",
+            "null",
+            "deepequal",
+            "== nil"
+          ]
+        }
+      ],
+      "modelAnswer": "A nil slice, declared with var s []int, has a nil pointer, zero length and zero capacity. An empty slice, created with []int{} or make([]int, 0), also has length zero but a non-nil pointer. In most code they behave identically: len returns 0, ranging over them does nothing, and append works on both, so idiomatic Go treats them the same and checks len(s) == 0 rather than s == nil. The differences show up at boundaries: s == nil is true only for the nil slice, reflect.DeepEqual considers them unequal, and encoding/json marshals a nil slice as null but an empty slice as [], which can break API clients expecting an array."
+    },
+    {
+      "id": "go-how-defer-evaluates-its-arguments",
+      "title": "How defer evaluates its arguments",
+      "prompt": "How do defer arguments get evaluated, and when does the deferred call run?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0482"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Arguments are evaluated when the defer statement executes",
+          "criterion": "terminology",
+          "keywords": [
+            "evaluated immediately",
+            "defer statement",
+            "arguments",
+            "snapshot"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Deferred calls run in LIFO order when the function returns, even on panic",
+          "criterion": "correctness",
+          "keywords": [
+            "lifo",
+            "returns",
+            "panic",
+            "last in first out"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use a closure to see later values; deferred calls in loops pile up",
+          "criterion": "pitfalls",
+          "keywords": [
+            "closure",
+            "loop",
+            "named result",
+            "resource"
+          ]
+        }
+      ],
+      "modelAnswer": "When a defer statement runs, Go evaluates the function value and its arguments immediately, but delays the call until the surrounding function returns, whether normally or through a panic. Deferred calls run in last-in, first-out order. So defer fmt.Println(x) prints the value x had at the defer statement, not at return. If you want the latest value, defer a closure, defer func() { fmt.Println(x) }(), which reads x when it runs. Closures can also modify named result values, which is how deferred code adjusts returned errors. A common pitfall is deferring inside a loop, for example closing files, since nothing is released until the whole function returns."
+    },
+    {
+      "id": "go-buffered-channels-and-their-trade-offs",
+      "title": "Buffered channels and their trade-offs",
+      "prompt": "When should a channel be buffered, and what trade-offs follow?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0484"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Unbuffered syncs; buffered decouples",
+          "criterion": "terminology",
+          "keywords": [
+            "unbuffered",
+            "synchronize",
+            "capacity",
+            "decouple"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Use for bounded work, bursts or semaphores",
+          "criterion": "correctness",
+          "keywords": [
+            "bounded",
+            "bursts",
+            "semaphore",
+            "known count"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Buffers hide backpressure and deadlocks",
+          "criterion": "pitfalls",
+          "keywords": [
+            "hide",
+            "backpressure",
+            "deadlock",
+            "arbitrary size"
+          ]
+        }
+      ],
+      "modelAnswer": "An unbuffered channel is a rendezvous: a send blocks until a receiver takes the value, so the two goroutines synchronise and the sender knows the value was handed over. A buffered channel lets senders proceed until the buffer is full, decoupling producer and consumer. Buffers are appropriate when the number of sends is known, such as collecting results from N goroutines so none blocks forever, when smoothing short bursts, or when using the channel as a counting semaphore to limit concurrency. The risks: a buffer delays backpressure, so a slow consumer is noticed later, memory grows with capacity, and adding a buffer to make a deadlock disappear usually just hides a design bug that returns under load."
+    },
+    {
+      "id": "go-who-closes-a-channel",
+      "title": "Who closes a channel",
+      "prompt": "How do you decide which goroutine owns closing a channel?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0485"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Closing signals that no more values will be sent",
+          "criterion": "terminology",
+          "keywords": [
+            "close",
+            "no more values",
+            "signal",
+            "range"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "The sender, specifically the single owner of sending, closes it; receivers never close",
+          "criterion": "correctness",
+          "keywords": [
+            "sender closes",
+            "owner",
+            "receivers never",
+            "single writer"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Sending on or closing a closed channel panics; multiple senders need a WaitGroup or done channel",
+          "criterion": "pitfalls",
+          "keywords": [
+            "panic",
+            "multiple senders",
+            "waitgroup",
+            "done channel"
+          ]
+        }
+      ],
+      "modelAnswer": "Closing a channel tells receivers that no more values will come, so a for range loop ends. The rule is that the sender closes, never the receiver, because sending on a closed channel panics, and only the sender knows when it has finished. More precisely, the goroutine that owns the channel, usually the one that created it and does all the sending, closes it, often with defer close(ch). When there are multiple senders, none of them can safely close it alone; instead, use a sync.WaitGroup and a separate goroutine that waits for all senders and then closes the channel. To tell senders to stop, use a separate done channel or context, not closing the data channel."
+    },
+    {
+      "id": "go-misusing-context-values",
+      "title": "Misusing context values",
+      "prompt": "What problems can arise from using context values for ordinary function parameters?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0488"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "context.WithValue carries request-scoped data across API boundaries",
+          "criterion": "terminology",
+          "keywords": [
+            "withvalue",
+            "request scoped",
+            "trace id",
+            "context"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Hidden dependencies, no type safety and runtime failures when values are missing",
+          "criterion": "pitfalls",
+          "keywords": [
+            "hidden dependency",
+            "type assertion",
+            "missing",
+            "untyped"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Pass required inputs as explicit parameters; use unexported key types",
+          "criterion": "practical-implications",
+          "keywords": [
+            "explicit parameters",
+            "unexported key",
+            "readability",
+            "testing"
+          ]
+        }
+      ],
+      "modelAnswer": "context.Context can carry values, intended for request-scoped data that crosses API and process boundaries, such as a trace ID, the authenticated user or a request deadline. Using it to pass ordinary parameters, such as a database handle, a logger configuration or business inputs, causes problems. Dependencies become invisible in function signatures, so readers and tests cannot see what a function needs. Values are untyped, so retrieving them needs type assertions that fail at runtime instead of compile time, and missing values cause surprising behaviour deep in the call stack. Keys can collide unless you use unexported key types. Pass required inputs explicitly and reserve context values for genuinely cross-cutting request metadata."
+    },
+    {
+      "id": "go-mutexes-versus-channels-for-shared-state",
+      "title": "Mutexes versus channels for shared state",
+      "prompt": "How do mutexes and channels compare for protecting shared state?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0489"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Mutexes guard memory; channels move ownership",
+          "criterion": "terminology",
+          "keywords": [
+            "mutex",
+            "ownership",
+            "transfer",
+            "share memory by communicating"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Mutex for caches; channels for pipelines",
+          "criterion": "correctness",
+          "keywords": [
+            "counter",
+            "cache",
+            "pipeline",
+            "coordination"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Channel state can be slower and more complex",
+          "criterion": "pitfalls",
+          "keywords": [
+            "slower",
+            "complex",
+            "forgot unlock",
+            "defer unlock"
+          ]
+        }
+      ],
+      "modelAnswer": "Go's proverb is \"share memory by communicating\", but both tools are idiomatic. A mutex protects data that several goroutines access directly, such as a cache, counter or map: lock, read or modify, unlock. It is simple and fast, but you must remember to lock everywhere and avoid holding locks too long. Channels transfer data, and with it ownership, from one goroutine to another, or let a single goroutine own the state while others send it requests. That fits pipelines, work distribution, signalling and event loops. Using channels just to guard a simple map is usually more code and slower than a mutex. Choose the mechanism that makes ownership and data flow clearest."
+    },
+    {
+      "id": "go-sync-once-versus-package-initialisation",
+      "title": "sync.Once versus package initialisation",
+      "prompt": "What is the difference between sync.Once and package initialization?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0493"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "init functions and package variables run once at program start before main",
+          "criterion": "terminology",
+          "keywords": [
+            "init",
+            "package initialization",
+            "before main",
+            "startup"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "sync.Once runs a function lazily on first use, safely across goroutines",
+          "criterion": "correctness",
+          "keywords": [
+            "sync.once",
+            "lazy",
+            "first use",
+            "concurrent"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Prefer lazy Once for expensive or failure-prone setup; init cannot return errors",
+          "criterion": "practical-implications",
+          "keywords": [
+            "expensive",
+            "errors",
+            "testing",
+            "oncevalue"
+          ]
+        }
+      ],
+      "modelAnswer": "Package-level variables and init functions run automatically, once, when the program starts, in dependency order, before main. That is simple, but it runs even if the code is never used, slows startup, cannot return errors, so failures mean a panic, and makes tests harder because side effects happen on import. sync.Once runs a function exactly once, the first time it is needed, and guarantees that concurrent callers wait for it to finish and then see its results. It is ideal for lazily initialising expensive or optional resources, such as a client or a compiled template. Since Go 1.21, sync.OnceValue and OnceValues also return the value and error neatly."
+    },
+    {
+      "id": "go-avoiding-import-cycles-in-go",
+      "title": "Avoiding import cycles in Go",
+      "prompt": "How can a package avoid import cycles as a codebase grows?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0507"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Go forbids import cycles between packages at compile time",
+          "criterion": "terminology",
+          "keywords": [
+            "import cycle",
+            "forbidden",
+            "compile error",
+            "packages"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Break cycles by depending on interfaces defined by the consumer",
+          "criterion": "correctness",
+          "keywords": [
+            "interface",
+            "consumer",
+            "dependency inversion",
+            "abstraction"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Layer packages by responsibility; move shared types into a lower package",
+          "criterion": "practical-implications",
+          "keywords": [
+            "layering",
+            "shared types",
+            "domain package",
+            "structure"
+          ]
+        }
+      ],
+      "modelAnswer": "Go refuses to compile if package A imports B and B imports A, directly or through a chain. Cycles usually signal that responsibilities are tangled. Common fixes: define a small interface in the package that needs a behaviour, so it depends on the interface rather than importing the concrete implementation, and wire the implementation in from main; move types that both packages need into a lower-level package, such as a domain or model package that imports nothing internal; or merge two packages that really are one concept. Structuring code in layers, with dependencies always pointing one way, such as handlers to services to storage, prevents most cycles from appearing."
+    },
+    {
+      "id": "go-testing-concurrent-code-without-sleeps",
+      "title": "Testing concurrent code without sleeps",
+      "prompt": "How would you test a concurrent component without relying on sleeps?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0510"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Sleeps make tests slow and flaky because timing varies",
+          "criterion": "pitfalls",
+          "keywords": [
+            "sleep",
+            "flaky",
+            "timing"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Synchronise explicitly with channels, WaitGroups or hooks",
+          "criterion": "correctness",
+          "keywords": [
+            "channels",
+            "waitgroup",
+            "synchronize",
+            "hooks"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Inject fake clocks, run with -race and use testing/synctest",
+          "criterion": "practical-implications",
+          "keywords": [
+            "fake clock",
+            "race",
+            "synctest",
+            "deterministic"
+          ]
+        }
+      ],
+      "modelAnswer": "Using time.Sleep to wait for goroutines makes tests both slow and flaky: on a loaded CI machine the sleep may not be long enough. Instead, synchronise explicitly. Have the component signal events on channels, or expose hooks so the test knows exactly when work has happened; wait with WaitGroups or with a select on the result channel plus a generous timeout only as a failure guard. Inject a clock interface or fake timers instead of calling time.Now and time.After directly, so the test can advance time instantly. Go 1.25 added the testing/synctest package, which runs goroutines in a bubble with a fake clock. Always run concurrent tests with -race, repeated with -count."
+    },
+    {
+      "id": "go-the-go-scheduler-and-network-poller",
+      "title": "The Go scheduler and network poller",
+      "prompt": "How do Go's goroutine scheduler and network poller cooperate?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0511"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Many goroutines on few OS threads",
+          "criterion": "terminology",
+          "keywords": [
+            "scheduler",
+            "goroutines",
+            "os threads",
+            "multiplex"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Blocked goroutines parked; netpoller uses epoll",
+          "criterion": "correctness",
+          "keywords": [
+            "netpoller",
+            "parked",
+            "epoll",
+            "kqueue"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Blocking-style code with event-loop efficiency",
+          "criterion": "practical-implications",
+          "keywords": [
+            "blocking style",
+            "thousands of connections",
+            "efficient",
+            "thread per goroutine"
+          ]
+        }
+      ],
+      "modelAnswer": "Go lets you write simple blocking code, such as one goroutine per connection calling conn.Read, while performing like an event-driven server. When a goroutine reads from a socket that has no data, the runtime does not block an operating system thread. It registers the socket with the network poller, which uses epoll on Linux or kqueue on macOS, parks the goroutine, and the scheduler runs another goroutine on that thread. When the poller reports the socket is readable, the goroutine is marked runnable and put back on a run queue. This is why a Go server can hold tens of thousands of connections with only a few threads, without callbacks or async syntax."
+    },
+    {
+      "id": "go-json-decoding-and-silent-zero-values",
+      "title": "JSON decoding and silent zero values",
+      "prompt": "How can JSON decoding silently produce zero values for missing fields?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "vcn-0512"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Missing JSON fields leave struct fields at their zero value with no error",
+          "criterion": "pitfalls",
+          "keywords": [
+            "missing field",
+            "zero value",
+            "no error",
+            "silently"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Zero cannot be distinguished from absent, such as 0 or false or empty string",
+          "criterion": "correctness",
+          "keywords": [
+            "distinguish",
+            "absent",
+            "false",
+            "empty string"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use pointer fields, validation, or DisallowUnknownFields to catch mistakes",
+          "criterion": "practical-implications",
+          "keywords": [
+            "pointer fields",
+            "validate",
+            "disallowunknownfields",
+            "required"
+          ]
+        }
+      ],
+      "modelAnswer": "encoding/json fills in only the fields that appear in the input. If a field is missing, or its name is misspelled in the JSON or the struct tag, the struct field keeps its zero value: 0, false, an empty string or nil, and Unmarshal returns no error. So a request without \"quantity\" looks identical to one with \"quantity\": 0, which can cause real bugs, such as treating a missing discount as zero or a missing flag as false. Ways to detect it: use pointer fields such as *int, where nil means absent; validate required fields explicitly after decoding, often with a validation library; and call DisallowUnknownFields on a Decoder to reject misspelled or unexpected keys."
+    },
+    {
+      "id": "py-is-versus-in-python",
+      "title": "is versus == in Python",
+      "prompt": "What is the difference between is and == in Python?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0517"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "is compares identity; == compares equality via __eq__",
+          "criterion": "terminology",
+          "keywords": [
+            "identity",
+            "equality",
+            "__eq__",
+            "same object"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Two equal objects can be different objects; use is for None and sentinels",
+          "criterion": "correctness",
+          "keywords": [
+            "none",
+            "sentinel",
+            "different objects",
+            "is none"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Small int and string caching makes is appear to work by accident",
+          "criterion": "pitfalls",
+          "keywords": [
+            "caching",
+            "interning",
+            "small integers",
+            "accident"
+          ]
+        }
+      ],
+      "modelAnswer": "The == operator checks equality: whether two objects have the same value, as defined by their __eq__ method. The is operator checks identity: whether both names refer to the very same object in memory. Two separate lists with equal contents are == but not is. The idiomatic use of is is for singletons such as None, True, False and sentinel objects, as in if x is None. The pitfall is that CPython caches small integers and interns some strings, so a is b may be true for 256 and short strings but false for 1000 or strings built at runtime. Code that uses is to compare numbers or strings works by accident and fails unpredictably."
+    },
+    {
+      "id": "py-mutable-default-arguments",
+      "title": "Mutable default arguments",
+      "prompt": "How do mutable default arguments create surprising behavior?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0518"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Default values are evaluated once, when the function is defined",
+          "criterion": "terminology",
+          "keywords": [
+            "evaluated once",
+            "definition time",
+            "default argument",
+            "def"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A mutable default like a list is shared across calls and accumulates state",
+          "criterion": "pitfalls",
+          "keywords": [
+            "shared",
+            "accumulates",
+            "across calls"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use None as the default and create a new object inside",
+          "criterion": "practical-implications",
+          "keywords": [
+            "none default",
+            "new object",
+            "if items is none",
+            "linters"
+          ]
+        }
+      ],
+      "modelAnswer": "Python evaluates default argument values once, when the def statement runs, not on every call. If the default is mutable, such as a list or dictionary, every call that relies on the default shares that same object. So def add(item, items=[]): items.append(item); return items returns [1] on the first call and [1, 2] on the second, leaking state between unrelated calls. The idiomatic fix is to use None as the default and create a fresh object inside: if items is None: items = []. Linters flag mutable defaults. The same once-only evaluation means a default like datetime.now() is frozen at definition time."
+    },
+    {
+      "id": "py-the-descriptor-protocol-and-properties",
+      "title": "The descriptor protocol and properties",
+      "prompt": "What is the descriptor protocol, and where do properties use it?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0521"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A descriptor is an object with __get__, __set__ or __delete__ stored on a class",
+          "criterion": "terminology",
+          "keywords": [
+            "descriptor",
+            "__get__",
+            "__set__",
+            "class attribute"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Attribute access on instances calls the descriptor's methods",
+          "criterion": "correctness",
+          "keywords": [
+            "attribute access",
+            "intercept",
+            "instance",
+            "lookup"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "property, methods, classmethod, staticmethod and ORM fields are descriptors",
+          "criterion": "practical-implications",
+          "keywords": [
+            "property",
+            "bound methods",
+            "classmethod",
+            "orm fields"
+          ]
+        }
+      ],
+      "modelAnswer": "A descriptor is any object that defines __get__, and optionally __set__ or __delete__, and is stored as a class attribute. When you access that attribute on an instance, Python does not just return the object; it calls its __get__ method, and assignments call __set__. This hook powers much of Python. The built-in property is a descriptor that calls your getter and setter functions, letting you add validation or computed values without changing the attribute syntax. Plain functions are descriptors too: __get__ is what turns them into bound methods with self filled in, and classmethod and staticmethod are descriptors. Libraries such as ORMs and dataclass fields use descriptors for typed, validated attributes."
+    },
+    {
+      "id": "py-calling-blocking-code-from-async-functions",
+      "title": "Calling blocking code from async functions",
+      "prompt": "How should an async Python function call blocking code safely?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0528"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Blocking calls inside a coroutine freeze the whole event loop",
+          "criterion": "pitfalls",
+          "keywords": [
+            "blocking",
+            "event loop",
+            "freeze",
+            "time.sleep"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Offload blocking work with asyncio.to_thread or run_in_executor",
+          "criterion": "correctness",
+          "keywords": [
+            "to_thread",
+            "run_in_executor",
+            "thread pool",
+            "offload"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Prefer async-native libraries; use process pools for CPU-heavy work",
+          "criterion": "practical-implications",
+          "keywords": [
+            "async library",
+            "httpx",
+            "process pool",
+            "cpu bound"
+          ]
+        }
+      ],
+      "modelAnswer": "An asyncio event loop runs all coroutines on one thread, switching only at await points. If a coroutine calls blocking code, such as requests.get, time.sleep, a synchronous database driver or heavy computation, the whole loop freezes: no other request makes progress, timeouts fire and latency spikes. The best fix is an async-native library, such as httpx or aiohttp, asyncpg, or asyncio.sleep. When you must call blocking code, offload it with await asyncio.to_thread(func, args) or loop.run_in_executor, which runs it on a thread pool while the loop continues. For CPU-heavy work, threads do not help much because of the GIL, so use a process pool. asyncio's debug mode can warn about slow callbacks."
+    },
+    {
+      "id": "py-late-binding-in-loop-created-lambdas",
+      "title": "Late binding in loop-created lambdas",
+      "prompt": "What is a closure, and how can late binding affect loop-created lambdas?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0529"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A closure is a function that remembers variables from its enclosing scope",
+          "criterion": "terminology",
+          "keywords": [
+            "closure",
+            "enclosing scope",
+            "remembers",
+            "free variable"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Closures look up variables when called, so loop lambdas all see the final value",
+          "criterion": "pitfalls",
+          "keywords": [
+            "late binding",
+            "final value",
+            "loop variable",
+            "when called"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Bind the current value with a default argument or functools.partial",
+          "criterion": "practical-implications",
+          "keywords": [
+            "default argument",
+            "partial",
+            "bind",
+            "i=i"
+          ]
+        }
+      ],
+      "modelAnswer": "A closure is a function that captures variables from the scope where it was defined, so it can use them later. Python closures capture variables, not values: the name is looked up when the function runs. That creates a classic surprise: funcs = [lambda: i for i in range(3)] produces three functions that all return 2, because by the time they are called the loop has finished and i is 2. To capture the value at each iteration, bind it as a default argument, lambda i=i: i, which is evaluated at definition time, or use functools.partial, or create the function in a helper that takes i as a parameter."
+    },
+    {
+      "id": "py-duck-typing-and-protocols",
+      "title": "Duck typing and protocols",
+      "prompt": "What is duck typing, and how do protocols express structural typing?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0531"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Duck typing: objects are used by what methods they have, not their class",
+          "criterion": "terminology",
+          "keywords": [
+            "duck typing",
+            "methods",
+            "behavior",
+            "not class"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "typing.Protocol lets type checkers verify structure without inheritance",
+          "criterion": "correctness",
+          "keywords": [
+            "protocol",
+            "structural typing",
+            "type checker",
+            "no inheritance"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Keeps code flexible and testable; runtime_checkable allows isinstance checks",
+          "criterion": "practical-implications",
+          "keywords": [
+            "flexible",
+            "fakes",
+            "runtime_checkable",
+            "mypy"
+          ]
+        }
+      ],
+      "modelAnswer": "Python traditionally uses duck typing: \"if it walks like a duck and quacks like a duck, it is a duck\". A function that calls obj.read() works with any object that has a read method, such as a file, a socket wrapper or a test fake, regardless of its class. typing.Protocol brings this idea to static type checking. You declare a protocol listing the methods and attributes needed, such as class Reader(Protocol): def read(self) -> bytes: ..., and type checkers like mypy accept any class that has a matching structure, without it inheriting from the protocol. This is structural typing, as opposed to nominal typing with abstract base classes. Adding @runtime_checkable allows isinstance checks, though only for method presence."
+    },
+    {
+      "id": "py-generator-send-and-yield-from",
+      "title": "Generator send and yield from",
+      "prompt": "What are generators' send and yield-from capabilities used for?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0533"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "send passes a value into a paused generator as the result of yield",
+          "criterion": "terminology",
+          "keywords": [
+            "send",
+            "into generator",
+            "yield expression",
+            "resume"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "yield from delegates to a subgenerator and returns its return value",
+          "criterion": "correctness",
+          "keywords": [
+            "yield from",
+            "delegate",
+            "subgenerator",
+            "return value"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "They enabled coroutines and pipelines; modern async uses async and await instead",
+          "criterion": "practical-implications",
+          "keywords": [
+            "coroutines",
+            "pipelines",
+            "asyncio history",
+            "async await"
+          ]
+        }
+      ],
+      "modelAnswer": "A generator usually produces values with yield, but yield is also an expression. Calling gen.send(value) resumes the generator and makes the paused yield evaluate to that value, so the caller can push data in, which allows generator-based coroutines such as running averages or state machines that consume input. yield from subgen delegates to another generator: it forwards every yielded value out and every sent value or exception in, and evaluates to the subgenerator's return value. This makes it easy to compose generators into pipelines. Historically, asyncio was built on these mechanisms; today native async and await syntax replaced them for asynchronous code, but send and yield from remain useful for advanced generator pipelines."
+    },
+    {
+      "id": "py-import-caching-and-circular-imports",
+      "title": "Import caching and circular imports",
+      "prompt": "How does Python import caching work, and how can circular imports occur?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0534"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Imported modules are cached in sys.modules and executed only once",
+          "criterion": "terminology",
+          "keywords": [
+            "sys.modules",
+            "cached",
+            "executed once",
+            "module object"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A circular import sees a partially initialised module",
+          "criterion": "correctness",
+          "keywords": [
+            "partially initialized",
+            "circular",
+            "import error",
+            "attribute error"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Fix by restructuring, moving imports, or importing modules not names",
+          "criterion": "practical-implications",
+          "keywords": [
+            "restructure",
+            "import inside function",
+            "import module",
+            "dependency direction"
+          ]
+        }
+      ],
+      "modelAnswer": "The first time a module is imported, Python creates a module object, stores it in sys.modules, and executes the module's code top to bottom. Later imports anywhere simply return the cached object without running the code again. A circular import happens when module A imports B while A is still executing, and B in turn imports A: B receives the partially initialised A from the cache, so names defined later in A do not exist yet, causing ImportError or AttributeError, often depending on which module was imported first. Fixes include restructuring so shared code lives in a third module, importing inside the function that needs it, or importing the module rather than names from it."
+    },
+    {
+      "id": "py-virtual-environments-and-pinned-dependencies",
+      "title": "Virtual environments and pinned dependencies",
+      "prompt": "What is a virtual environment, and why should dependencies be pinned?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0535"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A virtual environment is an isolated interpreter with its own installed packages",
+          "criterion": "terminology",
+          "keywords": [
+            "virtual environment",
+            "isolated",
+            "venv",
+            "site packages"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Each project gets its own dependency versions without conflicts",
+          "criterion": "correctness",
+          "keywords": [
+            "per project",
+            "conflicts",
+            "system python",
+            "versions"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Pin exact versions in a lock file for reproducible installs and controlled upgrades",
+          "criterion": "practical-implications",
+          "keywords": [
+            "lock file",
+            "reproducible",
+            "uv"
+          ]
+        }
+      ],
+      "modelAnswer": "A virtual environment is a self-contained directory with its own Python interpreter link and site-packages, created with python -m venv or tools like uv and Poetry. Packages installed there do not affect the system Python or other projects, so one project can use Django 4 and another Django 5 on the same machine. Pinning means recording the exact version of every dependency, including transitive ones, in a lock file such as requirements.txt generated by pip-compile, poetry.lock or uv.lock. Without pinning, a fresh install months later may pull new versions that break your code or introduce vulnerabilities. With a lock file, every developer, CI run and deployment installs the same set, and upgrades become deliberate, reviewed changes."
+    },
+    {
+      "id": "py-exception-chaining",
+      "title": "Exception chaining",
+      "prompt": "How should exceptions be chained to preserve debugging context?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0538"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "raise NewError from original sets __cause__ and keeps both tracebacks",
+          "criterion": "terminology",
+          "keywords": [
+            "raise from",
+            "__cause__",
+            "chained",
+            "traceback"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Implicit chaining via __context__ happens when raising inside except",
+          "criterion": "correctness",
+          "keywords": [
+            "__context__",
+            "implicit",
+            "during handling",
+            "another exception"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Wrap low-level errors in domain errors without losing the cause; use from None deliberately",
+          "criterion": "practical-implications",
+          "keywords": [
+            "domain error",
+            "from none",
+            "preserve",
+            "wrap"
+          ]
+        }
+      ],
+      "modelAnswer": "When you catch a low-level exception and raise a more meaningful one, such as turning a KeyError into ConfigError, you want to keep the original cause. Writing raise ConfigError(\"missing database URL\") from err sets the new exception's __cause__, and the traceback shows both, joined by \"The above exception was the direct cause of the following exception\". If you raise inside an except block without from, Python still records the original as __context__, but shows it as \"during handling of the above exception, another exception occurred\", which suggests an accident. Use raise ... from None only when the original is truly irrelevant noise. Never swallow exceptions with a bare except that loses the cause."
+    },
+    {
+      "id": "py-profiling-a-slow-python-endpoint",
+      "title": "Profiling a slow Python endpoint",
+      "prompt": "How would you profile a slow Python endpoint?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0541"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Measure first: reproduce the slow request and time it",
+          "criterion": "correctness",
+          "keywords": [
+            "measure",
+            "reproduce",
+            "timing",
+            "baseline"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Use profilers such as cProfile, py-spy or pyinstrument",
+          "criterion": "terminology",
+          "keywords": [
+            "cprofile",
+            "py spy",
+            "pyinstrument",
+            "flame graph"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Check database queries and external calls, often the real cause",
+          "criterion": "practical-implications",
+          "keywords": [
+            "database queries",
+            "n plus one",
+            "external calls",
+            "tracing"
+          ]
+        }
+      ],
+      "modelAnswer": "First reproduce the slow request and measure it, so you know the baseline and can confirm improvements. Many slow endpoints are not slow in Python at all: tracing or query logging often shows they make dozens of database queries, the N+1 problem, or wait on slow external APIs, so check those first with APM tracing or the ORM's query log. To see where Python time goes, use a sampling profiler like py-spy, which can attach to a running production process with low overhead and produce flame graphs, or pyinstrument and cProfile in development. Look for the widest stacks, fix the biggest cost, and measure again."
+    },
+    {
+      "id": "py-multiprocessing-start-methods",
+      "title": "Multiprocessing start methods",
+      "prompt": "How do multiprocessing start methods affect process startup and state?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0542"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Start methods: fork, spawn and forkserver",
+          "criterion": "terminology",
+          "keywords": [
+            "fork",
+            "spawn",
+            "forkserver",
+            "start method"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "fork copies the parent's memory; spawn starts a fresh interpreter and re-imports the main module",
+          "criterion": "correctness",
+          "keywords": [
+            "copies memory",
+            "fresh interpreter",
+            "re import",
+            "pickle"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "fork is fast but unsafe with threads and locks; spawn is slower but cleaner",
+          "criterion": "pitfalls",
+          "keywords": [
+            "threads",
+            "deadlock",
+            "slower startup",
+            "if __name__"
+          ]
+        }
+      ],
+      "modelAnswer": "multiprocessing can create worker processes in three ways. fork, historically the Linux default, copies the parent process with copy-on-write, so startup is fast and workers inherit already loaded modules and data. But it copies the state of locks and only the forking thread, so forking a process that has other threads, such as from a logging or database library, can deadlock or corrupt state. spawn, the default on Windows and macOS, starts a fresh Python interpreter that re-imports the main module and receives its arguments by pickling; it is slower and requires the if __name__ == \"__main__\" guard, but it is clean and predictable. forkserver forks from a clean helper process. Python 3.14 made forkserver the Linux default."
+    },
+    {
+      "id": "py-monkey-patching-and-its-risks",
+      "title": "Monkey patching and its risks",
+      "prompt": "What is monkey patching, and what risks does it introduce?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0543"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Monkey patching replaces attributes of modules or classes at runtime",
+          "criterion": "terminology",
+          "keywords": [
+            "runtime",
+            "replace",
+            "attribute",
+            "patch"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Common in tests to stub dependencies, and for hotfixing libraries",
+          "criterion": "correctness",
+          "keywords": [
+            "tests",
+            "mock.patch",
+            "stub",
+            "hotfix"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Global, surprising side effects that break on upgrades and leak between tests",
+          "criterion": "pitfalls",
+          "keywords": [
+            "global",
+            "surprising",
+            "upgrade",
+            "leak between tests"
+          ]
+        }
+      ],
+      "modelAnswer": "Monkey patching means modifying a module, class or object at runtime, for example replacing requests.get or a class method with your own function. Python allows it because attributes are dynamic. It is common and useful in tests, through unittest.mock.patch or pytest's monkeypatch fixture, to substitute a slow or external dependency, and sometimes to work around a bug in a third-party library. The risks: the change is global and invisible at the call site, so other code behaves unexpectedly; patches that are not undone leak between tests; you may patch the wrong name, since you must patch where the object is looked up; and patches break silently when the library's internals change. Prefer dependency injection where possible."
+    },
+    {
+      "id": "py-wheels-versus-source-distributions",
+      "title": "Wheels versus source distributions",
+      "prompt": "How do package wheels differ from source distributions?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "python",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "python",
+        "one-minute",
+        "vcn-0545"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A wheel is a prebuilt, ready-to-install archive; an sdist contains source to be built",
+          "criterion": "terminology",
+          "keywords": [
+            "wheel",
+            "prebuilt",
+            "sdist",
+            "source distribution"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Wheels install quickly without compilers; platform tags mark compiled extensions",
+          "criterion": "correctness",
+          "keywords": [
+            "platform tag",
+            "compiled",
+            "no compiler",
+            "manylinux"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Publish wheels for common platforms plus an sdist as fallback",
+          "criterion": "practical-implications",
+          "keywords": [
+            "publish",
+            "fallback",
+            "build backend",
+            "pyproject"
+          ]
+        }
+      ],
+      "modelAnswer": "A source distribution, or sdist, is an archive of the package's source code and build configuration. Installing it means running the build backend on your machine, which for packages with C, C++ or Rust extensions requires compilers and system libraries, takes time and can fail. A wheel is a pre-built archive in the final installed layout: pip just unpacks it, which is fast and needs no compilers. Pure-Python wheels work everywhere, while wheels with compiled code have tags for Python version, operating system and architecture, such as manylinux x86_64 or macOS arm64. Maintainers publish wheels for common platforms, often built in CI, plus an sdist as a fallback for others."
+    },
+    {
+      "id": "rust-what-static-means-in-rust",
+      "title": "What 'static means in Rust",
+      "prompt": "What does 'static mean for a reference and for a trait object?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0549"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "&'static T is a reference valid for the whole program",
+          "criterion": "terminology",
+          "keywords": [
+            "static reference",
+            "whole program",
+            "string literal",
+            "lives forever"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "T: 'static as a bound means the type holds no non-static borrows, not that it lives forever",
+          "criterion": "correctness",
+          "keywords": [
+            "bound",
+            "owned data",
+            "no borrowed references",
+            "box dyn"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Common confusion; thread::spawn requires 'static, so move owned data or use Arc",
+          "criterion": "pitfalls",
+          "keywords": [
+            "thread spawn",
+            "move",
+            "arc",
+            "confusion"
+          ]
+        }
+      ],
+      "modelAnswer": "On a reference, &'static T means the data lives for the entire run of the program, like string literals or leaked allocations. As a trait bound, T: 'static, or Box<dyn Trait + 'static>, means something different: the type contains no references with a shorter lifetime, so it could be kept as long as needed. Any owned type such as String, Vec<u8> or a struct of owned fields satisfies 'static, even though the value is dropped normally. This matters because std::thread::spawn and tokio::spawn require 'static closures: a spawned task might outlive the current stack frame, so it cannot borrow local variables. The fix is to move owned data into the closure, or share it with Arc."
+    },
+    {
+      "id": "rust-when-to-use-cow",
+      "title": "When to use Cow",
+      "prompt": "When should a Rust API use Cow?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0551"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Cow, clone-on-write, holds either borrowed or owned data",
+          "criterion": "terminology",
+          "keywords": [
+            "cow",
+            "clone on write",
+            "borrowed",
+            "owned"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Useful when a function usually returns its input unchanged but sometimes must allocate",
+          "criterion": "correctness",
+          "keywords": [
+            "usually unchanged",
+            "sometimes allocate",
+            "avoid allocation",
+            "escape"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Avoids needless clones but adds API complexity",
+          "criterion": "practical-implications",
+          "keywords": [
+            "avoid clones",
+            "into_owned",
+            "complexity",
+            "performance"
+          ]
+        }
+      ],
+      "modelAnswer": "Cow, short for clone-on-write, is an enum that holds either a borrowed reference, Cow::Borrowed(&str), or an owned value, Cow::Owned(String). It fits functions that usually can return their input as is but occasionally need to modify it. For example, a function that escapes HTML can return the original &str with no allocation when there is nothing to escape, and allocate a new String only when it actually changes something. Callers can read either variant through Deref, or call into_owned when they need ownership. It is also used for configuration that may come from static defaults or runtime values. Use it where profiling shows allocations matter, since it makes signatures more complex."
+    },
+    {
+      "id": "rust-ownership-and-borrowing-with-collections",
+      "title": "Ownership and borrowing with collections",
+      "prompt": "How do ownership and borrowing interact with collections?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0552"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Collections own elements; access borrows them",
+          "criterion": "terminology",
+          "keywords": [
+            "owns elements",
+            "borrow",
+            "iter",
+            "index"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "No push while holding a reference into a Vec",
+          "criterion": "pitfalls",
+          "keywords": [
+            "push",
+            "reallocation",
+            "invalidate",
+            "borrow checker error"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use indices, collect changes, or entry and retain",
+          "criterion": "practical-implications",
+          "keywords": [
+            "indices",
+            "collect first",
+            "entry api",
+            "retain"
+          ]
+        }
+      ],
+      "modelAnswer": "A Vec, HashMap or other collection owns its elements: moving a value in transfers ownership, and dropping the collection drops them. Accessing elements gives borrows: iter() yields shared references, iter_mut() mutable ones, and into_iter() moves elements out. The borrow checker then prevents a classic bug from other languages: holding a reference to an element while pushing to the vector is rejected, because pushing may reallocate and leave the reference dangling. The same applies to modifying a map while iterating it. Idiomatic workarounds include storing indices or keys instead of references, collecting the changes into a separate list and applying them afterwards, using the entry API for maps, and methods like retain or drain."
+    },
+    {
+      "id": "rust-holding-a-lock-across-an-await-point",
+      "title": "Holding a lock across an await point",
+      "prompt": "How can holding a lock across an await point cause trouble?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0564"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Holding a std Mutex guard across await blocks other tasks and can deadlock",
+          "criterion": "pitfalls",
+          "keywords": [
+            "mutexguard",
+            "await",
+            "deadlock",
+            "blocks"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "std::sync guards are not Send, so the future cannot move between threads",
+          "criterion": "correctness",
+          "keywords": [
+            "not send",
+            "future",
+            "spawn",
+            "compile error"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Release the lock before awaiting, or use an async-aware mutex such as tokio::sync::Mutex",
+          "criterion": "practical-implications",
+          "keywords": [
+            "drop guard",
+            "scope",
+            "tokio mutex",
+            "async aware"
+          ]
+        }
+      ],
+      "modelAnswer": "In async Rust, a task suspends at each .await and other tasks run on the same worker thread. If a task holds a std::sync::Mutex guard across an await, the lock stays held while it is suspended. Another task on the same thread that tries to lock it blocks the whole thread, which can deadlock the runtime or stall many tasks. The compiler often catches this, because std::sync::MutexGuard is not Send, so the future cannot be spawned on a multi-threaded runtime, producing a confusing error. The fix is to keep critical sections short and drop the guard before awaiting, often by moving the locked work into a small block or function. If a lock must be held across await, use an async-aware mutex such as tokio::sync::Mutex."
+    },
+    {
+      "id": "rust-pinning-and-pin",
+      "title": "Pinning and Pin",
+      "prompt": "What are pinning and Pin used for at a high level?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0565"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Pin guarantees a value will not be moved in memory again",
+          "criterion": "terminology",
+          "keywords": [
+            "not moved",
+            "memory address",
+            "guarantee"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Needed for self-referential types such as async futures that hold references to their own fields",
+          "criterion": "correctness",
+          "keywords": [
+            "self referential",
+            "future",
+            "async block",
+            "references own fields"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Mostly hidden by Box::pin and pin! macros; Unpin types are unaffected:box:",
+          "criterion": "practical-implications",
+          "keywords": [
+            "pin macro",
+            "unpin",
+            "poll"
+          ]
+        }
+      ],
+      "modelAnswer": "Rust normally moves values freely, by copying their bytes to a new location. That breaks self-referential types, values that contain pointers into themselves, because after a move those pointers point at the old location. The futures generated by async functions are often self-referential: a local variable and a reference to it, both stored in the future across an await. Pin<P> wraps a pointer and promises that the value behind it will never be moved again, so polling such a future is safe; Future::poll therefore takes Pin<&mut Self>. Most types are Unpin, meaning pinning does not restrict them. In everyday code you meet Pin through Box::pin or the pin! macro when storing or polling futures manually."
+    },
+    {
+      "id": "rust-crates-modules-and-visibility",
+      "title": "Crates, modules and visibility",
+      "prompt": "How do crates and modules define visibility boundaries?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0566"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A crate is a compilation unit; modules organise code inside it",
+          "criterion": "terminology",
+          "keywords": [
+            "crate",
+            "module",
+            "compilation unit",
+            "mod"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Items are private by default; pub, pub(crate) and pub(super) widen visibility",
+          "criterion": "correctness",
+          "keywords": [
+            "private by default",
+            "pub",
+            "pub crate",
+            "pub super"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Keep the public API small and re-export a curated surface",
+          "criterion": "practical-implications",
+          "keywords": [
+            "public api",
+            "re export",
+            "pub use",
+            "encapsulation"
+          ]
+        }
+      ],
+      "modelAnswer": "A crate is Rust's unit of compilation and distribution: a library or binary package. Inside it, code is organised into a tree of modules with mod. Everything is private by default, visible only within its own module and its children. pub makes an item visible to anyone who can reach the module, pub(crate) limits it to the current crate, and pub(super) to the parent module. Struct fields have their own visibility, so a public struct can keep fields private and enforce invariants through constructors. Good libraries keep internal modules private and re-export a small, deliberate public API with pub use, so they can refactor internals without breaking users."
+    },
+    {
+      "id": "rust-monomorphisation-and-binary-size",
+      "title": "Monomorphisation and binary size",
+      "prompt": "What is monomorphization, and how can it affect binary size?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0567"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Monomorphisation creates a separate copy of generic code for each concrete type",
+          "criterion": "terminology",
+          "keywords": [
+            "monomorphization",
+            "copy per type",
+            "generics",
+            "specialized"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It makes generics zero-cost at runtime but increases code size and compile time",
+          "criterion": "correctness",
+          "keywords": [
+            "zero cost",
+            "binary size",
+            "compile time",
+            "code bloat"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Reduce with dyn Trait, or a non-generic inner function wrapped by a thin generic one",
+          "criterion": "practical-implications",
+          "keywords": [
+            "dyn trait",
+            "inner function",
+            "thin wrapper",
+            "cargo bloat"
+          ]
+        }
+      ],
+      "modelAnswer": "When you call a generic function like fn process<T: Display>(x: T) with several types, the compiler generates a separate, specialised copy for each concrete type, such as process for i32, for String, and so on. Each copy is optimised for its type and calls are static, which is why Rust generics have no runtime overhead. The cost is that large generic functions used with many types multiply machine code, increasing binary size, compile times and instruction-cache pressure. Remedies include using dyn Trait when dynamic dispatch is acceptable, or the inner-function pattern: a thin generic wrapper converts its argument, for example with as_ref or into, then calls a non-generic function containing the bulk of the code. Tools like cargo bloat show which generics dominate."
+    },
+    {
+      "id": "rust-converting-errors-between-library-layers",
+      "title": "Converting errors between library layers",
+      "prompt": "How should a Rust program convert errors between library layers?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0568"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Per-layer error types; From lets ? convert",
+          "criterion": "terminology",
+          "keywords": [
+            "from trait",
+            "question mark",
+            "error type",
+            "convert"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Libraries: thiserror enums; apps: anyhow",
+          "criterion": "correctness",
+          "keywords": [
+            "thiserror",
+            "anyhow",
+            "enum",
+            "library"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Add context and keep the source chain",
+          "criterion": "practical-implications",
+          "keywords": [
+            "context",
+            "source",
+            "error chain",
+            "public api"
+          ]
+        }
+      ],
+      "modelAnswer": "Each layer usually has its own error type, so callers can handle failures in terms that make sense at that level, such as StorageError rather than an SQL driver error. Implementing From<LowerError> for HigherError lets the ? operator convert errors automatically as they propagate. Libraries typically define enums of meaningful variants, often with the thiserror crate to derive Display, Error and From, and keep the original error as the source so the full chain is available for debugging. Applications often use anyhow, which wraps any error and lets you add human context like \"failed to load config from path\". Avoid exposing third-party error types in a library's public API, since that ties users to that dependency's version."
+    },
+    {
+      "id": "rust-channels-versus-shared-mutable-state-in-rust",
+      "title": "Channels versus shared mutable state in Rust",
+      "prompt": "How do channels compare with shared mutable state in Rust?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0571"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Channels send owned values between threads; shared state uses Arc with Mutex or RwLock",
+          "criterion": "terminology",
+          "keywords": [
+            "channel",
+            "mpsc",
+            "arc mutex",
+            "send values"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Ownership transfer means no locking on the data itself",
+          "criterion": "correctness",
+          "keywords": [
+            "ownership transfer",
+            "no lock",
+            "message passing",
+            "single owner"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Channels suit pipelines and actors; locks suit shared caches and counters",
+          "criterion": "practical-implications",
+          "keywords": [
+            "pipeline",
+            "actor",
+            "cache",
+            "counter"
+          ]
+        }
+      ],
+      "modelAnswer": "Rust supports both styles safely. With channels, such as std::sync::mpsc, crossbeam or tokio channels, threads send owned values to each other; ownership moves with the message, so the receiving thread has exclusive access and needs no lock, and the compiler stops the sender from using the value afterwards. This suits pipelines, worker pools and actor-style designs where one task owns some state and others send it requests. With shared state, data is wrapped in Arc<Mutex<T>> or Arc<RwLock<T>>, and every thread locks it to read or write. That is simpler for a shared cache, counter or configuration that many threads touch. The type system, through Send and Sync, prevents data races either way."
+    },
+    {
+      "id": "rust-ffi-boundaries-and-rust-safety",
+      "title": "FFI boundaries and Rust safety",
+      "prompt": "How can FFI boundaries complicate Rust's safety assumptions?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0573"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "FFI calls into C or other languages are unsafe because the compiler cannot verify them",
+          "criterion": "terminology",
+          "keywords": [
+            "ffi",
+            "extern c",
+            "unsafe",
+            "cannot verify"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Foreign code can violate ownership, lifetimes, aliasing, thread safety and panic rules",
+          "criterion": "pitfalls",
+          "keywords": [
+            "ownership",
+            "null pointers",
+            "panic across boundary",
+            "thread safety"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Wrap FFI in a small safe abstraction that documents and checks invariants",
+          "criterion": "practical-implications",
+          "keywords": [
+            "safe wrapper",
+            "bindgen",
+            "invariants",
+            "catch_unwind"
+          ]
+        }
+      ],
+      "modelAnswer": "Rust's guarantees only hold for code the compiler can check. Calling a C library through extern \"C\" functions is unsafe because the compiler cannot verify the foreign side: it may return null or dangling pointers, free memory Rust still uses, keep pointers longer than the borrow allowed, mutate data Rust assumes is immutable, call back from other threads, or expect a different memory layout. Panics must not unwind across the boundary, and ownership of allocations must be clear, with memory freed by the same allocator that created it. The standard practice is to confine raw FFI calls to a small module, generated with tools like bindgen, and wrap them in a safe Rust API that validates inputs, documents invariants and manages ownership with types like Drop guards."
+    },
+    {
+      "id": "rust-cargo-features-for-configurable-libraries",
+      "title": "Cargo features for configurable libraries",
+      "prompt": "How do cargo features help build configurable libraries?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0574"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Features are named flags in Cargo.toml that enable optional code and dependencies",
+          "criterion": "terminology",
+          "keywords": [
+            "features",
+            "cargo toml",
+            "optional dependencies",
+            "cfg feature"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Users enable only what they need, reducing compile time and binary size",
+          "criterion": "correctness",
+          "keywords": [
+            "only what they need",
+            "compile time",
+            "default features",
+            "serde"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Features must be additive; feature combinations need testing",
+          "criterion": "pitfalls",
+          "keywords": [
+            "additive",
+            "unify",
+            "combinations",
+            "cargo hack"
+          ]
+        }
+      ],
+      "modelAnswer": "Cargo features are named switches declared in a crate's Cargo.toml. Code guarded by #[cfg(feature = \"...\")] is compiled only when the feature is enabled, and features can turn on optional dependencies. A library can offer, for example, a serde feature for serialisation support, a tls feature for HTTPS, or a choice of async runtime, so users who do not need them avoid the extra dependencies, compile time and binary size. A key rule is that features must be additive: Cargo unifies features across the whole dependency graph, so if two crates enable different features of your library, both are on, and enabling a feature must never break code that does not use it. Test combinations, for example with cargo hack."
+    },
+    {
+      "id": "rust-cloning-versus-complex-lifetimes",
+      "title": "Cloning versus complex lifetimes",
+      "prompt": "What is the trade-off between cloning data and introducing complex lifetimes?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "rust",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "rust",
+        "one-minute",
+        "vcn-0575"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Borrowing with lifetimes avoids copies; cloning gives independent owned data",
+          "criterion": "terminology",
+          "keywords": [
+            "clone",
+            "borrow",
+            "lifetime parameters",
+            "owned"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Lifetimes spread through structs and APIs and make code rigid",
+          "criterion": "correctness",
+          "keywords": [
+            "lifetime annotations",
+            "spread",
+            "rigid",
+            "refactor"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Clone or use Arc when cost is small and not hot; borrow in measured hot paths",
+          "criterion": "practical-implications",
+          "keywords": [
+            "measure",
+            "hot path",
+            "arc",
+            "cheap clone"
+          ]
+        }
+      ],
+      "modelAnswer": "Borrowing avoids copying data, but once a struct stores a reference it needs a lifetime parameter, and that lifetime spreads into every type and function that holds it. The data must outlive all of them, which makes the code harder to refactor, store, return or send to threads, and causes fights with the borrow checker. Cloning gives each owner an independent copy, so types become simple and flexible, at the cost of allocation and copying. For small data, configuration, or code outside hot paths, cloning, or sharing with Arc or Rc, which makes clones cheap reference-count increments, is usually the right call. In performance-critical paths, measured with a profiler, the complexity of borrowing can be worth it."
+    },
+    {
+      "id": "java-stack-frames-versus-heap-objects-in-the-jvm",
+      "title": "Stack frames versus heap objects in the JVM",
+      "prompt": "What is the difference between stack frames and heap objects in the JVM?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0577"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Per-thread stack frames; shared heap objects",
+          "criterion": "terminology",
+          "keywords": [
+            "stack frame",
+            "local variables",
+            "heap",
+            "shared"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Frames pop on return; objects live until collected",
+          "criterion": "correctness",
+          "keywords": [
+            "method returns",
+            "garbage collected",
+            "unreachable",
+            "lifetime"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Escape analysis; stack overflow versus OOM",
+          "criterion": "practical-implications",
+          "keywords": [
+            "escape analysis",
+            "stackoverflowerror",
+            "scalar replacement",
+            "outofmemoryerror"
+          ]
+        }
+      ],
+      "modelAnswer": "Each Java thread has its own stack. Every method call pushes a frame containing that method's local variables, parameters and intermediate values; primitives are stored directly, and object variables hold references. When the method returns, its frame is popped instantly. Objects themselves, created with new, live on the heap, shared by all threads, and stay alive as long as something references them; the garbage collector reclaims them later. Too-deep recursion exhausts the stack with StackOverflowError, while too many live objects exhaust the heap with OutOfMemoryError. The JIT's escape analysis can sometimes avoid heap allocation for objects that never leave a method, replacing them with local values."
+    },
+    {
+      "id": "java-class-loaders",
+      "title": "Class loaders",
+      "prompt": "What are class loaders, and why can multiple class loaders matter?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0579"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Loaders load bytecode by parent delegation",
+          "criterion": "terminology",
+          "keywords": [
+            "class loader",
+            "bytecode",
+            "delegation",
+            "bootstrap"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Class identity is name plus loader",
+          "criterion": "correctness",
+          "keywords": [
+            "name plus loader",
+            "different class",
+            "isolation",
+            "plugins"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ClassCastException and redeploy leaks",
+          "criterion": "pitfalls",
+          "keywords": [
+            "classcastexception",
+            "metaspace leak",
+            "redeploy",
+            "application server"
+          ]
+        }
+      ],
+      "modelAnswer": "The JVM loads classes lazily through class loaders, which locate bytecode in JARs, directories or elsewhere. They form a hierarchy, the bootstrap, platform and application loaders, and normally delegate to their parent first. Application servers, plugin systems and build tools create additional loaders to isolate components, so each web application or plugin can have its own versions of libraries. The key subtlety is that a class's identity is its name plus the loader that defined it: the same class loaded by two loaders is two different types, producing confusing errors like \"ClassCastException: Foo cannot be cast to Foo\". Loaders also cause memory leaks on redeploy if anything keeps a reference to an old loader's classes."
+    },
+    {
+      "id": "java-synchronized-versus-reentrantlock",
+      "title": "synchronized versus ReentrantLock",
+      "prompt": "How do synchronized blocks and ReentrantLock compare?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0582"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Both give exclusion, visibility and reentrancy",
+          "criterion": "terminology",
+          "keywords": [
+            "mutual exclusion",
+            "reentrant",
+            "visibility",
+            "monitor"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ReentrantLock adds tryLock, timeouts and fairness",
+          "criterion": "correctness",
+          "keywords": [
+            "trylock",
+            "timeout",
+            "interruptible",
+            "fairness"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Unlock in finally; virtual-thread pinning",
+          "criterion": "pitfalls",
+          "keywords": [
+            "finally",
+            "unlock",
+            "pinning",
+            "virtual threads"
+          ]
+        }
+      ],
+      "modelAnswer": "Both give mutual exclusion and the same memory-visibility guarantees, and both are reentrant, so a thread holding the lock can acquire it again. synchronized is built into the language: you mark a method or block, and the lock is released automatically when the block exits, even with an exception, so it is simple and hard to misuse. ReentrantLock is a library class with more features: tryLock to avoid waiting, timed and interruptible acquisition, optional fairness, and multiple Condition objects. The cost is that you must call unlock in a finally block yourself. Before Java 24, synchronized also pinned virtual threads to their carrier threads, which made ReentrantLock preferable in virtual-thread code."
+    },
+    {
+      "id": "java-completablefuture-and-executor-services",
+      "title": "CompletableFuture and executor services",
+      "prompt": "What are CompletableFuture and executor services used for?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0583"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "An ExecutorService manages a pool of threads that run submitted tasks",
+          "criterion": "terminology",
+          "keywords": [
+            "executorservice",
+            "thread pool",
+            "submit",
+            "tasks"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "CompletableFuture composes asynchronous results with thenApply, thenCompose and allOf",
+          "criterion": "correctness",
+          "keywords": [
+            "completablefuture",
+            "thenapply",
+            "thencompose",
+            "allof"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Default common pool is shared; choose executors and handle exceptions explicitly",
+          "criterion": "pitfalls",
+          "keywords": [
+            "common pool",
+            "exceptionally",
+            "blocking",
+            "shutdown"
+          ]
+        }
+      ],
+      "modelAnswer": "An ExecutorService decouples submitting work from how it runs: you submit tasks, and it manages a pool of threads, queues work, and returns Futures; you must size it appropriately and shut it down. CompletableFuture builds on that to compose asynchronous computations without blocking: you can transform a result with thenApply, chain another async call with thenCompose, combine results with thenCombine or allOf, and handle errors with exceptionally or handle. Pitfalls: async methods without an explicit executor run on the shared ForkJoinPool common pool, so blocking I/O there starves other users, exceptions are easy to lose if nobody observes the future, and long chains can be hard to debug. With virtual threads, simple blocking code is often clearer."
+    },
+    {
+      "id": "java-thread-pool-starvation-deadlock",
+      "title": "Thread-pool starvation deadlock",
+      "prompt": "How can thread-pool starvation deadlock an application?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0584"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Tasks wait on tasks that cannot get a thread",
+          "criterion": "terminology",
+          "keywords": [
+            "starvation",
+            "waiting",
+            "pool full",
+            "deadlock"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A task blocks on a subtask in the same pool",
+          "criterion": "correctness",
+          "keywords": [
+            "submits subtask",
+            "same pool",
+            "blocks on get",
+            "nested"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Separate pools, async composition, thread dumps",
+          "criterion": "practical-implications",
+          "keywords": [
+            "separate pools",
+            "non blocking",
+            "thread dump",
+            "timeout"
+          ]
+        }
+      ],
+      "modelAnswer": "A thread-pool starvation deadlock happens when every thread in a pool is busy waiting for work that can only run on that same pool. Classic example: a pool of 10 threads, and each task submits a subtask to the same pool and calls get() on it. Under load, all 10 threads are blocked waiting, the subtasks sit in the queue, and nothing ever progresses, without any lock cycle a deadlock detector would notice. The same occurs when request handlers block on calls that need the same bounded pool. Fixes include separate pools for dependent stages, composing asynchronously with CompletableFuture instead of blocking, ForkJoinPool for recursive tasks, and timeouts. A thread dump showing all pool threads parked in get() reveals it."
+    },
+    {
+      "id": "java-hashmap-versus-concurrenthashmap",
+      "title": "HashMap versus ConcurrentHashMap",
+      "prompt": "How do HashMap and ConcurrentHashMap differ under concurrency?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0586"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "HashMap is not thread-safe; ConcurrentHashMap supports concurrent access",
+          "criterion": "terminology",
+          "keywords": [
+            "not thread safe",
+            "concurrenthashmap",
+            "concurrent access",
+            "thread safe"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Concurrent writes to HashMap can lose updates or corrupt the structure",
+          "criterion": "pitfalls",
+          "keywords": [
+            "lost updates",
+            "corrupt",
+            "race",
+            "resize"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use atomic methods like computeIfAbsent and merge instead of check-then-act",
+          "criterion": "practical-implications",
+          "keywords": [
+            "computeifabsent",
+            "merge",
+            "atomic",
+            "check then act"
+          ]
+        }
+      ],
+      "modelAnswer": "HashMap has no synchronisation. If multiple threads modify it concurrently, updates can be lost, size can become wrong, and a resize happening concurrently can corrupt the internal structure; in old Java versions it could even create an infinite loop. ConcurrentHashMap is designed for concurrent use: reads are generally lock-free, and writes lock only a single bin, so many threads can update different keys in parallel, and iterators do not throw ConcurrentModificationException. However, sequences of operations are still not atomic: if (!map.containsKey(k)) map.put(k, v) is a race. Use the atomic methods putIfAbsent, computeIfAbsent, compute and merge. ConcurrentHashMap also rejects null keys and values."
+    },
+    {
+      "id": "java-records-and-sealed-classes",
+      "title": "Records and sealed classes",
+      "prompt": "How do records and sealed classes help model data?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0588"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Records are concise immutable data carriers with generated equals, hashCode and toString",
+          "criterion": "terminology",
+          "keywords": [
+            "record",
+            "immutable",
+            "equals hashcode",
+            "data carrier"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Sealed classes restrict which classes may extend a type",
+          "criterion": "correctness",
+          "keywords": [
+            "sealed",
+            "permits",
+            "restricted",
+            "closed hierarchy"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Together with pattern matching in switch they give exhaustive, algebraic data types",
+          "criterion": "practical-implications",
+          "keywords": [
+            "pattern matching",
+            "switch",
+            "exhaustive",
+            "algebraic data types"
+          ]
+        }
+      ],
+      "modelAnswer": "A record, such as record Point(int x, int y) {}, declares a transparent, immutable data carrier in one line: the compiler generates the constructor, accessors, equals, hashCode and toString, and you can add validation in a compact constructor. Sealed classes and interfaces, declared with sealed and permits, restrict which classes may extend or implement them, so the hierarchy is closed and known. Combined with pattern matching in switch, available since Java 21, you can model alternatives like sealed interface Shape permits Circle, Square, with each as a record, and the compiler checks that a switch handles every case. That gives Java algebraic data types, making illegal states unrepresentable and refactoring safer."
+    },
+    {
+      "id": "java-try-with-resources",
+      "title": "try-with-resources",
+      "prompt": "What is try-with-resources, and how does it handle cleanup?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0589"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "try-with-resources closes AutoCloseable resources automatically when the block exits",
+          "criterion": "terminology",
+          "keywords": [
+            "autocloseable",
+            "automatically",
+            "close",
+            "try with resources"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Resources close in reverse order, even when exceptions occur",
+          "criterion": "correctness",
+          "keywords": [
+            "reverse order",
+            "exception",
+            "always",
+            "finally"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Close failures are recorded as suppressed exceptions instead of hiding the original",
+          "criterion": "practical-implications",
+          "keywords": [
+            "suppressed",
+            "getsuppressed",
+            "original exception",
+            "streams"
+          ]
+        }
+      ],
+      "modelAnswer": "try-with-resources is a form of try statement that declares resources, such as files, sockets, database connections or locks wrapped in AutoCloseable, in parentheses: try (var in = Files.newInputStream(path)) { ... }. When the block exits, normally or by exception, Java calls close on each resource automatically, in reverse order of declaration. It also handles a subtle problem with manual finally blocks: if the body throws and then close also throws, the original exception is kept as the primary error, and the close failure is attached as a suppressed exception, available through getSuppressed. That makes cleanup correct and concise, avoiding the resource leaks common in hand-written finally code."
+    },
+    {
+      "id": "java-memory-leaks-in-garbage-collected-java",
+      "title": "Memory leaks in garbage-collected Java",
+      "prompt": "What are common causes of memory leaks in garbage-collected Java?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0591"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A leak is objects that remain reachable but are no longer needed",
+          "criterion": "terminology",
+          "keywords": [
+            "reachable",
+            "no longer needed",
+            "leak",
+            "garbage collector"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Causes: static collections, unbounded caches, listeners, ThreadLocals and class loaders",
+          "criterion": "correctness",
+          "keywords": [
+            "static collection",
+            "unbounded cache",
+            "listener",
+            "threadlocal"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Diagnose with heap dumps and dominator trees; use bounded caches and weak references",
+          "criterion": "practical-implications",
+          "keywords": [
+            "heap dump",
+            "dominator tree",
+            "bounded cache",
+            "weak reference"
+          ]
+        }
+      ],
+      "modelAnswer": "Garbage collection frees only unreachable objects, so Java leaks happen when objects stay reachable even though the program no longer needs them. Common causes: static maps or lists that keep growing; caches without size limits or expiry; listeners and callbacks registered but never removed; ThreadLocal values in pooled threads that are never cleared, especially in application servers; unclosed resources; and class loader leaks during redeploys. Symptoms are heap usage that climbs after every GC, more frequent collections and eventually OutOfMemoryError. Diagnose with heap dumps analysed in Eclipse MAT or VisualVM, looking at the dominator tree and the reference path keeping objects alive, and fix with bounded caches such as Caffeine, cleanup, or weak references."
+    },
+    {
+      "id": "java-heap-dumps-and-thread-dumps",
+      "title": "Heap dumps and thread dumps",
+      "prompt": "How do heap dumps and thread dumps help diagnose incidents?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0592"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Heap dump: objects; thread dump: thread stacks",
+          "criterion": "terminology",
+          "keywords": [
+            "heap dump",
+            "thread dump",
+            "snapshot",
+            "stack trace"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Heap dumps for memory; thread dumps for hangs",
+          "criterion": "correctness",
+          "keywords": [
+            "memory growth",
+            "hang",
+            "deadlock",
+            "blocked"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Capture with jcmd; take several thread dumps",
+          "criterion": "practical-implications",
+          "keywords": [
+            "jcmd",
+            "heapdumponoutofmemoryerror",
+            "several dumps",
+            "eclipse mat"
+          ]
+        }
+      ],
+      "modelAnswer": "A heap dump is a snapshot of every object on the heap with its references. It answers memory questions: what is filling the heap, and what chain of references keeps it alive, analysed in tools like Eclipse MAT. Enable -XX:+HeapDumpOnOutOfMemoryError so you get one automatically, but note dumps pause the JVM and may contain sensitive data. A thread dump lists every thread with its state, such as RUNNABLE, BLOCKED or WAITING, its stack trace and the locks it holds or waits for. It explains hangs, deadlocks, which the JVM reports explicitly, exhausted thread pools and lock contention. Take several thread dumps a few seconds apart with jcmd or jstack to see which threads are stuck versus just busy."
+    },
+    {
+      "id": "java-platform-threads-versus-virtual-threads",
+      "title": "Platform threads versus virtual threads",
+      "prompt": "What is the difference between a platform thread and a virtual thread?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0593"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Platform threads are OS threads; virtual are JVM-managed",
+          "criterion": "terminology",
+          "keywords": [
+            "platform thread",
+            "os thread",
+            "virtual thread",
+            "lightweight"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Blocked virtual threads unmount from carriers",
+          "criterion": "correctness",
+          "keywords": [
+            "unmount",
+            "carrier thread",
+            "blocking io",
+            "millions"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Not faster for CPU work; avoid pooling them",
+          "criterion": "pitfalls",
+          "keywords": [
+            "cpu bound",
+            "pooling",
+            "pinning",
+            "threadlocal"
+          ]
+        }
+      ],
+      "modelAnswer": "A platform thread is a thin wrapper around an operating system thread: it has a large stack, creating it is relatively expensive, and you can only have a few thousand, which is why servers used thread pools and asynchronous frameworks. Virtual threads, final since Java 21, are managed by the JVM. They are cheap to create, so you can start one per request, even millions. When a virtual thread blocks on I/O, the JVM unmounts it from its carrier platform thread, which then runs other virtual threads. This lets simple, blocking-style code scale like async code. Virtual threads do not make CPU-bound work faster, should not be pooled, and heavy ThreadLocal use or pinning can reduce their benefits."
+    },
+    {
+      "id": "java-propagating-interruption-in-java",
+      "title": "Propagating interruption in Java",
+      "prompt": "How should interruption be propagated in Java code?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0594"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Interruption is a cooperative request for a thread to stop",
+          "criterion": "terminology",
+          "keywords": [
+            "interrupt",
+            "cooperative",
+            "request",
+            "stop"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Blocking methods throw InterruptedException and clear the interrupted flag",
+          "criterion": "correctness",
+          "keywords": [
+            "interruptedexception",
+            "clears flag",
+            "sleep",
+            "blocking"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Never swallow it: rethrow or restore the flag with Thread.currentThread().interrupt()",
+          "criterion": "pitfalls",
+          "keywords": [
+            "swallow",
+            "restore",
+            "currentthread interrupt",
+            "rethrow"
+          ]
+        }
+      ],
+      "modelAnswer": "Java threads cannot be forcibly stopped safely; instead, another thread calls interrupt(), which is a polite request to stop. Blocking methods such as sleep, wait, join and BlockingQueue.take respond by throwing InterruptedException, and in doing so they clear the thread's interrupted flag. The most common bug is catching InterruptedException and ignoring it, which loses the cancellation request, so executors cannot shut down and tasks keep running. Correct handling is either to let the exception propagate by declaring it, or, if you cannot rethrow, to restore the flag with Thread.currentThread().interrupt() and then exit promptly. Long-running loops without blocking calls should check Thread.interrupted() periodically."
+    },
+    {
+      "id": "java-class-initialisation-order-bugs",
+      "title": "Class initialisation order bugs",
+      "prompt": "What is class initialization order, and how can it cause bugs?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0595"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Static initialisers run in textual order",
+          "criterion": "terminology",
+          "keywords": [
+            "static initializer",
+            "textual order",
+            "first use",
+            "class initialization"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Overridable calls in constructors see null fields",
+          "criterion": "pitfalls",
+          "keywords": [
+            "superclass constructor",
+            "overridable method",
+            "uninitialized",
+            "null"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Circular statics expose default values",
+          "criterion": "correctness",
+          "keywords": [
+            "circular",
+            "default values",
+            "static",
+            "zero"
+          ]
+        }
+      ],
+      "modelAnswer": "When a class is first used, the JVM initialises it: static fields and static blocks run in the order they appear in the source. A static field that depends on another declared later sees that one's default value, null or zero, and circular static dependencies between two classes can expose half-initialised state. For objects, a constructor first runs the superclass constructor, then the subclass's field initialisers and constructor body. If the superclass constructor calls an overridable method, the subclass override runs before the subclass fields are initialised, so it sees null or zero, a classic source of NullPointerExceptions. Avoid calling overridable methods from constructors and keep static initialisation simple."
+    },
+    {
+      "id": "java-immutable-objects-in-concurrent-programs",
+      "title": "Immutable objects in concurrent programs",
+      "prompt": "How do immutable objects help concurrent programs?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0596"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Immutable objects cannot change after construction",
+          "criterion": "terminology",
+          "keywords": [
+            "immutable",
+            "cannot change",
+            "final fields",
+            "construction"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "They can be shared between threads without locks, and final fields are safely published",
+          "criterion": "correctness",
+          "keywords": [
+            "share",
+            "no locks",
+            "safe publication",
+            "thread safe"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Model updates as new objects; use records and defensive copies of mutable inputs",
+          "criterion": "practical-implications",
+          "keywords": [
+            "new object",
+            "records",
+            "defensive copy",
+            "copy on write"
+          ]
+        }
+      ],
+      "modelAnswer": "An immutable object's state cannot change after it is constructed: all fields are final, there are no setters, and any mutable inputs are defensively copied. Most concurrency bugs come from shared mutable state, so immutable objects eliminate them: any number of threads can read the same object at the same time without locks, there are no torn or inconsistent states, and the Java memory model guarantees that final fields are visible correctly once construction finishes. Updates are expressed by creating a new object, and a single reference to the current version can be swapped atomically, for example with AtomicReference. Records, String and the List.of collections are examples. The cost is extra allocation, which is usually cheap."
+    },
+    {
+      "id": "java-maven-versus-gradle",
+      "title": "Maven versus Gradle",
+      "prompt": "How do Maven and Gradle differ in build configuration style?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0598"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Maven uses declarative XML in pom.xml with a fixed lifecycle",
+          "criterion": "terminology",
+          "keywords": [
+            "maven",
+            "pom xml",
+            "declarative",
+            "lifecycle"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Gradle uses a Kotlin or Groovy DSL with a flexible task graph",
+          "criterion": "correctness",
+          "keywords": [
+            "gradle",
+            "kotlin dsl",
+            "task graph",
+            "flexible"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Maven is uniform and predictable; Gradle is faster with incremental builds and caching but can grow complex",
+          "criterion": "practical-implications",
+          "keywords": [
+            "incremental",
+            "build cache",
+            "convention",
+            "complexity"
+          ]
+        }
+      ],
+      "modelAnswer": "Maven configures builds declaratively in an XML pom.xml file. It follows convention over configuration with a fixed lifecycle of phases, such as compile, test, package and install, and customisation happens through plugins bound to those phases. That makes Maven projects uniform and easy to understand, but unusual builds can be awkward. Gradle uses build scripts written in a Kotlin or Groovy DSL, modelling the build as a graph of tasks. It is more flexible and programmable, and faster for large projects thanks to incremental builds, the build cache and the daemon. The downside is that build logic can become real code that is hard to maintain, so teams should keep it in conventions and plugins."
+    },
+    {
+      "id": "java-dependency-scopes-and-runtime-packaging",
+      "title": "Dependency scopes and runtime packaging",
+      "prompt": "What is dependency scope, and how can it affect runtime packaging?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0599"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Scope controls on which classpaths a dependency appears",
+          "criterion": "terminology",
+          "keywords": [
+            "scope",
+            "classpath",
+            "compile",
+            "runtime"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "compile, provided or compileOnly, runtime and test scopes are packaged differently",
+          "criterion": "correctness",
+          "keywords": [
+            "provided",
+            "compileonly",
+            "test scope",
+            "implementation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Wrong scope causes NoClassDefFoundError at runtime or bloated, conflicting artifacts",
+          "criterion": "pitfalls",
+          "keywords": [
+            "noclassdeffounderror",
+            "missing at runtime",
+            "bloat",
+            "conflict"
+          ]
+        }
+      ],
+      "modelAnswer": "A dependency's scope, in Maven terms, or configuration, in Gradle, determines where it is available. Compile scope, or implementation and api in Gradle, is on the compile and runtime classpaths and is packaged with the application. Provided, or compileOnly, is available for compiling but expected to be supplied by the environment, such as the servlet API in an application server, so it is not packaged. Runtime scope, such as a JDBC driver, is needed only when running. Test scope is only for tests. Mistakes are costly: marking something provided when nothing provides it gives NoClassDefFoundError in production, while packaging a provided library causes conflicts and bloated artifacts."
+    },
+    {
+      "id": "java-diagnosing-high-gc-pause-times",
+      "title": "Diagnosing high GC pause times",
+      "prompt": "How would you diagnose high GC pause times?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "java",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "java",
+        "one-minute",
+        "vcn-0600"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Enable GC logging and measure pause frequency, duration and cause",
+          "criterion": "correctness",
+          "keywords": [
+            "gc logs",
+            "pause duration",
+            "frequency",
+            "xlog gc"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Causes: allocation rate, too-small heap, humongous objects, full GCs, collector choice",
+          "criterion": "terminology",
+          "keywords": [
+            "allocation rate",
+            "heap size",
+            "full gc",
+            "humongous"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Reduce allocation, size the heap, tune or switch collector, such as G1 to ZGC",
+          "criterion": "practical-implications",
+          "keywords": [
+            "reduce allocation",
+            "tune",
+            "zgc",
+            "g1"
+          ]
+        }
+      ],
+      "modelAnswer": "Start with data: enable unified GC logging with -Xlog:gc*, and look at how often pauses happen, how long they last, which collection type causes them, and the heap occupancy before and after. Correlate pauses with latency spikes. Common causes are a high allocation rate, which triggers frequent young collections; a heap too small for the live data set, so old-generation collections or full GCs happen; humongous allocations in G1; memory leaks steadily increasing live data; and explicit System.gc calls. Fixes include reducing allocation in hot paths, found with an allocation profiler such as JFR or async-profiler, sizing the heap correctly, fixing leaks, and for very low latency switching from G1 to ZGC or Shenandoah."
+    },
+    {
+      "id": "js-null-undefined-and-absent-properties",
+      "title": "null, undefined and absent properties",
+      "prompt": "What is the difference between null, undefined, and an absent property?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0602"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "undefined means no value assigned; null is an intentional empty value",
+          "criterion": "terminology",
+          "keywords": [
+            "undefined",
+            "null",
+            "intentional",
+            "not assigned"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "An absent property is not present at all, though reading it also gives undefined",
+          "criterion": "correctness",
+          "keywords": [
+            "absent",
+            "in operator",
+            "hasown",
+            "optional property"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Matters for JSON, spreading, and TypeScript exactOptionalPropertyTypes",
+          "criterion": "pitfalls",
+          "keywords": [
+            "json",
+            "stringify",
+            "exactoptionalpropertytypes",
+            "nullish coalescing"
+          ]
+        }
+      ],
+      "modelAnswer": "undefined is JavaScript's default for \"no value\": an uninitialised variable, a missing function argument, or a function with no return. null is a value developers assign deliberately to mean \"intentionally empty\". An absent property is one that does not exist on the object at all; reading it also returns undefined, so obj.x === undefined cannot tell you whether x is missing or explicitly set to undefined, but \"x\" in obj or Object.hasOwn(obj, \"x\") can. The difference matters in practice: JSON.stringify drops undefined properties but keeps null, object spread copies an explicit undefined over an existing value, and APIs may treat null as \"clear this field\" versus absent as \"leave unchanged\". The ?? operator treats both null and undefined as missing."
+    },
+    {
+      "id": "js-lexical-scope-versus-dynamic-scope",
+      "title": "Lexical scope versus dynamic scope",
+      "prompt": "How does lexical scope differ from dynamic scope?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0603"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Lexical scope resolves names by where code is written; dynamic scope by the call stack at runtime",
+          "criterion": "terminology",
+          "keywords": [
+            "lexical scope",
+            "where written",
+            "dynamic scope",
+            "call stack"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "JavaScript variables are lexically scoped, which makes closures work",
+          "criterion": "correctness",
+          "keywords": [
+            "closures",
+            "nested functions",
+            "block scope",
+            "let const"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "this behaves dynamically in ordinary functions, a common source of confusion",
+          "criterion": "pitfalls",
+          "keywords": [
+            "this",
+            "dynamic",
+            "call site",
+            "arrow functions"
+          ]
+        }
+      ],
+      "modelAnswer": "With lexical, or static, scope, a variable reference is resolved by where the code is written: a function can see variables from the blocks and functions that textually enclose it, no matter where it is called from. With dynamic scope, a reference is resolved by looking up the chain of active function calls at runtime, so the same function could see different variables depending on its caller. JavaScript variables declared with let, const, var and function parameters are lexically scoped, which is what makes closures predictable: a returned function keeps access to its defining scope. The notable exception that feels dynamic is this in ordinary functions, determined by how the function is called; arrow functions instead take this lexically."
+    },
+    {
+      "id": "js-promise-all-allsettled-race-and-any",
+      "title": "Promise.all, allSettled, race and any",
+      "prompt": "How do Promise.all, allSettled, race, and any differ?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0605"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "All four combine several promises into one",
+          "criterion": "terminology",
+          "keywords": [
+            "combine",
+            "promises",
+            "concurrent",
+            "combinator"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "all rejects on the first failure; allSettled waits for every outcome",
+          "criterion": "correctness",
+          "keywords": [
+            "all",
+            "first rejection",
+            "allsettled",
+            "every outcome"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "race settles with the first to settle; any resolves with the first success",
+          "criterion": "correctness",
+          "keywords": [
+            "race",
+            "first to settle",
+            "first fulfilled"
+          ]
+        }
+      ],
+      "modelAnswer": "Each takes an iterable of promises and returns one promise. Promise.all fulfils with an array of all results if every promise fulfils, but rejects as soon as any one rejects, which suits steps that all must succeed, such as loading required data in parallel; the other operations keep running unless you cancel them. Promise.allSettled always waits for every promise and returns objects describing each fulfilled value or rejection reason, which suits batches where partial failure is acceptable. Promise.race settles with whichever promise settles first, success or failure, often used for timeouts. Promise.any fulfils with the first successful result and rejects with an AggregateError only if all fail, useful for trying redundant sources."
+    },
+    {
+      "id": "js-avoiding-unhandled-promise-rejections",
+      "title": "Avoiding unhandled promise rejections",
+      "prompt": "How should rejected promises be handled to avoid unhandled rejections?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0606"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "An unhandled rejection is a rejected promise with no catch handler",
+          "criterion": "terminology",
+          "keywords": [
+            "unhandled rejection",
+            "catch",
+            "no handler",
+            "rejected"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "await inside try and catch, or attach .catch, and return or await every promise",
+          "criterion": "correctness",
+          "keywords": [
+            "try catch",
+            "await",
+            "return promise",
+            "floating promise"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Node crashes on unhandled rejections; use lint rules and global handlers as a last resort",
+          "criterion": "practical-implications",
+          "keywords": [
+            "node crashes",
+            "no floating promises",
+            "unhandledrejection",
+            "lint"
+          ]
+        }
+      ],
+      "modelAnswer": "When a promise rejects and nothing handles it, the error disappears from normal control flow: browsers log a warning, and since Node.js 15 the process crashes by default. They usually come from \"floating\" promises, async calls started without await, return or .catch, such as calling saveData() inside an event handler and forgetting to await it. Handle rejections where you can act on them: use await inside try and catch, or attach .catch to promise chains, and make sure functions return or await the promises they create so errors propagate to callers. Lint rules such as @typescript-eslint/no-floating-promises catch mistakes, and global unhandledrejection handlers should log and report as a last resort, not replace proper handling."
+    },
+    {
+      "id": "js-type-narrowing-versus-type-assertions",
+      "title": "Type narrowing versus type assertions",
+      "prompt": "What is the difference between type narrowing and type assertion in TypeScript?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0607"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Narrowing refines a type through checks the compiler understands",
+          "criterion": "terminology",
+          "keywords": [
+            "narrowing",
+            "typeof",
+            "instanceof",
+            "type guard"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A type assertion tells the compiler to trust you, without any runtime check",
+          "criterion": "correctness",
+          "keywords": [
+            "as",
+            "assertion",
+            "trust",
+            "no runtime check"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Assertions can hide bugs; prefer narrowing or validation",
+          "criterion": "pitfalls",
+          "keywords": [
+            "hide bugs",
+            "unsafe",
+            "non null assertion",
+            "validation"
+          ]
+        }
+      ],
+      "modelAnswer": "Narrowing is the compiler following your control flow: after if (typeof x === \"string\"), or checks with instanceof, in, equality against a discriminant, or a user-defined type guard function, TypeScript knows x has a more specific type in that branch. The check really runs at runtime, so the narrowed type is backed by evidence. A type assertion, written value as Type or with the non-null operator !, simply tells the compiler \"trust me, it is this type\". Nothing is checked at runtime, so if you are wrong, the program fails later with a confusing error far from the cause. Prefer narrowing and runtime validation; reserve assertions for cases where you genuinely know more than the compiler, and keep them rare."
+    },
+    {
+      "id": "js-discriminated-unions-for-safer-state",
+      "title": "Discriminated unions for safer state",
+      "prompt": "What are discriminated unions, and how can they make state handling safer?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0609"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A union of object types sharing a literal tag property",
+          "criterion": "terminology",
+          "keywords": [
+            "discriminated union",
+            "tag",
+            "literal type",
+            "kind"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Switching on the tag narrows to the matching variant and its fields",
+          "criterion": "correctness",
+          "keywords": [
+            "switch",
+            "narrow",
+            "variant",
+            "fields"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Makes impossible states unrepresentable and enables exhaustiveness checks with never",
+          "criterion": "practical-implications",
+          "keywords": [
+            "impossible states",
+            "exhaustive",
+            "never",
+            "loading error success"
+          ]
+        }
+      ],
+      "modelAnswer": "A discriminated union is a union of object types that share a common property with a distinct literal value, the discriminant, for example type Request = { status: \"loading\" } | { status: \"error\"; error: Error } | { status: \"success\"; data: User }. When code checks request.status, TypeScript narrows the type, so data is only accessible in the success branch and error only in the error branch. Compare that with a single object with optional isLoading, error and data fields, which allows nonsense combinations such as loading with an error and data at once. Adding a default case that assigns the value to a variable of type never makes the compiler flag any switch that forgets to handle a newly added variant."
+    },
+    {
+      "id": "js-unknown-versus-any",
+      "title": "unknown versus any",
+      "prompt": "What is the difference between unknown and any in TypeScript?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0611"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "any disables type checking; unknown is the type-safe top type",
+          "criterion": "terminology",
+          "keywords": [
+            "disables checking",
+            "unknown",
+            "top type"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Values of type unknown must be narrowed before use",
+          "criterion": "correctness",
+          "keywords": [
+            "narrow",
+            "must check",
+            "typeof",
+            "validation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use unknown for external data and caught errors; avoid any because it spreads silently",
+          "criterion": "practical-implications",
+          "keywords": [
+            "external data",
+            "catch clause",
+            "spreads",
+            "noimplicitany"
+          ]
+        }
+      ],
+      "modelAnswer": "Both can hold any value, but they behave oppositely. any switches type checking off: you can call methods, access properties and pass the value anywhere without errors, and any spreads silently through expressions, so bugs the compiler should catch slip through to runtime. unknown is the safe counterpart: you can assign anything to it, but you cannot do anything with it until you narrow it, with typeof, instanceof, a type guard or a validation library. That makes unknown the right type for data from outside, such as JSON responses, user input and caught errors, which TypeScript can type as unknown with useUnknownInCatchVariables. Reserve any for gradual migrations, and limit it with lint rules."
+    },
+    {
+      "id": "js-tree-shaking-and-what-prevents-it",
+      "title": "Tree shaking and what prevents it",
+      "prompt": "What is tree shaking, and what can prevent it?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0613"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Tree shaking removes unused exports from the bundle",
+          "criterion": "terminology",
+          "keywords": [
+            "tree shaking",
+            "unused exports",
+            "dead code",
+            "bundle"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Relies on static ES module imports and exports",
+          "criterion": "correctness",
+          "keywords": [
+            "static",
+            "es modules",
+            "import export",
+            "analysis"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Blocked by CommonJS, side effects, dynamic access and barrel files",
+          "criterion": "pitfalls",
+          "keywords": [
+            "commonjs",
+            "side effects",
+            "sideeffects field",
+            "barrel file"
+          ]
+        }
+      ],
+      "modelAnswer": "Tree shaking is a bundler optimisation, in tools like Rollup, esbuild, webpack and Vite, that removes code you import from but never use, so importing one function from a large library does not ship the whole library. It works because ES module imports and exports are static: the bundler can see exactly which names are used without running the code. It is prevented by CommonJS modules, whose require and module.exports are dynamic; by modules with top-level side effects, which the bundler must keep unless package.json declares \"sideEffects\": false; by dynamic property access on a namespace import; and by some patterns like class-based APIs with all methods attached. Barrel files that re-export everything can also defeat it in some setups."
+    },
+    {
+      "id": "js-cancelling-obsolete-network-requests",
+      "title": "Cancelling obsolete network requests",
+      "prompt": "How should a frontend cancel obsolete network requests?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0618"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Obsolete responses can arrive late and overwrite newer results",
+          "criterion": "pitfalls",
+          "keywords": [
+            "race condition",
+            "out of order",
+            "stale response",
+            "overwrite"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "AbortController signals fetch to cancel the request",
+          "criterion": "correctness",
+          "keywords": [
+            "abortcontroller",
+            "abort",
+            "signal",
+            "fetch"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Abort on new input or unmount; ignore AbortError; libraries handle this automatically",
+          "criterion": "practical-implications",
+          "keywords": [
+            "unmount",
+            "aborterror",
+            "react query",
+            "cleanup"
+          ]
+        }
+      ],
+      "modelAnswer": "When a user types into a search box, each keystroke may start a request, and responses can arrive out of order: the result for \"re\" arriving after \"react\" overwrites the correct result with a stale one. Navigating away also leaves requests whose responses update unmounted components. The standard tool is AbortController: create one per request, pass its signal to fetch, and call abort when the request becomes obsolete, such as when a new query starts or in a React effect cleanup on unmount. Aborted fetches reject with an AbortError, which should be ignored rather than shown to the user. Data-fetching libraries such as TanStack Query handle cancellation and stale responses automatically."
+    },
+    {
+      "id": "js-type-checking-versus-runtime-validation",
+      "title": "Type checking versus runtime validation",
+      "prompt": "What is the difference between type checking and runtime validation?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0619"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "TypeScript types are erased at compile time and check only your own code",
+          "criterion": "terminology",
+          "keywords": [
+            "erased",
+            "compile time",
+            "static",
+            "no runtime"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Runtime validation checks actual data at boundaries such as API responses and user input",
+          "criterion": "correctness",
+          "keywords": [
+            "runtime validation",
+            "boundaries",
+            "api responses",
+            "untrusted"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use schema libraries like Zod to validate and infer types from one definition",
+          "criterion": "practical-implications",
+          "keywords": [
+            "zod",
+            "schema",
+            "infer",
+            "parse"
+          ]
+        }
+      ],
+      "modelAnswer": "TypeScript's type checking happens at compile time and is erased from the JavaScript that runs. It proves your own code is consistent with the types you declared, but it cannot know what actually arrives from outside: a JSON response, local storage, URL parameters or user input. Writing const user = await res.json() as User is only a promise to the compiler; if the server sends something different, the program fails later in a confusing place. Runtime validation checks real data when it crosses a boundary, rejecting or handling unexpected shapes. Schema libraries such as Zod or Valibot let you define the schema once, validate data with parse, and infer the TypeScript type from the same schema, so types and checks never drift apart."
+    },
+    {
+      "id": "js-structured-cloning-versus-json-serialisation",
+      "title": "Structured cloning versus JSON serialisation",
+      "prompt": "How does structured cloning differ from JSON serialization?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0621"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "structuredClone deep-copies values using the structured clone algorithm",
+          "criterion": "terminology",
+          "keywords": [
+            "structuredclone",
+            "deep copy",
+            "algorithm",
+            "postmessage"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It supports Dates, Maps, Sets, typed arrays and circular references, which JSON cannot",
+          "criterion": "correctness",
+          "keywords": [
+            "date",
+            "circular references"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Neither copies functions or class prototypes; JSON is for text exchange",
+          "criterion": "pitfalls",
+          "keywords": [
+            "functions",
+            "prototype",
+            "class instances",
+            "text"
+          ]
+        }
+      ],
+      "modelAnswer": "JSON.parse(JSON.stringify(x)) was a common deep-copy trick, but JSON only supports plain objects, arrays, strings, numbers, booleans and null. Dates become strings, Map, Set and typed arrays are lost or mangled, undefined and functions are dropped, NaN becomes null, and circular references throw an error. structuredClone, available in browsers and Node, uses the same structured clone algorithm as postMessage and IndexedDB: it correctly copies Dates, RegExps, Maps, Sets, ArrayBuffers and typed arrays, errors, and circular or shared references. It still cannot copy functions or DOM nodes, and class instances lose their prototype, becoming plain objects. Use structuredClone for in-memory copies and JSON for text exchange with servers and storage."
+    },
+    {
+      "id": "js-exposing-types-without-leaking-internals",
+      "title": "Exposing types without leaking internals",
+      "prompt": "How can a package expose types without leaking internal implementation?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0623"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The public API is what the entry points and their declaration files export",
+          "criterion": "terminology",
+          "keywords": [
+            "public api",
+            "entry point",
+            "declaration files",
+            "d.ts"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Use package.json exports to block deep imports into internal files",
+          "criterion": "correctness",
+          "keywords": [
+            "exports field",
+            "deep imports",
+            "internal",
+            "subpath"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Export narrow interfaces, not internal classes; check the API surface with tools",
+          "criterion": "practical-implications",
+          "keywords": [
+            "narrow interfaces",
+            "api extractor",
+            "semver",
+            "opaque"
+          ]
+        }
+      ],
+      "modelAnswer": "Everything a package's entry points export, including types in its generated .d.ts files, becomes part of its public API, and users will depend on it, so changing it later is a breaking change. Keep the surface intentional: export interfaces and types that describe what users need, rather than internal classes with all their private details; return opaque or branded types for handles; and mark internal items with @internal and strip them from declarations. Use the exports field in package.json to define exactly which entry points exist, which prevents users from importing deep internal files. Tools like API Extractor generate a report of the public API so reviewers notice accidental changes, which helps follow semantic versioning."
+    },
+    {
+      "id": "js-source-maps-for-debugging-production-code",
+      "title": "Source maps for debugging production code",
+      "prompt": "How do source maps help debug minified production code?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "javascript-typescript",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "javascript-typescript",
+        "one-minute",
+        "vcn-0625"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A source map maps positions in bundled, minified code back to original source",
+          "criterion": "terminology",
+          "keywords": [
+            "source map",
+            "map file",
+            "original source",
+            "minified"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Debuggers and error trackers use them to show readable stack traces",
+          "criterion": "correctness",
+          "keywords": [
+            "stack trace",
+            "error tracking",
+            "sentry",
+            "debugger"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Upload them privately to error trackers rather than serving them publicly",
+          "criterion": "practical-implications",
+          "keywords": [
+            "private",
+            "upload",
+            "hidden source map",
+            "expose source"
+          ]
+        }
+      ],
+      "modelAnswer": "Production JavaScript is bundled, transpiled from TypeScript and minified, so an error stack trace points to something like line 1, column 48213 of main.3f9a.js, with renamed variables. A source map is a JSON file that maps every position in the generated code back to the original file, line, column and name. Browser developer tools load source maps to show and step through your original source, and error-tracking services like Sentry use them to turn production stack traces into readable ones. Because source maps can reveal your full source code, many teams generate \"hidden\" source maps that are uploaded privately to the error tracker during the build and are not referenced or served publicly."
     }
   ]
 }

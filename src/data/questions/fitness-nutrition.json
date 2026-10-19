@@ -1052,6 +1052,2590 @@
         }
       ],
       "modelAnswer": "Body weight changes when energy intake from food differs from energy expenditure over time: a sustained deficit leads to weight loss, a surplus to gain. Expenditure has three parts. Basal metabolic rate - energy to keep the body alive at rest - is the largest, often around 60-70% of the total for sedentary people. Physical activity includes exercise and non-exercise activity such as walking, standing and household work (NEAT), which varies hugely between people. The thermic effect of food is the energy used to digest it, higher for protein. Crash diets with very low calories often fail: they cause muscle loss along with fat, the body adapts by reducing energy expenditure and increasing hunger hormones, and people usually regain the weight once normal eating resumes. Sustainable approaches use a moderate deficit, enough protein and strength training to preserve muscle, high-fibre whole foods that are filling, and adequate sleep, since poor sleep increases appetite and cravings. Highly processed, energy-dense foods make it easy to overeat. Weight is also influenced by genetics, hormones, medications, stress and the food environment, so while energy balance is the underlying principle, real-world weight management depends on building habits people can keep for years."
+    },
+    {
+      "id": "exercise-progressing-resistance-training-safely-as-a-beginner",
+      "title": "Progressing resistance training safely as a beginner",
+      "prompt": "How should a beginner progress resistance training without increasing injury risk?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1096"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Start with manageable loads and learn technique first",
+          "criterion": "accuracy",
+          "keywords": [
+            "technique",
+            "light weights",
+            "learn",
+            "form"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Increase load, reps or sets gradually, one variable at a time",
+          "criterion": "accuracy",
+          "keywords": [
+            "gradually",
+            "small increments",
+            "reps",
+            "sets"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Allow recovery and listen to warning signs",
+          "criterion": "accuracy",
+          "keywords": [
+            "recovery",
+            "rest days",
+            "pain",
+            "warning signs"
+          ]
+        }
+      ],
+      "modelAnswer": "A beginner should first learn good technique on basic movements, such as squats, push-ups, rows, hinges and lunges, using bodyweight or light weights that can be lifted with control and a couple of repetitions left in reserve. Progress gradually: add a repetition or two, then a set, or a small amount of weight, typically a few percent, and change only one variable at a time. Two or three full-body sessions a week, with rest days between, give muscles, tendons and joints time to adapt; tendons adapt more slowly than muscles. Sharp or joint pain, as opposed to normal muscle fatigue, is a signal to reduce load. A qualified coach can check form early on."
+    },
+    {
+      "id": "exercise-mobility-flexibility-and-stability",
+      "title": "Mobility, flexibility and stability",
+      "prompt": "How do mobility, flexibility, and stability differ?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1098"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Flexibility: how far a muscle can passively lengthen",
+          "criterion": "accuracy",
+          "keywords": [
+            "flexibility",
+            "passive",
+            "lengthen",
+            "stretch"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Mobility: actively controlling movement through a range of motion at a joint",
+          "criterion": "accuracy",
+          "keywords": [
+            "mobility",
+            "active",
+            "range of motion",
+            "control"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Stability: controlling or resisting unwanted movement",
+          "criterion": "accuracy",
+          "keywords": [
+            "stability",
+            "resist",
+            "control",
+            "balance"
+          ]
+        }
+      ],
+      "modelAnswer": "Flexibility is the ability of muscles and other tissues to lengthen passively, such as how far someone else can move your leg while you relax. Mobility is the ability to actively move a joint through its range of motion with control, using your own strength, like lowering into a deep squat with good posture; you can be flexible but lack mobility if you cannot control the range. Stability is the ability to control a joint or body position and resist unwanted movement, such as keeping the knee aligned during a lunge or the trunk steady while carrying a load. Good movement needs all three in balance, and training each requires slightly different exercises."
+    },
+    {
+      "id": "exercise-technique-and-range-of-motion-in-strength-training",
+      "title": "Technique and range of motion in strength training",
+      "prompt": "What is the role of technique and range of motion in strength training?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1099"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Good technique spreads load safely and targets the intended muscles",
+          "criterion": "accuracy",
+          "keywords": [
+            "technique",
+            "safe",
+            "target muscles",
+            "form"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Full, controlled range of motion builds strength across positions",
+          "criterion": "accuracy",
+          "keywords": [
+            "range of motion",
+            "full range",
+            "control",
+            "positions"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Poor form and ego lifting increase injury risk; adjust range to ability",
+          "criterion": "accuracy",
+          "keywords": [
+            "injury risk",
+            "ego lifting",
+            "adjust",
+            "progress"
+          ]
+        }
+      ],
+      "modelAnswer": "Technique determines where the load goes. With good form, forces are shared by the muscles and joints designed to handle them, the target muscles do the work, and progress is measurable from session to session. Poor technique, such as rounding the lower back when lifting heavy, shifts stress to vulnerable structures and increases injury risk, and lifting more weight than you can control, often called ego lifting, makes this worse. Training through a full, controlled range of motion generally builds strength and muscle across more joint positions and maintains mobility. But range should match a person's current ability and any limitations; partial ranges can be useful tools when used deliberately rather than as a shortcut."
+    },
+    {
+      "id": "exercise-warm-up-sets-versus-a-general-warm-up",
+      "title": "Warm-up sets versus a general warm-up",
+      "prompt": "How do warm-up sets differ from a general warm-up?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1100"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A general warm-up raises body temperature and heart rate",
+          "criterion": "accuracy",
+          "keywords": [
+            "general warm up",
+            "body temperature",
+            "heart rate",
+            "light cardio"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Warm-up sets rehearse the specific exercise with increasing loads",
+          "criterion": "accuracy",
+          "keywords": [
+            "warm up sets",
+            "specific",
+            "increasing weight",
+            "rehearse"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Together they prepare tissues, nervous system and technique without fatigue",
+          "criterion": "accuracy",
+          "keywords": [
+            "prepare",
+            "nervous system",
+            "technique",
+            "not tiring"
+          ]
+        }
+      ],
+      "modelAnswer": "A general warm-up, such as five to ten minutes of light cardio and dynamic movements like leg swings and arm circles, raises body temperature, heart rate and blood flow, making muscles more pliable and the body ready for activity in general. Warm-up sets are specific to the exercise you are about to do: before heavy squats, you might squat the empty bar, then a few sets at gradually increasing weights with fewer repetitions. They rehearse the exact movement pattern, prepare the nervous system to recruit muscles for heavier loads, and let you check technique and how your body feels that day. Warm-up sets should prepare you without causing fatigue, so they use low repetitions."
+    },
+    {
+      "id": "exercise-strength-power-and-muscular-endurance",
+      "title": "Strength, power and muscular endurance",
+      "prompt": "What is the difference between muscular strength, power, and endurance?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1101"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Strength: maximum force a muscle can produce",
+          "criterion": "accuracy",
+          "keywords": [
+            "strength",
+            "maximum force",
+            "heavy",
+            "one rep max"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Power: force produced quickly, strength times speed",
+          "criterion": "accuracy",
+          "keywords": [
+            "power",
+            "speed",
+            "explosive",
+            "jump"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Endurance: sustaining repeated contractions over time",
+          "criterion": "accuracy",
+          "keywords": [
+            "endurance",
+            "repeated",
+            "many repetitions",
+            "fatigue"
+          ]
+        }
+      ],
+      "modelAnswer": "Muscular strength is the maximum force you can produce, for example the heaviest weight you can lift once. Power is how quickly you can produce force, roughly force multiplied by speed; it matters in jumping, sprinting, throwing and punching, where the movement must be fast. Muscular endurance is the ability to keep producing force repeatedly or for a long time without fatigue, such as doing many push-ups or holding a plank. They are trained differently: strength with heavy loads and few repetitions, power with lighter loads or bodyweight moved explosively, like jumps and throws, and endurance with lighter loads and many repetitions or longer durations. Most sports need a mix."
+    },
+    {
+      "id": "exercise-rest-periods-for-strength-versus-conditioning",
+      "title": "Rest periods for strength versus conditioning",
+      "prompt": "How should rest periods change between heavy strength work and conditioning?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1102"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Heavy strength sets need long rest, often two to five minutes",
+          "criterion": "accuracy",
+          "keywords": [
+            "long rest",
+            "two to five minutes",
+            "heavy",
+            "recover"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Conditioning uses short rest to keep heart rate high",
+          "criterion": "accuracy",
+          "keywords": [
+            "short rest",
+            "conditioning",
+            "circuits",
+            "heart rate"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Rest length should match the goal and the energy system used",
+          "criterion": "accuracy",
+          "keywords": [
+            "goal",
+            "energy system",
+            "phosphocreatine",
+            "quality"
+          ]
+        }
+      ],
+      "modelAnswer": "Rest periods should match the goal of the session. Heavy strength work, such as sets of one to five repetitions near your maximum, relies on the fast phosphocreatine energy system and a fresh nervous system, which take a few minutes to recover, so rests of two to five minutes let you lift heavy again with good technique. Muscle-building work often uses moderate rests of one to two minutes. Conditioning, such as circuits or intervals, deliberately uses short rests, sometimes thirty seconds or less, to keep the heart rate elevated and train the body to tolerate and recover from fatigue. Using conditioning-style short rests for heavy lifting reduces the quality of each set and raises injury risk."
+    },
+    {
+      "id": "exercise-signs-training-load-is-rising-too-quickly",
+      "title": "Signs training load is rising too quickly",
+      "prompt": "What are common signs that training load is increasing too quickly?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1103"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Persistent fatigue, soreness and declining performance",
+          "criterion": "accuracy",
+          "keywords": [
+            "persistent fatigue",
+            "soreness",
+            "performance drops",
+            "tired"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Poor sleep, irritability, raised resting heart rate",
+          "criterion": "accuracy",
+          "keywords": [
+            "sleep",
+            "irritability",
+            "resting heart rate",
+            "mood"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Niggles, joint or tendon pain; reduce load and progress gradually",
+          "criterion": "accuracy",
+          "keywords": [
+            "joint pain",
+            "tendon",
+            "niggles",
+            "reduce load"
+          ]
+        }
+      ],
+      "modelAnswer": "When training load rises faster than the body can adapt, warning signs appear. Common ones are fatigue and muscle soreness that persist from one session into the next, performance that stalls or declines despite effort, and workouts that feel unusually hard. Outside training, people may notice poor sleep, irritability or low motivation, a higher resting heart rate, and getting ill more often. Physical niggles, especially persistent joint or tendon pain that worsens with activity, often mean tissues are being overloaded. The usual response is to reduce volume or intensity for a while, prioritise sleep and nutrition, and then increase load more gradually, a common guideline being around ten percent per week for running distance."
+    },
+    {
+      "id": "exercise-choosing-exercises-for-the-equipment-available",
+      "title": "Choosing exercises for the equipment available",
+      "prompt": "How can exercise selection account for available equipment?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1104"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Train movement patterns rather than specific machines",
+          "criterion": "accuracy",
+          "keywords": [
+            "movement patterns",
+            "squat",
+            "hinge",
+            "push pull"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Substitute equipment: bodyweight, bands, dumbbells, backpacks",
+          "criterion": "accuracy",
+          "keywords": [
+            "bodyweight",
+            "resistance bands",
+            "dumbbells",
+            "substitute"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Progress by reps, tempo, unilateral work and range when load is limited",
+          "criterion": "accuracy",
+          "keywords": [
+            "progression",
+            "tempo",
+            "single leg",
+            "harder variations"
+          ]
+        }
+      ],
+      "modelAnswer": "Instead of thinking in terms of specific machines, plan around basic movement patterns: squat, hinge, push, pull, lunge, carry and core work. Each pattern can be trained with whatever is available. At home with no equipment, use bodyweight squats, push-ups, inverted rows under a sturdy table, and glute bridges; with resistance bands or a backpack loaded with books, you can add resistance; dumbbells and kettlebells allow most exercises; a full gym adds barbells and machines. When heavy load is not available, progress by doing more repetitions, slowing the tempo, pausing, using single-leg or single-arm variations, increasing range of motion, or choosing harder variations such as decline push-ups."
+    },
+    {
+      "id": "exercise-the-purpose-of-deloading",
+      "title": "The purpose of deloading",
+      "prompt": "What is the purpose of deloading in a training plan?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1105"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A planned period of reduced training load",
+          "criterion": "accuracy",
+          "keywords": [
+            "planned",
+            "reduced volume",
+            "lighter week",
+            "intensity"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Allows accumulated fatigue to dissipate while keeping fitness",
+          "criterion": "accuracy",
+          "keywords": [
+            "fatigue",
+            "recover",
+            "adaptation",
+            "maintain fitness"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Supports long-term progress and injury prevention",
+          "criterion": "accuracy",
+          "keywords": [
+            "long term progress",
+            "injury prevention",
+            "joints",
+            "every few weeks"
+          ]
+        }
+      ],
+      "modelAnswer": "A deload is a planned short period, usually a week, of easier training, typically reducing volume by around a third to a half, or reducing intensity, while keeping the same exercises. Hard training builds up fatigue in muscles, joints, tendons and the nervous system faster than it can fully recover, and that fatigue can mask fitness gains and increase injury risk. A deload lets this fatigue dissipate while fitness is maintained, so athletes often come back feeling and performing better. Many programmes schedule one every four to eight weeks, or when signs of accumulated fatigue appear. It is part of training, not a break from it."
+    },
+    {
+      "id": "exercise-muscle-soreness-versus-injury-warning-signs",
+      "title": "Muscle soreness versus injury warning signs",
+      "prompt": "What is the difference between soreness and a possible injury warning sign?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1107"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Normal soreness: dull, diffuse muscle ache peaking one to two days later",
+          "criterion": "accuracy",
+          "keywords": [
+            "doms",
+            "dull ache",
+            "diffuse",
+            "one to two days"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Warning signs: sharp, localised, joint pain, swelling, pain that worsens",
+          "criterion": "accuracy",
+          "keywords": [
+            "sharp pain",
+            "localized",
+            "swelling",
+            "joint"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Reduce load and seek professional advice if signs persist",
+          "criterion": "accuracy",
+          "keywords": [
+            "seek advice",
+            "physiotherapist",
+            "rest",
+            "persist"
+          ]
+        }
+      ],
+      "modelAnswer": "Delayed-onset muscle soreness is a dull, diffuse ache in the muscles you trained, typically appearing several hours after a new or harder workout and peaking one to two days later; it eases with gentle movement and fades within a few days. Possible injury signs are different: sharp or stabbing pain, pain in a specific spot, especially in a joint or tendon rather than the muscle belly, swelling or bruising, a pop or sudden pain during exercise, pain that worsens as you continue, weakness or instability, or pain that lasts more than a week. Those signs mean stopping or reducing the activity and getting assessed by a doctor or physiotherapist if they persist."
+    },
+    {
+      "id": "exercise-balancing-intensity-volume-and-recovery",
+      "title": "Balancing intensity, volume and recovery",
+      "prompt": "How should a training plan balance intensity, volume, and recovery?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1108"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Intensity is how hard; volume is how much",
+          "criterion": "accuracy",
+          "keywords": [
+            "intensity",
+            "volume",
+            "how hard",
+            "how much"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Generally raise one while controlling the other; avoid both high at once",
+          "criterion": "accuracy",
+          "keywords": [
+            "balance",
+            "trade off",
+            "not both",
+            "hard easy"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Schedule recovery and adjust based on response",
+          "criterion": "accuracy",
+          "keywords": [
+            "recovery days",
+            "sleep",
+            "adjust",
+            "periodization"
+          ]
+        }
+      ],
+      "modelAnswer": "Intensity is how hard the training is, such as weight lifted or running pace, and volume is how much is done, such as total sets, repetitions or kilometres. Both create the stimulus for adaptation, and both create fatigue, so they must be balanced with recovery, during which adaptation actually happens. A common principle is not to push both high at the same time: periods of high volume use moderate intensity, and periods of very high intensity use lower volume. Within a week, hard sessions are separated by easier sessions or rest days, sometimes called a hard-easy pattern. Plans should be adjusted based on how the person responds: sleep, fatigue, performance and life stress."
+    },
+    {
+      "id": "exercise-balance-and-coordination-in-athletic-movement",
+      "title": "Balance and coordination in athletic movement",
+      "prompt": "What is the role of balance and coordination in athletic movement?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1109"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Balance: controlling the body's centre of mass over its base",
+          "criterion": "accuracy",
+          "keywords": [
+            "balance",
+            "centre of mass",
+            "base of support",
+            "stable"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Coordination: muscles firing in the right sequence and timing",
+          "criterion": "accuracy",
+          "keywords": [
+            "coordination",
+            "timing",
+            "sequence",
+            "nervous system"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Improves efficiency, skill and injury prevention; trainable",
+          "criterion": "accuracy",
+          "keywords": [
+            "efficient",
+            "skill",
+            "injury prevention",
+            "trainable"
+          ]
+        }
+      ],
+      "modelAnswer": "Balance is the ability to keep the body's centre of mass controlled over its base of support, whether standing still, landing from a jump, or changing direction. Coordination is the nervous system's ability to activate the right muscles in the right order with the right timing, so that movements are smooth and accurate, like a tennis serve or a sprint stride. Together they let athletes apply their strength and speed effectively: a strong athlete with poor coordination wastes energy and moves inefficiently. Good balance and control also reduce injury risk, for example ankle sprains and knee injuries during landing. Both are trainable through single-leg exercises, agility drills, landing practice and sport-specific skill work."
+    },
+    {
+      "id": "exercise-tracking-progress-beyond-body-weight",
+      "title": "Tracking progress beyond body weight",
+      "prompt": "How can a person track training progress without relying only on body weight?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "exercise-fundamentals",
+        "one-minute",
+        "vcn-1110"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Performance measures: strength, reps, pace, distance",
+          "criterion": "accuracy",
+          "keywords": [
+            "performance",
+            "strength",
+            "pace",
+            "personal records"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Body measures: waist, photos, how clothes fit",
+          "criterion": "accuracy",
+          "keywords": [
+            "waist measurement",
+            "photos",
+            "clothes",
+            "body composition"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Wellbeing: energy, sleep, mood and consistency",
+          "criterion": "accuracy",
+          "keywords": [
+            "energy",
+            "sleep",
+            "mood",
+            "consistency"
+          ]
+        }
+      ],
+      "modelAnswer": "Body weight alone can be misleading: it fluctuates daily with water and food, and someone can lose fat while gaining muscle without the scale moving. Better progress markers include performance: weights lifted, repetitions completed, running pace or distance, or how a fixed workout feels, which can be logged in a training diary. Body measurements such as waist circumference, progress photos taken under similar conditions, and how clothes fit capture changes in body shape. Wellbeing indicators matter too: energy levels, sleep quality, mood, resting heart rate, and how easily daily tasks feel. Tracking consistency, such as sessions completed per week, is also valuable because it drives long-term results."
+    },
+    {
+      "id": "nutrition-energy-density-versus-nutrient-density",
+      "title": "Energy density versus nutrient density",
+      "prompt": "How do energy density and nutrient density differ?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1111"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Energy density: calories per gram of food",
+          "criterion": "accuracy",
+          "keywords": [
+            "energy density",
+            "calories per gram",
+            "high calorie",
+            "fried"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Nutrient density: vitamins, minerals, fibre and protein relative to calories",
+          "criterion": "accuracy",
+          "keywords": [
+            "nutrient density",
+            "vitamins",
+            "minerals",
+            "fibre"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Prefer nutrient-dense foods; examples of each",
+          "criterion": "accuracy",
+          "keywords": [
+            "vegetables",
+            "pulses",
+            "biscuits",
+            "choose"
+          ]
+        }
+      ],
+      "modelAnswer": "Energy density is how many calories a food contains per gram. Foods high in fat and low in water, such as fried snacks, biscuits, sweets and oils, are energy-dense, so small portions provide many calories. Nutrient density is how many useful nutrients, such as vitamins, minerals, fibre and protein, a food provides relative to its calories. Vegetables, fruits, pulses, whole grains, eggs, curd and nuts are nutrient-dense. The two do not always align: nuts are energy-dense but also nutrient-dense, while sugary drinks are energy-providing but nutrient-poor. For most people, building meals around nutrient-dense foods helps meet nutritional needs and manage appetite and weight."
+    },
+    {
+      "id": "nutrition-varied-protein-sources-for-vegetarians",
+      "title": "Varied protein sources for vegetarians",
+      "prompt": "How can a vegetarian plan include varied protein sources?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1113"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Combine pulses, dairy, soy, nuts and seeds",
+          "criterion": "accuracy",
+          "keywords": [
+            "dal",
+            "paneer",
+            "soy",
+            "nuts"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Complementary proteins: cereals with pulses supply all essential amino acids",
+          "criterion": "accuracy",
+          "keywords": [
+            "complementary",
+            "amino acids",
+            "rice and dal",
+            "lysine"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Spread protein across meals and watch B12, iron and quantity",
+          "criterion": "accuracy",
+          "keywords": [
+            "each meal",
+            "b12",
+            "iron",
+            "quantity"
+          ]
+        }
+      ],
+      "modelAnswer": "Vegetarians can meet their protein needs by including a protein source at every meal and varying them. Good sources include pulses and legumes, such as dal, chana, rajma and moong sprouts; dairy, such as milk, curd and paneer; soy foods like tofu and soy chunks; and nuts and seeds, plus eggs for those who eat them. Plant proteins individually may be low in one essential amino acid, but combining cereals and pulses, as in rice and dal or roti and chana, provides a complete amino acid profile across the day. Because plant foods contain less protein per serving, portions matter. Vegetarians should also pay attention to vitamin B12, iron and zinc."
+    },
+    {
+      "id": "nutrition-soluble-versus-insoluble-fibre",
+      "title": "Soluble versus insoluble fibre",
+      "prompt": "How do soluble and insoluble fibre support health differently?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1114"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Soluble fibre dissolves into a gel; found in oats, pulses, fruit",
+          "criterion": "accuracy",
+          "keywords": [
+            "soluble",
+            "gel",
+            "oats",
+            "pulses"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It lowers cholesterol, steadies blood sugar and feeds gut bacteria",
+          "criterion": "accuracy",
+          "keywords": [
+            "cholesterol",
+            "blood sugar",
+            "gut bacteria",
+            "satiety"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Insoluble fibre adds bulk and speeds transit, preventing constipation",
+          "criterion": "accuracy",
+          "keywords": [
+            "insoluble",
+            "bulk",
+            "constipation",
+            "whole grains"
+          ]
+        }
+      ],
+      "modelAnswer": "Dietary fibre is the part of plant foods that our digestive enzymes cannot break down, and it comes in two main types. Soluble fibre dissolves in water to form a gel; it is found in oats, barley, pulses, apples, citrus fruits and psyllium. It slows digestion, which helps keep blood sugar steady and makes you feel full longer, binds cholesterol and helps lower LDL, and is fermented by gut bacteria into beneficial compounds. Insoluble fibre does not dissolve; it is found in whole grains, bran, nuts and vegetable skins. It adds bulk to stools and helps food move through the intestines, preventing constipation. Most plant foods contain both, so variety covers both."
+    },
+    {
+      "id": "nutrition-hunger-appetite-and-energy-needs",
+      "title": "Hunger, appetite and energy needs",
+      "prompt": "What is the difference between hunger, appetite, and energy needs?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1117"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Hunger is a physical signal that the body needs food",
+          "criterion": "accuracy",
+          "keywords": [
+            "hunger",
+            "physical",
+            "stomach",
+            "hormones"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Appetite is the desire to eat, influenced by habits, emotions and environment",
+          "criterion": "accuracy",
+          "keywords": [
+            "appetite",
+            "desire",
+            "emotions",
+            "cues"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Energy needs are the calories the body actually uses; the three can disagree",
+          "criterion": "accuracy",
+          "keywords": [
+            "energy needs",
+            "calories",
+            "metabolism",
+            "mismatch"
+          ]
+        }
+      ],
+      "modelAnswer": "Hunger is the body's physiological signal that it needs food, driven by hormones such as ghrelin and by an empty stomach and falling energy stores; it builds gradually and almost any food satisfies it. Appetite is the desire to eat, which can occur without hunger: the smell of samosas, boredom, stress, social settings, habit, or seeing food on screen can all trigger it, often for specific foods. Energy needs are the calories the body actually uses each day for basic functions, digestion and activity. These three do not always align: appetite can lead people to eat beyond their needs, while illness or stress can suppress hunger. Recognising which one is speaking helps make better eating decisions."
+    },
+    {
+      "id": "nutrition-limitations-of-bmi-for-individuals",
+      "title": "Limitations of BMI for individuals",
+      "prompt": "What are the limitations of using BMI as an individual health measure?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1119"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "BMI is weight divided by height squared, a population screening tool",
+          "criterion": "accuracy",
+          "keywords": [
+            "weight",
+            "height squared",
+            "screening",
+            "population"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Does not distinguish muscle from fat or show fat distribution",
+          "criterion": "accuracy",
+          "keywords": [
+            "muscle",
+            "fat distribution",
+            "waist",
+            "body composition"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Varies by age, sex and ethnicity, so combine with other measures",
+          "criterion": "accuracy",
+          "keywords": [
+            "ethnicity",
+            "asian cut offs",
+            "age",
+            "other measures"
+          ]
+        }
+      ],
+      "modelAnswer": "Body mass index is weight in kilograms divided by height in metres squared. It is cheap and useful for screening and studying populations, but it has important limits for individuals. It cannot distinguish muscle from fat, so a muscular athlete may be labelled overweight. It ignores where fat is stored, although fat around the abdomen is more strongly linked to diabetes and heart disease than fat elsewhere. The relationship between BMI and health risk also varies with age, sex and ethnicity; South Asians tend to develop metabolic disease at lower BMIs, which is why Indian guidelines use lower cut-offs. BMI should be combined with waist measurement, blood tests, fitness and overall health."
+    },
+    {
+      "id": "nutrition-dietary-fats-by-fatty-acid-type",
+      "title": "Dietary fats by fatty-acid type",
+      "prompt": "How do dietary fats differ by fatty-acid type?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1120"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Saturated fats, solid at room temperature, from ghee, butter and coconut",
+          "criterion": "accuracy",
+          "keywords": [
+            "saturated",
+            "ghee",
+            "butter",
+            "solid"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Unsaturated fats, mono and poly including omega-3, from oils, nuts and fish",
+          "criterion": "accuracy",
+          "keywords": [
+            "unsaturated",
+            "monounsaturated",
+            "omega 3",
+            "nuts"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Trans fats are the most harmful; replace saturated with unsaturated",
+          "criterion": "accuracy",
+          "keywords": [
+            "trans fats",
+            "vanaspati",
+            "heart health",
+            "replace"
+          ]
+        }
+      ],
+      "modelAnswer": "Dietary fats are made of fatty acids that differ in chemical structure and health effects. Saturated fats, mostly solid at room temperature, are found in ghee, butter, cheese, fatty meat, coconut and palm oil; high intakes raise LDL cholesterol. Unsaturated fats are usually liquid oils. Monounsaturated fats come from groundnut, mustard and olive oil, nuts and avocado; polyunsaturated fats include omega-6, from sunflower and soybean oil, and omega-3, from fish, flaxseed and walnuts, which supports heart and brain health. Trans fats, found in partially hydrogenated vanaspati and some fried and bakery products, are the most harmful, raising LDL and lowering HDL. Replacing saturated and trans fats with unsaturated fats benefits heart health."
+    },
+    {
+      "id": "nutrition-carbohydrates-in-high-intensity-exercise",
+      "title": "Carbohydrates in high-intensity exercise",
+      "prompt": "What is the role of carbohydrates in high-intensity exercise?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1121"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "High-intensity exercise relies mainly on glucose and muscle glycogen",
+          "criterion": "accuracy",
+          "keywords": [
+            "glycogen",
+            "glucose",
+            "high intensity",
+            "fuel"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Low glycogen causes early fatigue and reduced performance",
+          "criterion": "accuracy",
+          "keywords": [
+            "fatigue",
+            "low glycogen",
+            "hitting the wall",
+            "performance"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Eat carbohydrates before, during long sessions and after to refuel",
+          "criterion": "accuracy",
+          "keywords": [
+            "before exercise",
+            "during",
+            "refuel",
+            "recovery"
+          ]
+        }
+      ],
+      "modelAnswer": "At low intensities, the body burns a lot of fat, but as intensity rises, as in sprints, interval training, football or heavy weight training, it relies increasingly on carbohydrate, because carbohydrate can be broken down faster to supply energy, including anaerobically. That carbohydrate comes from blood glucose and glycogen stored in muscles and the liver. Glycogen stores are limited, so when they run low, athletes experience sharp fatigue and reduced power, sometimes called hitting the wall in endurance events. That is why athletes eat carbohydrate-rich meals before hard sessions, take in carbohydrates during long events, and refuel afterwards with carbohydrates and protein to restore glycogen and support recovery."
+    },
+    {
+      "id": "nutrition-meal-timing-for-training",
+      "title": "Meal timing for training",
+      "prompt": "How can meal timing support training without being treated as magic?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1122"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Total daily intake matters most; timing is fine-tuning",
+          "criterion": "accuracy",
+          "keywords": [
+            "total intake",
+            "daily",
+            "matters most",
+            "fine tuning"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A meal two to three hours before training fuels it; a snack closer if needed",
+          "criterion": "accuracy",
+          "keywords": [
+            "before training",
+            "two to three hours",
+            "fuel",
+            "snack"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Eat protein and carbohydrates after; no strict anabolic window",
+          "criterion": "accuracy",
+          "keywords": [
+            "after training",
+            "protein",
+            "recovery",
+            "anabolic window"
+          ]
+        }
+      ],
+      "modelAnswer": "For most people, what and how much they eat over the whole day matters far more than precise timing; timing is fine-tuning. Practical guidelines still help. A balanced meal two to three hours before training, or a light, easily digested snack like a banana thirty to sixty minutes before, provides energy without stomach upset. For sessions over about ninety minutes, carbohydrates during exercise help endurance. After training, a meal with protein and carbohydrates supports muscle repair and glycogen refilling; the so-called anabolic window is much wider than the thirty minutes once claimed. Spreading protein across three or four meals is helpful. Timing matters more for elite athletes with multiple sessions per day."
+    },
+    {
+      "id": "nutrition-food-intolerance-versus-food-allergy",
+      "title": "Food intolerance versus food allergy",
+      "prompt": "What is the difference between food intolerance and food allergy?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1123"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Allergy is an immune system reaction to a food protein",
+          "criterion": "accuracy",
+          "keywords": [
+            "allergy",
+            "immune system",
+            "antibodies",
+            "protein"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Allergies can be severe, even life-threatening anaphylaxis, from tiny amounts",
+          "criterion": "accuracy",
+          "keywords": [
+            "anaphylaxis",
+            "severe",
+            "tiny amounts",
+            "peanuts"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Intolerance is usually digestive, dose-related and not dangerous, like lactose intolerance",
+          "criterion": "accuracy",
+          "keywords": [
+            "intolerance",
+            "digestive",
+            "lactose",
+            "dose"
+          ]
+        }
+      ],
+      "modelAnswer": "A food allergy is a reaction of the immune system, which mistakenly treats a food protein, such as peanut, egg, milk, shellfish or wheat, as a threat. Reactions can start within minutes and include hives, swelling, vomiting and breathing difficulties, and in severe cases life-threatening anaphylaxis, which may be triggered by tiny amounts; people with severe allergies carry adrenaline auto-injectors and must strictly avoid the food. A food intolerance does not involve the immune system in this way. It is usually a digestive problem, such as lactose intolerance, where the body lacks enough of the enzyme to digest milk sugar, causing bloating or diarrhoea. Intolerance symptoms are uncomfortable, dose-dependent and not life-threatening."
+    },
+    {
+      "id": "nutrition-supplements-versus-foods-evidence-and-regulation",
+      "title": "Supplements versus foods: evidence and regulation",
+      "prompt": "How do supplements differ from foods in evidence and regulation?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1124"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Supplements are often regulated less strictly than medicines",
+          "criterion": "accuracy",
+          "keywords": [
+            "regulation",
+            "not tested like drugs",
+            "fssai",
+            "label claims"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Quality and contamination vary; claims often exceed evidence",
+          "criterion": "accuracy",
+          "keywords": [
+            "contamination",
+            "quality",
+            "claims",
+            "evidence"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Food provides nutrients in a complete package; supplements fill specific gaps",
+          "criterion": "accuracy",
+          "keywords": [
+            "whole foods",
+            "gaps",
+            "deficiency",
+            "third party tested"
+          ]
+        }
+      ],
+      "modelAnswer": "Dietary supplements are usually regulated more like foods than medicines, so in many countries, including India, they do not need to prove they work before being sold, and checks on their contents are limited. Studies have found products containing less of the stated ingredient, or contaminated with undeclared substances, including banned stimulants and steroids, which is a real risk for athletes. Marketing claims often go far beyond the scientific evidence. Whole foods provide nutrients together with fibre and many other beneficial compounds, and are better studied. Supplements are useful for specific, identified needs, such as vitamin B12 for vegans, vitamin D or iron for confirmed deficiencies, ideally chosen with a doctor and from third-party tested brands."
+    },
+    {
+      "id": "nutrition-alcohol-recovery-and-sleep",
+      "title": "Alcohol, recovery and sleep",
+      "prompt": "How does alcohol affect recovery and sleep?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1126"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Alcohol disrupts sleep quality, especially REM sleep",
+          "criterion": "accuracy",
+          "keywords": [
+            "sleep quality",
+            "rem",
+            "disrupts",
+            "wake up"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It impairs muscle repair and protein synthesis",
+          "criterion": "accuracy",
+          "keywords": [
+            "muscle repair",
+            "protein synthesis",
+            "recovery",
+            "hormones"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Dehydration, inflammation and poorer next-day performance",
+          "criterion": "accuracy",
+          "keywords": [
+            "dehydration",
+            "inflammation",
+            "next day",
+            "performance"
+          ]
+        }
+      ],
+      "modelAnswer": "Alcohol may help people fall asleep faster, but it reduces sleep quality: it suppresses REM sleep and causes more awakenings in the second half of the night, so people wake less rested. Because much recovery and memory consolidation happens during good sleep, this alone harms recovery. Alcohol also reduces muscle protein synthesis after exercise, can affect hormones involved in repair, promotes dehydration because it increases urine production, and can increase inflammation. The result is slower recovery, poorer performance the next day, and, with regular heavy drinking, worse training adaptations. Drinking in moderation, rehydrating, and avoiding alcohol right after hard training or before important events limits these effects."
+    },
+    {
+      "id": "nutrition-myths-about-detox-diets",
+      "title": "Myths about detox diets",
+      "prompt": "What are common myths about detox diets?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1127"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Myth: the body needs special products to remove toxins",
+          "criterion": "accuracy",
+          "keywords": [
+            "myth",
+            "toxins",
+            "special products",
+            "cleanse"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "The liver and kidneys already detoxify the body continuously",
+          "criterion": "accuracy",
+          "keywords": [
+            "liver",
+            "kidneys",
+            "already",
+            "naturally"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Quick weight loss is mostly water; risks and better habits",
+          "criterion": "accuracy",
+          "keywords": [
+            "water weight",
+            "risks",
+            "sustainable",
+            "evidence"
+          ]
+        }
+      ],
+      "modelAnswer": "Detox diets, juice cleanses, teas and supplements claim to flush \"toxins\" out of the body, usually without naming which toxins or providing evidence that they are removed. The main myth is that the body needs help: the liver, kidneys, gut, lungs and skin continuously process and eliminate waste and harmful substances, and no juice or tea has been shown to improve this in healthy people. The quick weight loss people notice is mostly water and gut contents from eating very little, and it returns quickly. Some detox products can be harmful, causing dehydration, electrolyte imbalances, or interactions with medicines. Real support for these organs comes from sleep, hydration, fibre-rich food and limiting alcohol."
+    },
+    {
+      "id": "nutrition-sustainable-eating-on-a-budget",
+      "title": "Sustainable eating on a budget",
+      "prompt": "How can someone build a sustainable eating pattern on a budget?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1128"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Base meals on affordable staples: grains, pulses, seasonal vegetables",
+          "criterion": "accuracy",
+          "keywords": [
+            "pulses",
+            "seasonal vegetables",
+            "staples",
+            "grains"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Plan meals, cook at home and reduce waste",
+          "criterion": "accuracy",
+          "keywords": [
+            "plan",
+            "cook at home",
+            "leftovers",
+            "waste"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Cheap protein sources and limiting costly processed foods",
+          "criterion": "accuracy",
+          "keywords": [
+            "eggs",
+            "soy",
+            "processed foods",
+            "budget"
+          ]
+        }
+      ],
+      "modelAnswer": "Healthy eating can be affordable by building meals around inexpensive staples: rice, wheat, millets and other whole grains, pulses like dal and chana, seasonal and local vegetables and fruits, which are cheaper and fresher, and affordable protein sources such as eggs, milk, curd, soy chunks and peanuts. Planning meals for the week and buying accordingly avoids impulse purchases and waste, and cooking at home in batches saves money and time. Leftovers can become new meals. Packaged snacks, sugary drinks and takeaway food are often expensive for the nutrition they provide. Most importantly, a pattern you can maintain, using foods you enjoy, matters more than a perfect but unaffordable plan."
+    },
+    {
+      "id": "nutrition-weight-change-versus-body-composition-change",
+      "title": "Weight change versus body composition change",
+      "prompt": "What is the difference between body-weight change and change in body composition?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "nutrition-education",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "nutrition-education",
+        "one-minute",
+        "vcn-1130"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Body weight is total mass, including water, muscle, fat and bone",
+          "criterion": "accuracy",
+          "keywords": [
+            "total mass",
+            "water",
+            "muscle",
+            "fat"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Body composition is the proportion of fat versus lean mass",
+          "criterion": "accuracy",
+          "keywords": [
+            "body composition",
+            "fat mass",
+            "lean mass",
+            "percentage"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Strength training can improve composition with little weight change; measuring it",
+          "criterion": "accuracy",
+          "keywords": [
+            "recomposition",
+            "strength training",
+            "measure",
+            "waist"
+          ]
+        }
+      ],
+      "modelAnswer": "Body weight is everything on the scale: fat, muscle, bone, organs, water and food in the gut, so it can shift by one or two kilograms in a day with water and salt intake. Body composition describes what that weight is made of, especially the proportion of fat mass to lean mass such as muscle. Two people with the same weight can have very different health and appearance. When someone starts strength training and eats enough protein, they may lose fat and gain muscle at the same time, called recomposition, so their weight barely changes while their health and shape improve. That is why tracking waist circumference, strength and, where available, body-composition measurements is more informative than weight alone."
+    },
+    {
+      "id": "habits-consistent-sleep-timing",
+      "title": "Consistent sleep timing",
+      "prompt": "How does consistent sleep timing support daily functioning?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1131"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The body clock, circadian rhythm, works best with regular timing",
+          "criterion": "accuracy",
+          "keywords": [
+            "circadian rhythm",
+            "body clock",
+            "regular",
+            "same time"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Regular sleep improves sleep quality, alertness and mood",
+          "criterion": "accuracy",
+          "keywords": [
+            "alertness",
+            "mood",
+            "sleep quality",
+            "energy"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Irregular schedules cause social jet lag; keep weekends close to weekdays",
+          "criterion": "accuracy",
+          "keywords": [
+            "social jet lag",
+            "weekends",
+            "irregular",
+            "wake time"
+          ]
+        }
+      ],
+      "modelAnswer": "Our internal body clock, the circadian rhythm, controls when we feel sleepy and alert, and regulates hormones, body temperature and digestion across the day. It works best when we go to bed and, especially, wake up at roughly the same times every day. A consistent schedule makes it easier to fall asleep, improves sleep quality, and leads to more stable energy, concentration and mood during the day. Irregular schedules, such as staying up very late and sleeping in on weekends, create \"social jet lag\", leaving people groggy on Monday as if they had travelled across time zones. Keeping weekend wake times within about an hour of weekdays helps."
+    },
+    {
+      "id": "habits-sleep-debt-and-weekend-catch-up",
+      "title": "Sleep debt and weekend catch-up",
+      "prompt": "What is sleep debt, and can it always be repaid over a weekend?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1132"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Sleep debt is the cumulative shortfall between sleep needed and sleep obtained",
+          "criterion": "accuracy",
+          "keywords": [
+            "cumulative",
+            "shortfall",
+            "need",
+            "deficit"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Weekend lie-ins partly help but do not fully reverse effects",
+          "criterion": "accuracy",
+          "keywords": [
+            "weekend",
+            "partly",
+            "not fully",
+            "catch up"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Chronic debt harms attention, metabolism and health; regular adequate sleep is best",
+          "criterion": "accuracy",
+          "keywords": [
+            "attention",
+            "metabolism",
+            "chronic",
+            "consistent"
+          ]
+        }
+      ],
+      "modelAnswer": "Sleep debt is the accumulated difference between the sleep your body needs, typically seven to nine hours for adults, and the sleep you actually get. Sleeping six hours a night for five weekdays creates a debt of five to ten hours. Sleeping longer on weekends can reduce sleepiness and repay part of it, but studies suggest it does not fully reverse the effects: attention, reaction time and metabolic health, such as blood sugar control, may remain impaired, and long weekend lie-ins disrupt the body clock. Chronic sleep debt is linked to poorer health, mood and performance, and people often underestimate how impaired they are. The best approach is getting enough sleep consistently."
+    },
+    {
+      "id": "habits-habits-that-survive-a-busy-schedule",
+      "title": "Habits that survive a busy schedule",
+      "prompt": "How can someone build a habit that survives a busy work schedule?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1133"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Start very small, so it is possible even on bad days",
+          "criterion": "accuracy",
+          "keywords": [
+            "start small",
+            "tiny",
+            "two minutes",
+            "minimum"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Attach it to an existing routine with a clear cue",
+          "criterion": "accuracy",
+          "keywords": [
+            "cue",
+            "anchor",
+            "existing routine",
+            "trigger"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Plan for obstacles and focus on consistency, not perfection",
+          "criterion": "accuracy",
+          "keywords": [
+            "plan",
+            "obstacles",
+            "consistency",
+            "never miss twice"
+          ]
+        }
+      ],
+      "modelAnswer": "Habits survive busy periods when they are small enough to do even on the worst days. Instead of \"exercise an hour daily\", start with a minimum version, such as ten push-ups or a ten-minute walk, which can expand when time allows. Attach the habit to an existing routine, a cue, such as \"after my morning tea, I stretch for five minutes\", so it does not depend on remembering. Prepare the environment, like keeping shoes by the door. Plan ahead for obstacles with if-then plans: \"If I work late, I will do a short home workout.\" Track it simply, and aim for consistency rather than perfection; missing once is normal, but try never to miss twice in a row."
+    },
+    {
+      "id": "habits-rest-versus-active-recovery",
+      "title": "Rest versus active recovery",
+      "prompt": "What is the difference between rest and active recovery?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1134"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Rest means little or no physical activity",
+          "criterion": "accuracy",
+          "keywords": [
+            "rest",
+            "no activity",
+            "complete",
+            "passive"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Active recovery is light, low-intensity movement",
+          "criterion": "accuracy",
+          "keywords": [
+            "active recovery",
+            "light",
+            "walking",
+            "easy cycling"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Active recovery boosts blood flow and reduces stiffness; full rest is needed for injury or exhaustion",
+          "criterion": "accuracy",
+          "keywords": [
+            "blood flow",
+            "stiffness",
+            "injury",
+            "both"
+          ]
+        }
+      ],
+      "modelAnswer": "Rest means taking a break from structured training with little physical activity, allowing the body to recover fully, which is especially important after very hard efforts, during illness or injury, or when fatigue is high. Active recovery means doing light, low-intensity movement, such as an easy walk, gentle cycling, swimming, yoga or mobility work, at an effort where you could easily hold a conversation. It increases blood flow, may reduce stiffness and soreness, and helps maintain the habit of moving, without adding significant training stress. Both have a place in a weekly plan: many people use active recovery on days between hard sessions and full rest when the body clearly needs it."
+    },
+    {
+      "id": "habits-adding-movement-as-a-sedentary-worker",
+      "title": "Adding movement as a sedentary worker",
+      "prompt": "How can a sedentary worker add movement without a full workout?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1135"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Break up long sitting with short movement breaks",
+          "criterion": "accuracy",
+          "keywords": [
+            "break up sitting",
+            "every hour",
+            "stand",
+            "move"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Build activity into daily life: walking calls, stairs, commuting",
+          "criterion": "accuracy",
+          "keywords": [
+            "walking meetings",
+            "stairs",
+            "walk",
+            "commute"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Short bursts of exercise add up; benefits even without the gym",
+          "criterion": "accuracy",
+          "keywords": [
+            "exercise snacks",
+            "add up",
+            "steps",
+            "benefit"
+          ]
+        }
+      ],
+      "modelAnswer": "Long periods of uninterrupted sitting are linked to poorer metabolic health, even in people who exercise. A sedentary worker can add movement in small pieces throughout the day. Stand up and move for a couple of minutes every thirty to sixty minutes, perhaps with a reminder; take phone calls standing or walking; use stairs instead of lifts; walk to a colleague instead of messaging; get off transport a stop earlier; and take a short walk after meals, which helps blood sugar. Short \"exercise snacks\", such as a minute of squats or brisk stair climbing, add up. These habits increase daily steps and energy, and they complement, but do not fully replace, regular exercise."
+    },
+    {
+      "id": "habits-specific-measurable-and-realistic-goals",
+      "title": "Specific, measurable and realistic goals",
+      "prompt": "What makes a goal specific and measurable without becoming unrealistic?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1136"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Specific and measurable: clear action, number and deadline",
+          "criterion": "accuracy",
+          "keywords": [
+            "specific",
+            "measurable",
+            "number",
+            "deadline"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Realistic: based on current baseline and available time",
+          "criterion": "accuracy",
+          "keywords": [
+            "baseline",
+            "realistic",
+            "available time",
+            "current level"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Prefer process goals and review progress to adjust",
+          "criterion": "accuracy",
+          "keywords": [
+            "process goals",
+            "behaviour",
+            "review",
+            "adjust"
+          ]
+        }
+      ],
+      "modelAnswer": "A vague goal like \"get fit\" gives no direction. A specific, measurable goal states what, how much and by when, for example \"walk 8,000 steps on at least five days a week for the next six weeks\" or \"run 5 kilometres without stopping by March\". To stay realistic, base it on your current baseline and available time: someone who currently walks 3,000 steps should not jump to 15,000. It helps to focus on process goals, behaviours you control, such as three strength sessions a week, rather than only outcome goals like losing ten kilograms, which depend on many factors. Review progress every few weeks and adjust the goal up or down based on what actually happens."
+    },
+    {
+      "id": "habits-recognising-an-unsustainable-routine",
+      "title": "Recognising an unsustainable routine",
+      "prompt": "How can someone recognize when a routine is too demanding to sustain?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1138"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Frequently skipping sessions and relying on willpower",
+          "criterion": "accuracy",
+          "keywords": [
+            "skipping",
+            "willpower",
+            "dread",
+            "missed"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Persistent fatigue, poor sleep, irritability and declining performance",
+          "criterion": "accuracy",
+          "keywords": [
+            "fatigue",
+            "sleep",
+            "irritability",
+            "performance"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "It conflicts with work, family or other priorities; scale back",
+          "criterion": "accuracy",
+          "keywords": [
+            "conflicts",
+            "priorities",
+            "scale back",
+            "simplify"
+          ]
+        }
+      ],
+      "modelAnswer": "Warning signs include regularly missing planned sessions, needing huge willpower and feeling dread before each one, rather than it getting easier with time. Physical signs include persistent fatigue, poor sleep, frequent illness, nagging aches and stalled or declining performance. A routine is also unsustainable if it constantly conflicts with work, family, sleep or social life, causing stress or guilt, or depends on perfect conditions. If these signs appear, it is better to scale back to a smaller routine you can keep, for example three shorter sessions instead of six long ones, than to keep failing at an ambitious one. A sustainable routine is one that still works during a busy week."
+    },
+    {
+      "id": "habits-sunlight-routines-and-circadian-timing",
+      "title": "Sunlight, routines and circadian timing",
+      "prompt": "What is the role of sunlight and daily routines in circadian timing?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1139"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Morning light is the strongest signal that sets the body clock",
+          "criterion": "accuracy",
+          "keywords": [
+            "morning light",
+            "sunlight",
+            "signal",
+            "body clock"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Light suppresses melatonin; evening darkness allows it to rise",
+          "criterion": "accuracy",
+          "keywords": [
+            "melatonin",
+            "darkness",
+            "evening",
+            "suppress"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Regular meals, exercise and sleep times reinforce the rhythm",
+          "criterion": "accuracy",
+          "keywords": [
+            "regular meals",
+            "exercise timing",
+            "routine",
+            "consistent"
+          ]
+        }
+      ],
+      "modelAnswer": "The body clock runs on a cycle of roughly twenty-four hours, but it must be reset every day, and light is its strongest signal. Bright light, especially morning sunlight, tells the brain it is daytime, suppresses the sleep hormone melatonin, and anchors the timing of sleepiness so that it comes at a sensible hour in the evening. Even on cloudy days, outdoor light is far brighter than indoor lighting. In the evening, dimmer light allows melatonin to rise, preparing for sleep, while bright screens and lights can delay it. Other daily routines, such as regular wake times, meal times and exercise, act as additional cues that reinforce a stable rhythm."
+    },
+    {
+      "id": "habits-reducing-screen-interruptions-before-sleep",
+      "title": "Reducing screen interruptions before sleep",
+      "prompt": "How can people reduce screen-related interruptions before sleep?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1140"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Set a screen cut-off and keep phones out of the bedroom",
+          "criterion": "accuracy",
+          "keywords": [
+            "cut off",
+            "out of bedroom",
+            "charge elsewhere",
+            "alarm clock"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Use do-not-disturb, night modes and turn off notifications",
+          "criterion": "accuracy",
+          "keywords": [
+            "do not disturb",
+            "notifications",
+            "night mode",
+            "settings"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Replace scrolling with a calming wind-down routine",
+          "criterion": "accuracy",
+          "keywords": [
+            "wind down",
+            "reading",
+            "routine",
+            "relax"
+          ]
+        }
+      ],
+      "modelAnswer": "Screens interfere with sleep through bright light in the evening and, often more importantly, through stimulating content and notifications that keep the mind alert and lead to \"just one more video\". Practical steps include setting a screen cut-off, such as thirty to sixty minutes before bed, and charging the phone outside the bedroom, using a simple alarm clock instead. Do-not-disturb mode can silence notifications automatically at night, with exceptions for important contacts. Night modes and lower brightness reduce light exposure if screens are used. Most effective is replacing scrolling with a relaxing wind-down routine, like reading a paper book, light stretching, or preparing for the next day."
+    },
+    {
+      "id": "habits-returning-to-exercise-after-a-long-break",
+      "title": "Returning to exercise after a long break",
+      "prompt": "How can a person return to exercise after a long break?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1142"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Start well below previous levels",
+          "criterion": "accuracy",
+          "keywords": [
+            "start lower",
+            "previous level",
+            "reduce",
+            "half"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Increase gradually over weeks, letting tendons and joints adapt",
+          "criterion": "accuracy",
+          "keywords": [
+            "gradually",
+            "weeks",
+            "tendons",
+            "adapt"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Expect soreness, focus on consistency, and check with a doctor if needed",
+          "criterion": "accuracy",
+          "keywords": [
+            "consistency",
+            "soreness",
+            "doctor",
+            "health conditions"
+          ]
+        }
+      ],
+      "modelAnswer": "After months away, fitness and tissue tolerance decline, so the biggest mistake is restarting at your old level, which leads to extreme soreness or injury. Start well below what you used to do, perhaps half the previous weight, distance or duration, and focus on rebuilding consistency, for example three short sessions a week. Increase gradually over several weeks, because muscles regain strength faster than tendons and joints adapt. Expect some soreness in the first weeks and allow rest days between harder sessions. Muscle memory means fitness often returns faster than it was first built. People with health conditions, older adults or those returning after illness or injury should check with a doctor first."
+    },
+    {
+      "id": "habits-evaluating-wellness-claims-online",
+      "title": "Evaluating wellness claims online",
+      "prompt": "How should people evaluate wellness claims they see online?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1143"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Check who is making the claim and whether they profit",
+          "criterion": "accuracy",
+          "keywords": [
+            "source",
+            "influencer",
+            "selling",
+            "conflict of interest"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Look for scientific evidence, ideally human studies and expert consensus",
+          "criterion": "accuracy",
+          "keywords": [
+            "evidence",
+            "studies",
+            "human trials",
+            "consensus"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Be wary of miracle claims and testimonials; consult professionals",
+          "criterion": "accuracy",
+          "keywords": [
+            "miracle",
+            "testimonials",
+            "too good to be true",
+            "doctor"
+          ]
+        }
+      ],
+      "modelAnswer": "First, consider the source: is the person a qualified expert, such as a registered dietitian or doctor, and do they earn money from the product they promote? Then look for evidence: are claims supported by studies in humans, ideally several well-designed trials or a review, rather than one small study, animal research or personal stories? Be suspicious of red flags: miracle cures, \"doctors don't want you to know\", quick dramatic results, claims that one product fixes many unrelated problems, and before-and-after photos. Check what reputable health organisations say. Finally, discuss significant changes, such as supplements or extreme diets, with a qualified professional, especially if you have health conditions or take medication."
+    },
+    {
+      "id": "habits-making-hydration-easier-to-remember",
+      "title": "Making hydration easier to remember",
+      "prompt": "What are practical ways to make hydration easier to remember?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1144"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Keep a water bottle visible and refill it at set times",
+          "criterion": "accuracy",
+          "keywords": [
+            "water bottle",
+            "visible",
+            "refill",
+            "desk"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Link drinking to routines such as meals or breaks",
+          "criterion": "accuracy",
+          "keywords": [
+            "routines",
+            "meals",
+            "breaks",
+            "habit stacking"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use thirst and urine colour as guides; include water-rich foods",
+          "criterion": "accuracy",
+          "keywords": [
+            "urine colour",
+            "thirst",
+            "fruits",
+            "buttermilk"
+          ]
+        }
+      ],
+      "modelAnswer": "Making water easy and visible is the simplest strategy: keep a refillable bottle on your desk or in your bag, ideally one with volume markings, and refill it at set points such as arriving at work, lunch and mid-afternoon. Link drinking to existing routines: a glass when you wake up, with each meal, and whenever you take a break or finish a meeting. Phone reminders can help at first. Water-rich foods and drinks like fruits, vegetables, soups, buttermilk and coconut water count too. Rather than forcing a fixed number of litres, use thirst and urine colour as guides: pale yellow usually indicates good hydration, and needs increase in hot weather and with exercise."
+    },
+    {
+      "id": "habits-a-weekly-plan-with-exercise-recovery-and-flexibility",
+      "title": "A weekly plan with exercise, recovery and flexibility",
+      "prompt": "How can a weekly plan include exercise, recovery, and flexibility?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "healthy-habits",
+        "one-minute",
+        "vcn-1145"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Include strength and cardio on separate or alternating days",
+          "criterion": "accuracy",
+          "keywords": [
+            "strength",
+            "cardio",
+            "alternate",
+            "sessions"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Schedule rest or active recovery days between hard sessions",
+          "criterion": "accuracy",
+          "keywords": [
+            "rest days",
+            "active recovery",
+            "between",
+            "hard easy"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Build in flexibility: mobility work and options when life gets busy",
+          "criterion": "accuracy",
+          "keywords": [
+            "mobility",
+            "stretching",
+            "flexible schedule",
+            "backup"
+          ]
+        }
+      ],
+      "modelAnswer": "A balanced week could include two or three strength sessions covering the whole body, two or three cardio sessions, such as brisk walking, cycling or running, adding up to around 150 minutes of moderate activity, and short mobility or stretching sessions after workouts or on lighter days. Hard sessions should be separated by easier days, active recovery such as walking or yoga, and at least one full rest day. For example: Monday strength, Tuesday cardio, Wednesday mobility and walk, Thursday strength, Friday cardio, Saturday a longer activity or sport, Sunday rest. Building in flexibility, such as a shorter backup workout for busy days and the freedom to swap days, makes the plan sustainable."
+    },
+    {
+      "id": "sport-the-stretch-shortening-cycle",
+      "title": "The stretch-shortening cycle",
+      "prompt": "How does the stretch-shortening cycle contribute to explosive movement?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "sports-science",
+        "one-minute",
+        "vcn-1146"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A quick stretch of a muscle immediately followed by contraction",
+          "criterion": "accuracy",
+          "keywords": [
+            "stretch",
+            "then contract",
+            "eccentric",
+            "concentric"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Stores elastic energy in tendons and triggers a stretch reflex",
+          "criterion": "accuracy",
+          "keywords": [
+            "elastic energy",
+            "tendons",
+            "stretch reflex",
+            "spring"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Boosts power in jumping and sprinting; trained with plyometrics",
+          "criterion": "accuracy",
+          "keywords": [
+            "jumping",
+            "sprinting",
+            "plyometrics",
+            "more powerful"
+          ]
+        }
+      ],
+      "modelAnswer": "The stretch-shortening cycle is a quick lengthening of a muscle-tendon unit, the eccentric phase, followed immediately by its shortening, the concentric phase. Examples are the dip before a vertical jump or each foot contact in running. During the stretch, tendons act like springs and store elastic energy, which is released in the following push, and the rapid stretch triggers a reflex that increases muscle activation. Together, these produce more force and power than a contraction from a standstill, which is why you can jump higher with a countermovement than from a paused squat. The key is a short transition between the two phases. Plyometric exercises such as hops, bounds and depth jumps train it."
+    },
+    {
+      "id": "sport-rate-of-force-development",
+      "title": "Rate of force development",
+      "prompt": "What is rate of force development, and why does it matter in sport?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "sports-science",
+        "one-minute",
+        "vcn-1147"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "RFD is how quickly force rises at the start of a contraction",
+          "criterion": "accuracy",
+          "keywords": [
+            "how quickly",
+            "force",
+            "rise",
+            "rate"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Sport movements happen too fast to reach maximum force",
+          "criterion": "accuracy",
+          "keywords": [
+            "time limited",
+            "ground contact",
+            "fraction of a second",
+            "maximum force"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Trained with explosive lifts, plyometrics and heavy strength",
+          "criterion": "accuracy",
+          "keywords": [
+            "explosive training",
+            "plyometrics",
+            "olympic lifts",
+            "strength base"
+          ]
+        }
+      ],
+      "modelAnswer": "Rate of force development measures how fast an athlete can increase force from the beginning of a muscle contraction. It matters because most sports actions are very fast: a sprinter's foot is on the ground for about a tenth of a second, and a jump, punch or change of direction takes a fraction of a second, while reaching maximum force can take three tenths of a second or more. So the force an athlete can produce in that short window often matters more than their maximum strength. RFD depends on how quickly the nervous system recruits and fires motor units, and on muscle and tendon properties. It is improved through explosive training such as jumps, throws and Olympic lifts, built on a strength base."
+    },
+    {
+      "id": "sport-sprint-versus-endurance-training-adaptations",
+      "title": "Sprint versus endurance training adaptations",
+      "prompt": "How do sprint training and endurance training adaptations differ?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "sports-science",
+        "one-minute",
+        "vcn-1148"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Sprint training improves power, fast-twitch fibres and anaerobic capacity",
+          "criterion": "accuracy",
+          "keywords": [
+            "sprint",
+            "fast twitch",
+            "anaerobic",
+            "power"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Endurance training improves heart, capillaries and mitochondria",
+          "criterion": "accuracy",
+          "keywords": [
+            "endurance",
+            "mitochondria",
+            "capillaries",
+            "heart"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Different energy systems and goals; some overlap with interval training",
+          "criterion": "accuracy",
+          "keywords": [
+            "energy systems",
+            "specificity",
+            "intervals",
+            "overlap"
+          ]
+        }
+      ],
+      "modelAnswer": "Training adaptations are specific to the demands placed on the body. Sprint training, with short maximal efforts and long rests, improves the nervous system's ability to recruit fast-twitch muscle fibres rapidly, increases muscle power and stiffness of tendons, and enhances anaerobic energy systems, such as phosphocreatine stores and the ability to produce energy quickly without oxygen. Endurance training, with long sustained efforts, makes the heart pump more blood per beat, increases capillaries around muscle fibres and the number of mitochondria, and improves the use of fat as fuel and the body's ability to clear lactate, raising aerobic capacity. High-intensity interval training produces some of both, but elite performance requires specific training."
+    },
+    {
+      "id": "sport-workload-monitoring-and-injury-risk",
+      "title": "Workload monitoring and injury risk",
+      "prompt": "How can workload monitoring help manage injury risk?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "sports-science",
+        "one-minute",
+        "vcn-1150"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Track external load and internal load",
+          "criterion": "accuracy",
+          "keywords": [
+            "external load",
+            "internal load",
+            "distance",
+            "session rpe"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Sudden spikes compared with recent training raise injury risk",
+          "criterion": "accuracy",
+          "keywords": [
+            "spikes",
+            "acute",
+            "chronic",
+            "sudden increase"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use data to plan gradual progression and adjust individually",
+          "criterion": "accuracy",
+          "keywords": [
+            "gradual",
+            "adjust",
+            "wellness",
+            "individual"
+          ]
+        }
+      ],
+      "modelAnswer": "Workload monitoring means tracking how much an athlete trains and how hard it is for them. External load is what was done, such as distance run, sprints, jumps or weight lifted, often measured with GPS and sensors; internal load is how the body responded, measured with heart rate or simply the session's rating of perceived exertion multiplied by its duration. Injuries are more likely when load increases suddenly compared with what the athlete has recently been used to, for example after returning from a break or during a congested schedule. Monitoring helps coaches plan gradual progressions, spot spikes, and adjust training for individuals, combined with wellness questionnaires about sleep, soreness and fatigue."
+    },
+    {
+      "id": "sport-tendons-and-force-transmission",
+      "title": "Tendons and force transmission",
+      "prompt": "What is the role of tendons in transmitting force?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "sports-science",
+        "one-minute",
+        "vcn-1151"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Tendons connect muscle to bone and transmit muscle force to move joints",
+          "criterion": "accuracy",
+          "keywords": [
+            "connect muscle to bone",
+            "transmit force",
+            "joints",
+            "collagen"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "They store and release elastic energy like springs",
+          "criterion": "accuracy",
+          "keywords": [
+            "elastic energy",
+            "spring",
+            "achilles",
+            "running"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "They adapt slowly to training, so load must rise gradually",
+          "criterion": "accuracy",
+          "keywords": [
+            "adapt slowly",
+            "tendinopathy",
+            "gradual",
+            "blood supply"
+          ]
+        }
+      ],
+      "modelAnswer": "Tendons are tough bands of mostly collagen that connect muscles to bones. When a muscle contracts, the tendon transmits that pulling force to the bone, which moves the joint. Tendons are not just passive cables: they are slightly elastic, so they stretch under load and recoil, storing and returning energy, much like springs. The Achilles tendon, for example, returns a large share of the energy in each running stride, improving efficiency, and tendon stiffness affects how quickly force is transmitted in explosive movements. Tendons do adapt to training and become stronger and stiffer, but more slowly than muscles because of their lower blood supply, so rapid increases in load can cause tendon pain, tendinopathy."
+    },
+    {
+      "id": "sport-altitude-and-endurance-performance",
+      "title": "Altitude and endurance performance",
+      "prompt": "How does altitude affect endurance performance?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "sports-science",
+        "one-minute",
+        "vcn-1154"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Lower air pressure means less oxygen per breath",
+          "criterion": "accuracy",
+          "keywords": [
+            "air pressure",
+            "less oxygen",
+            "thin air",
+            "hypoxia"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Endurance performance drops at altitude; short sprints are less affected",
+          "criterion": "accuracy",
+          "keywords": [
+            "performance drops",
+            "vo2 max",
+            "endurance",
+            "sprints"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Acclimatisation raises red blood cells; live high, train low",
+          "criterion": "accuracy",
+          "keywords": [
+            "acclimatization",
+            "red blood cells",
+            "epo",
+            "live high train low"
+          ]
+        }
+      ],
+      "modelAnswer": "At high altitude, air pressure is lower, so each breath delivers less oxygen to the lungs and blood. Because endurance events depend on delivering oxygen to muscles, aerobic capacity falls, and performance in longer events declines, noticeably above about 1,500 metres. Very short, explosive events can actually benefit from thinner air, as seen in sprint and jump records at the 1968 Mexico City Olympics. Over days and weeks, the body acclimatises: breathing increases, and the kidneys release more EPO, stimulating production of red blood cells and haemoglobin to carry more oxygen. Endurance athletes exploit this with altitude camps, often using a \"live high, train low\" approach to gain the blood adaptations while still training at high intensity."
+    },
+    {
+      "id": "sport-demands-of-repeated-sprint-sports",
+      "title": "Demands of repeated-sprint sports",
+      "prompt": "What are the main demands of repeated sprint sports?",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "sports-science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "sports-science",
+        "one-minute",
+        "vcn-1155"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Many short sprints with brief, incomplete recovery",
+          "criterion": "accuracy",
+          "keywords": [
+            "repeated sprints",
+            "short recovery",
+            "intermittent",
+            "football"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Rely on fast anaerobic energy plus aerobic fitness to recover between efforts",
+          "criterion": "accuracy",
+          "keywords": [
+            "anaerobic",
+            "aerobic fitness",
+            "recovery",
+            "phosphocreatine"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Also need acceleration, change of direction and fatigue resistance",
+          "criterion": "accuracy",
+          "keywords": [
+            "acceleration",
+            "change of direction",
+            "fatigue",
+            "agility"
+          ]
+        }
+      ],
+      "modelAnswer": "Sports like football, hockey, basketball, kabaddi and racket sports involve many short, all-out efforts, sprints, jumps and changes of direction, separated by brief and incomplete recovery periods of jogging or walking, repeated over an entire match. Each sprint relies mainly on fast anaerobic energy, especially phosphocreatine, which is used up in seconds. Between sprints, the aerobic system restores those energy stores and clears metabolic by-products, so good aerobic fitness is crucial for maintaining sprint quality late in a game. Players also need strong acceleration over the first few metres, agility and change-of-direction ability, and resistance to fatigue, which training addresses with repeated-sprint drills, intervals and small-sided games."
     }
   ]
 }

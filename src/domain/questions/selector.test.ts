@@ -124,7 +124,8 @@ describe('buildSequence and pushRecent', () => {
   });
   it('stops early rather than repeating', () => {
     const f: QuestionFilter = { categoryId: 'tech-ai', subcategoryId: 'security', difficulty: null, mode: 'mock-interview' };
-    expect(buildSequence(taxonomy, questions, f, 5)).toHaveLength(1);
+    const pool = filterQuestions(questions, f).length;
+    expect(buildSequence(taxonomy, questions, f, pool + 5)).toHaveLength(pool);
   });
   it('keeps history bounded, unique and most-recent-first', () => {
     let r: string[] = [];

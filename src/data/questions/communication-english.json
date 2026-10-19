@@ -62,7 +62,7 @@
           ]
         }
       ],
-      "modelAnswer": "Recursion is solving a big problem by solving a smaller version of the same problem. Analogy: to find out which row you are sitting in at a cinema, you ask the person in front; they ask the person in front of them, and so on, until the person in the first row says 'row 1'. Then each person adds one and passes the answer back. It stops because someone reaches the front \u2014 that's the base case."
+      "modelAnswer": "Recursion is solving a big problem by solving a smaller version of the same problem. Analogy: to find out which row you are sitting in at a cinema, you ask the person in front; they ask the person in front of them, and so on, until the person in the first row says 'row 1'. Then each person adds one and passes the answer back. It stops because someone reaches the front — that's the base case."
     },
     {
       "id": "ce-concise-status-update",
@@ -82,7 +82,7 @@
         "deep-research"
       ],
       "expectedConcepts": [],
-      "modelAnswer": "'Status: the payment integration is two days behind. Done: refund flow and tests. Blocked: the provider's sandbox is rejecting webhooks \u2014 I've raised a ticket. Need: someone with provider-account access to check our webhook settings today. New estimate: Thursday, if the block is cleared by tomorrow.' Lead with the headline, use short sentences, avoid hedging."
+      "modelAnswer": "'Status: the payment integration is two days behind. Done: refund flow and tests. Blocked: the provider's sandbox is rejecting webhooks — I've raised a ticket. Need: someone with provider-account access to check our webhook settings today. New estimate: Thursday, if the block is cleared by tomorrow.' Lead with the headline, use short sentences, avoid hedging."
     },
     {
       "id": "ce-professional-pushback",
@@ -127,7 +127,7 @@
     {
       "id": "ce-grammar-past-tense",
       "title": "Grammar: narrating past work",
-      "prompt": "Narrate what you did last week at work or in your studies, paying attention to consistent past tense, articles (a, an, the) and subject\u2013verb agreement.",
+      "prompt": "Narrate what you did last week at work or in your studies, paying attention to consistent past tense, articles (a, an, the) and subject–verb agreement.",
       "categoryId": "communication-english",
       "subcategoryId": "grammar",
       "difficulty": "beginner",
@@ -143,6 +143,2697 @@
       ],
       "expectedConcepts": [],
       "modelAnswer": "'Last week I finished the authentication module. I wrote unit tests for the token service and fixed a bug that caused an error when a user logged in twice. On Thursday, the team reviewed my pull request, and I addressed their comments the same day.' Keep verbs in the past tense, use 'a' for first mention and 'the' for known things, and match verbs to subjects ('the team reviews', 'the tests pass')."
+    },
+    {
+      "id": "grammar-i-have-worked-versus-i-worked",
+      "title": "'I have worked' versus 'I worked'",
+      "prompt": "Explain the difference between 'I have worked' and 'I worked' with examples.",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0741"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Simple past for finished actions at a specific past time",
+          "criterion": "accuracy",
+          "keywords": [
+            "simple past",
+            "finished",
+            "specific time",
+            "last year"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Present perfect links the past to now, without a specific time",
+          "criterion": "accuracy",
+          "keywords": [
+            "present perfect",
+            "until now",
+            "still",
+            "experience"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Do not use present perfect with finished time expressions",
+          "criterion": "accuracy",
+          "keywords": [
+            "yesterday",
+            "in 2020",
+            "ago",
+            "mistake"
+          ]
+        }
+      ],
+      "modelAnswer": "\"I worked\" is the simple past. It describes a finished action at a definite time in the past: \"I worked at Infosys from 2019 to 2022\", \"I worked on the payment service last year\". The time is over. \"I have worked\" is the present perfect. It connects the past to the present, either because the situation continues, \"I have worked here for three years\", meaning I still work here, or because the experience matters now without a specific time, \"I have worked with Kafka before\". A common mistake is using the present perfect with a finished time expression, such as \"I have worked there in 2020\"; with a specific past time, use the simple past."
+    },
+    {
+      "id": "grammar-articles-in-technical-explanations",
+      "title": "Articles in technical explanations",
+      "prompt": "How do articles change meaning in technical explanations?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0742"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "\"A\" or \"an\" introduces something new or non-specific",
+          "criterion": "accuracy",
+          "keywords": [
+            "indefinite article",
+            "a an",
+            "non specific",
+            "first mention"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "\"The\" refers to something specific or already known",
+          "criterion": "accuracy",
+          "keywords": [
+            "definite article",
+            "specific",
+            "already mentioned"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Plurals and uncountable nouns can take no article for general statements",
+          "criterion": "accuracy",
+          "keywords": [
+            "no article",
+            "general",
+            "uncountable",
+            "plural"
+          ]
+        }
+      ],
+      "modelAnswer": "Articles tell the listener whether you mean something specific or general. \"A\" or \"an\" introduces something new or non-specific: \"We added a cache\" means one cache the listener has not heard about. \"The\" points to something specific that both people can identify: \"The cache was full\" means the cache we just mentioned. Changing the article changes the meaning: \"Restart a server\" means any one server, while \"restart the server\" means a particular one, which matters in an incident. For general statements, plural and uncountable nouns usually take no article: \"Caches improve performance\", \"Memory is limited\". Many speakers whose first language has no articles drop them, which can make instructions ambiguous."
+    },
+    {
+      "id": "grammar-making-long-spoken-sentences-easier-to-follow",
+      "title": "Making long spoken sentences easier to follow",
+      "prompt": "How can you make long sentences easier to follow when speaking?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0743"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Split long sentences into shorter ones with one idea each",
+          "criterion": "accuracy",
+          "keywords": [
+            "shorter sentences",
+            "one idea",
+            "split",
+            "break"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Put the main point first, then the details",
+          "criterion": "accuracy",
+          "keywords": [
+            "main point first",
+            "subject verb",
+            "front",
+            "lead"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use signposts and pauses to show structure",
+          "criterion": "accuracy",
+          "keywords": [
+            "signposts",
+            "pause",
+            "because"
+          ]
+        }
+      ],
+      "modelAnswer": "Listeners cannot reread a sentence, so long spoken sentences with several clauses are easy to lose. The simplest fix is to split them: one idea per sentence. Instead of \"The service, which we migrated last month after the outage that affected the payments team, is slower because the new database, which is in another region, adds latency\", say \"We migrated the service last month. Since then it has been slower. The reason is that the new database is in another region, which adds latency.\" Put the subject and main verb early, give the conclusion first and the details after, and use signposts such as \"first\", \"the reason is\" and \"so\", with short pauses between ideas."
+    },
+    {
+      "id": "grammar-subject-verb-agreement-mistakes",
+      "title": "Subject-verb agreement mistakes",
+      "prompt": "What are common subject-verb agreement mistakes in spoken English?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0744"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Third-person singular needs -s in the present tense",
+          "criterion": "accuracy",
+          "keywords": [
+            "third person",
+            "he she it",
+            "s ending",
+            "works"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "The verb agrees with the head noun, not nearby words",
+          "criterion": "accuracy",
+          "keywords": [
+            "head noun",
+            "of the",
+            "list of items"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Tricky cases: there is or there are, data, each and everyone",
+          "criterion": "accuracy",
+          "keywords": [
+            "there is",
+            "there are",
+            "each",
+            "everyone"
+          ]
+        }
+      ],
+      "modelAnswer": "The most common mistake is dropping the -s in the third-person singular present: \"The service run every hour\" should be \"The service runs every hour\", and \"she don't\" should be \"she doesn't\". Another is agreeing with the nearest noun instead of the real subject: \"The list of failed jobs are long\" should be \"The list ... is long\", because the subject is \"list\". \"There is\" and \"there are\" must match what follows: \"there are two problems\", not \"there is two problems\". Words like \"each\", \"everyone\" and \"nobody\" take singular verbs: \"Each test has a name\". In speech, slowing down slightly at the verb helps you catch these."
+    },
+    {
+      "id": "grammar-conditionals-for-hypothetical-technical-scenarios",
+      "title": "Conditionals for hypothetical technical scenarios",
+      "prompt": "How do conditionals help explain hypothetical technical scenarios?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0745"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Zero and first conditionals for facts and likely outcomes",
+          "criterion": "accuracy",
+          "keywords": [
+            "if the",
+            "will",
+            "zero conditional",
+            "first conditional"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Second conditional for hypothetical or unlikely situations",
+          "criterion": "accuracy",
+          "keywords": [
+            "second conditional",
+            "if we had",
+            "would",
+            "hypothetical"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Third conditional for past situations that did not happen",
+          "criterion": "accuracy",
+          "keywords": [
+            "third conditional",
+            "would have",
+            "had been",
+            "past"
+          ]
+        }
+      ],
+      "modelAnswer": "Conditionals show how likely or real a situation is. The zero conditional states general facts: \"If the cache is empty, the request goes to the database.\" The first conditional describes likely future outcomes: \"If traffic doubles, the database will become the bottleneck.\" The second conditional describes hypothetical or less likely situations: \"If we had ten times more users, we would need to shard the data.\" The third conditional talks about a past that did not happen, which is useful in postmortems: \"If we had added an alert, we would have noticed the problem earlier.\" Choosing the right form tells listeners whether you are describing a fact, a plan or a hypothetical."
+    },
+    {
+      "id": "grammar-active-voice-for-clearer-explanations",
+      "title": "Active voice for clearer explanations",
+      "prompt": "How can you use active voice to make an explanation clearer?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0746"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Active voice names who does the action",
+          "criterion": "accuracy",
+          "keywords": [
+            "active voice",
+            "subject",
+            "who does",
+            "actor"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It is usually shorter and more direct than passive",
+          "criterion": "accuracy",
+          "keywords": [
+            "shorter",
+            "direct",
+            "clear",
+            "passive voice"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Example of rewriting a passive sentence",
+          "criterion": "accuracy",
+          "keywords": [
+            "rewrite",
+            "example",
+            "instead of",
+            "was"
+          ]
+        }
+      ],
+      "modelAnswer": "In active voice, the subject performs the action: \"The scheduler retries failed jobs.\" In passive voice, the action is done to the subject, and the actor is often missing: \"Failed jobs are retried.\" Active sentences are usually shorter, more direct, and make responsibility clear, which is helpful in technical explanations where the listener needs to know which component does what. For example, \"The request is validated, and then the data is saved\" becomes \"The API gateway validates the request, and then the order service saves the data.\" Now the listener knows exactly which parts of the system are involved. Use active voice by default, and passive only when the actor is unknown or unimportant."
+    },
+    {
+      "id": "grammar-passive-voice-in-incident-reports",
+      "title": "Passive voice in incident reports",
+      "prompt": "When is passive voice useful in incident reports?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0747"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Focus on what happened to the system rather than who",
+          "criterion": "accuracy",
+          "keywords": [
+            "focus on system",
+            "what happened",
+            "impact",
+            "object"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Blameless tone when the actor does not matter",
+          "criterion": "accuracy",
+          "keywords": [
+            "blameless",
+            "not blame",
+            "person",
+            "tone"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use active voice for actions and owners going forward",
+          "criterion": "accuracy",
+          "keywords": [
+            "active voice",
+            "owner",
+            "action items",
+            "clear"
+          ]
+        }
+      ],
+      "modelAnswer": "Passive voice is useful when the important thing is what happened, not who did it. In an incident report, \"The database was overloaded at 14:05\" or \"Requests were dropped for twelve minutes\" keeps the focus on the system and the impact. It also supports a blameless tone: \"A misconfigured flag was deployed\" focuses on the event, while \"Ravi deployed the wrong flag\" points at a person, which discourages honest reporting. But overusing passive voice makes reports vague, so use active voice when responsibility must be clear, especially in action items: \"The platform team will add a validation check by Friday.\""
+    },
+    {
+      "id": "grammar-transition-words-in-spoken-answers",
+      "title": "Transition words in spoken answers",
+      "prompt": "How do transition words improve the structure of a spoken answer?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0748"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Transitions show the relationship between ideas",
+          "criterion": "accuracy",
+          "keywords": [
+            "relationship",
+            "connect",
+            "link",
+            "ideas"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Sequence, contrast, cause and conclusion words",
+          "criterion": "accuracy",
+          "keywords": [
+            "however",
+            "because",
+            "so"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "They help listeners follow without seeing text",
+          "criterion": "accuracy",
+          "keywords": [
+            "listener",
+            "follow",
+            "structure",
+            "signal"
+          ]
+        }
+      ],
+      "modelAnswer": "Listeners cannot see paragraphs or bullet points, so transition words act as spoken structure. They tell the listener how the next idea relates to the previous one. Sequence words, such as \"first\", \"then\" and \"finally\", show steps. Contrast words, such as \"however\", \"but\" and \"on the other hand\", signal a trade-off or exception. Cause-and-effect words, such as \"because\", \"so\" and \"as a result\", explain reasoning. Summary words, such as \"overall\" and \"in short\", signal the conclusion. For example: \"First, we added caching. However, that caused stale data, so we added expiry. As a result, latency halved.\" Without them, the same facts sound like a disconnected list."
+    },
+    {
+      "id": "grammar-fixing-mixed-past-and-present-tense",
+      "title": "Fixing mixed past and present tense",
+      "prompt": "How would you correct a sentence that mixes past and present tense?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0750"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Identify the time frame of the story",
+          "criterion": "accuracy",
+          "keywords": [
+            "time frame",
+            "past",
+            "present",
+            "story"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Keep tense consistent within that time frame",
+          "criterion": "accuracy",
+          "keywords": [
+            "consistent",
+            "same tense",
+            "was"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Change tense only when the time really changes, like general truths",
+          "criterion": "accuracy",
+          "keywords": [
+            "general truth",
+            "still true",
+            "present tense",
+            "change"
+          ]
+        }
+      ],
+      "modelAnswer": "First decide the time frame. In \"Yesterday the build fails and we restarted the server\", the story happened yesterday, so both verbs should be in the past: \"Yesterday the build failed, and we restarted the server.\" The rule is to keep one tense for one time frame, and only change tense when the time actually changes. For example, it is correct to say \"We discovered that the service uses an old library\", because the service still uses it today, so the present tense is accurate. When telling past stories in interviews, a common mistake is drifting into the present midway, which sounds less clear, so practise narrating projects entirely in the past."
+    },
+    {
+      "id": "grammar-countable-and-uncountable-nouns-in-technical-writing",
+      "title": "Countable and uncountable nouns in technical writing",
+      "prompt": "How do countable and uncountable nouns affect technical writing?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0751"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Countable nouns have plurals and take a or many",
+          "criterion": "accuracy",
+          "keywords": [
+            "countable",
+            "plural",
+            "many",
+            "a bug"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Uncountable nouns have no plural and take much or less",
+          "criterion": "accuracy",
+          "keywords": [
+            "uncountable",
+            "much",
+            "information",
+            "software"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Common technical mistakes: softwares, feedbacks, informations",
+          "criterion": "accuracy",
+          "keywords": [
+            "softwares",
+            "feedbacks",
+            "informations",
+            "advices"
+          ]
+        }
+      ],
+      "modelAnswer": "Countable nouns can be counted, so they have plural forms and take \"a\", \"many\" and \"fewer\": a bug, two servers, many requests, fewer errors. Uncountable nouns are treated as a mass, so they have no plural and take \"much\", \"less\" or \"some\": information, software, hardware, feedback, advice, equipment, research, and usually code and data. Common mistakes in technical English include \"softwares\", \"feedbacks\", \"informations\" and \"many code\". To count uncountable things, add a countable unit: \"two pieces of feedback\", \"three software packages\", \"a line of code\". \"Data\" is used as uncountable in most technical writing, \"the data is ready\", though \"the data are\" is also accepted."
+    },
+    {
+      "id": "grammar-question-tags-and-polite-phrasing",
+      "title": "Question tags and polite phrasing",
+      "prompt": "How can question tags and polite phrasing help in professional conversation?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0752"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Question tags check agreement or soften statements",
+          "criterion": "accuracy",
+          "keywords": [
+            "question tag",
+            "isnt it",
+            "right",
+            "check"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Polite phrasing uses could, would and indirect questions",
+          "criterion": "accuracy",
+          "keywords": [
+            "could you",
+            "would you mind",
+            "indirect",
+            "polite"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Softening keeps collaboration while staying clear",
+          "criterion": "accuracy",
+          "keywords": [
+            "soften",
+            "direct",
+            "tone",
+            "clear"
+          ]
+        }
+      ],
+      "modelAnswer": "Question tags are short questions added to the end of a statement, such as \"The release is on Friday, isn't it?\" or \"You tested this on staging, didn't you?\". They check understanding or invite agreement, and they make statements sound less abrupt. Polite phrasing does similar work: \"Could you review my pull request when you have a moment?\" or \"Would you mind sharing the logs?\" sounds more collaborative than \"Review my PR\" or \"Send the logs\". Indirect questions, such as \"Do you know why the test failed?\", are softer than \"Why did the test fail?\". The goal is to be polite while remaining clear about what you need and by when."
+    },
+    {
+      "id": "grammar-modal-verbs-for-certainty-and-obligation",
+      "title": "Modal verbs for certainty and obligation",
+      "prompt": "How do modal verbs express certainty, possibility, and obligation?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0753"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Certainty and probability: will, must, should, might, could",
+          "criterion": "accuracy",
+          "keywords": [
+            "will",
+            "must",
+            "might",
+            "could"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Obligation and advice: must, have to, should",
+          "criterion": "accuracy",
+          "keywords": [
+            "have to",
+            "should",
+            "need to",
+            "obligation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Choosing the right modal communicates confidence accurately",
+          "criterion": "accuracy",
+          "keywords": [
+            "confidence",
+            "accurate",
+            "uncertain",
+            "overclaim"
+          ]
+        }
+      ],
+      "modelAnswer": "Modal verbs let you express how sure you are and how necessary something is. For certainty, they form a scale: \"The fix will solve it\" is very confident; \"it should solve it\" is expected but not guaranteed; \"it might\" or \"it could solve it\" is only possible. \"It must be the cache\" means a strong logical conclusion, and \"it can't be the network\" rules something out. For obligation: \"We must rotate the keys\" or \"we have to\" means it is required, \"we should add tests\" is a recommendation, and \"we don't have to\" means it is optional. Using modals accurately avoids overclaiming in incidents and estimates, which builds trust."
+    },
+    {
+      "id": "grammar-turning-a-fragmented-answer-into-a-coherent-paragraph",
+      "title": "Turning a fragmented answer into a coherent paragraph",
+      "prompt": "How would you turn a fragmented answer into a coherent paragraph?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0754"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Start with a clear topic sentence or main point",
+          "criterion": "accuracy",
+          "keywords": [
+            "topic sentence",
+            "main point",
+            "answer first"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Order the ideas logically and connect them",
+          "criterion": "accuracy",
+          "keywords": [
+            "order",
+            "logical",
+            "connect",
+            "transitions"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use complete sentences and end with a conclusion",
+          "criterion": "accuracy",
+          "keywords": [
+            "complete sentences",
+            "conclusion",
+            "summary",
+            "link back"
+          ]
+        }
+      ],
+      "modelAnswer": "A fragmented answer sounds like \"Caching. Faster. But stale data. TTL maybe.\" To make it coherent, start with a topic sentence that answers the question: \"We added caching to make the product page faster.\" Then put the supporting ideas in a logical order and turn each fragment into a complete sentence, connecting them with transitions: \"This reduced load times significantly. However, it introduced the risk of showing stale prices, so we set a five-minute expiry.\" Finish with a short conclusion that links back to the question: \"Overall, the speed gain was worth the small delay in updates.\" Practising answers aloud in this pattern makes it automatic."
+    },
+    {
+      "id": "grammar-self-correcting-grammar-while-staying-fluent",
+      "title": "Self-correcting grammar while staying fluent",
+      "prompt": "How can you self-correct grammar without losing fluency?",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "one-minute",
+        "vcn-0755"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Correct only errors that change meaning",
+          "criterion": "accuracy",
+          "keywords": [
+            "change meaning",
+            "important errors",
+            "ignore small",
+            "priority"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Use a quick natural repair phrase and continue",
+          "criterion": "accuracy",
+          "keywords": [
+            "i mean",
+            "sorry",
+            "repair",
+            "continue"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Practise and review recordings afterwards rather than mid-sentence",
+          "criterion": "accuracy",
+          "keywords": [
+            "practice",
+            "record",
+            "review",
+            "afterwards"
+          ]
+        }
+      ],
+      "modelAnswer": "Constant self-correction makes speech hesitant, so prioritise. Correct immediately only when a mistake changes the meaning, for example a wrong tense that confuses when something happened, or \"can\" versus \"can't\". Do it quickly and naturally with a short repair phrase, such as \"we deploy, I mean we deployed, on Monday\", then continue without apologising. Small errors, like a missing article, are usually best ignored in the moment, because the listener still understands. Improvement comes mostly from practice outside the conversation: record yourself answering questions, listen back, note your repeated errors, and practise those specific patterns until they become automatic."
+    },
+    {
+      "id": "vocab-affect-versus-effect",
+      "title": "'Affect' versus 'effect'",
+      "prompt": "Explain the difference between 'affect' and 'effect' in a workplace example.",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0756"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Affect is usually a verb meaning to influence",
+          "criterion": "accuracy",
+          "keywords": [
+            "affect",
+            "verb",
+            "influence",
+            "changes"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Effect is usually a noun meaning the result",
+          "criterion": "accuracy",
+          "keywords": [
+            "effect",
+            "noun",
+            "result",
+            "outcome"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Workplace example sentences",
+          "criterion": "accuracy",
+          "keywords": [
+            "outage affected",
+            "the effect of",
+            "example",
+            "users"
+          ]
+        }
+      ],
+      "modelAnswer": "In most cases, \"affect\" is a verb meaning to influence or change something, and \"effect\" is a noun meaning the result of a change. For example: \"The outage affected about two thousand users\", and \"The effect of the outage was a ten percent drop in sales\". A useful memory trick is that affect is the action and effect is the end result. There is a less common use of \"effect\" as a verb meaning to bring about, as in \"The new manager effected several changes\", which means she made them happen. In everyday workplace English, using affect as the verb and effect as the noun will be correct almost every time."
+    },
+    {
+      "id": "vocab-efficient-versus-effective",
+      "title": "'Efficient' versus 'effective'",
+      "prompt": "How do 'efficient' and 'effective' differ when discussing software?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0757"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Effective means it achieves the intended result",
+          "criterion": "accuracy",
+          "keywords": [
+            "effective",
+            "achieves",
+            "goal",
+            "works"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Efficient means it uses few resources to do so",
+          "criterion": "accuracy",
+          "keywords": [
+            "efficient",
+            "resources"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Something can be one without the other",
+          "criterion": "accuracy",
+          "keywords": [
+            "one without the other",
+            "example",
+            "both",
+            "trade off"
+          ]
+        }
+      ],
+      "modelAnswer": "\"Effective\" means something achieves the intended result: an effective test suite catches the bugs that matter, and an effective fix actually solves the problem. \"Efficient\" means it achieves the result with little waste of time, memory, money or effort: an efficient algorithm finishes quickly using little memory. Something can be one without the other. A brute-force search that checks every record is effective, because it finds the answer, but inefficient. A very fast cache that serves stale prices is efficient but not effective. In design discussions, the goal is usually to be effective first and then efficient enough."
+    },
+    {
+      "id": "vocab-assumption-constraint-and-dependency",
+      "title": "'Assumption', 'constraint' and 'dependency'",
+      "prompt": "When would you use 'assumption', 'constraint', and 'dependency'?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0758"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Assumption: something believed true without proof",
+          "criterion": "accuracy",
+          "keywords": [
+            "assumption",
+            "believe",
+            "not verified",
+            "assume"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Constraint: a fixed limit you must work within",
+          "criterion": "accuracy",
+          "keywords": [
+            "constraint",
+            "limit",
+            "must",
+            "budget"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Dependency: something you rely on from someone or something else",
+          "criterion": "accuracy",
+          "keywords": [
+            "dependency",
+            "rely on",
+            "another team",
+            "library"
+          ]
+        }
+      ],
+      "modelAnswer": "An assumption is something you treat as true without having proven it: \"We assume traffic will not exceed a thousand requests per second\", which should be checked later. A constraint is a fixed limit you must work within, such as a deadline, a budget, a regulation or a technical limit: \"Our constraint is that the data must stay in the EU.\" A dependency is something your work relies on that you do not fully control: \"This feature depends on the payments team's new API\" or \"we depend on an open-source library\". In project discussions it helps to state all three explicitly, because wrong assumptions, tight constraints and late dependencies are the main sources of risk."
+    },
+    {
+      "id": "vocab-robust-resilient-and-reliable",
+      "title": "'Robust', 'resilient' and 'reliable'",
+      "prompt": "Explain the difference between 'robust', 'resilient', and 'reliable'.",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0759"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Reliable: works correctly and consistently over time",
+          "criterion": "accuracy",
+          "keywords": [
+            "reliable",
+            "consistently",
+            "uptime",
+            "dependable"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Robust: handles bad input or unusual conditions without breaking",
+          "criterion": "accuracy",
+          "keywords": [
+            "robust",
+            "bad input",
+            "unexpected",
+            "withstand"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Resilient: recovers quickly after failures",
+          "criterion": "accuracy",
+          "keywords": [
+            "resilient",
+            "recover",
+            "bounce back",
+            "failure"
+          ]
+        }
+      ],
+      "modelAnswer": "They overlap, but each has a focus. \"Reliable\" means the system consistently does what it should over time, for example a reliable service with 99.99 percent uptime that users can depend on. \"Robust\" means it withstands difficult conditions without breaking, such as malformed input, unexpected load or edge cases: a robust parser rejects bad data gracefully instead of crashing. \"Resilient\" means it recovers quickly when failures do happen, for example by failing over to another region or retrying, and returning to normal service. In short: robust resists problems, resilient recovers from them, and reliability is the overall result users experience."
+    },
+    {
+      "id": "vocab-eventually-versus-ultimately",
+      "title": "'Eventually' versus 'ultimately'",
+      "prompt": "How do 'eventually' and 'ultimately' differ in professional English?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0760"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Eventually means after a delay or a long process",
+          "criterion": "accuracy",
+          "keywords": [
+            "eventually",
+            "after some time",
+            "in the end",
+            "delay"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Ultimately means finally, or most fundamentally",
+          "criterion": "accuracy",
+          "keywords": [
+            "ultimately",
+            "fundamentally",
+            "final",
+            "most important"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Eventually is not a translation of possibly",
+          "criterion": "accuracy",
+          "keywords": [
+            "false friend",
+            "possibly",
+            "eventualmente",
+            "mistake"
+          ]
+        }
+      ],
+      "modelAnswer": "\"Eventually\" means something happens after some time, often after a delay or a series of steps: \"We eventually found the bug after two days of debugging\", or in system design, \"eventually consistent\" means replicas will agree after a delay. \"Ultimately\" means finally, at the end of a process, or at the most fundamental level: \"Ultimately, the decision belongs to the product owner\", or \"the outage was ultimately caused by an expired certificate\". A common mistake by speakers of some European languages is using \"eventually\" to mean \"possibly\", as in \"we could eventually use Redis\", which in English sounds like \"we will finally use Redis\"."
+    },
+    {
+      "id": "vocab-mitigate-in-an-incident-update",
+      "title": "'Mitigate' in an incident update",
+      "prompt": "What does 'mitigate' mean, and how would you use it in an incident update?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0761"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Mitigate means to reduce the severity or impact",
+          "criterion": "accuracy",
+          "keywords": [
+            "mitigate",
+            "reduce",
+            "impact",
+            "severity"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It differs from resolve or fix the root cause",
+          "criterion": "accuracy",
+          "keywords": [
+            "resolve",
+            "root cause",
+            "not fixed",
+            "workaround"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Example incident update sentence",
+          "criterion": "accuracy",
+          "keywords": [
+            "we have mitigated",
+            "rolled back",
+            "example",
+            "update"
+          ]
+        }
+      ],
+      "modelAnswer": "\"Mitigate\" means to make something less severe or harmful, without necessarily removing its cause. In incidents, the difference between mitigated and resolved matters. For example: \"Update 14:30: We have mitigated the issue by rolling back the latest release. Checkout error rates are back to normal. We are still investigating the root cause and will share a final update once it is resolved.\" Here, users are no longer affected, but the underlying bug is not yet fixed. A common mistake is \"mitigate against\", which is usually unnecessary; you mitigate a risk, not mitigate against it."
+    },
+    {
+      "id": "vocab-ensure-assure-and-insure",
+      "title": "'Ensure', 'assure' and 'insure'",
+      "prompt": "How do 'ensure', 'assure', and 'insure' differ?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0762"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Ensure: make certain something happens",
+          "criterion": "accuracy",
+          "keywords": [
+            "ensure",
+            "make certain",
+            "guarantee",
+            "happens"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Assure: tell someone confidently to remove doubt",
+          "criterion": "accuracy",
+          "keywords": [
+            "assure",
+            "tell",
+            "confidence",
+            "person"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Insure: protect financially with insurance",
+          "criterion": "accuracy",
+          "keywords": [
+            "insure",
+            "insurance",
+            "financial",
+            "policy"
+          ]
+        }
+      ],
+      "modelAnswer": "All three relate to certainty, but they are used differently. \"Ensure\" means to make sure something happens: \"The tests ensure the API returns the correct status codes.\" \"Assure\" means to tell a person something confidently so that they stop worrying, so it is followed by a person: \"I assure you the data is backed up.\" \"Insure\" means to protect against financial loss with an insurance policy: \"The company insured its equipment against fire.\" In American English \"insure\" is sometimes used for ensure, but in professional writing it is safest to keep them separate: ensure an outcome, assure a person, insure property."
+    },
+    {
+      "id": "vocab-using-trade-off-in-system-design",
+      "title": "Using 'trade-off' in system design",
+      "prompt": "Explain 'trade-off' in a sentence about system design.",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0763"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A trade-off means gaining one thing by giving up another",
+          "criterion": "accuracy",
+          "keywords": [
+            "trade off",
+            "gain",
+            "give up",
+            "balance"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A system design example sentence",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "consistency",
+            "latency",
+            "cache"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Common phrases: trade-off between, make a trade-off, trade off X for Y",
+          "criterion": "accuracy",
+          "keywords": [
+            "between",
+            "make a trade off",
+            "trade off for",
+            "acceptable"
+          ]
+        }
+      ],
+      "modelAnswer": "A trade-off is a situation where you gain one benefit by accepting a cost in something else, because you cannot have both fully. For example: \"Caching the product pages is a trade-off between speed and freshness: pages load in milliseconds, but prices may be up to five minutes out of date.\" Common patterns are \"a trade-off between A and B\", \"we made a trade-off\", \"the trade-off is worth it\", and the verb form \"we traded off consistency for availability\". In interviews, naming the trade-off explicitly and explaining why you accepted it shows mature engineering judgement."
+    },
+    {
+      "id": "vocab-infer-versus-imply",
+      "title": "'Infer' versus 'imply'",
+      "prompt": "What is the difference between 'infer' and 'imply'?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0764"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Imply: the speaker suggests something indirectly",
+          "criterion": "accuracy",
+          "keywords": [
+            "imply",
+            "suggest",
+            "speaker",
+            "indirectly"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Infer: the listener draws a conclusion from evidence",
+          "criterion": "accuracy",
+          "keywords": [
+            "infer",
+            "conclude",
+            "listener",
+            "deduce"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Example showing both in one situation",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "logs",
+            "metrics",
+            "both"
+          ]
+        }
+      ],
+      "modelAnswer": "They describe the two sides of indirect meaning. The speaker or the evidence implies something: it suggests it without saying it directly. The listener infers it: they reach a conclusion based on what they see or hear. For example: \"The error logs imply that the database ran out of connections\", and \"From the logs, I inferred that the connection pool was too small.\" Or in conversation: \"Are you implying that my code caused the outage?\" \"No, but I inferred from the timing that the release might be related.\" A common mistake is using \"infer\" when you mean \"imply\"."
+    },
+    {
+      "id": "vocab-estimate-measure-and-benchmark",
+      "title": "'Estimate', 'measure' and 'benchmark'",
+      "prompt": "What is the difference between 'estimate', 'measure', and 'benchmark'?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0766"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Estimate: an approximate judgement before you have data",
+          "criterion": "accuracy",
+          "keywords": [
+            "estimate",
+            "approximate",
+            "guess",
+            "before"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Measure: obtain an actual value from observation",
+          "criterion": "accuracy",
+          "keywords": [
+            "measure",
+            "actual",
+            "observed",
+            "metrics"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Benchmark: a standardised test to compare performance",
+          "criterion": "accuracy",
+          "keywords": [
+            "benchmark",
+            "standard test",
+            "compare",
+            "reference"
+          ]
+        }
+      ],
+      "modelAnswer": "An estimate is an approximate calculation or judgement made without full data: \"I estimate the migration will take three days\", or a back-of-the-envelope calculation of storage needs. To measure is to obtain an actual value by observation: \"We measured the p99 latency at 240 milliseconds in production.\" A benchmark is a standardised, repeatable test used to compare performance against a reference or between options: \"We benchmarked both JSON libraries with the same payload.\" It can also be a noun meaning a reference point. In a good engineering discussion you estimate first to plan, then measure and benchmark to replace the estimate with evidence."
+    },
+    {
+      "id": "vocab-regression-in-a-software-context",
+      "title": "'Regression' in a software context",
+      "prompt": "How would you use 'regression' correctly in a software context?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0767"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A regression is a bug in something that previously worked",
+          "criterion": "accuracy",
+          "keywords": [
+            "previously worked",
+            "broke",
+            "bug",
+            "regression"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Regression tests check that old behaviour still works",
+          "criterion": "accuracy",
+          "keywords": [
+            "regression test",
+            "check",
+            "still works",
+            "suite"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Also performance regressions; different from statistical regression",
+          "criterion": "accuracy",
+          "keywords": [
+            "performance regression",
+            "statistics",
+            "slower",
+            "different meaning"
+          ]
+        }
+      ],
+      "modelAnswer": "In software, a regression is a bug where something that used to work stops working after a change: \"The new release introduced a regression in the login page; users with long passwords can no longer sign in.\" Regression tests are tests that run after every change to make sure existing behaviour still works, and a test written after a bug is fixed to prevent it returning is also called a regression test. There are performance regressions too: \"This commit caused a twenty percent latency regression.\" Be careful with context: in statistics and machine learning, \"regression\" means something completely different, a model that predicts a continuous value, as in linear regression."
+    },
+    {
+      "id": "vocab-precede-versus-proceed",
+      "title": "'Precede' versus 'proceed'",
+      "prompt": "What is the difference between 'precede' and 'proceed'?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0768"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Precede: come before something in time or order",
+          "criterion": "accuracy",
+          "keywords": [
+            "precede",
+            "come before",
+            "earlier",
+            "order"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Proceed: continue or go forward",
+          "criterion": "accuracy",
+          "keywords": [
+            "proceed",
+            "continue",
+            "go ahead",
+            "move forward"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Workplace example sentences",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "deployment",
+            "migration",
+            "approval"
+          ]
+        }
+      ],
+      "modelAnswer": "\"Precede\" means to come before something in time, order or position: \"A brief outage preceded the data loss\", or \"the migration step must precede the deployment\". The related adjective is \"preceding\", meaning previous. \"Proceed\" means to continue or to go ahead, often after a pause or approval: \"Once the tests pass, we can proceed with the release\", or \"please proceed to the next step\". They sound similar, so speakers mix them up, but the meanings are different: precede is about order, coming first; proceed is about moving forward."
+    },
+    {
+      "id": "vocab-ambiguous-versus-uncertain",
+      "title": "'Ambiguous' versus 'uncertain'",
+      "prompt": "How do 'ambiguous' and 'uncertain' differ?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0769"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Ambiguous: can be understood in more than one way",
+          "criterion": "accuracy",
+          "keywords": [
+            "ambiguous",
+            "more than one meaning",
+            "unclear",
+            "interpretations"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Uncertain: not known or not sure",
+          "criterion": "accuracy",
+          "keywords": [
+            "uncertain",
+            "not known",
+            "not sure",
+            "unknown"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Fix ambiguity by clarifying; reduce uncertainty with information",
+          "criterion": "accuracy",
+          "keywords": [
+            "clarify",
+            "information",
+            "example",
+            "requirement"
+          ]
+        }
+      ],
+      "modelAnswer": "Something ambiguous has more than one possible meaning: \"Send the report to the team leads and managers by Friday\" is ambiguous if it is unclear whether Friday applies only to the managers. Something uncertain is not known or not sure: \"It is uncertain whether the vendor will deliver the API on time.\" The remedies differ. Ambiguity is fixed by clarifying wording or asking which meaning was intended: \"Do you mean all users or only active ones?\" Uncertainty is reduced by gathering information, testing or waiting: \"We will know after the load test.\" A requirement can be both: ambiguous wording about an uncertain future."
+    },
+    {
+      "id": "vocab-learning-vocabulary-without-sounding-unnatural",
+      "title": "Learning vocabulary without sounding unnatural",
+      "prompt": "How can you learn and use new vocabulary without sounding unnatural?",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "vocabulary",
+        "one-minute",
+        "vcn-0770"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Learn words in context, with collocations and example sentences",
+          "criterion": "accuracy",
+          "keywords": [
+            "context",
+            "collocations",
+            "example sentences",
+            "phrases"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Notice how native or fluent speakers use them",
+          "criterion": "accuracy",
+          "keywords": [
+            "notice",
+            "listen",
+            "read",
+            "native speakers"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Practise actively and prefer precise over fancy words",
+          "criterion": "accuracy",
+          "keywords": [
+            "practise",
+            "precise",
+            "simple"
+          ]
+        }
+      ],
+      "modelAnswer": "Words sound unnatural when they are used in the wrong context or with the wrong partner words, such as \"do a decision\" instead of \"make a decision\". So learn vocabulary in context: when you meet a new word in an article, talk or documentation, note the whole phrase and a real example sentence, including its typical collocations, like \"mitigate a risk\" or \"raise a concern\". Pay attention to the register: some words are formal, others conversational. Then practise actively by using the phrase in your own speech or writing a few times that week. Finally, choose precise words over impressive ones: \"use\" is often better than \"utilise\"."
+    },
+    {
+      "id": "concise-a-technical-explanation-in-three-sentences",
+      "title": "A technical explanation in three sentences",
+      "prompt": "Summarize a long technical explanation in exactly three sentences.",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0771"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Here is a three-sentence summary of how HTTPS works. First, when your browser connects to a website, the site proves its identity with a certificate signed by a trusted authority. Then the browser and the server use public-key cryptography to agree on a shared secret key without ever sending it over the network. Finally, everything they exchange is encrypted with that key, so anyone intercepting the traffic sees only meaningless data. The pattern is useful for any topic: one sentence for the setup, one for the key mechanism, one for the result."
+    },
+    {
+      "id": "concise-removing-filler-without-sounding-abrupt",
+      "title": "Removing filler without sounding abrupt",
+      "prompt": "Explain how to remove filler phrases without sounding abrupt.",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0772"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Filler phrases, such as \"basically\", \"you know\", \"kind of\" and \"so, um, what I mean is\", add words without meaning. Removing them makes you sound more confident, but replacing them with nothing can sound blunt. The trick is to replace fillers with short pauses and with useful connecting words. A pause of half a second sounds thoughtful, not awkward. Transitions such as \"first\", \"the reason is\" and \"for example\" keep the speech flowing and add structure, unlike fillers. Warmth comes from tone and from polite phrases where they belong, such as \"good question\" or \"let me check I understood\". Record yourself to notice which fillers you use most, then work on one at a time."
+    },
+    {
+      "id": "concise-answering-a-broad-question-with-the-main-point-first",
+      "title": "Answering a broad question with the main point first",
+      "prompt": "How would you answer a broad question by stating the main point first?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0773"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I give the answer or conclusion in my first sentence, then support it. For example, if asked \"How was your last project?\", I would say: \"It was a success: we cut checkout time in half, though it took a month longer than planned. Two things made the difference: moving payment checks to a background job, and better caching. The delay came from an underestimated data migration.\" This structure, often called bottom line up front, means the listener gets the most important information even if they interrupt me or stop listening, and it helps me stay focused, because every following sentence must support the main point."
+    },
+    {
+      "id": "concise-a-20-second-project-summary",
+      "title": "A 20-second project summary",
+      "prompt": "Turn a detailed project description into a 20-second summary.",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0774"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "A 20-second summary has room for about fifty words, so I keep only the problem, what I did and the result. For example: \"Our support team spent hours manually tagging customer emails. I built a classifier that tags them automatically and routes them to the right team. It now handles eighty percent of emails correctly, saving about fifteen hours a week, and response times dropped by a third.\" Details such as the model type, the data pipeline or the challenges are left out, but ready if the listener asks a follow-up question."
+    },
+    {
+      "id": "concise-essential-context-versus-interesting-detail",
+      "title": "Essential context versus interesting detail",
+      "prompt": "How can you distinguish essential context from interesting but irrelevant detail?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0775"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I ask one question about each detail: does the listener need it to understand my point or make their decision? If removing it would make the answer confusing or misleading, it is essential context. If it is merely interesting to me, such as the history of the system, a clever trick, or a tangent about another team, it can go. Knowing the audience matters: a database schema detail may be essential for an engineer but irrelevant to a manager. I also keep in mind the question that was asked; anything that does not help answer it is a candidate to cut, or to offer briefly as \"I can say more about that if useful\"."
+    },
+    {
+      "id": "concise-a-complex-feature-in-one-example-and-one-trade-off",
+      "title": "A complex feature in one example and one trade-off",
+      "prompt": "Explain a complex feature using one example and one trade-off.",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0776"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Take database replication. Example: our online shop keeps one main database that handles all purchases, and three read-only copies that serve product pages; when you browse, you are reading from a copy, so the main database is not overloaded by browsing traffic. Trade-off: the copies are updated a fraction of a second after the main database, so right after you change your address, a page might briefly show the old one. We accept that delay for most pages, but checkout always reads from the main database, where being exactly up to date matters. One concrete example and one honest trade-off usually explain a feature better than a list of details."
+    },
+    {
+      "id": "concise-stopping-an-answer-from-drifting",
+      "title": "Stopping an answer from drifting",
+      "prompt": "How would you stop an answer from drifting away from the question?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0777"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Before speaking, I identify what the question really asks, and I start by answering it directly in one sentence, which anchors the rest of the answer. While speaking, I check each new point against that question: if I notice myself starting a story about something only loosely related, I cut it short with a phrase like \"but that is a side point\" and return. Having a simple structure in mind, such as point, reason, example, conclusion, helps me know where I am and when I am done. If I realise I have drifted, I recover by restating the question and my answer: \"So, to come back to your question: yes, because...\""
+    },
+    {
+      "id": "concise-signposting-in-a-short-answer",
+      "title": "Signposting in a short answer",
+      "prompt": "How can signposting help keep a short answer organized?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0778"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Signposting means telling the listener the structure of your answer as you go. At the start, you can preview it: \"There are two main reasons.\" Then mark each part: \"The first reason is cost. The second is reliability.\" And signal the end: \"So, in short, we chose the managed service.\" Even in a sixty-second answer, this helps listeners follow along and remember the key points, because they know how many points to expect and when each begins. It also keeps the speaker disciplined: once you have announced two reasons, you are less likely to wander into a third, unrelated topic."
+    },
+    {
+      "id": "concise-compressing-an-incident-update-for-executives",
+      "title": "Compressing an incident update for executives",
+      "prompt": "How would you compress a long incident update for an executive audience?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0779"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Executives need impact, status and decisions, not technical details. I compress the update into a few lines: what happened from the customer's point of view, how many were affected and for how long, the current status, what we are doing next, and whether I need anything from them. For example: \"Between 9:10 and 9:55 this morning, about fifteen percent of customers could not log in. Service is fully restored. The cause was a faulty configuration change, which we have rolled back. No data was lost. We will share a full review on Thursday, with steps to prevent a repeat. No action is needed from you.\" Technical detail goes in a linked document for those who want it."
+    },
+    {
+      "id": "concise-avoiding-repeating-the-same-point",
+      "title": "Avoiding repeating the same point",
+      "prompt": "How can you avoid repeating the same point using different words?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0781"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Repetition often happens when we are not sure whether the listener understood, or when we have not planned where the answer ends. To avoid it, make the point once, clearly, and then add something new, such as an example, a reason or a consequence, instead of rephrasing it. If you want to check understanding, ask a question, such as \"Does that make sense?\", rather than saying it again. A simple plan, point, support, conclusion, helps you know when you are finished. Recording your answers and listening back is the fastest way to notice phrases like \"so basically, as I said\" that signal repetition."
+    },
+    {
+      "id": "concise-a-yes-or-no-answer-with-a-qualification",
+      "title": "A yes-or-no answer with a qualification",
+      "prompt": "How would you answer a yes-or-no question that needs an important qualification?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0783"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I give the direct answer first, then the qualification immediately and briefly, so the listener gets both. For example, if asked \"Can we launch on Friday?\", I would say: \"Yes, with one condition: the payment provider must confirm the API change by Wednesday. If they do not, we would need to launch on Monday instead.\" Avoiding the yes or no and starting with a long explanation frustrates the listener and sounds evasive, while a plain \"yes\" without the condition could mislead them. Putting the answer first and the qualification second respects their time and stays honest."
+    },
+    {
+      "id": "concise-ending-an-answer-clearly",
+      "title": "Ending an answer clearly",
+      "prompt": "How can you end an answer clearly instead of trailing off?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0784"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Trailing off, with phrases like \"so yeah, that is kind of it\", happens when we have not decided how to finish. A clear ending is a short conclusion that links back to the question: \"So, in short, I would choose PostgreSQL because we need transactions.\" Then stop and let silence happen; there is no need to fill it. Other strong endings are a recommendation, a next step, or an offer, such as \"I can go deeper into the indexing if useful.\" Preparing your final sentence while you speak the middle part helps, and lowering your intonation at the end signals that you have finished."
+    },
+    {
+      "id": "concise-prioritising-three-facts-in-30-seconds",
+      "title": "Prioritising three facts in 30 seconds",
+      "prompt": "How would you prioritize three facts when you have only 30 seconds?",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "conciseness",
+        "one-minute",
+        "vcn-0785"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I put the most important fact first, the one the listener needs if they hear nothing else, usually the impact or the decision. Then the fact that explains it, and last the detail that is useful but optional. For example, in a quick update: \"The release is delayed by two days. The reason is a failed security check on the login feature. Everything else is ready and tested.\" To decide the order, I think about what the listener will do with the information. With thirty seconds, I also drop adjectives and background, and use short sentences, so each fact takes about ten seconds."
+    },
+    {
+      "id": "explain-an-api-as-an-everyday-analogy",
+      "title": "An API as an everyday analogy",
+      "prompt": "Explain an API using an everyday analogy.",
+      "categoryId": "communication-english",
+      "subcategoryId": "explaining-complex-ideas",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "explaining-complex-ideas",
+        "one-minute",
+        "vcn-0787"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Analogy: a waiter taking orders between you and the kitchen",
+          "criterion": "accuracy",
+          "keywords": [
+            "waiter",
+            "restaurant",
+            "menu",
+            "kitchen"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "An API defines what requests are allowed and what you get back",
+          "criterion": "accuracy",
+          "keywords": [
+            "requests",
+            "responses",
+            "rules",
+            "menu"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Hides internal details so both sides can change independently",
+          "criterion": "accuracy",
+          "keywords": [
+            "hides",
+            "internal",
+            "independently",
+            "contract"
+          ]
+        }
+      ],
+      "modelAnswer": "An API, an application programming interface, is like a waiter in a restaurant. You do not walk into the kitchen and cook; you look at the menu, tell the waiter what you want in a specific way, and the waiter brings back your food. The menu is like the API's documentation: it lists what you can request and what you will get. The kitchen is the other system, with its own internal workings that you never need to see. Because both sides only rely on the menu, the kitchen can change its equipment or recipes without customers noticing. A weather app, for example, uses a weather service's API to ask for the forecast without knowing how it is calculated."
+    },
+    {
+      "id": "explain-a-database-transaction-for-a-non-technical-audience",
+      "title": "A database transaction for a non-technical audience",
+      "prompt": "Explain a database transaction to a non-technical audience.",
+      "categoryId": "communication-english",
+      "subcategoryId": "explaining-complex-ideas",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "explaining-complex-ideas",
+        "one-minute",
+        "vcn-0788"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A group of steps that all happen or none happen",
+          "criterion": "accuracy",
+          "keywords": [
+            "all or nothing",
+            "group of steps",
+            "together",
+            "none"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Example: a bank transfer debits and credits together",
+          "criterion": "accuracy",
+          "keywords": [
+            "bank transfer",
+            "debit",
+            "credit",
+            "money"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Protects against failures and conflicting changes",
+          "criterion": "accuracy",
+          "keywords": [
+            "failure",
+            "crash",
+            "consistent",
+            "at the same time"
+          ]
+        }
+      ],
+      "modelAnswer": "A database transaction is a group of changes that must happen all together or not at all. Think of transferring 100 dollars from your savings to your current account. That is really two steps: take 100 dollars out of savings, and add 100 dollars to current. If the computer crashed after the first step but before the second, the money would simply vanish. A transaction treats both steps as one package: either both succeed, or the system undoes everything as if nothing happened. Transactions also make sure that two people changing the same data at the same time, like two people buying the last ticket, do not mess up each other's changes."
+    },
+    {
+      "id": "explain-how-a-cdn-speeds-up-websites",
+      "title": "How a CDN speeds up websites",
+      "prompt": "Describe how a CDN improves website performance without jargon.",
+      "categoryId": "communication-english",
+      "subcategoryId": "explaining-complex-ideas",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "explaining-complex-ideas",
+        "one-minute",
+        "vcn-0789"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Copies of the website's files are stored on servers around the world",
+          "criterion": "accuracy",
+          "keywords": [
+            "copies",
+            "around the world",
+            "servers",
+            "nearby"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Users get content from a nearby location, so it travels less distance",
+          "criterion": "accuracy",
+          "keywords": [
+            "nearby",
+            "distance",
+            "faster",
+            "closer"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Also reduces load on the main server and absorbs traffic spikes",
+          "criterion": "accuracy",
+          "keywords": [
+            "less load",
+            "main server",
+            "spikes",
+            "reliable"
+          ]
+        }
+      ],
+      "modelAnswer": "A content delivery network is like a chain of local warehouses for a website. Without one, every visitor, whether in Mumbai, London or São Paulo, gets images, videos and pages from the company's main server, perhaps in the United States, and the data has to travel across the world every time, which takes time. A CDN keeps copies of those files in many locations around the world, so each visitor is served by a nearby location, just as a local warehouse delivers faster than shipping from abroad. Pages load faster, the main server handles far fewer requests, and sudden traffic spikes, such as during a sale, are spread across many locations instead of overwhelming one."
+    },
+    {
+      "id": "explain-public-key-cryptography-with-an-analogy-and-its-limits",
+      "title": "Public-key cryptography with an analogy and its limits",
+      "prompt": "Explain public-key cryptography using a simple analogy and its limits.",
+      "categoryId": "communication-english",
+      "subcategoryId": "explaining-complex-ideas",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "explaining-complex-ideas",
+        "one-minute",
+        "vcn-0790"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Analogy: an open padlock anyone can close, but only you have the key",
+          "criterion": "accuracy",
+          "keywords": [
+            "padlock",
+            "anyone can lock",
+            "only you"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Public key encrypts or verifies; private key decrypts or signs",
+          "criterion": "accuracy",
+          "keywords": [
+            "public key",
+            "private key",
+            "encrypt",
+            "sign"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Limits of the analogy: signatures, key distribution and trust",
+          "criterion": "accuracy",
+          "keywords": [
+            "limits",
+            "signature",
+            "trust",
+            "certificate"
+          ]
+        }
+      ],
+      "modelAnswer": "Imagine you hand out many open padlocks for free but keep the only key. Anyone can put a message in a box and snap one of your padlocks shut, but only you can open it. That is public-key cryptography: your public key, the padlock, can be shared with everyone and used to encrypt messages to you, while your private key, which you never share, decrypts them. The analogy has limits. It does not show digital signatures, where you use your private key to sign and anyone can verify with the public key, proving a message came from you. And it hides the trust problem: how do you know a padlock really belongs to your bank and not an impostor? That is why websites use certificates from trusted authorities."
+    },
+    {
+      "id": "explain-how-a-neural-network-learns-from-examples",
+      "title": "How a neural network learns from examples",
+      "prompt": "Explain how a neural network learns from examples.",
+      "categoryId": "communication-english",
+      "subcategoryId": "explaining-complex-ideas",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "explaining-complex-ideas",
+        "one-minute",
+        "vcn-0791"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Makes a prediction from the input using adjustable numbers called weights",
+          "criterion": "accuracy",
+          "keywords": [
+            "prediction",
+            "weights",
+            "input",
+            "numbers"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Compares the prediction with the correct answer to measure the error",
+          "criterion": "accuracy",
+          "keywords": [
+            "compare",
+            "correct answer",
+            "error",
+            "loss"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Adjusts weights slightly to reduce the error, repeated over many examples",
+          "criterion": "accuracy",
+          "keywords": [
+            "adjust",
+            "many examples",
+            "repeat",
+            "gradually"
+          ]
+        }
+      ],
+      "modelAnswer": "A neural network is a large mathematical function with millions of adjustable numbers called weights. Learning works through repetition. You show it an example, say a photo labelled \"cat\", and it makes a guess based on its current weights; at first the guesses are essentially random. Then you measure how wrong the guess was, and an algorithm called backpropagation works out how each weight contributed to the error and nudges every weight slightly in the direction that would have made the answer better. Repeat this over thousands or millions of labelled examples, and the weights gradually settle into values that recognise the patterns, such as ears and whiskers, that distinguish cats, so it can handle photos it has never seen."
+    },
+    {
+      "id": "explain-eventual-consistency-with-a-real-world-example",
+      "title": "Eventual consistency with a real-world example",
+      "prompt": "Describe eventual consistency using a familiar real-world example.",
+      "categoryId": "communication-english",
+      "subcategoryId": "explaining-complex-ideas",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "explaining-complex-ideas",
+        "one-minute",
+        "vcn-0792"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Copies of data may briefly disagree after an update",
+          "criterion": "accuracy",
+          "keywords": [
+            "copies",
+            "briefly",
+            "disagree",
+            "replicas"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Real-world example: a social media post or shared document syncing",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "likes",
+            "profile picture",
+            "sync"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "All copies agree once updates spread; a trade-off for speed and availability",
+          "criterion": "accuracy",
+          "keywords": [
+            "eventually agree",
+            "propagate",
+            "trade off",
+            "availability"
+          ]
+        }
+      ],
+      "modelAnswer": "Think of changing your profile picture on a social network. You see the new picture immediately, but a friend in another country may still see the old one for a few seconds. That is because large services keep copies of data in many data centres, and an update reaches them one after another rather than all at once. For a short time, the copies disagree, but if no further changes happen, they all eventually show the same picture. That is eventual consistency. Companies accept this brief delay because it makes the service faster and keeps it working even if some data centres cannot reach each other. It is not acceptable for everything, though: a bank balance needs stronger guarantees."
+    },
+    {
+      "id": "explain-how-a-rate-limiter-protects-an-api",
+      "title": "How a rate limiter protects an API",
+      "prompt": "Describe how a rate limiter protects an API.",
+      "categoryId": "communication-english",
+      "subcategoryId": "explaining-complex-ideas",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "explaining-complex-ideas",
+        "one-minute",
+        "vcn-0798"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Limits how many requests a client can make in a time window",
+          "criterion": "accuracy",
+          "keywords": [
+            "limit",
+            "requests",
+            "per minute",
+            "client"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Protects against overload, abuse and one client hogging resources",
+          "criterion": "accuracy",
+          "keywords": [
+            "overload",
+            "abuse",
+            "fair",
+            "protect"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Rejects excess requests with an error telling clients when to retry",
+          "criterion": "accuracy",
+          "keywords": [
+            "reject",
+            "429",
+            "retry later",
+            "token bucket"
+          ]
+        }
+      ],
+      "modelAnswer": "A rate limiter is like a turnstile that only lets a certain number of people through per minute. For an API, it counts how many requests each client, identified by an API key, user or IP address, makes in a time window, and rejects requests beyond the limit, typically with a \"429 Too Many Requests\" response that says when to try again. This protects the service from being overwhelmed by traffic spikes or buggy clients stuck in a loop, slows down attackers trying to guess passwords, and ensures one heavy user cannot hog resources and slow things down for everyone else. Common implementations, such as the token bucket, also allow short bursts while enforcing the average rate."
+    },
+    {
+      "id": "impromptu-a-technology-that-changed-everyday-life",
+      "title": "A technology that changed everyday life",
+      "prompt": "Speak for one minute about a technology that changed everyday life.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0801"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "For me, the technology that changed everyday life most in the last decade is instant digital payments, such as UPI in India. A few years ago, paying a street vendor or splitting a bill with friends meant carrying cash and hunting for change. Today, you scan a QR code and the money moves in seconds, for free, even for tiny amounts. It changed more than convenience: small shopkeepers now have a digital record of their sales, which helps them get loans, and people in villages can receive money from family instantly. Of course, there are new risks, such as fraud and people who are not comfortable with smartphones being left behind. But overall, it has made daily life faster and more inclusive."
+    },
+    {
+      "id": "impromptu-a-small-problem-you-solved-recently",
+      "title": "A small problem you solved recently",
+      "prompt": "Explain a small problem you solved recently and what you learned.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0802"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Recently, my laptop became very slow every afternoon, and I assumed it was getting old. Instead of buying a new one, I decided to investigate. I opened the task manager when it was slow and noticed that a cloud backup program was using almost all the disk activity, because it was scheduled to scan all my files at two o'clock every day. I changed the schedule to run at night, and the laptop has been fast ever since. It is a small thing, but it reminded me of something useful at work too: before assuming the obvious cause, look at the evidence. A five-minute check saved me money and taught me to measure before deciding."
+    },
+    {
+      "id": "impromptu-a-book-film-or-article-that-changed-your-perspective",
+      "title": "A book, film or article that changed your perspective",
+      "prompt": "Describe a book, film, or article that changed your perspective.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0803"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "A book that changed my perspective is \"Thinking, Fast and Slow\" by Daniel Kahneman. It explains that our minds use two systems: a fast, intuitive one, and a slow, careful one, and that the fast system makes predictable mistakes, such as being overconfident or judging by whatever examples come to mind first. Before reading it, I trusted my first impressions quite a lot, in decisions and in judging people. Now, when a decision matters, I deliberately slow down, look for data, and ask what could prove me wrong. It has made me a better engineer, because debugging is exactly about not trusting your first guess, and a more patient person in arguments."
+    },
+    {
+      "id": "impromptu-fundamentals-versus-only-frameworks",
+      "title": "Fundamentals versus only frameworks",
+      "prompt": "Make a case for learning fundamentals instead of only frameworks.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0804"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I believe developers should invest in fundamentals, not only in frameworks, for three reasons. First, frameworks change quickly: the popular JavaScript framework of five years ago is already being replaced, but HTTP, databases, data structures and how operating systems work have stayed the same for decades. Second, fundamentals help you debug: when a framework behaves strangely, people who understand what happens underneath, such as how the browser renders or how a query is executed, find the problem much faster. Third, fundamentals make learning new frameworks easy, because most of them repackage the same ideas. Frameworks are still important for getting work done, but they should be built on a solid foundation, not replace it."
+    },
+    {
+      "id": "impromptu-a-day-spent-learning-a-completely-new-skill",
+      "title": "A day spent learning a completely new skill",
+      "prompt": "Explain how you would spend a day learning a completely new skill.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0806"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Suppose I wanted to learn basic photography in one day. In the morning, I would spend an hour on the fundamentals only, such as exposure, aperture and composition, from one good beginner video, instead of reading everything. Then I would go out and practise immediately, because skills come from doing: taking a hundred photos, deliberately trying each concept. After lunch, I would review my photos, compare them with examples I like, and identify the two biggest mistakes. In the afternoon, a second round of practice focused only on those mistakes. In the evening, I would write down what I learned and plan the next step. The key ideas are short theory, lots of practice, and quick feedback."
+    },
+    {
+      "id": "impromptu-staying-calm-under-pressure",
+      "title": "Staying calm under pressure",
+      "prompt": "Describe a useful habit for staying calm under pressure.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0807"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "One habit that really helps me is pausing to write down the situation before acting. When something goes wrong, for example a production problem or a tight deadline, my first instinct is to rush and try many things at once. Instead, I take one minute to write three lines: what I know, what I do not know, and the single next step. This sounds simple, but it slows my breathing, turns a vague feeling of panic into a concrete plan, and helps me communicate clearly with others. I combine it with a physical habit, a few slow breaths, which calms the body. Over time, people around me also become calmer, because calm is contagious, just like panic."
+    },
+    {
+      "id": "impromptu-an-overhyped-technology",
+      "title": "An overhyped technology",
+      "prompt": "Talk about a technology you think is overhyped and explain why.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0808"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I think blockchain was heavily overhyped a few years ago. It was promoted as the solution for almost everything: supply chains, voting, medical records, and even coffee loyalty points. The core idea, a shared ledger that no single party controls, is genuinely clever and useful when participants do not trust each other and there is no trusted central authority. But most of the proposed uses already had a trusted party, such as a company or a government, and for them a normal database is faster, cheaper and easier to fix when mistakes happen. That is why many of those projects quietly disappeared. The lesson I take is to ask what specific problem a new technology solves better than existing tools."
+    },
+    {
+      "id": "impromptu-what-makes-a-team-trustworthy",
+      "title": "What makes a team trustworthy",
+      "prompt": "Explain what makes a team trustworthy.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0810"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "In my view, a team is trustworthy when three things are true. First, it delivers what it promises, or warns early when it cannot: reliability is built through many small commitments kept, not big speeches. Second, it is honest, especially about bad news, such as admitting mistakes, sharing risks, and not hiding problems from other teams or customers. Third, its members trust each other inside the team: people can ask for help or disagree without fear of being blamed or embarrassed. That inner safety is what allows the honesty and reliability others see from the outside. Trust takes months to build and one hidden failure to damage, so it requires consistent behaviour every day."
+    },
+    {
+      "id": "impromptu-speed-or-reliability-in-a-product",
+      "title": "Speed or reliability in a product",
+      "prompt": "Discuss whether speed or reliability matters more in a product.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0811"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I think the answer depends on the product and its stage, but reliability usually matters more in the long run. For a new startup testing an idea, speed is critical: shipping quickly and learning what customers want is more valuable than perfect uptime for a product nobody uses yet. But once people depend on a product, especially for money, health or work, reliability becomes the foundation of trust; users forgive a missing feature far more easily than a lost payment or a crash during an important moment. The best teams treat it as a balance: they move fast where mistakes are cheap and reversible, and slow down where failures are costly."
+    },
+    {
+      "id": "impromptu-a-local-problem-technology-could-help-solve",
+      "title": "A local problem technology could help solve",
+      "prompt": "Describe a local problem that technology could help solve.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0812"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "In my town, a common problem is that people waste hours waiting in queues at the government hospital, often only to be told the doctor they need is not available that day. Technology could help with a simple appointment system: patients book a time slot by phone call or SMS, not only through a smartphone app, so older people can use it too. The hospital could display daily doctor availability online and send reminders. Even a basic queue-number system with SMS alerts when your turn is close would let people wait at home. The technology is not complicated; the real challenges are making it accessible to everyone and getting staff to use it consistently."
+    },
+    {
+      "id": "impromptu-deciding-whether-an-online-claim-is-credible",
+      "title": "Deciding whether an online claim is credible",
+      "prompt": "Explain how you decide whether an online claim is credible.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0813"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I use a few quick checks. First, the source: who is making the claim, and do they have expertise or a reason to mislead, such as selling something? Second, evidence: does it link to original data, research or documents, or just say \"studies show\"? I try to find that original source. Third, I check whether other independent, reputable sources report the same thing; if only one website or a viral post says it, I am cautious. Fourth, I watch for warning signs, such as emotional language, claims that seem too good or too shocking to be true, and old news shared as new. And if I am still unsure, I simply do not share it."
+    },
+    {
+      "id": "impromptu-for-and-against-ai-coding-assistants",
+      "title": "For and against AI coding assistants",
+      "prompt": "Make a balanced argument for and against AI coding assistants.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "impromptu-speaking",
+        "one-minute",
+        "vcn-0815"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "AI coding assistants have clear benefits. They speed up routine work like writing boilerplate, tests and documentation, help developers learn unfamiliar languages and libraries quickly, and act as a patient partner for explaining code. Many developers report spending less time on repetitive tasks and more on design. On the other hand, they can produce code that looks correct but contains subtle bugs or security problems, and developers may accept it without fully understanding it. Beginners risk skipping the struggle that builds deep skills, and there are concerns about sending private code to external services. My conclusion is that they are valuable tools when used by developers who review and understand every line they accept."
+    },
+    {
+      "id": "prof-disagreeing-politely-with-a-senior-colleague",
+      "title": "Disagreeing politely with a senior colleague",
+      "prompt": "How do you disagree politely with a senior colleague?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0817"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I would first make sure I fully understand their view, asking questions rather than assuming. Then I would disagree about the idea, not the person, with evidence and a respectful tone: \"I see why a single database keeps things simple. My concern is that our reporting queries already slow down checkout during peak hours; here is the graph from last week. Could we consider a read replica for reports?\" I would choose the right setting, usually a private conversation or the design discussion, rather than contradicting them in front of a large group. If they still decide differently after hearing me, I would commit to the decision and support it, while making sure my concern is recorded."
+    },
+    {
+      "id": "prof-asking-for-a-deadline-extension",
+      "title": "Asking for a deadline extension",
+      "prompt": "How would you ask for a deadline extension with a clear reason and plan?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0818"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I would ask as early as possible, not on the day of the deadline, and make the request specific: \"I need two more days for the reporting feature, until Wednesday instead of Monday.\" Then the reason, briefly and honestly: \"The data export from the old system turned out to have inconsistent dates, and fixing them correctly takes longer than planned.\" Then the plan: \"The main report will be ready on Monday as promised, and the historical data will follow on Wednesday. I will send an update on Tuesday morning.\" Offering options, such as delivering part of the work on time, shows I am managing the problem, not just reporting it."
+    },
+    {
+      "id": "prof-communicating-that-an-estimate-was-wrong",
+      "title": "Communicating that an estimate was wrong",
+      "prompt": "How should you communicate that an estimate was wrong?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0819"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "As soon as I realise the estimate is wrong, I tell the people who depend on it, because late surprises are much worse than early corrections. I would explain what I now expect, why the original estimate was off, and what options we have: \"I estimated the migration at one week, but it will take about two and a half. I underestimated how many legacy reports depend on the old tables; we found twelve instead of three. We can either keep the full scope and move the date, or migrate the critical reports first and do the rest next sprint.\" Being factual and offering choices keeps trust, and afterwards I reflect on how to estimate similar work better."
+    },
+    {
+      "id": "prof-requesting-a-code-review-without-pressure",
+      "title": "Requesting a code review without pressure",
+      "prompt": "How do you request a code review without pressuring the reviewer?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0821"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I make the review easy and give useful context, rather than just saying \"please review ASAP\". In the request I explain what the change does and why, point to the parts that need the most attention, and mention any real deadline and the reason for it: \"This adds retry logic to the payment webhook. The key part is the idempotency check in handler.go. It is needed for Thursday's release, so a review by Wednesday would be great; if that is difficult, let me know and I will ask someone else.\" Keeping the change small, with passing tests and a clear description, is the best way to get a fast, thoughtful review."
+    },
+    {
+      "id": "prof-feedback-about-unclear-documentation",
+      "title": "Feedback about unclear documentation",
+      "prompt": "How would you give constructive feedback about unclear documentation?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0822"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I would be specific, focus on the reader's experience rather than the writer's ability, and suggest improvements. For example: \"Thanks for writing the deployment guide; it saved me a lot of time. When I followed it, I got stuck at step four, because it was not clear which environment variable sets the region, and I had to ask in the channel. Could we add an example command there? Also, a short section on rolling back would help new people a lot.\" Pointing to exactly where I got stuck gives the author actionable information, and offering to help make the change, or opening a pull request myself, makes it even more constructive."
+    },
+    {
+      "id": "prof-summarising-meeting-decisions-and-action-items",
+      "title": "Summarising meeting decisions and action items",
+      "prompt": "How do you summarize meeting decisions and action items?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0823"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Right after the meeting, I send a short written summary to everyone involved, with three parts. Decisions: what we agreed, stated clearly, such as \"We will launch the beta to ten percent of users on 3 June\". Action items: each with one owner and a due date, such as \"Priya: update the pricing page by Friday\". And open questions: anything still unresolved and who will follow up. I keep it brief, use bullet points, and link to detailed notes if needed. I end by asking people to reply if anything is wrong. This prevents the common situation where everyone leaves the meeting with a different understanding of what was decided."
+    },
+    {
+      "id": "prof-asking-a-colleague-for-help-after-trying",
+      "title": "Asking a colleague for help after trying",
+      "prompt": "How would you ask a colleague for help after trying independently?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0824"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I would show what I have already tried, so they can help efficiently and see that I respect their time. For example: \"Hi Arjun, do you have ten minutes today? I am stuck on the flaky checkout test. It fails about one in five runs in CI but never locally. I have checked the test data setup and added logging, and it looks like the order is created before the payment mock is ready. I suspect a race in the setup, but I am not sure how our test fixtures handle async setup. Could you take a look?\" A clear summary of the problem, what I tried, and a specific question usually gets a quick, useful answer."
+    },
+    {
+      "id": "prof-telling-a-customer-a-feature-is-not-planned",
+      "title": "Telling a customer a feature is not planned",
+      "prompt": "How would you tell a customer that a requested feature is not planned?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0826"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I would thank them, show I understand their need, be honest that it is not planned, and offer whatever help I can. For example: \"Thank you for suggesting a bulk export to Excel; I can see how much time it would save your team. I want to be transparent: it is not on our roadmap for this year, because we are focusing on reliability and integrations that most customers have asked for. In the meantime, you can export to CSV and open it in Excel, and our API supports bulk downloads; I am happy to share an example. I have also logged your request, so if many customers ask for it, the product team will see it.\" Honesty builds more trust than vague promises."
+    },
+    {
+      "id": "prof-when-you-do-not-understand-a-requirement",
+      "title": "When you do not understand a requirement",
+      "prompt": "How should you respond when you do not understand a requirement?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0827"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I ask for clarification early, instead of guessing and building the wrong thing. I would make the question specific, showing what I do understand: \"The requirement says users should see their recent orders. Does recent mean the last thirty days or the last ten orders? And should cancelled orders be included?\" Giving a concrete example or two possible interpretations helps the other person answer quickly. If the person who wrote it is not sure either, I suggest an option and confirm it: \"I suggest the last ten orders, including cancelled ones marked clearly. Shall I go ahead?\" Then I write the agreed answer into the ticket so everyone works from the same understanding."
+    },
+    {
+      "id": "prof-explaining-a-delay-without-blaming-another-team",
+      "title": "Explaining a delay without blaming another team",
+      "prompt": "How would you explain a technical delay without blaming another team?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0828"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I describe the situation factually, focus on the dependency rather than on people, and talk about what we are doing about it. For example: \"The new checkout will be about one week late. It depends on an update to the payments API, which turned out to need more security review than expected, and it is now scheduled for next Tuesday. We are working closely with the payments team, and in the meantime we have finished and tested everything else, so we can release two days after the API is ready.\" This is honest about the cause, does not attack anyone, and shows the teams working together, which is also how stakeholders want to see it."
+    },
+    {
+      "id": "prof-writing-clearly-when-tone-could-be-misread",
+      "title": "Writing clearly when tone could be misread",
+      "prompt": "How do you make a written message clear when tone could be misread?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0829"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Written messages lose tone of voice, so short messages can sound cold or angry. I add a little context and warmth: instead of \"Why did you change this?\", I write \"I noticed the retry limit changed from five to two; could you share the reasoning? I want to make sure I understand before the release.\" I avoid sarcasm, all capital letters and too many question marks, and I state my intention explicitly when there is any doubt, such as \"this is just a question, not a criticism\". For sensitive topics, like disagreements or performance problems, I prefer a quick call instead of writing, and then follow up in writing to confirm what we agreed."
+    },
+    {
+      "id": "prof-handing-over-an-unfinished-task",
+      "title": "Handing over an unfinished task",
+      "prompt": "How would you hand over an unfinished task to another engineer?",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "professional-communication",
+        "one-minute",
+        "vcn-0830"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I would write a short handover note and then walk through it together. The note covers: the goal of the task and why it matters; what is done, with links to the branch, pull requests and tickets; what remains, as a clear list; decisions already made and the reasons, so they are not reopened by accident; known problems, risks and open questions; and who the relevant contacts are. I would make sure the code is pushed, builds and has passing tests, or clearly note what is broken. In a short call, I would answer their questions, and I would stay available for a few days afterwards in case something is unclear."
     }
   ]
 }

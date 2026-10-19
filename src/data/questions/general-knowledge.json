@@ -1998,6 +1998,3905 @@
         }
       ],
       "modelAnswer": "The original space race was a Cold War contest between the United States and the Soviet Union, run by governments and culminating in the Apollo moon landings. Today the field is very different. Private companies build rockets, satellites and spacecraft, and reusable rocket boosters that land and fly again have sharply reduced the cost of reaching orbit. Small, mass-produced satellites made huge constellations practical, especially for satellite internet. Many more countries have capable programmes. India's ISRO is known for achieving ambitious missions at low cost: Mangalyaan reached Mars orbit on its first attempt in 2014, and in 2023 Chandrayaan-3 made India the first country to land near the Moon's south pole, followed by the Aditya-L1 solar observatory; India has also opened its space sector to private startups. Space now underpins everyday life through navigation, weather forecasting, crop and disaster monitoring, and communications. Risks are growing: thousands of active satellites and fragments of debris crowd low Earth orbit, raising collision risks that could cascade, and space is increasingly seen as a military domain, so rules on debris and responsible behaviour are a pressing international issue."
+    },
+    {
+      "id": "hist-the-industrial-revolution-and-urban-life",
+      "title": "The Industrial Revolution and urban life",
+      "prompt": "How did the Industrial Revolution change work and urban life?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0831"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Work moved from homes and farms to factories with machines",
+          "criterion": "accuracy",
+          "keywords": [
+            "factories",
+            "machines",
+            "steam",
+            "mechanization"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Mass migration to rapidly growing, crowded cities",
+          "criterion": "accuracy",
+          "keywords": [
+            "urbanization",
+            "cities",
+            "migration",
+            "crowded"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Harsh conditions led to reforms, unions and a new working class",
+          "criterion": "accuracy",
+          "keywords": [
+            "working conditions",
+            "child labour",
+            "unions",
+            "reforms"
+          ]
+        }
+      ],
+      "modelAnswer": "Starting in Britain in the late eighteenth century, the Industrial Revolution replaced hand production with machines powered first by water and then by steam. Work moved from homes, workshops and farms into factories, where people worked long, fixed hours for wages, often in dangerous conditions, and children worked too. Millions migrated from the countryside to industrial towns such as Manchester, which grew so fast that housing was overcrowded and sanitation poor, causing diseases like cholera. Over time this produced a new industrial working class and middle class, trade unions, labour laws, public health reforms and mass education. It also raised long-term productivity and living standards dramatically."
+    },
+    {
+      "id": "hist-causes-and-consequences-of-the-french-revolution",
+      "title": "Causes and consequences of the French Revolution",
+      "prompt": "What were the major causes and consequences of the French Revolution?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0832"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Causes: debt and fiscal crisis, unfair taxes, food prices",
+          "criterion": "accuracy",
+          "keywords": [
+            "debt",
+            "taxes",
+            "bread prices",
+            "financial crisis"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Causes: Enlightenment ideas and resentment of privilege",
+          "criterion": "accuracy",
+          "keywords": [
+            "enlightenment",
+            "privilege",
+            "estates",
+            "nobility"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Consequences: end of absolute monarchy, rights, Napoleon, spread of nationalism",
+          "criterion": "accuracy",
+          "keywords": [
+            "monarchy",
+            "rights of man",
+            "napoleon",
+            "nationalism"
+          ]
+        }
+      ],
+      "modelAnswer": "By 1789, France was nearly bankrupt after costly wars, including support for the American Revolution. The tax burden fell mostly on the Third Estate, ordinary people, while the clergy and nobility were largely exempt, and poor harvests had made bread prices soar. Enlightenment ideas about liberty, equality and popular sovereignty gave this anger a political language. The consequences were enormous: the absolute monarchy was abolished and the king executed, feudal privileges ended, and the Declaration of the Rights of Man proclaimed equal rights. A period of terror and instability followed, ending with Napoleon's rise, whose wars spread revolutionary ideas and nationalism across Europe."
+    },
+    {
+      "id": "hist-causes-of-the-first-world-war",
+      "title": "Causes of the First World War",
+      "prompt": "What were the key causes of the First World War?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0834"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Alliance systems that turned a local conflict into a general war",
+          "criterion": "accuracy",
+          "keywords": [
+            "alliances",
+            "triple entente",
+            "triple alliance",
+            "blocs"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Militarism, arms race and imperial rivalry",
+          "criterion": "accuracy",
+          "keywords": [
+            "militarism",
+            "arms race",
+            "imperialism",
+            "rivalry"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Nationalism in the Balkans and the assassination of Franz Ferdinand",
+          "criterion": "accuracy",
+          "keywords": [
+            "nationalism",
+            "balkans",
+            "franz ferdinand",
+            "sarajevo"
+          ]
+        }
+      ],
+      "modelAnswer": "Historians often summarise the long-term causes as militarism, alliances, imperialism and nationalism. European powers were in an arms race, especially the naval rivalry between Britain and Germany, and had detailed war plans that relied on rapid mobilisation. They competed for colonies and influence. Two alliance blocs, France, Russia and Britain against Germany and Austria-Hungary, meant a conflict between two states could pull in all of them. Nationalism was especially intense in the Balkans. The trigger was the assassination of Archduke Franz Ferdinand of Austria-Hungary by a Bosnian Serb nationalist in Sarajevo in June 1914; Austria-Hungary's ultimatum to Serbia set off a chain of mobilisations that turned a regional crisis into a world war."
+    },
+    {
+      "id": "hist-decolonisation-after-1945",
+      "title": "Decolonisation after 1945",
+      "prompt": "How did decolonization reshape the modern world after 1945?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0835"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Dozens of new independent nations in Asia and Africa",
+          "criterion": "accuracy",
+          "keywords": [
+            "new nations",
+            "independence",
+            "asia",
+            "africa"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Weakened European empires and changing world order",
+          "criterion": "accuracy",
+          "keywords": [
+            "weakened empires",
+            "world war two",
+            "united nations",
+            "cold war"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Lasting legacies: borders, conflicts, development and the Non-Aligned Movement",
+          "criterion": "accuracy",
+          "keywords": [
+            "borders",
+            "non aligned",
+            "development",
+            "legacy"
+          ]
+        }
+      ],
+      "modelAnswer": "After the Second World War, European empires were economically weakened, nationalist movements had grown strong, and the new United Nations and both superpowers opposed formal colonialism. Over about three decades, more than eighty countries gained independence, starting with India and Pakistan in 1947 and continuing across Asia and Africa. Some transitions were peaceful; others involved long wars, as in Algeria and Vietnam. The world's political map and the UN's membership changed completely. Many new states joined the Non-Aligned Movement to avoid choosing sides in the Cold War. Colonial legacies remained: borders drawn without regard to ethnic groups fuelled conflicts, and many economies stayed dependent on exporting raw materials."
+    },
+    {
+      "id": "hist-mass-participation-in-indias-independence-movement",
+      "title": "Mass participation in India's independence movement",
+      "prompt": "What was the significance of India's independence movement's mass participation?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0836"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Gandhi turned an elite movement into a mass movement",
+          "criterion": "accuracy",
+          "keywords": [
+            "gandhi",
+            "mass movement",
+            "ordinary people",
+            "elite"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Non-cooperation, Salt March and Quit India mobilised millions",
+          "criterion": "accuracy",
+          "keywords": [
+            "non cooperation",
+            "salt march",
+            "quit india",
+            "civil disobedience"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Built national unity and democratic foundations; made British rule untenable",
+          "criterion": "accuracy",
+          "keywords": [
+            "unity",
+            "democracy",
+            "untenable",
+            "legitimacy"
+          ]
+        }
+      ],
+      "modelAnswer": "In its early decades, the Indian National Congress was mostly led by educated elites submitting petitions. From around 1920, Mahatma Gandhi transformed it into a mass movement involving peasants, workers, women and students across regions, religions and castes. Campaigns such as Non-Cooperation, the Salt March of 1930 and Quit India in 1942 used non-violent methods anyone could join, like boycotting British goods or making salt. Mass participation mattered for several reasons: it made British rule economically and morally difficult to sustain, gave the movement legitimacy as the voice of the people, built a sense of shared national identity, and trained millions in political action, laying foundations for India's democracy after 1947."
+    },
+    {
+      "id": "hist-the-green-revolution-in-india",
+      "title": "The Green Revolution in India",
+      "prompt": "How did the Green Revolution change agriculture in India?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0837"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "High-yielding seed varieties with irrigation, fertilisers and pesticides",
+          "criterion": "accuracy",
+          "keywords": [
+            "high yielding varieties",
+            "wheat",
+            "rice",
+            "fertilizers"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "India became self-sufficient in food grains",
+          "criterion": "accuracy",
+          "keywords": [
+            "self sufficient",
+            "food security",
+            "production",
+            "famine"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Costs: regional inequality, groundwater depletion, soil damage",
+          "criterion": "accuracy",
+          "keywords": [
+            "inequality",
+            "punjab",
+            "groundwater",
+            "soil"
+          ]
+        }
+      ],
+      "modelAnswer": "In the 1960s, India faced food shortages and depended on imported grain. The Green Revolution introduced high-yielding varieties of wheat, and later rice, developed by scientists such as Norman Borlaug and M. S. Swaminathan, combined with irrigation, chemical fertilisers, pesticides and government support through guaranteed prices. Wheat production rose dramatically, especially in Punjab, Haryana and western Uttar Pradesh, and India became self-sufficient in food grains, ending the fear of famine. But the benefits were uneven, favouring irrigated regions and richer farmers, and intensive farming caused groundwater depletion, soil degradation and heavy chemical use, problems India still faces today."
+    },
+    {
+      "id": "hist-adopting-the-indian-constitution",
+      "title": "Adopting the Indian Constitution",
+      "prompt": "What were the main goals and effects of the Indian Constitution's adoption?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0838"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Established India as a sovereign democratic republic in 1950",
+          "criterion": "accuracy",
+          "keywords": [
+            "republic",
+            "26 january 1950",
+            "democracy",
+            "sovereign"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Guaranteed fundamental rights and equality, with Ambedkar as chief architect",
+          "criterion": "accuracy",
+          "keywords": [
+            "fundamental rights",
+            "equality",
+            "ambedkar",
+            "untouchability"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Federal structure, universal suffrage and independent judiciary",
+          "criterion": "accuracy",
+          "keywords": [
+            "federal",
+            "universal adult franchise",
+            "judiciary",
+            "directive principles"
+          ]
+        }
+      ],
+      "modelAnswer": "The Constitution, drafted by the Constituent Assembly with B. R. Ambedkar as chair of the drafting committee, came into force on 26 January 1950, making India a sovereign democratic republic. Its goals were to unite a hugely diverse country, protect individual rights and build a just society after colonial rule. It guaranteed fundamental rights such as equality before the law, freedom of speech and religion, and abolished untouchability, while the Directive Principles set social and economic goals for the state. It gave every adult the vote regardless of caste, gender, literacy or wealth, which was radical at the time, and created a federal parliamentary system with an independent judiciary that can review laws."
+    },
+    {
+      "id": "hist-the-cold-war-and-science-and-technology",
+      "title": "The Cold War and science and technology",
+      "prompt": "How did the Cold War shape science, technology, and geopolitics?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0839"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Rivalry between the US and USSR with two blocs",
+          "criterion": "accuracy",
+          "keywords": [
+            "united states",
+            "soviet union",
+            "blocs",
+            "rivalry"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Arms and space race drove huge research funding",
+          "criterion": "accuracy",
+          "keywords": [
+            "space race",
+            "nuclear",
+            "sputnik",
+            "research funding"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Proxy wars and technologies like the internet, satellites and computing",
+          "criterion": "accuracy",
+          "keywords": [
+            "proxy wars",
+            "internet",
+            "satellites",
+            "computing"
+          ]
+        }
+      ],
+      "modelAnswer": "From 1947 to 1991, the United States and the Soviet Union competed globally without fighting each other directly. Geopolitically, the world split into blocs, NATO and the Warsaw Pact, while proxy wars were fought in Korea, Vietnam, Afghanistan and elsewhere, and many newly independent nations were pressured to choose sides. The rivalry drove enormous government investment in science: the nuclear arms race, missiles, and the space race, triggered by Sputnik in 1957 and culminating in the Moon landing. That funding produced satellites, advances in computing, GPS and ARPANET, the precursor of the internet, and expanded universities and science education, shaping modern technology."
+    },
+    {
+      "id": "hist-primary-sources-versus-later-accounts",
+      "title": "Primary sources versus later accounts",
+      "prompt": "What can historians learn from primary sources versus later accounts?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0840"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Primary sources were created at the time by participants or witnesses",
+          "criterion": "accuracy",
+          "keywords": [
+            "primary sources",
+            "at the time",
+            "letters",
+            "witnesses"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Secondary accounts interpret and analyse events later",
+          "criterion": "accuracy",
+          "keywords": [
+            "secondary sources",
+            "interpret",
+            "later",
+            "historians"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Both have biases; historians compare and question them",
+          "criterion": "accuracy",
+          "keywords": [
+            "bias",
+            "compare",
+            "context",
+            "corroborate"
+          ]
+        }
+      ],
+      "modelAnswer": "Primary sources are created during the period studied: letters, diaries, government records, photographs, newspapers or artefacts. They give direct evidence of what people saw, believed and did, including details later writers may have missed. But they reflect the author's viewpoint, purpose and limited knowledge, so a general's report or a propaganda poster cannot be taken at face value. Later accounts, secondary sources written by historians, interpret many sources together, provide context and benefit from hindsight, but they may reflect the concerns of their own time. Good historical work compares multiple sources, asks who created each one and why, and builds conclusions supported by corroborating evidence."
+    },
+    {
+      "id": "hist-trade-routes-before-modern-globalisation",
+      "title": "Trade routes before modern globalisation",
+      "prompt": "How did trade routes connect civilizations before modern globalization?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0841"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Major routes: the Silk Road, Indian Ocean and trans-Saharan networks",
+          "criterion": "accuracy",
+          "keywords": [
+            "silk road",
+            "indian ocean",
+            "trans saharan",
+            "routes"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Exchanged goods like silk, spices, gold and horses",
+          "criterion": "accuracy",
+          "keywords": [
+            "silk",
+            "spices",
+            "gold",
+            "goods"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Also spread religions, ideas, technologies and diseases",
+          "criterion": "accuracy",
+          "keywords": [
+            "religion",
+            "ideas",
+            "technology",
+            "disease"
+          ]
+        }
+      ],
+      "modelAnswer": "Long before modern globalisation, trade networks linked distant civilisations. The Silk Road connected China with Central Asia, Persia and the Mediterranean overland. The Indian Ocean network, using monsoon winds, linked East Africa, Arabia, India and Southeast Asia by sea, and trans-Saharan caravans connected West Africa's gold-producing kingdoms with North Africa. Merchants traded silk, spices, cotton textiles, porcelain, gold, salt and horses, usually in relays rather than travelling the whole route. Along with goods, these routes carried religions such as Buddhism and Islam, ideas, technologies such as paper and numerals, and languages, and also diseases, including the Black Death in the fourteenth century."
+    },
+    {
+      "id": "hist-the-fall-of-the-western-roman-empire",
+      "title": "The fall of the Western Roman Empire",
+      "prompt": "What factors contributed to the fall of the Western Roman Empire?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0842"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Political instability and civil wars",
+          "criterion": "accuracy",
+          "keywords": [
+            "political instability",
+            "civil war",
+            "emperors",
+            "corruption"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Economic problems: taxes, inflation, reliance on mercenaries",
+          "criterion": "accuracy",
+          "keywords": [
+            "economic",
+            "taxation",
+            "inflation",
+            "mercenaries"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "External pressure from migrating peoples; the East survived",
+          "criterion": "accuracy",
+          "keywords": [
+            "goths",
+            "invasions",
+            "migration",
+            "byzantine"
+          ]
+        }
+      ],
+      "modelAnswer": "Historians see it as a gradual process with many interacting causes rather than one event. Politically, the third century saw frequent civil wars, with dozens of emperors in a few decades, weakening central authority. Economically, heavy taxation, debased currency and inflation, and the cost of defending long frontiers strained the state, which relied increasingly on Germanic soldiers and allies. Meanwhile, migrations of peoples such as the Goths, Vandals and Huns put intense pressure on the borders; Rome itself was sacked in 410 and 455. In 476, the last western emperor was deposed. Notably, the Eastern Roman Empire, wealthier and better defended, survived as the Byzantine Empire for another thousand years."
+    },
+    {
+      "id": "hist-the-renaissance-and-its-influence",
+      "title": "The Renaissance and its influence",
+      "prompt": "How did the Renaissance influence art, science, and humanism?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0843"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Revival of classical Greek and Roman learning, starting in Italy",
+          "criterion": "accuracy",
+          "keywords": [
+            "classical",
+            "greek",
+            "roman",
+            "italy"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Humanism focused on human potential and individual achievement",
+          "criterion": "accuracy",
+          "keywords": [
+            "humanism",
+            "individual",
+            "human potential",
+            "education"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Realistic art with perspective and the roots of the scientific revolution",
+          "criterion": "accuracy",
+          "keywords": [
+            "perspective",
+            "leonardo",
+            "observation",
+            "scientific revolution"
+          ]
+        }
+      ],
+      "modelAnswer": "The Renaissance, roughly the fourteenth to sixteenth centuries, began in Italian city-states such as Florence, funded by wealthy patrons like the Medici. Scholars revived classical Greek and Roman texts and developed humanism, which emphasised human potential, education in the humanities, and life in this world, alongside religion. In art, painters such as Leonardo da Vinci, Michelangelo and Raphael used linear perspective, anatomy and light to create realistic, expressive works. The spirit of observation and questioning authority, helped by the printing press spreading ideas quickly, prepared the ground for the scientific revolution, including Copernicus's and later Galileo's work."
+    },
+    {
+      "id": "hist-the-partition-of-british-india",
+      "title": "The partition of British India",
+      "prompt": "What were the causes and effects of the partition of British India?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0844"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Causes: communal politics, the two-nation theory and British divide-and-rule",
+          "criterion": "accuracy",
+          "keywords": [
+            "two nation theory",
+            "muslim league",
+            "communal",
+            "divide and rule"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Rushed British withdrawal and the Radcliffe Line in 1947",
+          "criterion": "accuracy",
+          "keywords": [
+            "radcliffe line",
+            "1947",
+            "mountbatten",
+            "rushed"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Effects: mass migration, violence and lasting India-Pakistan tensions",
+          "criterion": "accuracy",
+          "keywords": [
+            "migration",
+            "violence",
+            "refugees",
+            "kashmir"
+          ]
+        }
+      ],
+      "modelAnswer": "Partition grew from rising communal divisions in the decades before independence. British policies such as separate electorates had encouraged politics along religious lines, and the Muslim League, led by Muhammad Ali Jinnah, argued through the two-nation theory that Muslims needed a separate state, after negotiations with Congress over power-sharing failed. Weakened after the Second World War, Britain decided to leave quickly; the boundary was drawn by Cyril Radcliffe in a few weeks and announced after independence in August 1947. The result was one of the largest migrations in history, around fifteen million people, and communal violence that killed hundreds of thousands, perhaps more. Its legacies include the Kashmir conflict and enduring India-Pakistan hostility."
+    },
+    {
+      "id": "hist-judging-historical-figures-in-their-context",
+      "title": "Judging historical figures in their context",
+      "prompt": "How should we evaluate historical figures in the context of their time?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "one-minute",
+        "vcn-0845"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Understand the values, knowledge and constraints of their era",
+          "criterion": "accuracy",
+          "keywords": [
+            "context",
+            "values of the time",
+            "constraints",
+            "era"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Context explains actions but does not excuse everything",
+          "criterion": "accuracy",
+          "keywords": [
+            "explain not excuse",
+            "moral judgement",
+            "contemporaries",
+            "critics"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Consider achievements and harms together, using evidence",
+          "criterion": "accuracy",
+          "keywords": [
+            "achievements",
+            "harms",
+            "balanced",
+            "evidence"
+          ]
+        }
+      ],
+      "modelAnswer": "A balanced evaluation does two things at once. First, it understands people in their context: what was known, what was considered normal, and what choices were realistically available, which avoids judging someone from the 1600s as if they had today's knowledge. Second, context explains but does not excuse everything; many historical figures had contemporaries who criticised slavery, colonial violence or persecution at the time, which shows other choices were possible. So historians look at the evidence of both achievements and harms, how they affected different groups of people, and whether the person acted differently from their peers. The goal is understanding, not simple heroes or villains."
+    },
+    {
+      "id": "econ-how-interest-rates-affect-borrowing-saving-and-investment",
+      "title": "How interest rates affect borrowing, saving and investment",
+      "prompt": "How do interest rates influence borrowing, saving, and investment?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0847"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Higher rates make borrowing more expensive, reducing loans and spending",
+          "criterion": "accuracy",
+          "keywords": [
+            "borrowing",
+            "expensive",
+            "loans",
+            "emi"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Higher rates reward saving",
+          "criterion": "accuracy",
+          "keywords": [
+            "saving",
+            "deposits",
+            "returns",
+            "reward"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Businesses invest less when rates rise; lower rates stimulate the economy",
+          "criterion": "accuracy",
+          "keywords": [
+            "investment",
+            "business",
+            "stimulate",
+            "slow down"
+          ]
+        }
+      ],
+      "modelAnswer": "An interest rate is the price of borrowing money. When rates rise, loans for homes, cars and businesses become more expensive, so monthly payments go up and people and companies borrow and spend less. Saving becomes more attractive, because deposits and bonds pay more. Businesses postpone investments, such as new factories, whose returns no longer beat the cost of borrowing, and asset prices like shares and property often fall. When rates fall, the opposite happens: borrowing is cheaper, saving pays less, and spending and investment increase. This is why central banks raise rates to cool an overheating economy and inflation, and cut them to support a weak economy."
+    },
+    {
+      "id": "econ-what-gdp-measures-and-misses",
+      "title": "What GDP measures and misses",
+      "prompt": "What is GDP, and what does it fail to measure?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0848"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "GDP is the total value of final goods and services produced in a period",
+          "criterion": "accuracy",
+          "keywords": [
+            "gdp",
+            "total value",
+            "goods and services",
+            "produced"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It misses unpaid work, inequality and the informal economy",
+          "criterion": "accuracy",
+          "keywords": [
+            "unpaid work",
+            "inequality",
+            "informal",
+            "distribution"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "It ignores environmental damage and wellbeing",
+          "criterion": "accuracy",
+          "keywords": [
+            "environment",
+            "wellbeing",
+            "pollution",
+            "quality of life"
+          ]
+        }
+      ],
+      "modelAnswer": "Gross domestic product is the total market value of all final goods and services produced in a country in a given period, usually a year or a quarter. It is the most widely used measure of the size and growth of an economy, and GDP per person roughly indicates average income. But it has important blind spots. It ignores unpaid work, such as caring for children and elderly relatives, and undercounts the informal economy. It says nothing about how income is distributed, so GDP can grow while most people's incomes stagnate. It counts activity that harms the environment, such as deforestation, as growth, without subtracting the damage, and it does not measure health, leisure or happiness."
+    },
+    {
+      "id": "econ-supply-demand-and-prices",
+      "title": "Supply, demand and prices",
+      "prompt": "How do supply and demand influence market prices?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0849"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Demand: buyers want more when price is lower",
+          "criterion": "accuracy",
+          "keywords": [
+            "demand",
+            "buyers",
+            "price falls",
+            "want more"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Supply: sellers offer more when price is higher",
+          "criterion": "accuracy",
+          "keywords": [
+            "supply",
+            "sellers",
+            "produce more",
+            "higher price"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Price moves to equilibrium; shifts cause shortages or surpluses",
+          "criterion": "accuracy",
+          "keywords": [
+            "equilibrium",
+            "shortage",
+            "surplus",
+            "shift"
+          ]
+        }
+      ],
+      "modelAnswer": "Demand describes how much buyers want at each price: usually, the lower the price, the more people buy. Supply describes how much sellers are willing to offer: the higher the price, the more they want to produce. The market price tends to settle where the two meet, the equilibrium, where the quantity people want to buy equals the quantity offered. When something shifts, the price adjusts. If a drought destroys part of the onion crop, supply falls, there is a shortage at the old price, and prices rise until fewer people buy. If a new phone becomes fashionable, demand rises and so does its price, until more supply arrives."
+    },
+    {
+      "id": "econ-opportunity-cost-in-everyday-decisions",
+      "title": "Opportunity cost in everyday decisions",
+      "prompt": "What is opportunity cost, and how does it affect everyday decisions?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0850"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The value of the next best alternative you give up",
+          "criterion": "accuracy",
+          "keywords": [
+            "next best alternative",
+            "give up",
+            "choice",
+            "forgone"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Applies to time as well as money",
+          "criterion": "accuracy",
+          "keywords": [
+            "money",
+            "scarce",
+            "resources"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Everyday examples such as studying, spending or career choices",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "study",
+            "job",
+            "spend"
+          ]
+        }
+      ],
+      "modelAnswer": "Opportunity cost is the value of the next best alternative you give up when you make a choice. Because time and money are limited, every choice has one, even when no money changes hands. If you spend Saturday binge-watching a series, the opportunity cost might be the course you could have finished or time with friends. If you spend money on a new phone, the opportunity cost is what else that money could have done, such as savings that would grow over time. Doing a two-year master's degree costs not just fees but also two years of salary. Thinking about opportunity cost makes trade-offs visible and leads to better decisions."
+    },
+    {
+      "id": "econ-progressive-versus-regressive-taxes",
+      "title": "Progressive versus regressive taxes",
+      "prompt": "How do progressive and regressive taxes differ?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0851"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Progressive: higher earners pay a higher share of income",
+          "criterion": "accuracy",
+          "keywords": [
+            "progressive",
+            "higher rate",
+            "income slabs",
+            "richer pay more"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Regressive: poorer people pay a larger share of their income",
+          "criterion": "accuracy",
+          "keywords": [
+            "regressive",
+            "larger share",
+            "poorer",
+            "sales tax"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Examples and effects on inequality",
+          "criterion": "accuracy",
+          "keywords": [
+            "income tax",
+            "gst",
+            "inequality",
+            "fairness"
+          ]
+        }
+      ],
+      "modelAnswer": "The difference is about what share of income people pay. A progressive tax takes a higher percentage from people with higher incomes; income tax with slabs, where each higher band of income is taxed at a higher rate, is the classic example. It reduces inequality and is based on ability to pay. A regressive tax takes a larger share of income from poorer people, even if everyone pays the same rate. Sales taxes and GST are often regressive in effect, because lower-income households spend almost all of their income on taxed goods, while richer households save more. Governments soften this by exempting essentials like basic food."
+    },
+    {
+      "id": "econ-recessions-and-their-indicators",
+      "title": "Recessions and their indicators",
+      "prompt": "What is a recession, and which indicators can help identify one?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0852"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A significant, widespread decline in economic activity",
+          "criterion": "accuracy",
+          "keywords": [
+            "decline",
+            "economic activity",
+            "contraction",
+            "downturn"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Rule of thumb: two consecutive quarters of falling GDP",
+          "criterion": "accuracy",
+          "keywords": [
+            "two consecutive quarters",
+            "gdp falls",
+            "quarters",
+            "rule of thumb"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Other indicators: unemployment, spending, industrial output, yield curve",
+          "criterion": "accuracy",
+          "keywords": [
+            "unemployment",
+            "consumer spending",
+            "industrial production",
+            "yield curve"
+          ]
+        }
+      ],
+      "modelAnswer": "A recession is a significant, widespread and lasting decline in economic activity. A popular rule of thumb defines it as two consecutive quarters of falling real GDP, though official bodies, such as the NBER in the United States, look at a broader set of data. Key indicators include rising unemployment and job losses, falling consumer spending and retail sales, declining industrial production, lower business investment, and falling real incomes. Some indicators help predict recessions in advance, such as an inverted yield curve, where short-term interest rates exceed long-term ones, falling business confidence surveys, and declining new orders. Recessions are usually identified with a delay, because data arrives months later."
+    },
+    {
+      "id": "econ-exchange-rates-importers-exporters-and-travellers",
+      "title": "Exchange rates, importers, exporters and travellers",
+      "prompt": "How do exchange rates affect importers, exporters, and travellers?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0853"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A weaker currency makes imports dearer and exports cheaper abroad",
+          "criterion": "accuracy",
+          "keywords": [
+            "weaker currency",
+            "depreciation",
+            "imports cost more",
+            "exports cheaper"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Exporters benefit; importers and import-dependent consumers lose",
+          "criterion": "accuracy",
+          "keywords": [
+            "exporters benefit",
+            "importers",
+            "oil",
+            "inflation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Travellers abroad pay more when their currency weakens",
+          "criterion": "accuracy",
+          "keywords": [
+            "travellers",
+            "abroad",
+            "foreign trip",
+            "students"
+          ]
+        }
+      ],
+      "modelAnswer": "An exchange rate is the price of one currency in another. If the rupee weakens against the dollar, say from 80 to 85 rupees per dollar, imported goods priced in dollars, like oil, electronics and machinery, become more expensive in rupees, so importers face higher costs and some inflation follows. Exporters benefit, because their goods become cheaper for foreign buyers, or they earn more rupees per dollar of sales, which helps industries like IT services and textiles. Indian travellers and students abroad lose, because every dollar costs more rupees, while foreign tourists visiting India find it cheaper. A stronger currency has the opposite effects."
+    },
+    {
+      "id": "econ-monetary-policy-and-central-banks",
+      "title": "Monetary policy and central banks",
+      "prompt": "What is monetary policy, and how does a central bank use it?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0854"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Central bank controls money supply and interest rates",
+          "criterion": "accuracy",
+          "keywords": [
+            "central bank",
+            "interest rates",
+            "money supply",
+            "rbi"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Main goal: price stability and supporting growth",
+          "criterion": "accuracy",
+          "keywords": [
+            "inflation target",
+            "price stability",
+            "growth",
+            "employment"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Tools: policy rate, reserve requirements, open market operations",
+          "criterion": "accuracy",
+          "keywords": [
+            "repo rate",
+            "reserve ratio",
+            "open market operations",
+            "liquidity"
+          ]
+        }
+      ],
+      "modelAnswer": "Monetary policy is how a central bank, such as the Reserve Bank of India or the US Federal Reserve, manages the cost and availability of money in the economy. Its main goal is usually price stability, for example the RBI targets inflation around four percent, while supporting growth and employment. The main tool is the policy interest rate, such as the repo rate at which banks borrow from the central bank: raising it makes loans more expensive throughout the economy and cools demand and inflation, while cutting it stimulates borrowing and spending. Other tools include reserve requirements for banks, open market operations, buying or selling government bonds to change liquidity, and in crises, large-scale asset purchases."
+    },
+    {
+      "id": "econ-unemployment-versus-underemployment",
+      "title": "Unemployment versus underemployment",
+      "prompt": "How does unemployment differ from underemployment?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0855"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Unemployed: no job while actively looking for work",
+          "criterion": "accuracy",
+          "keywords": [
+            "unemployed",
+            "no job",
+            "looking for work",
+            "labour force"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Underemployed: working, but less or below one's skills than wanted",
+          "criterion": "accuracy",
+          "keywords": [
+            "underemployed",
+            "part time",
+            "below skills",
+            "want more hours"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Underemployment hides labour market weakness, common in informal economies",
+          "criterion": "accuracy",
+          "keywords": [
+            "hidden",
+            "informal",
+            "disguised unemployment",
+            "statistics"
+          ]
+        }
+      ],
+      "modelAnswer": "A person is unemployed if they have no job but are available and actively looking for work. Underemployment describes people who do have work, but not enough or not the right kind: someone working part-time who wants full-time hours, an engineer driving a taxi because they cannot find an engineering job, or many family members working on a small farm where fewer people could do the same work, often called disguised unemployment. Underemployment matters because headline unemployment rates can look low while many people still earn too little or waste their skills, which is especially common in countries with large informal sectors, such as India."
+    },
+    {
+      "id": "econ-externalities-and-policy",
+      "title": "Externalities and policy",
+      "prompt": "What are externalities, and how can policy address them?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0856"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Costs or benefits that affect people not involved in a transaction",
+          "criterion": "accuracy",
+          "keywords": [
+            "third parties",
+            "side effect",
+            "not involved",
+            "externality"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Negative examples like pollution; positive examples like education or vaccines",
+          "criterion": "accuracy",
+          "keywords": [
+            "pollution",
+            "negative",
+            "positive",
+            "vaccination"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Policies: taxes, regulations, permits, subsidies",
+          "criterion": "accuracy",
+          "keywords": [
+            "carbon tax",
+            "regulation",
+            "subsidy",
+            "tradable permits"
+          ]
+        }
+      ],
+      "modelAnswer": "An externality is a cost or benefit of an activity that falls on people who are not part of the transaction, so the market price does not reflect it. A negative externality is a factory polluting a river: its products are cheap partly because local residents bear the health costs. A positive externality is vaccination or education, which benefit society beyond the individual, so people may buy less than is socially ideal. Governments correct externalities by making prices reflect the true costs and benefits: taxes on pollution, such as carbon taxes, regulations and emission limits, tradable pollution permits, and subsidies or free provision for things with positive externalities, such as vaccines."
+    },
+    {
+      "id": "econ-public-goods-versus-private-goods",
+      "title": "Public goods versus private goods",
+      "prompt": "How do public goods differ from private goods?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0857"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Private goods are excludable and rival",
+          "criterion": "accuracy",
+          "keywords": [
+            "private goods",
+            "excludable",
+            "rival",
+            "one person"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Public goods are non-excludable and non-rival",
+          "criterion": "accuracy",
+          "keywords": [
+            "public goods",
+            "non excludable",
+            "non rival",
+            "everyone"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Free-rider problem means governments usually provide them",
+          "criterion": "accuracy",
+          "keywords": [
+            "free rider",
+            "government",
+            "taxes",
+            "street lights"
+          ]
+        }
+      ],
+      "modelAnswer": "Economists classify goods by two features. A private good is excludable, meaning sellers can stop people who have not paid from using it, and rival, meaning one person's use reduces what is available to others: a sandwich or a phone. A pure public good is non-excludable and non-rival: you cannot easily stop anyone benefiting, and one person's use does not reduce anyone else's, as with national defence, street lighting, flood defences or clean air. Because people can benefit without paying, the free-rider problem means private markets tend to provide too little of them, so governments usually fund public goods through taxes."
+    },
+    {
+      "id": "econ-budget-deficit-versus-public-debt",
+      "title": "Budget deficit versus public debt",
+      "prompt": "What is a budget deficit, and how is it different from public debt?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0858"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Deficit: the yearly gap when spending exceeds revenue",
+          "criterion": "accuracy",
+          "keywords": [
+            "deficit",
+            "one year",
+            "spending exceeds",
+            "revenue"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Debt: the total accumulated borrowing over time",
+          "criterion": "accuracy",
+          "keywords": [
+            "debt",
+            "accumulated",
+            "total",
+            "stock"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Deficits add to debt; sustainability depends on growth and interest",
+          "criterion": "accuracy",
+          "keywords": [
+            "debt to gdp",
+            "interest payments",
+            "sustainable",
+            "growth"
+          ]
+        }
+      ],
+      "modelAnswer": "A budget deficit is a flow: the gap in a single year between what a government spends and what it collects in revenue, mostly taxes. Public debt is a stock: the total amount the government owes from all its past borrowing, minus repayments. Each year's deficit is financed by borrowing, so it adds to the debt, while a surplus can reduce it. A useful analogy is a household that overspends its income by 10,000 rupees this year; that is its deficit, while its total credit card balance is its debt. Economists often look at debt as a share of GDP, because a growing economy can sustain more debt, and at how much revenue goes to interest payments."
+    },
+    {
+      "id": "econ-market-concentration-and-consumers",
+      "title": "Market concentration and consumers",
+      "prompt": "How can market concentration affect competition and consumers?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0859"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Concentration: a few firms control most of a market",
+          "criterion": "accuracy",
+          "keywords": [
+            "few firms",
+            "market share",
+            "monopoly",
+            "oligopoly"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Risks: higher prices, less choice, lower quality and innovation",
+          "criterion": "accuracy",
+          "keywords": [
+            "higher prices",
+            "less choice",
+            "innovation",
+            "quality"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Possible benefits of scale; competition law and regulators respond",
+          "criterion": "accuracy",
+          "keywords": [
+            "economies of scale",
+            "competition commission",
+            "antitrust",
+            "merger"
+          ]
+        }
+      ],
+      "modelAnswer": "A market is concentrated when a few firms control most of the sales, as in a monopoly or an oligopoly. With weak competition, firms can raise prices above costs, offer less choice, invest less in quality or innovation, and make it hard for new companies to enter, for example by controlling distribution or data. Consumers pay more and have fewer alternatives. Concentration is not always harmful: large firms can achieve economies of scale and lower costs, and some industries, like railways, are natural monopolies. That is why competition authorities, such as the Competition Commission of India, review large mergers, investigate abuse of dominant positions and regulate natural monopolies."
+    },
+    {
+      "id": "econ-purchasing-power-parity",
+      "title": "Purchasing power parity",
+      "prompt": "What is purchasing power parity, and what can it tell us?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "economics",
+        "one-minute",
+        "vcn-0860"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "PPP adjusts for differences in price levels between countries",
+          "criterion": "accuracy",
+          "keywords": [
+            "price levels",
+            "adjusts",
+            "same basket",
+            "cost of living"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Compares real living standards better than market exchange rates",
+          "criterion": "accuracy",
+          "keywords": [
+            "living standards",
+            "gdp per capita",
+            "exchange rate",
+            "compare"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Limits: different baskets, quality and non-traded goods; Big Mac index",
+          "criterion": "accuracy",
+          "keywords": [
+            "big mac index",
+            "limitations",
+            "non traded",
+            "basket"
+          ]
+        }
+      ],
+      "modelAnswer": "Purchasing power parity is a way of comparing incomes and output across countries after adjusting for differences in what things cost. A haircut, a meal or rent is much cheaper in India than in the United States, so converting Indian incomes to dollars at the market exchange rate understates how much people can actually buy. PPP exchange rates are based on the cost of the same basket of goods and services in each country. They give a better picture of real living standards; for example, India's economy is much larger in PPP terms than at market rates. The Economist's Big Mac index is a fun simplified version. PPP has limits: baskets and quality differ between countries."
+    },
+    {
+      "id": "sci-weather-versus-climate",
+      "title": "Weather versus climate",
+      "prompt": "What is the difference between weather and climate?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0862"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Weather: short-term atmospheric conditions at a place and time",
+          "criterion": "accuracy",
+          "keywords": [
+            "weather",
+            "short term",
+            "today",
+            "conditions"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Climate: long-term average patterns, typically over 30 years",
+          "criterion": "accuracy",
+          "keywords": [
+            "climate",
+            "long term",
+            "average",
+            "30 years"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "A cold day does not disprove a warming climate",
+          "criterion": "accuracy",
+          "keywords": [
+            "cold day",
+            "trend",
+            "climate change",
+            "variability"
+          ]
+        }
+      ],
+      "modelAnswer": "Weather is the state of the atmosphere at a particular place and time: today's temperature, rain, wind and humidity, which can change within hours. Climate is the long-term pattern of weather in a region, usually averaged over thirty years or more, including typical temperatures, rainfall and seasons; for example, Chennai has a hot, humid climate with a northeast monsoon. A common saying is \"climate is what you expect, weather is what you get\". This distinction matters in discussions of climate change: one unusually cold week does not disprove global warming, because climate change is about long-term trends in averages and extremes, not individual days."
+    },
+    {
+      "id": "sci-the-water-cycle",
+      "title": "The water cycle",
+      "prompt": "How does the water cycle move water through the environment?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0863"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Evaporation and transpiration move water into the air",
+          "criterion": "accuracy",
+          "keywords": [
+            "evaporation",
+            "transpiration",
+            "sun",
+            "water vapour"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Condensation forms clouds; precipitation returns water",
+          "criterion": "accuracy",
+          "keywords": [
+            "condensation",
+            "clouds",
+            "precipitation",
+            "rain"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Runoff, infiltration and groundwater return water to oceans",
+          "criterion": "accuracy",
+          "keywords": [
+            "runoff",
+            "groundwater",
+            "rivers",
+            "infiltration"
+          ]
+        }
+      ],
+      "modelAnswer": "The water cycle is the continuous movement of water between the oceans, the air and the land, driven by the sun's energy and gravity. Heat evaporates water from oceans, lakes and soil, and plants release water vapour through their leaves in transpiration. As moist air rises and cools, the vapour condenses into tiny droplets, forming clouds. When droplets grow heavy, they fall as precipitation: rain, snow or hail. On land, some water runs off into streams and rivers back to the sea, some soaks into the ground and recharges groundwater, and some is stored in glaciers and lakes for long periods before continuing the cycle."
+    },
+    {
+      "id": "sci-nuclear-fission-and-electricity",
+      "title": "Nuclear fission and electricity",
+      "prompt": "What is nuclear fission, and how is it used to generate electricity?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0866"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A heavy nucleus such as uranium-235 splits when hit by a neutron",
+          "criterion": "accuracy",
+          "keywords": [
+            "uranium",
+            "splits",
+            "nucleus",
+            "neutron"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It releases energy and more neutrons, causing a chain reaction",
+          "criterion": "accuracy",
+          "keywords": [
+            "chain reaction",
+            "energy",
+            "neutrons",
+            "controlled"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Heat makes steam that drives turbines; issues are waste and safety",
+          "criterion": "accuracy",
+          "keywords": [
+            "steam",
+            "turbine",
+            "radioactive waste",
+            "low carbon"
+          ]
+        }
+      ],
+      "modelAnswer": "Nuclear fission is the splitting of a heavy atomic nucleus, such as uranium-235, into smaller nuclei. When a uranium nucleus absorbs a neutron, it becomes unstable and splits, releasing a large amount of energy, because a little mass is converted into energy according to E = mc squared, along with two or three new neutrons. Those neutrons can split further nuclei, creating a chain reaction. In a power plant, control rods absorb neutrons to keep the reaction steady. The heat boils water into steam, which drives turbines connected to generators, just as in a coal plant. Nuclear power emits almost no carbon dioxide, but produces long-lived radioactive waste and requires strict safety controls."
+    },
+    {
+      "id": "sci-how-solar-panels-make-electricity",
+      "title": "How solar panels make electricity",
+      "prompt": "How do solar panels convert light into electrical energy?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0867"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Solar cells are made of semiconductors such as silicon",
+          "criterion": "accuracy",
+          "keywords": [
+            "semiconductor",
+            "silicon",
+            "solar cell",
+            "photovoltaic"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Photons knock electrons loose, and a p-n junction drives them as current",
+          "criterion": "accuracy",
+          "keywords": [
+            "photons",
+            "electrons",
+            "p n junction",
+            "electric field"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Produces direct current, converted by an inverter; efficiency limits",
+          "criterion": "accuracy",
+          "keywords": [
+            "direct current",
+            "inverter",
+            "efficiency",
+            "sunlight"
+          ]
+        }
+      ],
+      "modelAnswer": "Solar panels are made of photovoltaic cells, usually from silicon, a semiconductor. Each cell has two layers doped differently, forming a p-n junction with a built-in electric field between them. When sunlight hits the cell, photons with enough energy knock electrons free from their atoms, creating electron-hole pairs. The electric field at the junction pushes the electrons one way and the holes the other, so when the cell is connected to a circuit, electrons flow as an electric current. Panels produce direct current, which an inverter converts to alternating current for homes and the grid. Typical commercial panels convert about twenty percent of sunlight into electricity."
+    },
+    {
+      "id": "sci-earthquakes-and-how-they-are-measured",
+      "title": "Earthquakes and how they are measured",
+      "prompt": "What causes earthquakes, and how are their magnitudes measured?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0868"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Tectonic plates move and stress builds along faults",
+          "criterion": "accuracy",
+          "keywords": [
+            "tectonic plates",
+            "faults",
+            "stress",
+            "move"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Sudden slip releases energy as seismic waves",
+          "criterion": "accuracy",
+          "keywords": [
+            "slip",
+            "release",
+            "seismic waves",
+            "epicenter"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Magnitude uses the logarithmic moment magnitude scale measured by seismometers",
+          "criterion": "accuracy",
+          "keywords": [
+            "magnitude",
+            "logarithmic",
+            "seismometer",
+            "richter"
+          ]
+        }
+      ],
+      "modelAnswer": "The Earth's outer shell is divided into tectonic plates that move slowly. Where they meet, rocks along faults lock together, and stress builds up over years or centuries. When the stress exceeds the strength of the rock, it suddenly slips, releasing the stored energy as seismic waves that shake the ground; the point underground where it starts is the focus, and the point above it on the surface is the epicentre. Seismometers record these waves. Magnitude, today usually the moment magnitude scale, which replaced the Richter scale, measures the energy released; it is logarithmic, so each whole number step means about 32 times more energy. Intensity scales separately describe the shaking and damage felt at a location."
+    },
+    {
+      "id": "sci-antibiotics-versus-antivirals",
+      "title": "Antibiotics versus antivirals",
+      "prompt": "How do antibiotics differ from antivirals?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0869"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Antibiotics kill or stop bacteria by targeting bacterial structures",
+          "criterion": "accuracy",
+          "keywords": [
+            "antibiotics",
+            "bacteria",
+            "cell wall",
+            "kill"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Antivirals block virus replication inside our cells; viruses lack those targets",
+          "criterion": "accuracy",
+          "keywords": [
+            "antivirals",
+            "virus",
+            "replication",
+            "host cells"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Antibiotics do not work on colds or flu; misuse drives resistance",
+          "criterion": "accuracy",
+          "keywords": [
+            "cold",
+            "flu",
+            "misuse",
+            "resistance"
+          ]
+        }
+      ],
+      "modelAnswer": "Bacteria are living cells with their own structures, such as cell walls and ribosomes that differ from ours, so antibiotics can target them and kill bacteria or stop them multiplying without seriously harming our cells. Viruses are not cells: they hijack our own cells to copy themselves, so antibiotics have nothing to attack. Antivirals work differently, by blocking specific steps in a virus's life cycle, such as entering cells or copying its genetic material, and they are usually specific to one virus or family, for example drugs for influenza, HIV or hepatitis C. That is why antibiotics do not help with colds or flu, and taking them unnecessarily only encourages antibiotic-resistant bacteria."
+    },
+    {
+      "id": "sci-how-a-battery-produces-electricity",
+      "title": "How a battery produces electricity",
+      "prompt": "How does a battery convert chemical energy into electrical energy?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0871"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Two electrodes, anode and cathode, separated by an electrolyte",
+          "criterion": "accuracy",
+          "keywords": [
+            "anode",
+            "cathode",
+            "electrolyte",
+            "electrodes"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Chemical reactions release electrons that flow through the external circuit",
+          "criterion": "accuracy",
+          "keywords": [
+            "redox",
+            "electrons",
+            "external circuit",
+            "reaction"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Ions move inside; rechargeable batteries reverse the reaction",
+          "criterion": "accuracy",
+          "keywords": [
+            "ions",
+            "lithium",
+            "rechargeable",
+            "reverse"
+          ]
+        }
+      ],
+      "modelAnswer": "A battery has two electrodes made of different materials, the anode and the cathode, separated by an electrolyte that lets ions pass but not electrons. The materials have different tendencies to give up electrons, which creates a voltage. When you connect a device, a chemical reaction at the anode releases electrons, which flow through the external circuit, powering the device, to the cathode, where another reaction absorbs them. At the same time, ions move through the electrolyte inside the battery to balance the charge. In a rechargeable lithium-ion battery, a charger pushes electrons and lithium ions back the other way, reversing the reaction and storing energy again."
+    },
+    {
+      "id": "sci-how-satellites-stay-in-orbit",
+      "title": "How satellites stay in orbit",
+      "prompt": "How do satellites remain in orbit?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0873"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Gravity constantly pulls the satellite toward Earth",
+          "criterion": "accuracy",
+          "keywords": [
+            "gravity",
+            "pull",
+            "toward earth",
+            "falling"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Its high sideways speed means it keeps falling around the Earth",
+          "criterion": "accuracy",
+          "keywords": [
+            "sideways speed",
+            "horizontal velocity",
+            "falls around",
+            "free fall"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Little air resistance at altitude; low orbits slowly decay",
+          "criterion": "accuracy",
+          "keywords": [
+            "air resistance",
+            "altitude",
+            "decay",
+            "geostationary"
+          ]
+        }
+      ],
+      "modelAnswer": "A satellite in orbit is actually falling toward Earth all the time, pulled by gravity, but it is also moving sideways extremely fast, around 7.8 kilometres per second in low Earth orbit. As it falls, the curved surface of the Earth falls away beneath it at the same rate, so it keeps missing the ground and circles the planet instead. Newton illustrated this with a cannon on a mountain firing faster and faster until the ball never lands. Higher orbits need lower speeds; at about 36,000 kilometres, a geostationary satellite takes exactly one day per orbit, staying above the same spot. At low altitudes, thin air still causes drag, so orbits slowly decay unless boosted."
+    },
+    {
+      "id": "sci-biodiversity-and-ecosystems",
+      "title": "Biodiversity and ecosystems",
+      "prompt": "What is biodiversity, and why do ecosystems benefit from it?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0874"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Variety of life: genes, species and ecosystems",
+          "criterion": "accuracy",
+          "keywords": [
+            "variety",
+            "species",
+            "genetic diversity",
+            "ecosystems"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Diverse ecosystems are more productive and resilient to change",
+          "criterion": "accuracy",
+          "keywords": [
+            "resilient",
+            "stable",
+            "disease",
+            "change"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Provides services: pollination, clean water, food and medicines",
+          "criterion": "accuracy",
+          "keywords": [
+            "pollination",
+            "ecosystem services",
+            "medicines",
+            "food"
+          ]
+        }
+      ],
+      "modelAnswer": "Biodiversity is the variety of life at every level: the genetic diversity within species, the diversity of species, and the diversity of ecosystems such as forests, wetlands and coral reefs. Ecosystems benefit because different species play different roles, such as pollinators, predators, decomposers and plants that fix nitrogen, and when many species overlap in their roles, the system can absorb shocks: if one species declines because of disease or drought, others fill in. Diverse ecosystems tend to be more productive and resilient. Humans depend on these ecosystem services for pollination of crops, clean water, fertile soil, flood protection, food and medicines, which is why biodiversity loss is a serious risk."
+    },
+    {
+      "id": "sci-the-scientific-method-evidence-and-opinion",
+      "title": "The scientific method, evidence and opinion",
+      "prompt": "How does the scientific method help distinguish evidence from opinion?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "science",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "science",
+        "one-minute",
+        "vcn-0875"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Form a testable hypothesis that could be proven wrong",
+          "criterion": "accuracy",
+          "keywords": [
+            "hypothesis",
+            "testable",
+            "falsifiable",
+            "prediction"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Test with controlled experiments or careful observation and data",
+          "criterion": "accuracy",
+          "keywords": [
+            "experiment",
+            "control group",
+            "observation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Peer review and replication reduce bias",
+          "criterion": "accuracy",
+          "keywords": [
+            "peer review",
+            "replication",
+            "bias",
+            "evidence"
+          ]
+        }
+      ],
+      "modelAnswer": "An opinion is a belief that may or may not be backed by evidence. The scientific method is a process for testing beliefs against reality. It starts with a question and a hypothesis that makes a specific, testable prediction, one that could turn out to be wrong. Then scientists collect data through controlled experiments or careful observations, comparing for example a group that receives a treatment with a control group that does not, and measuring results objectively. Results are analysed statistically, published for peer review and, crucially, replicated by other researchers. A claim supported by repeated, independent evidence is far more reliable than one person's view, no matter how confident they are."
+    },
+    {
+      "id": "lit-a-narrators-point-of-view",
+      "title": "A narrator's point of view",
+      "prompt": "How does a narrator's point of view shape a reader's understanding?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0876"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "First, second and third person points of view",
+          "criterion": "accuracy",
+          "keywords": [
+            "first person",
+            "third person",
+            "second person",
+            "point of view"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Limited versus omniscient narration controls what the reader knows",
+          "criterion": "accuracy",
+          "keywords": [
+            "limited",
+            "omniscient",
+            "knows",
+            "access to thoughts"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Point of view shapes sympathy, suspense and bias",
+          "criterion": "accuracy",
+          "keywords": [
+            "sympathy",
+            "suspense",
+            "bias",
+            "perspective"
+          ]
+        }
+      ],
+      "modelAnswer": "Point of view decides whose eyes we see the story through and what we are allowed to know. A first-person narrator, using \"I\", gives intimacy with one character's thoughts, but we only know what they know and believe, so we may share their biases. A third-person limited narrator follows one character closely from outside. A third-person omniscient narrator can enter many characters' minds and comment on events, giving a broad view. These choices shape our sympathy, since we usually side with the character whose inner life we see, and they control suspense and surprise, because information can be withheld. Telling the same story from a different point of view can completely change its meaning."
+    },
+    {
+      "id": "lit-theme-versus-plot",
+      "title": "Theme versus plot",
+      "prompt": "What is the difference between theme and plot?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0877"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Plot is the sequence of events in a story",
+          "criterion": "accuracy",
+          "keywords": [
+            "plot",
+            "events",
+            "what happens",
+            "sequence"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Theme is the underlying idea or message the story explores",
+          "criterion": "accuracy",
+          "keywords": [
+            "theme",
+            "idea",
+            "message",
+            "meaning"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Example showing both in one work",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "story",
+            "novel",
+            "explores"
+          ]
+        }
+      ],
+      "modelAnswer": "Plot is what happens: the sequence of events, conflicts and their resolution. Theme is what the story is about at a deeper level: the central idea or question it explores, such as ambition, justice, love, or the cost of revenge. For example, the plot of Shakespeare's Macbeth is a Scottish nobleman who murders the king, takes the throne and is destroyed by guilt and war. Its themes include how unchecked ambition corrupts, and the relationship between fate and free will. A theme is usually not stated directly; readers infer it from the plot, characters and images. Many different plots can share a theme, and one plot can carry several themes."
+    },
+    {
+      "id": "lit-symbolism-in-stories",
+      "title": "Symbolism in stories",
+      "prompt": "How can symbolism add meaning beyond a story's literal events?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0878"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A symbol is an object, character or image that stands for a larger idea",
+          "criterion": "accuracy",
+          "keywords": [
+            "symbol",
+            "stands for",
+            "object",
+            "idea"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Examples of symbols in well-known works",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "green light",
+            "conch",
+            "mockingbird"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Symbols add depth and invite interpretation",
+          "criterion": "accuracy",
+          "keywords": [
+            "depth",
+            "interpretation",
+            "layers",
+            "recurring"
+          ]
+        }
+      ],
+      "modelAnswer": "A symbol is a concrete thing in a story, such as an object, a place, a colour or an action, that also represents an abstract idea. In The Great Gatsby, the green light at the end of Daisy's dock is literally a light, but it also stands for Gatsby's longing and the elusive American Dream. In Lord of the Flies, the conch shell represents order and democracy, and its destruction mirrors the collapse of civilisation among the boys. Symbols let writers express complex ideas without stating them directly, add layers of meaning, and connect different parts of a work through recurring images, rewarding readers who look beyond the literal events."
+    },
+    {
+      "id": "lit-how-satire-criticises",
+      "title": "How satire criticises",
+      "prompt": "How does satire criticize social or political behavior?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0880"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Satire uses humour, irony and exaggeration to criticise",
+          "criterion": "accuracy",
+          "keywords": [
+            "humour",
+            "irony",
+            "exaggeration",
+            "ridicule"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It targets the foolishness or vices of people and institutions",
+          "criterion": "accuracy",
+          "keywords": [
+            "institutions",
+            "politicians",
+            "society",
+            "hypocrisy"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Examples and its purpose of provoking change",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "animal farm",
+            "swift",
+            "change"
+          ]
+        }
+      ],
+      "modelAnswer": "Satire is a form of writing, or performance, that uses humour, irony, exaggeration and ridicule to expose and criticise foolishness, hypocrisy or abuse of power in people, institutions or society. By making something look absurd, it lets audiences see a problem clearly and encourages them to question it. Jonathan Swift's \"A Modest Proposal\" ironically suggests the poor sell their children as food, to attack heartless attitudes toward Irish poverty. George Orwell's Animal Farm uses a farm to satirise how the Russian Revolution turned into Stalin's dictatorship. Satire works only if the audience recognises the irony, which is why it is sometimes misunderstood and taken literally."
+    },
+    {
+      "id": "lit-setting-and-atmosphere",
+      "title": "Setting and atmosphere",
+      "prompt": "How do setting and atmosphere influence a story?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0881"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Setting: the time and place of a story",
+          "criterion": "accuracy",
+          "keywords": [
+            "setting",
+            "place",
+            "period"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Atmosphere: the mood or feeling created for the reader",
+          "criterion": "accuracy",
+          "keywords": [
+            "atmosphere",
+            "mood",
+            "feeling",
+            "tension"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Setting shapes characters, conflict and themes",
+          "criterion": "accuracy",
+          "keywords": [
+            "shapes characters",
+            "conflict",
+            "themes",
+            "society"
+          ]
+        }
+      ],
+      "modelAnswer": "Setting is where and when a story takes place: a city, a village, a ship, a historical period, or an imagined world. Atmosphere is the mood the writer creates, such as eerie, hopeful, tense or nostalgic, often through descriptions of weather, light, sounds and surroundings. Together they do much more than decorate the background. A setting shapes characters and conflicts: the strict social rules of nineteenth-century England drive the plot of Pride and Prejudice, and the harsh Yorkshire moors mirror the wild passions of Wuthering Heights. A storm or a gloomy house can build suspense, and a change of setting often marks a change in a character's life."
+    },
+    {
+      "id": "lit-rhythm-in-free-verse",
+      "title": "Rhythm in free verse",
+      "prompt": "How can a poem create rhythm without a fixed rhyme scheme?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0883"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Free verse has no fixed metre or rhyme",
+          "criterion": "accuracy",
+          "keywords": [
+            "free verse",
+            "no rhyme",
+            "no metre",
+            "form"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Rhythm comes from repetition, line breaks and sentence length",
+          "criterion": "accuracy",
+          "keywords": [
+            "repetition",
+            "line breaks",
+            "pauses",
+            "cadence"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Sound devices: alliteration, assonance and parallelism",
+          "criterion": "accuracy",
+          "keywords": [
+            "alliteration",
+            "assonance",
+            "parallelism",
+            "sound"
+          ]
+        }
+      ],
+      "modelAnswer": "Rhyme is only one way to create rhythm. Free verse, poetry without a regular metre or rhyme scheme, builds rhythm in other ways. Repetition of words, phrases or sentence structures, called parallelism, creates a beat, as in Walt Whitman's long, chanting lines. Line breaks control pace: a short line forces a pause or emphasis, while long lines flow quickly. Varying sentence length creates movement, and natural speech stress gives a cadence. Sound devices such as alliteration, repeating initial consonants, and assonance, repeating vowel sounds, link words together musically. The result can feel closer to natural speech while still being carefully patterned."
+    },
+    {
+      "id": "lit-why-translations-change-a-literary-work",
+      "title": "Why translations change a literary work",
+      "prompt": "Why do translations sometimes change the effect of a literary work?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0884"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Words carry connotations and cultural meanings without equivalents",
+          "criterion": "accuracy",
+          "keywords": [
+            "connotation",
+            "culture",
+            "no equivalent",
+            "idiom"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Sound, rhythm, rhyme and wordplay are hard to keep",
+          "criterion": "accuracy",
+          "keywords": [
+            "rhyme",
+            "wordplay",
+            "sound",
+            "rhythm"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Translators must choose between literal accuracy and recreating the effect",
+          "criterion": "accuracy",
+          "keywords": [
+            "literal",
+            "faithful",
+            "choices",
+            "interpretation"
+          ]
+        }
+      ],
+      "modelAnswer": "Translation is never a simple swap of words, because languages do not line up exactly. Many words carry connotations, cultural references, levels of politeness or idioms that have no direct equivalent; a Hindi or Tamil word for a specific family relationship or emotion may need a whole phrase in English. Poetry is hardest, because rhyme, rhythm, sound patterns and wordplay depend on the original language's sounds. So translators constantly choose between being literally accurate and recreating the feeling and effect for new readers. That is why two translations of the same work, such as Tagore's poems or Tolstoy's novels, can feel quite different, and readers sometimes compare several."
+    },
+    {
+      "id": "lit-character-development-and-theme",
+      "title": "Character development and theme",
+      "prompt": "How does character development reveal a story's central theme?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0885"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Characters change, or fail to change, through the story",
+          "criterion": "accuracy",
+          "keywords": [
+            "change",
+            "growth",
+            "arc",
+            "transformation"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Choices and consequences show what the story values",
+          "criterion": "accuracy",
+          "keywords": [
+            "choices",
+            "consequences",
+            "decisions",
+            "conflict"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Example connecting a character arc to a theme",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "scrooge",
+            "theme",
+            "redemption"
+          ]
+        }
+      ],
+      "modelAnswer": "Themes are often expressed through how characters change. A character arc, the transformation a character undergoes, or fails to undergo, shows the reader what the story believes about people and life. In Dickens's A Christmas Carol, Scrooge changes from a greedy, isolated miser into a generous man after confronting his past, present and future; that change carries the theme that compassion and community matter more than wealth, and that people can redeem themselves. Tragic characters who refuse to change, such as Macbeth, reveal themes through their downfall. Paying attention to the choices characters make and their consequences is one of the best ways to identify a theme."
+    },
+    {
+      "id": "lit-magical-realism-versus-fantasy",
+      "title": "Magical realism versus fantasy",
+      "prompt": "What is magical realism, and how does it differ from fantasy?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0886"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Magical realism places magical events in an otherwise realistic world",
+          "criterion": "accuracy",
+          "keywords": [
+            "magical realism",
+            "realistic world",
+            "ordinary",
+            "everyday"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Characters treat the magic as normal, without explanation",
+          "criterion": "accuracy",
+          "keywords": [
+            "matter of fact",
+            "no explanation",
+            "accepted",
+            "normal"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Fantasy builds separate worlds with their own rules; examples",
+          "criterion": "accuracy",
+          "keywords": [
+            "fantasy",
+            "invented world",
+            "marquez",
+            "rushdie"
+          ]
+        }
+      ],
+      "modelAnswer": "Magical realism is a literary style in which magical or impossible events occur in an otherwise realistic, everyday setting, and the characters and narrator treat them as completely normal, without explanation or surprise. In Gabriel García Márquez's One Hundred Years of Solitude, a character ascends to heaven while hanging laundry, and the family barely reacts. Salman Rushdie's Midnight's Children gives telepathic powers to children born at the moment of India's independence, mixing magic with real history. Fantasy, by contrast, usually builds a separate or clearly magical world with its own rules and creatures, like Middle-earth. Magical realism often uses magic to comment on real politics, history and society."
+    },
+    {
+      "id": "lit-strong-endings-in-short-stories",
+      "title": "Strong endings in short stories",
+      "prompt": "How can a short story create a strong ending with limited space?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0887"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Focus on a single conflict or moment from the start",
+          "criterion": "accuracy",
+          "keywords": [
+            "single conflict",
+            "focus",
+            "economy",
+            "limited"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Foreshadowing prepares a twist or epiphany that feels earned",
+          "criterion": "accuracy",
+          "keywords": [
+            "foreshadowing",
+            "twist",
+            "epiphany",
+            "earned"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Final image or line resonates and may leave ambiguity",
+          "criterion": "accuracy",
+          "keywords": [
+            "final image",
+            "resonate",
+            "ambiguity",
+            "open ending"
+          ]
+        }
+      ],
+      "modelAnswer": "A short story has no room for subplots, so a strong ending starts with focus: one main character, one central conflict or moment, and every scene pointing toward it. Writers plant small details early, foreshadowing, so that a twist or a moment of realisation, an epiphany, feels surprising yet inevitable, as in O. Henry's \"The Gift of the Magi\", where both partners sell their treasures to buy gifts for each other. Many stories end with a resonant final image or line rather than explaining everything, and some deliberately stay open or ambiguous, leaving readers to complete the meaning. The ending should answer the story's central question, even if not in the expected way."
+    },
+    {
+      "id": "lit-oral-traditions-and-culture",
+      "title": "Oral traditions and culture",
+      "prompt": "How do oral traditions preserve culture and history?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0888"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Stories, songs, epics and proverbs passed down by speaking",
+          "criterion": "accuracy",
+          "keywords": [
+            "spoken",
+            "passed down",
+            "generations",
+            "storytelling"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Memory aids: repetition, rhythm and formulas",
+          "criterion": "accuracy",
+          "keywords": [
+            "repetition",
+            "rhythm",
+            "formulas"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Preserve identity, values and history; examples and risks",
+          "criterion": "accuracy",
+          "keywords": [
+            "identity",
+            "values",
+            "griots",
+            "epics"
+          ]
+        }
+      ],
+      "modelAnswer": "Before writing was widespread, and in many communities still today, knowledge was preserved by speaking: myths, epics, songs, genealogies, proverbs and folk tales passed from generation to generation. Oral traditions use repetition, rhythm, rhyme and set phrases to make long works memorable; the Mahabharata and Homer's epics were performed orally for centuries before being written down. West African griots preserve family histories and the deeds of kings in song. These traditions carry a community's values, beliefs, history and sense of identity, and teach moral lessons. Because each telling can change, they are living rather than fixed, and they can be lost when languages and communities decline, which is why many are now being recorded."
+    },
+    {
+      "id": "lit-faithful-literary-adaptations",
+      "title": "Faithful literary adaptations",
+      "prompt": "What makes a literary adaptation faithful without copying every detail?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0889"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Faithfulness to spirit, themes and characters rather than every event",
+          "criterion": "accuracy",
+          "keywords": [
+            "spirit",
+            "themes",
+            "characters",
+            "essence"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Changes are necessary because media differ",
+          "criterion": "accuracy",
+          "keywords": [
+            "film",
+            "medium",
+            "compress",
+            "inner thoughts"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Good adaptations translate techniques to the new medium",
+          "criterion": "accuracy",
+          "keywords": [
+            "translate",
+            "visual",
+            "voice over",
+            "example"
+          ]
+        }
+      ],
+      "modelAnswer": "An adaptation, such as a film or series based on a novel, cannot copy every detail: a 400-page novel must fit into two hours, and film cannot easily show a narrator's inner thoughts. So faithfulness is better judged by whether the adaptation keeps the spirit of the original: its central themes, the essential nature of the characters, the tone, and the emotional journey. Good adaptations find new ways to achieve the same effect in their medium, using visuals, music or performance where the novel used description, and they may merge characters or cut subplots. An adaptation that copies every event but changes the meaning is less faithful than one that changes events but keeps the heart of the story."
+    },
+    {
+      "id": "lit-different-interpretations-backed-by-evidence",
+      "title": "Different interpretations backed by evidence",
+      "prompt": "How can readers interpret a work differently while still using evidence?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "literature",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "literature",
+        "one-minute",
+        "vcn-0890"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Literary works are open to multiple valid interpretations",
+          "criterion": "accuracy",
+          "keywords": [
+            "multiple interpretations",
+            "ambiguity",
+            "open",
+            "readers"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Interpretations must be supported by evidence from the text",
+          "criterion": "accuracy",
+          "keywords": [
+            "evidence",
+            "quotes",
+            "text",
+            "support"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Different lenses and contexts lead to different readings",
+          "criterion": "accuracy",
+          "keywords": [
+            "perspective",
+            "context",
+            "feminist",
+            "historical"
+          ]
+        }
+      ],
+      "modelAnswer": "Rich literary works are often ambiguous, and readers bring different experiences and perspectives, so several interpretations can be valid. But not every interpretation is equally strong: a good one is supported by evidence from the text itself, such as specific quotations, repeated images, character choices and structure, and it accounts for details that might contradict it. For example, one reader might see Hamlet's delay as caused by moral doubt, another by depression, and each can cite speeches supporting their view. Different critical lenses, such as historical, feminist or postcolonial, highlight different aspects of the same text. Discussion is valuable precisely because evidence-based disagreements reveal more of the work."
+    },
+    {
+      "id": "geo-the-urban-heat-island-effect",
+      "title": "The urban heat-island effect",
+      "prompt": "What is urban heat-island effect, and how can cities reduce it?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0894"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Cities are hotter than surrounding countryside, especially at night",
+          "criterion": "accuracy",
+          "keywords": [
+            "hotter",
+            "cities",
+            "countryside",
+            "night"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Causes: concrete and asphalt absorb heat, less vegetation, waste heat",
+          "criterion": "accuracy",
+          "keywords": [
+            "concrete",
+            "asphalt",
+            "vegetation",
+            "waste heat"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Solutions: trees, green roofs, reflective surfaces, water bodies",
+          "criterion": "accuracy",
+          "keywords": [
+            "trees",
+            "green roofs",
+            "cool roofs",
+            "reflective"
+          ]
+        }
+      ],
+      "modelAnswer": "An urban heat island is a city that is noticeably warmer than the surrounding countryside, often by several degrees, especially at night. Concrete, asphalt and dark roofs absorb sunlight during the day and release the heat slowly after sunset. Cities have fewer trees and less soil, so there is less cooling from shade and evaporation, and air conditioners, vehicles and industry add waste heat, while tall buildings trap warm air. This increases energy use, air pollution and heat-related illness. Cities can reduce it by planting trees and creating parks, using green roofs and reflective cool roofs and pavements, protecting lakes and wetlands, and designing streets that allow air to flow."
+    },
+    {
+      "id": "geo-watersheds-and-water-management",
+      "title": "Watersheds and water management",
+      "prompt": "How do watersheds influence water management?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0895"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A watershed is all the land draining into one river or lake",
+          "criterion": "accuracy",
+          "keywords": [
+            "watershed",
+            "drainage basin",
+            "drains",
+            "catchment"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Upstream activities affect water quality and quantity downstream",
+          "criterion": "accuracy",
+          "keywords": [
+            "upstream",
+            "downstream",
+            "pollution",
+            "deforestation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Management must cover the whole basin across boundaries",
+          "criterion": "accuracy",
+          "keywords": [
+            "whole basin",
+            "integrated",
+            "boundaries",
+            "cooperation"
+          ]
+        }
+      ],
+      "modelAnswer": "A watershed, or drainage basin, is the area of land where all the rain and snowmelt drains into the same river, lake or sea, separated from neighbouring watersheds by ridges and high ground. Because water flows downhill, what happens anywhere upstream affects everyone downstream: deforestation increases floods and soil erosion, factories and farms can pollute the water, dams change how much water flows and when, and heavy pumping lowers water tables. So effective water management treats the whole watershed as one system rather than following political boundaries, coordinating towns, farmers, industry and sometimes states or countries, and protecting forests and wetlands that regulate flow."
+    },
+    {
+      "id": "geo-desertification-and-how-to-slow-it",
+      "title": "Desertification and how to slow it",
+      "prompt": "What causes desertification, and how can it be slowed?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0896"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Desertification is land degradation in dry regions",
+          "criterion": "accuracy",
+          "keywords": [
+            "land degradation",
+            "dryland",
+            "fertile land",
+            "desert"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Causes: overgrazing, deforestation, poor irrigation and drought",
+          "criterion": "accuracy",
+          "keywords": [
+            "overgrazing",
+            "deforestation",
+            "drought",
+            "climate change"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Solutions: reforestation, soil and water conservation, sustainable farming",
+          "criterion": "accuracy",
+          "keywords": [
+            "reforestation",
+            "soil conservation",
+            "sustainable",
+            "water harvesting"
+          ]
+        }
+      ],
+      "modelAnswer": "Desertification is the degradation of land in dry regions, where once productive soil loses its fertility and vegetation and becomes desert-like. It is not mainly deserts expanding on their own; it is largely caused by human activity combined with climate. Overgrazing by livestock, cutting trees for fuel and farmland, poor irrigation that leaves salt in soils, and intensive farming expose the soil to wind and water erosion, while droughts and climate change make it worse. It can be slowed by planting trees and windbreaks, as in Africa's Great Green Wall initiative, rotating grazing, conserving soil with terracing and cover crops, harvesting rainwater, and supporting communities to use land sustainably."
+    },
+    {
+      "id": "geo-latitude-altitude-distance-from-the-sea-and-climate",
+      "title": "Latitude, altitude, distance from the sea and climate",
+      "prompt": "How do latitude, altitude, and distance from the sea affect climate?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0897"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Latitude: places near the equator receive more direct sunlight",
+          "criterion": "accuracy",
+          "keywords": [
+            "latitude",
+            "equator",
+            "sunlight",
+            "poles"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Altitude: temperature drops as height increases",
+          "criterion": "accuracy",
+          "keywords": [
+            "altitude",
+            "height",
+            "colder",
+            "mountains"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Distance from the sea: oceans moderate temperatures; inland areas have extremes",
+          "criterion": "accuracy",
+          "keywords": [
+            "maritime",
+            "continental",
+            "moderate"
+          ]
+        }
+      ],
+      "modelAnswer": "Latitude is the biggest factor: near the equator, the sun's rays strike the Earth almost directly all year, concentrating energy, so it is hot, while near the poles the same sunlight is spread over a larger area at a low angle, so it is cold. Altitude matters because air gets thinner and cooler as you go up, on average about six and a half degrees Celsius per thousand metres, which is why Shimla is cooler than Delhi. Distance from the sea matters because water heats and cools slowly; coastal places like Mumbai have mild, maritime climates with small temperature ranges, while places far inland, like Delhi, have continental climates with hot summers and cold winters."
+    },
+    {
+      "id": "geo-managing-a-shared-river",
+      "title": "Managing a shared river",
+      "prompt": "What are the challenges of managing a river shared by multiple states or countries?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0898"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Upstream and downstream users have conflicting interests",
+          "criterion": "accuracy",
+          "keywords": [
+            "upstream",
+            "downstream",
+            "conflict",
+            "interests"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Competing uses: irrigation, drinking water, hydropower, ecosystems",
+          "criterion": "accuracy",
+          "keywords": [
+            "irrigation",
+            "hydropower",
+            "drinking water",
+            "dams"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Need treaties, data sharing and fair allocation, especially in droughts",
+          "criterion": "accuracy",
+          "keywords": [
+            "treaty",
+            "agreement",
+            "data sharing",
+            "allocation"
+          ]
+        }
+      ],
+      "modelAnswer": "Rivers ignore political borders, so states or countries sharing one often have conflicting interests. Upstream users can build dams and divert water for irrigation or hydropower, reducing flow downstream, while downstream users depend on that water for farming, drinking and fisheries and suffer from upstream pollution. Demand grows with population, and droughts and climate change make shortages worse, turning sharing into disputes, such as the long-running Cauvery water dispute between Karnataka and Tamil Nadu, or tensions over the Nile and the Indus. Managing shared rivers needs agreements on how water is allocated, especially in dry years, sharing of data on flows, independent bodies to settle disputes, and cooperation on pollution and flood control."
+    },
+    {
+      "id": "geo-how-map-projections-distort-the-earth",
+      "title": "How map projections distort the Earth",
+      "prompt": "How do map projections distort the Earth's surface?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0899"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A sphere cannot be flattened without distortion",
+          "criterion": "accuracy",
+          "keywords": [
+            "sphere",
+            "flat",
+            "distortion",
+            "globe"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Mercator keeps shapes and directions but enlarges areas near the poles",
+          "criterion": "accuracy",
+          "keywords": [
+            "mercator",
+            "navigation",
+            "greenland",
+            "area"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Other projections preserve area or compromise",
+          "criterion": "accuracy",
+          "keywords": [
+            "equal area",
+            "gall peters",
+            "robinson",
+            "compromise"
+          ]
+        }
+      ],
+      "modelAnswer": "You cannot flatten the surface of a sphere onto paper without stretching or tearing it, just as you cannot flatten an orange peel perfectly. So every map projection distorts something: area, shape, distance or direction. The Mercator projection, designed for sea navigation, preserves angles and local shapes, so a straight line is a constant compass bearing, but it greatly enlarges areas far from the equator; Greenland looks about the size of Africa, though Africa is roughly fourteen times larger. Equal-area projections, such as Gall-Peters, keep sizes correct but distort shapes. Compromise projections, like Robinson or Winkel Tripel, balance the distortions, which is why they are used for world maps."
+    },
+    {
+      "id": "geo-where-major-cities-develop",
+      "title": "Where major cities develop",
+      "prompt": "What factors influence where major cities develop?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0900"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Physical factors: water, flat land, fertile soil and natural harbours",
+          "criterion": "accuracy",
+          "keywords": [
+            "water supply",
+            "rivers",
+            "harbour",
+            "fertile"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Trade routes, crossroads and resources",
+          "criterion": "accuracy",
+          "keywords": [
+            "trade",
+            "crossroads",
+            "resources",
+            "ports"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Political and economic decisions, and growth that attracts more growth",
+          "criterion": "accuracy",
+          "keywords": [
+            "capital",
+            "government",
+            "industry",
+            "agglomeration"
+          ]
+        }
+      ],
+      "modelAnswer": "Historically, cities grew where physical geography made life and trade easier: near rivers and fresh water, on flat, fertile land that could feed people, at natural harbours, and at defensible sites. Locations on trade routes, river crossings and crossroads, such as Kolkata on the Hooghly or Istanbul on the Bosphorus, attracted merchants. Natural resources such as coal, minerals or oil created industrial cities. Political decisions matter too: capitals like New Delhi, Canberra and Brasília were deliberately chosen. Once a city grows, it attracts more people, businesses, infrastructure and talent, an effect called agglomeration, so successful cities tend to keep growing."
+    },
+    {
+      "id": "geo-sea-level-rise-and-coastal-communities",
+      "title": "Sea-level rise and coastal communities",
+      "prompt": "How does sea-level rise affect coastal communities?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0901"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Caused by melting ice and thermal expansion of warming oceans",
+          "criterion": "accuracy",
+          "keywords": [
+            "melting ice",
+            "thermal expansion",
+            "warming",
+            "glaciers"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Effects: flooding, erosion, saltwater intrusion and storm surges",
+          "criterion": "accuracy",
+          "keywords": [
+            "flooding",
+            "erosion",
+            "saltwater",
+            "storm surge"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Responses: sea walls, mangroves, planning and relocation",
+          "criterion": "accuracy",
+          "keywords": [
+            "sea walls",
+            "mangroves",
+            "relocation",
+            "adaptation"
+          ]
+        }
+      ],
+      "modelAnswer": "Global sea levels are rising because of climate change: water expands as oceans warm, and glaciers and ice sheets in Greenland and Antarctica are melting. For coastal communities, this means more frequent flooding at high tides, stronger storm surges during cyclones, erosion of beaches and land, and saltwater seeping into rivers, groundwater and farmland, which damages crops and drinking water. Low-lying places such as the Sundarbans, Bangladesh, Mumbai's coast and small island nations like the Maldives are especially at risk. Responses include sea walls and better drainage, restoring natural defences such as mangroves and wetlands, stricter building rules, early warning systems and, in some cases, planned relocation."
+    },
+    {
+      "id": "geo-groundwater-depletion",
+      "title": "Groundwater depletion",
+      "prompt": "What is groundwater depletion, and why can it be difficult to reverse?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0902"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Pumping water from aquifers faster than it is recharged",
+          "criterion": "accuracy",
+          "keywords": [
+            "aquifer",
+            "pumping",
+            "recharge",
+            "faster"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Causes: irrigation with free power, urban demand, reduced recharge",
+          "criterion": "accuracy",
+          "keywords": [
+            "irrigation",
+            "borewells",
+            "urban",
+            "paved"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Hard to reverse: slow recharge, compaction and land subsidence",
+          "criterion": "accuracy",
+          "keywords": [
+            "slow recharge",
+            "compaction",
+            "subsidence",
+            "decades"
+          ]
+        }
+      ],
+      "modelAnswer": "Groundwater is water stored underground in aquifers, layers of rock and sediment. Depletion happens when it is pumped out faster than rain and rivers can recharge it, so water tables fall year after year. India is the world's largest user of groundwater, mostly for irrigation, and in states like Punjab and Haryana, cheap or free electricity for pumps and water-hungry crops like rice have caused steep declines; cities also over-pump while paving over land that once absorbed rain. It is difficult to reverse because some aquifers recharge extremely slowly, over decades or centuries, and when they are over-pumped, the layers can compact permanently, losing storage and causing the land surface to sink."
+    },
+    {
+      "id": "geo-natural-hazards-versus-disasters",
+      "title": "Natural hazards versus disasters",
+      "prompt": "How do natural hazards differ from disasters?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0903"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A hazard is a natural event that could cause harm",
+          "criterion": "accuracy",
+          "keywords": [
+            "hazard",
+            "natural event",
+            "earthquake",
+            "cyclone"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A disaster happens when a hazard meets vulnerable people and places",
+          "criterion": "accuracy",
+          "keywords": [
+            "disaster",
+            "vulnerability",
+            "exposure",
+            "damage"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Preparedness and planning reduce disaster risk",
+          "criterion": "accuracy",
+          "keywords": [
+            "preparedness",
+            "early warning",
+            "building codes",
+            "risk reduction"
+          ]
+        }
+      ],
+      "modelAnswer": "A natural hazard is a natural event, such as an earthquake, cyclone, flood or drought, that has the potential to cause harm. A disaster happens when a hazard hits people and places that are exposed and vulnerable, causing serious loss of life, property or livelihoods beyond a community's ability to cope. The same cyclone can be a manageable event in one place and a disaster in another, depending on preparation. Odisha shows this well: after a 1999 cyclone killed around ten thousand people, early warnings, cyclone shelters and mass evacuations meant later, similarly strong cyclones killed far fewer. So disaster risk depends on hazard, exposure and vulnerability, and the last two can be reduced."
+    },
+    {
+      "id": "geo-seasonal-water-scarcity-despite-annual-rainfall",
+      "title": "Seasonal water scarcity despite annual rainfall",
+      "prompt": "Why do some regions experience seasonal water scarcity despite annual rainfall?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0904"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Rain is concentrated in a few months, such as the monsoon",
+          "criterion": "accuracy",
+          "keywords": [
+            "concentrated",
+            "monsoon",
+            "few months",
+            "seasonal"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Water runs off quickly when there is not enough storage",
+          "criterion": "accuracy",
+          "keywords": [
+            "runoff",
+            "storage",
+            "reservoirs",
+            "recharge"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Solutions: rainwater harvesting, recharge, reducing losses and demand",
+          "criterion": "accuracy",
+          "keywords": [
+            "rainwater harvesting",
+            "tanks",
+            "check dams",
+            "demand"
+          ]
+        }
+      ],
+      "modelAnswer": "The yearly total of rain can be misleading. In much of India, most rain falls during three or four monsoon months, sometimes in a few intense storms, and the rest of the year is dry. If the water is not captured, it quickly runs off into rivers and the sea, especially from paved cities and degraded land, instead of soaking into the ground. Without enough storage, such as reservoirs, tanks, ponds and healthy aquifers, regions face shortages in the dry months despite heavy rain earlier. Chennai, for example, has seen both floods and severe water crises. Solutions include rainwater harvesting, restoring traditional tanks, check dams that recharge groundwater, and reducing leakage and demand."
+    },
+    {
+      "id": "geo-public-transport-land-use-and-city-emissions",
+      "title": "Public transport, land use and city emissions",
+      "prompt": "How can public transport and land use influence a city's emissions?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "geography",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "geography",
+        "one-minute",
+        "vcn-0905"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Transport is a major emissions source, especially private cars",
+          "criterion": "accuracy",
+          "keywords": [
+            "transport",
+            "private cars",
+            "emissions",
+            "traffic"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Good public transport reduces car use and emissions per trip",
+          "criterion": "accuracy",
+          "keywords": [
+            "public transport",
+            "metro",
+            "buses",
+            "per passenger"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Compact, mixed-use land use shortens trips and supports walking",
+          "criterion": "accuracy",
+          "keywords": [
+            "compact",
+            "mixed use",
+            "sprawl",
+            "walking"
+          ]
+        }
+      ],
+      "modelAnswer": "Transport is one of the largest sources of greenhouse gases and air pollution in cities, and private cars produce far more emissions per passenger than full buses or metro trains. Good public transport, frequent, reliable and affordable, gives people a real alternative to driving and lowers emissions per trip. Land use matters just as much: spread-out cities with homes far from jobs and shops force long car journeys, while compact, mixed-use neighbourhoods, where housing, offices, schools and shops are close together and built around transit stations, shorten trips and make walking and cycling practical. Combining both, with safe footpaths and cycle lanes, can cut a city's transport emissions substantially."
+    },
+    {
+      "id": "media-how-algorithms-shape-the-news-people-see",
+      "title": "How algorithms shape the news people see",
+      "prompt": "How do algorithms influence the news people see?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "current-affairs",
+        "one-minute",
+        "vcn-0908"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Feeds rank content by predicted engagement and personal data",
+          "criterion": "accuracy",
+          "keywords": [
+            "ranking",
+            "engagement",
+            "personalized",
+            "recommendation"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "This can create filter bubbles and amplify sensational content",
+          "criterion": "accuracy",
+          "keywords": [
+            "filter bubble",
+            "echo chamber",
+            "sensational",
+            "outrage"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Readers can diversify sources and adjust settings",
+          "criterion": "accuracy",
+          "keywords": [
+            "diverse sources",
+            "chronological",
+            "settings",
+            "awareness"
+          ]
+        }
+      ],
+      "modelAnswer": "Most people now get news through social media feeds, search engines and aggregator apps, which do not show everything in time order. Their algorithms rank content by what each user is likely to click, watch, share or comment on, based on past behaviour and data about them. Because emotional, surprising and outrage-provoking content tends to get more engagement, it is often amplified, even when it is misleading. Personalisation can also create filter bubbles, where people mainly see views they already agree with. Readers can reduce these effects by following diverse and reputable sources directly, using chronological feeds where available, and being aware that what they see is curated."
+    },
+    {
+      "id": "media-checking-a-chart-before-trusting-it",
+      "title": "Checking a chart before trusting it",
+      "prompt": "What should a reader check before trusting a chart shared online?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "current-affairs",
+        "one-minute",
+        "vcn-0909"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Source of the data and who made the chart",
+          "criterion": "accuracy",
+          "keywords": [
+            "source",
+            "who made",
+            "credible"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Axes and scales: truncated axes, inconsistent intervals, units",
+          "criterion": "accuracy",
+          "keywords": [
+            "axis",
+            "starts at zero",
+            "scale",
+            "units"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Context: time range, cherry-picking, per capita or totals",
+          "criterion": "accuracy",
+          "keywords": [
+            "time range",
+            "cherry picked",
+            "per capita",
+            "context"
+          ]
+        }
+      ],
+      "modelAnswer": "First check the source: where does the data come from, is it named and reputable, and who made the chart, and do they have an agenda? Then look closely at the axes. A vertical axis that does not start at zero can make small differences look huge; inconsistent intervals or two different axes can create misleading impressions; and units matter. Check the time range, because choosing a specific start and end date can hide or exaggerate a trend. Ask whether it shows totals when per-person figures or percentages would be fairer, and whether it compares like with like. Finally, remember that correlation in a chart does not prove causation."
+    },
+    {
+      "id": "media-confirmation-bias-in-public-debates",
+      "title": "Confirmation bias in public debates",
+      "prompt": "How can confirmation bias shape political and scientific discussions?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "current-affairs",
+        "one-minute",
+        "vcn-0910"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Confirmation bias: favouring information that supports existing beliefs",
+          "criterion": "accuracy",
+          "keywords": [
+            "confirmation bias",
+            "existing beliefs",
+            "favour",
+            "ignore"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Effects: selective sources, polarisation and dismissing evidence",
+          "criterion": "accuracy",
+          "keywords": [
+            "polarization",
+            "selective",
+            "dismiss",
+            "echo chamber"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Countermeasures: seeking opposing evidence, peer review, steelmanning",
+          "criterion": "accuracy",
+          "keywords": [
+            "opposing views",
+            "peer review",
+            "steelman",
+            "evidence"
+          ]
+        }
+      ],
+      "modelAnswer": "Confirmation bias is the tendency to search for, notice, interpret and remember information in ways that support what we already believe, while ignoring or dismissing evidence against it. In politics, it leads people to follow sources that agree with them, accept weak claims from their own side and reject strong evidence from the other, deepening polarisation. In science, a researcher may unconsciously design studies or analyse data in ways that confirm a favourite hypothesis. Science counters this with methods such as blind trials, pre-registered studies, peer review and replication. Individually, we can actively seek the strongest version of opposing arguments and ask \"what evidence would change my mind?\""
+    },
+    {
+      "id": "media-opinion-pieces-versus-news-reports",
+      "title": "Opinion pieces versus news reports",
+      "prompt": "What is the difference between an opinion piece and a reported news story?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "current-affairs",
+        "one-minute",
+        "vcn-0911"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "News reports aim to inform with verified facts and sources",
+          "criterion": "accuracy",
+          "keywords": [
+            "news report",
+            "facts",
+            "verified",
+            "sources"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Opinion pieces argue a viewpoint and interpret facts",
+          "criterion": "accuracy",
+          "keywords": [
+            "opinion",
+            "editorial",
+            "argue",
+            "viewpoint"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Readers should check labels and separate facts from views",
+          "criterion": "accuracy",
+          "keywords": [
+            "label",
+            "separate",
+            "bias",
+            "evaluate"
+          ]
+        }
+      ],
+      "modelAnswer": "A reported news story aims to tell readers what happened, based on verified facts, multiple sources, quotes and evidence, and it should present relevant sides fairly without the reporter's personal opinions. An opinion piece, such as an editorial, column or op-ed, openly argues a point of view: it interprets facts, makes judgements and tries to persuade. Both are legitimate, but confusing them is a problem; readers may treat a columnist's argument as established fact. Good publications label opinion clearly. As a reader, check the label and section, notice evaluative language like \"disastrous\" or \"brilliant\", and separate the factual claims, which can be checked, from the writer's interpretation."
+    },
+    {
+      "id": "media-trade-offs-in-regulating-social-media",
+      "title": "Trade-offs in regulating social media",
+      "prompt": "What trade-offs arise when governments regulate social media platforms?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "current-affairs",
+        "one-minute",
+        "vcn-0915"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Goals: reduce harmful content, misinformation and protect users",
+          "criterion": "accuracy",
+          "keywords": [
+            "harmful content",
+            "misinformation",
+            "child safety",
+            "protect"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Risks: censorship, restricting free speech and political misuse",
+          "criterion": "accuracy",
+          "keywords": [
+            "free speech",
+            "censorship",
+            "misuse",
+            "government power"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Other trade-offs: privacy, encryption and costs for small platforms",
+          "criterion": "accuracy",
+          "keywords": [
+            "privacy",
+            "encryption",
+            "compliance",
+            "transparency"
+          ]
+        }
+      ],
+      "modelAnswer": "Governments regulate social media to reduce real harms: hate speech, incitement to violence, child exploitation, fraud and coordinated misinformation, and to protect users' privacy and mental health. But every rule involves trade-offs. Requiring fast removal of \"harmful\" content can lead platforms to over-remove legitimate speech, and vague rules can be used by those in power to silence critics and journalists. Demands to trace who sent messages can weaken end-to-end encryption and privacy. Heavy compliance costs may entrench big platforms while burdening small competitors. Good regulation tends to be precise, focused on processes and transparency, with independent oversight and appeal rights, rather than giving governments broad control over speech."
+    },
+    {
+      "id": "media-scientific-consensus-versus-false-balance",
+      "title": "Scientific consensus versus false balance",
+      "prompt": "How can you distinguish a real scientific consensus from a false balance?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "current-affairs",
+        "one-minute",
+        "vcn-0918"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Consensus: agreement of most experts based on extensive evidence",
+          "criterion": "accuracy",
+          "keywords": [
+            "consensus",
+            "experts",
+            "evidence",
+            "agreement"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "False balance: presenting both sides as equal when evidence is not",
+          "criterion": "accuracy",
+          "keywords": [
+            "false balance",
+            "equal time",
+            "fringe",
+            "media"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Check major scientific bodies, reviews and expertise",
+          "criterion": "accuracy",
+          "keywords": [
+            "scientific bodies",
+            "reviews",
+            "meta analysis",
+            "expertise"
+          ]
+        }
+      ],
+      "modelAnswer": "A scientific consensus is when the large majority of relevant experts agree on a conclusion because many independent studies point the same way, as with human-caused climate change or vaccine safety. False balance happens when media present a debate with \"two sides\" given equal time, for example one climate scientist and one sceptic, implying that experts are evenly split, when in reality the evidence overwhelmingly supports one side. To tell them apart, look at statements from major scientific academies and organisations, systematic reviews and meta-analyses rather than single studies, and check whether the people speaking have expertise in that specific field. Real scientific uncertainty exists, but it is usually about details, not the core conclusion."
+    },
+    {
+      "id": "media-independent-journalism-in-a-democracy",
+      "title": "Independent journalism in a democracy",
+      "prompt": "What is the role of independent journalism in a democracy?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "current-affairs",
+        "one-minute",
+        "vcn-0919"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Informs citizens so they can make decisions and vote",
+          "criterion": "accuracy",
+          "keywords": [
+            "informs",
+            "citizens",
+            "vote",
+            "public interest"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Holds powerful people and institutions accountable",
+          "criterion": "accuracy",
+          "keywords": [
+            "accountability",
+            "watchdog",
+            "investigative",
+            "corruption"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Independence from government and owners; threats to it",
+          "criterion": "accuracy",
+          "keywords": [
+            "independence",
+            "press freedom",
+            "ownership",
+            "pressure"
+          ]
+        }
+      ],
+      "modelAnswer": "Democracy depends on citizens making informed decisions, and independent journalism provides much of the information they need about government, elections, the economy and society. Its most important role is as a watchdog: investigative journalists uncover corruption, abuse of power and wrongdoing by governments, companies and other powerful actors, and those revelations often lead to accountability and reform. Journalism also gives a voice to people and issues that might otherwise be ignored, and provides a space for public debate. To do this, it must be independent of the government, political parties and owners' commercial interests. Threats to press freedom, such as censorship, intimidation or financial pressure, weaken democracy itself."
+    },
+    {
+      "id": "media-misleading-headlines-with-accurate-articles",
+      "title": "Misleading headlines with accurate articles",
+      "prompt": "How can a headline mislead even when the article contains accurate facts?",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "current-affairs",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "current-affairs",
+        "one-minute",
+        "vcn-0920"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Headlines exaggerate or oversimplify to attract clicks",
+          "criterion": "accuracy",
+          "keywords": [
+            "exaggerate",
+            "clicks",
+            "clickbait",
+            "oversimplify"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "They omit context, qualifications or uncertainty",
+          "criterion": "accuracy",
+          "keywords": [
+            "context",
+            "omit",
+            "may",
+            "uncertainty"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Many people read only the headline, so the wrong impression spreads",
+          "criterion": "accuracy",
+          "keywords": [
+            "only headline",
+            "share",
+            "impression",
+            "read full article"
+          ]
+        }
+      ],
+      "modelAnswer": "Headlines are short and written to grab attention, so they often exaggerate or simplify. A study finding that a chemical \"may slightly increase risk in mice\" can become \"Common food causes cancer\". The article may accurately report the cautious details, the small effect size, the animal study and the scientists' warnings, but the headline drops this context and turns possibility into certainty, or picks the most dramatic quote out of context. Because many people only read headlines and share links without opening them, the misleading impression spreads widely. Readers should read beyond the headline, look for the actual numbers and sources, and be sceptical of headlines that provoke strong emotions."
     }
   ]
 }

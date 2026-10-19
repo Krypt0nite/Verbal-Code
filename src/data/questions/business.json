@@ -1532,6 +1532,2310 @@
         }
       ],
       "modelAnswer": "Budgeting starts with knowing where money actually goes: track one or two months of income and spending using a notebook, spreadsheet or app, grouping expenses into categories. Many people are surprised by small recurring costs like food delivery and subscriptions. The 50/30/20 rule is a simple starting framework: roughly 50% of take-home pay for needs (rent, groceries, utilities, transport, EMIs, insurance), 30% for wants (eating out, shopping, entertainment, travel) and 20% for savings and investments, including the emergency fund and paying down high-interest debt. \"Pay yourself first\" means automatically moving the savings amount on salary day, before spending, so saving does not depend on willpower. The percentages are guidelines, not laws: someone in their first job in Mumbai or Bengaluru may spend more than half on needs because of rent, and someone supporting parents or siblings will allocate differently, so adjust the split to fit reality while keeping some savings rate, even 10%, and raise it with every salary increase. Review the budget monthly and adjust for goals such as buying a vehicle or higher studies."
+    },
+    {
+      "id": "startup-interviewing-users-without-leading-them",
+      "title": "Interviewing users without leading them",
+      "prompt": "How can a startup interview users without leading their answers?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0923"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Ask about past behaviour, not hypothetical future intentions",
+          "criterion": "accuracy",
+          "keywords": [
+            "past behaviour",
+            "last time",
+            "what did you do",
+            "hypothetical"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Use open questions and avoid pitching the idea",
+          "criterion": "accuracy",
+          "keywords": [
+            "open questions",
+            "do not pitch",
+            "leading",
+            "neutral"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Listen for real pain, workarounds and money already spent",
+          "criterion": "accuracy",
+          "keywords": [
+            "workarounds",
+            "pain",
+            "spent",
+            "listen"
+          ]
+        }
+      ],
+      "modelAnswer": "People are polite and want to encourage founders, so asking \"Would you use an app that does X?\" mostly produces false yeses. Instead, ask about specific past behaviour, which is much more reliable: \"Tell me about the last time you had to do this. What did you do? What was hardest? What have you tried to fix it? How much does it cost you?\" Use open questions, avoid describing or pitching your idea until the end, if at all, and do not suggest answers. Listen more than you talk, and dig into details with follow-ups such as \"why was that a problem?\". Strong signals are existing workarounds, time or money already spent, and emotion when describing the problem."
+    },
+    {
+      "id": "startup-founder-market-fit",
+      "title": "Founder-market fit",
+      "prompt": "What is founder-market fit, and how can it be evaluated?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0924"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "How well the founders' background suits the market they target",
+          "criterion": "accuracy",
+          "keywords": [
+            "founders",
+            "background",
+            "market",
+            "fit"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Signals: domain expertise, network, unfair insight and motivation",
+          "criterion": "accuracy",
+          "keywords": [
+            "domain expertise",
+            "network",
+            "insight",
+            "passion"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Evaluate by asking why this team can win here",
+          "criterion": "accuracy",
+          "keywords": [
+            "why this team",
+            "credibility",
+            "access to customers",
+            "commitment"
+          ]
+        }
+      ],
+      "modelAnswer": "Founder-market fit describes how well a founding team's experience, skills, relationships and motivation match the market they are attacking. A team of former hospital administrators building software for hospitals understands the buyers, the regulations and the real pain, and has contacts to get early customers, which outsiders lack. It can be evaluated by asking: do the founders have deep domain knowledge or a unique insight others miss? Can they reach and sell to the target customers? Do they have credibility in this industry? And are they committed enough to persist for years, perhaps because they experienced the problem themselves? Investors weigh it heavily, because markets are hard and insiders learn faster."
+    },
+    {
+      "id": "startup-choosing-the-first-customer-segment",
+      "title": "Choosing the first customer segment",
+      "prompt": "How should a startup decide which customer segment to serve first?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0925"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Pick the segment with the most urgent pain and willingness to pay",
+          "criterion": "accuracy",
+          "keywords": [
+            "urgent pain",
+            "willingness to pay",
+            "early adopters",
+            "need"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Choose a segment that is reachable and narrow enough to dominate",
+          "criterion": "accuracy",
+          "keywords": [
+            "reachable",
+            "narrow",
+            "niche",
+            "focus"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use it as a beachhead to expand into adjacent segments",
+          "criterion": "accuracy",
+          "keywords": [
+            "beachhead",
+            "expand",
+            "adjacent",
+            "reference customers"
+          ]
+        }
+      ],
+      "modelAnswer": "Startups have limited time and money, so they should start where they can win fastest. The best first segment has an urgent, painful problem the product solves well, is willing to pay or adopt quickly, and is reachable: the founders can find and talk to these customers through existing channels or networks. It should be narrow enough that the startup can become the obvious choice for that group, for example dental clinics in one city rather than \"small businesses\". Success there creates revenue, testimonials and learning, a beachhead from which to expand into adjacent segments with similar needs. Trying to serve everyone at once usually results in a product that fits no one well."
+    },
+    {
+      "id": "startup-pricing-experiments-and-willingness-to-pay",
+      "title": "Pricing experiments and willingness to pay",
+      "prompt": "How do pricing experiments help validate willingness to pay?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0927"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Stated interest is unreliable; real payments are the best signal",
+          "criterion": "accuracy",
+          "keywords": [
+            "stated",
+            "actual payment",
+            "commitment",
+            "signal"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Methods: test price points, pre-orders, landing pages, tiers",
+          "criterion": "accuracy",
+          "keywords": [
+            "price points",
+            "pre orders",
+            "landing page",
+            "tiers"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Measure conversion and revenue, not just sign-ups",
+          "criterion": "accuracy",
+          "keywords": [
+            "conversion",
+            "revenue",
+            "churn",
+            "measure"
+          ]
+        }
+      ],
+      "modelAnswer": "People often say they would pay for something and then do not, so the only strong evidence of willingness to pay is people actually paying, or committing to pay. Pricing experiments test this directly: offering different price points to different groups of new visitors and comparing conversion, taking paid pre-orders or deposits before the product is finished, testing landing pages with prices on them, or offering tiered plans to see which features people pay extra for. With B2B customers, quoting a real price in sales conversations and seeing who signs is an experiment too. Measure revenue and retention, not just interest, since a low price can attract customers who are not valuable."
+    },
+    {
+      "id": "startup-growing-users-before-finding-a-business-model",
+      "title": "Growing users before finding a business model",
+      "prompt": "What are the risks of growing users before finding a sustainable business model?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0928"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Costs scale with users while revenue does not",
+          "criterion": "accuracy",
+          "keywords": [
+            "costs",
+            "scale",
+            "losses",
+            "burn"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Users acquired for free may not convert to paying customers",
+          "criterion": "accuracy",
+          "keywords": [
+            "free users",
+            "not pay",
+            "monetize",
+            "wrong users"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Dependence on funding; examples of blitzscaling failures",
+          "criterion": "accuracy",
+          "keywords": [
+            "funding",
+            "runway",
+            "investors",
+            "collapse"
+          ]
+        }
+      ],
+      "modelAnswer": "Growth feels like success, but if each user costs more to serve and acquire than they bring in, growing faster simply means losing money faster. Infrastructure, support and marketing costs rise with users, while revenue may not appear. Users attracted by free products or heavy discounts may never pay, or may leave as soon as prices rise, so the user base is less valuable than it looks. The company becomes dependent on raising more funding, and if investor sentiment changes, it can run out of cash suddenly, as several quick-commerce and scooter startups found. Growth is powerful once unit economics work; before that, it is safer to prove that some customers pay sustainably."
+    },
+    {
+      "id": "startup-runway-and-burn-rate",
+      "title": "Runway and burn rate",
+      "prompt": "How do runway and burn rate affect startup decisions?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0931"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Burn rate: net cash spent each month",
+          "criterion": "accuracy",
+          "keywords": [
+            "burn rate",
+            "monthly",
+            "spend",
+            "net cash"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Runway: months until cash runs out",
+          "criterion": "accuracy",
+          "keywords": [
+            "runway",
+            "months",
+            "cash runs out",
+            "divide"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Shapes hiring, spending and when to raise money",
+          "criterion": "accuracy",
+          "keywords": [
+            "hiring",
+            "fundraising",
+            "cut costs",
+            "default alive"
+          ]
+        }
+      ],
+      "modelAnswer": "Burn rate is how much cash a startup loses each month: expenses minus revenue. Runway is how many months it can survive at that rate: cash in the bank divided by monthly burn. With 60 lakh rupees in the bank and a net burn of 5 lakh a month, runway is twelve months. These numbers drive almost every decision. Hiring increases burn and shortens runway, so founders must be confident new hires will speed up growth or revenue. Fundraising typically takes several months, so startups should start raising with at least six to nine months of runway left. If runway is short and funding uncertain, founders cut costs to reach profitability, sometimes called becoming \"default alive\"."
+    },
+    {
+      "id": "startup-go-to-market-for-a-small-b2b-product",
+      "title": "Go-to-market for a small B2B product",
+      "prompt": "What is a go-to-market strategy for a small B2B product?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0932"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Define the ideal customer profile and the buyer",
+          "criterion": "accuracy",
+          "keywords": [
+            "ideal customer profile",
+            "buyer",
+            "decision maker",
+            "target"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Choose channels: founder-led sales, outreach, partnerships, content",
+          "criterion": "accuracy",
+          "keywords": [
+            "founder led sales",
+            "outbound",
+            "partnerships",
+            "content"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Positioning, pricing and a repeatable sales process",
+          "criterion": "accuracy",
+          "keywords": [
+            "positioning",
+            "pricing",
+            "sales process",
+            "repeatable"
+          ]
+        }
+      ],
+      "modelAnswer": "A go-to-market strategy is the plan for how a product reaches and wins its customers. For a small B2B product, it starts with an ideal customer profile: which type of company, of what size, in which industry, with what pain, and who inside it decides and pays, such as the head of HR or the finance manager. Next comes clear positioning: why this product is better for them than alternatives, including spreadsheets. Then choose a few channels that reach those buyers: early on usually founder-led sales and direct outreach, plus partnerships, communities, and content that answers their questions. Set pricing, define a simple sales process from demo to trial to contract, and measure what converts."
+    },
+    {
+      "id": "startup-competing-against-an-established-incumbent",
+      "title": "Competing against an established incumbent",
+      "prompt": "How can startups compete against an established incumbent?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0933"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Target a niche or segment the incumbent ignores or underserves",
+          "criterion": "accuracy",
+          "keywords": [
+            "niche",
+            "underserved",
+            "ignored",
+            "segment"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Use speed, focus and better user experience",
+          "criterion": "accuracy",
+          "keywords": [
+            "speed",
+            "focus",
+            "user experience",
+            "iterate"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Exploit new technology or business models the incumbent cannot easily copy",
+          "criterion": "accuracy",
+          "keywords": [
+            "disruption",
+            "new technology",
+            "business model",
+            "cannibalize"
+          ]
+        }
+      ],
+      "modelAnswer": "Startups rarely win by attacking the incumbent head-on with the same product. More often they start where the incumbent is weak or uninterested: a small or unprofitable segment, such as freelancers or small shops, a region, or customers frustrated by complexity and high prices. Startups can move faster, focus on one problem and deliver a much better user experience. Their biggest advantage is often a new technology or business model that the incumbent cannot adopt without hurting its existing revenue, the innovator's dilemma, for example cloud subscriptions against expensive licences, or online banks without branches. After winning the niche, the startup expands upmarket as its product matures."
+    },
+    {
+      "id": "startup-when-to-stop-building-a-feature",
+      "title": "When to stop building a feature",
+      "prompt": "How should a startup decide when to stop building a feature?",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "startups",
+        "one-minute",
+        "vcn-0935"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Define a success hypothesis and metric before building",
+          "criterion": "accuracy",
+          "keywords": [
+            "hypothesis",
+            "success metric",
+            "before",
+            "goal"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Stop if usage and impact stay low despite reasonable iterations",
+          "criterion": "accuracy",
+          "keywords": [
+            "low usage",
+            "evidence",
+            "iterations",
+            "impact"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Weigh opportunity cost and maintenance burden; sunk cost fallacy",
+          "criterion": "accuracy",
+          "keywords": [
+            "opportunity cost",
+            "sunk cost",
+            "maintenance",
+            "focus"
+          ]
+        }
+      ],
+      "modelAnswer": "Before building, state what success looks like: which users should use it, and what metric should move, such as activation or retention, within what time. Release the smallest version that tests that hypothesis. If, after a few reasonable iterations and enough time, few users adopt it or it does not move the metric, stop investing, even if a lot of effort has gone in; continuing because of past effort is the sunk cost fallacy. Consider the opportunity cost: every week on this feature is a week not spent on something with more evidence behind it. Remember that every feature adds maintenance and complexity, so removing unused ones is often healthy."
+    },
+    {
+      "id": "pm-outcomes-versus-outputs",
+      "title": "Outcomes versus outputs",
+      "prompt": "How do product outcomes differ from output metrics such as features shipped?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0936"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Outputs measure what the team produces, like features shipped",
+          "criterion": "accuracy",
+          "keywords": [
+            "output",
+            "features shipped",
+            "velocity",
+            "delivered"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Outcomes measure changes in user behaviour or business results",
+          "criterion": "accuracy",
+          "keywords": [
+            "outcome",
+            "user behaviour",
+            "retention",
+            "business results"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Teams should be judged by outcomes; outputs are only means",
+          "criterion": "accuracy",
+          "keywords": [
+            "judge",
+            "means",
+            "impact",
+            "feature factory"
+          ]
+        }
+      ],
+      "modelAnswer": "Outputs are what a team produces: features shipped, story points, releases or pages written. Outcomes are the changes those outputs cause in user behaviour and business results: more users completing onboarding, higher retention, fewer support tickets, more revenue. A team can ship twenty features and change nothing for users, which is sometimes called a feature factory. Good product management sets goals as outcomes, such as \"increase the share of new users who create a project in their first week from 30 to 45 percent\", and lets the team decide which outputs are most likely to achieve that. Outputs still matter for planning, but they are only the means, not the goal."
+    },
+    {
+      "id": "pm-a-useful-product-requirement-document",
+      "title": "A useful product requirement document",
+      "prompt": "What makes a useful product requirement document?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0937"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "States the problem, the users and why it matters",
+          "criterion": "accuracy",
+          "keywords": [
+            "problem",
+            "users",
+            "why",
+            "context"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Defines goals, success metrics and scope, including what is out of scope",
+          "criterion": "accuracy",
+          "keywords": [
+            "goals",
+            "success metrics",
+            "scope",
+            "out of scope"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Describes requirements and open questions without dictating implementation",
+          "criterion": "accuracy",
+          "keywords": [
+            "requirements",
+            "user stories",
+            "open questions",
+            "edge cases"
+          ]
+        }
+      ],
+      "modelAnswer": "A useful PRD starts with the problem, not the solution: who the users are, what pain they have, with evidence such as interviews or data, and why solving it now matters for the business. It defines goals and how success will be measured, and is explicit about scope, including what is deliberately out of scope, which prevents endless expansion. It then describes requirements, often as user stories or scenarios, with key edge cases, constraints like accessibility, privacy or legal needs, and dependencies. It lists open questions and risks. A good PRD leaves room for designers and engineers to propose solutions, is short enough to be read, and is updated as decisions are made."
+    },
+    {
+      "id": "pm-user-personas-versus-target-segments",
+      "title": "User personas versus target segments",
+      "prompt": "What is the difference between a user persona and a target segment?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0939"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A segment is a group of customers defined by shared characteristics",
+          "criterion": "accuracy",
+          "keywords": [
+            "segment",
+            "group",
+            "characteristics",
+            "market"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A persona is a fictional, detailed representative user based on research",
+          "criterion": "accuracy",
+          "keywords": [
+            "persona",
+            "fictional",
+            "representative",
+            "research"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Segments guide business focus; personas guide design and empathy",
+          "criterion": "accuracy",
+          "keywords": [
+            "design",
+            "empathy",
+            "focus",
+            "decisions"
+          ]
+        }
+      ],
+      "modelAnswer": "A target segment is a group of real customers defined by shared characteristics, such as small restaurants in tier-two cities with one to five employees, used to decide which market to focus on, how big the opportunity is, and how to sell and price. A persona is a fictional but research-based character who represents a typical user within a segment, for example \"Meena, 38, runs a family restaurant, manages orders on WhatsApp, has little time for training\". Personas describe goals, frustrations, context and behaviours, helping designers and engineers empathise and make concrete decisions. One segment may contain several personas, such as the owner who buys and the staff who use the product daily."
+    },
+    {
+      "id": "pm-leading-versus-lagging-indicators",
+      "title": "Leading versus lagging indicators",
+      "prompt": "What are leading and lagging indicators in product analytics?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0941"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Lagging indicators measure final results after the fact",
+          "criterion": "accuracy",
+          "keywords": [
+            "lagging",
+            "revenue",
+            "churn",
+            "after"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Leading indicators change earlier and predict those results",
+          "criterion": "accuracy",
+          "keywords": [
+            "leading",
+            "predict",
+            "early",
+            "activation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use leading indicators to act quickly; validate their link to outcomes",
+          "criterion": "accuracy",
+          "keywords": [
+            "act quickly",
+            "validate",
+            "correlation",
+            "experiment"
+          ]
+        }
+      ],
+      "modelAnswer": "Lagging indicators measure outcomes that only become visible after the fact, such as revenue, annual retention or churn. They are what ultimately matters, but by the time they move, it is too late to react quickly. Leading indicators are earlier signals that predict those outcomes, for example the share of new users who complete setup in their first day, how many invite a teammate, or weekly active usage, which tend to predict long-term retention. Teams use leading indicators to evaluate experiments and changes within days or weeks instead of months. The risk is choosing a leading indicator that does not actually predict the outcome, so its relationship with the lagging metric must be checked with data."
+    },
+    {
+      "id": "pm-user-requests-versus-underlying-problems",
+      "title": "User requests versus underlying problems",
+      "prompt": "How do you distinguish a user request from the underlying problem?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0943"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Users propose solutions; the job is to find the problem behind them",
+          "criterion": "accuracy",
+          "keywords": [
+            "request",
+            "solution",
+            "underlying problem",
+            "need"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Ask why and about the context in which the need arises",
+          "criterion": "accuracy",
+          "keywords": [
+            "ask why",
+            "context",
+            "five whys",
+            "situation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Look for patterns across users before deciding",
+          "criterion": "accuracy",
+          "keywords": [
+            "patterns",
+            "many users",
+            "alternatives"
+          ]
+        }
+      ],
+      "modelAnswer": "Users usually express needs as solutions: \"Add an export to Excel button.\" The product manager's job is to understand the problem behind it by asking why and exploring the context: when do you need this, what do you do with the data afterwards, what happens if you cannot do it? Often the real problem is different, for example the user exports data only to build a monthly report for their manager, so a built-in report or scheduled email might solve it better. The famous saying attributed to Henry Ford, that people would have asked for faster horses, captures this. After understanding the problem, look for patterns across many users before choosing a solution."
+    },
+    {
+      "id": "pm-north-star-metrics-and-their-pitfalls",
+      "title": "North-star metrics and their pitfalls",
+      "prompt": "What is a north-star metric, and what can go wrong when optimizing it?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0944"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A single metric capturing the core value users get from the product",
+          "criterion": "accuracy",
+          "keywords": [
+            "north star",
+            "single metric",
+            "core value",
+            "users"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Aligns teams on one long-term direction",
+          "criterion": "accuracy",
+          "keywords": [
+            "align",
+            "teams",
+            "direction",
+            "focus"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Pitfalls: gaming, harming users, ignoring other metrics; use guardrails",
+          "criterion": "accuracy",
+          "keywords": [
+            "gaming",
+            "guardrails",
+            "side effects",
+            "goodhart"
+          ]
+        }
+      ],
+      "modelAnswer": "A north-star metric is a single measure that best captures the core value customers get from the product and that predicts long-term success, such as nights booked for Airbnb or messages sent for a chat app. It aligns many teams on the same direction, helping them prioritise. But optimising one number can go wrong, as Goodhart's law warns: when a measure becomes a target, it stops being a good measure. Teams may game it, for example by sending more notifications to increase \"time spent\", annoying users and harming trust. The metric may also ignore important dimensions such as revenue, quality or user wellbeing. So a north star should be paired with guardrail metrics and regularly reviewed."
+    },
+    {
+      "id": "pm-testing-a-new-onboarding-flow",
+      "title": "Testing a new onboarding flow",
+      "prompt": "How would you design an experiment to test a new onboarding flow?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0945"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Hypothesis and primary metric, such as activation rate",
+          "criterion": "accuracy",
+          "keywords": [
+            "hypothesis",
+            "primary metric",
+            "activation",
+            "completion"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Randomised A/B test with only new users, adequate sample size and duration",
+          "criterion": "accuracy",
+          "keywords": [
+            "a b test",
+            "randomize",
+            "new users",
+            "sample size"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Guardrail metrics and analysis without peeking",
+          "criterion": "accuracy",
+          "keywords": [
+            "guardrail",
+            "statistical significance",
+            "peeking",
+            "retention"
+          ]
+        }
+      ],
+      "modelAnswer": "I would start with a clear hypothesis: \"The shorter onboarding flow will increase the share of new sign-ups who complete setup and create their first project within 24 hours.\" That activation rate is the primary metric. I would randomly assign only new users, half to the old flow and half to the new one, so existing users are not confused and groups are comparable. I would calculate the required sample size for the smallest improvement worth detecting, and run the test for a fixed period, at least one or two full weeks to cover weekly patterns, without stopping early when results look good. I would also watch guardrail metrics such as later retention and support tickets."
+    },
+    {
+      "id": "pm-customer-requests-versus-technical-debt",
+      "title": "Customer requests versus technical debt",
+      "prompt": "How should product teams balance customer requests with technical debt?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0946"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Technical debt slows future delivery and causes incidents",
+          "criterion": "accuracy",
+          "keywords": [
+            "slows delivery",
+            "incidents",
+            "quality",
+            "maintenance"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Make the impact of debt visible in business terms",
+          "criterion": "accuracy",
+          "keywords": [
+            "visible",
+            "business terms",
+            "impact"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Reserve steady capacity and tie debt work to goals",
+          "criterion": "accuracy",
+          "keywords": [
+            "reserve capacity",
+            "percentage",
+            "roadmap",
+            "tie to goals"
+          ]
+        }
+      ],
+      "modelAnswer": "Customer requests bring visible value, while technical debt, such as outdated code, missing tests or fragile infrastructure, slows the team down invisibly until it causes outages or makes every new feature take twice as long. Product managers and engineers should make debt visible in business terms: \"This payment code causes two incidents a month and makes any checkout change take three weeks.\" Many teams reserve a steady share of capacity, perhaps fifteen to twenty percent, for debt and maintenance, and they prioritise debt that blocks upcoming roadmap items, so it is paid down where it matters most. Ignoring debt entirely leads to a slow, unreliable product; obsessing over it delays value."
+    },
+    {
+      "id": "pm-what-a-launch-checklist-prevents",
+      "title": "What a launch checklist prevents",
+      "prompt": "What is a product launch checklist intended to prevent?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0947"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Prevents forgotten steps across teams during a busy launch",
+          "criterion": "accuracy",
+          "keywords": [
+            "forgotten",
+            "steps",
+            "coordination",
+            "teams"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Covers readiness: testing, monitoring, rollback, support and docs",
+          "criterion": "accuracy",
+          "keywords": [
+            "monitoring",
+            "rollback",
+            "support",
+            "documentation"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Also covers communication, legal, security and success measurement",
+          "criterion": "accuracy",
+          "keywords": [
+            "communication",
+            "legal",
+            "security",
+            "metrics"
+          ]
+        }
+      ],
+      "modelAnswer": "A launch involves many teams, and under deadline pressure, important steps are easily forgotten. A launch checklist prevents predictable failures such as shipping without monitoring or dashboards, having no rollback plan, support staff surprised by customer questions, missing help articles, untranslated text, unreviewed security or privacy implications, marketing announcing features that are not yet live, analytics events missing so success cannot be measured, or capacity not prepared for traffic. It assigns an owner and a status to each item and provides a go or no-go decision point. It is not bureaucracy for its own sake; it turns lessons from past launches into a reliable process."
+    },
+    {
+      "id": "pm-retention-versus-activation",
+      "title": "Retention versus activation",
+      "prompt": "How do retention and activation differ?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0948"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Activation: a new user first experiences the core value",
+          "criterion": "accuracy",
+          "keywords": [
+            "activation",
+            "first value",
+            "aha moment",
+            "new user"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Retention: users keep coming back over time",
+          "criterion": "accuracy",
+          "keywords": [
+            "retention",
+            "come back",
+            "over time",
+            "cohort"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Activation strongly influences retention; measure both with cohorts",
+          "criterion": "accuracy",
+          "keywords": [
+            "influence",
+            "cohorts",
+            "onboarding",
+            "churn"
+          ]
+        }
+      ],
+      "modelAnswer": "Activation is the moment a new user first experiences the product's core value, sometimes called the aha moment, such as sending a first message to a friend, creating a first project, or receiving a first payment. It is measured as the share of new sign-ups who reach that milestone, usually within a few days. Retention measures whether users keep coming back and using the product over weeks and months, typically analysed by cohort, for example the share of January sign-ups still active in April. They are connected: users who never activate rarely stay, so improving onboarding usually boosts retention. But a product can activate many users and still lose them if its ongoing value is weak."
+    },
+    {
+      "id": "pm-sunsetting-a-low-usage-feature",
+      "title": "Sunsetting a low-usage feature",
+      "prompt": "How would you decide whether to sunset a low-usage feature?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0949"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Check usage data and who the users are, such as key customers",
+          "criterion": "accuracy",
+          "keywords": [
+            "usage",
+            "who uses",
+            "key customers",
+            "revenue"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Weigh maintenance cost and complexity against value",
+          "criterion": "accuracy",
+          "keywords": [
+            "maintenance cost",
+            "complexity",
+            "value",
+            "opportunity cost"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Plan communication, alternatives and migration",
+          "criterion": "accuracy",
+          "keywords": [
+            "communicate",
+            "notice",
+            "alternative",
+            "migration"
+          ]
+        }
+      ],
+      "modelAnswer": "Low usage alone is not enough; I would look at who uses it and how much it matters to them. If a feature is used by five percent of users but they are the biggest paying customers, or it is essential for compliance, removing it could be costly. Then I would weigh its cost: maintenance work, bugs, slower development, infrastructure, and the complexity it adds to the interface for everyone else. If the cost is higher than the value, I would plan the sunset carefully: notify affected users well in advance, explain why, offer alternatives or a way to export their data, and monitor support feedback. Removing features thoughtfully keeps a product simpler and easier to improve."
+    },
+    {
+      "id": "pm-accessibility-and-privacy-in-requirements",
+      "title": "Accessibility and privacy in requirements",
+      "prompt": "How can accessibility and privacy be included in product requirements?",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "product-management",
+        "one-minute",
+        "vcn-0950"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Write them as explicit requirements and acceptance criteria",
+          "criterion": "accuracy",
+          "keywords": [
+            "requirements",
+            "acceptance criteria",
+            "explicit",
+            "definition of done"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Accessibility standards like WCAG: keyboard, contrast, screen readers",
+          "criterion": "accuracy",
+          "keywords": [
+            "wcag",
+            "keyboard",
+            "contrast",
+            "screen reader"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Privacy by design: data minimisation, consent, retention",
+          "criterion": "accuracy",
+          "keywords": [
+            "privacy by design",
+            "data minimization",
+            "consent",
+            "retention"
+          ]
+        }
+      ],
+      "modelAnswer": "They should be part of the requirements from the start, not a review at the end, because retrofitting them is expensive. For accessibility, the PRD can reference a standard such as WCAG 2.2 level AA and include concrete acceptance criteria: all actions work with a keyboard, text has sufficient colour contrast, images have alternative text, forms have labels and clear error messages, and the feature works with screen readers. For privacy, apply privacy by design: specify which personal data is truly needed and why, how consent is obtained, how long data is kept and who can access it, and involve privacy or legal experts. Including both in the definition of done makes them enforceable."
+    },
+    {
+      "id": "strategy-revenue-growth-versus-profitable-growth",
+      "title": "Revenue growth versus profitable growth",
+      "prompt": "What is the difference between revenue growth and profitable growth?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0952"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Revenue growth is increasing sales, regardless of cost",
+          "criterion": "accuracy",
+          "keywords": [
+            "revenue growth",
+            "sales",
+            "top line",
+            "increase"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Profitable growth means profits also grow, with healthy unit economics",
+          "criterion": "accuracy",
+          "keywords": [
+            "profitable",
+            "margins",
+            "unit economics",
+            "bottom line"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Buying growth with discounts or spending can destroy value",
+          "criterion": "accuracy",
+          "keywords": [
+            "discounts",
+            "burn",
+            "sustainable",
+            "value"
+          ]
+        }
+      ],
+      "modelAnswer": "Revenue growth means a company is selling more, increasing its top line. But revenue can be bought: with heavy discounts, expensive marketing, or by selling to customers who cost more to serve than they pay. Profitable growth means profits grow along with revenue, because each additional sale makes money after its costs, so margins and unit economics stay healthy or improve. A company growing revenue fifty percent while losses grow even faster is destroying value unless it has a clear path to profitability, as many cash-burning startups discovered when funding dried up. Investors and managers therefore look at margins, customer acquisition cost and cash flow, not just sales growth."
+    },
+    {
+      "id": "strategy-network-effects-value-and-concentration",
+      "title": "Network effects, value and concentration",
+      "prompt": "How do network effects create value and concentration?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0955"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A product becomes more valuable as more people use it",
+          "criterion": "accuracy",
+          "keywords": [
+            "more users",
+            "more valuable",
+            "network effect",
+            "users"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Direct and indirect, two-sided network effects",
+          "criterion": "accuracy",
+          "keywords": [
+            "direct",
+            "indirect",
+            "two sided",
+            "marketplace"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Leads to winner-take-most markets and concentration",
+          "criterion": "accuracy",
+          "keywords": [
+            "winner take most",
+            "concentration",
+            "switching",
+            "regulation"
+          ]
+        }
+      ],
+      "modelAnswer": "A network effect exists when a product becomes more valuable to each user as more people use it. Direct network effects occur in communication products like WhatsApp: a messaging app is only useful if your contacts use it. Indirect or two-sided effects occur in marketplaces and platforms: more riders attract more drivers on a ride-hailing app, which shortens wait times and attracts more riders. This creates a powerful self-reinforcing cycle, so the leading platform keeps pulling ahead, and markets tend toward a few dominant players, winner-take-most. Leaders become very hard to displace, which can reduce competition, and that is why regulators scrutinise large platforms."
+    },
+    {
+      "id": "strategy-the-value-chain-and-strategic-opportunities",
+      "title": "The value chain and strategic opportunities",
+      "prompt": "What is a value chain, and how can it reveal strategic opportunities?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0956"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The sequence of activities a company performs to create value",
+          "criterion": "accuracy",
+          "keywords": [
+            "activities",
+            "value chain",
+            "porter",
+            "steps"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Primary activities and support activities",
+          "criterion": "accuracy",
+          "keywords": [
+            "primary",
+            "support",
+            "logistics",
+            "operations"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Analysing each step reveals cost savings, differentiation or integration",
+          "criterion": "accuracy",
+          "keywords": [
+            "differentiation",
+            "integration",
+            "outsource"
+          ]
+        }
+      ],
+      "modelAnswer": "A value chain, a concept from Michael Porter, describes all the activities a company performs to create value for customers. Primary activities include receiving inputs, operations, outbound logistics, marketing and sales, and after-sales service; support activities include technology, human resources, procurement and infrastructure. Mapping a value chain shows where value is created and where costs are concentrated. That reveals strategic options: lowering cost in an expensive step, differentiating at a step customers care about, such as faster delivery, outsourcing activities that are not core, or integrating into a step controlled by a powerful supplier. Companies can also spot where competitors are weak along the chain."
+    },
+    {
+      "id": "strategy-responding-to-a-low-cost-competitor",
+      "title": "Responding to a low-cost competitor",
+      "prompt": "How can a business respond when a low-cost competitor enters its market?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0957"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Analyse which customers are actually at risk",
+          "criterion": "accuracy",
+          "keywords": [
+            "analyse",
+            "segments",
+            "price sensitive",
+            "at risk"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Options: differentiate, lower cost, or launch a fighting brand",
+          "criterion": "accuracy",
+          "keywords": [
+            "differentiate",
+            "cut costs",
+            "fighting brand",
+            "low cost version"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Avoid reflexive price wars that destroy margins",
+          "criterion": "accuracy",
+          "keywords": [
+            "price war",
+            "margins",
+            "value",
+            "switching costs"
+          ]
+        }
+      ],
+      "modelAnswer": "The first step is not to panic and immediately cut prices, which can start a price war that destroys margins for everyone. Instead, analyse which customers are at risk: often only the most price-sensitive segment will switch, while others value quality, service or brand. Then choose a response. Strengthen differentiation for customers who value it, by improving service, features or convenience, and communicating that value. Reduce costs where possible, to compete more effectively. Some companies launch a separate low-cost brand, a fighting brand, to serve price-sensitive customers without lowering prices on the main product, as airlines did with budget subsidiaries. Sometimes the best answer is to let the lowest-value segment go."
+    },
+    {
+      "id": "strategy-scenario-planning",
+      "title": "Scenario planning",
+      "prompt": "What is scenario planning, and when is it useful?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0958"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Developing several plausible futures rather than one forecast",
+          "criterion": "accuracy",
+          "keywords": [
+            "scenarios",
+            "plausible futures",
+            "not forecast",
+            "alternative"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Built from key uncertainties and driving forces",
+          "criterion": "accuracy",
+          "keywords": [
+            "uncertainties",
+            "driving forces",
+            "assumptions",
+            "variables"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Useful under high uncertainty to test strategies and prepare responses",
+          "criterion": "accuracy",
+          "keywords": [
+            "high uncertainty",
+            "test strategy",
+            "robust",
+            "early warning"
+          ]
+        }
+      ],
+      "modelAnswer": "Scenario planning is a strategy method where leaders imagine several plausible, quite different futures instead of betting on a single forecast. They identify the most important and most uncertain forces affecting their business, such as regulation, technology adoption, energy prices or demand, and combine them into three or four coherent stories about how the world might look in five or ten years. Then they ask how their strategy would perform in each, which choices are robust across all, and what early signs would show which scenario is unfolding. Shell famously used it to prepare for the 1970s oil shocks. It is most useful in highly uncertain, fast-changing environments with long-term investments."
+    },
+    {
+      "id": "strategy-partners-that-could-become-competitors",
+      "title": "Partners that could become competitors",
+      "prompt": "How should leaders evaluate a partnership that could also become a competitor?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0959"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Weigh mutual benefits like access, distribution or capabilities",
+          "criterion": "accuracy",
+          "keywords": [
+            "benefits",
+            "access",
+            "distribution",
+            "capabilities"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Assess the risk of learning, dependency and data sharing",
+          "criterion": "accuracy",
+          "keywords": [
+            "dependency",
+            "learn"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Protect with contracts, limits on shared assets and exit plans",
+          "criterion": "accuracy",
+          "keywords": [
+            "contract",
+            "protect",
+            "exit",
+            "exclusive"
+          ]
+        }
+      ],
+      "modelAnswer": "These partnerships, sometimes called coopetition, can be very valuable: a large partner may offer distribution, customers, technology or credibility that would take years to build. But leaders should ask what each side learns and gains over time. If the partner gets access to your customers, data or know-how, could it build a competing product, as some platforms have done with successful apps on their marketplaces? How dependent would you become on them? Protections include contracts that limit use of shared data and include non-compete or exclusivity terms where possible, sharing only what the partnership requires, keeping the core capabilities in-house, diversifying partners, and planning an exit strategy."
+    },
+    {
+      "id": "strategy-economies-of-scale-and-scope",
+      "title": "Economies of scale and scope",
+      "prompt": "What are economies of scale and economies of scope?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0960"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Scale: average cost falls as output of one product increases",
+          "criterion": "accuracy",
+          "keywords": [
+            "scale",
+            "average cost",
+            "more units",
+            "fixed costs"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Scope: producing several related products together is cheaper",
+          "criterion": "accuracy",
+          "keywords": [
+            "scope",
+            "related products",
+            "shared resources",
+            "together"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Examples and limits, such as diseconomies of scale",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "amazon",
+            "diseconomies",
+            "limits"
+          ]
+        }
+      ],
+      "modelAnswer": "Economies of scale occur when the average cost of producing each unit falls as a company produces more of the same product. Large fixed costs, such as a factory, software or research, are spread over more units, and big buyers get better prices from suppliers; that is why a huge car plant can make each car cheaper than a small one. Economies of scope occur when producing several different but related products together is cheaper than producing them separately, because they share resources: Amazon uses the same warehouses, logistics and customer base for books, electronics and groceries. Both have limits: very large organisations can suffer diseconomies of scale from complexity and slow decisions."
+    },
+    {
+      "id": "strategy-deciding-which-market-segment-not-to-serve",
+      "title": "Deciding which market segment not to serve",
+      "prompt": "How should a company decide which market segment not to serve?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0963"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Segments with low profitability or high cost to serve",
+          "criterion": "accuracy",
+          "keywords": [
+            "low profitability",
+            "cost to serve",
+            "margins",
+            "unprofitable"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Segments that do not fit the company's strengths or positioning",
+          "criterion": "accuracy",
+          "keywords": [
+            "fit",
+            "strengths",
+            "positioning",
+            "distract"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Saying no sharpens focus and the value proposition",
+          "criterion": "accuracy",
+          "keywords": [
+            "focus",
+            "trade offs",
+            "value proposition",
+            "clarity"
+          ]
+        }
+      ],
+      "modelAnswer": "Choosing what not to do is a core part of strategy. A company should consider not serving segments that are unprofitable once the full cost to serve is counted, such as customers who need heavy customisation or support but pay little; segments whose needs conflict with its main customers, so serving them would complicate the product; and segments where it has no advantage over competitors. Also consider strategic risk and focus: every extra segment demands attention, features and sales effort. Saying no sharpens the value proposition, for example a premium brand that refuses to discount, or a software company that focuses on mid-sized firms and deliberately ignores enterprise requirements."
+    },
+    {
+      "id": "strategy-strategic-positioning",
+      "title": "Strategic positioning",
+      "prompt": "What is strategic positioning, and why can trying to serve everyone fail?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0964"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Positioning: the distinct place a company chooses in customers' minds and market",
+          "criterion": "accuracy",
+          "keywords": [
+            "positioning",
+            "distinct",
+            "choice",
+            "target customers"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Requires trade-offs in activities that competitors cannot easily copy",
+          "criterion": "accuracy",
+          "keywords": [
+            "trade offs",
+            "activities",
+            "unique",
+            "porter"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Serving everyone leads to a muddled offer, stuck in the middle",
+          "criterion": "accuracy",
+          "keywords": [
+            "stuck in the middle",
+            "muddled",
+            "everyone",
+            "average"
+          ]
+        }
+      ],
+      "modelAnswer": "Strategic positioning is the deliberate choice of which customers to serve, which needs to meet and how to be different from competitors, for example the lowest price, the best quality, or the most convenience for a specific group. Michael Porter argued that strategy requires trade-offs: activities that make you great for one group often make you worse for another. A budget airline gives up seat selection, lounges and flexibility to achieve very low costs. Trying to serve everyone usually produces a muddled offer, too expensive for price-sensitive customers and not good enough for demanding ones, which Porter called being stuck in the middle. Clear positioning guides decisions about product, pricing, marketing and operations."
+    },
+    {
+      "id": "strategy-how-regulation-changes-competitive-strategy",
+      "title": "How regulation changes competitive strategy",
+      "prompt": "How can regulation change a company's competitive strategy?",
+      "categoryId": "business",
+      "subcategoryId": "business-strategy",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "business-strategy",
+        "one-minute",
+        "vcn-0965"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Regulation can create barriers to entry and compliance costs",
+          "criterion": "accuracy",
+          "keywords": [
+            "barriers",
+            "compliance costs",
+            "licences",
+            "entry"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "It can open new markets or remove advantages",
+          "criterion": "accuracy",
+          "keywords": [
+            "open markets",
+            "new opportunities",
+            "deregulation",
+            "level playing field"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Firms adapt by making compliance an advantage or shaping policy",
+          "criterion": "accuracy",
+          "keywords": [
+            "compliance advantage",
+            "lobbying",
+            "adapt",
+            "trust"
+          ]
+        }
+      ],
+      "modelAnswer": "Regulation changes the rules of competition. New requirements, such as licences, data protection laws or safety standards, raise compliance costs, which large established firms can absorb more easily than startups, so regulation can act as a barrier to entry. On the other hand, regulation can open markets: India's UPI rules created a payment ecosystem where many apps compete, and deregulation of telecoms or airlines let new players enter. It can also remove advantages, such as competition rules limiting a dominant platform's practices. Companies respond by building compliance into their offering as a selling point, as with privacy-focused products, adjusting business models, entering newly opened markets quickly, or engaging with policymakers."
+    },
+    {
+      "id": "finance-comparing-the-total-cost-of-two-loans",
+      "title": "Comparing the total cost of two loans",
+      "prompt": "How should someone compare the total cost of two loans?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0966"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Compare the effective annual rate, not just the headline rate",
+          "criterion": "accuracy",
+          "keywords": [
+            "effective rate",
+            "apr",
+            "interest rate",
+            "headline"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Include fees: processing, insurance, prepayment charges",
+          "criterion": "accuracy",
+          "keywords": [
+            "processing fee",
+            "charges",
+            "prepayment",
+            "hidden costs"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Compare total amount repaid over the full tenure",
+          "criterion": "accuracy",
+          "keywords": [
+            "total repaid",
+            "tenure",
+            "emi",
+            "longer term"
+          ]
+        }
+      ],
+      "modelAnswer": "The headline interest rate is only part of the cost. First, compare the effective annual rate, which includes how often interest is compounded and, ideally, fees. Then list all the charges: processing fees, mandatory insurance, documentation costs, and penalties for prepaying or late payment. The tenure matters a lot: a longer loan has a smaller monthly EMI but you pay interest for more years, so the total repaid is much higher. The clearest comparison is to calculate the total amount you will pay over the life of each loan, using the same loan amount, and to check terms like whether the rate is fixed or floating and whether you can prepay without a penalty."
+    },
+    {
+      "id": "finance-nominal-versus-real-returns",
+      "title": "Nominal versus real returns",
+      "prompt": "What is the difference between nominal and real returns?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0967"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Nominal return is the stated percentage gain",
+          "criterion": "accuracy",
+          "keywords": [
+            "nominal",
+            "stated",
+            "percentage",
+            "before inflation"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Real return subtracts inflation, measuring purchasing power",
+          "criterion": "accuracy",
+          "keywords": [
+            "real return",
+            "inflation",
+            "purchasing power",
+            "subtract"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Example: 7 percent return with 6 percent inflation is about 1 percent real",
+          "criterion": "accuracy",
+          "keywords": [
+            "example",
+            "fixed deposit",
+            "after tax",
+            "negative real"
+          ]
+        }
+      ],
+      "modelAnswer": "The nominal return is the percentage your money grows by in rupees, for example a fixed deposit paying seven percent a year. The real return adjusts for inflation and tells you how much your purchasing power actually grows. If prices rise by six percent in the same year, your real return is only about one percent, because your larger balance buys only slightly more than before. After tax, the real return on that deposit may even be negative, meaning you are effectively losing purchasing power while seeing a bigger balance. This is why long-term goals, such as retirement, need investments whose returns can beat inflation, not just products with a positive nominal return."
+    },
+    {
+      "id": "finance-expense-ratios-and-long-term-returns",
+      "title": "Expense ratios and long-term returns",
+      "prompt": "How do expense ratios affect long-term mutual fund returns?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0970"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Expense ratio: the annual fee as a percentage of assets",
+          "criterion": "accuracy",
+          "keywords": [
+            "expense ratio",
+            "annual fee",
+            "percentage",
+            "fund"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Fees compound over time and reduce final wealth significantly",
+          "criterion": "accuracy",
+          "keywords": [
+            "compound",
+            "long term",
+            "lakhs",
+            "difference"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Direct plans and index funds are usually cheaper",
+          "criterion": "accuracy",
+          "keywords": [
+            "direct plan",
+            "regular plan",
+            "index funds",
+            "commission"
+          ]
+        }
+      ],
+      "modelAnswer": "A mutual fund's expense ratio is the annual fee it charges, as a percentage of your investment, deducted automatically from the fund's returns. A difference of one percentage point sounds small, but it compounds over decades. For example, investing 10 lakh rupees for 25 years at a 12 percent gross return gives about 1.7 crore with a 0.5 percent fee, but only about 1.3 crore with a 1.5 percent fee: the extra one percent costs about 40 lakh. In India, direct plans have lower expense ratios than regular plans, which include distributor commissions, and index funds are usually much cheaper than actively managed funds, many of which fail to beat their index after fees."
+    },
+    {
+      "id": "finance-term-insurance-versus-health-insurance",
+      "title": "Term insurance versus health insurance",
+      "prompt": "What is the difference between term insurance and health insurance?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0971"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Term insurance pays a lump sum to family if the insured dies",
+          "criterion": "accuracy",
+          "keywords": [
+            "term insurance",
+            "death",
+            "lump sum",
+            "family"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Health insurance pays hospital and medical expenses",
+          "criterion": "accuracy",
+          "keywords": [
+            "health insurance",
+            "hospital",
+            "medical bills",
+            "treatment"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "They cover different risks, so most earners need both",
+          "criterion": "accuracy",
+          "keywords": [
+            "different risks",
+            "both",
+            "dependents",
+            "cover"
+          ]
+        }
+      ],
+      "modelAnswer": "They protect against completely different risks. Term life insurance pays a fixed lump sum to your nominees if you die during the policy term; it replaces your income for dependents, such as a spouse, children or parents, and is very cheap for large cover because it has no investment component. Health insurance pays for medical treatment, mainly hospitalisation costs, while you are alive, protecting your savings from large medical bills that could otherwise wipe them out. Term insurance is essential if others depend on your income; health insurance is important for almost everyone, including retirees and people without dependents. One cannot substitute for the other."
+    },
+    {
+      "id": "finance-investing-money-needed-in-the-near-term",
+      "title": "Investing money needed in the near term",
+      "prompt": "What are the risks of investing money needed in the near term?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0973"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Volatile investments like equities can fall sharply in the short term",
+          "criterion": "accuracy",
+          "keywords": [
+            "volatile",
+            "stocks",
+            "fall",
+            "short term"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "You may be forced to sell at a loss when you need the money",
+          "criterion": "accuracy",
+          "keywords": [
+            "forced to sell",
+            "loss",
+            "timing",
+            "need money"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Match the investment horizon to safe, liquid options",
+          "criterion": "accuracy",
+          "keywords": [
+            "time horizon",
+            "liquid",
+            "fixed deposit",
+            "liquid fund"
+          ]
+        }
+      ],
+      "modelAnswer": "Investments like stocks and equity mutual funds tend to grow over long periods, but in the short term they can fall twenty or thirty percent, and stay down for a year or more. If you need the money soon, for example for a house down payment, fees or a wedding next year, you might be forced to sell at exactly the wrong time and lock in a loss, with no time to recover. The basic principle is to match the investment to your time horizon: money needed within one to three years should usually be kept in safe, liquid options such as savings accounts, fixed deposits or short-term debt funds, accepting lower returns in exchange for certainty."
+    },
+    {
+      "id": "finance-tax-deductions-versus-tax-credits",
+      "title": "Tax deductions versus tax credits",
+      "prompt": "What is the difference between a tax deduction and a tax credit?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0975"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A deduction reduces taxable income",
+          "criterion": "accuracy",
+          "keywords": [
+            "deduction",
+            "taxable income",
+            "reduces income",
+            "section 80c"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "A credit reduces the tax payable directly",
+          "criterion": "accuracy",
+          "keywords": [
+            "credit",
+            "tax payable",
+            "rupee for rupee",
+            "rebate"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "A deduction's value depends on your tax rate; a credit is worth its full amount",
+          "criterion": "accuracy",
+          "keywords": [
+            "tax rate",
+            "slab",
+            "worth",
+            "example"
+          ]
+        }
+      ],
+      "modelAnswer": "A tax deduction reduces the income on which tax is calculated. If you earn 10 lakh rupees and claim a deduction of 1.5 lakh, for example under Section 80C of India's old tax regime, you are taxed on 8.5 lakh. The money saved depends on your tax rate: at a thirty percent rate, that deduction saves 45,000 rupees, while at a ten percent rate it saves only 15,000. A tax credit, or in India a rebate, reduces the tax you owe directly, rupee for rupee: a 10,000-rupee credit cuts your bill by exactly 10,000 regardless of your tax bracket. So a credit is usually worth more than a deduction of the same amount."
+    },
+    {
+      "id": "finance-evaluating-a-products-fees-and-lock-in",
+      "title": "Evaluating a product's fees and lock-in",
+      "prompt": "How can someone evaluate a financial product's fees and lock-in period?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0976"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "List all fees: entry, annual, exit, surrender and hidden charges",
+          "criterion": "accuracy",
+          "keywords": [
+            "fees",
+            "exit load",
+            "surrender charge",
+            "commission"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Lock-in reduces flexibility and access to money",
+          "criterion": "accuracy",
+          "keywords": [
+            "lock in",
+            "flexibility",
+            "access",
+            "liquidity"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Compare net returns with simpler alternatives and read the documents",
+          "criterion": "accuracy",
+          "keywords": [
+            "compare",
+            "alternatives",
+            "net returns",
+            "fine print"
+          ]
+        }
+      ],
+      "modelAnswer": "Start by reading the offer documents and listing every cost: entry or upfront charges, annual management fees, administration charges, exit loads, surrender charges for leaving early, and commissions paid to the seller. Ask for the effect of all fees on returns as a number. Then check the lock-in period: how long your money is tied up, and what it costs to withdraw early. A lock-in means you lose flexibility if you face an emergency or a better opportunity appears, so it should be compensated by a clearly better return or a real benefit, like a tax saving. Finally, compare the expected net return with simple, low-cost alternatives, such as an index fund plus term insurance."
+    },
+    {
+      "id": "finance-sequence-of-returns-risk-in-retirement",
+      "title": "Sequence-of-returns risk in retirement",
+      "prompt": "What is sequence-of-returns risk in retirement planning?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0977"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The order of returns matters when you are withdrawing money",
+          "criterion": "accuracy",
+          "keywords": [
+            "order of returns",
+            "withdrawals",
+            "retirement",
+            "sequence"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Losses early in retirement do lasting damage",
+          "criterion": "accuracy",
+          "keywords": [
+            "early losses",
+            "sell low",
+            "deplete",
+            "recover"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Mitigate with a cash buffer, safer allocation and flexible withdrawals",
+          "criterion": "accuracy",
+          "keywords": [
+            "cash buffer",
+            "bucket strategy",
+            "asset allocation",
+            "flexible withdrawals"
+          ]
+        }
+      ],
+      "modelAnswer": "When you are saving and not withdrawing, the order in which good and bad years occur does not change your final average result much. But once you retire and start withdrawing money, order matters a lot. If markets fall sharply in the first years of retirement, you must sell investments at low prices to cover living expenses, so less money remains to benefit when markets recover, and your savings can run out years earlier than planned, even if the long-term average return is the same. Retirees reduce this risk by keeping a cash or debt buffer for a few years of expenses, holding a balanced mix of assets, and reducing withdrawals during bad years."
+    },
+    {
+      "id": "finance-fixed-versus-floating-interest-rates",
+      "title": "Fixed versus floating interest rates",
+      "prompt": "How should a person compare fixed and floating interest rates?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0978"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Fixed rates keep payments predictable for a period",
+          "criterion": "accuracy",
+          "keywords": [
+            "fixed",
+            "predictable",
+            "same emi",
+            "certainty"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Floating rates move with a benchmark, up or down",
+          "criterion": "accuracy",
+          "keywords": [
+            "floating",
+            "benchmark",
+            "repo rate",
+            "change"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Choice depends on rate outlook, risk tolerance and loan terms",
+          "criterion": "accuracy",
+          "keywords": [
+            "outlook",
+            "risk tolerance",
+            "switching",
+            "premium"
+          ]
+        }
+      ],
+      "modelAnswer": "With a fixed rate, the interest rate, and therefore your EMI, stays the same for an agreed period, which makes budgeting easy and protects you if rates rise. Fixed rates are often slightly higher, because the lender takes on the risk, and some home loans are only fixed for a few years. A floating rate is linked to a benchmark, such as the RBI repo rate, so your payments, or the loan tenure, change when rates move: you benefit when rates fall but pay more when they rise. The choice depends on where rates are likely to go, how much payment uncertainty you can handle, the price difference between the two, and the costs of switching or prepaying later."
+    },
+    {
+      "id": "finance-risks-of-borrowing-to-invest",
+      "title": "Risks of borrowing to invest",
+      "prompt": "What are the risks of borrowing to invest?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0979"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Leverage magnifies both gains and losses",
+          "criterion": "accuracy",
+          "keywords": [
+            "leverage",
+            "magnify",
+            "losses",
+            "gains"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Interest must be paid even when investments fall",
+          "criterion": "accuracy",
+          "keywords": [
+            "interest",
+            "must repay",
+            "fall",
+            "fixed cost"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Margin calls and forced selling can lock in losses",
+          "criterion": "accuracy",
+          "keywords": [
+            "margin call",
+            "forced selling",
+            "liquidation",
+            "debt"
+          ]
+        }
+      ],
+      "modelAnswer": "Borrowing to invest, also called using leverage, magnifies results in both directions. If you invest 10 lakh rupees, half of it borrowed, and the investment rises twenty percent, your own money gains forty percent before interest; but if it falls twenty percent, you lose forty percent of your own money. The interest and repayments are due regardless of how the investment performs, so returns must exceed the borrowing cost just to break even, and falling markets can leave you owing money on an asset worth less than the loan. With margin trading, a fall can trigger a margin call that forces you to sell at the bottom. For most individuals, the risks outweigh the potential gains."
+    },
+    {
+      "id": "finance-prioritising-goals-with-limited-income",
+      "title": "Prioritising goals with limited income",
+      "prompt": "How can financial goals be prioritized when income is limited?",
+      "categoryId": "business",
+      "subcategoryId": "personal-finance",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-finance",
+        "one-minute",
+        "vcn-0980"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Cover essentials and build a small emergency fund first",
+          "criterion": "accuracy",
+          "keywords": [
+            "essentials",
+            "emergency fund",
+            "basics"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Protect against big risks with insurance and pay off high-interest debt",
+          "criterion": "accuracy",
+          "keywords": [
+            "insurance",
+            "high interest debt",
+            "credit card",
+            "protect"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Then invest for long-term goals, even small amounts, and rank goals by importance and timing",
+          "criterion": "accuracy",
+          "keywords": [
+            "long term",
+            "small amounts",
+            "sip",
+            "rank goals"
+          ]
+        }
+      ],
+      "modelAnswer": "With limited income, order matters. First, cover essential expenses and build a small emergency fund, even one or two months of expenses at first, so a surprise does not push you into expensive debt. Second, protect against financial disasters: health insurance, and term life insurance if someone depends on you. Third, pay off high-interest debt such as credit cards or personal loans, because their interest rates are higher than almost any investment return. Then start investing for long-term goals such as retirement, even small amounts through a monthly SIP, because time and compounding matter more than size. Rank other goals by importance and deadline, and revisit the plan as income grows."
     }
   ]
 }
