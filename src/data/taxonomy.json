@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "tech-ai",
+      "label": "Tech & AI",
+      "description": "Explain algorithms, systems and engineering concepts out loud.",
+      "subcategories": [
+        {
+          "id": "programming-languages",
+          "label": "Programming Languages"
+        },
+        {
+          "id": "dsa",
+          "label": "Data Structures & Algorithms"
+        },
+        {
+          "id": "system-design",
+          "label": "System Design"
+        },
+        {
+          "id": "backend-engineering",
+          "label": "Backend Engineering"
+        },
+        {
+          "id": "frontend-engineering",
+          "label": "Frontend Engineering"
+        },
+        {
+          "id": "databases-and-storage",
+          "label": "Databases & Storage"
+        },
+        {
+          "id": "networking",
+          "label": "Networking"
+        },
+        {
+          "id": "operating-systems",
+          "label": "Operating Systems"
+        },
+        {
+          "id": "cloud-and-devops",
+          "label": "Cloud & DevOps"
+        },
+        {
+          "id": "distributed-systems",
+          "label": "Distributed Systems"
+        },
+        {
+          "id": "api-design",
+          "label": "API Design"
+        },
+        {
+          "id": "security",
+          "label": "Security"
+        },
+        {
+          "id": "software-architecture",
+          "label": "Software Architecture"
+        },
+        {
+          "id": "testing-and-quality-engineering",
+          "label": "Testing & Quality Engineering"
+        },
+        {
+          "id": "performance-engineering",
+          "label": "Performance Engineering"
+        },
+        {
+          "id": "ai-ml",
+          "label": "AI & Machine Learning"
+        },
+        {
+          "id": "genai-llms",
+          "label": "Generative AI and LLMs"
+        },
+        {
+          "id": "data-engineering",
+          "label": "Data Engineering"
+        },
+        {
+          "id": "compilers-and-build-systems",
+          "label": "Compilers and Build Systems"
+        },
+        {
+          "id": "developer-tools",
+          "label": "Developer Tools"
+        }
+      ]
+    },
+    {
+      "id": "interview-skills",
+      "label": "Interview Skills",
+      "description": "Behavioral answers, project stories and technical communication.",
+      "subcategories": [
+        {
+          "id": "personal-introduction",
+          "label": "Personal introduction"
+        },
+        {
+          "id": "project-deep-dives",
+          "label": "Project deep dives"
+        },
+        {
+          "id": "behavioral-questions",
+          "label": "Behavioral questions"
+        },
+        {
+          "id": "technical-communication",
+          "label": "Technical communication"
+        },
+        {
+          "id": "problem-solving-explanations",
+          "label": "Problem-solving explanations"
+        },
+        {
+          "id": "leadership-and-teamwork",
+          "label": "Leadership and teamwork"
+        },
+        {
+          "id": "trade-offs-and-decision-making",
+          "label": "Trade-offs and decision-making"
+        }
+      ]
+    },
+    {
+      "id": "communication-english",
+      "label": "Communication & English",
+      "description": "Grammar, vocabulary, conciseness and impromptu speaking.",
+      "subcategories": [
+        {
+          "id": "grammar",
+          "label": "Grammar"
+        },
+        {
+          "id": "vocabulary",
+          "label": "Vocabulary"
+        },
+        {
+          "id": "conciseness",
+          "label": "Conciseness"
+        },
+        {
+          "id": "explaining-complex-ideas",
+          "label": "Explaining complex ideas"
+        },
+        {
+          "id": "impromptu-speaking",
+          "label": "Impromptu speaking"
+        },
+        {
+          "id": "professional-communication",
+          "label": "Professional communication"
+        }
+      ]
+    },
+    {
+      "id": "general-knowledge",
+      "label": "General Knowledge",
+      "description": "Broad topics for general impromptu practice.",
+      "subcategories": [
+        {
+          "id": "science",
+          "label": "Science"
+        },
+        {
+          "id": "history",
+          "label": "History"
+        },
+        {
+          "id": "literature",
+          "label": "Literature"
+        },
+        {
+          "id": "geography",
+          "label": "Geography"
+        },
+        {
+          "id": "economics",
+          "label": "Economics"
+        },
+        {
+          "id": "current-affairs",
+          "label": "Current affairs"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "label": "Business & Entrepreneurship",
+      "description": "Startups, products and strategy.",
+      "subcategories": [
+        {
+          "id": "startups",
+          "label": "Startups"
+        },
+        {
+          "id": "product-management",
+          "label": "Product management"
+        },
+        {
+          "id": "business-strategy",
+          "label": "Business strategy"
+        },
+        {
+          "id": "entrepreneurship",
+          "label": "Entrepreneurship"
+        },
+        {
+          "id": "personal-finance",
+          "label": "Personal finance"
+        }
+      ]
+    },
+    {
+      "id": "science-engineering",
+      "label": "Science & Engineering",
+      "description": "Mathematics, physics and materials.",
+      "subcategories": [
+        {
+          "id": "mathematics",
+          "label": "Mathematics"
+        },
+        {
+          "id": "physics",
+          "label": "Physics"
+        },
+        {
+          "id": "quantum-mechanics",
+          "label": "Quantum mechanics"
+        },
+        {
+          "id": "semiconductor-technology",
+          "label": "Semiconductor technology"
+        },
+        {
+          "id": "materials-science",
+          "label": "Materials science"
+        },
+        {
+          "id": "nanotechnology",
+          "label": "Nanotechnology"
+        }
+      ]
+    },
+    {
+      "id": "fitness-nutrition",
+      "label": "Fitness & Nutrition",
+      "description": "General education topics on exercise and nutrition (not medical advice).",
+      "subcategories": [
+        {
+          "id": "sports-science",
+          "label": "Sports science"
+        },
+        {
+          "id": "exercise-fundamentals",
+          "label": "Exercise fundamentals"
+        },
+        {
+          "id": "nutrition-education",
+          "label": "Nutrition education"
+        },
+        {
+          "id": "healthy-habits",
+          "label": "Healthy habits"
+        }
+      ]
+    }
+  ]
+}

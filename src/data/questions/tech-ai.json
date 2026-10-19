@@ -1,0 +1,4439 @@
+{
+  "categoryId": "tech-ai",
+  "questions": [
+    {
+      "id": "dsa-sliding-window",
+      "title": "The sliding window pattern",
+      "prompt": "Explain the sliding window pattern. Describe a problem where it applies, walk through how the window expands and shrinks, state the time and space complexity, and say when the pattern does NOT work.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "arrays",
+        "two-pointers",
+        "patterns"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "contiguous",
+          "label": "Works on contiguous subarrays/substrings",
+          "criterion": "correctness",
+          "keywords": [
+            "contiguous",
+            "subarray",
+            "substring",
+            "window"
+          ]
+        },
+        {
+          "id": "two-pointers",
+          "label": "Left and right pointers expand/shrink",
+          "criterion": "correctness",
+          "keywords": [
+            "left pointer",
+            "right pointer",
+            "two pointers",
+            "shrink",
+            "expand"
+          ]
+        },
+        {
+          "id": "linear-time",
+          "label": "O(n) because each element enters and leaves once",
+          "criterion": "time-complexity",
+          "keywords": [
+            "linear",
+            "o of n",
+            "o n",
+            "each element",
+            "once"
+          ]
+        },
+        {
+          "id": "space",
+          "label": "Extra space is O(1) or O(k) for a hash map of counts",
+          "criterion": "space-complexity",
+          "keywords": [
+            "constant space",
+            "hash map",
+            "o of k",
+            "o of 1",
+            "o 1",
+            "extra space"
+          ]
+        },
+        {
+          "id": "edge",
+          "label": "Edge cases: empty input, window larger than array",
+          "criterion": "edge-cases",
+          "keywords": [
+            "empty",
+            "edge case",
+            "larger than",
+            "negative"
+          ]
+        },
+        {
+          "id": "brute",
+          "label": "Compared with O(n^2) brute force or limits with negatives",
+          "criterion": "alternatives",
+          "keywords": [
+            "brute force",
+            "n squared",
+            "nested loop",
+            "prefix sum"
+          ]
+        }
+      ],
+      "modelAnswer": "Sliding window maintains a contiguous range [left, right] and a running summary (sum, counts in a hash map). Move right to expand; while the window violates the constraint, move left to shrink. Example: longest substring without repeating characters. Each index is added and removed at most once, so time is O(n); space is O(1) or O(alphabet/k) for the count map. It needs a monotonic property \u2014 shrinking must never make a valid window invalid \u2014 so it fails for sums with negative numbers, where prefix sums + hash map are used instead. Edge cases: empty input, k larger than n.",
+      "researchContext": [
+        "Fixed-size windows (max sum of k elements) vs variable-size windows (smallest subarray with sum \u2265 S).",
+        "Key invariant: shrinking the window must move it toward validity; with negative numbers that monotonicity breaks.",
+        "Typical state: running sum, frequency map, count of distinct elements.",
+        "Complexity argument: amortised analysis \u2014 each pointer moves at most n times."
+      ]
+    },
+    {
+      "id": "dsa-binary-search-complexity",
+      "title": "Binary search complexity",
+      "prompt": "Explain how binary search works, why its time complexity is logarithmic, what its space complexity is for iterative and recursive versions, and what preconditions and edge cases matter.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "searching",
+        "complexity"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "sorted",
+          "label": "Requires sorted / monotonic input",
+          "criterion": "correctness",
+          "keywords": [
+            "sorted",
+            "monotonic",
+            "ordered"
+          ]
+        },
+        {
+          "id": "halve",
+          "label": "Halves the search space each step",
+          "criterion": "correctness",
+          "keywords": [
+            "half",
+            "halves",
+            "middle",
+            "mid"
+          ]
+        },
+        {
+          "id": "logn",
+          "label": "O(log n) time",
+          "criterion": "time-complexity",
+          "keywords": [
+            "log n",
+            "logarithmic",
+            "log of n",
+            "log base 2"
+          ]
+        },
+        {
+          "id": "space",
+          "label": "O(1) iterative, O(log n) recursive stack",
+          "criterion": "space-complexity",
+          "keywords": [
+            "constant space",
+            "call stack",
+            "recursion",
+            "iterative",
+            "o of 1"
+          ]
+        },
+        {
+          "id": "edge",
+          "label": "Overflow in mid, off-by-one, empty array",
+          "criterion": "edge-cases",
+          "keywords": [
+            "overflow",
+            "off by one",
+            "empty",
+            "boundary",
+            "duplicates"
+          ]
+        }
+      ],
+      "modelAnswer": "Binary search works on sorted (more generally, monotonic) data. Compare the target with the middle element and discard the half that cannot contain it. After k steps n/2^k elements remain, so it finishes in about log2(n) steps: O(log n) time. Iterative uses O(1) extra space; recursive uses O(log n) stack. Pitfalls: computing mid as (lo+hi)/2 can overflow \u2014 use lo + (hi-lo)/2; off-by-one loop bounds; duplicates when you need the first/last occurrence; empty arrays.",
+      "researchContext": [
+        "Generalisation: binary search on the answer (e.g. minimum capacity to ship packages in D days).",
+        "Loop invariant thinking avoids off-by-one bugs: decide whether hi is inclusive or exclusive.",
+        "lower_bound / upper_bound semantics for duplicates."
+      ]
+    },
+    {
+      "id": "dsa-dfs-vs-bfs",
+      "title": "DFS versus BFS",
+      "prompt": "Compare depth-first search and breadth-first search. Explain the data structure each uses, their complexity on a graph, and give one problem where each is the better choice.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "graphs",
+        "traversal"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "stack-queue",
+          "label": "DFS uses a stack/recursion, BFS a queue",
+          "criterion": "correctness",
+          "keywords": [
+            "stack",
+            "queue",
+            "recursion"
+          ]
+        },
+        {
+          "id": "levels",
+          "label": "BFS explores level by level; shortest path in unweighted graphs",
+          "criterion": "correctness",
+          "keywords": [
+            "level",
+            "shortest path",
+            "unweighted",
+            "layer"
+          ]
+        },
+        {
+          "id": "v-plus-e",
+          "label": "O(V + E) time",
+          "criterion": "time-complexity",
+          "keywords": [
+            "v plus e",
+            "vertices and edges",
+            "v + e",
+            "nodes and edges"
+          ]
+        },
+        {
+          "id": "space",
+          "label": "Space: BFS frontier width vs DFS depth",
+          "criterion": "space-complexity",
+          "keywords": [
+            "width",
+            "depth",
+            "visited",
+            "memory"
+          ]
+        },
+        {
+          "id": "cycles",
+          "label": "Visited set to handle cycles",
+          "criterion": "edge-cases",
+          "keywords": [
+            "visited",
+            "cycle",
+            "disconnected"
+          ]
+        },
+        {
+          "id": "uses",
+          "label": "DFS for topological sort / cycle detection / backtracking",
+          "criterion": "alternatives",
+          "keywords": [
+            "topological",
+            "backtracking",
+            "connected components",
+            "cycle detection"
+          ]
+        }
+      ],
+      "modelAnswer": "DFS goes as deep as possible before backtracking, using recursion or an explicit stack; BFS explores neighbours level by level using a queue. Both run in O(V + E) with an adjacency list and need a visited set to handle cycles. Memory: BFS holds the frontier (can be wide), DFS holds the current path (can be deep \u2014 risk of stack overflow). Use BFS for shortest path in an unweighted graph (minimum moves in a grid); use DFS for topological sort, cycle detection, connected components and backtracking.",
+      "researchContext": [
+        "Grid problems: treat cells as nodes, 4-directional neighbours as edges.",
+        "Iterative DFS avoids recursion depth limits.",
+        "Bidirectional BFS for large search spaces."
+      ]
+    },
+    {
+      "id": "dsa-heap-priority-queue",
+      "title": "Heaps and priority queues",
+      "prompt": "Explain how a binary heap supports priority-queue operations. Cover the array representation, insert and extract operations, their complexity, and how building a heap from an array can be linear.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "heap",
+        "priority-queue",
+        "trees"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "complete-tree",
+          "label": "Complete binary tree stored in an array",
+          "criterion": "correctness",
+          "keywords": [
+            "complete binary tree",
+            "array",
+            "2i",
+            "parent",
+            "children"
+          ]
+        },
+        {
+          "id": "heap-property",
+          "label": "Heap property: parent \u2264 children (min-heap)",
+          "criterion": "correctness",
+          "keywords": [
+            "heap property",
+            "min heap",
+            "max heap",
+            "smaller than"
+          ]
+        },
+        {
+          "id": "siftup",
+          "label": "Insert = append + sift up; extract = swap root + sift down",
+          "criterion": "time-complexity",
+          "keywords": [
+            "sift up",
+            "sift down",
+            "bubble up",
+            "heapify",
+            "log n"
+          ]
+        },
+        {
+          "id": "build",
+          "label": "Build-heap is O(n)",
+          "criterion": "time-complexity",
+          "keywords": [
+            "linear",
+            "o of n",
+            "build heap",
+            "bottom up"
+          ]
+        },
+        {
+          "id": "space",
+          "label": "O(n) storage, in place",
+          "criterion": "space-complexity",
+          "keywords": [
+            "in place",
+            "o of n space",
+            "extra space"
+          ]
+        },
+        {
+          "id": "alt",
+          "label": "Compared with sorted array / balanced BST",
+          "criterion": "alternatives",
+          "keywords": [
+            "sorted array",
+            "balanced",
+            "bst",
+            "binary search tree"
+          ]
+        }
+      ],
+      "modelAnswer": "A binary heap is a complete binary tree stored in an array: children of index i are 2i+1 and 2i+2. The heap property (min-heap: parent \u2264 children) means the minimum is at index 0, so peek is O(1). Insert appends and sifts up; extract-min moves the last element to the root and sifts down \u2014 both O(log n) because the tree height is log n. Bottom-up heapify is O(n) because most nodes are near the leaves and sift down a short distance. Compared with a sorted array (O(n) insert) or balanced BST (O(log n) everything but more overhead), heaps are compact and cache-friendly. Uses: Dijkstra, top-k, merging k sorted lists, schedulers."
+    },
+    {
+      "id": "dsa-dynamic-programming",
+      "title": "Dynamic programming state definition",
+      "prompt": "Walk through a dynamic programming problem of your choice. Define the state precisely, give the recurrence, the base cases, the evaluation order, and the time and space complexity. Mention how you could reduce memory.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "dynamic-programming",
+        "recursion"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "subproblems",
+          "label": "Overlapping subproblems and optimal substructure",
+          "criterion": "correctness",
+          "keywords": [
+            "overlapping",
+            "subproblem",
+            "optimal substructure"
+          ]
+        },
+        {
+          "id": "state",
+          "label": "Explicit state definition",
+          "criterion": "correctness",
+          "keywords": [
+            "state",
+            "dp of i",
+            "dp i",
+            "represents"
+          ]
+        },
+        {
+          "id": "recurrence",
+          "label": "Recurrence / transition",
+          "criterion": "correctness",
+          "keywords": [
+            "recurrence",
+            "transition",
+            "depends on"
+          ]
+        },
+        {
+          "id": "base",
+          "label": "Base cases",
+          "criterion": "edge-cases",
+          "keywords": [
+            "base case",
+            "zero",
+            "empty"
+          ]
+        },
+        {
+          "id": "complexity",
+          "label": "Complexity = states \u00d7 transition cost",
+          "criterion": "time-complexity",
+          "keywords": [
+            "number of states",
+            "n squared",
+            "n times",
+            "o of n"
+          ]
+        },
+        {
+          "id": "memory",
+          "label": "Rolling array / memory optimisation",
+          "criterion": "space-complexity",
+          "keywords": [
+            "rolling",
+            "two rows",
+            "previous row",
+            "reduce memory",
+            "only need"
+          ]
+        },
+        {
+          "id": "memo-vs-tab",
+          "label": "Top-down memoisation vs bottom-up tabulation",
+          "criterion": "alternatives",
+          "keywords": [
+            "memoization",
+            "memoisation",
+            "tabulation",
+            "top down",
+            "bottom up"
+          ]
+        }
+      ],
+      "modelAnswer": "Example: longest common subsequence of strings a (length n) and b (length m). State: dp[i][j] = LCS length of a[0..i) and b[0..j). Recurrence: if a[i-1] == b[j-1], dp[i][j] = dp[i-1][j-1] + 1, else max(dp[i-1][j], dp[i][j-1]). Base: dp[0][*] = dp[*][0] = 0. Fill row by row. Time O(nm), space O(nm), reducible to O(min(n,m)) by keeping only the previous row. Top-down memoisation is easier to write; bottom-up avoids recursion depth and enables the memory optimisation."
+    },
+    {
+      "id": "dsa-hash-map-internals",
+      "title": "How a hash map works",
+      "prompt": "Explain how a hash map achieves average constant-time lookups. Cover hashing, collisions, load factor and resizing, and when performance degrades.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "hashing",
+        "data-structures"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "hash-fn",
+          "label": "Hash function maps key to bucket index",
+          "criterion": "correctness",
+          "keywords": [
+            "hash function",
+            "bucket",
+            "index",
+            "modulo"
+          ]
+        },
+        {
+          "id": "collisions",
+          "label": "Collision handling: chaining or open addressing",
+          "criterion": "correctness",
+          "keywords": [
+            "collision",
+            "chaining",
+            "linked list",
+            "open addressing",
+            "linear probing"
+          ]
+        },
+        {
+          "id": "o1",
+          "label": "Average O(1), worst case O(n)",
+          "criterion": "time-complexity",
+          "keywords": [
+            "constant time",
+            "average",
+            "worst case",
+            "o of 1"
+          ]
+        },
+        {
+          "id": "resize",
+          "label": "Load factor triggers resize/rehash",
+          "criterion": "space-complexity",
+          "keywords": [
+            "load factor",
+            "resize",
+            "rehash",
+            "double"
+          ]
+        },
+        {
+          "id": "degrade",
+          "label": "Bad hash / adversarial keys degrade performance",
+          "criterion": "edge-cases",
+          "keywords": [
+            "bad hash",
+            "adversarial",
+            "same bucket",
+            "degrade"
+          ]
+        },
+        {
+          "id": "alt",
+          "label": "Compared with balanced tree maps (ordered)",
+          "criterion": "alternatives",
+          "keywords": [
+            "tree map",
+            "ordered",
+            "red black",
+            "balanced tree"
+          ]
+        }
+      ],
+      "modelAnswer": "A hash function turns the key into an integer, reduced modulo the bucket count to pick a slot. Different keys can land in the same slot: chaining stores a list per bucket; open addressing probes for the next free slot. With a good hash and a bounded load factor (entries / buckets, e.g. \u2264 0.75) buckets stay short, so lookup is O(1) on average. When the load factor is exceeded the table grows (usually doubling) and rehashes everything \u2014 O(n) once, amortised O(1). Worst case is O(n) if many keys collide (bad hash or adversarial input). Tree maps give O(log n) and ordered iteration."
+    },
+    {
+      "id": "sd-load-balancer",
+      "title": "How a load balancer distributes requests",
+      "prompt": "Explain how a load balancer distributes requests across servers. Compare at least two algorithms, explain health checks, and discuss layer 4 versus layer 7 balancing and session affinity.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "system-design",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "load-balancing",
+        "scalability"
+      ],
+      "rubricId": "system-design",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "algorithms",
+          "label": "Round robin, least connections, consistent hashing",
+          "criterion": "architecture",
+          "keywords": [
+            "round robin",
+            "least connections",
+            "weighted",
+            "hashing"
+          ]
+        },
+        {
+          "id": "health",
+          "label": "Health checks remove unhealthy servers",
+          "criterion": "reliability",
+          "keywords": [
+            "health check",
+            "unhealthy",
+            "heartbeat"
+          ]
+        },
+        {
+          "id": "l4l7",
+          "label": "Layer 4 (TCP) vs layer 7 (HTTP)",
+          "criterion": "architecture",
+          "keywords": [
+            "layer 4",
+            "layer 7",
+            "tcp",
+            "http",
+            "transport"
+          ]
+        },
+        {
+          "id": "sticky",
+          "label": "Session affinity trade-off",
+          "criterion": "trade-offs",
+          "keywords": [
+            "sticky",
+            "session affinity",
+            "stateless"
+          ]
+        },
+        {
+          "id": "lb-spof",
+          "label": "Load balancer itself must be redundant",
+          "criterion": "bottlenecks",
+          "keywords": [
+            "single point of failure",
+            "redundant",
+            "active passive",
+            "failover"
+          ]
+        },
+        {
+          "id": "scale",
+          "label": "Horizontal scaling behind the LB",
+          "criterion": "scaling",
+          "keywords": [
+            "horizontal",
+            "add servers",
+            "scale out"
+          ]
+        }
+      ],
+      "modelAnswer": "A load balancer sits in front of a pool of servers and picks one per request/connection. Round robin is simple; least-connections adapts to uneven request cost; consistent hashing keeps a key on the same server (useful for caches). Health checks take failing servers out of rotation. Layer 4 balancers route TCP connections cheaply; layer 7 balancers understand HTTP and can route by path, terminate TLS and retry. Sticky sessions simplify stateful apps but unbalance load and complicate failover \u2014 prefer stateless servers with external session storage. The balancer itself needs redundancy (pairs with failover, or anycast/DNS)."
+    },
+    {
+      "id": "sd-url-shortener",
+      "title": "Design a URL shortener",
+      "prompt": "Design a URL-shortening service like a link shortener. Clarify requirements and scale, choose an ID generation strategy, describe the data model, the read path, caching, and the main trade-offs.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "system-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 300,
+      "tags": [
+        "design",
+        "hashing",
+        "caching"
+      ],
+      "rubricId": "system-design",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "req",
+          "label": "Requirements & read-heavy ratio",
+          "criterion": "requirements",
+          "keywords": [
+            "requirements",
+            "read heavy",
+            "per second",
+            "scale",
+            "custom alias"
+          ]
+        },
+        {
+          "id": "id-gen",
+          "label": "ID generation: base62 counter vs hash",
+          "criterion": "architecture",
+          "keywords": [
+            "base 62",
+            "base62",
+            "counter",
+            "hash",
+            "collision"
+          ]
+        },
+        {
+          "id": "redirect",
+          "label": "Redirect flow 301 vs 302",
+          "criterion": "architecture",
+          "keywords": [
+            "redirect",
+            "301",
+            "302"
+          ]
+        },
+        {
+          "id": "cache",
+          "label": "Cache hot links",
+          "criterion": "scaling",
+          "keywords": [
+            "cache",
+            "redis",
+            "cdn"
+          ]
+        },
+        {
+          "id": "store",
+          "label": "Key-value store, partitioned by short code",
+          "criterion": "scaling",
+          "keywords": [
+            "key value",
+            "shard",
+            "partition"
+          ]
+        },
+        {
+          "id": "rel",
+          "label": "Replication / availability",
+          "criterion": "reliability",
+          "keywords": [
+            "replica",
+            "replication",
+            "availability"
+          ]
+        },
+        {
+          "id": "abuse",
+          "label": "Bottleneck / abuse: rate limiting, ID range allocation",
+          "criterion": "bottlenecks",
+          "keywords": [
+            "rate limit",
+            "hot key",
+            "range",
+            "abuse"
+          ]
+        },
+        {
+          "id": "cons",
+          "label": "Consistency of newly created links",
+          "criterion": "consistency-failure",
+          "keywords": [
+            "consistency",
+            "eventual",
+            "read your writes"
+          ]
+        },
+        {
+          "id": "tradeoff",
+          "label": "Trade-offs: predictability vs collision checks",
+          "criterion": "trade-offs",
+          "keywords": [
+            "trade off",
+            "predictable",
+            "guessable"
+          ]
+        }
+      ],
+      "modelAnswer": "Requirements: create short link, redirect, optional custom alias/expiry; ~100:1 reads to writes. IDs: a distributed counter (pre-allocated ranges per server) encoded in base62 gives short collision-free codes but is guessable; hashing the URL needs collision checks. Store code \u2192 URL in a key-value store partitioned by code, replicated. Read path: client \u2192 LB \u2192 service \u2192 cache (Redis/CDN) \u2192 DB, returning 301 (cacheable) or 302 (if you need analytics). Bottlenecks: hot links (cache), write ID allocation (ranges), abuse (rate limits, malware checks). New links should be readable immediately \u2014 write-through cache or read from primary briefly.",
+      "researchContext": [
+        "7 base62 characters \u2248 3.5 trillion codes.",
+        "301 is cached by browsers \u2014 fewer hits but lost analytics; 302 keeps every click visible.",
+        "Analytics should be asynchronous (queue) so it never slows redirects."
+      ]
+    },
+    {
+      "id": "sd-cache-invalidation",
+      "title": "Cache invalidation strategies",
+      "prompt": "Explain common cache invalidation and update strategies \u2014 such as TTL, write-through, write-behind and cache-aside. Describe the consistency problems each one can cause and how you would choose between them.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "system-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "caching",
+        "consistency"
+      ],
+      "rubricId": "system-design",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "aside",
+          "label": "Cache-aside (lazy loading)",
+          "criterion": "architecture",
+          "keywords": [
+            "cache aside",
+            "lazy",
+            "read through",
+            "on miss"
+          ]
+        },
+        {
+          "id": "ttl",
+          "label": "TTL expiry",
+          "criterion": "consistency-failure",
+          "keywords": [
+            "ttl",
+            "time to live",
+            "expire",
+            "expiry"
+          ]
+        },
+        {
+          "id": "write-through",
+          "label": "Write-through vs write-behind",
+          "criterion": "architecture",
+          "keywords": [
+            "write through",
+            "write behind",
+            "write back"
+          ]
+        },
+        {
+          "id": "stale",
+          "label": "Stale reads / race conditions",
+          "criterion": "consistency-failure",
+          "keywords": [
+            "stale",
+            "race",
+            "inconsistent"
+          ]
+        },
+        {
+          "id": "stampede",
+          "label": "Thundering herd / stampede",
+          "criterion": "bottlenecks",
+          "keywords": [
+            "stampede",
+            "thundering herd",
+            "dogpile"
+          ]
+        },
+        {
+          "id": "tradeoff",
+          "label": "Freshness vs latency vs complexity",
+          "criterion": "trade-offs",
+          "keywords": [
+            "trade off",
+            "freshness",
+            "latency"
+          ]
+        },
+        {
+          "id": "delete",
+          "label": "Invalidate (delete) rather than update on write",
+          "criterion": "reliability",
+          "keywords": [
+            "delete the key",
+            "invalidate",
+            "evict"
+          ]
+        }
+      ],
+      "modelAnswer": "Cache-aside: read from cache, on miss load from DB and populate; on write update the DB then delete the cache key. TTLs bound staleness cheaply. Write-through writes cache and DB together (fresh reads, slower writes); write-behind writes the cache and flushes asynchronously (fast but risks data loss). Problems: races where an old value is re-cached after a delete, stale reads across regions, and stampedes when a hot key expires (use request coalescing, jittered TTLs, early refresh). Choose by how stale data may be and whether write latency or durability matters more."
+    },
+    {
+      "id": "sd-sql-vs-nosql",
+      "title": "SQL versus NoSQL for a workload",
+      "prompt": "Compare SQL and NoSQL databases for a specific workload of your choice \u2014 for example, an e-commerce order system or a high-volume event log. Justify your choice by data model, query patterns, consistency needs and scaling.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "system-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "databases",
+        "trade-offs"
+      ],
+      "rubricId": "system-design",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "workload",
+          "label": "Names a concrete workload and its access pattern",
+          "criterion": "requirements",
+          "keywords": [
+            "workload",
+            "access pattern",
+            "query pattern",
+            "reads",
+            "writes"
+          ]
+        },
+        {
+          "id": "relational",
+          "label": "Relational: joins, schema, ACID transactions",
+          "criterion": "architecture",
+          "keywords": [
+            "join",
+            "schema",
+            "acid",
+            "transaction"
+          ]
+        },
+        {
+          "id": "nosql-types",
+          "label": "NoSQL types: document, key-value, wide-column",
+          "criterion": "architecture",
+          "keywords": [
+            "document",
+            "key value",
+            "wide column",
+            "cassandra",
+            "mongodb",
+            "dynamo"
+          ]
+        },
+        {
+          "id": "scale",
+          "label": "Horizontal scaling / partitioning",
+          "criterion": "scaling",
+          "keywords": [
+            "horizontal",
+            "partition",
+            "shard"
+          ]
+        },
+        {
+          "id": "cons",
+          "label": "Consistency model",
+          "criterion": "consistency-failure",
+          "keywords": [
+            "consistency",
+            "eventual",
+            "strong"
+          ]
+        },
+        {
+          "id": "tradeoff",
+          "label": "Trade-offs and flexibility",
+          "criterion": "trade-offs",
+          "keywords": [
+            "trade off",
+            "flexible",
+            "denormalize",
+            "denormalise"
+          ]
+        }
+      ],
+      "modelAnswer": "Orders: strongly relational (customers, orders, line items, inventory), needs multi-row ACID transactions and ad-hoc reporting \u2014 PostgreSQL fits; scale with read replicas, partitioning by time, and later sharding by customer. Event log: append-heavy, queried by key and time range, no joins, tolerates eventual consistency \u2014 a wide-column store (Cassandra) or a log system partitions writes horizontally. Trade-off: NoSQL gives write scalability and flexible schemas but pushes joins/denormalisation and integrity checks into the application."
+    },
+    {
+      "id": "sd-sharding",
+      "title": "Database sharding",
+      "prompt": "Explain database sharding. Compare range-based, hash-based and directory-based sharding, explain how you choose a shard key, and describe the operational problems sharding introduces.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "system-design",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "databases",
+        "partitioning"
+      ],
+      "rubricId": "system-design",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Splits data across machines horizontally",
+          "criterion": "architecture",
+          "keywords": [
+            "horizontal",
+            "split",
+            "partition",
+            "multiple machines"
+          ]
+        },
+        {
+          "id": "strategies",
+          "label": "Range vs hash vs directory",
+          "criterion": "architecture",
+          "keywords": [
+            "range",
+            "hash",
+            "directory",
+            "lookup"
+          ]
+        },
+        {
+          "id": "key",
+          "label": "Shard key choice: cardinality, even distribution, query locality",
+          "criterion": "requirements",
+          "keywords": [
+            "shard key",
+            "cardinality",
+            "distribution",
+            "locality"
+          ]
+        },
+        {
+          "id": "hotspot",
+          "label": "Hot spots / skew",
+          "criterion": "bottlenecks",
+          "keywords": [
+            "hot spot",
+            "hotspot",
+            "skew",
+            "celebrity"
+          ]
+        },
+        {
+          "id": "cross",
+          "label": "Cross-shard queries and transactions",
+          "criterion": "consistency-failure",
+          "keywords": [
+            "cross shard",
+            "distributed transaction",
+            "two phase",
+            "scatter gather"
+          ]
+        },
+        {
+          "id": "reshard",
+          "label": "Resharding / consistent hashing",
+          "criterion": "scaling",
+          "keywords": [
+            "resharding",
+            "rebalance",
+            "consistent hashing"
+          ]
+        },
+        {
+          "id": "tradeoff",
+          "label": "Complexity cost vs alternatives (replicas, vertical scaling)",
+          "criterion": "trade-offs",
+          "keywords": [
+            "complexity",
+            "read replica",
+            "vertical",
+            "last resort"
+          ]
+        }
+      ],
+      "modelAnswer": "Sharding splits one logical table across machines by a shard key. Range sharding keeps ordered scans cheap but creates hot spots on recent keys; hash sharding spreads load evenly but loses range queries; directory sharding uses a lookup service for flexibility at the cost of an extra hop. A good key has high cardinality, even access and matches the dominant query (e.g. tenant_id). Problems: cross-shard joins and transactions (scatter-gather, 2PC or sagas), hot keys, rebalancing (consistent hashing / virtual nodes), global uniqueness, backups. Try indexes, caching, read replicas and vertical scaling first."
+    },
+    {
+      "id": "sd-rate-limited-gateway",
+      "title": "A rate-limited API gateway",
+      "prompt": "Describe how you would design an API gateway that enforces per-client rate limits. Compare token bucket and sliding window algorithms, explain where counters live in a distributed deployment, and how clients learn they are throttled.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "system-design",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 240,
+      "tags": [
+        "rate-limiting",
+        "api-gateway"
+      ],
+      "rubricId": "system-design",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "role",
+          "label": "Gateway responsibilities: auth, routing, limits",
+          "criterion": "requirements",
+          "keywords": [
+            "authentication",
+            "routing",
+            "gateway",
+            "per client",
+            "api key"
+          ]
+        },
+        {
+          "id": "algos",
+          "label": "Token bucket vs sliding window / fixed window",
+          "criterion": "architecture",
+          "keywords": [
+            "token bucket",
+            "sliding window",
+            "fixed window",
+            "leaky bucket"
+          ]
+        },
+        {
+          "id": "store",
+          "label": "Shared counter store (e.g. Redis) with atomic ops",
+          "criterion": "architecture",
+          "keywords": [
+            "redis",
+            "atomic",
+            "lua",
+            "increment",
+            "shared"
+          ]
+        },
+        {
+          "id": "429",
+          "label": "HTTP 429 + Retry-After headers",
+          "criterion": "consistency-failure",
+          "keywords": [
+            "429",
+            "retry after",
+            "too many requests",
+            "headers"
+          ]
+        },
+        {
+          "id": "latency",
+          "label": "Latency / store becomes bottleneck; local approximation",
+          "criterion": "bottlenecks",
+          "keywords": [
+            "latency",
+            "local",
+            "approximate",
+            "bottleneck"
+          ]
+        },
+        {
+          "id": "fail-open",
+          "label": "Fail open vs fail closed if store is down",
+          "criterion": "reliability",
+          "keywords": [
+            "fail open",
+            "fail closed",
+            "store is down",
+            "fallback"
+          ]
+        },
+        {
+          "id": "tradeoff",
+          "label": "Accuracy vs performance",
+          "criterion": "trade-offs",
+          "keywords": [
+            "accuracy",
+            "trade off",
+            "burst"
+          ]
+        }
+      ],
+      "modelAnswer": "The gateway authenticates the client (API key/JWT), routes to services, and checks a limit before forwarding. Token bucket allows bursts up to bucket size while enforcing an average rate; sliding-window counters smooth fixed-window edge bursts. In a multi-node deployment counters live in a shared store (Redis with atomic INCR/Lua) keyed by client+window; to cut latency, nodes can keep local buckets and sync periodically, accepting approximate limits. Throttled requests get 429 with Retry-After and rate-limit headers. Decide whether to fail open (availability) or fail closed (protection) when the store is unavailable."
+    },
+    {
+      "id": "sd-message-queues-backpressure",
+      "title": "Message queues and backpressure",
+      "prompt": "Explain why systems use message queues, what delivery guarantees they offer, and what backpressure is. Describe what happens when consumers are slower than producers and how you would handle it.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "system-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "queues",
+        "async",
+        "backpressure"
+      ],
+      "rubricId": "system-design",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "decouple",
+          "label": "Decoupling and buffering bursts",
+          "criterion": "architecture",
+          "keywords": [
+            "decouple",
+            "buffer",
+            "asynchronous",
+            "burst"
+          ]
+        },
+        {
+          "id": "guarantees",
+          "label": "At-most-once / at-least-once / exactly-once",
+          "criterion": "consistency-failure",
+          "keywords": [
+            "at least once",
+            "at most once",
+            "exactly once",
+            "acknowledge",
+            "ack"
+          ]
+        },
+        {
+          "id": "idempotent",
+          "label": "Idempotent consumers",
+          "criterion": "reliability",
+          "keywords": [
+            "idempotent",
+            "deduplicate",
+            "dedup"
+          ]
+        },
+        {
+          "id": "lag",
+          "label": "Consumer lag / queue growth",
+          "criterion": "bottlenecks",
+          "keywords": [
+            "lag",
+            "queue grows",
+            "slower",
+            "backlog"
+          ]
+        },
+        {
+          "id": "bp",
+          "label": "Backpressure: slow producers, bounded queues, shed load",
+          "criterion": "scaling",
+          "keywords": [
+            "backpressure",
+            "bounded",
+            "shed load",
+            "throttle",
+            "slow down"
+          ]
+        },
+        {
+          "id": "dlq",
+          "label": "Dead-letter queues and retries",
+          "criterion": "reliability",
+          "keywords": [
+            "dead letter",
+            "retry",
+            "poison"
+          ]
+        },
+        {
+          "id": "tradeoff",
+          "label": "Latency vs throughput vs complexity",
+          "criterion": "trade-offs",
+          "keywords": [
+            "trade off",
+            "latency",
+            "throughput"
+          ]
+        }
+      ],
+      "modelAnswer": "Queues decouple producers from consumers, absorb bursts and let you scale consumers independently. Most brokers give at-least-once delivery, so consumers must be idempotent (dedup keys). If consumers are slower, lag grows until memory/disk or latency SLOs break. Backpressure means propagating 'slow down' upstream: bounded queues that block or reject, rate-limiting producers, autoscaling consumers, or shedding low-priority work. Failed messages go to a dead-letter queue after limited retries with backoff."
+    },
+    {
+      "id": "sd-notification-service",
+      "title": "Design a scalable notification service",
+      "prompt": "Design a notification service that sends push, email and SMS notifications to millions of users. Cover the API, user preferences, fan-out, retries, deduplication, third-party provider limits and monitoring.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "system-design",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 300,
+      "tags": [
+        "design",
+        "queues",
+        "fan-out"
+      ],
+      "rubricId": "system-design",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "req",
+          "label": "Requirements: channels, priority, preferences",
+          "criterion": "requirements",
+          "keywords": [
+            "preference",
+            "opt out",
+            "priority",
+            "channels",
+            "requirements"
+          ]
+        },
+        {
+          "id": "queue",
+          "label": "Queue per channel / priority",
+          "criterion": "architecture",
+          "keywords": [
+            "queue",
+            "kafka",
+            "worker"
+          ]
+        },
+        {
+          "id": "flow",
+          "label": "API \u2192 validation \u2192 preferences \u2192 queue \u2192 workers \u2192 provider",
+          "criterion": "architecture",
+          "keywords": [
+            "template",
+            "worker",
+            "provider",
+            "pipeline"
+          ]
+        },
+        {
+          "id": "fanout",
+          "label": "Fan-out for broadcasts, horizontal workers",
+          "criterion": "scaling",
+          "keywords": [
+            "fan out",
+            "fanout",
+            "horizontal",
+            "partition"
+          ]
+        },
+        {
+          "id": "retry",
+          "label": "Retries with backoff, DLQ",
+          "criterion": "reliability",
+          "keywords": [
+            "retry",
+            "backoff",
+            "dead letter"
+          ]
+        },
+        {
+          "id": "dedup",
+          "label": "Idempotency keys / deduplication",
+          "criterion": "consistency-failure",
+          "keywords": [
+            "dedup",
+            "idempotency",
+            "duplicate"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "Provider rate limits",
+          "criterion": "bottlenecks",
+          "keywords": [
+            "rate limit",
+            "provider",
+            "throttle",
+            "quota"
+          ]
+        },
+        {
+          "id": "tradeoff",
+          "label": "Delivery speed vs cost vs duplicates",
+          "criterion": "trade-offs",
+          "keywords": [
+            "trade off",
+            "cost",
+            "latency"
+          ]
+        }
+      ],
+      "modelAnswer": "API accepts {user/segment, template, data, priority, idempotency key}. It validates, checks user preferences and quiet hours, renders templates and enqueues per channel and priority (high-priority OTPs never wait behind marketing). Channel workers call providers (APNs/FCM, email, SMS) within their rate limits, retry transient failures with exponential backoff and jitter, and send permanent failures to a DLQ. Broadcasts fan out in batches by partition. Dedup by idempotency key in a short-TTL store. Track sent/delivered/failed metrics per provider, and fail over to a secondary provider."
+    },
+    {
+      "id": "be-idempotency",
+      "title": "Idempotency in HTTP APIs",
+      "prompt": "Explain what idempotency means for HTTP APIs. Say which HTTP methods are idempotent by definition, why it matters for retries, and how you would make a POST payment endpoint safe to retry.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "http",
+        "apis",
+        "reliability"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Same effect whether called once or many times",
+          "criterion": "correctness",
+          "keywords": [
+            "same result",
+            "same effect",
+            "multiple times",
+            "once"
+          ]
+        },
+        {
+          "id": "methods",
+          "label": "GET, PUT, DELETE idempotent; POST not",
+          "criterion": "correctness",
+          "keywords": [
+            "put",
+            "delete",
+            "get",
+            "post is not"
+          ]
+        },
+        {
+          "id": "retries",
+          "label": "Retries after timeouts can duplicate work",
+          "criterion": "mechanism",
+          "keywords": [
+            "retry",
+            "retries",
+            "timeout",
+            "network failure"
+          ]
+        },
+        {
+          "id": "key",
+          "label": "Idempotency key stored with the result",
+          "criterion": "mechanism",
+          "keywords": [
+            "idempotency key",
+            "unique key",
+            "request id",
+            "store the response"
+          ]
+        },
+        {
+          "id": "pitfall",
+          "label": "Race between concurrent duplicates; key expiry",
+          "criterion": "trade-offs",
+          "keywords": [
+            "race",
+            "concurrent",
+            "unique constraint",
+            "expire",
+            "lock"
+          ]
+        }
+      ],
+      "modelAnswer": "An operation is idempotent if repeating it has the same effect as doing it once. By HTTP semantics GET, HEAD, PUT and DELETE are idempotent; POST is not. It matters because clients retry after timeouts without knowing whether the first request succeeded \u2014 a retried payment could charge twice. Fix: the client sends an Idempotency-Key; the server stores key \u2192 result in a table with a unique constraint, and on a repeat returns the stored response instead of reprocessing. Handle concurrent duplicates with the unique constraint or a lock, and expire keys after a window."
+    },
+    {
+      "id": "be-authn-vs-authz",
+      "title": "Authentication versus authorization",
+      "prompt": "Explain the difference between authentication and authorization with a concrete example. Describe how sessions or tokens carry identity, and where authorization checks should happen.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "security",
+        "auth"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "authn",
+          "label": "Authentication = who you are",
+          "criterion": "correctness",
+          "keywords": [
+            "who you are",
+            "identity",
+            "verify",
+            "login"
+          ]
+        },
+        {
+          "id": "authz",
+          "label": "Authorization = what you may do",
+          "criterion": "correctness",
+          "keywords": [
+            "what you can",
+            "permission",
+            "allowed",
+            "access"
+          ]
+        },
+        {
+          "id": "tokens",
+          "label": "Sessions / JWT / OAuth carry identity",
+          "criterion": "mechanism",
+          "keywords": [
+            "session",
+            "token",
+            "jwt",
+            "cookie",
+            "oauth"
+          ]
+        },
+        {
+          "id": "server-side",
+          "label": "Authorization enforced server-side per resource",
+          "criterion": "mechanism",
+          "keywords": [
+            "server side",
+            "every request",
+            "resource",
+            "owner"
+          ]
+        },
+        {
+          "id": "roles",
+          "label": "RBAC / ABAC models",
+          "criterion": "trade-offs",
+          "keywords": [
+            "role",
+            "rbac",
+            "attribute",
+            "least privilege"
+          ]
+        }
+      ],
+      "modelAnswer": "Authentication proves identity (password + 2FA, SSO); authorization decides whether that identity may perform an action on a resource. Example: logging in to a bank app is authentication; being allowed to view only your own account is authorization. After login, identity travels as a session cookie or a signed token (JWT). Authorization must be enforced on the server for every request and every resource \u2014 checking ownership, roles (RBAC) or attributes \u2014 never just by hiding UI buttons. Broken object-level authorization is a top API vulnerability."
+    },
+    {
+      "id": "be-connection-pooling-isolation",
+      "title": "Connection pooling and transaction isolation",
+      "prompt": "Explain why applications use database connection pools and how to size one. Then explain transaction isolation levels and one anomaly each level prevents.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "databases",
+        "transactions"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "pool-why",
+          "label": "Connections are expensive to create",
+          "criterion": "correctness",
+          "keywords": [
+            "expensive",
+            "handshake",
+            "reuse",
+            "overhead"
+          ]
+        },
+        {
+          "id": "pool-size",
+          "label": "Pool sizing; too large overloads DB",
+          "criterion": "trade-offs",
+          "keywords": [
+            "pool size",
+            "too many connections",
+            "max connections",
+            "wait"
+          ]
+        },
+        {
+          "id": "levels",
+          "label": "Read committed, repeatable read, serializable",
+          "criterion": "correctness",
+          "keywords": [
+            "read committed",
+            "repeatable read",
+            "serializable",
+            "read uncommitted"
+          ]
+        },
+        {
+          "id": "anomalies",
+          "label": "Dirty read, non-repeatable read, phantom, write skew",
+          "criterion": "mechanism",
+          "keywords": [
+            "dirty read",
+            "non repeatable",
+            "phantom",
+            "write skew",
+            "lost update"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Stronger isolation costs throughput / retries",
+          "criterion": "trade-offs",
+          "keywords": [
+            "performance",
+            "retry",
+            "locking",
+            "throughput"
+          ]
+        }
+      ],
+      "modelAnswer": "Opening a DB connection costs a TCP + TLS handshake, authentication and server-side memory, so pools keep a set of open connections and lend them out. Size small: roughly cores \u00d7 2-ish on the DB side and total across all app instances below the DB's max \u2014 oversized pools cause contention, not speed. Isolation: read committed prevents dirty reads; repeatable read prevents non-repeatable reads (and in PostgreSQL snapshot isolation, phantoms); serializable prevents write skew. Stronger levels mean more locking or serialization failures that the app must retry."
+    },
+    {
+      "id": "be-monolith-vs-microservices",
+      "title": "Modular monolith versus microservices",
+      "prompt": "Compare a modular monolith with a microservices architecture. When would you choose each, what operational costs do microservices add, and how would you migrate if needed?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "architecture",
+        "trade-offs"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "monolith",
+          "label": "Single deployable with enforced module boundaries",
+          "criterion": "correctness",
+          "keywords": [
+            "single deployable",
+            "one deployment",
+            "modules",
+            "boundaries"
+          ]
+        },
+        {
+          "id": "micro",
+          "label": "Independently deployable services, own data",
+          "criterion": "correctness",
+          "keywords": [
+            "independently",
+            "own database",
+            "separate service"
+          ]
+        },
+        {
+          "id": "ops",
+          "label": "Network calls, observability, distributed transactions",
+          "criterion": "trade-offs",
+          "keywords": [
+            "network",
+            "latency",
+            "tracing",
+            "observability",
+            "distributed transaction"
+          ]
+        },
+        {
+          "id": "team",
+          "label": "Team size / org structure drives choice",
+          "criterion": "mechanism",
+          "keywords": [
+            "team",
+            "conway",
+            "organization",
+            "organisation"
+          ]
+        },
+        {
+          "id": "migrate",
+          "label": "Strangler fig migration",
+          "criterion": "mechanism",
+          "keywords": [
+            "strangler",
+            "extract",
+            "incrementally"
+          ]
+        }
+      ],
+      "modelAnswer": "A modular monolith is one deployable with strict internal module boundaries \u2014 simple deploys, in-process calls, one database, easy transactions. Microservices are independently deployable services that own their data, enabling independent scaling and team autonomy, at the cost of network latency and failures, distributed transactions (sagas), versioned APIs, and heavy observability needs. Start with a modular monolith for small teams; split a module when it needs independent scaling, release cadence or ownership. Migrate with the strangler-fig pattern, extracting one bounded context at a time."
+    },
+    {
+      "id": "be-retries-timeouts-circuit-breakers",
+      "title": "Retries, timeouts and circuit breakers",
+      "prompt": "Explain how timeouts, retries and circuit breakers work together when one service calls another. Describe exponential backoff with jitter and how retries can make an outage worse.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "resilience",
+        "distributed-systems"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "timeout",
+          "label": "Timeouts bound waiting",
+          "criterion": "correctness",
+          "keywords": [
+            "timeout",
+            "deadline"
+          ]
+        },
+        {
+          "id": "backoff",
+          "label": "Exponential backoff with jitter",
+          "criterion": "mechanism",
+          "keywords": [
+            "exponential",
+            "backoff",
+            "jitter"
+          ]
+        },
+        {
+          "id": "breaker",
+          "label": "Circuit breaker states: closed, open, half-open",
+          "criterion": "mechanism",
+          "keywords": [
+            "circuit breaker",
+            "open",
+            "half open",
+            "closed"
+          ]
+        },
+        {
+          "id": "storm",
+          "label": "Retry storms amplify load",
+          "criterion": "trade-offs",
+          "keywords": [
+            "retry storm",
+            "amplify",
+            "overload",
+            "cascading"
+          ]
+        },
+        {
+          "id": "idempotent",
+          "label": "Only retry idempotent / transient failures",
+          "criterion": "trade-offs",
+          "keywords": [
+            "idempotent",
+            "transient",
+            "budget"
+          ]
+        }
+      ],
+      "modelAnswer": "Timeouts stop a caller from waiting forever and tying up threads. Retries recover from transient failures but only for idempotent operations, with a capped attempt count or retry budget. Exponential backoff with jitter spreads retries so clients don't synchronise. If a dependency is truly down, retries multiply load (retry storms, cascading failure). A circuit breaker tracks failures: closed lets calls through; after a threshold it opens and fails fast; after a cool-down it goes half-open to probe with a few requests."
+    },
+    {
+      "id": "fe-react-rendering",
+      "title": "The React rendering lifecycle",
+      "prompt": "Explain how React renders and re-renders a component. Cover what triggers a render, the render and commit phases, reconciliation, and how effects fit in. Mention one common cause of unnecessary re-renders.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "frontend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "react"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "triggers",
+          "label": "State/props/context changes trigger renders",
+          "criterion": "correctness",
+          "keywords": [
+            "state",
+            "props",
+            "context",
+            "parent"
+          ]
+        },
+        {
+          "id": "phases",
+          "label": "Render phase vs commit phase",
+          "criterion": "mechanism",
+          "keywords": [
+            "render phase",
+            "commit",
+            "pure"
+          ]
+        },
+        {
+          "id": "reconcile",
+          "label": "Virtual DOM diffing / reconciliation, keys",
+          "criterion": "mechanism",
+          "keywords": [
+            "reconciliation",
+            "diff",
+            "virtual dom",
+            "key"
+          ]
+        },
+        {
+          "id": "effects",
+          "label": "Effects run after commit",
+          "criterion": "mechanism",
+          "keywords": [
+            "use effect",
+            "useeffect",
+            "after commit",
+            "after paint",
+            "cleanup"
+          ]
+        },
+        {
+          "id": "unnecessary",
+          "label": "New object/function props; memoisation",
+          "criterion": "trade-offs",
+          "keywords": [
+            "memo",
+            "use callback",
+            "usememo",
+            "new object",
+            "reference"
+          ]
+        }
+      ],
+      "modelAnswer": "A component renders when its state changes, its parent re-renders, or a context it reads changes. In the render phase React calls components (which must be pure) to produce a new element tree, then reconciles it against the previous tree \u2014 comparing types and keys \u2014 to compute minimal DOM changes. In the commit phase React applies those changes; layout effects run synchronously after, regular effects after paint, each with cleanup before the next run. Unnecessary renders often come from passing newly created objects/functions as props to memoised children; React.memo, useMemo/useCallback or restructuring state fixes it."
+    },
+    {
+      "id": "fe-ssr-vs-csr",
+      "title": "Server-side versus client-side rendering",
+      "prompt": "Compare server-side rendering and client-side rendering. Discuss first-load performance, SEO, hydration, server cost and when static generation is the better option.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "frontend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "rendering",
+        "performance"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "csr",
+          "label": "CSR: browser downloads JS and builds the page",
+          "criterion": "correctness",
+          "keywords": [
+            "client side",
+            "javascript bundle",
+            "blank",
+            "browser builds"
+          ]
+        },
+        {
+          "id": "ssr",
+          "label": "SSR: server sends HTML per request",
+          "criterion": "correctness",
+          "keywords": [
+            "server side",
+            "html",
+            "per request"
+          ]
+        },
+        {
+          "id": "hydration",
+          "label": "Hydration attaches interactivity",
+          "criterion": "mechanism",
+          "keywords": [
+            "hydration",
+            "hydrate",
+            "interactive"
+          ]
+        },
+        {
+          "id": "seo",
+          "label": "SEO and first contentful paint",
+          "criterion": "trade-offs",
+          "keywords": [
+            "seo",
+            "first paint",
+            "contentful",
+            "crawler"
+          ]
+        },
+        {
+          "id": "ssg",
+          "label": "Static generation / caching on CDN",
+          "criterion": "mechanism",
+          "keywords": [
+            "static",
+            "ssg",
+            "cdn",
+            "build time"
+          ]
+        }
+      ],
+      "modelAnswer": "CSR ships a mostly empty HTML page and a JS bundle; the browser fetches data and renders, so first paint waits for JS \u2014 fine for app-like dashboards behind login. SSR renders HTML on the server per request, giving fast first contentful paint and crawlable content, then hydration attaches event handlers (time-to-interactive still depends on JS). SSR costs server CPU and adds latency per request. Static generation renders at build time and serves from a CDN \u2014 best for content that changes rarely; incremental regeneration or streaming SSR sits in between."
+    },
+    {
+      "id": "fe-event-propagation",
+      "title": "Browser event propagation",
+      "prompt": "Explain how events propagate in the browser DOM. Describe the capture and bubble phases, event delegation, and the difference between stopPropagation and preventDefault.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "frontend-engineering",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "dom",
+        "javascript"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "phases",
+          "label": "Capture \u2192 target \u2192 bubble",
+          "criterion": "correctness",
+          "keywords": [
+            "capture",
+            "bubble",
+            "bubbling",
+            "target"
+          ]
+        },
+        {
+          "id": "delegation",
+          "label": "Event delegation on a parent",
+          "criterion": "mechanism",
+          "keywords": [
+            "delegation",
+            "parent",
+            "event target"
+          ]
+        },
+        {
+          "id": "stop",
+          "label": "stopPropagation stops travel",
+          "criterion": "mechanism",
+          "keywords": [
+            "stop propagation",
+            "stoppropagation"
+          ]
+        },
+        {
+          "id": "prevent",
+          "label": "preventDefault cancels browser default action",
+          "criterion": "mechanism",
+          "keywords": [
+            "prevent default",
+            "preventdefault",
+            "default action"
+          ]
+        },
+        {
+          "id": "pitfall",
+          "label": "Pitfalls: stopping propagation breaks other listeners",
+          "criterion": "trade-offs",
+          "keywords": [
+            "breaks",
+            "analytics",
+            "outside click"
+          ]
+        }
+      ],
+      "modelAnswer": "An event travels from the window down to the target (capture phase), fires on the target, then bubbles back up through ancestors. Listeners run in bubble phase by default. Event delegation puts one listener on a parent and uses event.target to handle many children \u2014 efficient and works for dynamically added elements. stopPropagation stops the event from reaching further ancestors; preventDefault cancels the browser's default action (following a link, submitting a form) without stopping propagation. Overusing stopPropagation breaks things like outside-click handlers."
+    },
+    {
+      "id": "fe-state-and-caching",
+      "title": "Frontend state management and caching",
+      "prompt": "Describe how you would organise state in a large frontend application. Distinguish server state from client UI state, and explain how data caching libraries handle staleness and refetching.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "frontend-engineering",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "state-management",
+        "caching"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "kinds",
+          "label": "Server state vs UI state vs URL state",
+          "criterion": "correctness",
+          "keywords": [
+            "server state",
+            "ui state",
+            "client state",
+            "url"
+          ]
+        },
+        {
+          "id": "colocate",
+          "label": "Colocate state; lift only when shared",
+          "criterion": "mechanism",
+          "keywords": [
+            "colocate",
+            "lift",
+            "local state"
+          ]
+        },
+        {
+          "id": "cache",
+          "label": "Query caches: stale-while-revalidate, invalidation",
+          "criterion": "mechanism",
+          "keywords": [
+            "stale while revalidate",
+            "invalidate",
+            "refetch",
+            "cache"
+          ]
+        },
+        {
+          "id": "global",
+          "label": "Global stores for truly global state",
+          "criterion": "trade-offs",
+          "keywords": [
+            "redux",
+            "global store",
+            "zustand",
+            "context"
+          ]
+        },
+        {
+          "id": "optimistic",
+          "label": "Optimistic updates & rollback",
+          "criterion": "mechanism",
+          "keywords": [
+            "optimistic",
+            "rollback"
+          ]
+        }
+      ],
+      "modelAnswer": "Separate server state (data owned by the backend: cached, can be stale) from UI state (modal open, form inputs) and URL state (filters, page). Keep UI state local and lift it only when shared. Use a query cache (TanStack Query/SWR) for server state: keyed caching, stale-while-revalidate, background refetch, invalidation after mutations, and optimistic updates with rollback. Reserve a global store for genuinely global client state (auth session, theme) \u2014 putting server data in a global store recreates a cache badly."
+    },
+    {
+      "id": "fe-performance-bottlenecks",
+      "title": "Frontend performance bottlenecks",
+      "prompt": "Explain the most common frontend performance bottlenecks and how you would diagnose them. Mention Core Web Vitals, bundle size, main-thread work and rendering cost.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "frontend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "performance",
+        "web-vitals"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "vitals",
+          "label": "Core Web Vitals: LCP, INP, CLS",
+          "criterion": "correctness",
+          "keywords": [
+            "lcp",
+            "largest contentful",
+            "inp",
+            "cls",
+            "layout shift",
+            "web vitals"
+          ]
+        },
+        {
+          "id": "bundle",
+          "label": "Bundle size, code splitting",
+          "criterion": "mechanism",
+          "keywords": [
+            "bundle",
+            "code splitting",
+            "lazy",
+            "tree shaking"
+          ]
+        },
+        {
+          "id": "main-thread",
+          "label": "Long tasks block the main thread",
+          "criterion": "mechanism",
+          "keywords": [
+            "main thread",
+            "long task",
+            "blocking"
+          ]
+        },
+        {
+          "id": "render",
+          "label": "Layout thrashing / excessive re-renders",
+          "criterion": "mechanism",
+          "keywords": [
+            "layout",
+            "reflow",
+            "re render",
+            "virtualize",
+            "virtualise"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "Measure with DevTools / Lighthouse / RUM",
+          "criterion": "mechanism",
+          "keywords": [
+            "lighthouse",
+            "devtools",
+            "profiler",
+            "real user"
+          ]
+        }
+      ],
+      "modelAnswer": "Measure first: Lighthouse for lab data, real-user monitoring for field Core Web Vitals (LCP for loading, INP for responsiveness, CLS for visual stability). Common causes: large JS bundles (code-split routes, tree-shake, drop heavy libs), unoptimised images and fonts (responsive sizes, preloading), long main-thread tasks (break up work, web workers), layout thrashing from interleaved reads/writes, and excessive React re-renders or huge lists (memoisation, virtualisation). Fix the biggest measured bottleneck, then re-measure."
+    },
+    {
+      "id": "cpp-raii-smart-pointers",
+      "title": "RAII and smart pointers in C++",
+      "prompt": "Explain RAII in C++ and how smart pointers apply it. Compare unique_ptr, shared_ptr and weak_ptr, give an example of each, and name a common pitfall.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "programming-languages",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "raii",
+          "label": "Resource lifetime tied to object lifetime",
+          "criterion": "correctness",
+          "keywords": [
+            "resource acquisition",
+            "destructor",
+            "scope",
+            "lifetime"
+          ]
+        },
+        {
+          "id": "unique",
+          "label": "unique_ptr: sole ownership, move-only",
+          "criterion": "terminology",
+          "keywords": [
+            "unique pointer",
+            "unique ptr",
+            "move only",
+            "sole owner",
+            "exclusive"
+          ]
+        },
+        {
+          "id": "shared",
+          "label": "shared_ptr: reference counting",
+          "criterion": "terminology",
+          "keywords": [
+            "shared pointer",
+            "shared ptr",
+            "reference count"
+          ]
+        },
+        {
+          "id": "weak",
+          "label": "weak_ptr breaks cycles",
+          "criterion": "terminology",
+          "keywords": [
+            "weak pointer",
+            "weak ptr",
+            "cycle"
+          ]
+        },
+        {
+          "id": "exceptions",
+          "label": "Exception safety / no leaks on early return",
+          "criterion": "practical-implications",
+          "keywords": [
+            "exception",
+            "early return",
+            "leak"
+          ]
+        },
+        {
+          "id": "pitfall",
+          "label": "Pitfalls: cycles, atomic refcount cost, raw new",
+          "criterion": "pitfalls",
+          "keywords": [
+            "cycle",
+            "atomic",
+            "make shared",
+            "make unique",
+            "raw new"
+          ]
+        }
+      ],
+      "modelAnswer": "RAII (Resource Acquisition Is Initialization) ties a resource \u2014 memory, file, mutex lock \u2014 to an object: acquire in the constructor, release in the destructor. Because destructors run when scope exits, including on exceptions and early returns, resources never leak. unique_ptr expresses sole ownership, cannot be copied, only moved, and has zero overhead. shared_ptr shares ownership with an atomic reference count; the object dies when the last owner goes. weak_ptr observes without owning and breaks reference cycles (e.g. a child pointing back to its parent). Pitfalls: shared_ptr cycles leak, atomic refcounting costs, and using raw new instead of make_unique/make_shared."
+    },
+    {
+      "id": "cpp-stack-vs-heap",
+      "title": "Stack versus heap allocation",
+      "prompt": "Compare stack and heap allocation in C++. Explain lifetime, allocation cost, size limits and cache behaviour, and when you would choose each.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "programming-languages",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "cpp",
+        "memory"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "stack-life",
+          "label": "Stack: automatic lifetime tied to scope",
+          "criterion": "correctness",
+          "keywords": [
+            "automatic",
+            "scope",
+            "function returns",
+            "stack frame"
+          ]
+        },
+        {
+          "id": "heap-life",
+          "label": "Heap: dynamic lifetime managed explicitly",
+          "criterion": "correctness",
+          "keywords": [
+            "dynamic",
+            "new",
+            "delete",
+            "malloc",
+            "free store"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Stack allocation is a pointer bump; heap uses an allocator",
+          "criterion": "practical-implications",
+          "keywords": [
+            "pointer",
+            "allocator",
+            "faster",
+            "cheap",
+            "fragmentation"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "Stack size limits \u2192 overflow",
+          "criterion": "pitfalls",
+          "keywords": [
+            "stack overflow",
+            "limited",
+            "megabytes",
+            "large arrays",
+            "recursion"
+          ]
+        },
+        {
+          "id": "dangling",
+          "label": "Returning pointer to stack variable is dangling",
+          "criterion": "pitfalls",
+          "keywords": [
+            "dangling",
+            "returning a pointer",
+            "reference to local"
+          ]
+        }
+      ],
+      "modelAnswer": "Stack objects live in the function's frame: allocation is just moving the stack pointer, they are destroyed automatically when scope ends, and they are cache-friendly \u2014 but the stack is small (often 1\u20138 MB), so huge arrays or deep recursion overflow it, and returning a pointer to a local creates a dangling pointer. Heap allocation (new/make_unique) goes through an allocator \u2014 slower, can fragment, possibly contended across threads \u2014 but supports large sizes, runtime-determined sizes and lifetimes beyond the scope. Prefer stack and value semantics; use the heap via smart pointers or containers when size or lifetime demands it."
+    },
+    {
+      "id": "cpp-mutex-atomics-races",
+      "title": "Mutexes, atomics and race conditions",
+      "prompt": "Explain what a data race is, and compare protecting shared state with a mutex versus std::atomic. Mention memory ordering and when a lock-free approach is worth it.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "programming-languages",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "cpp",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "race",
+          "label": "Data race: concurrent unsynchronised access with a write",
+          "criterion": "correctness",
+          "keywords": [
+            "data race",
+            "race condition",
+            "two threads",
+            "same memory"
+          ]
+        },
+        {
+          "id": "ub",
+          "label": "Data races are undefined behaviour",
+          "criterion": "terminology",
+          "keywords": [
+            "undefined behavior",
+            "undefined behaviour"
+          ]
+        },
+        {
+          "id": "mutex",
+          "label": "Mutex gives mutual exclusion over a critical section",
+          "criterion": "terminology",
+          "keywords": [
+            "mutex",
+            "lock guard",
+            "critical section",
+            "mutual exclusion"
+          ]
+        },
+        {
+          "id": "atomic",
+          "label": "Atomics for single variables / counters",
+          "criterion": "terminology",
+          "keywords": [
+            "atomic",
+            "fetch add",
+            "compare and swap",
+            "cas"
+          ]
+        },
+        {
+          "id": "ordering",
+          "label": "Memory ordering: seq_cst, acquire/release, relaxed",
+          "criterion": "practical-implications",
+          "keywords": [
+            "memory order",
+            "acquire",
+            "release",
+            "relaxed",
+            "sequentially consistent"
+          ]
+        },
+        {
+          "id": "pitfall",
+          "label": "Pitfalls: deadlock, ABA, false sharing, contention",
+          "criterion": "pitfalls",
+          "keywords": [
+            "deadlock",
+            "aba",
+            "false sharing",
+            "contention"
+          ]
+        }
+      ],
+      "modelAnswer": "A data race occurs when two threads access the same memory concurrently, at least one writes, and there is no synchronisation \u2014 in C++ that is undefined behaviour. A mutex (with lock_guard/scoped_lock RAII) serialises a critical section of any size; simple, but threads block and contention hurts latency. std::atomic makes single-variable operations indivisible (fetch_add, compare_exchange) without blocking, and memory orders control visibility: seq_cst by default, acquire/release for publish-consume handoffs, relaxed for counters. Lock-free structures (e.g. SPSC ring buffers) pay off on hot, latency-critical paths but bring ABA problems, false sharing and hard-to-verify correctness."
+    },
+    {
+      "id": "cpp-move-semantics",
+      "title": "Move semantics",
+      "prompt": "Explain move semantics in C++. Cover rvalue references, what a move constructor does, when std::move is needed, and what state a moved-from object is in.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "programming-languages",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "rvalue",
+          "label": "Rvalue references bind to temporaries",
+          "criterion": "terminology",
+          "keywords": [
+            "rvalue",
+            "temporary",
+            "double ampersand"
+          ]
+        },
+        {
+          "id": "steal",
+          "label": "Move steals resources instead of copying",
+          "criterion": "correctness",
+          "keywords": [
+            "steal",
+            "transfer",
+            "instead of copying",
+            "pointer"
+          ]
+        },
+        {
+          "id": "std-move",
+          "label": "std::move is a cast, doesn't move by itself",
+          "criterion": "terminology",
+          "keywords": [
+            "cast",
+            "std move",
+            "does not move",
+            "doesn't move"
+          ]
+        },
+        {
+          "id": "moved-from",
+          "label": "Moved-from object: valid but unspecified",
+          "criterion": "practical-implications",
+          "keywords": [
+            "valid but unspecified",
+            "moved from",
+            "empty"
+          ]
+        },
+        {
+          "id": "pitfall",
+          "label": "Pitfalls: moving from const, using after move, noexcept",
+          "criterion": "pitfalls",
+          "keywords": [
+            "const",
+            "use after move",
+            "noexcept",
+            "return value optimization",
+            "rvo"
+          ]
+        }
+      ],
+      "modelAnswer": "Copying a std::vector duplicates its heap buffer; moving just transfers the pointer and leaves the source empty. Rvalue references (T&&) bind to temporaries and to objects explicitly marked as movable. A move constructor takes T&&, steals the resources and resets the source. std::move is only a cast to an rvalue \u2014 the move happens in the constructor or assignment it selects. The moved-from object remains valid but unspecified: you may destroy it or assign to it. Pitfalls: std::move on a const object silently copies, using objects after moving, missing noexcept (vectors then copy on reallocation), and writing std::move on return values, which blocks RVO."
+    },
+    {
+      "id": "cpp-ownership-lifetime",
+      "title": "Memory ownership and lifetime",
+      "prompt": "Explain how you reason about ownership and lifetime in a C++ codebase. How do function signatures communicate ownership, and what bugs result when ownership is unclear?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "programming-languages",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "cpp",
+        "design"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "owner",
+          "label": "Exactly one owner responsible for destruction",
+          "criterion": "correctness",
+          "keywords": [
+            "owner",
+            "responsible",
+            "destroys",
+            "ownership"
+          ]
+        },
+        {
+          "id": "signatures",
+          "label": "Signatures express ownership: unique_ptr by value, references, raw pointers non-owning",
+          "criterion": "terminology",
+          "keywords": [
+            "by value",
+            "const reference",
+            "non owning",
+            "raw pointer",
+            "span",
+            "string view"
+          ]
+        },
+        {
+          "id": "bugs",
+          "label": "Use-after-free, double free, leaks, dangling",
+          "criterion": "pitfalls",
+          "keywords": [
+            "use after free",
+            "double free",
+            "leak",
+            "dangling"
+          ]
+        },
+        {
+          "id": "views",
+          "label": "Views (string_view/span) must not outlive owner",
+          "criterion": "practical-implications",
+          "keywords": [
+            "outlive",
+            "string view",
+            "span",
+            "view"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "Sanitizers and static analysis",
+          "criterion": "practical-implications",
+          "keywords": [
+            "sanitizer",
+            "asan",
+            "valgrind",
+            "static analysis"
+          ]
+        }
+      ],
+      "modelAnswer": "Every resource should have one clear owner responsible for destroying it. Signatures communicate this: passing std::unique_ptr by value transfers ownership; T& or const T& borrows; a raw T* or std::span/string_view is non-owning and must not outlive its source; returning unique_ptr hands ownership to the caller. Unclear ownership causes leaks, double frees, use-after-free and dangling views (e.g. a string_view into a temporary string). Tools: AddressSanitizer, Valgrind, clang-tidy lifetime checks, and Rust-style discipline in code review."
+    },
+    {
+      "id": "go-goroutines-channels",
+      "title": "Goroutines and channels in Go",
+      "prompt": "Explain how goroutines and channels work in Go. Compare buffered and unbuffered channels, describe how the Go scheduler runs goroutines, and name a common concurrency bug.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "programming-languages",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "go",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "goroutine",
+          "label": "Lightweight green threads with small stacks",
+          "criterion": "correctness",
+          "keywords": [
+            "lightweight",
+            "green thread",
+            "small stack",
+            "growable",
+            "go keyword"
+          ]
+        },
+        {
+          "id": "scheduler",
+          "label": "M:N scheduler (G, M, P)",
+          "criterion": "terminology",
+          "keywords": [
+            "scheduler",
+            "m to n",
+            "m n",
+            "os thread",
+            "processor"
+          ]
+        },
+        {
+          "id": "unbuffered",
+          "label": "Unbuffered channels synchronise sender and receiver",
+          "criterion": "terminology",
+          "keywords": [
+            "unbuffered",
+            "synchronous",
+            "blocks until"
+          ]
+        },
+        {
+          "id": "buffered",
+          "label": "Buffered channels decouple up to capacity",
+          "criterion": "terminology",
+          "keywords": [
+            "buffered",
+            "capacity"
+          ]
+        },
+        {
+          "id": "csp",
+          "label": "Share memory by communicating; select",
+          "criterion": "practical-implications",
+          "keywords": [
+            "communicating",
+            "select",
+            "share memory"
+          ]
+        },
+        {
+          "id": "leak",
+          "label": "Goroutine leaks, deadlocks, closing channels",
+          "criterion": "pitfalls",
+          "keywords": [
+            "leak",
+            "deadlock",
+            "close",
+            "context",
+            "nil channel"
+          ]
+        }
+      ],
+      "modelAnswer": "Goroutines are functions running concurrently, started with the go keyword; they begin with a few KB of growable stack, so you can run hundreds of thousands. The runtime multiplexes them onto OS threads (M:N scheduling with G, M, P) and preempts long-running ones. Channels pass values between goroutines: an unbuffered send blocks until a receiver is ready (a synchronisation point); a buffered channel lets senders proceed until it is full. select waits on several channel operations. Common bugs: goroutine leaks (a goroutine blocked forever on a channel nobody reads \u2014 use context cancellation), sending on a closed channel, and deadlocks."
+    },
+    {
+      "id": "ml-overfitting-regularization",
+      "title": "Overfitting and regularization",
+      "prompt": "Explain overfitting in machine learning, how you detect it, and at least three ways to reduce it. Explain how L2 regularization works intuitively.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "ai-ml",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "ml-basics",
+        "generalization"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Model memorises training noise, fails to generalise",
+          "criterion": "correctness",
+          "keywords": [
+            "memorize",
+            "memorise",
+            "noise",
+            "generalize",
+            "generalise",
+            "unseen"
+          ]
+        },
+        {
+          "id": "detect",
+          "label": "Gap between training and validation error",
+          "criterion": "mechanism",
+          "keywords": [
+            "validation",
+            "training error",
+            "gap",
+            "test set"
+          ]
+        },
+        {
+          "id": "fixes",
+          "label": "More data, simpler model, early stopping, dropout, augmentation",
+          "criterion": "mechanism",
+          "keywords": [
+            "more data",
+            "early stopping",
+            "dropout",
+            "augmentation",
+            "simpler model"
+          ]
+        },
+        {
+          "id": "l2",
+          "label": "L2 penalises large weights",
+          "criterion": "mechanism",
+          "keywords": [
+            "l2",
+            "weight decay",
+            "penalty",
+            "large weights",
+            "ridge"
+          ]
+        },
+        {
+          "id": "bias-var",
+          "label": "Bias-variance trade-off",
+          "criterion": "trade-offs",
+          "keywords": [
+            "bias",
+            "variance",
+            "underfitting"
+          ]
+        }
+      ],
+      "modelAnswer": "Overfitting is when a model fits noise in the training data and performs worse on unseen data. Detect it with a held-out validation set: training loss keeps falling while validation loss rises. Remedies: more or augmented data, a simpler model, regularisation, dropout, early stopping, cross-validation. L2 regularisation adds \u03bb\u00b7\u03a3w\u00b2 to the loss, pushing weights toward small values so the model can't rely on extreme weights to fit individual points \u2014 trading a little bias for lower variance. Too much regularisation causes underfitting."
+    },
+    {
+      "id": "ml-classification-vs-clustering",
+      "title": "Classification versus clustering",
+      "prompt": "Compare classification and clustering. Explain supervised versus unsupervised learning, give an algorithm and a real use case for each, and explain how you evaluate each.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "ai-ml",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "ml-basics"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "supervised",
+          "label": "Classification is supervised (labels)",
+          "criterion": "correctness",
+          "keywords": [
+            "supervised",
+            "labels",
+            "labeled",
+            "labelled"
+          ]
+        },
+        {
+          "id": "unsupervised",
+          "label": "Clustering is unsupervised (no labels)",
+          "criterion": "correctness",
+          "keywords": [
+            "unsupervised",
+            "no labels",
+            "groups",
+            "similarity"
+          ]
+        },
+        {
+          "id": "algos",
+          "label": "Algorithms: logistic regression/trees vs k-means/DBSCAN",
+          "criterion": "mechanism",
+          "keywords": [
+            "logistic regression",
+            "decision tree",
+            "k means",
+            "dbscan",
+            "random forest"
+          ]
+        },
+        {
+          "id": "eval",
+          "label": "Metrics: accuracy/precision/recall vs silhouette",
+          "criterion": "trade-offs",
+          "keywords": [
+            "precision",
+            "recall",
+            "accuracy",
+            "f1",
+            "silhouette"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Use cases: spam detection vs customer segmentation",
+          "criterion": "mechanism",
+          "keywords": [
+            "spam",
+            "segmentation",
+            "fraud",
+            "customer"
+          ]
+        }
+      ],
+      "modelAnswer": "Classification is supervised: you learn a mapping from features to known labels (spam vs not spam) with algorithms like logistic regression or gradient-boosted trees, evaluated on held-out data with precision, recall, F1 or ROC-AUC. Clustering is unsupervised: no labels, you group similar points (customer segmentation) with k-means or DBSCAN; evaluation is harder \u2014 silhouette score, cluster stability, and whether segments are useful to the business."
+    },
+    {
+      "id": "ml-attention-transformers",
+      "title": "Attention in transformers",
+      "prompt": "Explain the attention mechanism in transformers. Describe queries, keys and values, why attention is computed in parallel, what multiple heads add, and the cost as sequence length grows.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "genai-llms",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "transformers",
+        "deep-learning"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "qkv",
+          "label": "Queries, keys, values",
+          "criterion": "correctness",
+          "keywords": [
+            "query",
+            "queries",
+            "key",
+            "value"
+          ]
+        },
+        {
+          "id": "weights",
+          "label": "Softmax of scaled dot products gives weights",
+          "criterion": "mechanism",
+          "keywords": [
+            "dot product",
+            "softmax",
+            "scaled",
+            "weighted sum"
+          ]
+        },
+        {
+          "id": "parallel",
+          "label": "Parallel over tokens unlike RNNs",
+          "criterion": "mechanism",
+          "keywords": [
+            "parallel",
+            "recurrent",
+            "rnn",
+            "all tokens"
+          ]
+        },
+        {
+          "id": "heads",
+          "label": "Multi-head attention captures different relations",
+          "criterion": "mechanism",
+          "keywords": [
+            "multi head",
+            "multiple heads",
+            "heads"
+          ]
+        },
+        {
+          "id": "quadratic",
+          "label": "Quadratic cost in sequence length",
+          "criterion": "trade-offs",
+          "keywords": [
+            "quadratic",
+            "n squared",
+            "sequence length",
+            "context length",
+            "kv cache"
+          ]
+        }
+      ],
+      "modelAnswer": "Each token is projected into a query, a key and a value. A token's attention weights are the softmax of its query's dot products with all keys, scaled by \u221ad; its output is the weighted sum of values \u2014 so each token gathers information from the tokens most relevant to it. All positions are computed at once with matrix multiplications, unlike sequential RNNs, which is why transformers train efficiently on GPUs. Multiple heads let the model attend to different relations (syntax, coreference) in parallel subspaces. Cost is O(n\u00b2) in sequence length for compute and memory, which motivates techniques such as FlashAttention, sparse attention and KV caching at inference."
+    },
+    {
+      "id": "ml-embeddings-rag",
+      "title": "Embeddings and retrieval-augmented generation",
+      "prompt": "Explain what embeddings are and how retrieval-augmented generation uses them. Walk through the RAG pipeline, explain chunking, and describe common failure modes and how you would evaluate the system.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "genai-llms",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "rag",
+        "embeddings",
+        "llm"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "embedding",
+          "label": "Vectors where similar meaning is close",
+          "criterion": "correctness",
+          "keywords": [
+            "vector",
+            "similar",
+            "semantic",
+            "dense"
+          ]
+        },
+        {
+          "id": "pipeline",
+          "label": "Chunk \u2192 embed \u2192 index \u2192 retrieve top-k \u2192 prompt",
+          "criterion": "mechanism",
+          "keywords": [
+            "chunk",
+            "vector database",
+            "top k",
+            "retrieve",
+            "index"
+          ]
+        },
+        {
+          "id": "similarity",
+          "label": "Cosine similarity / ANN search",
+          "criterion": "mechanism",
+          "keywords": [
+            "cosine",
+            "nearest neighbor",
+            "nearest neighbour",
+            "ann",
+            "similarity search"
+          ]
+        },
+        {
+          "id": "grounding",
+          "label": "Grounds answers in sources, reduces hallucination",
+          "criterion": "correctness",
+          "keywords": [
+            "hallucination",
+            "ground",
+            "citation",
+            "source"
+          ]
+        },
+        {
+          "id": "failures",
+          "label": "Failure modes: bad chunks, irrelevant retrieval, stale index",
+          "criterion": "trade-offs",
+          "keywords": [
+            "irrelevant",
+            "chunk size",
+            "rerank",
+            "stale",
+            "hybrid"
+          ]
+        },
+        {
+          "id": "eval",
+          "label": "Evaluate retrieval recall and answer faithfulness",
+          "criterion": "mechanism",
+          "keywords": [
+            "recall",
+            "faithfulness",
+            "evaluation",
+            "golden"
+          ]
+        }
+      ],
+      "modelAnswer": "An embedding model maps text to a vector so that semantically similar texts land close together (cosine similarity). RAG: split documents into chunks, embed them, store vectors in an index; at query time embed the question, retrieve the top-k nearest chunks (approximate nearest-neighbour search), optionally rerank, and put them in the LLM prompt with instructions to answer from them and cite. This grounds answers in current, private data. Failure modes: chunks too big or too small, retrieval missing exact terms (use hybrid keyword + vector search), irrelevant context confusing the model, stale indexes. Evaluate retrieval recall@k and answer faithfulness on a labelled question set."
+    },
+    {
+      "id": "ml-training-vs-inference",
+      "title": "Model training versus inference",
+      "prompt": "Explain the difference between training and inference for a neural network. Compare compute, memory, latency requirements and hardware, and mention techniques used to make inference cheaper.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "ai-ml",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "ml-systems",
+        "deployment"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "training",
+          "label": "Training: forward + backward pass, update weights",
+          "criterion": "correctness",
+          "keywords": [
+            "backward",
+            "backpropagation",
+            "gradient",
+            "update weights"
+          ]
+        },
+        {
+          "id": "inference",
+          "label": "Inference: forward pass only with fixed weights",
+          "criterion": "correctness",
+          "keywords": [
+            "forward pass",
+            "fixed weights",
+            "prediction",
+            "frozen"
+          ]
+        },
+        {
+          "id": "memory",
+          "label": "Training stores activations and optimizer state",
+          "criterion": "mechanism",
+          "keywords": [
+            "activations",
+            "optimizer state",
+            "memory",
+            "batch"
+          ]
+        },
+        {
+          "id": "latency",
+          "label": "Inference optimised for latency/throughput",
+          "criterion": "trade-offs",
+          "keywords": [
+            "latency",
+            "throughput",
+            "batching",
+            "real time"
+          ]
+        },
+        {
+          "id": "cheaper",
+          "label": "Quantization, distillation, pruning, caching",
+          "criterion": "mechanism",
+          "keywords": [
+            "quantization",
+            "quantisation",
+            "distillation",
+            "pruning",
+            "onnx"
+          ]
+        }
+      ],
+      "modelAnswer": "Training runs forward passes, computes loss, backpropagates gradients and updates weights with an optimizer over many epochs; it needs memory for activations, gradients and optimizer state and is throughput-bound, usually on GPU clusters. Inference runs only the forward pass with frozen weights to make predictions; it is latency- and cost-sensitive and runs on GPUs, CPUs or edge devices. Cheaper inference: quantisation (int8/int4), distillation into smaller models, pruning, request batching, KV caching for LLMs, and compiled runtimes."
+    },
+    {
+      "id": "genai-hallucinations",
+      "title": "Why LLMs hallucinate",
+      "prompt": "Explain why large language models sometimes produce confident but false statements. Describe how training and decoding contribute to this, and list practical mitigations for a production application.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "genai-llms",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "llm",
+        "reliability"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "next-token",
+          "label": "Trained to predict plausible next tokens, not truth",
+          "criterion": "correctness",
+          "keywords": [
+            "next token",
+            "plausible",
+            "predict",
+            "probability"
+          ]
+        },
+        {
+          "id": "knowledge",
+          "label": "Gaps / outdated training data",
+          "criterion": "mechanism",
+          "keywords": [
+            "training data",
+            "cutoff",
+            "outdated",
+            "knowledge"
+          ]
+        },
+        {
+          "id": "decoding",
+          "label": "Sampling/temperature effects",
+          "criterion": "mechanism",
+          "keywords": [
+            "temperature",
+            "sampling",
+            "decoding"
+          ]
+        },
+        {
+          "id": "mitigate",
+          "label": "Mitigations: RAG, citations, tool use, abstaining",
+          "criterion": "mechanism",
+          "keywords": [
+            "retrieval",
+            "rag",
+            "citation",
+            "tool",
+            "say i don't know",
+            "abstain"
+          ]
+        },
+        {
+          "id": "eval",
+          "label": "Evaluation and human review for high stakes",
+          "criterion": "trade-offs",
+          "keywords": [
+            "evaluation",
+            "human review",
+            "verify",
+            "guardrail"
+          ]
+        }
+      ],
+      "modelAnswer": "LLMs are trained to produce likely continuations of text; fluency is rewarded, not verified truth. When the training data lacks or conflicts on a fact \u2014 or it is past the cutoff \u2014 the model can still generate a plausible-sounding answer, and sampling at higher temperature increases variety (and errors). Mitigations: ground answers with retrieval and require citations, use tools for facts and calculations, constrain outputs with schemas, let the model say it doesn't know, evaluate on a test set, and keep humans reviewing high-stakes outputs."
+    },
+    {
+      "id": "db-indexes",
+      "title": "How database indexes work",
+      "prompt": "Explain how a B-tree index speeds up queries. Describe what a composite index is, why column order matters, and the costs of adding indexes.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "databases-and-storage",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "sql",
+        "indexes"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "btree",
+          "label": "B-tree: sorted, balanced, O(log n) lookups",
+          "criterion": "correctness",
+          "keywords": [
+            "b tree",
+            "btree",
+            "balanced",
+            "sorted",
+            "log n"
+          ]
+        },
+        {
+          "id": "scan",
+          "label": "Avoids full table scans",
+          "criterion": "mechanism",
+          "keywords": [
+            "full table scan",
+            "sequential scan",
+            "scan"
+          ]
+        },
+        {
+          "id": "composite",
+          "label": "Composite index and leftmost prefix",
+          "criterion": "mechanism",
+          "keywords": [
+            "composite",
+            "leftmost",
+            "prefix",
+            "column order",
+            "multiple columns"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Write overhead and storage",
+          "criterion": "trade-offs",
+          "keywords": [
+            "slower writes",
+            "write",
+            "storage",
+            "maintain"
+          ]
+        },
+        {
+          "id": "explain",
+          "label": "Use EXPLAIN to verify",
+          "criterion": "mechanism",
+          "keywords": [
+            "explain",
+            "query plan",
+            "analyze"
+          ]
+        }
+      ],
+      "modelAnswer": "A B-tree index stores keys in sorted order in a balanced tree of pages, so the database finds a value in O(log n) page reads instead of scanning every row, and can also serve range queries and ORDER BY. A composite index on (a, b) is sorted by a, then b \u2014 it helps queries filtering on a, or a and b, but not b alone (the leftmost-prefix rule); put equality columns before range columns. Every index slows inserts/updates and uses storage, so add indexes for real query patterns and verify with EXPLAIN ANALYZE."
+    },
+    {
+      "id": "db-acid",
+      "title": "ACID transactions",
+      "prompt": "Explain each letter of ACID with a concrete example, such as a bank transfer. Describe how a database typically implements atomicity and durability.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "databases-and-storage",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "transactions",
+        "sql"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "atomic",
+          "label": "Atomicity: all or nothing",
+          "criterion": "correctness",
+          "keywords": [
+            "all or nothing",
+            "atomicity",
+            "rollback"
+          ]
+        },
+        {
+          "id": "consistent",
+          "label": "Consistency: constraints hold",
+          "criterion": "correctness",
+          "keywords": [
+            "consistency",
+            "constraint",
+            "invariant"
+          ]
+        },
+        {
+          "id": "isolation",
+          "label": "Isolation: concurrent transactions don't interfere",
+          "criterion": "correctness",
+          "keywords": [
+            "isolation",
+            "concurrent"
+          ]
+        },
+        {
+          "id": "durable",
+          "label": "Durability: committed data survives crashes",
+          "criterion": "correctness",
+          "keywords": [
+            "durability",
+            "crash",
+            "survive"
+          ]
+        },
+        {
+          "id": "wal",
+          "label": "Write-ahead log implements atomicity/durability",
+          "criterion": "mechanism",
+          "keywords": [
+            "write ahead log",
+            "wal",
+            "log",
+            "fsync"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Bank transfer example",
+          "criterion": "mechanism",
+          "keywords": [
+            "transfer",
+            "bank",
+            "debit",
+            "credit"
+          ]
+        }
+      ],
+      "modelAnswer": "Bank transfer of \u20b9500 from A to B. Atomicity: both the debit and the credit happen, or neither (rollback on failure). Consistency: constraints hold before and after \u2014 balances never negative, total money conserved. Isolation: two concurrent transfers behave as if run one after another, according to the isolation level. Durability: once committed, the transfer survives a crash. Databases implement atomicity and durability with a write-ahead log: changes are appended and fsynced to the log before commit is acknowledged, and recovery replays or undoes log records."
+    },
+    {
+      "id": "net-what-happens-url",
+      "title": "What happens when you type a URL",
+      "prompt": "Explain what happens, step by step, between typing a URL into a browser and seeing the page. Cover DNS, TCP and TLS, the HTTP request, and rendering.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "networking",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "dns",
+        "http",
+        "tls"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "dns",
+          "label": "DNS resolution",
+          "criterion": "correctness",
+          "keywords": [
+            "dns",
+            "ip address",
+            "resolver",
+            "domain"
+          ]
+        },
+        {
+          "id": "tcp",
+          "label": "TCP handshake",
+          "criterion": "mechanism",
+          "keywords": [
+            "tcp",
+            "handshake",
+            "syn"
+          ]
+        },
+        {
+          "id": "tls",
+          "label": "TLS handshake and certificates",
+          "criterion": "mechanism",
+          "keywords": [
+            "tls",
+            "ssl",
+            "certificate",
+            "encrypt"
+          ]
+        },
+        {
+          "id": "http",
+          "label": "HTTP request/response",
+          "criterion": "mechanism",
+          "keywords": [
+            "http request",
+            "get request",
+            "response",
+            "status code"
+          ]
+        },
+        {
+          "id": "render",
+          "label": "Parsing HTML, CSS, JS and rendering",
+          "criterion": "mechanism",
+          "keywords": [
+            "parse",
+            "dom",
+            "render",
+            "css"
+          ]
+        },
+        {
+          "id": "cache",
+          "label": "Caching / CDN along the way",
+          "criterion": "trade-offs",
+          "keywords": [
+            "cache",
+            "cdn",
+            "keep alive"
+          ]
+        }
+      ],
+      "modelAnswer": "The browser parses the URL, checks its caches, then resolves the domain via DNS (browser/OS cache \u2192 recursive resolver \u2192 root, TLD, authoritative servers) to an IP. It opens a TCP connection (SYN, SYN-ACK, ACK) \u2014 or QUIC for HTTP/3 \u2014 and performs a TLS handshake, verifying the server certificate and agreeing keys. It sends an HTTP GET; the request may hit a CDN or load balancer before the origin. The response HTML is parsed into the DOM, CSS into the CSSOM, scripts run, further resources are fetched, then layout and paint display the page."
+    },
+    {
+      "id": "net-tcp-vs-udp",
+      "title": "TCP versus UDP",
+      "prompt": "Compare TCP and UDP. Explain reliability, ordering, congestion control and connection setup, and give applications that suit each protocol.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "networking",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "transport"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "reliable",
+          "label": "TCP: reliable, ordered, retransmission",
+          "criterion": "correctness",
+          "keywords": [
+            "reliable",
+            "ordered",
+            "retransmit",
+            "acknowledg"
+          ]
+        },
+        {
+          "id": "udp",
+          "label": "UDP: connectionless datagrams, no guarantees",
+          "criterion": "correctness",
+          "keywords": [
+            "connectionless",
+            "datagram",
+            "no guarantee",
+            "best effort"
+          ]
+        },
+        {
+          "id": "congestion",
+          "label": "Congestion and flow control",
+          "criterion": "mechanism",
+          "keywords": [
+            "congestion",
+            "flow control",
+            "window"
+          ]
+        },
+        {
+          "id": "hol",
+          "label": "Head-of-line blocking; latency",
+          "criterion": "trade-offs",
+          "keywords": [
+            "head of line",
+            "latency",
+            "overhead"
+          ]
+        },
+        {
+          "id": "apps",
+          "label": "Apps: web/DB vs video calls/games/DNS; QUIC",
+          "criterion": "mechanism",
+          "keywords": [
+            "video",
+            "game",
+            "dns",
+            "quic",
+            "streaming"
+          ]
+        }
+      ],
+      "modelAnswer": "TCP sets up a connection with a handshake and gives a reliable, ordered byte stream using sequence numbers, ACKs and retransmission, plus flow and congestion control. UDP sends independent datagrams with no handshake, ordering or retransmission \u2014 lower latency and overhead. TCP suits web, APIs, databases and file transfer; UDP suits real-time voice/video and games (late data is useless), DNS lookups, and QUIC/HTTP3, which builds its own reliability over UDP to avoid TCP head-of-line blocking."
+    },
+    {
+      "id": "os-process-vs-thread",
+      "title": "Processes versus threads",
+      "prompt": "Explain the difference between a process and a thread. Cover memory isolation, context-switch cost, communication between them and failure isolation.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "operating-systems",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "os",
+        "concurrency"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "isolation",
+          "label": "Processes have separate address spaces",
+          "criterion": "correctness",
+          "keywords": [
+            "address space",
+            "isolated",
+            "separate memory"
+          ]
+        },
+        {
+          "id": "shared",
+          "label": "Threads share memory within a process",
+          "criterion": "correctness",
+          "keywords": [
+            "share memory",
+            "same address space",
+            "shared"
+          ]
+        },
+        {
+          "id": "switch",
+          "label": "Context switch cost",
+          "criterion": "mechanism",
+          "keywords": [
+            "context switch",
+            "tlb",
+            "page table",
+            "cost"
+          ]
+        },
+        {
+          "id": "ipc",
+          "label": "IPC vs shared memory synchronisation",
+          "criterion": "mechanism",
+          "keywords": [
+            "ipc",
+            "pipe",
+            "socket",
+            "synchroniz",
+            "synchronis",
+            "lock"
+          ]
+        },
+        {
+          "id": "crash",
+          "label": "Failure isolation: crashing thread kills process",
+          "criterion": "trade-offs",
+          "keywords": [
+            "crash",
+            "isolation",
+            "kills"
+          ]
+        }
+      ],
+      "modelAnswer": "A process is a running program with its own virtual address space, file descriptors and resources; a thread is an execution path inside a process sharing that memory. Threads communicate cheaply through shared memory but need synchronisation (locks, atomics) to avoid races; processes communicate via IPC (pipes, sockets, shared-memory segments). Thread switches within a process are cheaper because the address space (page tables, TLB) stays. Processes give failure isolation \u2014 a crashing thread takes down its whole process \u2014 which is why browsers run tabs in separate processes."
+    },
+    {
+      "id": "os-virtual-memory",
+      "title": "Virtual memory and paging",
+      "prompt": "Explain virtual memory. Describe pages, page tables, the TLB, page faults, and why virtual memory helps both isolation and efficiency.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "operating-systems",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "os",
+        "memory"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "translate",
+          "label": "Virtual addresses mapped to physical frames",
+          "criterion": "correctness",
+          "keywords": [
+            "virtual address",
+            "physical",
+            "map",
+            "translation"
+          ]
+        },
+        {
+          "id": "pages",
+          "label": "Pages and page tables",
+          "criterion": "mechanism",
+          "keywords": [
+            "page table",
+            "page",
+            "frame"
+          ]
+        },
+        {
+          "id": "tlb",
+          "label": "TLB caches translations",
+          "criterion": "mechanism",
+          "keywords": [
+            "tlb",
+            "translation lookaside"
+          ]
+        },
+        {
+          "id": "fault",
+          "label": "Page faults and swapping",
+          "criterion": "mechanism",
+          "keywords": [
+            "page fault",
+            "swap",
+            "disk",
+            "demand paging"
+          ]
+        },
+        {
+          "id": "benefits",
+          "label": "Isolation, overcommit, shared libraries, copy-on-write",
+          "criterion": "trade-offs",
+          "keywords": [
+            "isolation",
+            "copy on write",
+            "shared libraries",
+            "protection"
+          ]
+        }
+      ],
+      "modelAnswer": "Each process sees its own virtual address space; the MMU translates virtual pages (typically 4 KB) to physical frames using per-process page tables, and the TLB caches recent translations because walking page tables is slow. If a page isn't resident, a page fault traps to the OS, which loads it (demand paging) or kills the process on an invalid access. Benefits: isolation and protection between processes, programs larger than physical RAM, shared libraries mapped once, copy-on-write after fork. Costs: TLB misses and thrashing when the working set exceeds RAM."
+    },
+    {
+      "id": "devops-containers",
+      "title": "Containers versus virtual machines",
+      "prompt": "Explain how containers differ from virtual machines. Cover isolation mechanisms such as namespaces and cgroups, image layers, startup time and security trade-offs.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "cloud-and-devops",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "docker",
+        "containers"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "kernel",
+          "label": "Containers share the host kernel; VMs have their own",
+          "criterion": "correctness",
+          "keywords": [
+            "share the kernel",
+            "host kernel",
+            "hypervisor",
+            "guest os"
+          ]
+        },
+        {
+          "id": "namespaces",
+          "label": "Namespaces for isolation, cgroups for limits",
+          "criterion": "mechanism",
+          "keywords": [
+            "namespace",
+            "cgroup"
+          ]
+        },
+        {
+          "id": "layers",
+          "label": "Image layers and caching",
+          "criterion": "mechanism",
+          "keywords": [
+            "layer",
+            "image",
+            "dockerfile"
+          ]
+        },
+        {
+          "id": "startup",
+          "label": "Fast startup, small footprint",
+          "criterion": "trade-offs",
+          "keywords": [
+            "startup",
+            "seconds",
+            "lightweight",
+            "footprint"
+          ]
+        },
+        {
+          "id": "security",
+          "label": "Weaker isolation boundary",
+          "criterion": "trade-offs",
+          "keywords": [
+            "security",
+            "isolation boundary",
+            "escape",
+            "root"
+          ]
+        }
+      ],
+      "modelAnswer": "A VM virtualises hardware via a hypervisor and runs a full guest OS kernel \u2014 strong isolation, slower boot, more overhead. A container is a process tree on the host kernel isolated with namespaces (PID, network, mount, user) and resource-limited by cgroups; images are stacks of read-only layers built from a Dockerfile and cached. Containers start in milliseconds to seconds and pack densely, but share the kernel, so a kernel exploit can escape \u2014 mitigated with non-root users, seccomp, or sandboxed runtimes like gVisor/Firecracker microVMs."
+    },
+    {
+      "id": "ds-cap-theorem",
+      "title": "The CAP theorem",
+      "prompt": "Explain the CAP theorem accurately. Describe what happens during a network partition, give an example of a CP system and an AP system, and explain what PACELC adds.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "distributed-systems",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "consistency",
+        "partitions"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "cap",
+          "label": "Consistency, availability, partition tolerance",
+          "criterion": "correctness",
+          "keywords": [
+            "consistency",
+            "availability",
+            "partition tolerance"
+          ]
+        },
+        {
+          "id": "partition",
+          "label": "During a partition you choose C or A",
+          "criterion": "correctness",
+          "keywords": [
+            "during a partition",
+            "network partition",
+            "choose"
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "CP and AP examples",
+          "criterion": "mechanism",
+          "keywords": [
+            "zookeeper",
+            "etcd",
+            "cassandra",
+            "dynamo",
+            "spanner"
+          ]
+        },
+        {
+          "id": "misconception",
+          "label": "Not 'pick any two' in normal operation",
+          "criterion": "mechanism",
+          "keywords": [
+            "pick two",
+            "two out of three",
+            "only during"
+          ]
+        },
+        {
+          "id": "pacelc",
+          "label": "PACELC: latency vs consistency without partitions",
+          "criterion": "trade-offs",
+          "keywords": [
+            "pacelc",
+            "latency",
+            "else"
+          ]
+        }
+      ],
+      "modelAnswer": "CAP says that when a network partition occurs, a distributed data store must choose between consistency (every read sees the latest write, linearizability) and availability (every request to a non-failed node gets a response). Partitions are unavoidable, so 'pick two of three' is misleading \u2014 the choice only bites during a partition. CP systems (etcd, ZooKeeper) refuse some requests to stay consistent; AP systems (Cassandra, Dynamo-style) keep answering and reconcile later. PACELC adds: Else, in normal operation, you trade latency against consistency."
+    },
+    {
+      "id": "ds-consensus-raft",
+      "title": "Consensus with Raft",
+      "prompt": "Explain what distributed consensus solves and how Raft achieves it. Cover leader election, log replication, majorities, and what happens when the leader fails.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "distributed-systems",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 240,
+      "tags": [
+        "consensus",
+        "replication"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "problem",
+          "label": "Agree on a single ordered log despite failures",
+          "criterion": "correctness",
+          "keywords": [
+            "agree",
+            "replicated log",
+            "same order",
+            "state machine"
+          ]
+        },
+        {
+          "id": "election",
+          "label": "Leader election with terms and randomized timeouts",
+          "criterion": "mechanism",
+          "keywords": [
+            "leader election",
+            "term",
+            "timeout",
+            "randomized",
+            "vote"
+          ]
+        },
+        {
+          "id": "replication",
+          "label": "Leader appends and replicates entries",
+          "criterion": "mechanism",
+          "keywords": [
+            "append entries",
+            "replicate",
+            "follower"
+          ]
+        },
+        {
+          "id": "majority",
+          "label": "Commit after majority acknowledges; quorum",
+          "criterion": "mechanism",
+          "keywords": [
+            "majority",
+            "quorum",
+            "commit"
+          ]
+        },
+        {
+          "id": "failure",
+          "label": "Leader failure \u2192 new election; tolerate f of 2f+1",
+          "criterion": "trade-offs",
+          "keywords": [
+            "leader fails",
+            "2f plus 1",
+            "tolerate",
+            "split brain"
+          ]
+        }
+      ],
+      "modelAnswer": "Consensus lets a cluster agree on one ordered sequence of commands despite crashes, giving a replicated state machine (used by etcd, Consul). Raft elects a leader: followers that hear no heartbeat within a randomised timeout become candidates, increment the term and request votes; a majority makes a leader. Clients send commands to the leader, which appends them to its log and replicates via AppendEntries; an entry is committed once a majority stores it. If the leader fails, a new election picks a node with an up-to-date log. With 2f+1 nodes Raft tolerates f failures; a minority partition cannot commit, preventing split brain."
+    },
+    {
+      "id": "api-rest-design",
+      "title": "Designing a good REST API",
+      "prompt": "Explain the principles you follow when designing a REST API. Cover resource naming, HTTP methods and status codes, pagination, versioning and error format.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "api-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "rest",
+        "http"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "resources",
+          "label": "Nouns for resources, hierarchy",
+          "criterion": "correctness",
+          "keywords": [
+            "resource",
+            "noun",
+            "plural",
+            "orders"
+          ]
+        },
+        {
+          "id": "methods",
+          "label": "Methods and status codes",
+          "criterion": "mechanism",
+          "keywords": [
+            "status code",
+            "201",
+            "404",
+            "400",
+            "get",
+            "post",
+            "patch"
+          ]
+        },
+        {
+          "id": "pagination",
+          "label": "Cursor vs offset pagination",
+          "criterion": "mechanism",
+          "keywords": [
+            "pagination",
+            "cursor",
+            "offset",
+            "limit"
+          ]
+        },
+        {
+          "id": "versioning",
+          "label": "Versioning and backward compatibility",
+          "criterion": "trade-offs",
+          "keywords": [
+            "version",
+            "backward compatible",
+            "breaking change",
+            "deprecat"
+          ]
+        },
+        {
+          "id": "errors",
+          "label": "Consistent error format",
+          "criterion": "mechanism",
+          "keywords": [
+            "error format",
+            "error code",
+            "problem details",
+            "message"
+          ]
+        }
+      ],
+      "modelAnswer": "Model resources as plural nouns (/orders/{id}/items) and use methods for actions: GET reads, POST creates (201 + Location), PUT replaces, PATCH updates partially, DELETE removes. Use precise status codes \u2014 400 validation, 401 unauthenticated, 403 forbidden, 404, 409 conflict, 429 throttled. Paginate collections; cursor pagination is stable under inserts, offset is simple but slow and inconsistent on large sets. Evolve additively and version breaking changes (/v2 or header) with deprecation notices. Return a consistent error body with a machine-readable code, message and field details."
+    },
+    {
+      "id": "sec-xss-csrf-sqli",
+      "title": "XSS, CSRF and SQL injection",
+      "prompt": "Explain cross-site scripting, cross-site request forgery and SQL injection. For each, describe how the attack works and the primary defence.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "security",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "web-security",
+        "owasp"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "xss",
+          "label": "XSS: injected script runs in victim's browser",
+          "criterion": "correctness",
+          "keywords": [
+            "xss",
+            "cross site scripting",
+            "inject script",
+            "javascript"
+          ]
+        },
+        {
+          "id": "xss-def",
+          "label": "Escape output, CSP",
+          "criterion": "mechanism",
+          "keywords": [
+            "escape",
+            "encode",
+            "content security policy",
+            "csp",
+            "sanitize",
+            "sanitise"
+          ]
+        },
+        {
+          "id": "csrf",
+          "label": "CSRF: forged request with victim's cookies",
+          "criterion": "correctness",
+          "keywords": [
+            "csrf",
+            "cross site request forgery",
+            "cookies",
+            "forged"
+          ]
+        },
+        {
+          "id": "csrf-def",
+          "label": "SameSite cookies, CSRF tokens",
+          "criterion": "mechanism",
+          "keywords": [
+            "same site",
+            "samesite",
+            "csrf token",
+            "anti forgery"
+          ]
+        },
+        {
+          "id": "sqli",
+          "label": "SQL injection via string concatenation",
+          "criterion": "correctness",
+          "keywords": [
+            "sql injection",
+            "concatenat",
+            "user input"
+          ]
+        },
+        {
+          "id": "sqli-def",
+          "label": "Parameterised queries",
+          "criterion": "mechanism",
+          "keywords": [
+            "parameterized",
+            "parameterised",
+            "prepared statement",
+            "bind"
+          ]
+        }
+      ],
+      "modelAnswer": "XSS: attacker-controlled input is rendered as HTML/JS and runs in other users' browsers, stealing tokens or acting as them. Defence: context-aware output encoding (frameworks escape by default), avoid dangerouslySetInnerHTML, and add a Content-Security-Policy. CSRF: a malicious site makes the victim's browser send an authenticated request using its cookies. Defence: SameSite cookies, CSRF tokens, checking Origin. SQL injection: user input concatenated into a query changes its structure. Defence: parameterised queries/prepared statements, least-privilege DB users."
+    },
+    {
+      "id": "arch-clean-architecture",
+      "title": "Layered and hexagonal architecture",
+      "prompt": "Explain layered or hexagonal (ports and adapters) architecture. Why separate domain logic from infrastructure, how does dependency inversion enable it, and when is it overkill?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "software-architecture",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "architecture",
+        "design"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "domain",
+          "label": "Domain logic independent of frameworks",
+          "criterion": "correctness",
+          "keywords": [
+            "domain",
+            "business logic",
+            "core"
+          ]
+        },
+        {
+          "id": "ports",
+          "label": "Ports (interfaces) and adapters",
+          "criterion": "mechanism",
+          "keywords": [
+            "port",
+            "adapter",
+            "interface"
+          ]
+        },
+        {
+          "id": "dip",
+          "label": "Dependency inversion: dependencies point inward",
+          "criterion": "mechanism",
+          "keywords": [
+            "dependency inversion",
+            "point inward",
+            "depend on abstraction"
+          ]
+        },
+        {
+          "id": "testing",
+          "label": "Testability and swapping infrastructure",
+          "criterion": "mechanism",
+          "keywords": [
+            "test",
+            "mock",
+            "swap",
+            "replace the database"
+          ]
+        },
+        {
+          "id": "overkill",
+          "label": "Overkill for simple CRUD",
+          "criterion": "trade-offs",
+          "keywords": [
+            "overkill",
+            "crud",
+            "boilerplate",
+            "indirection"
+          ]
+        }
+      ],
+      "modelAnswer": "Hexagonal architecture keeps business rules in a core that knows nothing about HTTP, databases or queues. The core defines ports (interfaces such as OrderRepository); adapters implement them (Postgres repository, REST controller). Dependency inversion makes dependencies point inward \u2014 infrastructure depends on the domain, not the reverse \u2014 so you can unit-test the core with in-memory fakes and swap infrastructure. For simple CRUD apps the extra layers add indirection and boilerplate without much benefit."
+    },
+    {
+      "id": "test-pyramid",
+      "title": "The testing pyramid",
+      "prompt": "Explain the testing pyramid. Compare unit, integration and end-to-end tests by speed, confidence and maintenance cost, and explain what makes a test flaky.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "testing-and-quality-engineering",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "testing"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "levels",
+          "label": "Unit, integration, end-to-end",
+          "criterion": "correctness",
+          "keywords": [
+            "unit test",
+            "integration test",
+            "end to end",
+            "e2e"
+          ]
+        },
+        {
+          "id": "ratio",
+          "label": "Many unit, fewer integration, few E2E",
+          "criterion": "mechanism",
+          "keywords": [
+            "many unit",
+            "fewer",
+            "pyramid",
+            "base"
+          ]
+        },
+        {
+          "id": "tradeoff",
+          "label": "Speed and isolation vs realism and confidence",
+          "criterion": "trade-offs",
+          "keywords": [
+            "fast",
+            "slow",
+            "confidence",
+            "realistic",
+            "brittle"
+          ]
+        },
+        {
+          "id": "flaky",
+          "label": "Flakiness: timing, shared state, network",
+          "criterion": "trade-offs",
+          "keywords": [
+            "flaky",
+            "timing",
+            "shared state",
+            "network",
+            "order dependent"
+          ]
+        },
+        {
+          "id": "example",
+          "label": "Concrete example of each level",
+          "criterion": "mechanism",
+          "keywords": [
+            "for example",
+            "checkout",
+            "login"
+          ]
+        }
+      ],
+      "modelAnswer": "The pyramid suggests many fast, isolated unit tests at the base, fewer integration tests that exercise real collaborators (database, HTTP), and a small number of end-to-end tests through the real UI. Moving up increases realism and confidence but also run time, cost and brittleness. Flaky tests pass or fail without code changes, usually from timing assumptions (sleeps instead of waiting for conditions), shared mutable state or test order, real network calls, randomness or time. Fix by isolating state, injecting clocks and random seeds, and waiting on explicit conditions."
+    },
+    {
+      "id": "perf-profiling",
+      "title": "Profiling a slow service",
+      "prompt": "A service's p99 latency doubled after a release. Explain how you would investigate, from metrics to profiling, and name common root causes you would check.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "performance-engineering",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "profiling",
+        "latency"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "metrics",
+          "label": "Start with metrics: p50 vs p99, throughput, saturation",
+          "criterion": "correctness",
+          "keywords": [
+            "p99",
+            "percentile",
+            "metrics",
+            "dashboard",
+            "saturation"
+          ]
+        },
+        {
+          "id": "diff",
+          "label": "Compare against the release diff / rollback",
+          "criterion": "mechanism",
+          "keywords": [
+            "diff",
+            "release",
+            "rollback",
+            "bisect"
+          ]
+        },
+        {
+          "id": "profile",
+          "label": "CPU profiling / flame graphs",
+          "criterion": "mechanism",
+          "keywords": [
+            "profile",
+            "flame graph",
+            "perf",
+            "pprof",
+            "sampling"
+          ]
+        },
+        {
+          "id": "causes",
+          "label": "GC pauses, lock contention, N+1 queries, cache misses",
+          "criterion": "trade-offs",
+          "keywords": [
+            "garbage collection",
+            "lock contention",
+            "n plus 1",
+            "cache miss",
+            "allocation"
+          ]
+        },
+        {
+          "id": "tracing",
+          "label": "Distributed tracing to find the slow span",
+          "criterion": "mechanism",
+          "keywords": [
+            "tracing",
+            "span",
+            "trace"
+          ]
+        }
+      ],
+      "modelAnswer": "Confirm the regression in metrics: which percentiles moved, for which endpoints, and whether throughput, CPU, memory or queue depth changed. Correlate with the release; if impact is high, roll back first. Use distributed tracing to locate the slow span, then profile that component (sampling CPU profiler, flame graphs, allocation profiles). Tail latency often comes from GC pauses, lock contention, a new N+1 query or missing index, cache invalidation causing misses, synchronous calls added to the hot path, or retries. Fix, then verify with a load test comparing before and after."
+    },
+    {
+      "id": "de-batch-vs-stream",
+      "title": "Batch versus stream processing",
+      "prompt": "Compare batch and stream processing for data pipelines. Explain latency, correctness concerns such as late events and exactly-once processing, and when you would choose each.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "data-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "pipelines",
+        "streaming"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "batch",
+          "label": "Batch processes bounded data periodically",
+          "criterion": "correctness",
+          "keywords": [
+            "batch",
+            "bounded",
+            "periodic",
+            "nightly"
+          ]
+        },
+        {
+          "id": "stream",
+          "label": "Streams process unbounded events continuously",
+          "criterion": "correctness",
+          "keywords": [
+            "stream",
+            "unbounded",
+            "continuous",
+            "real time"
+          ]
+        },
+        {
+          "id": "windows",
+          "label": "Windowing and event time vs processing time",
+          "criterion": "mechanism",
+          "keywords": [
+            "window",
+            "event time",
+            "processing time",
+            "watermark"
+          ]
+        },
+        {
+          "id": "late",
+          "label": "Late/out-of-order events and exactly-once",
+          "criterion": "trade-offs",
+          "keywords": [
+            "late",
+            "out of order",
+            "exactly once",
+            "duplicate"
+          ]
+        },
+        {
+          "id": "tools",
+          "label": "Tools: Spark, Flink, Kafka",
+          "criterion": "mechanism",
+          "keywords": [
+            "spark",
+            "flink",
+            "kafka",
+            "airflow"
+          ]
+        }
+      ],
+      "modelAnswer": "Batch jobs process bounded datasets on a schedule (nightly Spark jobs) \u2014 simple, easy to reprocess, but results are hours old. Stream processing handles an unbounded flow of events continuously (Kafka + Flink) with seconds of latency, using windows over event time and watermarks to handle late, out-of-order data. Exactly-once results require checkpointing plus idempotent or transactional sinks. Choose streaming for fraud detection or live dashboards; batch for reporting, backfills and heavy aggregations \u2014 many systems combine both."
+    },
+    {
+      "id": "compiler-pipeline",
+      "title": "How a compiler works",
+      "prompt": "Explain the main stages of a compiler, from source code to machine code. Describe lexing, parsing, semantic analysis, intermediate representation, optimization and code generation.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "compilers-and-build-systems",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "compilers"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "lex",
+          "label": "Lexing into tokens",
+          "criterion": "correctness",
+          "keywords": [
+            "lexer",
+            "lexing",
+            "token"
+          ]
+        },
+        {
+          "id": "parse",
+          "label": "Parsing into an AST",
+          "criterion": "correctness",
+          "keywords": [
+            "parse",
+            "parser",
+            "syntax tree",
+            "ast"
+          ]
+        },
+        {
+          "id": "semantic",
+          "label": "Semantic analysis / type checking",
+          "criterion": "mechanism",
+          "keywords": [
+            "semantic",
+            "type check",
+            "symbol table"
+          ]
+        },
+        {
+          "id": "ir",
+          "label": "Intermediate representation and optimisation",
+          "criterion": "mechanism",
+          "keywords": [
+            "intermediate representation",
+            "ir",
+            "llvm",
+            "optimization",
+            "optimisation",
+            "inlining"
+          ]
+        },
+        {
+          "id": "codegen",
+          "label": "Code generation, register allocation, linking",
+          "criterion": "mechanism",
+          "keywords": [
+            "code generation",
+            "register allocation",
+            "assembly",
+            "linker",
+            "linking"
+          ]
+        }
+      ],
+      "modelAnswer": "The lexer turns characters into tokens; the parser builds an abstract syntax tree according to the grammar; semantic analysis resolves names with symbol tables and checks types. The front end lowers the AST into an intermediate representation (e.g. LLVM IR in SSA form), where target-independent optimisations run \u2014 constant folding, inlining, dead-code elimination, loop optimisations. The back end selects instructions, allocates registers and emits machine code into object files, which the linker combines with libraries into an executable."
+    },
+    {
+      "id": "devtools-git-rebase-merge",
+      "title": "Git merge versus rebase",
+      "prompt": "Explain the difference between git merge and git rebase. Describe what each does to history, when you would use each, and the golden rule of rebasing.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "developer-tools",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "git"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "merge",
+          "label": "Merge creates a merge commit, preserves history",
+          "criterion": "correctness",
+          "keywords": [
+            "merge commit",
+            "preserves",
+            "two parents"
+          ]
+        },
+        {
+          "id": "rebase",
+          "label": "Rebase replays commits onto a new base",
+          "criterion": "correctness",
+          "keywords": [
+            "replay",
+            "rewrite",
+            "new base",
+            "linear"
+          ]
+        },
+        {
+          "id": "golden",
+          "label": "Don't rebase shared/public branches",
+          "criterion": "trade-offs",
+          "keywords": [
+            "shared",
+            "public",
+            "force push",
+            "golden rule"
+          ]
+        },
+        {
+          "id": "usage",
+          "label": "Rebase local feature branches, merge into main",
+          "criterion": "mechanism",
+          "keywords": [
+            "feature branch",
+            "pull request",
+            "squash"
+          ]
+        },
+        {
+          "id": "conflicts",
+          "label": "Conflicts resolved per commit during rebase",
+          "criterion": "mechanism",
+          "keywords": [
+            "conflict",
+            "interactive",
+            "rebase dash i"
+          ]
+        }
+      ],
+      "modelAnswer": "git merge combines branches by creating a merge commit with two parents, preserving exactly what happened. git rebase replays your commits on top of another base, producing new commits and a linear history. Use rebase (often interactive) to tidy a local feature branch before review; merge (or squash-merge) into main. Golden rule: never rebase commits others have already pulled \u2014 it rewrites history and forces them to reconcile; if you must, use --force-with-lease."
+    }
+  ]
+}

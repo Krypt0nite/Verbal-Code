@@ -1,0 +1,110 @@
+{
+  "categoryId": "fitness-nutrition",
+  "questions": [
+    {
+      "id": "fit-progressive-overload",
+      "title": "Progressive overload",
+      "prompt": "Explain the principle of progressive overload in strength training, how a beginner can apply it safely, and why recovery matters. (General education, not medical advice.)",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "exercise-fundamentals",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "training"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Gradually increasing training demand",
+          "criterion": "accuracy",
+          "keywords": [
+            "gradually",
+            "increase",
+            "weight",
+            "reps",
+            "volume"
+          ]
+        },
+        {
+          "id": "adapt",
+          "label": "Body adapts to stress",
+          "criterion": "accuracy",
+          "keywords": [
+            "adapt",
+            "stimulus",
+            "stronger"
+          ]
+        },
+        {
+          "id": "recovery",
+          "label": "Recovery: sleep, rest days",
+          "criterion": "accuracy",
+          "keywords": [
+            "recovery",
+            "rest",
+            "sleep"
+          ]
+        }
+      ],
+      "modelAnswer": "Progressive overload means gradually increasing the demand on muscles \u2014 more weight, reps, sets or better control \u2014 so the body keeps adapting. Beginners can add small increments when they complete all target reps with good form. Adaptation happens during recovery, so sleep, rest days and adequate food matter as much as the workouts; jumping too fast raises injury risk."
+    },
+    {
+      "id": "fit-sleep-habits",
+      "title": "Why sleep matters for performance",
+      "prompt": "Explain why sleep matters for learning and physical performance, and suggest three practical habits for better sleep. (General education, not medical advice.)",
+      "categoryId": "fitness-nutrition",
+      "subcategoryId": "healthy-habits",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "sleep",
+        "habits"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "memory",
+          "label": "Memory consolidation",
+          "criterion": "accuracy",
+          "keywords": [
+            "memory",
+            "consolidat",
+            "learning"
+          ]
+        },
+        {
+          "id": "recovery",
+          "label": "Physical recovery",
+          "criterion": "accuracy",
+          "keywords": [
+            "recovery",
+            "muscle",
+            "repair"
+          ]
+        },
+        {
+          "id": "habits",
+          "label": "Consistent schedule, less screen light, cool dark room",
+          "criterion": "accuracy",
+          "keywords": [
+            "consistent",
+            "schedule",
+            "screen",
+            "caffeine",
+            "dark"
+          ]
+        }
+      ],
+      "modelAnswer": "During sleep the brain consolidates what you learned and the body repairs tissue, so poor sleep hurts both focus and training progress. Habits: a consistent sleep and wake time, cutting caffeine in the afternoon and screens before bed, and a cool, dark, quiet room."
+    }
+  ]
+}

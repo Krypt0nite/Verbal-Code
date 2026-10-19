@@ -1,0 +1,122 @@
+{
+  "categoryId": "general-knowledge",
+  "questions": [
+    {
+      "id": "gk-printing-press",
+      "title": "The impact of the printing press",
+      "prompt": "Explain why the printing press is considered one of the most important inventions in history. Give at least two concrete effects it had on society.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "history",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "history",
+        "technology"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "cost",
+          "label": "Made books cheaper and faster to copy",
+          "criterion": "accuracy",
+          "keywords": [
+            "cheaper",
+            "copies",
+            "mass produce",
+            "faster"
+          ]
+        },
+        {
+          "id": "literacy",
+          "label": "Spread literacy and ideas",
+          "criterion": "accuracy",
+          "keywords": [
+            "literacy",
+            "spread",
+            "ideas",
+            "knowledge"
+          ]
+        },
+        {
+          "id": "effects",
+          "label": "Reformation / scientific revolution / standardised language",
+          "criterion": "accuracy",
+          "keywords": [
+            "reformation",
+            "scientific",
+            "standard",
+            "newspapers"
+          ]
+        }
+      ],
+      "modelAnswer": "Gutenberg's movable-type press (c. 1440) cut the cost and time of copying texts dramatically. Books and pamphlets spread ideas faster than authorities could control them: this fuelled the Protestant Reformation, let scientists share and check results (supporting the scientific revolution), raised literacy, and helped standardise languages and spelling."
+    },
+    {
+      "id": "gk-inflation",
+      "title": "What causes inflation",
+      "prompt": "Explain what inflation is and two different causes of it. Explain how a central bank typically responds.",
+      "categoryId": "general-knowledge",
+      "subcategoryId": "economics",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "economics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "General rise in prices / falling purchasing power",
+          "criterion": "accuracy",
+          "keywords": [
+            "prices rise",
+            "purchasing power",
+            "general increase",
+            "cost of living"
+          ]
+        },
+        {
+          "id": "demand",
+          "label": "Demand-pull",
+          "criterion": "accuracy",
+          "keywords": [
+            "demand",
+            "too much money",
+            "spending"
+          ]
+        },
+        {
+          "id": "cost",
+          "label": "Cost-push (supply shocks)",
+          "criterion": "accuracy",
+          "keywords": [
+            "cost push",
+            "supply",
+            "oil",
+            "input costs"
+          ]
+        },
+        {
+          "id": "rates",
+          "label": "Central bank raises interest rates",
+          "criterion": "accuracy",
+          "keywords": [
+            "interest rate",
+            "central bank",
+            "repo rate",
+            "tighten"
+          ]
+        }
+      ],
+      "modelAnswer": "Inflation is a sustained rise in the general price level, so money buys less. Demand-pull inflation happens when spending grows faster than the economy can produce; cost-push inflation comes from rising input costs such as oil or supply disruptions. Central banks (like the RBI) usually raise policy interest rates to cool borrowing and spending, aiming to bring inflation back to target."
+    }
+  ]
+}

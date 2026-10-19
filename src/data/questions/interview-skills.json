@@ -1,0 +1,649 @@
+{
+  "categoryId": "interview-skills",
+  "questions": [
+    {
+      "id": "is-tell-me-about-yourself",
+      "title": "Tell me about yourself",
+      "prompt": "Answer 'Tell me about yourself' for a software engineering interview. Aim for a structure of present, past and future, connect your experience to the role, and finish within the time limit.",
+      "categoryId": "interview-skills",
+      "subcategoryId": "personal-introduction",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "introduction",
+        "pitch"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Present: 'I'm a backend engineer with two years of experience building C++ and Go systems.' Past: one or two highlights with impact \u2014 a project, a measurable result, a skill it demonstrates. Future: why this role and company are the logical next step. Keep it to about 60\u201390 seconds, avoid reciting your CV line by line, and end with a hook the interviewer can ask about."
+    },
+    {
+      "id": "is-project-deep-dive",
+      "title": "Project deep dive",
+      "prompt": "Pick one project you built and explain it as you would to an interviewer: the problem, your role, the architecture, one hard technical decision, and what you would improve.",
+      "categoryId": "interview-skills",
+      "subcategoryId": "project-deep-dives",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 180,
+      "tags": [
+        "projects",
+        "storytelling"
+      ],
+      "rubricId": "behavioral",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "context",
+          "label": "Problem and why it mattered",
+          "criterion": "context",
+          "keywords": [
+            "problem",
+            "the goal",
+            "users",
+            "needed"
+          ]
+        },
+        {
+          "id": "responsibility",
+          "label": "Your specific role",
+          "criterion": "responsibility",
+          "keywords": [
+            "my role",
+            "i was responsible",
+            "i owned",
+            "i built",
+            "i designed"
+          ]
+        },
+        {
+          "id": "actions",
+          "label": "Architecture and a hard decision",
+          "criterion": "actions",
+          "keywords": [
+            "architecture",
+            "decided",
+            "trade off",
+            "chose",
+            "because"
+          ]
+        },
+        {
+          "id": "results",
+          "label": "Measurable outcome",
+          "criterion": "results",
+          "keywords": [
+            "result",
+            "reduced",
+            "improved",
+            "latency",
+            "throughput",
+            "percent"
+          ]
+        },
+        {
+          "id": "reflection",
+          "label": "What you would improve",
+          "criterion": "reflection",
+          "keywords": [
+            "improve",
+            "differently",
+            "next time",
+            "learned"
+          ]
+        }
+      ],
+      "modelAnswer": "Problem: what it solved and for whom (one or two sentences). Role: what you personally owned. Architecture: the main components and data flow at a whiteboard level. Hard decision: the options you considered, the trade-off, and why you chose one. Result: numbers if you have them (latency, throughput, users, time saved). Reflection: what you would change now. Be ready to go two levels deeper on any component you mention."
+    },
+    {
+      "id": "is-conflict-teammate",
+      "title": "Disagreement with a teammate",
+      "prompt": "Tell me about a time you disagreed with a teammate or senior engineer about a technical decision. What happened and how did you resolve it?",
+      "categoryId": "interview-skills",
+      "subcategoryId": "behavioral-questions",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "star",
+        "conflict"
+      ],
+      "rubricId": "behavioral",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "context",
+          "label": "Situation / context",
+          "criterion": "context",
+          "keywords": [
+            "situation",
+            "at my previous",
+            "when i was",
+            "context",
+            "project",
+            "team was"
+          ]
+        },
+        {
+          "id": "responsibility",
+          "label": "Your role and task",
+          "criterion": "responsibility",
+          "keywords": [
+            "my role",
+            "i was responsible",
+            "my task",
+            "i owned",
+            "i was asked"
+          ]
+        },
+        {
+          "id": "actions",
+          "label": "Specific actions you took",
+          "criterion": "actions",
+          "keywords": [
+            "i decided",
+            "i implemented",
+            "i proposed",
+            "i built",
+            "i talked",
+            "i wrote",
+            "i started"
+          ]
+        },
+        {
+          "id": "results",
+          "label": "Outcome, ideally measured",
+          "criterion": "results",
+          "keywords": [
+            "result",
+            "as a result",
+            "reduced",
+            "improved",
+            "percent",
+            "outcome",
+            "delivered"
+          ]
+        },
+        {
+          "id": "reflection",
+          "label": "What you learned",
+          "criterion": "reflection",
+          "keywords": [
+            "learned",
+            "learnt",
+            "next time",
+            "differently",
+            "lesson",
+            "takeaway"
+          ]
+        }
+      ],
+      "modelAnswer": "Situation: a specific technical disagreement (e.g. adding a cache vs fixing a query). Task: why it was your concern. Actions: you gathered data, proposed a small experiment or wrote a short comparison, listened to their constraints, and agreed on criteria. Result: the decision taken and its measurable effect \u2014 and the relationship stayed good. Reflection: e.g. 'I now bring data before opinions.' Avoid blaming the other person."
+    },
+    {
+      "id": "is-failure",
+      "title": "A time you failed",
+      "prompt": "Describe a time something you built failed or caused a problem in production. What did you do, and what did you change afterwards?",
+      "categoryId": "interview-skills",
+      "subcategoryId": "behavioral-questions",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "star",
+        "ownership"
+      ],
+      "rubricId": "behavioral",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "context",
+          "label": "Situation / context",
+          "criterion": "context",
+          "keywords": [
+            "situation",
+            "at my previous",
+            "when i was",
+            "context",
+            "project",
+            "team was"
+          ]
+        },
+        {
+          "id": "responsibility",
+          "label": "Your role and task",
+          "criterion": "responsibility",
+          "keywords": [
+            "my role",
+            "i was responsible",
+            "my task",
+            "i owned",
+            "i was asked"
+          ]
+        },
+        {
+          "id": "actions",
+          "label": "Specific actions you took",
+          "criterion": "actions",
+          "keywords": [
+            "i decided",
+            "i implemented",
+            "i proposed",
+            "i built",
+            "i talked",
+            "i wrote",
+            "i started"
+          ]
+        },
+        {
+          "id": "results",
+          "label": "Outcome, ideally measured",
+          "criterion": "results",
+          "keywords": [
+            "result",
+            "as a result",
+            "reduced",
+            "improved",
+            "percent",
+            "outcome",
+            "delivered"
+          ]
+        },
+        {
+          "id": "reflection",
+          "label": "What you learned",
+          "criterion": "reflection",
+          "keywords": [
+            "learned",
+            "learnt",
+            "next time",
+            "differently",
+            "lesson",
+            "takeaway"
+          ]
+        }
+      ],
+      "modelAnswer": "Choose a real but recoverable failure. Situation and impact in one or two sentences. Own your part clearly ('I shipped a change without a load test'). Actions: how you mitigated quickly (rollback, hotfix, communication). Result: impact contained, root cause fixed. Reflection: the durable change you made \u2014 a test, an alert, a checklist \u2014 showing you learn systematically."
+    },
+    {
+      "id": "is-tight-deadline",
+      "title": "Delivering under a tight deadline",
+      "prompt": "Tell me about a time you had to deliver something under a tight deadline. How did you prioritise, and what trade-offs did you make?",
+      "categoryId": "interview-skills",
+      "subcategoryId": "behavioral-questions",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "star",
+        "prioritisation"
+      ],
+      "rubricId": "behavioral",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "context",
+          "label": "Situation / context",
+          "criterion": "context",
+          "keywords": [
+            "situation",
+            "at my previous",
+            "when i was",
+            "context",
+            "project",
+            "team was"
+          ]
+        },
+        {
+          "id": "responsibility",
+          "label": "Your role and task",
+          "criterion": "responsibility",
+          "keywords": [
+            "my role",
+            "i was responsible",
+            "my task",
+            "i owned",
+            "i was asked"
+          ]
+        },
+        {
+          "id": "actions",
+          "label": "Specific actions you took",
+          "criterion": "actions",
+          "keywords": [
+            "i decided",
+            "i implemented",
+            "i proposed",
+            "i built",
+            "i talked",
+            "i wrote",
+            "i started"
+          ]
+        },
+        {
+          "id": "results",
+          "label": "Outcome, ideally measured",
+          "criterion": "results",
+          "keywords": [
+            "result",
+            "as a result",
+            "reduced",
+            "improved",
+            "percent",
+            "outcome",
+            "delivered"
+          ]
+        },
+        {
+          "id": "reflection",
+          "label": "What you learned",
+          "criterion": "reflection",
+          "keywords": [
+            "learned",
+            "learnt",
+            "next time",
+            "differently",
+            "lesson",
+            "takeaway"
+          ]
+        }
+      ],
+      "modelAnswer": "Situation: deadline and why it was tight. Task: what you were accountable for. Actions: clarified the must-haves, cut or deferred scope explicitly with stakeholders, de-risked the hardest part first, and communicated progress early. Result: what shipped and when. Reflection: the trade-off you'd make again or avoid."
+    },
+    {
+      "id": "is-explain-to-non-technical",
+      "title": "Explaining a technical topic to a non-technical person",
+      "prompt": "Explain what an API is to a non-technical manager in under one minute, using an analogy and avoiding jargon.",
+      "categoryId": "interview-skills",
+      "subcategoryId": "technical-communication",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "analogy",
+        "clarity"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Lead with the purpose: 'An API is the way two pieces of software ask each other for things.' Analogy: a restaurant menu and waiter \u2014 you order from the menu without entering the kitchen. Tie it to their world: 'When our app shows delivery status, it's asking the courier's system through their API.' Close with why it matters: speed, reuse, and depending on another company's system."
+    },
+    {
+      "id": "is-think-aloud-two-sum",
+      "title": "Think aloud: solving Two Sum",
+      "prompt": "Solve the Two Sum problem out loud as you would in a coding interview: clarify the problem, state a brute-force approach, improve it, give the complexity and mention edge cases.",
+      "categoryId": "interview-skills",
+      "subcategoryId": "problem-solving-explanations",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "think-aloud",
+        "hashing"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "clarify",
+          "label": "Clarify input/output and constraints",
+          "criterion": "edge-cases",
+          "keywords": [
+            "clarify",
+            "assume",
+            "constraint",
+            "can i assume"
+          ]
+        },
+        {
+          "id": "brute",
+          "label": "Brute force O(n^2)",
+          "criterion": "alternatives",
+          "keywords": [
+            "brute force",
+            "n squared",
+            "nested loop",
+            "every pair"
+          ]
+        },
+        {
+          "id": "hash",
+          "label": "Hash map of value \u2192 index",
+          "criterion": "correctness",
+          "keywords": [
+            "hash map",
+            "complement",
+            "target minus",
+            "dictionary"
+          ]
+        },
+        {
+          "id": "time",
+          "label": "O(n) time",
+          "criterion": "time-complexity",
+          "keywords": [
+            "linear",
+            "o of n",
+            "one pass"
+          ]
+        },
+        {
+          "id": "space",
+          "label": "O(n) extra space",
+          "criterion": "space-complexity",
+          "keywords": [
+            "o of n space",
+            "extra space",
+            "memory"
+          ]
+        },
+        {
+          "id": "edge",
+          "label": "Duplicates, no solution, same element twice",
+          "criterion": "edge-cases",
+          "keywords": [
+            "duplicate",
+            "no solution",
+            "same element",
+            "negative"
+          ]
+        }
+      ],
+      "modelAnswer": "Clarify: return indices, exactly one solution? Can the same element be used twice? Brute force: check every pair, O(n\u00b2) time, O(1) space. Improve: one pass with a hash map from value to index; for each x check whether target \u2212 x is already in the map, otherwise insert x. O(n) time, O(n) space. Edge cases: duplicates like [3,3] (check before inserting), negative numbers, no valid pair. Then test with a small example aloud."
+    },
+    {
+      "id": "is-leadership-mentoring",
+      "title": "Helping a teammate grow",
+      "prompt": "Describe a time you helped a teammate become more effective \u2014 through mentoring, documentation or code review. What did you do and what changed?",
+      "categoryId": "interview-skills",
+      "subcategoryId": "leadership-and-teamwork",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "star",
+        "mentoring"
+      ],
+      "rubricId": "behavioral",
+      "modes": [
+        "interview",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "context",
+          "label": "Situation / context",
+          "criterion": "context",
+          "keywords": [
+            "situation",
+            "at my previous",
+            "when i was",
+            "context",
+            "project",
+            "team was"
+          ]
+        },
+        {
+          "id": "responsibility",
+          "label": "Your role and task",
+          "criterion": "responsibility",
+          "keywords": [
+            "my role",
+            "i was responsible",
+            "my task",
+            "i owned",
+            "i was asked"
+          ]
+        },
+        {
+          "id": "actions",
+          "label": "Specific actions you took",
+          "criterion": "actions",
+          "keywords": [
+            "i decided",
+            "i implemented",
+            "i proposed",
+            "i built",
+            "i talked",
+            "i wrote",
+            "i started"
+          ]
+        },
+        {
+          "id": "results",
+          "label": "Outcome, ideally measured",
+          "criterion": "results",
+          "keywords": [
+            "result",
+            "as a result",
+            "reduced",
+            "improved",
+            "percent",
+            "outcome",
+            "delivered"
+          ]
+        },
+        {
+          "id": "reflection",
+          "label": "What you learned",
+          "criterion": "reflection",
+          "keywords": [
+            "learned",
+            "learnt",
+            "next time",
+            "differently",
+            "lesson",
+            "takeaway"
+          ]
+        }
+      ],
+      "modelAnswer": "Situation: who needed help and why. Task: your role (not formally a mentor is fine). Actions: specific things \u2014 pairing sessions, a written guide, structured review feedback. Result: what they could do independently afterwards, time saved, fewer review cycles. Reflection: what you learned about teaching."
+    },
+    {
+      "id": "is-tradeoff-decision",
+      "title": "A technical trade-off you made",
+      "prompt": "Describe a technical trade-off you made: the options, the criteria you used to decide, what you gave up, and whether you would make the same choice today.",
+      "categoryId": "interview-skills",
+      "subcategoryId": "trade-offs-and-decision-making",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 150,
+      "tags": [
+        "trade-offs",
+        "decisions"
+      ],
+      "rubricId": "behavioral",
+      "modes": [
+        "interview",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "context",
+          "label": "Context and constraint",
+          "criterion": "context",
+          "keywords": [
+            "context",
+            "constraint",
+            "deadline",
+            "requirement"
+          ]
+        },
+        {
+          "id": "responsibility",
+          "label": "Your decision authority",
+          "criterion": "responsibility",
+          "keywords": [
+            "i decided",
+            "my decision",
+            "i proposed",
+            "i owned"
+          ]
+        },
+        {
+          "id": "actions",
+          "label": "Options and criteria",
+          "criterion": "actions",
+          "keywords": [
+            "option",
+            "criteria",
+            "compared",
+            "alternatives",
+            "trade off"
+          ]
+        },
+        {
+          "id": "results",
+          "label": "What you gave up and the outcome",
+          "criterion": "results",
+          "keywords": [
+            "gave up",
+            "cost",
+            "result",
+            "outcome"
+          ]
+        },
+        {
+          "id": "reflection",
+          "label": "Would you choose the same today",
+          "criterion": "reflection",
+          "keywords": [
+            "today",
+            "same choice",
+            "differently",
+            "learned"
+          ]
+        }
+      ],
+      "modelAnswer": "Context: the constraint forcing a choice. Options: two or three realistic ones. Criteria: e.g. latency, delivery time, operational cost, team familiarity \u2014 say which mattered most. Decision and what you consciously gave up. Outcome with evidence. Reflection: with today's knowledge, same or different, and why."
+    }
+  ]
+}

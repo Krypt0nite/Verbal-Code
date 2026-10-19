@@ -1,0 +1,113 @@
+{
+  "categoryId": "business",
+  "questions": [
+    {
+      "id": "biz-product-market-fit",
+      "title": "Product-market fit",
+      "prompt": "Explain what product-market fit means for a startup, how a founder can tell whether they have it, and why scaling before reaching it is risky.",
+      "categoryId": "business",
+      "subcategoryId": "startups",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "startups"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "def",
+          "label": "Product satisfies a strong market demand",
+          "criterion": "accuracy",
+          "keywords": [
+            "demand",
+            "solves",
+            "market",
+            "need"
+          ]
+        },
+        {
+          "id": "signals",
+          "label": "Retention, organic growth, users upset if it vanished",
+          "criterion": "accuracy",
+          "keywords": [
+            "retention",
+            "word of mouth",
+            "organic",
+            "disappointed"
+          ]
+        },
+        {
+          "id": "premature",
+          "label": "Scaling too early burns money",
+          "criterion": "accuracy",
+          "keywords": [
+            "scale",
+            "burn",
+            "premature",
+            "too early"
+          ]
+        }
+      ],
+      "modelAnswer": "Product-market fit means a product satisfies a real, strong demand in a good market. Signals: users keep coming back (flat retention curves), growth through word of mouth, and many users saying they would be very disappointed if it disappeared. Scaling sales and hiring before that point burns cash amplifying a product people don't truly need."
+    },
+    {
+      "id": "biz-prioritisation",
+      "title": "Prioritising a product roadmap",
+      "prompt": "As a product manager, how would you prioritise ten feature requests with limited engineering capacity? Describe a framework and its limitations.",
+      "categoryId": "business",
+      "subcategoryId": "product-management",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "product",
+        "prioritisation"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "goal",
+          "label": "Tie to a goal/metric",
+          "criterion": "accuracy",
+          "keywords": [
+            "goal",
+            "metric",
+            "objective",
+            "outcome"
+          ]
+        },
+        {
+          "id": "framework",
+          "label": "RICE / impact vs effort",
+          "criterion": "accuracy",
+          "keywords": [
+            "rice",
+            "impact",
+            "effort",
+            "reach",
+            "confidence"
+          ]
+        },
+        {
+          "id": "limits",
+          "label": "Limitations: estimates are guesses, strategic bets",
+          "criterion": "accuracy",
+          "keywords": [
+            "limitation",
+            "guess",
+            "strategic",
+            "bias"
+          ]
+        }
+      ],
+      "modelAnswer": "Start from the goal for the quarter (e.g. activation). Score each request with a framework such as RICE (reach \u00d7 impact \u00d7 confidence \u00f7 effort) or a simple impact-vs-effort grid, validate the top items with user evidence, and sequence by dependencies. Limitations: scores rest on uncertain estimates, can undervalue strategic bets or tech debt, and need judgement and stakeholder alignment on top."
+    }
+  ]
+}

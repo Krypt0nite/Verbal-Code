@@ -1,0 +1,148 @@
+{
+  "categoryId": "communication-english",
+  "questions": [
+    {
+      "id": "ce-impromptu-remote-work",
+      "title": "Remote work: better or worse?",
+      "prompt": "Give a structured one-minute opinion: is remote work better for software engineers than office work? State your position, give two reasons with examples, and conclude.",
+      "categoryId": "communication-english",
+      "subcategoryId": "impromptu-speaking",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "opinion",
+        "structure"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Position in the first sentence. Reason 1 with a concrete example (deep focus time without interruptions). Reason 2 with an example (wider hiring, no commute). Acknowledge the counterpoint (mentoring juniors is harder) and conclude with a nuanced recommendation (hybrid with deliberate in-person time). Use signposts: 'firstly', 'secondly', 'on the other hand', 'overall'."
+    },
+    {
+      "id": "ce-explain-recursion-child",
+      "title": "Explain recursion to a ten-year-old",
+      "prompt": "Explain recursion to a ten-year-old using an everyday analogy. Avoid jargon and make sure to explain why it stops.",
+      "categoryId": "communication-english",
+      "subcategoryId": "explaining-complex-ideas",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "analogy",
+        "simplicity"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "self",
+          "label": "Solving a problem using a smaller version of itself",
+          "criterion": "accuracy",
+          "keywords": [
+            "smaller version",
+            "itself",
+            "same problem",
+            "smaller"
+          ]
+        },
+        {
+          "id": "base",
+          "label": "Stopping point / base case",
+          "criterion": "accuracy",
+          "keywords": [
+            "stop",
+            "base case",
+            "smallest",
+            "simplest"
+          ]
+        }
+      ],
+      "modelAnswer": "Recursion is solving a big problem by solving a smaller version of the same problem. Analogy: to find out which row you are sitting in at a cinema, you ask the person in front; they ask the person in front of them, and so on, until the person in the first row says 'row 1'. Then each person adds one and passes the answer back. It stops because someone reaches the front \u2014 that's the base case."
+    },
+    {
+      "id": "ce-concise-status-update",
+      "title": "A concise status update",
+      "prompt": "Give a 45-second standup-style update on a project that is behind schedule: what is done, what is blocked, what you need, and the new estimate. Be direct and concise.",
+      "categoryId": "communication-english",
+      "subcategoryId": "conciseness",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "standup",
+        "brevity"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "'Status: the payment integration is two days behind. Done: refund flow and tests. Blocked: the provider's sandbox is rejecting webhooks \u2014 I've raised a ticket. Need: someone with provider-account access to check our webhook settings today. New estimate: Thursday, if the block is cleared by tomorrow.' Lead with the headline, use short sentences, avoid hedging."
+    },
+    {
+      "id": "ce-professional-pushback",
+      "title": "Politely pushing back on scope",
+      "prompt": "Your manager asks you to add a large feature one day before a release. Respond professionally: acknowledge the request, explain the risk, and offer two alternatives.",
+      "categoryId": "communication-english",
+      "subcategoryId": "professional-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "negotiation",
+        "tone"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Acknowledge: 'I understand why this matters for the customer demo.' Risk: 'Adding it now means untested code in tomorrow's release, which risks the payments flow.' Alternatives: 'We could ship a feature-flagged version off by default, or release it in a patch on Monday after testing.' Ask for a decision: 'Which works better for you?' Calm, specific, solution-oriented."
+    },
+    {
+      "id": "ce-vocabulary-precise-words",
+      "title": "Precise vocabulary: describe a bug",
+      "prompt": "Describe a difficult bug you have fixed, focusing on precise vocabulary. Avoid vague words such as 'thing', 'stuff' and 'very'; use specific verbs and technical terms.",
+      "categoryId": "communication-english",
+      "subcategoryId": "vocabulary",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "vocabulary",
+        "precision"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Use precise verbs and nouns: 'The service intermittently returned stale balances. I reproduced it under concurrent load, traced it to a race between the cache invalidation and the database commit, and resolved it by invalidating after commit.' Replace 'very slow' with numbers ('p99 rose from 80 ms to 900 ms') and 'thing' with the actual component."
+    },
+    {
+      "id": "ce-grammar-past-tense",
+      "title": "Grammar: narrating past work",
+      "prompt": "Narrate what you did last week at work or in your studies, paying attention to consistent past tense, articles (a, an, the) and subject\u2013verb agreement.",
+      "categoryId": "communication-english",
+      "subcategoryId": "grammar",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "grammar",
+        "tenses"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "'Last week I finished the authentication module. I wrote unit tests for the token service and fixed a bug that caused an error when a user logged in twice. On Thursday, the team reviewed my pull request, and I addressed their comments the same day.' Keep verbs in the past tense, use 'a' for first mention and 'the' for known things, and match verbs to subjects ('the team reviews', 'the tests pass')."
+    }
+  ]
+}

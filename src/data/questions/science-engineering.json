@@ -1,0 +1,166 @@
+{
+  "categoryId": "science-engineering",
+  "questions": [
+    {
+      "id": "sci-semiconductor-doping",
+      "title": "How doping makes semiconductors useful",
+      "prompt": "Explain what a semiconductor is, how doping creates n-type and p-type material, and why a p-n junction lets current flow mainly in one direction.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "semiconductor-technology",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "semiconductors",
+        "electronics"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "bandgap",
+          "label": "Band gap between insulator and conductor",
+          "criterion": "accuracy",
+          "keywords": [
+            "band gap",
+            "bandgap",
+            "between a conductor",
+            "silicon"
+          ]
+        },
+        {
+          "id": "doping",
+          "label": "Doping adds electrons (n) or holes (p)",
+          "criterion": "accuracy",
+          "keywords": [
+            "doping",
+            "electrons",
+            "holes",
+            "phosphorus",
+            "boron"
+          ]
+        },
+        {
+          "id": "junction",
+          "label": "Depletion region and forward/reverse bias",
+          "criterion": "accuracy",
+          "keywords": [
+            "depletion",
+            "forward bias",
+            "reverse bias",
+            "diode"
+          ]
+        }
+      ],
+      "modelAnswer": "A semiconductor such as silicon has a small band gap, so its conductivity sits between metals and insulators and can be controlled. Doping with phosphorus adds free electrons (n-type); with boron it creates holes (p-type). Where they meet, carriers diffuse and recombine, leaving a depletion region with a built-in field. Forward bias shrinks that region and current flows; reverse bias widens it and blocks current \u2014 the diode, the basis of transistors."
+    },
+    {
+      "id": "sci-quantum-superposition",
+      "title": "Superposition without the hype",
+      "prompt": "Explain quantum superposition accurately for a general audience, including what measurement does, and correct one common misconception.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "quantum-mechanics",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 120,
+      "tags": [
+        "quantum"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "state",
+          "label": "State is a combination of basis states with amplitudes",
+          "criterion": "accuracy",
+          "keywords": [
+            "amplitude",
+            "combination",
+            "both states",
+            "linear combination"
+          ]
+        },
+        {
+          "id": "measure",
+          "label": "Measurement gives one outcome with Born-rule probabilities",
+          "criterion": "accuracy",
+          "keywords": [
+            "measurement",
+            "probability",
+            "collapse",
+            "born rule"
+          ]
+        },
+        {
+          "id": "misconception",
+          "label": "Not 'secretly in one state' / not 'trying all answers'",
+          "criterion": "accuracy",
+          "keywords": [
+            "misconception",
+            "not simply",
+            "all answers",
+            "parallel"
+          ]
+        }
+      ],
+      "modelAnswer": "A quantum system's state can be a combination of basis states, each with a complex amplitude. Measurement yields one definite outcome, with probabilities given by the squared magnitudes of the amplitudes (Born rule), and the state afterwards is consistent with that outcome. Amplitudes can interfere, which is what makes quantum algorithms work. Misconception: a quantum computer does not simply 'try all answers at once' and read off the right one \u2014 useful algorithms must arrange interference so wrong answers cancel."
+    },
+    {
+      "id": "sci-materials-stress-strain",
+      "title": "Stress-strain curves",
+      "prompt": "Explain what a stress\u2013strain curve tells an engineer about a material. Cover elastic region, yield strength, ultimate tensile strength and ductility.",
+      "categoryId": "science-engineering",
+      "subcategoryId": "materials-science",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 90,
+      "tags": [
+        "materials"
+      ],
+      "rubricId": "general-explanation",
+      "modes": [
+        "off-the-cuff",
+        "deep-research"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "elastic",
+          "label": "Elastic region and Young's modulus",
+          "criterion": "accuracy",
+          "keywords": [
+            "elastic",
+            "young",
+            "modulus",
+            "linear",
+            "returns"
+          ]
+        },
+        {
+          "id": "yield",
+          "label": "Yield strength = onset of permanent deformation",
+          "criterion": "accuracy",
+          "keywords": [
+            "yield",
+            "permanent",
+            "plastic"
+          ]
+        },
+        {
+          "id": "uts",
+          "label": "Ultimate tensile strength, necking, fracture",
+          "criterion": "accuracy",
+          "keywords": [
+            "ultimate",
+            "necking",
+            "fracture",
+            "maximum stress"
+          ]
+        }
+      ],
+      "modelAnswer": "In a tensile test, stress (force per area) is plotted against strain (relative elongation). In the elastic region the curve is linear \u2014 its slope is Young's modulus \u2014 and the material returns to shape when unloaded. At the yield strength permanent plastic deformation begins. Stress rises with work hardening to the ultimate tensile strength, then necking localises deformation until fracture. Ductility is how much plastic strain occurs before fracture: steel stretches, glass doesn't."
+    }
+  ]
+}
