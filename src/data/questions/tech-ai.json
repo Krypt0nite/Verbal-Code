@@ -44005,6 +44005,3308 @@
         }
       ],
       "modelAnswer": "Synthetic monitoring runs scripted checks on a schedule from chosen locations: pinging an endpoint, or a headless browser that logs in and completes checkout every five minutes. Because conditions are controlled, results are consistent, regressions are easy to spot, and you detect outages even at night when there is no real traffic or before launch. But it only covers paths you scripted from a few locations. Real-user monitoring collects measurements, such as page loads, Core Web Vitals and errors, from actual users' browsers and apps, revealing the true experience across devices, networks and countries, but it is noisier and depends on traffic. Use both together."
+    },
+    {
+      "id": "net-reverse-proxy-load-balancer-api-gateway",
+      "title": "Reverse proxy versus load balancer versus API gateway",
+      "prompt": "How do a reverse proxy, a load balancer and an API gateway differ, and why can one product such as Nginx or Envoy play all three roles?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "networking",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "networking",
+        "one-minute",
+        "proxies"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Reverse proxy fronts servers; a load balancer spreads traffic across replicas",
+          "criterion": "correctness",
+          "keywords": [
+            "in front of",
+            "spreads traffic",
+            "replicas",
+            "hides the backend",
+            "tls termination"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Gateway adds API concerns: auth, rate limits, path routing",
+          "criterion": "mechanism",
+          "keywords": [
+            "authentication",
+            "rate limit",
+            "path based",
+            "request transformation",
+            "api keys"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Roles overlap; each layer adds a hop and a failure point",
+          "criterion": "trade-offs",
+          "keywords": [
+            "overlap",
+            "extra hop",
+            "single point of failure",
+            "bottleneck",
+            "redundant"
+          ]
+        }
+      ],
+      "modelAnswer": "A reverse proxy sits in front of one or more servers and handles requests on their behalf: it terminates TLS, caches, compresses and hides the backend topology from clients. A load balancer is a reverse proxy whose main job is spreading traffic across replicas, using algorithms such as round robin or least connections plus health checks, so failed instances get no traffic; it can work at layer 4 on connections or at layer 7 on HTTP requests. An API gateway is a layer 7 proxy with API-specific concerns: authentication, API keys, rate limits and quotas, routing by path or version to different services, and request transformation. The roles overlap, so Nginx or Envoy can do all three depending on configuration. The trade-off is that every layer adds a network hop, some latency and a component that must itself be redundant, so you add only the layers you need."
+    },
+    {
+      "id": "ds-service-discovery",
+      "title": "Service discovery",
+      "prompt": "How do services find healthy instances of each other when instances scale up and down? Compare client-side and server-side discovery, and explain the role of the registry and health checks.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "distributed-systems",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "distributed-systems",
+        "one-minute",
+        "service-discovery"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A registry maps service names to live instance addresses",
+          "criterion": "correctness",
+          "keywords": [
+            "registry",
+            "consul",
+            "etcd",
+            "register",
+            "dns"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Client-side lookup versus server-side via a load balancer or DNS",
+          "criterion": "mechanism",
+          "keywords": [
+            "client side",
+            "server side",
+            "load balancer",
+            "kubernetes service",
+            "sidecar"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Health checks, stale entries and a highly available registry",
+          "criterion": "trade-offs",
+          "keywords": [
+            "health check",
+            "heartbeat",
+            "stale",
+            "ttl",
+            "highly available"
+          ]
+        }
+      ],
+      "modelAnswer": "In a dynamic environment instance addresses change constantly, so services look each other up by name in a service registry such as Consul, etcd, ZooKeeper or the Kubernetes API. Instances register themselves or are registered by the platform, and health checks or heartbeats remove ones that stop responding. With client-side discovery the caller queries the registry, caches the list and picks an instance itself, which saves a hop and allows smarter balancing but puts discovery logic in every client library. With server-side discovery the caller sends to a stable address, such as a load balancer, a Kubernetes Service, a DNS name or a sidecar proxy, and that layer picks the instance. Trade-offs: DNS-based discovery suffers from caching and TTLs, so clients may keep hitting dead instances; any cached list can be stale, so callers still need timeouts and retries; and the registry becomes critical infrastructure that must be replicated and highly available."
+    },
+    {
+      "id": "ds-conflict-resolution-strategies",
+      "title": "Resolving conflicts under eventual consistency",
+      "prompt": "Two replicas accept concurrent writes to the same record. Compare ways to resolve the conflict: last-write-wins, keeping siblings with version vectors, application-level merges and CRDTs. What does each risk losing?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "distributed-systems",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "distributed-systems",
+        "one-minute",
+        "eventual-consistency"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Concurrent writes on different replicas must converge to one value",
+          "criterion": "correctness",
+          "keywords": [
+            "concurrent writes",
+            "converge",
+            "diverge",
+            "replicas agree"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "LWW keeps the latest timestamp; version vectors detect concurrency",
+          "criterion": "mechanism",
+          "keywords": [
+            "last write wins",
+            "timestamp",
+            "version vector",
+            "vector clock",
+            "siblings"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "LWW silently drops writes; merges need domain logic",
+          "criterion": "trade-offs",
+          "keywords": [
+            "silently",
+            "lost update",
+            "clock skew",
+            "merge function",
+            "crdt"
+          ]
+        }
+      ],
+      "modelAnswer": "Under eventual consistency, replicas accept writes independently, so two replicas can hold different values for the same key and must eventually converge. Last-write-wins attaches a timestamp and keeps the latest; it is simple and always converges, but it silently discards the other concurrent write, and clock skew can even make the older write win. Version vectors, as in Dynamo-style stores, track which writes each replica has seen, so the system can tell 'newer' from 'concurrent'; concurrent versions are kept as siblings and returned to the application. The application then merges them using domain rules, for example taking the union of two shopping carts, which preserves intent but needs custom code and can bring back deleted items. CRDTs build the merge into the data type, so counters, sets and registers converge automatically, but only for operations that fit those types. The choice depends on whether losing a write is acceptable for that data."
+    },
+    {
+      "id": "ds-message-delivery-semantics",
+      "title": "At-most-once, at-least-once and exactly-once delivery",
+      "prompt": "Explain at-most-once, at-least-once and exactly-once message delivery. How does the moment a consumer acknowledges or commits its offset decide which one you get?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "distributed-systems",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "distributed-systems",
+        "one-minute",
+        "messaging"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "At-most-once may lose messages; at-least-once may duplicate them",
+          "criterion": "correctness",
+          "keywords": [
+            "at most once",
+            "at least once",
+            "lose messages",
+            "duplicates",
+            "redeliver"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Ack before processing loses on a crash; ack after processing duplicates",
+          "criterion": "mechanism",
+          "keywords": [
+            "acknowledge",
+            "commit the offset",
+            "before processing",
+            "after processing",
+            "crash"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Exactly-once is at-least-once plus idempotence or atomic commits",
+          "criterion": "trade-offs",
+          "keywords": [
+            "idempotent",
+            "deduplication",
+            "effectively once",
+            "transaction",
+            "atomic"
+          ]
+        }
+      ],
+      "modelAnswer": "At-most-once means a message is delivered zero or one times: it may be lost but is never duplicated. At-least-once means it is delivered one or more times: nothing is lost, but duplicates happen. The difference usually comes from when the consumer acknowledges. If it commits its offset or acks before processing and then crashes, the message is gone: at-most-once. If it processes first and acks afterwards, a crash between the two makes the broker redeliver it: at-least-once. True exactly-once delivery over an unreliable network is not possible, so systems offer exactly-once processing, or effectively once: at-least-once delivery combined with idempotent handling or deduplication by message ID, or an atomic transaction that commits the output and the offset together, as Kafka transactions do. Most systems choose at-least-once with idempotent consumers, because losing data is usually worse than handling a duplicate."
+    },
+    {
+      "id": "be-poison-messages-and-dead-letter-queues",
+      "title": "Poison messages and dead-letter queues",
+      "prompt": "One malformed message makes a queue consumer crash, and after every restart it receives the same message again, so the whole queue stops moving. How do you detect and handle this poison message?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "backend-engineering",
+        "one-minute",
+        "messaging"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A poison message fails every time and blocks the queue or partition",
+          "criterion": "correctness",
+          "keywords": [
+            "poison message",
+            "fails every time",
+            "redelivered",
+            "blocks",
+            "head of line"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Count attempts, then move it to a dead-letter queue and continue",
+          "criterion": "mechanism",
+          "keywords": [
+            "dead letter",
+            "retry count",
+            "delivery count",
+            "max attempts",
+            "move it aside"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Split transient from permanent errors; alert on and replay the DLQ",
+          "criterion": "trade-offs",
+          "keywords": [
+            "transient",
+            "permanent",
+            "alert",
+            "replay",
+            "ordering"
+          ]
+        }
+      ],
+      "modelAnswer": "A poison message is one that can never be processed, for example invalid JSON or a reference to a deleted record. If the consumer crashes or rejects it, the broker redelivers it, the consumer fails again, and in an ordered queue or a Kafka partition everything behind it is stuck. The fix is to bound retries: track the attempt count, using the broker's delivery count or a header, and after a few tries move the message to a dead-letter queue, record why it failed, and acknowledge it so processing continues. Distinguish transient errors, such as a timeout from a dependency, which deserve retries with backoff, from permanent ones such as a validation failure, which can go to the dead-letter queue immediately. Catch errors per message so one bad message cannot crash the consumer. A dead-letter queue is useless if nobody looks at it, so alert on its size and have a tool to fix and replay messages, remembering that moving messages aside can break ordering for that key."
+    },
+    {
+      "id": "be-idempotent-message-consumers",
+      "title": "Implementing an idempotent message consumer",
+      "prompt": "Your queue delivers messages at least once. How do you implement a consumer so that processing the same message twice has the same effect as processing it once?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "backend-engineering",
+        "one-minute",
+        "messaging"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Duplicates are normal; the second processing must be a no-op",
+          "criterion": "correctness",
+          "keywords": [
+            "no op",
+            "same effect",
+            "redelivery",
+            "second time",
+            "natural idempotence"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Record processed message IDs in the same transaction as the effect",
+          "criterion": "mechanism",
+          "keywords": [
+            "message id",
+            "processed messages",
+            "same transaction",
+            "unique constraint",
+            "upsert"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "External side effects need idempotency keys; dedup records need expiry",
+          "criterion": "trade-offs",
+          "keywords": [
+            "idempotency key",
+            "side effect",
+            "retention",
+            "expire",
+            "redelivery window"
+          ]
+        }
+      ],
+      "modelAnswer": "With at-least-once delivery duplicates are normal, so the consumer must make the second processing a no-op. The simplest case is natural idempotence: setting a status to 'shipped' or upserting a row by ID gives the same result however many times it runs, while 'add 10 to the balance' does not. For non-idempotent work, give every message a unique ID, and in the same database transaction that applies the effect, insert that ID into a processed-messages table with a unique constraint. If the insert conflicts, the message was already handled, so skip it and acknowledge. Doing both in one transaction matters: recording the ID separately leaves a window where a crash causes a lost or doubled effect. Side effects outside the database, such as charging a card or sending an email, need an idempotency key passed to that service. Finally, the deduplication table grows, so keep IDs for longer than the maximum redelivery window and then expire them."
+    },
+    {
+      "id": "db-hot-partitions",
+      "title": "Diagnosing and fixing a hot partition",
+      "prompt": "One shard of your database is at full load while the others are idle, because a celebrity account or a date-based key sends most writes to one partition. How do you confirm this and mitigate it?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "databases-and-storage",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "databases-and-storage",
+        "one-minute",
+        "partitioning"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Skewed key distribution concentrates load on one partition",
+          "criterion": "correctness",
+          "keywords": [
+            "skew",
+            "one partition",
+            "celebrity",
+            "partition key",
+            "hotspot"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Confirm with per-partition metrics; salt or split keys, cache reads",
+          "criterion": "mechanism",
+          "keywords": [
+            "per partition",
+            "salt",
+            "split",
+            "suffix",
+            "cache"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Salted keys make reads fan out; changing keys means migrating data",
+          "criterion": "trade-offs",
+          "keywords": [
+            "fan out",
+            "scatter",
+            "aggregate",
+            "rebalanc",
+            "sequential keys"
+          ]
+        }
+      ],
+      "modelAnswer": "A hot partition happens when the partition key spreads load unevenly: one celebrity user, one popular product, or a timestamp key where every new write lands in the latest range. First confirm it with per-partition metrics, such as request rate, CPU and throttling for each shard, and the top keys by traffic, because cluster-wide averages look fine. For hot writes, spread one logical key over several physical keys by adding a random or hashed suffix, for example writing likes to post123#0 through post123#9, and aggregate them when reading. Replace monotonically increasing keys with hashed keys, or prefix them with a bucket number. For hot reads, put a cache or read replicas in front so the partition sees fewer requests. Some stores split hot ranges automatically. The trade-off is that salted keys make reads fan out and aggregate across shards, and changing the partition key later means migrating data, so choose the key with the access pattern in mind."
+    },
+    {
+      "id": "be-token-bucket-versus-leaky-bucket",
+      "title": "Token bucket versus leaky bucket",
+      "prompt": "Compare the token bucket and leaky bucket rate-limiting algorithms. How does each handle a sudden burst of requests, and when would you choose one over the other?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "backend-engineering",
+        "one-minute",
+        "rate-limiting"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Token bucket: tokens refill at a fixed rate; each request spends one",
+          "criterion": "correctness",
+          "keywords": [
+            "refill",
+            "tokens",
+            "capacity",
+            "bucket size",
+            "per second"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Leaky bucket: requests queue and leave at a constant rate",
+          "criterion": "mechanism",
+          "keywords": [
+            "constant rate",
+            "queue",
+            "smooth",
+            "drain",
+            "overflow"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Token bucket allows bursts; leaky bucket smooths but adds delay",
+          "criterion": "trade-offs",
+          "keywords": [
+            "burst",
+            "delay",
+            "smooths",
+            "downstream",
+            "fragile"
+          ]
+        }
+      ],
+      "modelAnswer": "A token bucket holds up to a fixed number of tokens and refills at a steady rate, say 10 per second with a capacity of 100. Each request takes a token, and if none are left it is rejected or delayed. Because tokens accumulate while traffic is quiet, a client can send a burst of up to the capacity at once, while the long-run average stays at the refill rate. A leaky bucket instead puts requests into a queue that drains at a constant rate; when the queue is full, new requests overflow and are dropped. Its output is perfectly smooth, which protects a downstream system that cannot absorb bursts, but requests wait in the queue, which adds latency. So the token bucket suits user-facing API limits where short bursts are normal, and the leaky bucket suits shaping traffic into something fragile. A token bucket needs only a token count and a last-refill timestamp per client, which makes it easy to implement in Redis or at a gateway."
+    },
+    {
+      "id": "be-first-steps-in-a-production-incident",
+      "title": "The first steps of a production incident",
+      "prompt": "Your error-rate alert fires and checkout is failing for many users. Walk through the first thirty minutes of incident response: who does what, what you try first, and what happens after the fix.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "backend-engineering",
+        "one-minute",
+        "incident-response"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Declare the incident, set severity, assign an incident commander",
+          "criterion": "correctness",
+          "keywords": [
+            "incident commander",
+            "severity",
+            "declare",
+            "roles",
+            "war room"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Mitigate before root cause: roll back, fail over, disable the feature",
+          "criterion": "mechanism",
+          "keywords": [
+            "mitigate",
+            "roll back",
+            "rollback",
+            "feature flag",
+            "fail over"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Communicate regularly; blameless postmortem with action items",
+          "criterion": "trade-offs",
+          "keywords": [
+            "status page",
+            "communicat",
+            "postmortem",
+            "blameless",
+            "action items"
+          ]
+        }
+      ],
+      "modelAnswer": "First, acknowledge the alert and declare an incident with a severity, so the right people join. One person becomes incident commander and coordinates; others investigate, and someone owns communication so the investigators are not interrupted. Then establish the impact, which users and since when, and what changed recently, because most incidents follow a deploy, a configuration change or a dependency failure. The priority is to mitigate, not to find the root cause: roll back the last release, turn off the feature flag, fail over to a healthy region or shed load. Keep a timestamped log of actions in the incident channel, and post updates to stakeholders and the status page at a regular interval, even when nothing has changed. Once users are no longer affected, the incident is mitigated, not finished: run a blameless postmortem that explains the contributing causes and why detection took as long as it did, and track the action items until they are done."
+    },
+    {
+      "id": "arch-control-plane-versus-data-plane",
+      "title": "Control plane versus data plane",
+      "prompt": "Explain the difference between a control plane and a data plane, using a service mesh, a load balancer or Kubernetes as the example. Why is it useful to keep them separate?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "software-architecture",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "software-architecture",
+        "one-minute",
+        "architecture-patterns"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Data plane handles each request; control plane decides and configures",
+          "criterion": "correctness",
+          "keywords": [
+            "every request",
+            "request path",
+            "forwarding",
+            "packets",
+            "distributes configuration"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Example: Envoy sidecars forward traffic; Istio pushes config to them",
+          "criterion": "mechanism",
+          "keywords": [
+            "envoy",
+            "istio",
+            "sidecar",
+            "api server",
+            "pushes config"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Data plane keeps serving with its last config if control plane fails",
+          "criterion": "trade-offs",
+          "keywords": [
+            "last known",
+            "static stability",
+            "keeps working",
+            "blast radius",
+            "independently"
+          ]
+        }
+      ],
+      "modelAnswer": "The data plane is the part that handles each request or packet: in a service mesh it is the Envoy sidecars forwarding traffic, in a load balancer it is the proxies routing connections, and in Kubernetes it is the nodes running containers. The control plane decides how the data plane should behave and distributes that configuration: Istio's control plane pushes routes, certificates and policies to the sidecars, and the Kubernetes API server and controllers decide what runs where. The data plane is on the request path, so it must be fast and scale with traffic; the control plane handles far less volume but more complex logic. Keeping them separate means each can scale and be deployed independently, and above all, if the control plane goes down, the data plane keeps serving with its last known configuration, an idea AWS calls static stability. The cost is that configuration changes propagate eventually, so different proxies can briefly disagree."
+    },
+    {
+      "id": "lld-composition-versus-inheritance",
+      "title": "Composition versus inheritance",
+      "prompt": "Why do many designers prefer composition over inheritance? Give an example where inheritance causes problems, and say when inheritance is still the right tool.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "oop"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Inheritance is an is-a relationship; composition is has-a",
+          "criterion": "correctness",
+          "keywords": [
+            "is a relationship",
+            "has a relationship",
+            "subclass",
+            "delegat",
+            "wraps"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Fragile base class: parent changes break subclasses",
+          "criterion": "mechanism",
+          "keywords": [
+            "fragile base class",
+            "tightly coupled",
+            "overrid",
+            "explosion of subclasses",
+            "swap at runtime"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Inheritance fits true subtypes that honour Liskov substitution",
+          "criterion": "trade-offs",
+          "keywords": [
+            "liskov",
+            "substitut",
+            "true subtype",
+            "boilerplate",
+            "framework"
+          ]
+        }
+      ],
+      "modelAnswer": "Inheritance models an is-a relationship and reuses code by extending a base class; composition builds an object from other objects it holds and delegates to, a has-a relationship. Inheritance couples the subclass tightly to the parent's implementation. A classic problem is the fragile base class: if a subclass of a collection overrides add to count elements, and the parent's addAll internally calls add, every element is counted twice, and a later change in the parent can silently break the subclass. Hierarchies also explode when behaviours combine: FlyingSwimmingDuck, RobotDuck and so on. With composition you give the duck a FlyBehaviour object and can swap it at runtime, and each piece can be tested alone. Inheritance is still right when the child truly is a substitutable subtype, so any code using the parent works with the child, which is the Liskov substitution principle, or when a framework expects it. The cost of composition is some delegation boilerplate."
+    },
+    {
+      "id": "lld-association-aggregation-composition",
+      "title": "Association, aggregation and composition",
+      "prompt": "Explain association, aggregation and composition between classes, with an example of each. How does the choice affect object lifetime and ownership in code?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "oop"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Association: objects know about each other with no ownership",
+          "criterion": "correctness",
+          "keywords": [
+            "association",
+            "knows about",
+            "reference to",
+            "no ownership",
+            "independent"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Aggregation: a whole groups parts that can outlive it",
+          "criterion": "mechanism",
+          "keywords": [
+            "aggregation",
+            "outlive",
+            "exist on their own",
+            "shared",
+            "team"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Composition: the owner creates and destroys its parts",
+          "criterion": "trade-offs",
+          "keywords": [
+            "composition",
+            "destroyed with",
+            "unique ptr",
+            "value member",
+            "cascad"
+          ]
+        }
+      ],
+      "modelAnswer": "All three describe how classes relate. Association is the general case: one object knows about or uses another, with no ownership; a teacher and a student reference each other, and either can exist alone. Aggregation is a whole-part association where the parts can outlive the whole: a team holds players, but deleting the team does not delete the players, who can join another team. Composition is a stronger whole-part relationship where the whole owns its parts and controls their lifetime: a house's rooms or an order's line items are created with it, destroyed with it, and not shared. In code this decides who creates and frees objects. Composition is usually a value member or a unique_ptr in C++, or an object created inside the owner and never handed out for sharing. Aggregation and association hold references or non-owning pointers to objects someone else owns, so you must make sure those objects outlive their users. In a database, composition maps naturally to cascading deletes."
+    },
+    {
+      "id": "lld-encapsulation-and-class-invariants",
+      "title": "Encapsulation, invariants and preconditions",
+      "prompt": "What is a class invariant, and how does encapsulation protect it? Explain preconditions and postconditions, and why a class with public getters and setters for every field is not really encapsulated.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "oop"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Invariant: a condition that holds before and after every public method",
+          "criterion": "correctness",
+          "keywords": [
+            "invariant",
+            "always true",
+            "every public method",
+            "valid state",
+            "constructor"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Private state changes only through methods that check preconditions",
+          "criterion": "mechanism",
+          "keywords": [
+            "private",
+            "precondition",
+            "postcondition",
+            "validat",
+            "exception"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "A setter for every field lets callers break the invariant",
+          "criterion": "trade-offs",
+          "keywords": [
+            "setter",
+            "anemic",
+            "break the invariant",
+            "behaviour methods",
+            "scattered"
+          ]
+        }
+      ],
+      "modelAnswer": "A class invariant is a condition that must hold for every object whenever no method is running: a bank account's balance never goes below its overdraft limit, or a date range's start is never after its end. The constructor must establish it, and every public method must preserve it. Encapsulation makes that enforceable: the state is private, so it changes only through methods that check their preconditions, what the caller must guarantee, such as a positive withdrawal amount, and that guarantee their postconditions, what is true afterwards. A violated precondition should fail loudly, for example with an exception, rather than leave a half-updated object. A class that exposes a setter for every field is not encapsulated even though its fields are private: any caller can set the start date after the end date, so the rules end up scattered across callers. Exposing behaviour such as withdraw or reschedule keeps all the rules in one place and makes an invalid object impossible to create."
+    },
+    {
+      "id": "lld-programming-to-interfaces",
+      "title": "Programming to an interface",
+      "prompt": "What does 'program to an interface, not an implementation' mean? Relate it to the dependency inversion principle, give an example, and say when an interface is unnecessary.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "oop"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Depend on an abstract contract, not on a concrete class",
+          "criterion": "correctness",
+          "keywords": [
+            "abstraction",
+            "contract",
+            "concrete class",
+            "interface type",
+            "depends on what"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Dependency inversion: high-level code owns the interface; details implement it",
+          "criterion": "mechanism",
+          "keywords": [
+            "dependency inversion",
+            "high level",
+            "low level",
+            "implements",
+            "swap"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "With one implementation and no test seam it is just indirection",
+          "criterion": "trade-offs",
+          "keywords": [
+            "one implementation",
+            "single implementation",
+            "indirection",
+            "test double",
+            "second implementation"
+          ]
+        }
+      ],
+      "modelAnswer": "It means code depends on what an object does, a contract such as a PaymentGateway with a charge method, rather than on a concrete class such as StripeClient. Callers then work with any implementation: Stripe, another provider, or a fake in tests. The dependency inversion principle takes this further: high-level business logic should not depend on low-level details such as databases or HTTP clients; both should depend on an abstraction, and that abstraction belongs to the high-level side. So the order service defines the OrderRepository interface it needs, and a Postgres adapter implements it, which lets you change storage without touching the business rules. Combined with dependency injection, the concrete choice is made in one place at startup. It is not free: an interface with a single implementation and no need for a test double is just indirection that makes code harder to navigate. A good rule is to introduce the interface when a second implementation or a real boundary appears."
+    },
+    {
+      "id": "lld-strategy-state-command",
+      "title": "Strategy versus State versus Command",
+      "prompt": "Strategy, State and Command all wrap behaviour in an object. Explain the intent of each, give an example, and explain how to tell which one a design needs.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "design-patterns"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Strategy: interchangeable algorithms chosen by the caller",
+          "criterion": "correctness",
+          "keywords": [
+            "interchangeable",
+            "family of algorithms",
+            "chosen by the caller",
+            "pluggable",
+            "pricing"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "State: behaviour follows internal state; states trigger transitions",
+          "criterion": "mechanism",
+          "keywords": [
+            "transition",
+            "internal state",
+            "vending machine",
+            "next state",
+            "lifecycle"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Command: a request as an object that can be queued, logged or undone",
+          "criterion": "trade-offs",
+          "keywords": [
+            "undo",
+            "queued",
+            "request as an object",
+            "execute",
+            "redo"
+          ]
+        }
+      ],
+      "modelAnswer": "All three replace conditionals with objects, but the intent differs. Strategy encapsulates interchangeable algorithms behind one interface, and the caller or configuration picks one: a checkout uses a flat or a percentage discount pricing strategy, and the strategies know nothing about each other. State lets an object change its behaviour when its internal state changes: a vending machine or a TCP connection delegates to its current state object, such as Idle, HasCoin or Dispensing, and the states themselves trigger transitions to the next state, so the object appears to change class. Command turns a request into an object holding everything needed to run it later, with an execute method, so requests can be queued, logged, retried, sent to another thread, or undone, as in an editor's undo stack. To choose, ask: is the client selecting how to do something? Strategy. Does behaviour depend on a lifecycle the object moves through? State. Do you need to store, delay or reverse an action? Command."
+    },
+    {
+      "id": "lld-decorator-proxy-adapter",
+      "title": "Decorator versus Proxy versus Adapter",
+      "prompt": "Decorator, Proxy and Adapter all wrap another object. Explain the purpose of each, with an example, and how their interfaces relate to the object they wrap.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "design-patterns"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Adapter converts one interface into the one a client expects",
+          "criterion": "correctness",
+          "keywords": [
+            "converts",
+            "incompatible",
+            "translates",
+            "legacy",
+            "third party"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Decorator keeps the interface and adds behaviour; decorators stack",
+          "criterion": "mechanism",
+          "keywords": [
+            "adds behaviour",
+            "adds behavior",
+            "same interface",
+            "stacked",
+            "logging"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Proxy keeps the interface and controls access: lazy, remote, cached",
+          "criterion": "trade-offs",
+          "keywords": [
+            "controls access",
+            "lazy",
+            "remote",
+            "permission",
+            "caching proxy"
+          ]
+        }
+      ],
+      "modelAnswer": "All three are wrappers; the difference is intent and interface. An Adapter converts an interface the client cannot use into the one it expects: wrapping a third-party payment SDK so it implements your PaymentGateway interface, or making a legacy XML service look like your JSON client. A Decorator implements the same interface as the object it wraps and adds behaviour before or after delegating, and decorators can be stacked: a buffered stream around a gzip stream around a file stream, or logging, metrics and retries around a repository without changing it. A Proxy also has the same interface, but its purpose is to control access to the real object rather than add features: a virtual proxy creates an expensive object lazily, a remote proxy hides a network call, a protection proxy checks permissions, and a caching proxy returns stored results. So: a different interface means Adapter; the same interface with extra responsibilities means Decorator; the same interface with controlled access means Proxy."
+    },
+    {
+      "id": "lld-observer-versus-publish-subscribe",
+      "title": "Observer versus publish-subscribe",
+      "prompt": "Explain the observer pattern and how it differs from publish-subscribe through a message broker. Cover coupling, synchronous versus asynchronous delivery, and common pitfalls such as leaked listeners.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "design-patterns"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Observer: a subject keeps a list of observers and notifies them directly",
+          "criterion": "correctness",
+          "keywords": [
+            "subject",
+            "notifies",
+            "register",
+            "callback",
+            "listener list"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Pub-sub: a broker routes topics; publishers and subscribers are decoupled",
+          "criterion": "mechanism",
+          "keywords": [
+            "broker",
+            "topic",
+            "decoupl",
+            "asynchronous",
+            "event bus"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Pitfalls: leaked listeners, slow observers, hard-to-trace flow",
+          "criterion": "trade-offs",
+          "keywords": [
+            "unsubscribe",
+            "memory leak",
+            "weak reference",
+            "slow observer",
+            "hard to trace"
+          ]
+        }
+      ],
+      "modelAnswer": "In the observer pattern a subject keeps a list of observers that registered with it and, when its state changes, calls each one directly, usually synchronously and in the same process: a UI model notifying views, or event listeners on a button. The subject knows only the observers' interface, not their concrete classes, but it does hold references to them. In publish-subscribe, publishers send messages to a topic or channel and a broker or event bus delivers them to subscribers; neither side knows the other, delivery is often asynchronous, and it can cross processes, as with Kafka, Redis pub/sub or SNS. Pub-sub decouples more and absorbs load spikes, but it adds a broker, delivery guarantees to think about, and eventual consistency. Common pitfalls: observers that are never unsubscribed keep objects alive and leak memory, a slow or throwing observer blocks the subject in the synchronous version, and chains of events make control flow hard to trace."
+    },
+    {
+      "id": "lld-factory-method-versus-abstract-factory",
+      "title": "Factory Method versus Abstract Factory",
+      "prompt": "Explain the Abstract Factory pattern and how it differs from a Factory Method. Give an example where you need to create a family of related objects that must be used together.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "design-patterns"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Factory Method: one method, often overridden, picks the class to create",
+          "criterion": "correctness",
+          "keywords": [
+            "subclass decides",
+            "single product",
+            "overrid",
+            "which class to instantiate",
+            "creator"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Abstract Factory: one interface creates a consistent family of products",
+          "criterion": "mechanism",
+          "keywords": [
+            "family",
+            "related objects",
+            "consistent",
+            "never mix",
+            "several creation methods"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "A new product kind changes every factory; simple cases need a function",
+          "criterion": "trade-offs",
+          "keywords": [
+            "new kind of product",
+            "every implementation",
+            "rigid",
+            "plain function",
+            "dependency injection"
+          ]
+        }
+      ],
+      "modelAnswer": "Both hide which concrete class is created, so client code depends only on interfaces. A Factory Method is a single method, often overridden by subclasses, that decides which class to instantiate for one product: a dialog's createButton returns a WindowsButton or a MacButton. An Abstract Factory is an object whose interface has several creation methods for a family of related products that must be used together: a GuiFactory with createButton, createCheckbox and createMenu, implemented by WindowsFactory and MacFactory. The client receives one factory, often through dependency injection, and everything it creates is consistent; you never mix a Mac checkbox with a Windows menu. Another example is a database toolkit whose factory creates matching connection, command and parameter objects for Postgres or MySQL. The trade-off: adding a new kind of product means changing the factory interface and every implementation, and in simple cases a plain function or constructor is enough."
+    },
+    {
+      "id": "lld-template-method",
+      "title": "The Template Method pattern",
+      "prompt": "Explain the Template Method pattern with an example. How does it differ from Strategy, and what problems can it cause as a codebase grows?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "design-patterns"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Base class fixes the algorithm skeleton; subclasses fill in steps",
+          "criterion": "correctness",
+          "keywords": [
+            "skeleton",
+            "fixed sequence",
+            "subclasses override",
+            "hook",
+            "abstract step"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "The base class calls the subclass; a final template keeps the order",
+          "criterion": "mechanism",
+          "keywords": [
+            "calls the subclass",
+            "hollywood",
+            "final",
+            "inversion of control",
+            "setup and teardown"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Inheritance-based and static; Strategy composes and swaps at runtime",
+          "criterion": "trade-offs",
+          "keywords": [
+            "inheritance",
+            "composition",
+            "swap at runtime",
+            "fragile",
+            "deep hierarch"
+          ]
+        }
+      ],
+      "modelAnswer": "Template Method puts the skeleton of an algorithm in a base-class method that calls a fixed sequence of steps, and lets subclasses override some of those steps without changing the order. For example, a report exporter's export method always fetches the data, formats it and writes the output; CsvExporter and PdfExporter override only format, and an optional hook such as beforeWrite has an empty default. Test frameworks use the same idea with setUp, the test and tearDown. The base class controls the flow and calls the subclass, the 'don't call us, we'll call you' principle, and making the template method final stops subclasses from breaking the order. Strategy solves a similar problem with composition: the varying step is an object passed in, so it can be swapped at runtime and combined freely. Template Method relies on inheritance and inherits its problems: subclasses depend on the base class's internals, deep hierarchies become fragile, and each combination of variations needs another subclass."
+    },
+    {
+      "id": "lld-chain-of-responsibility",
+      "title": "Chain of Responsibility and middleware",
+      "prompt": "Explain the Chain of Responsibility pattern using HTTP middleware or an approval workflow as the example. How does a handler decide to pass a request on, and what can go wrong?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "design-patterns"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Each handler handles the request, stops it, or passes it to the next",
+          "criterion": "correctness",
+          "keywords": [
+            "next handler",
+            "passes it on",
+            "sequence of handlers",
+            "sender does not know",
+            "handles it"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Middleware: auth, logging and rate limiting call next or stop early",
+          "criterion": "mechanism",
+          "keywords": [
+            "middleware",
+            "calls next",
+            "short circuit",
+            "401",
+            "approval"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Order matters; requests can go unhandled; long chains hide behaviour",
+          "criterion": "trade-offs",
+          "keywords": [
+            "order matters",
+            "unhandled",
+            "falls off",
+            "default handler",
+            "tracing"
+          ]
+        }
+      ],
+      "modelAnswer": "Chain of Responsibility passes a request along a sequence of handlers. Each handler either handles it, stops it, or passes it to the next one, so the sender does not need to know which handler will deal with it. HTTP middleware is the everyday example: a request goes through logging, then authentication, then rate limiting, then the route handler; the authentication middleware can short-circuit with a 401 instead of calling next, and handlers can also act on the response on the way back. An expense approval chain works the same way: a team lead approves small amounts and passes larger ones to a manager, then to a director. Handlers can be added, removed or reordered without changing the others. What can go wrong: order matters, so putting logging after authentication means rejected requests are never logged; a request can fall off the end unhandled unless there is a default handler; and long chains make it hard to see which handler did what, so add tracing."
+    },
+    {
+      "id": "lld-repository-and-unit-of-work",
+      "title": "Repository and Unit of Work",
+      "prompt": "Explain the Repository and Unit of Work patterns. What problem does each solve in a data access layer, how do they work together in a transaction, and what is the risk of a leaky repository?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "design-patterns"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Repository: a collection-like interface that hides storage",
+          "criterion": "correctness",
+          "keywords": [
+            "collection like",
+            "hides the database",
+            "domain objects",
+            "find by id",
+            "in memory repository"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Unit of Work tracks changes and commits them in one transaction",
+          "criterion": "mechanism",
+          "keywords": [
+            "tracks changes",
+            "one transaction",
+            "single transaction",
+            "roll back",
+            "dbcontext"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Leaky repositories expose ORM queries and hide N+1 problems",
+          "criterion": "trade-offs",
+          "keywords": [
+            "leaky",
+            "orm query",
+            "lazy loading",
+            "n plus one",
+            "generic repository"
+          ]
+        }
+      ],
+      "modelAnswer": "A Repository gives the domain a collection-like interface for loading and saving aggregates, such as findById and save on an order repository, and hides how they are stored: SQL, an ORM or a remote API. Business logic then talks in domain terms and can be tested with an in-memory repository. A Unit of Work keeps track of every object loaded, created, changed or deleted during one business operation and, at the end, writes all those changes in a single transaction, or rolls them all back. Together, a use case such as 'place order' loads the customer and the stock through repositories, changes them, and commits the unit of work once, so the changes succeed or fail together; ORMs already implement Unit of Work, as Entity Framework's DbContext and Hibernate's Session do. The risk is a leaky repository that returns ORM query objects or offers generic methods for every table: the database leaks back into business code, and lazy loading behind the abstraction can hide N+1 query problems."
+    },
+    {
+      "id": "lld-read-write-locks",
+      "title": "When a read-write lock helps",
+      "prompt": "A shared configuration object is read thousands of times per second and updated rarely. Explain how a read-write lock works, when it beats a plain mutex, and when it is slower or causes writer starvation.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "concurrency"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Many readers share the lock; a writer gets exclusive access",
+          "criterion": "correctness",
+          "keywords": [
+            "shared mode",
+            "exclusive",
+            "many readers",
+            "concurrent reads",
+            "one writer"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Reader preference starves writers; writer preference blocks new readers",
+          "criterion": "mechanism",
+          "keywords": [
+            "writer starvation",
+            "reader preferring",
+            "writer preferring",
+            "fairness",
+            "new readers"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Short sections: reader-count contention; copy-on-write avoids locks",
+          "criterion": "trade-offs",
+          "keywords": [
+            "reader count",
+            "cache line",
+            "short critical section",
+            "copy on write",
+            "atomic pointer"
+          ]
+        }
+      ],
+      "modelAnswer": "A read-write lock lets any number of readers hold it in shared mode at the same time, while a writer needs exclusive mode: it waits until all readers leave and blocks everyone while it writes. It beats a mutex when reads are frequent, critical sections are long enough to matter, and writes are rare, because readers no longer serialise. The policy matters: a reader-preferring lock lets a steady stream of readers starve a writer indefinitely, while a writer-preferring lock stops admitting new readers once a writer waits, which bounds the writer's wait but reduces read throughput. It is often slower than a mutex when critical sections are short: every reader still atomically updates a shared reader count, so that cache line bounces between cores and becomes the contention point. For a configuration object read constantly and updated rarely, a better design is copy-on-write: build a new immutable config and publish it with an atomic pointer swap, so readers take no lock at all, and reclaim old copies safely with shared_ptr, garbage collection or RCU."
+    },
+    {
+      "id": "lld-thread-safe-singleton",
+      "title": "Implementing a thread-safe singleton",
+      "prompt": "How do you implement a thread-safe singleton? Explain why naive double-checked locking was broken, the simplest correct approaches, and why singletons are often considered a design smell.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "concurrency"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Two threads can both see null and create two instances",
+          "criterion": "correctness",
+          "keywords": [
+            "both see null",
+            "two instances",
+            "race condition",
+            "check then create",
+            "lazy initiali"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Double-checked locking needs ordering; use a static local or holder",
+          "criterion": "mechanism",
+          "keywords": [
+            "double checked",
+            "reorder",
+            "volatile",
+            "static local",
+            "call once",
+            "holder"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Global state hides dependencies and hurts tests; prefer injection",
+          "criterion": "trade-offs",
+          "keywords": [
+            "global state",
+            "hidden dependenc",
+            "hard to test",
+            "dependency injection",
+            "at startup"
+          ]
+        }
+      ],
+      "modelAnswer": "The naive lazy singleton checks whether the instance is null and creates it, but two threads can both see null and both construct one. Locking on every call fixes that but makes every access pay for the lock. Double-checked locking checks without the lock, then locks and checks again; it was broken in early Java and in C++ before C++11 because the compiler or CPU could reorder the writes, so another thread could see the pointer before the object was fully constructed. It needs the field to be volatile in Java, or an atomic with acquire and release ordering in C++. The simplest correct options use language guarantees: since C++11 a function-local static is initialised exactly once even with concurrent callers, and std::call_once is also available; in Java the holder-class idiom or an enum relies on thread-safe class initialisation. Singletons are still often a smell: they are global state, hide dependencies and make tests share state, so it is usually better to create one instance at startup and inject it."
+    },
+    {
+      "id": "lld-bounded-producer-consumer-queue",
+      "title": "Designing a bounded producer-consumer queue",
+      "prompt": "Design a bounded blocking queue for producers and consumers running on different threads. What should happen when it is full or empty, why bound it at all, and how do you shut it down cleanly?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "concurrency"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Producers block when full, consumers block when empty",
+          "criterion": "correctness",
+          "keywords": [
+            "bounded",
+            "blocks when full",
+            "when it is empty",
+            "capacity",
+            "backpressure"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "One mutex and two condition variables: not full and not empty",
+          "criterion": "mechanism",
+          "keywords": [
+            "condition variable",
+            "not full",
+            "not empty",
+            "mutex",
+            "circular buffer"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Choose a full policy and a close method so consumers drain and exit",
+          "criterion": "trade-offs",
+          "keywords": [
+            "timeout",
+            "offer",
+            "close method",
+            "poison pill",
+            "shutdown"
+          ]
+        }
+      ],
+      "modelAnswer": "A bounded blocking queue is a fixed-capacity buffer between threads. Producers call put, which blocks while the queue is full; consumers call take, which blocks while it is empty. The bound is the point: if producers are faster than consumers, an unbounded queue grows until memory runs out, while a bounded one pushes back on producers, which is backpressure. A classic implementation is a circular buffer protected by one mutex with two condition variables, notFull and notEmpty: put waits on notFull in a loop that rechecks the condition, inserts, then signals notEmpty, and take does the reverse. The API should offer choices for a full queue: block, wait with a timeout, or fail immediately with offer so the caller can drop or shed load. Shutdown needs its own design: a close method sets a flag and wakes every waiter; later puts fail, while takes keep returning the remaining items and then report that the queue is closed, so consumers exit. A poison pill message is the alternative when each consumer must receive its own stop signal."
+    },
+    {
+      "id": "lld-testing-class-behaviour",
+      "title": "Unit testing a class through its behaviour",
+      "prompt": "How should you unit test a class so that the tests survive refactoring? Explain testing through the public interface, what to do about private methods and collaborators, and how test pain reveals design problems.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "testing"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Test observable behaviour through the public API, not internals",
+          "criterion": "correctness",
+          "keywords": [
+            "public interface",
+            "observable behaviour",
+            "observable behavior",
+            "public api",
+            "outcome"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Private methods are covered through public ones; fake slow collaborators",
+          "criterion": "mechanism",
+          "keywords": [
+            "private method",
+            "fake",
+            "stub",
+            "constructor",
+            "arrange act assert"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Hard-to-test code signals too many responsibilities",
+          "criterion": "trade-offs",
+          "keywords": [
+            "implementation details",
+            "brittle",
+            "too many responsibilities",
+            "hidden dependenc",
+            "design feedback"
+          ]
+        }
+      ],
+      "modelAnswer": "A good unit test checks what the class promises, not how it does it: call public methods with meaningful input and assert on the returned value, on state visible through the public API, or on the messages to collaborators that matter, such as 'a confirmation email was requested'. Use arrange, act, assert, and one behaviour per test, with a name that describes it. Private methods are tested through the public methods that use them; if a private method seems to need its own tests, it is often a separate responsibility that deserves its own class. Replace collaborators that are slow or nondeterministic, such as the database, the network or the clock, with fakes or stubs passed in through the constructor, but use real value objects. Tests that assert on internal calls or call order are brittle: they break on every refactor without catching bugs. Test pain is design feedback: needing ten mocks or reflection to reach state means the class has too many responsibilities or hidden dependencies."
+    },
+    {
+      "id": "lld-open-closed-extensibility",
+      "title": "Designing classes that are open for extension",
+      "prompt": "Explain the open-closed principle. How would you design a notification or pricing module so new types can be added without editing existing code, and how do you keep the design backward compatible?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "extensibility"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Open for extension, closed for modification",
+          "criterion": "correctness",
+          "keywords": [
+            "open for extension",
+            "closed for modification",
+            "without editing",
+            "new class",
+            "already works"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "An interface plus a registry or composition instead of a growing switch",
+          "criterion": "mechanism",
+          "keywords": [
+            "switch",
+            "registry",
+            "plugin",
+            "plug in",
+            "decorator"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Keep contracts stable with defaults and deprecation; avoid speculation",
+          "criterion": "trade-offs",
+          "keywords": [
+            "backward compatib",
+            "default implementation",
+            "deprecat",
+            "speculative",
+            "yagni"
+          ]
+        }
+      ],
+      "modelAnswer": "The open-closed principle says a module should be open for extension but closed for modification: you add behaviour by adding code, not by editing code that already works and is tested. The warning sign is a switch on type that grows with every feature: if email do this, if SMS do that. Instead, define a Notifier interface with a send method, implement EmailNotifier and SmsNotifier, and look them up in a registry keyed by channel, filled at startup or through plugins. Adding push notifications is then a new class plus one registration. Composition helps further: retries, rate limiting or logging become decorators around any notifier rather than changes to each one. Backward compatibility is the other half: once others implement or call your interface, do not change existing method signatures; add new optional methods with default implementations, keep old behaviour available behind a deprecation period, and version data formats. But do not build extension points speculatively; add them when the second or third variation actually appears."
+    },
+    {
+      "id": "lld-object-lifecycle-state-transitions",
+      "title": "Modelling an object's lifecycle and state transitions",
+      "prompt": "An order moves through created, paid, shipped, delivered and cancelled. How would you model these states and transitions in code so that illegal transitions are rejected, and how would you test it?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "low-level-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "low-level-design",
+        "one-minute",
+        "state-machines"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A single explicit status and a defined set of allowed transitions",
+          "criterion": "correctness",
+          "keywords": [
+            "allowed transitions",
+            "transition table",
+            "state machine",
+            "enum",
+            "boolean flags"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Transition methods check the current state and reject illegal moves",
+          "criterion": "mechanism",
+          "keywords": [
+            "illegal transition",
+            "reject",
+            "current state",
+            "setstatus",
+            "guard"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Guard against races with a version check; test every transition",
+          "criterion": "trade-offs",
+          "keywords": [
+            "optimistic",
+            "version number",
+            "race",
+            "every transition",
+            "audit"
+          ]
+        }
+      ],
+      "modelAnswer": "Make the lifecycle explicit instead of scattering boolean flags such as isPaid and isShipped, which allow nonsense combinations like shipped but not paid. Use a single status, an enum or a sealed type, and a defined set of allowed transitions: created can go to paid or cancelled, paid to shipped or cancelled, shipped to delivered, and delivered and cancelled are final. Expose transitions as methods such as pay, ship and cancel rather than a public setStatus; each one checks the current state, rejects an illegal transition with a clear error, and performs the side effects that belong to it, such as recording the payment ID. A transition table or the State pattern keeps the rules in one place. In a database, two requests can race, for example cancel and ship, so update with a condition on the expected current state or a version number, and record each transition with a timestamp for auditing. Testing is systematic: for every state, check that each allowed transition succeeds and every other one is rejected."
+    },
+    {
+      "id": "dsa-circular-buffer-deque",
+      "title": "Circular buffers and deques",
+      "prompt": "Explain how to implement a fixed-size circular queue with an array. How do head and tail wrap around, how do you tell full from empty, and when would you use a deque instead?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "queues"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Head and tail indices wrap around with modulo capacity",
+          "criterion": "correctness",
+          "keywords": [
+            "modulo",
+            "wrap around",
+            "wraps around",
+            "ring buffer",
+            "head and tail"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "O(1) enqueue and dequeue with no shifting",
+          "criterion": "time-complexity",
+          "keywords": [
+            "o 1",
+            "constant time",
+            "no shifting",
+            "never shifted"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Full versus empty: keep a count or leave one slot empty",
+          "criterion": "edge-cases",
+          "keywords": [
+            "element count",
+            "one slot empty",
+            "full or empty",
+            "head equals tail",
+            "size field"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Deque: O(1) at both ends, used by sliding windows and 0-1 BFS",
+          "criterion": "alternatives",
+          "keywords": [
+            "deque",
+            "both ends",
+            "double ended",
+            "sliding window",
+            "std deque"
+          ]
+        }
+      ],
+      "modelAnswer": "A circular queue stores elements in a fixed array with two indices: head points at the oldest element and tail at the next free slot. Enqueue writes at tail and advances it as (tail + 1) mod capacity; dequeue reads at head and advances it the same way, so the indices wrap around and elements are never shifted. Both operations are O(1) time, and space is O(capacity). The classic edge case is that head equals tail both when the queue is empty and when it is full. Fix it by keeping a separate element count, or by always leaving one slot empty, so the queue is full when (tail + 1) mod capacity equals head. A power-of-two capacity lets you replace the modulo with a bit mask. Ring buffers are used for bounded logs and for audio and network buffers. A deque generalises the idea to push and pop at both ends in O(1), which monotonic-queue sliding-window problems and 0-1 BFS need; a growable deque doubles its ring or uses fixed-size blocks, as std::deque does."
+    },
+    {
+      "id": "dsa-binary-trie-max-xor",
+      "title": "Bitwise tries for maximum XOR",
+      "prompt": "Given an array of integers, find the maximum XOR of any two elements. Explain how a binary trie over the bits solves it, the greedy choice at each level, and the complexity compared with checking all pairs.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "tries"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Insert numbers bit by bit from the most significant bit",
+          "criterion": "correctness",
+          "keywords": [
+            "most significant bit",
+            "bit by bit",
+            "binary trie",
+            "insert each number",
+            "top bit"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Greedy: follow the opposite bit when that child exists",
+          "criterion": "correctness",
+          "keywords": [
+            "opposite bit",
+            "greedy",
+            "higher bit",
+            "outweighs"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "O(n times bit width) instead of O(n squared)",
+          "criterion": "time-complexity",
+          "keywords": [
+            "times 32",
+            "bit width",
+            "n squared",
+            "quadratic",
+            "all pairs"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Up to n times 32 trie nodes",
+          "criterion": "space-complexity",
+          "keywords": [
+            "n times 32",
+            "32 n",
+            "bits per number",
+            "two children"
+          ]
+        },
+        {
+          "id": "c5",
+          "label": "Prefix XORs extend it to subarrays; hash set of prefixes",
+          "criterion": "alternatives",
+          "keywords": [
+            "prefix xor",
+            "hash set",
+            "subarray",
+            "prefixes"
+          ]
+        }
+      ],
+      "modelAnswer": "Treat each number as a fixed-width bit string, say 32 bits, and insert it into a binary trie from the most significant bit down, where each node has a 0 child and a 1 child. To find the best partner for a number x, walk the trie from the top bit: at each level, prefer the child with the opposite bit to x's bit, because making a higher bit 1 in the XOR outweighs everything below it; if that child does not exist, follow the same bit. That greedy choice is why the walk finds the maximum. Insert all numbers, or insert as you go, and query each one: O(n times 32) time, versus O(n squared) for checking all pairs. Space is up to n times 32 nodes. Edge cases: a single element, where there is no pair, and negative numbers, which need a consistent width. The same trie answers the maximum XOR of a subarray if you insert prefix XORs instead. An alternative builds the answer bit by bit with a hash set of prefixes, at the same complexity."
+    },
+    {
+      "id": "dsa-segment-tree-lazy-propagation",
+      "title": "Lazy propagation in segment trees",
+      "prompt": "You need to add a value to every element in a range and query range sums, both many times. Explain how lazy propagation makes range updates efficient in a segment tree, when pending updates are pushed down, and the complexity.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "segment-trees"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Store a pending tag on a node whose segment is fully covered",
+          "criterion": "correctness",
+          "keywords": [
+            "pending",
+            "lazy tag",
+            "fully covered",
+            "postpone",
+            "segment length"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Push tags down to the children before descending",
+          "criterion": "correctness",
+          "keywords": [
+            "push down",
+            "push the tag",
+            "before descending",
+            "partially overlap",
+            "clear it"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "O(log n) per range update and query",
+          "criterion": "time-complexity",
+          "keywords": [
+            "log n",
+            "m log n",
+            "per operation",
+            "instead of o n"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "About 4n entries for sums and tags",
+          "criterion": "space-complexity",
+          "keywords": [
+            "4n",
+            "4 n",
+            "four n",
+            "tags array"
+          ]
+        },
+        {
+          "id": "c5",
+          "label": "Combining tags: an assign must override earlier adds",
+          "criterion": "edge-cases",
+          "keywords": [
+            "combin",
+            "assign",
+            "overwrite",
+            "order of composition",
+            "accumulate"
+          ]
+        }
+      ],
+      "modelAnswer": "Without lazy propagation, adding to a range in a segment tree touches every leaf in it, O(n) per update. With it, when an update fully covers a node's segment, you update that node's sum directly, adding the value times the segment length, store the value as a pending lazy tag on the node, and stop without visiting its children. Only nodes that partially overlap the range are descended into. Before you descend into a node's children, for an update or a query, you push its tag down: apply it to both children's sums, add it to their tags, and clear it, which keeps every node you read correct. Each update and query visits O(log n) nodes, so m operations cost O(m log n), with O(n) space, usually arrays of about 4n for sums and tags. The tricky edge case is combining different kinds of tags: an assign must overwrite earlier add tags, while adds accumulate, so the order of composition matters. For range add with range sum only, two Fenwick trees are a simpler alternative."
+    },
+    {
+      "id": "dsa-ordered-set-applications",
+      "title": "Ordered sets and maps in algorithms",
+      "prompt": "When would you use an ordered set or map, such as a TreeMap or std::set, instead of a hash map in an algorithm? Explain floor and ceiling queries with an example like booking calendar intervals or finding nearby values.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "ordered-sets"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Keeps keys sorted; supports floor, ceiling and neighbour queries",
+          "criterion": "correctness",
+          "keywords": [
+            "sorted order",
+            "floor",
+            "ceiling",
+            "predecessor",
+            "successor",
+            "lower bound"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "O(log n) insert, delete and neighbour lookup",
+          "criterion": "time-complexity",
+          "keywords": [
+            "log n",
+            "balanced",
+            "red black",
+            "instead of scanning"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "A neighbour may not exist; duplicates need a multiset",
+          "criterion": "edge-cases",
+          "keywords": [
+            "both neighbours",
+            "both neighbors",
+            "null",
+            "end iterator",
+            "multiset"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Hash map is O(1) but unordered; sorted array is static",
+          "criterion": "alternatives",
+          "keywords": [
+            "hash map",
+            "unordered",
+            "sorted array",
+            "static",
+            "heap"
+          ]
+        }
+      ],
+      "modelAnswer": "An ordered set or map, usually a balanced binary search tree such as the red-black tree behind TreeMap or std::set, keeps keys in sorted order and supports insert, delete and lookup in O(log n). Its real advantage over a hash map is neighbour queries: floor, the largest key less than or equal to x; ceiling, the smallest key at least x; and in-order iteration from any point. For a booking calendar that rejects overlapping intervals, store intervals by start time; for a new interval, look up the floor and the ceiling and check only those two neighbours for overlap, O(log n) per booking instead of scanning all of them. The same idea checks whether any two values within k positions differ by at most t: keep the window in an ordered set and look at the ceiling of x minus t. Edge cases: a neighbour may not exist, so handle null or the end iterator, and duplicates need a multiset or counts. A hash map is O(1) but has no order, a sorted array is fast but static, and a heap only gives the minimum."
+    },
+    {
+      "id": "dsa-prefix-and-suffix-arrays",
+      "title": "Prefix and suffix arrays",
+      "prompt": "Explain how precomputing prefix and suffix results solves problems such as product of array except self or trapping rain water in linear time. Why does combining a prefix and a suffix work, and how can you reduce the extra space?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "arrays"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The answer at i combines everything left of i and right of i",
+          "criterion": "correctness",
+          "keywords": [
+            "left of",
+            "right of",
+            "prefix product",
+            "suffix",
+            "highest bar"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Two linear passes: O(n) instead of O(n squared)",
+          "criterion": "time-complexity",
+          "keywords": [
+            "two passes",
+            "linear",
+            "o n",
+            "n squared"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "O(n) arrays, reducible to O(1) extra space",
+          "criterion": "space-complexity",
+          "keywords": [
+            "running variable",
+            "output array",
+            "o 1 extra",
+            "two pointers",
+            "constant extra"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Zeros make division wrong; the prefix approach avoids division",
+          "criterion": "edge-cases",
+          "keywords": [
+            "division",
+            "zero",
+            "zeros",
+            "overflow"
+          ]
+        }
+      ],
+      "modelAnswer": "Many array problems ask, for each index i, for something about everything to its left and everything to its right. Computing that from scratch for every i is O(n squared). Instead, make one pass from the left storing prefix results and one from the right storing suffix results, then combine them per index. For product of array except self, the answer at i is the product of all elements before i times the product of all elements after i, which avoids division, and division would fail when the array contains a zero. For trapping rain water, the water above i is the minimum of the highest bar to its left and the highest bar to its right, minus the bar's own height. Both are O(n) time. Space is O(n) for the arrays, but it can be reduced: for the product, store prefixes in the output array and multiply in the suffix with a single running variable, O(1) extra; for rain water, two pointers moving inward replace both arrays. Prefix sums are the same idea applied to range sums."
+    },
+    {
+      "id": "dsa-coordinate-compression",
+      "title": "Coordinate compression",
+      "prompt": "Values in your input go up to a billion, but there are only 100,000 of them, and you want to index a Fenwick tree or array by value. Explain coordinate compression, how to implement it, and what it preserves.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "arrays"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Map each distinct value to its rank in sorted order",
+          "criterion": "correctness",
+          "keywords": [
+            "rank",
+            "sort",
+            "distinct values",
+            "deduplicat",
+            "relative order"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "O(n log n) to sort; lookups by binary search or a hash map",
+          "criterion": "time-complexity",
+          "keywords": [
+            "n log n",
+            "binary search",
+            "lower bound",
+            "hash map"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Array size becomes the number of distinct values",
+          "criterion": "space-complexity",
+          "keywords": [
+            "number of distinct",
+            "instead of a billion",
+            "o k",
+            "k slots"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Preserves order, not distances; include every queried value",
+          "criterion": "edge-cases",
+          "keywords": [
+            "distances",
+            "gaps",
+            "query values",
+            "offline",
+            "equal values"
+          ]
+        }
+      ],
+      "modelAnswer": "Coordinate compression replaces each value with its rank among the distinct values. Collect all the values, sort them, remove duplicates, and then map each original value to its index in that sorted list, using binary search or a hash map. A range up to a billion becomes indices 0 to k minus 1, where k is the number of distinct values, so a Fenwick tree, a segment tree or a counting array needs only O(k) space instead of a billion slots. It costs O(n log n) for the sort and O(log n) or O(1) per lookup. It works because many algorithms, such as counting inversions, counting smaller elements to the right, or sweeping over interval endpoints, care only about the relative order of values, and compression preserves order and equality exactly. It does not preserve distances: if the algorithm needs the gap between values, such as the total length covered by intervals, keep the original values next to the ranks. Every value you will ever query must be included before compressing, so it suits offline problems where all inputs are known in advance."
+    },
+    {
+      "id": "dsa-dp-on-a-dag",
+      "title": "Dynamic programming in topological order",
+      "prompt": "Explain how to solve dynamic programming problems on a directed acyclic graph, such as the longest path or the number of paths between two nodes, by processing nodes in topological order. Why is the order necessary, and what changes if the graph has a cycle?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "dynamic-programming"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Process nodes in topological order so predecessors are final",
+          "criterion": "correctness",
+          "keywords": [
+            "topological order",
+            "predecessors",
+            "kahn",
+            "incoming edges",
+            "finishing order"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "O(V + E): each edge is relaxed once",
+          "criterion": "time-complexity",
+          "keywords": [
+            "v plus e",
+            "each edge once",
+            "linear",
+            "one pass"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Cycles break it; init unreachable nodes; counts need a modulus",
+          "criterion": "edge-cases",
+          "keywords": [
+            "cycle",
+            "np hard",
+            "unreachable",
+            "negative infinity",
+            "modulo"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Memoised DFS is equivalent; every DP is a DAG of states",
+          "criterion": "alternatives",
+          "keywords": [
+            "memoiz",
+            "memois",
+            "dfs",
+            "dag of states",
+            "recursion"
+          ]
+        }
+      ],
+      "modelAnswer": "In a DAG, a node's value often depends only on its predecessors: the longest path ending at v is the maximum over incoming edges from u of longest(u) plus the edge weight, and the number of paths from s to v is the sum of its predecessors' counts. If you process nodes in topological order, from Kahn's algorithm or reversed DFS finishing order, every predecessor is final before you use it, so one pass computes everything. Each edge is relaxed once, so time is O(V + E) and space O(V). Edge cases: initialise unreachable nodes to negative infinity for longest path or zero for counting, and take counts modulo a prime, since they can grow exponentially. The order exists only because there are no cycles; with a cycle the dependencies are circular, and the longest simple path in a general graph is NP-hard, so detect cycles first, for example when Kahn's algorithm processes fewer than V nodes. Memoised DFS computes the same thing, and in fact every DP is a DAG of states."
+    },
+    {
+      "id": "dsa-bellman-ford",
+      "title": "Bellman-Ford and negative cycles",
+      "prompt": "Explain the Bellman-Ford shortest path algorithm. Why does it need V minus 1 rounds of relaxing every edge, how does it detect a negative cycle, and how is it adapted for 'cheapest flight with at most k stops'?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "graphs"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Relax every edge V minus 1 times; a shortest path has at most V minus 1 edges",
+          "criterion": "correctness",
+          "keywords": [
+            "relax",
+            "v minus 1",
+            "every edge",
+            "at most v",
+            "rounds"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "O(V times E), slower than Dijkstra",
+          "criterion": "time-complexity",
+          "keywords": [
+            "v times e",
+            "slower than dijkstra",
+            "e log v"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Any improvement in an extra round means a negative cycle",
+          "criterion": "edge-cases",
+          "keywords": [
+            "negative cycle",
+            "extra round",
+            "one more round",
+            "still improves",
+            "undefined"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "k stops: k plus 1 rounds from the previous round; Dijkstra otherwise",
+          "criterion": "alternatives",
+          "keywords": [
+            "k plus 1",
+            "previous round",
+            "copy",
+            "dijkstra",
+            "spfa"
+          ]
+        }
+      ],
+      "modelAnswer": "Bellman-Ford finds shortest paths from one source and, unlike Dijkstra, works with negative edge weights. Start with distance 0 at the source and infinity elsewhere, then relax every edge: if dist[u] plus w is less than dist[v], update dist[v]. Repeat V minus 1 rounds. A shortest path without cycles has at most V minus 1 edges, and after round i every shortest path using at most i edges is correct, so V minus 1 rounds are enough. Time is O(V times E), space O(V). To detect a negative cycle reachable from the source, run one more round: if any distance still improves, there is a cycle with negative total weight, and shortest paths are undefined for the nodes it reaches. For cheapest flight with at most k stops, run only k plus 1 rounds and relax from a copy of the previous round's distances, so one round cannot chain several edges. You can stop early when a round changes nothing. With non-negative weights, Dijkstra's O(E log V) is much faster."
+    },
+    {
+      "id": "dsa-zero-one-bfs",
+      "title": "0-1 BFS with a deque",
+      "prompt": "Edge weights in a graph are only 0 or 1, for example the minimum number of walls to remove in a grid. Explain 0-1 BFS with a deque, why it gives correct shortest paths, and how it compares with Dijkstra.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "graphs"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Weight-0 edges push to the front, weight-1 edges to the back",
+          "criterion": "correctness",
+          "keywords": [
+            "push front",
+            "push to the front",
+            "push back",
+            "push to the back",
+            "deque"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "O(V + E) instead of O(E log V)",
+          "criterion": "time-complexity",
+          "keywords": [
+            "v plus e",
+            "linear",
+            "e log v",
+            "no priority queue",
+            "no heap"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Deque holds at most two distance levels; skip stale entries",
+          "criterion": "edge-cases",
+          "keywords": [
+            "two distance",
+            "stale",
+            "best known distance",
+            "pushed more than once",
+            "sorted by distance"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Plain BFS for equal weights, Dial for small weights, Dijkstra otherwise",
+          "criterion": "alternatives",
+          "keywords": [
+            "dijkstra",
+            "plain bfs",
+            "dial",
+            "equal weights"
+          ]
+        }
+      ],
+      "modelAnswer": "In 0-1 BFS you keep a deque instead of a queue. Pop a node from the front; for each edge that improves the neighbour's distance, push the neighbour to the front when the edge weight is 0, because it is at the same distance, and to the back when the weight is 1. This keeps the deque sorted by distance and holding at most two consecutive distance values, so the front always has the smallest tentative distance, exactly what Dijkstra's priority queue would give, but every push and pop is O(1). Total time is O(V + E) instead of O(E log V), with O(V) space. As in Dijkstra, a node can be pushed more than once, so compare against the best known distance and skip stale entries. In the walls example, moving into an empty cell costs 0 and into a wall costs 1, and the distance to the target is the number of walls removed. With all weights equal, plain BFS is enough; with small integer weights, Dial's bucket algorithm generalises the idea; otherwise use Dijkstra."
+    },
+    {
+      "id": "dsa-stock-trading-dp",
+      "title": "Stock buy-and-sell dynamic programming",
+      "prompt": "Explain the family of 'best time to buy and sell stock' problems: one transaction, unlimited transactions, at most k transactions, and a cooldown or fee. What state captures all of them, and what are the complexities?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "dynamic-programming"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "State: day, transactions used, and holding or not holding",
+          "criterion": "correctness",
+          "keywords": [
+            "holding",
+            "not holding",
+            "transactions used",
+            "day i",
+            "buy or sell"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "O(n) for fixed variants, O(n times k) for at most k",
+          "criterion": "time-complexity",
+          "keywords": [
+            "o n",
+            "n times k",
+            "linear",
+            "nk"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Each day needs only the previous day: O(1) or O(k) space",
+          "criterion": "space-complexity",
+          "keywords": [
+            "previous day",
+            "o 1",
+            "o k",
+            "few variables",
+            "rolling"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "One trade: track the minimum price; unlimited: sum every rise",
+          "criterion": "alternatives",
+          "keywords": [
+            "minimum price",
+            "lowest price",
+            "every rise",
+            "greedy",
+            "positive difference"
+          ]
+        }
+      ],
+      "modelAnswer": "All the variants fit one state: on day i, with j transactions used, are you holding a share or not. Not holding today is the better of not holding yesterday, or holding yesterday and selling at today's price. Holding today is the better of holding yesterday, or not holding yesterday and buying today, which uses a transaction. The answer is the not-holding value on the last day. For one transaction this reduces to tracking the minimum price so far and the best price minus that minimum: O(n) time, O(1) space. For unlimited transactions, the greedy sum of every positive day-to-day difference is optimal. At most k transactions needs the j dimension: O(n times k) time, and if k is at least n over 2 it is effectively unlimited. A cooldown means buying uses the not-holding value from two days earlier, and a fee is subtracted when selling. Each day depends only on the previous day, so the table shrinks to a few variables, or O(k) space."
+    },
+    {
+      "id": "dsa-digit-dp",
+      "title": "Digit dynamic programming",
+      "prompt": "Count the integers from 1 to N, where N can have 18 digits, whose digits sum to a given value or that contain no repeated digit. Explain digit DP: the state, the tight flag, leading zeros, and the complexity.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "dynamic-programming"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Build numbers digit by digit from the most significant position",
+          "criterion": "correctness",
+          "keywords": [
+            "digit by digit",
+            "position",
+            "most significant",
+            "digit sum so far",
+            "bitmask of digits"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Tight flag limits the next digit; a started flag handles leading zeros",
+          "criterion": "edge-cases",
+          "keywords": [
+            "tight",
+            "leading zero",
+            "started flag",
+            "upper limit",
+            "smaller digit"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Positions times states times 10, not N",
+          "criterion": "time-complexity",
+          "keywords": [
+            "times 10",
+            "number of states",
+            "instead of n",
+            "10 to the 18",
+            "positions times"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Ranges: count(R) minus count(L minus 1); memoise non-tight states",
+          "criterion": "alternatives",
+          "keywords": [
+            "l minus 1",
+            "brute force",
+            "memoiz",
+            "memois",
+            "count of r"
+          ]
+        }
+      ],
+      "modelAnswer": "Iterating from 1 to N is impossible when N has 18 digits, but the condition depends only on the digits, so you count by building numbers digit by digit from the most significant position. The state is the position, whatever the condition needs, such as the digit sum so far or a bitmask of digits used, and a tight flag that says whether the prefix so far equals N's prefix. If tight, the next digit can only go up to N's digit at that position; otherwise any digit from 0 to 9 is allowed, and once you place a smaller digit the number is no longer tight. A started flag handles leading zeros, which matters when zeros would otherwise count as repeated digits. Memoise the non-tight states. Complexity is positions times states times 10, for example 18 times 163 possible sums times 10, which is tiny compared with 10 to the 18. For a range from L to R, compute count(R) minus count(L minus 1)."
+    },
+    {
+      "id": "dsa-time-space-trade-offs",
+      "title": "Trading space for time in algorithms",
+      "prompt": "Give examples of trading extra memory for faster running time in algorithms, such as hashing, memoisation or precomputed tables, and explain when you would choose the slower but smaller approach instead.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "complexity"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Store results or indexes to avoid recomputation",
+          "criterion": "correctness",
+          "keywords": [
+            "memoiz",
+            "memois",
+            "precompute",
+            "lookup table",
+            "hash set"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Example: two-sum from O(n squared) to O(n) with hashing",
+          "criterion": "time-complexity",
+          "keywords": [
+            "n squared",
+            "o n",
+            "two sum",
+            "exponential",
+            "linear"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "The price is O(n) or more extra memory",
+          "criterion": "space-complexity",
+          "keywords": [
+            "extra space",
+            "o n space",
+            "auxiliary",
+            "footprint"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Choose smaller when memory binds or tables cause cache misses",
+          "criterion": "alternatives",
+          "keywords": [
+            "cache miss",
+            "streaming",
+            "fit in ram",
+            "embedded",
+            "in place"
+          ]
+        }
+      ],
+      "modelAnswer": "Many speedups come from storing something so you do not compute it again. Two-sum by checking every pair is O(n squared) time and O(1) space; storing seen values in a hash set makes it O(n) time but O(n) extra space. Memoising a recursive Fibonacci, or any recursion with overlapping subproblems, turns exponential time into linear by caching each result. Prefix sums spend O(n) memory to answer any range sum in O(1), and lookup tables, such as precomputed bit counts for every byte, replace computation with a read. Database indexes are the same trade at a larger scale. You choose the smaller, slower approach when memory is the binding constraint: embedded devices, data that does not fit in RAM, or a stream you can read only once, where you might sort in place, use two pointers, or use a probabilistic structure such as a Bloom filter. A large table can also be slower in practice than recomputing if it causes cache misses, so measure with realistic sizes."
+    },
+    {
+      "id": "dsa-integer-overflow-and-boundaries",
+      "title": "Integer overflow and boundary conditions",
+      "prompt": "Which boundary bugs most often break otherwise correct algorithms? Explain integer overflow in midpoint and product calculations, off-by-one errors in loops and binary search, and how you test for them.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "correctness"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Use lo + (hi - lo) / 2 and 64-bit types for products and sums",
+          "criterion": "correctness",
+          "keywords": [
+            "hi minus lo",
+            "64 bit",
+            "long long",
+            "overflow",
+            "wraps"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Off-by-one: pick inclusive or half-open bounds and a loop invariant",
+          "criterion": "edge-cases",
+          "keywords": [
+            "off by one",
+            "inclusive",
+            "exclusive",
+            "loop invariant",
+            "half open"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Test empty, single, all-equal and extreme inputs",
+          "criterion": "edge-cases",
+          "keywords": [
+            "empty array",
+            "one element",
+            "int min",
+            "int max",
+            "all equal"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Modular, checked or arbitrary-precision arithmetic",
+          "criterion": "alternatives",
+          "keywords": [
+            "modulus",
+            "checked arithmetic",
+            "big integer",
+            "arbitrary precision",
+            "biginteger"
+          ]
+        }
+      ],
+      "modelAnswer": "Two classes of bugs break correct ideas: overflow and off-by-one. The classic overflow is the binary search midpoint (lo + hi) / 2, which overflows a 32-bit int when both are large; write lo + (hi - lo) / 2 instead. Products and sums overflow too, such as multiplying two values near a billion, summing a large array or squaring a number, so use 64-bit types, take a modulus at each step, or use checked arithmetic or big integers. Negating INT_MIN or taking its absolute value also overflows, and signed overflow is undefined behaviour in C and C++. Off-by-one errors come from mixing inclusive and exclusive bounds; pick one convention, such as half-open ranges from lo up to but not including hi, and state the loop invariant, which tells you whether the condition is lo < hi or lo <= hi and whether to set hi to mid or to mid minus 1. Then test the boundaries deliberately: an empty array, one element, two elements, all equal values, the target at either end or absent, and extreme values."
+    },
+    {
+      "id": "dsa-randomized-algorithms",
+      "title": "Randomised algorithms",
+      "prompt": "Explain the difference between Las Vegas and Monte Carlo randomised algorithms, with examples such as randomised quicksort and primality testing, and why adding randomness can protect against worst-case inputs.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "randomized"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Las Vegas: always correct, random time; Monte Carlo: bounded time, may err",
+          "criterion": "correctness",
+          "keywords": [
+            "las vegas",
+            "monte carlo",
+            "always correct",
+            "small probability",
+            "miller rabin"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Random pivot gives expected O(n log n) on every input",
+          "criterion": "time-complexity",
+          "keywords": [
+            "expected",
+            "n log n",
+            "random pivot",
+            "every input",
+            "any input"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Fixed rules have adversarial inputs; repeat trials to cut error",
+          "criterion": "edge-cases",
+          "keywords": [
+            "adversar",
+            "hash flooding",
+            "independent rounds",
+            "repeat",
+            "seed"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Deterministic options such as median of medians or introsort",
+          "criterion": "alternatives",
+          "keywords": [
+            "deterministic",
+            "median of medians",
+            "introsort",
+            "reservoir sampling",
+            "skip list"
+          ]
+        }
+      ],
+      "modelAnswer": "A randomised algorithm makes random choices while it runs. A Las Vegas algorithm always returns the correct answer, but its running time is random: randomised quicksort and quickselect pick a random pivot, so for every input the expected time is O(n log n) or O(n), and the O(n squared) case needs repeated bad luck rather than a particular input. A Monte Carlo algorithm runs in bounded time but may be wrong with a small probability: the Miller-Rabin primality test can call a composite number prime with probability at most a quarter per round, so twenty independent rounds make an error astronomically unlikely. Randomness protects against adversaries: a fixed pivot rule or a fixed hash function has inputs that trigger its worst case, which attackers exploit with hash flooding, while a random pivot or a randomly seeded hash leaves no fixed bad input. Other examples are reservoir sampling, skip lists and Bloom filters. Deterministic alternatives exist, such as median of medians or introsort, but they are often slower or more complex."
+    },
+    {
+      "id": "dsa-choosing-a-data-structure",
+      "title": "Choosing the right data structure",
+      "prompt": "You need to support insert, delete, lookup by key, and 'get the smallest element' on a large collection. Walk through how you choose a data structure from the required operations and their frequencies, and combine structures when one is not enough.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "dsa",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "dsa",
+        "one-minute",
+        "data-structures"
+      ],
+      "rubricId": "dsa",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Start from the operations and how often each runs",
+          "criterion": "correctness",
+          "keywords": [
+            "frequency",
+            "how often",
+            "access pattern",
+            "which operations",
+            "required operations"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Hash map O(1) lookup, heap O(log n) minimum, balanced BST both",
+          "criterion": "time-complexity",
+          "keywords": [
+            "o 1",
+            "log n",
+            "heap",
+            "balanced",
+            "hash map"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Arbitrary heap deletion needs an index map or lazy deletion",
+          "criterion": "edge-cases",
+          "keywords": [
+            "lazy deletion",
+            "arbitrary",
+            "index map",
+            "stale",
+            "decrease key"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Combine structures, as in an LRU cache",
+          "criterion": "alternatives",
+          "keywords": [
+            "combine",
+            "linked list",
+            "lru",
+            "two structures",
+            "sorted array"
+          ]
+        }
+      ],
+      "modelAnswer": "Start from the operations, not from a favourite structure: list each required operation, how often it runs, and any ordering needs. Here, lookup by key suggests a hash map with O(1) average operations, but it cannot find the minimum without an O(n) scan. A binary heap gives the minimum in O(1) and inserts or removes the minimum in O(log n), but deleting an arbitrary element needs you to find it first. A balanced BST or ordered map does everything in O(log n): lookup, insert, delete and minimum, so it is a good single answer. If lookups dominate, combine structures: a hash map from key to entry plus a heap, with either an index map so you can delete from the heap in O(log n), or lazy deletion, where you mark entries removed and skip stale ones when they reach the top. The LRU cache is the classic combination: a hash map for lookup plus a doubly linked list for recency. Finally, consider constant factors and memory: for small n, a sorted array can beat all of them."
+    },
+    {
+      "id": "os-ebpf-fundamentals",
+      "title": "eBPF fundamentals",
+      "prompt": "Explain what eBPF is and how it lets you run custom code inside the Linux kernel safely. Cover hook points such as kprobes, tracepoints and XDP, the verifier, maps for sharing data with user space, and typical uses.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "operating-systems",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "operating-systems",
+        "one-minute",
+        "linux"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Small sandboxed programs run in the kernel when an event fires",
+          "criterion": "correctness",
+          "keywords": [
+            "in the kernel",
+            "sandbox",
+            "bytecode",
+            "kernel module",
+            "jit"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Programs attach to hooks; maps share data with user space",
+          "criterion": "mechanism",
+          "keywords": [
+            "kprobe",
+            "tracepoint",
+            "xdp",
+            "maps",
+            "ring buffer",
+            "uprobe"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "The verifier proves safety; it limits complexity; kernel versions vary",
+          "criterion": "trade-offs",
+          "keywords": [
+            "verifier",
+            "bounded loops",
+            "provably safe",
+            "rejected",
+            "kernel version"
+          ]
+        }
+      ],
+      "modelAnswer": "eBPF lets you load small programs into the Linux kernel and run them when an event happens, without writing a kernel module or rebooting. Programs are compiled to eBPF bytecode, usually from restricted C, and before loading, the kernel's verifier checks them: every memory access must be provably safe, loops must be bounded and the program must terminate, so a bad program is rejected instead of crashing the kernel. Verified programs are JIT-compiled to native code, so they run fast. They attach to hook points: kprobes and uprobes on kernel or user functions, tracepoints, perf events, networking hooks such as XDP in the driver for very fast packet processing, traffic control, sockets and security hooks. Programs share state with each other and with user space through maps, such as hash maps, arrays and ring buffers. Uses include tracing and profiling tools such as bpftrace and BCC, load balancing and DDoS filtering with XDP, container networking such as Cilium, and security monitoring. The trade-offs are the verifier's limits, which make complex logic awkward, and features that depend on the kernel version."
+    },
+    {
+      "id": "net-locating-latency-with-packet-capture",
+      "title": "Using a packet capture to locate latency",
+      "prompt": "Users report slow API responses, and the server team says the service is fast. How would you use tcpdump and Wireshark to find out whether the time goes to the network, the client or the server?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "networking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "networking",
+        "one-minute",
+        "debugging"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Capture at both ends, filtered by host and port, into a pcap",
+          "criterion": "correctness",
+          "keywords": [
+            "both ends",
+            "pcap",
+            "capture filter",
+            "host and port",
+            "client side"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Handshake gap is round-trip time; request-to-first-byte is server time",
+          "criterion": "mechanism",
+          "keywords": [
+            "syn ack",
+            "round trip",
+            "first byte",
+            "handshake",
+            "timestamps"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Retransmissions and zero windows; TLS hides payloads; capture overhead",
+          "criterion": "trade-offs",
+          "keywords": [
+            "retransmission",
+            "zero window",
+            "duplicate ack",
+            "session keys",
+            "sensitive"
+          ]
+        }
+      ],
+      "modelAnswer": "Capture the traffic with tcpdump, ideally on both the client side and the server, filtered to the relevant host and port so the files stay small, and write it to a pcap to open in Wireshark. Then break one slow request into parts using the timestamps. The gap between the SYN and the SYN-ACK is roughly the network round-trip time. The gap between the last packet of the request and the first byte of the response is server think time, as seen from that capture point. If that is small but the response takes long to arrive in full, look at the transfer: retransmissions, duplicate ACKs and long pauses suggest packet loss, and zero-window messages mean a receiver is not reading fast enough, which is often the client. Comparing captures from both ends shows where delay is added, for example by a proxy in between. Limits: with TLS you see timing but not content unless you have the session keys, captures on busy hosts add overhead and can drop packets, and the files may contain sensitive data."
+    },
+    {
+      "id": "dpdk-architecture-poll-mode-drivers",
+      "title": "DPDK architecture and poll-mode drivers",
+      "prompt": "Explain how DPDK processes packets in user space. What does kernel bypass mean, how does a poll-mode driver differ from interrupt-driven networking, and why does a DPDK core show 100 percent CPU even when idle?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Kernel bypass: NIC rings and buffers are mapped into user space",
+          "criterion": "correctness",
+          "keywords": [
+            "kernel bypass",
+            "user space",
+            "vfio",
+            "mapped into",
+            "bypasses the kernel"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Poll-mode drivers busy-poll RX queues in bursts on dedicated cores",
+          "criterion": "mechanism",
+          "keywords": [
+            "poll mode",
+            "busy poll",
+            "rx burst",
+            "dedicated core",
+            "no interrupts",
+            "lcore"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "No syscalls or copies, but cores spin and kernel tools go blind",
+          "criterion": "trade-offs",
+          "keywords": [
+            "100 percent",
+            "system calls",
+            "context switch",
+            "kernel stack",
+            "tcpdump",
+            "spin"
+          ]
+        }
+      ],
+      "modelAnswer": "Normally the kernel driver receives a packet through an interrupt, processes it in the network stack, and copies data to the application through system calls. DPDK bypasses the kernel: the NIC is bound to a driver such as vfio-pci, and its receive and transmit descriptor rings and packet buffers are mapped into a user-space process, so the NIC DMAs packets straight into memory the application owns. The Environment Abstraction Layer sets up hugepage memory and starts worker threads pinned to dedicated cores, called lcores. A poll-mode driver does not wait for interrupts; each core loops forever calling rte_eth_rx_burst to pull a batch of packets from its RX queue, processes them, and sends with rte_eth_tx_burst. With no interrupts, context switches, system calls or copies per packet, one core can handle millions of packets per second with low, predictable latency. The costs: polling cores show 100 percent CPU even with no traffic, the kernel's TCP/IP stack and tools such as tcpdump or ip no longer see that interface, and you must implement or import the protocols you need."
+    },
+    {
+      "id": "dpdk-mbuf-lifecycle",
+      "title": "The rte_mbuf packet buffer lifecycle",
+      "prompt": "Follow an rte_mbuf in DPDK from the moment the NIC receives a packet until the buffer is reused. Who owns it at each step, what happens to packets that rte_eth_tx_burst does not send, and what are the symptoms of an mbuf leak?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "mbuf: metadata, headroom and packet data, preallocated in a mempool",
+          "criterion": "correctness",
+          "keywords": [
+            "metadata",
+            "headroom",
+            "mempool",
+            "descriptor",
+            "refill"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "After RX the app owns it and must transmit, pass on or free it",
+          "criterion": "mechanism",
+          "keywords": [
+            "ownership",
+            "owns",
+            "pktmbuf free",
+            "back to the pool",
+            "returned to the pool"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Unsent packets stay yours; leaks drain the pool and raise rx_nombuf",
+          "criterion": "trade-offs",
+          "keywords": [
+            "unsent",
+            "still belong",
+            "return value",
+            "leak",
+            "nombuf",
+            "reference count"
+          ]
+        }
+      ],
+      "modelAnswer": "An rte_mbuf is DPDK's packet buffer: a metadata header holding fields such as packet length, input port and offload flags, then headroom for prepending headers, then the packet data. Mbufs are preallocated in a mempool. The driver fills each RX descriptor with an empty mbuf, the NIC DMAs a packet into it, and rte_eth_rx_burst returns the filled mbufs to the application while the driver refills the ring with fresh ones from the pool. From then on the application owns each mbuf and must eventually do exactly one thing with it: pass it to rte_eth_tx_burst, hand it to another core through a ring, or free it with rte_pktmbuf_free, which returns it to the pool. After a successful transmit, the driver frees it once the NIC has sent it. A common bug: tx_burst returns how many packets it accepted, and the rest still belong to you, so you must retry or free them. Leaked mbufs slowly drain the pool until the driver cannot refill its RX ring, and the port's rx_nombuf counter rises as packets are dropped. Large packets can span chained segments, and a reference count lets clones share one buffer."
+    },
+    {
+      "id": "dpdk-mempools-and-hugepages",
+      "title": "DPDK mempools and hugepages",
+      "prompt": "Why does DPDK allocate packet buffers from preallocated mempools backed by hugepages? Explain the per-core cache, how you size a mempool, and what goes wrong when it is too small.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Fixed-size buffers preallocated at startup; no malloc on the fast path",
+          "criterion": "correctness",
+          "keywords": [
+            "preallocat",
+            "fixed size",
+            "malloc",
+            "at startup",
+            "lockless ring"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Hugepages cut TLB misses and stay pinned for DMA; per-core caches",
+          "criterion": "mechanism",
+          "keywords": [
+            "hugepage",
+            "tlb",
+            "dma",
+            "per core cache",
+            "core local",
+            "pinned"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Size for all descriptors, in-flight packets and caches, or RX drops",
+          "criterion": "trade-offs",
+          "keywords": [
+            "every rx and tx descriptor",
+            "in flight",
+            "cache size",
+            "too small",
+            "nombuf"
+          ]
+        }
+      ],
+      "modelAnswer": "Allocating buffers with malloc for every packet would be far too slow and unpredictable at millions of packets per second, so DPDK creates mempools at startup: pools of fixed-size objects, such as mbufs, kept in a lockless ring. The memory comes from hugepages, typically 2 MB or 1 GB pages. That has two benefits: far fewer TLB entries cover the buffers, so address translation misses drop, and the pages are pinned at a fixed physical location, which the NIC needs for DMA. To avoid every core contending on the shared ring, each lcore keeps a local cache of objects, so most get and put operations touch only core-local memory and the shared ring is accessed in bulk. Sizing: the pool must hold enough mbufs for every RX and TX descriptor on every queue, plus packets in flight in the application and in software rings between cores, plus the per-core caches. If it is too small, the driver cannot refill its RX rings under load, rx_nombuf rises and packets are dropped, even though the cores are not busy."
+    },
+    {
+      "id": "dpdk-numa-awareness",
+      "title": "NUMA awareness in DPDK applications",
+      "prompt": "A DPDK application on a two-socket server gets much lower throughput than expected. Explain how NUMA placement of the NIC, the lcores and the mempool affects performance, and how you would check and fix it.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The NIC and memory belong to one socket; cross-socket access is slower",
+          "criterion": "correctness",
+          "keywords": [
+            "numa node",
+            "remote memory",
+            "interconnect",
+            "cross socket",
+            "other socket"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Allocate pools on the NIC socket and poll from that socket's cores",
+          "criterion": "mechanism",
+          "keywords": [
+            "dev socket id",
+            "socket id",
+            "same socket",
+            "same numa",
+            "local memory"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Check topology; reserve hugepages per node; one port per socket",
+          "criterion": "trade-offs",
+          "keywords": [
+            "lstopo",
+            "sysfs",
+            "per node",
+            "each socket its own",
+            "hugepages on that node"
+          ]
+        }
+      ],
+      "modelAnswer": "On a multi-socket server each NIC is attached through PCIe to one socket, and each socket has its own local memory. If the NIC DMAs packets into memory on the other socket, or a core on the other socket polls the queue and touches the mbufs, every access crosses the inter-socket interconnect, which adds latency, uses limited interconnect bandwidth and creates cache traffic, and throughput can drop sharply. The fix is to keep everything for a port on the same NUMA node: find the NIC's node with rte_eth_dev_socket_id or the numa_node file in sysfs, create its mempools and rings on that socket by passing the socket ID, reserve hugepages on that node, and choose lcores from that socket to poll its queues. Tools such as lstopo show which cores, memory and PCIe devices belong to each node. If you need both sockets, give each socket its own NIC or ports and its own workers instead of sharing one port across sockets."
+    },
+    {
+      "id": "dpdk-rx-tx-queues-and-rss",
+      "title": "RX and TX queue ownership and RSS",
+      "prompt": "Explain how a DPDK application spreads traffic across cores using multiple RX and TX queues and receive side scaling. Why does each queue usually belong to exactly one core, and what happens when the flow hashing is uneven?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "RSS hashes packet headers so each flow maps to one RX queue",
+          "criterion": "correctness",
+          "keywords": [
+            "rss",
+            "five tuple",
+            "hash",
+            "same flow",
+            "in order"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "One lcore per RX queue and its own TX queue, so no locks",
+          "criterion": "mechanism",
+          "keywords": [
+            "exactly one",
+            "no locks",
+            "not thread safe",
+            "own tx queue",
+            "lock free"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Elephant flows overload one queue; tune hashing, RETA or rte_flow",
+          "criterion": "trade-offs",
+          "keywords": [
+            "elephant flow",
+            "uneven",
+            "redirection table",
+            "rte flow",
+            "idle"
+          ]
+        }
+      ],
+      "modelAnswer": "A modern NIC exposes many RX and TX queues. With receive side scaling, the NIC hashes header fields, usually the five-tuple of addresses, ports and protocol, and uses the hash, through a redirection table, to pick an RX queue, so all packets of one flow land in the same queue and stay in order. In DPDK the usual design gives each RX queue to exactly one lcore and gives every lcore its own TX queue on each port. The RX and TX burst functions are not thread-safe on a single queue, so this ownership lets each core run without locks or atomics, and scaling becomes adding queues and cores. If two cores must share a queue, they need a lock, which costs much of the performance. The weakness is uneven hashing: a few elephant flows, or tunnelled traffic whose outer headers look the same, can send most packets to one queue while other cores sit idle, and that queue starts dropping. Fixes include changing the hash fields or key, adjusting the redirection table, steering with rte_flow rules, or spreading work across cores in software."
+    },
+    {
+      "id": "dpdk-debugging-packet-drops",
+      "title": "Debugging packet drops in a DPDK application",
+      "prompt": "Your DPDK application drops packets at high load. Walk through how you find where the drops happen using port statistics such as imissed and rx_nombuf, extended stats, and per-core measurements, and what each counter points to.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Locate the drop first: NIC RX ring, software rings or TX path",
+          "criterion": "correctness",
+          "keywords": [
+            "locate",
+            "rx ring",
+            "software ring",
+            "tx burst",
+            "where the drop"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "imissed: cores too slow; rx_nombuf: mempool empty; xstats per queue",
+          "criterion": "mechanism",
+          "keywords": [
+            "imissed",
+            "nombuf",
+            "ierrors",
+            "xstats",
+            "per queue"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Measure cycles per packet; check isolation, NUMA and RSS balance",
+          "criterion": "trade-offs",
+          "keywords": [
+            "cycles per packet",
+            "isolat",
+            "interrupts",
+            "numa",
+            "add queues"
+          ]
+        }
+      ],
+      "modelAnswer": "Start by locating the drop, because the fix differs. rte_eth_stats_get gives port counters: imissed counts packets the NIC dropped because the RX ring had no free descriptors, which means the polling core did not keep up; rx_nombuf counts failures to allocate an mbuf to refill the ring, which points to a mempool that is too small or an mbuf leak; and ierrors counts bad packets such as checksum or length errors. rte_eth_xstats_get shows driver-specific extended counters, often per queue, which reveal whether one queue is overloaded because RSS is uneven. On the transmit side, check whether tx_burst returns fewer packets than offered and what your code does with the rest, and count drops in your own software rings between cores. Then measure each core: cycles per packet, time per loop iteration and how full the bursts are. Common causes are a slow processing stage or a lock, cores that are not isolated so the kernel or interrupts steal time, cross-NUMA memory, and RX rings too small to absorb bursts. Fixes are optimising the hot path, adding queues and cores, rebalancing flows, or enlarging rings and pools."
+    },
+    {
+      "id": "dpdk-batching-and-tail-latency",
+      "title": "Batching versus tail latency in DPDK",
+      "prompt": "DPDK receives and transmits packets in bursts. Explain why batching increases throughput, how it can increase latency, especially when transmit buffering waits for a full batch, and how you would tune burst size and flush timeouts.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Bursts amortise per-call cost, doorbell writes and cache misses",
+          "criterion": "correctness",
+          "keywords": [
+            "amortiz",
+            "amortis",
+            "doorbell",
+            "prefetch",
+            "burst size",
+            "per call"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Waiting to fill a TX batch delays packets; flush on a timer",
+          "criterion": "mechanism",
+          "keywords": [
+            "flush",
+            "timer",
+            "tx buffer",
+            "partial",
+            "drain",
+            "returns whatever"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Bigger bursts raise throughput but add queueing delay to p99",
+          "criterion": "trade-offs",
+          "keywords": [
+            "p99",
+            "tail latency",
+            "queueing delay",
+            "latency distribution",
+            "realistic traffic"
+          ]
+        }
+      ],
+      "modelAnswer": "Every call into the driver has a fixed cost, and telling the NIC about new descriptors means a write across PCIe, the doorbell. Receiving and sending packets in bursts, commonly 32 at a time, amortises those costs over the whole batch, and processing a batch lets the code prefetch the next packets and keep instructions and data hot in cache, so throughput per core rises sharply. rx_burst itself does not wait: it returns whatever is available, up to the burst size, so receive batching adds little delay. The latency risk is on the transmit side and in software stages that wait to collect a full batch. With an output buffer such as rte_eth_tx_buffer, packets sit until the buffer fills, which at low traffic could take a long time, so applications also flush on a timer, for example every 100 microseconds, or whenever an RX burst comes back empty. Larger bursts and longer flush intervals raise peak throughput but add queueing delay that shows up in p99 latency. Tune with realistic traffic, measuring both throughput and the latency distribution."
+    },
+    {
+      "id": "dpdk-when-kernel-bypass-is-worth-it",
+      "title": "When kernel bypass is worth it",
+      "prompt": "When is DPDK the right choice, and when should you stay with the Linux kernel network stack or use AF_XDP instead? Discuss the workloads that benefit, the operational costs and the alternatives.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Fits very high packet rates or tight latency: switches, firewalls, trading",
+          "criterion": "correctness",
+          "keywords": [
+            "packet rate",
+            "millions of packets",
+            "virtual switch",
+            "firewall",
+            "trading"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Kernel per-packet costs: interrupts, syscalls, copies, shared stack",
+          "criterion": "mechanism",
+          "keywords": [
+            "system call",
+            "interrupt",
+            "copies",
+            "per packet cost",
+            "general purpose stack"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Dedicated spinning cores and no kernel TCP; XDP and AF_XDP in between",
+          "criterion": "trade-offs",
+          "keywords": [
+            "af xdp",
+            "xdp",
+            "dedicated cores",
+            "user space stack",
+            "web service"
+          ]
+        }
+      ],
+      "modelAnswer": "DPDK pays off when the job is moving packets at very high rates with predictable latency and the kernel's per-packet cost is the bottleneck: virtual switches and routers, firewalls and load balancers, packet capture and monitoring appliances, mobile core network functions, and low-latency trading feed handlers. The kernel path costs interrupts, system calls, copies between kernel and user buffers, and a general-purpose stack shared by everything on the host; DPDK removes those by polling the NIC from dedicated user-space cores. For an ordinary web service, the bottleneck is application logic, databases and TLS, not packet handling, so kernel bypass adds cost for no benefit. The costs are real: cores that spin at 100 percent, hugepage and NIC binding setup, no kernel TCP stack, so you need a user-space stack or must work at the packet level, and standard tools no longer see the interface. Middle grounds exist: tuning the kernel with busy polling and RSS, XDP programs that filter or redirect packets in the driver, and AF_XDP sockets that deliver packets to user space at high speed while the NIC stays under the kernel."
     }
   ]
 }

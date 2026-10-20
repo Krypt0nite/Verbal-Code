@@ -238,3 +238,72 @@ Most rejections in the deep technical sections are there because the bank alread
 - **Difficulty.** CSV difficulty labels were kept, except where they were clearly wrong. For example, "Horizontal versus vertical scaling" (VCN0029) was marked advanced and is now beginner. Advanced questions stay out of off-the-cuff mode, as the existing test requires.
 - **Rubrics.** Technical rows use the technical-concept or programming-language rubric. Behavioural rows use the STAR rubric. Personal-introduction, conciseness, impromptu and professional-communication rows use the communication rubric. Everything else uses general-explanation with concept keywords.
 - **Fixes needed by the larger bank.** 17 concept labels were shortened, because combined they made a feedback "next step" longer than the 300-character report limit. A selector test assumed security had only one mock-interview question; it now computes the pool size.
+
+## HLD, LLD, DSA and systems expansion (20 October 2026)
+
+Source: a topic list from handwritten study notes covering HLD, LLD, DSA, and backend and systems topics (140 bullets). Each bullet was compared with the existing 1,325 questions by meaning, not only by wording. A bullet got a new question only when it added a learning objective the bank did not already have.
+
+| | Questions |
+| --- | ---: |
+| Bank before | 1,325 |
+| Added | **54** |
+| Bank after | **1,379** |
+
+| Bullets | Count |
+| --- | ---: |
+| Covered by a new question | 55 (some merged into one question, see below) |
+| Skipped: exact duplicate (same id or prompt) | 0 |
+| Skipped: already covered by an existing question | 85 |
+| Rejected as out of scope | 0 |
+
+Two subcategories were added to `tech-ai`: `low-level-design` (OOP, design patterns, class design) and `packet-processing` (DPDK). C++ and Go questions went to their language subcategories. Every new question follows the one-minute convention of the CSV batch: 60 seconds, a `one-minute` tag, 3–5 keyword concepts and a model answer of about one minute of speech. Advanced questions leave out off-the-cuff mode. Each model answer was run through the local evaluator, and every expected concept is detected in it.
+
+The new subcategories have no topic profile of their own, so feedback uses the Engineering concept profile through the rubric fallback.
+
+### Added, by subcategory
+
+| Subcategory | Added | Beginner | Intermediate | Advanced | Questions |
+| --- | ---: | ---: | ---: | ---: | --- |
+| tech-ai / low-level-design (new) | 17 | 1 | 15 | 1 | composition vs inheritance; association, aggregation and composition; encapsulation and invariants; programming to an interface; Strategy/State/Command; Decorator/Proxy/Adapter; observer vs pub-sub; Factory Method vs Abstract Factory; Template Method; Chain of Responsibility; Repository and Unit of Work; read-write locks; thread-safe singleton; bounded producer-consumer queue; testing class behaviour; open-closed extensibility; lifecycle state transitions |
+| tech-ai / dsa | 15 | 2 | 7 | 6 | circular buffer and deque; binary trie for max XOR; lazy propagation; ordered sets; prefix and suffix arrays; coordinate compression; DP on a DAG; Bellman-Ford; 0-1 BFS; stock DP; digit DP; time-space trade-offs; overflow and boundaries; randomised algorithms; choosing a data structure |
+| tech-ai / packet-processing (new) | 8 | 0 | 4 | 4 | architecture and poll-mode drivers; mbuf lifecycle; mempools and hugepages; NUMA; RX/TX queues and RSS; debugging drops; batching vs tail latency; when kernel bypass is worth it |
+| tech-ai / backend-engineering | 4 | 0 | 4 | 0 | poison messages and DLQs; idempotent consumers; token vs leaky bucket; first steps of an incident |
+| tech-ai / distributed-systems | 3 | 1 | 2 | 0 | service discovery; conflict resolution; delivery semantics |
+| tech-ai / networking | 2 | 1 | 1 | 0 | reverse proxy vs load balancer vs API gateway; locating latency with a packet capture |
+| tech-ai / databases-and-storage | 1 | 0 | 0 | 1 | hot partitions |
+| tech-ai / software-architecture | 1 | 0 | 1 | 0 | control plane vs data plane |
+| tech-ai / operating-systems | 1 | 0 | 0 | 1 | eBPF fundamentals |
+| programming-languages / cpp | 1 | 0 | 0 | 1 | microbenchmarking |
+| programming-languages / go | 1 | 0 | 1 | 0 | race detector |
+
+Per category: tech-ai 52, programming-languages 2.
+
+### Merged
+
+- Reverse proxy vs load balancer, and the API gateway half of "API gateway and service discovery" → `net-reverse-proxy-load-balancer-api-gateway`. Service discovery got its own question.
+- Immutability and encapsulation, and class invariants and preconditions → `lld-encapsulation-and-class-invariants` (immutability is already `pl-immutability-and-safety`).
+- Extensibility and backward compatibility, and composition-based extensible design → `lld-open-closed-extensibility`.
+- SLO error budgets and incident response → only the incident-response part was new (`be-first-steps-in-a-production-incident`).
+- Kadane variations and prefix/suffix techniques → only prefix/suffix was new (`dsa-prefix-and-suffix-arrays`).
+- One extra DPDK question (`dpdk-when-kernel-bypass-is-worth-it`) covers when the specialised topic applies at all.
+
+### Skipped because the bank already covers them
+
+| Area | Bullet → existing question |
+| --- | --- |
+| HLD networking | DNS → `net-dns-resolution`, `net-dns-ttls-failover-and-caching`; HTTP/HTTPS and TLS → `net-http-versions`, `net-tls-handshake`; WebSockets/SSE/polling → `api-realtime-sse-websockets`; L4/L7 algorithms → `net-l4-vs-l7-load-balancing`, `sd-load-balancer` |
+| Distributed systems | consistent hashing → `sd-consistent-hashing`; leader election → `ds-leader-election-leases`; Raft → `ds-consensus-raft`; 2PC and Saga → `ds-two-phase-commit`, `sd-order-saga`, `ds-saga-orchestration-versus-choreography`; fencing tokens → `sd-distributed-lock`; clocks and ordering → `ds-clock-skew-ntp`, `ds-logical-clocks` |
+| Messaging | outbox and CDC → `ds-transactional-outbox`, `db-change-data-capture`; event-driven architecture → `arch-costs-of-an-event-driven-architecture`, `api-event-driven-contracts`; stream vs batch → `de-batch-vs-stream` |
+| Databases | ACID → `db-acid`; isolation and MVCC → `db-isolation-anomalies`, `db-mvcc`; replication lag → `sd-read-replicas`; composite indexes → `db-composite-covering-indexes`; WAL → `db-wal-durability`; retention, backup and recovery → `db-backups-pitr`, `db-data-retention-policies-and-index-design` |
+| Production | backpressure → `ds-backpressure-load-shedding`; RPO/RTO → `devops-disaster-recovery-with-rpo-and-rto`; multi-region → `sd-multi-region-active-active`; zero-downtime deploys → `devops-blue-green-versus-canary-deployment`, `db-zero-downtime-migrations`; cost and capacity → `sd-capacity-estimation`, `devops-cloud-cost-drivers-for-a-backend` |
+| Architecture | modular monolith → `be-monolith-vs-microservices`; CQRS and event sourcing → `ds-event-sourcing-cqrs`; strangler → `arch-splitting-a-legacy-application-without-a-rewrite`; bulkhead → `be-bulkheads-for-failure-isolation`; multi-tenancy → `api-multi-tenancy` |
+| LLD | polymorphism and virtual dispatch → `cpp-virtual-dispatch`, `cpp-templates-versus-runtime-polymorphism`; dependency injection, and DI with mocking → `pl-dependency-injection`, `qa-mocks-fakes-and-stubs`; atomics and memory ordering → `cpp-memory-order`, `go-atomics`; condition variables → `cpp-condition-variable`; RAII and exception safety → `cpp-raii-smart-pointers`, `cpp-exceptions-safety`; ownership and lifetime → `cpp-ownership-lifetime` |
+| DSA | bit manipulation and bitmasking → `dsa-bit-manipulation`; DSU → `dsa-union-find`; Fenwick → `dsa-segment-tree-fenwick`; Kadane variations → `dsa-kadane`; fast/slow pointers → `dsa-floyd-cycle-detection`; merge intervals and sweep line → `dsa-intervals-greedy`; binary search on answer → `dsa-binary-search-on-answer`; monotonic queue → `dsa-sliding-window-maximum`; quickselect → `dsa-quickselect-kth-largest`; Floyd-Warshall → `dsa-all-pairs-shortest-paths`; MST → `dsa-minimum-spanning-tree`; bipartite → `dsa-bipartite-graph`; SCC → `dsa-strongly-connected-components`; bridges → `dsa-bridges-articulation-points`; multi-source BFS → `dsa-grid-bfs-islands`; DP state design → `dsa-dynamic-programming`; DP space optimisation → `dsa-knapsack`; tree, bitmask and interval DP → `dsa-tree-dp`, `dsa-bitmask-dp-tsp`, `dsa-interval-dp`; counting DP and modular arithmetic → `dsa-modular-arithmetic`, `dsa-coin-change`; amortised analysis → `dsa-amortized-analysis`; Master Theorem → `dsa-master-theorem` |
+| OS and Linux | processes vs threads → `os-process-vs-thread`; virtual memory and page faults → `os-virtual-memory`, `os-page-faults-huge-pages`; scheduling → `os-cpu-scheduling`; context switches → `os-context-switch`; file descriptors → `os-file-descriptors-and-descriptor-leaks`; epoll → `os-io-models-epoll`; mmap → `os-mmap`; signals → `os-signals`; perf, strace and gdb → `os-observability-tools`, `devtools-investigating-a-crash-with-a-debugger` |
+| Networking | TCP handshake → `net-tcp-handshake-teardown`; congestion control → `net-tcp-congestion-control`; retransmissions → `net-packet-loss-and-application-latency`; sockets → `net-sockets-and-accepting-connections` |
+| C++ and Go | move semantics and forwarding → `cpp-move-semantics`, `cpp-perfect-forwarding`; atomics → `cpp-memory-order`; false sharing → `cpp-cache-false-sharing`; sanitizers → `cpp-sanitizers-debugging`; goroutines and channels → `go-goroutines-channels`; context → `go-context-cancellation`; pprof → `go-profiling-pprof`; goroutine leaks → `go-goroutine-leaks` |
+| Performance | profiling → `perf-profiling`, `perf-reading-a-flame-graph`; benchmarking → `perf-benchmarking-without-fooling-yourself`; p50/p95/p99 → `perf-p50-p95-and-p99-latency`; throughput vs latency → `perf-throughput-latency-and-capacity`; production bottlenecks → `obs-investigating-a-sudden-p99-latency-increase`, `os-load-average-diagnosis` |
+
+### Closest existing questions
+
+Word-overlap similarity between each new question and its nearest existing one is at most 0.25, below the 0.35 near-duplicate threshold used earlier in this audit. The closest pairs are deliberate progressions: `dsa-segment-tree-fenwick` → `dsa-segment-tree-lazy-propagation`, `dsa-dijkstra-shortest-paths` → `dsa-bellman-ford` and `dsa-zero-one-bfs`, and `net-reverse-proxies-versus-forward-proxies` → `net-reverse-proxy-load-balancer-api-gateway`.

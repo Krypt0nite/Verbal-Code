@@ -8,7 +8,7 @@ How to add or change practice questions so they pass validation and give honest 
 
 | Category id | Subcategories |
 | --- | --- |
-| `tech-ai` | programming-languages (concepts shared by all languages), dsa, system-design, backend-engineering, frontend-engineering, databases-and-storage, networking, operating-systems, cloud-and-devops, distributed-systems, api-design, security, software-architecture, testing-and-quality-engineering, performance-engineering, ai-ml, genai-llms, data-engineering, compilers-and-build-systems, developer-tools |
+| `tech-ai` | programming-languages (concepts shared by all languages), dsa, system-design, backend-engineering, frontend-engineering, databases-and-storage, networking, operating-systems, cloud-and-devops, distributed-systems, api-design, security, software-architecture, testing-and-quality-engineering, performance-engineering, ai-ml, genai-llms, data-engineering, compilers-and-build-systems, developer-tools, low-level-design (OOP, design patterns, class design), packet-processing (DPDK and kernel-bypass networking) |
 | `programming-languages` | cpp, go, python, rust, java, javascript-typescript |
 | `interview-skills` | personal-introduction, project-deep-dives, behavioral-questions, technical-communication, problem-solving-explanations, leadership-and-teamwork, trade-offs-and-decision-making |
 | `communication-english` | grammar, vocabulary, conciseness, explaining-complex-ideas, impromptu-speaking, professional-communication |
@@ -71,7 +71,7 @@ A test enforces the advanced rule. It lists 21 older advanced questions that sti
 
 ## Rules enforced by schema and tests
 
-- `id`: unique kebab-case slug, stable forever (it is stored in history). Prefix with the area: `dsa-`, `sd-`, `api-`, `db-`, `os-`, `net-`, `ds-`, `ml-`, `genai-`, `cpp-`, `go-`, `gk-`, `lit-`, `geo-`, `ca-`, `biz-`, `ent-`, `pf-`, `ss-`, `nut-`.
+- `id`: unique kebab-case slug, stable forever (it is stored in history). Prefix with the area: `dsa-`, `sd-`, `api-`, `db-`, `os-`, `net-`, `ds-`, `ml-`, `genai-`, `cpp-`, `go-`, `gk-`, `lit-`, `geo-`, `ca-`, `biz-`, `ent-`, `pf-`, `ss-`, `nut-`, `lld-`, `dpdk-`.
 - `subcategoryId` must belong to `categoryId`, and the file's `categoryId` must match.
 - `title`: 5–120 characters. `prompt`: 20–800 characters, English, ASCII punctuation (straight quotes).
 - `suggestedDurationSec`: 60–600.

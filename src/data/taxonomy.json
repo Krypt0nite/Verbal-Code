@@ -85,6 +85,14 @@
         {
           "id": "developer-tools",
           "label": "Developer Tools"
+        },
+        {
+          "id": "low-level-design",
+          "label": "Low-Level Design (OOP & patterns)"
+        },
+        {
+          "id": "packet-processing",
+          "label": "Packet Processing (DPDK)"
         }
       ]
     },

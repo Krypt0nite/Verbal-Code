@@ -14817,6 +14817,149 @@
         }
       ],
       "modelAnswer": "Production JavaScript is bundled, transpiled from TypeScript and minified, so an error stack trace points to something like line 1, column 48213 of main.3f9a.js, with renamed variables. A source map is a JSON file that maps every position in the generated code back to the original file, line, column and name. Browser developer tools load source maps to show and step through your original source, and error-tracking services like Sentry use them to turn production stack traces into readable ones. Because source maps can reveal your full source code, many teams generate \"hidden\" source maps that are uploaded privately to the error tracker during the build and are not referenced or served publicly."
+    },
+    {
+      "id": "cpp-microbenchmarking",
+      "title": "Microbenchmarking C++ code correctly",
+      "prompt": "You want to compare two implementations of a hot C++ function. How do you write a trustworthy microbenchmark with a tool like Google Benchmark, and what mistakes make the numbers meaningless?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Many iterations in an optimised build, compared over repetitions",
+          "criterion": "correctness",
+          "keywords": [
+            "iterations",
+            "optimised build",
+            "optimized build",
+            "repetitions",
+            "median"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "DoNotOptimize and ClobberMemory stop dead code elimination",
+          "criterion": "terminology",
+          "keywords": [
+            "donotoptimize",
+            "do not optimize",
+            "clobbermemory",
+            "dead code elimination",
+            "optimized away"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Control noise: frequency scaling, pinned cores, realistic data",
+          "criterion": "practical-implications",
+          "keywords": [
+            "frequency scaling",
+            "turbo",
+            "isolated core",
+            "realistic data",
+            "quiet machine"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Tiny hot-cache inputs mislead; confirm with perf and end-to-end",
+          "criterion": "pitfalls",
+          "keywords": [
+            "predictable branches",
+            "l1 cache",
+            "perf stat",
+            "end to end",
+            "constant input"
+          ]
+        }
+      ],
+      "modelAnswer": "Use a framework such as Google Benchmark, which runs the code enough iterations to get a stable time and reports statistics; ask for several repetitions and compare medians and spread, not a single run. Always benchmark an optimised build, -O2 or -O3 with the same flags as production, because a debug build measures different code. The most common mistake is that the compiler deletes the work: if a result is never used, dead code elimination removes it, or the compiler computes a constant input at compile time. benchmark::DoNotOptimize on the result and ClobberMemory prevent that. Control noise: disable CPU frequency scaling and turbo or at least record them, pin the process to an isolated core, and run on a quiet machine. Use realistic data: a tiny input that stays in L1 cache with perfectly predictable branches can make one version look faster than it will be in production. Finally, confirm the reason with perf stat, looking at cycles, cache misses and branch misses, and check that the win survives in an end-to-end benchmark."
+    },
+    {
+      "id": "go-race-detector",
+      "title": "How the Go race detector works",
+      "prompt": "Explain what go test -race and go run -race do. How does the race detector find data races, what can it miss, and how should you use it in development and CI?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Finds unsynchronised concurrent accesses where one is a write",
+          "criterion": "correctness",
+          "keywords": [
+            "data race",
+            "unsynchroniz",
+            "unsynchronis",
+            "at least one of them writ",
+            "same memory"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ThreadSanitizer instrumentation tracks happens-before",
+          "criterion": "terminology",
+          "keywords": [
+            "threadsanitizer",
+            "tsan",
+            "instrument",
+            "happens before",
+            "stack traces"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Only races that execute are found; no false positives, but slow",
+          "criterion": "pitfalls",
+          "keywords": [
+            "did not execute",
+            "not a proof",
+            "false positive",
+            "five to ten",
+            "interleaving"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Run it on all tests in CI and in a race-enabled staging build",
+          "criterion": "practical-implications",
+          "keywords": [
+            "in ci",
+            "count flag",
+            "repeatedly",
+            "staging",
+            "load test"
+          ]
+        }
+      ],
+      "modelAnswer": "A data race is two goroutines accessing the same memory at the same time without synchronisation, with at least one of them writing. Building with -race compiles the program with ThreadSanitizer instrumentation: every memory access and every synchronisation operation, such as channel operations, mutexes, WaitGroups and atomics, is recorded, and the runtime tracks happens-before relationships between goroutines. When two accesses conflict and neither happens before the other, it prints both stack traces and where the goroutines were created. It reports races that actually occur during that run, so it has essentially no false positives, but it cannot find races in code paths that did not execute or interleavings that did not happen, so a clean run is not a proof. It typically increases memory use five to ten times and execution time two to twenty times, so it is rarely used in production. Run all tests with -race in CI, write tests that really exercise concurrency, repeat them with the -count flag, and run a race-enabled build in a staging load test. Treat every report as a bug."
     }
   ]
 }

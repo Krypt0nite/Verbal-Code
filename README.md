@@ -99,7 +99,7 @@ The AI evaluator is **off by default** and needs a server-side key.
 - **Local evaluator is heuristic.** Concept coverage is keyword-based. Mentioning a term doesn't prove it was explained correctly, and correct paraphrases may be missed. It cannot check facts; use the model answer or AI feedback for that.
 - **Mock interview** is a basic sequence of 2–6 questions with a score summary; there are no follow-up questions yet.
 - **Deep research** uses curated notes stored with each question. It does not search the web.
-- The question bank has 1,325 hand-written questions, deepest in C++, Go, DSA, system design, API design, databases, networking, distributed systems, AI/ML and GenAI. Every subcategory has at least 8 questions. See [docs/QUESTION_BANK_AUDIT.md](docs/QUESTION_BANK_AUDIT.md).
+- The question bank has 1,379 hand-written questions, deepest in C++, Go, DSA, system design, low-level design, API design, databases, networking, distributed systems, AI/ML and GenAI. Every subcategory has at least 8 questions. See [docs/QUESTION_BANK_AUDIT.md](docs/QUESTION_BANK_AUDIT.md).
 
 ## Manual verification checklist
 
