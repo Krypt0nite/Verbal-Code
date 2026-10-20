@@ -3,6 +3,7 @@ import taxonomy from '../../data/taxonomy.json';
 import { questionBank } from './bank';
 import { buildQuestionBank } from './repository';
 import { RUBRICS } from '../../evaluation/rubrics';
+import { evaluateLocally } from '../../evaluation/localEvaluator';
 
 describe('shipped question bank', () => {
   it('loads with no validation issues', () => {
@@ -70,6 +71,19 @@ describe('shipped question bank', () => {
     const offenders = questionBank.questions
       .filter((q) => q.difficulty === 'advanced' && q.modes.includes('off-the-cuff') && !legacy.has(q.id))
       .map((q) => q.id);
+    expect(offenders).toEqual([]);
+  });
+
+  it('credits every model answer on each criterion it has reference concepts for', () => {
+    // A reference answer that scores 0 on a criterion means the keywords cannot recognise a correct answer,
+    // so the feedback would wrongly tell a speaker that a point was missing.
+    const offenders = questionBank.questions.flatMap((q) => {
+      if (q.expectedConcepts.length === 0) return [];
+      const report = evaluateLocally({ question: q, transcript: q.modelAnswer, spokenMs: 60_000 });
+      return report.criteria
+        .filter((c) => c.score === 0 && q.expectedConcepts.some((e) => e.criterion === c.id))
+        .map((c) => `${q.id}:${c.id}`);
+    });
     expect(offenders).toEqual([]);
   });
 

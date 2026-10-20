@@ -80,6 +80,7 @@ A test enforces the advanced rule. It lists 21 older advanced questions that sti
 - Questions whose rubric has concept criteria need at least one expected concept.
 - Prompts and ids must be unique across the bank.
 - Keywords must not be generic everyday words (`cost`, `memory`, `test`, `wait`, `first`, `like`, `data`…). The full list is in `questionBank.test.ts`.
+- The model answer, run through the local evaluator, must score above 0 on every criterion that has reference concepts. If it does not, the keywords cannot recognise a correct answer: add the variants the answer actually uses (spelling such as "optimise" and "optimize", "terminate TLS" as well as "TLS termination"), or add the missing point to the answer.
 
 Run `npm run validate:questions` after editing, then `npm run check`.
 

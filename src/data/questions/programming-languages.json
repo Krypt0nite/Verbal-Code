@@ -7731,7 +7731,10 @@
             "shared",
             "last value",
             "same variable",
-            "captured"
+            "captured",
+            "reused across iterations",
+            "last item",
+            "same address"
           ]
         },
         {
@@ -10267,7 +10270,11 @@
             "optimizer",
             "assume",
             "signed overflow",
-            "null dereference"
+            "null dereference",
+            "optimise",
+            "assumption",
+            "signed integer overflow",
+            "delete checks"
           ]
         }
       ],
@@ -10437,7 +10444,10 @@
             "cache locality",
             "data pointer",
             "iteration speed",
-            "default choice"
+            "default choice",
+            "cache friendly",
+            "pass data",
+            "vector is the default"
           ]
         }
       ],
@@ -10539,7 +10549,10 @@
             "undefined behavior",
             "skips",
             "derived members",
-            "leak"
+            "leak",
+            "is undefined",
+            "leaking",
+            "only the base destructor runs"
           ]
         },
         {
@@ -11459,7 +11472,11 @@
             "layering",
             "shared types",
             "domain package",
-            "structure"
+            "structure",
+            "in layers",
+            "both packages need",
+            "model package",
+            "one way"
           ]
         }
       ],
@@ -11731,7 +11748,10 @@
           "keywords": [
             "shared",
             "accumulates",
-            "across calls"
+            "across calls",
+            "same object",
+            "leaking state",
+            "between unrelated calls"
           ]
         },
         {
@@ -11902,7 +11922,11 @@
             "late binding",
             "final value",
             "loop variable",
-            "when called"
+            "when called",
+            "looked up when",
+            "when the function runs",
+            "all return",
+            "capture variables not values"
           ]
         },
         {
@@ -12084,7 +12108,10 @@
             "restructure",
             "import inside function",
             "import module",
-            "dependency direction"
+            "dependency direction",
+            "restructuring",
+            "importing inside",
+            "importing the module"
           ]
         }
       ],
@@ -12585,7 +12612,11 @@
             "push",
             "reallocation",
             "invalidate",
-            "borrow checker error"
+            "borrow checker error",
+            "pushing",
+            "reallocate",
+            "dangling",
+            "rejected"
           ]
         },
         {
@@ -12687,7 +12718,10 @@
           "keywords": [
             "not moved",
             "memory address",
-            "guarantee"
+            "guarantee",
+            "never be moved",
+            "moved again",
+            "promises"
           ]
         },
         {
@@ -13209,7 +13243,10 @@
             "name plus loader",
             "different class",
             "isolation",
-            "plugins"
+            "plugins",
+            "name plus the loader",
+            "two different types",
+            "isolate components"
           ]
         },
         {
@@ -14892,7 +14929,7 @@
     {
       "id": "go-race-detector",
       "title": "How the Go race detector works",
-      "prompt": "Explain what go test -race and go run -race do. How does the race detector find data races, what can it miss, and how should you use it in development and CI?",
+      "prompt": "How does the Go race detector find data races, what can it miss, and how should you use it in CI?",
       "categoryId": "programming-languages",
       "subcategoryId": "go",
       "difficulty": "intermediate",

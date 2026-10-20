@@ -69,7 +69,7 @@ Every question names a base rubric. Its subcategory picks a topic profile, which
 
 A subcategory without a profile falls back by rubric (`dsa` → DSA, `technical-concept` → Engineering concept, …), then to General. The report names the topic ("Topic rubric: Go").
 
-Question-specific evidence lives in each question's `expectedConcepts` (labels, criterion ids and spoken keyword variants) and `modelAnswer`. Topic-level knowledge — wording, strong-answer outline, misconceptions — lives once per topic, so nothing is duplicated across 1,379 questions. Misconception patterns can be limited to questions whose text contains certain words (`when`), so a binary-search check never fires on a union-find question.
+Question-specific evidence lives in each question's `expectedConcepts` (labels, criterion ids and spoken keyword variants) and `modelAnswer`. Topic-level knowledge — wording, strong-answer outline, misconceptions — lives once per topic, so nothing is duplicated across 1,420 questions. Misconception patterns can be limited to questions whose text contains certain words (`when`), so a binary-search check never fires on a union-find question.
 
 ## Local evaluator (default)
 

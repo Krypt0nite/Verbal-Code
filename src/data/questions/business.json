@@ -52,7 +52,7 @@
           ]
         }
       ],
-      "modelAnswer": "Product-market fit means a product satisfies a real, strong demand in a good market. Signals: users keep coming back (flat retention curves), growth through word of mouth, and many users saying they would be very disappointed if it disappeared. Scaling sales and hiring before that point burns cash amplifying a product people don't truly need."
+      "modelAnswer": "Product-market fit means a product satisfies a strong, real demand in a market large enough to build a business on. Before it, a startup pushes users to try the product; after it, the market pulls: usage grows by word of mouth and customers complain loudly when it breaks. Founders can check concrete signals. Retention curves flatten instead of falling to zero, so a cohort of users keeps coming back. A large share of users, often cited as around 40 percent, say they would be very disappointed if the product disappeared. Sales cycles shorten and organic sign-ups rise. Scaling before that point is risky because hiring, marketing and sales spend amplify a product people do not truly need, burning cash while hiding the real problem behind paid growth."
     },
     {
       "id": "biz-prioritisation",

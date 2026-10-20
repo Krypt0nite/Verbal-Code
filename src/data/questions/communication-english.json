@@ -19,7 +19,7 @@
         "deep-research"
       ],
       "expectedConcepts": [],
-      "modelAnswer": "Position in the first sentence. Reason 1 with a concrete example (deep focus time without interruptions). Reason 2 with an example (wider hiring, no commute). Acknowledge the counterpoint (mentoring juniors is harder) and conclude with a nuanced recommendation (hybrid with deliberate in-person time). Use signposts: 'firstly', 'secondly', 'on the other hand', 'overall'."
+      "modelAnswer": "My position is that remote work is better for most software engineers, as long as teams invest in how they collaborate. Firstly, engineering needs long stretches of focus. At home I can block three hours for a difficult migration without interruptions, which rarely happens in an open office. Secondly, remote work widens hiring and removes commuting, so a team can hire the best person in another city and that person gains an hour or two a day. On the other hand, mentoring juniors and building trust are harder over video, and some decisions move faster in a room. Overall, I would recommend remote-first with deliberate in-person time, such as a team week every quarter, so people get both deep work and real relationships."
     },
     {
       "id": "ce-explain-recursion-child",
@@ -82,7 +82,7 @@
         "deep-research"
       ],
       "expectedConcepts": [],
-      "modelAnswer": "'Status: the payment integration is two days behind. Done: refund flow and tests. Blocked: the provider's sandbox is rejecting webhooks — I've raised a ticket. Need: someone with provider-account access to check our webhook settings today. New estimate: Thursday, if the block is cleared by tomorrow.' Lead with the headline, use short sentences, avoid hedging."
+      "modelAnswer": "Status: the payment integration is two days behind schedule. Done: the refund flow is finished and covered by tests, and the checkout screens are merged. Blocked: the provider's sandbox is rejecting our webhook calls; I raised a ticket with them yesterday and they have not replied. Need: someone with access to the provider account to check our webhook settings today, because that is the only thing stopping end-to-end testing. New estimate: Thursday, if the block is cleared by tomorrow morning; if not, I will tell you by noon tomorrow and we can decide whether to ship without automatic refunds. Notice the shape: headline first, short sentences, one clear request, and an estimate with its condition."
     },
     {
       "id": "ce-professional-pushback",
@@ -102,7 +102,7 @@
         "deep-research"
       ],
       "expectedConcepts": [],
-      "modelAnswer": "Acknowledge: 'I understand why this matters for the customer demo.' Risk: 'Adding it now means untested code in tomorrow's release, which risks the payments flow.' Alternatives: 'We could ship a feature-flagged version off by default, or release it in a patch on Monday after testing.' Ask for a decision: 'Which works better for you?' Calm, specific, solution-oriented."
+      "modelAnswer": "I understand why this matters: the customer demo is next week, and this feature is what they asked about. My concern is the timing. Adding a feature this large one day before the release means it ships with almost no testing, and it touches the checkout code, so a bug could block payments for every customer, not only the ones who want the feature. I see two safer options. We could ship it tomorrow behind a feature flag that stays off, and turn it on just for the demo account once we have tested it. Or we could keep tomorrow's release as planned and ship the feature in a patch on Monday after a full test pass. Which of those works better for you? I can start on either today."
     },
     {
       "id": "ce-vocabulary-precise-words",
@@ -122,7 +122,7 @@
         "deep-research"
       ],
       "expectedConcepts": [],
-      "modelAnswer": "Use precise verbs and nouns: 'The service intermittently returned stale balances. I reproduced it under concurrent load, traced it to a race between the cache invalidation and the database commit, and resolved it by invalidating after commit.' Replace 'very slow' with numbers ('p99 rose from 80 ms to 900 ms') and 'thing' with the actual component."
+      "modelAnswer": "Our account service intermittently returned stale balances after a deposit, roughly once in every few thousand requests. I reproduced it by replaying production traffic with forty concurrent clients and found that the cache was invalidated before the database transaction committed. A concurrent read could therefore repopulate the cache with the old balance a few milliseconds before the commit landed. I fixed it by invalidating the cache after the commit and adding a short version check on reads, then verified it with the same replay, which ran for two hours without a single stale read. Notice the vocabulary: specific verbs such as reproduced, invalidated and verified, numbers instead of 'very', and named components instead of 'the thing'."
     },
     {
       "id": "ce-grammar-past-tense",

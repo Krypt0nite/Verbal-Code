@@ -307,3 +307,50 @@ Per category: tech-ai 52, programming-languages 2.
 ### Closest existing questions
 
 Word-overlap similarity between each new question and its nearest existing one is at most 0.25, below the 0.35 near-duplicate threshold used earlier in this audit. The closest pairs are deliberate progressions: `dsa-segment-tree-fenwick` → `dsa-segment-tree-lazy-propagation`, `dsa-dijkstra-shortest-paths` → `dsa-bellman-ford` and `dsa-zero-one-bfs`, and `net-reverse-proxies-versus-forward-proxies` → `net-reverse-proxy-load-balancer-api-gateway`.
+
+## Quality audit and follow-up (20 October 2026)
+
+A quality audit of the 1,379-question bank looked at question types, one-minute fit, overlaps, feedback criteria and coverage gaps. Question types were assigned by a keyword classifier that agreed with a manual classification on 32 of 40 sampled technical questions, so type counts are trends, not exact figures. This section records what was changed as a result.
+
+| | Questions |
+| --- | ---: |
+| Bank before | 1,379 |
+| Added | **41** |
+| Bank after | **1,420** |
+
+### Fixes to existing questions
+
+| Problem | Before | After | What changed |
+| --- | ---: | ---: | --- |
+| Model answers scoring 0 on one of their own criteria | 77 | **0** | The reference answer is a correct answer, so a 0 meant the keywords could not recognise it and feedback would report a point as missing. 77 concepts gained the variants the answers actually use (for example "optimise", "amortised", "terminate TLS", "explains why"); 6 answers gained the one sentence they lacked; 2 outline-style behavioural answers were rewritten as example answers. A new test in `questionBank.test.ts` keeps this at 0. |
+| Technical-concept questions without a trade-offs concept | 18 | 0 | Each gained a trade-offs concept, with a sentence added to the answer where the trade-off was missing. |
+| Model answers under 60 words | 11 | 0 | Rewritten as full example answers. |
+| Short "What is…" prompts in technical questions | 111 | 71 | 41 prompts rewritten as scenarios, concentrated where the share was highest (data engineering, compilers, security, DevOps, architecture, testing, performance, developer tools). The model answers already covered the new framing and were not changed. |
+| One-minute prompts asking six or more things | 12 | 0 | Trimmed to two or three asks. `dsa-binary-search-complexity` was left unchanged because several evaluation tests use it as a fixture. |
+
+Four overlapping pairs were given separate focuses: `obs-investigating-a-sudden-p99-latency-increase` now covers narrowing down which endpoint, host or dependency is responsible (`perf-profiling` keeps the release regression and profiling); `sd-message-queues-backpressure` now covers consumer scaling, partitions and ordering (`ds-backpressure-load-shedding` keeps backpressure); `test-pyramid` now covers the ice-cream-cone anti-pattern and the testing trophy (`qa-what-belongs-in-each-kind-of-test` keeps the kinds of test); and `be-first-steps-in-a-production-incident` now covers roles and communication (`be-investigating-rising-5xx-errors-after-a-release` keeps the diagnosis). Two pairs were kept because they serve different purposes: `biz-build-buy-partner` and `tradeoff-build-versus-buy` (business strategy versus an engineering decision), and `pl-static-dynamic-typing` and `pl-static-typing-and-type-inference`.
+
+### Added, by subcategory
+
+| Subcategory | Added | Questions |
+| --- | ---: | --- |
+| security | 6 | authorisation models; password reset and MFA recovery; KMS envelope encryption; stolen session cookies; credential stuffing; zero trust between services |
+| low-level-design | 6 | parking lot; elevator controller; cache with TTL; thread-safe rate limiter; splitting a god class (SRP and ISP); Builder |
+| cloud-and-devops | 5 | Kubernetes Service returning 503; Terraform planning to destroy a database; surviving a zone failure; disk pressure and evictions; serverless versus containers |
+| system-design | 5 | one-minute drills: analytics on the redirect path; caching a product page; chat messages lost on restart; photo storage estimate; sizing a WebSocket fleet |
+| dsa | 5 | pattern drills: group anagrams; jump game; word break; container with most water; kth smallest in a sorted matrix |
+| developer-tools | 3 | recovering lost commits; monorepo versus polyrepo; how breakpoints work |
+| packet-processing | 3 | run-to-completion versus pipeline; NIC offloads; validating a setup with testpmd |
+| operating-systems | 2 | a service failing under systemd; disk full while du shows less |
+| testing-and-quality-engineering | 2 | when TDD helps; tests for untested legacy code |
+| data-engineering | 2 | consumer group rebalance storms; data contracts |
+| interview-skills | 2 | why this role; questions for the interviewer |
+
+Per category: tech-ai 39, interview-skills 2. The HLD drills deliberately follow up on existing designs instead of adding new full designs, and the DSA drills use problems the bank did not already use as examples. All 41 are one-minute questions; advanced ones leave out off-the-cuff mode.
+
+### Still open
+
+- 71 technical prompts still open with a short "What is…" question. They are mostly in the language subcategories, where the short form is often appropriate.
+- 432 questions suggest more than 120 seconds. They suit deep-research and mock-interview practice better than one-minute interview mode.
+- Only 29 questions have deep-research notes.
+- Security (2), cloud (2) and developer tools (1) now have advanced questions; compilers still has none. All four remain thinner than the core areas.

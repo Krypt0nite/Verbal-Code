@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "modelAnswer": "Problem: what it solved and for whom (one or two sentences). Role: what you personally owned. Architecture: the main components and data flow at a whiteboard level. Hard decision: the options you considered, the trade-off, and why you chose one. Result: numbers if you have them (latency, throughput, users, time saved). Reflection: what you would change now. Be ready to go two levels deeper on any component you mention."
+      "modelAnswer": "The project I would pick is the order-tracking service I built at my previous company. The problem: customers and support staff could not see where an order was, so support received thousands of 'where is my order' tickets a week. My role: I designed and built the backend and owned it in production. The architecture is simple: carrier webhooks and polling jobs write tracking events to a queue, a consumer normalises them into one event format and stores them in Postgres, and an API serves the timeline to the app and the support tool, with Redis caching the latest status. The hard decision was polling versus webhooks: some carriers only offered polling, so I chose a hybrid, because webhooks are faster and cheaper while polling covers the gaps. As a result, 'where is my order' tickets dropped by about 40 percent, and status updates arrived within two minutes on average. If I did it again, I would improve the event schema with versioning from day one; changing it later took weeks."
     },
     {
       "id": "is-conflict-teammate",
@@ -192,7 +192,7 @@
           ]
         }
       ],
-      "modelAnswer": "Situation: a specific technical disagreement (e.g. adding a cache vs fixing a query). Task: why it was your concern. Actions: you gathered data, proposed a small experiment or wrote a short comparison, listened to their constraints, and agreed on criteria. Result: the decision taken and its measurable effect — and the relationship stayed good. Reflection: e.g. 'I now bring data before opinions.' Avoid blaming the other person."
+      "modelAnswer": "At my previous job, our product search API was slow, and a senior engineer wanted to add a Redis cache in front of it. My role was owner of the search service, so the decision affected my on-call too. I thought the real problem was a missing index on one query, and that a cache would hide it while adding invalidation bugs. Instead of arguing in the meeting, I proposed a small experiment: I wrote a two-page comparison and tested the index change on a copy of production data, and I talked with the senior engineer to understand their concern, which was traffic spikes during sales. We agreed on criteria up front: p99 latency under normal and sale traffic. As a result, the index alone cut p99 from 900 to 120 milliseconds, and we added a small cache only for the homepage during sales. The relationship stayed good. What I learned is to bring data and shared criteria to a disagreement, rather than opinions."
     },
     {
       "id": "is-failure",
@@ -281,7 +281,7 @@
           ]
         }
       ],
-      "modelAnswer": "Choose a real but recoverable failure. Situation and impact in one or two sentences. Own your part clearly ('I shipped a change without a load test'). Actions: how you mitigated quickly (rollback, hotfix, communication). Result: impact contained, root cause fixed. Reflection: the durable change you made — a test, an alert, a checklist — showing you learn systematically."
+      "modelAnswer": "At my previous company I was responsible for the notification service. I shipped a change that batched push notifications, and I tested it with our normal traffic but not with a marketing campaign's volume. When a campaign started, the batching job exhausted the database connection pool, and for twenty minutes no notifications went out at all. I decided to roll back first, which restored sending within five minutes, and I posted updates in the incident channel while I investigated. The root cause was a missing limit on concurrent batches. I fixed it, added a load test with campaign-sized traffic to CI and an alert on pool saturation. As a result, the next three campaigns ran without problems. What I learned is to test against peak traffic, not average traffic, and I now add a load test to any change on a high-volume path."
     },
     {
       "id": "is-tight-deadline",
@@ -370,7 +370,7 @@
           ]
         }
       ],
-      "modelAnswer": "Situation: deadline and why it was tight. Task: what you were accountable for. Actions: clarified the must-haves, cut or deferred scope explicitly with stakeholders, de-risked the hardest part first, and communicated progress early. Result: what shipped and when. Reflection: the trade-off you'd make again or avoid."
+      "modelAnswer": "At my previous job our biggest customer required audit logging before their contract renewal, and we had three weeks instead of the planned eight. I was responsible for delivering the backend. I started by listing every requirement with the customer's team and asked which ones the contract actually needed; that cut the scope roughly in half, and I agreed in writing with the product manager what we would defer. I built the riskiest part first, writing events reliably from every service, and left the reporting screens for last. I shared progress every two days so nobody was surprised. As a result we delivered the required features two days early and the renewal went ahead; the deferred reports shipped a month later. I learned that the most useful thing under a deadline is an explicit, agreed list of what we are not doing."
     },
     {
       "id": "is-explain-to-non-technical",
@@ -565,7 +565,7 @@
           ]
         }
       ],
-      "modelAnswer": "Situation: who needed help and why. Task: your role (not formally a mentor is fine). Actions: specific things — pairing sessions, a written guide, structured review feedback. Result: what they could do independently afterwards, time saved, fewer review cycles. Reflection: what you learned about teaching."
+      "modelAnswer": "When I was a mid-level engineer, a new teammate was struggling with our deployment process; their pull requests took four or five review rounds and they were afraid to deploy. It was not formally my role, but I offered to help. I paired with them twice a week for a month, walking through a real deploy and a rollback, and I wrote a short guide covering the checks we run and the mistakes reviewers kept flagging. In reviews I changed my comments to explain why, not just what. As a result, within six weeks their pull requests were usually approved after one round, they deployed on their own, and they later improved the guide themselves. I learned that written explanations scale better than repeated review comments, and that asking people what confuses them works better than guessing."
     },
     {
       "id": "is-tradeoff-decision",
@@ -641,7 +641,7 @@
           ]
         }
       ],
-      "modelAnswer": "Context: the constraint forcing a choice. Options: two or three realistic ones. Criteria: e.g. latency, delivery time, operational cost, team familiarity — say which mattered most. Decision and what you consciously gave up. Outcome with evidence. Reflection: with today's knowledge, same or different, and why."
+      "modelAnswer": "We needed search for a product catalogue of about two million items, and the constraint was a launch in six weeks with a team of three. I compared three options: Postgres full-text search, a managed Elasticsearch service, and running Elasticsearch ourselves. My criteria were relevance quality, time to deliver and operational load, with time to deliver weighted highest. I decided on Postgres full-text search, because it needed no new infrastructure and we could ship in three weeks. I consciously gave up fuzzy matching and the better ranking Elasticsearch offers. The result was an on-time launch, but within six months typo tolerance became the top customer complaint and we migrated to the managed service. Would I choose the same today? Yes for the launch, but I would have built a search interface from day one so the migration took days, not weeks."
     },
     {
       "id": "intro-a-30-second-introduction-for-a-backend-role",
@@ -2280,7 +2280,9 @@
             "when i was",
             "context",
             "project",
-            "team was"
+            "team was",
+            "last spring",
+            "i was finishing"
           ]
         },
         {
@@ -2370,7 +2372,8 @@
             "when i was",
             "context",
             "project",
-            "team was"
+            "team was",
+            "in my previous"
           ]
         },
         {
@@ -2460,7 +2463,8 @@
             "when i was",
             "context",
             "project",
-            "team was"
+            "team was",
+            "at my last"
           ]
         },
         {
@@ -2576,7 +2580,9 @@
             "i built",
             "i talked",
             "i wrote",
-            "i started"
+            "i started",
+            "i put together",
+            "i recommended"
           ]
         },
         {
@@ -2640,7 +2646,8 @@
             "when i was",
             "context",
             "project",
-            "team was"
+            "team was",
+            "in my previous"
           ]
         },
         {
@@ -2742,7 +2749,9 @@
             "i was responsible",
             "my task",
             "i owned",
-            "i was asked"
+            "i was asked",
+            "engineer responsible",
+            "responsible for"
           ]
         },
         {
@@ -2756,7 +2765,10 @@
             "i built",
             "i talked",
             "i wrote",
-            "i started"
+            "i started",
+            "i asked",
+            "i explained",
+            "proposed an alternative"
           ]
         },
         {
@@ -2910,7 +2922,8 @@
             "when i was",
             "context",
             "project",
-            "team was"
+            "team was",
+            "in my last"
           ]
         },
         {
@@ -2922,7 +2935,8 @@
             "i was responsible",
             "my task",
             "i owned",
-            "i was asked"
+            "i was asked",
+            "i took it on"
           ]
         },
         {
@@ -2936,7 +2950,10 @@
             "i built",
             "i talked",
             "i wrote",
-            "i started"
+            "i started",
+            "i collected",
+            "i set up",
+            "proposed three changes"
           ]
         },
         {
@@ -3102,7 +3119,9 @@
             "i was responsible",
             "my task",
             "i owned",
-            "i was asked"
+            "i was asked",
+            "i felt responsible",
+            "onboarding buddy"
           ]
         },
         {
@@ -3192,7 +3211,9 @@
             "i was responsible",
             "my task",
             "i owned",
-            "i was asked"
+            "i was asked",
+            "release rotation",
+            "nobody had asked me"
           ]
         },
         {
@@ -5663,6 +5684,52 @@
         }
       ],
       "modelAnswer": "I start from the value the product should create for users and the business, then look for a measurable behaviour that reflects that value. For a note-taking app, \"number of signups\" is easy to inflate, but \"users who create notes in at least three separate weeks\" shows they actually find it useful. Good metrics are tied to user outcomes, measurable reliably, sensitive enough to move when we improve the product, and ideally early indicators of long-term results like retention or revenue. I always pair the main metric with guardrail metrics, such as support tickets, latency or unsubscribe rate, so that improving one number does not quietly harm users elsewhere."
+    },
+    {
+      "id": "intro-why-do-you-want-this-role",
+      "title": "Answering 'why do you want this role?'",
+      "prompt": "Answer the question 'why do you want this role?' for a backend engineering position in about a minute, connecting your experience to what the team does.",
+      "categoryId": "interview-skills",
+      "subcategoryId": "personal-introduction",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "personal-introduction",
+        "one-minute",
+        "motivation"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I want this role for three reasons. First, the work matches what I enjoy most. For the past two years I have owned our order service, and the parts I liked best were reliability problems: cutting checkout errors after a bad deploy and making our retries safe. Your team runs the payments platform, where that kind of work matters every day. Second, I want to grow at a larger scale. Our service handles about a million requests a day; yours handles far more, and I want to learn how systems and teams work at that size. Third, from the engineering blog and from talking to your team, I like how you work: blameless postmortems, and engineers owning their services in production. That is how I want to work. In short, I can contribute from day one on backend reliability, and this role lets me grow into the distributed-systems work I want to do next."
+    },
+    {
+      "id": "techcomm-asking-good-questions-at-the-end-of-an-interview",
+      "title": "Asking good questions at the end of an interview",
+      "prompt": "The interviewer asks, 'Do you have any questions for us?' Ask two or three questions about the team's engineering practices, and briefly explain why you are asking them.",
+      "categoryId": "interview-skills",
+      "subcategoryId": "technical-communication",
+      "difficulty": "beginner",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "technical-communication",
+        "one-minute",
+        "interviews"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "Yes, thank you, I have three. First, what does a typical week look like for an engineer on this team, and how much time goes to planned work versus on-call and interruptions? I ask because it tells me how predictable the work is and how the team protects focus time. Second, how does a change get from a pull request to production here: what is reviewed, what is tested automatically, and how often do you deploy? That shows me how much the team invests in safe, frequent releases. Third, can you tell me about a recent incident and what changed afterwards? I find that how a team handles failure says a lot about its culture, whether it looks for blame or for better systems. Questions like these work because they are specific, show what you care about, and give you real information for your decision, unlike questions whose answers are already on the careers page."
     }
   ]
 }
