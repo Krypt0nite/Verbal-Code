@@ -2,6 +2,8 @@
 
 **Think aloud. Code clearly.** A privacy-first web app for practising spoken technical explanations: DSA, system design, backend, frontend, C++, Go, AI/ML, behavioral interviews and impromptu English speaking.
 
+**Try it live: [verbal-code.pages.dev](https://verbal-code.pages.dev)**
+
 Pick a category → get a random question → (optionally) prepare → speak against a timer (default **1 minute**) → get structured, evidence-based feedback.
 
 - Runs entirely in the browser. No database, no account, no paid service required.
