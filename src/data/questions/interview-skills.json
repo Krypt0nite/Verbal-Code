@@ -5730,6 +5730,29 @@
       ],
       "expectedConcepts": [],
       "modelAnswer": "Yes, thank you, I have three. First, what does a typical week look like for an engineer on this team, and how much time goes to planned work versus on-call and interruptions? I ask because it tells me how predictable the work is and how the team protects focus time. Second, how does a change get from a pull request to production here: what is reviewed, what is tested automatically, and how often do you deploy? That shows me how much the team invests in safe, frequent releases. Third, can you tell me about a recent incident and what changed afterwards? I find that how a team handles failure says a lot about its culture, whether it looks for blame or for better systems. Questions like these work because they are specific, show what you care about, and give you real information for your decision, unlike questions whose answers are already on the careers page."
+    },
+    {
+      "id": "techcomm-when-an-interviewer-challenges-your-design",
+      "title": "When an interviewer challenges your design",
+      "prompt": "An interviewer says, \"I don't think your design will scale.\" How do you respond without becoming defensive or abandoning a sound decision?",
+      "categoryId": "interview-skills",
+      "subcategoryId": "technical-communication",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "technical-communication",
+        "one-minute",
+        "interview-strategy"
+      ],
+      "rubricId": "communication",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [],
+      "modelAnswer": "I treat the challenge as a question about assumptions, not an attack. First I ask what they have in mind, for example: 'Is the concern the write path or the read volume?' That turns a vague doubt into a specific point I can reason about. Then I restate the assumption behind my choice, such as sizing the database for ten thousand writes per second, and test it against their concern. If their point holds, I say so plainly and adjust: 'You're right, at a hundred thousand writes a single primary becomes the bottleneck, so I would partition by user ID.' If my design still holds, I explain why with numbers and name the point at which it would stop working. Either way I keep a calm tone, avoid repeating my original answer more forcefully, and show that I change my mind for evidence, not for pressure. Interviewers often push back on purpose to see exactly that."
     }
   ]
 }

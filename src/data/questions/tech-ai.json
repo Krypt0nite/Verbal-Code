@@ -50068,6 +50068,1173 @@
         }
       ],
       "modelAnswer": "Analytics pipelines often read an application's database tables or events directly, so the producing team does not know who depends on them, and an ordinary rename breaks consumers silently. A data contract makes that dependency explicit: the producer publishes a dataset or event stream with a defined schema, field meanings, freshness and quality guarantees, and a named owner, and treats it as a public interface rather than an internal detail. Contracts are enforced by tooling, not goodwill: the schema lives in version control or a schema registry, CI fails a producer's change that breaks compatibility, such as removing or renaming a field, and ingestion validates incoming data against the contract and quarantines violations. Breaking changes go through versioning: publish a new version alongside the old one, announce a deprecation period and migrate consumers before removal. The cost is process and some loss of speed for producers, so apply contracts to datasets that other teams and critical reports depend on, not to every table."
+    },
+    {
+      "id": "be-a-service-that-hangs-with-idle-cpu",
+      "title": "A service that hangs while its CPU is idle",
+      "prompt": "Requests to a service start timing out, yet its CPU is nearly idle and there are no errors in the logs. How would you find out what the service is waiting on?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "backend-engineering",
+        "one-minute",
+        "debugging"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Idle CPU with timeouts means threads are blocked, not working",
+          "criterion": "correctness",
+          "keywords": [
+            "blocked",
+            "waiting on",
+            "not doing work",
+            "stuck threads",
+            "idle cpu"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Thread or goroutine dumps show where each thread is blocked",
+          "criterion": "mechanism",
+          "keywords": [
+            "thread dump",
+            "goroutine dump",
+            "stack dump",
+            "jstack",
+            "py-spy",
+            "thread apply all"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Check pool, queue and dependency saturation metrics",
+          "criterion": "mechanism",
+          "keywords": [
+            "saturation",
+            "active connections",
+            "queue depth",
+            "dependency latency",
+            "pool metrics"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Usual causes: exhausted pool, missing timeout, deadlock",
+          "criterion": "trade-offs",
+          "keywords": [
+            "exhausted",
+            "no timeout",
+            "deadlock",
+            "leak",
+            "timeouts everywhere"
+          ]
+        }
+      ],
+      "modelAnswer": "Near-zero CPU with timeouts tells me the threads are not doing work; they are blocked waiting on something, so a CPU profile will not help. First I check saturation metrics: active versus maximum connections in the database and HTTP client pools, request queue depth, and the latency of each dependency. Then I take a snapshot of what every thread is doing: a thread dump with jstack, a goroutine dump from the pprof debug endpoint, py-spy dump, or gdb with thread apply all bt for native code. If hundreds of threads sit in the same frame, that frame is the answer. I take two or three dumps a few seconds apart, because a thread stuck in the same place in all of them is truly blocked. Usual causes are a pool that is exhausted because connections leak or a slow dependency holds them, a call with no timeout to a dependency that stopped responding, or a deadlock where two threads each hold a lock the other needs. The fix is the specific cause, plus timeouts everywhere so the next hang fails fast instead of silently."
+    },
+    {
+      "id": "be-diagnosing-periodic-latency-spikes",
+      "title": "Diagnosing latency spikes that repeat on a schedule",
+      "prompt": "A service's p99 latency spikes for about a minute at regular intervals, for example every hour, and is healthy the rest of the time. How would you track down the cause?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "backend-engineering",
+        "one-minute",
+        "debugging"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A regular period points to something scheduled",
+          "criterion": "correctness",
+          "keywords": [
+            "scheduled",
+            "periodic",
+            "cron",
+            "on a timer",
+            "regular period"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Correlate spike times across metrics and hosts",
+          "criterion": "mechanism",
+          "keywords": [
+            "correlate",
+            "exact period",
+            "same timeline",
+            "all hosts",
+            "one host",
+            "overlay"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Suspects: batch jobs, backups, compaction, synchronised cache expiry, GC",
+          "criterion": "mechanism",
+          "keywords": [
+            "batch job",
+            "backup",
+            "compaction",
+            "log rotation",
+            "expire together",
+            "garbage collection"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Fix by spreading load: jitter TTLs, stagger or throttle jobs",
+          "criterion": "trade-offs",
+          "keywords": [
+            "jitter",
+            "stagger",
+            "throttle",
+            "off-peak",
+            "off peak",
+            "spread the load"
+          ]
+        }
+      ],
+      "modelAnswer": "A regular period is the most useful clue: something scheduled is competing with traffic. First I measure the exact period and duration, and check whether the spikes hit all hosts at once or one host at a time, because all hosts together suggests a shared dependency, while one host points to something local. Then I correlate the spike timestamps with everything that runs on a timer: cron and batch jobs, database backups or vacuum, compaction in a storage engine, log rotation, certificate or config reloads, and cache entries that were all loaded at the same moment and therefore expire together, sending a burst of misses to the database. A large garbage collection cycle every few minutes is another candidate. Overlaying CPU, disk, GC pause and database query graphs on the same timeline usually makes the culprit obvious. Fixes spread the load: add jitter to cache TTLs, stagger or throttle the batch job, move it off-peak, or rate limit its database usage. Afterwards I confirm that the spike is gone at the next interval."
+    },
+    {
+      "id": "be-rolling-out-a-configuration-change-safely",
+      "title": "Rolling out a configuration change safely",
+      "prompt": "A one-line configuration change pushed to every server at once caused an outage. How should configuration changes be rolled out to prevent this?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "backend-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "backend-engineering",
+        "one-minute",
+        "reliability"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Treat configuration as code: versioned, reviewed, checked in CI",
+          "criterion": "correctness",
+          "keywords": [
+            "configuration as code",
+            "config as code",
+            "version control",
+            "reviewed",
+            "schema"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Services validate on load and keep the last known good config",
+          "criterion": "mechanism",
+          "keywords": [
+            "validate",
+            "last known good",
+            "reject",
+            "invalid"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Staged rollout: canary first, watch health, widen gradually",
+          "criterion": "mechanism",
+          "keywords": [
+            "canary",
+            "in stages",
+            "staged",
+            "gradually",
+            "one region",
+            "automatic halt"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Fast rollback; slower rollout, with an emergency path",
+          "criterion": "trade-offs",
+          "keywords": [
+            "rollback",
+            "roll back",
+            "previous version",
+            "kill switch",
+            "emergency path"
+          ]
+        }
+      ],
+      "modelAnswer": "Configuration changes cause a large share of outages because they often skip the safeguards code gets, and a global push changes every server at the same moment. I would treat configuration as code: stored in version control, reviewed, and checked in CI against a schema, so a typo or an out-of-range value is rejected before deployment. Services should validate a new config when they load it and keep running on the last known good one if it is invalid. Then roll it out in stages, like a deployment: a canary on a few instances or one region first, watch error rates and latency for a few minutes, then widen gradually, with an automatic halt if health checks degrade. Every change needs a fast rollback to the previous version. The trade-off is speed: a staged rollout takes longer, so keep a documented emergency path, such as a kill switch, for the rare urgent change, and log who changed what so an incident can be traced to a specific change."
+    },
+    {
+      "id": "net-close-wait-connections-piling-up",
+      "title": "Thousands of connections stuck in CLOSE_WAIT",
+      "prompt": "ss shows thousands of connections in CLOSE_WAIT on your service, and it eventually fails with \"too many open files\". What does CLOSE_WAIT mean, and where is the bug?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "networking",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "networking",
+        "one-minute",
+        "debugging"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The peer closed; our application has not closed its socket",
+          "criterion": "correctness",
+          "keywords": [
+            "other side has closed",
+            "peer closed",
+            "never closed",
+            "not closed",
+            "call close"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "No kernel timeout clears it: only the application can",
+          "criterion": "mechanism",
+          "keywords": [
+            "no kernel timeout",
+            "waiting for our application",
+            "file descriptor",
+            "close wait"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Find the leaking code path: unclosed bodies, error paths",
+          "criterion": "mechanism",
+          "keywords": [
+            "response body",
+            "error path",
+            "only on errors",
+            "defer",
+            "finally",
+            "lsof"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Contrast with TIME_WAIT, which is normal and expires",
+          "criterion": "trade-offs",
+          "keywords": [
+            "time wait",
+            "time_wait",
+            "expires on its own",
+            "closed first"
+          ]
+        }
+      ],
+      "modelAnswer": "CLOSE_WAIT means the other side has closed its half of the connection: we received its FIN, our kernel acknowledged it, and now the kernel is waiting for our application to call close on the socket. There is no kernel timeout that clears this state, so thousands of CLOSE_WAIT sockets mean the application never closed them, and each one keeps a file descriptor until the process hits its limit. So the bug is in our code, not the network. I would use ss -tanp or lsof to see which process holds them and which remote address they point to, which identifies the client library or dependency involved. Typical causes are an HTTP response body that is not closed on some path, often only on errors, a missing defer or finally block, or a connection pool that keeps dead connections without noticing that the peer closed them. Contrast this with TIME_WAIT, which is normal: it sits on the side that closed first and expires on its own after about a minute."
+    },
+    {
+      "id": "net-conntrack-table-full",
+      "title": "Connection tracking table full on a Linux host",
+      "prompt": "A busy Linux host that does NAT starts dropping new connections at random, and dmesg says \"nf_conntrack: table full, dropping packet\". Explain what conntrack does and how you would fix this.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "networking",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "networking",
+        "one-minute",
+        "linux"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Netfilter tracks every flow for NAT and stateful firewalling",
+          "criterion": "correctness",
+          "keywords": [
+            "connection tracking",
+            "conntrack",
+            "netfilter",
+            "stateful firewall",
+            "nat"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Fixed-size table; entries linger until timeouts; new flows dropped",
+          "criterion": "mechanism",
+          "keywords": [
+            "nf_conntrack_max",
+            "fixed maximum",
+            "timeout",
+            "short-lived connections",
+            "new entry"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Raise the limit, shorten timeouts, reuse connections, NOTRACK",
+          "criterion": "trade-offs",
+          "keywords": [
+            "notrack",
+            "connection reuse",
+            "keep-alive",
+            "hash table size",
+            "kernel memory"
+          ]
+        }
+      ],
+      "modelAnswer": "Conntrack is the netfilter subsystem that records every flow passing through the host, keyed by its addresses and ports, so that NAT can translate replies and stateful firewall rules can match established connections. It is active whenever NAT or state-matching rules are in use, which includes most Docker and Kubernetes nodes. The table has a fixed maximum, set by nf_conntrack_max, and an entry stays after its connection ends until a timeout expires, so a workload with many short-lived connections can fill the table even with modest concurrent traffic. When it is full, the kernel drops packets that would need a new entry, so new connections fail at random while existing ones keep working. I would confirm by comparing nf_conntrack_count with the maximum and checking conntrack -S. Fixes: raise nf_conntrack_max and the hash table size, accepting more kernel memory; shorten timeouts such as the TIME_WAIT one; reduce churn with connection reuse and keep-alive; and exclude traffic that needs no NAT or state with a NOTRACK rule in the raw table."
+    },
+    {
+      "id": "net-locating-packet-drops-in-the-linux-receive-path",
+      "title": "Locating packet drops in the Linux receive path",
+      "prompt": "A Linux server receiving heavy UDP traffic loses packets, but the switch reports no drops. Where along the kernel receive path can packets be dropped, and which counters show each?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "networking",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "networking",
+        "one-minute",
+        "linux"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "NIC ring overflow, shown by ethtool -S, fixed with a larger ring",
+          "criterion": "correctness",
+          "keywords": [
+            "ethtool",
+            "receive ring",
+            "rx ring",
+            "ring size",
+            "missed"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Per-CPU backlog and softirq budget: softnet_stat, one hot core",
+          "criterion": "mechanism",
+          "keywords": [
+            "softnet",
+            "softirq",
+            "backlog",
+            "time squeeze",
+            "time_squeeze"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Socket buffer overflow: receive buffer errors in netstat -su",
+          "criterion": "mechanism",
+          "keywords": [
+            "receive buffer errors",
+            "socket buffer",
+            "rcvbuf",
+            "rmem",
+            "nstat"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Spread load with more queues, RPS or IRQ affinity; make the consumer keep up",
+          "criterion": "trade-offs",
+          "keywords": [
+            "rss",
+            "rps",
+            "irq affinity",
+            "more queues",
+            "keep up",
+            "add latency"
+          ]
+        }
+      ],
+      "modelAnswer": "I would walk the receive path and check the counter at each stage. First the NIC: if its receive ring has no free descriptors because the kernel did not drain it fast enough, the card drops the packet, which shows in ethtool -S as missed or no-buffer counters; ethtool -g shows the ring size, which can often be increased. Next the per-CPU backlog: /proc/net/softnet_stat has a dropped column for packets dropped because the backlog queue was full, and a time_squeeze column for softirq processing that ran out of budget. If one CPU shows high softirq time in mpstat while others are idle, the hash is sending most traffic to one queue; more queues, RSS settings, RPS or IRQ affinity can spread it, though a single huge flow cannot be split. Finally the socket: netstat -su or nstat shows receive buffer errors when the application does not read fast enough and its socket buffer fills. Raise SO_RCVBUF and rmem_max, but mainly make the consumer keep up, since bigger buffers only absorb bursts and add latency."
+    },
+    {
+      "id": "qa-testing-under-latency-and-packet-loss",
+      "title": "Testing under latency and packet loss",
+      "prompt": "Your service works perfectly in local tests but misbehaves on a slow, lossy mobile network. How would you reproduce those conditions in a test, and what would you look for?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "testing-and-quality-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "testing-and-quality-engineering",
+        "one-minute",
+        "networking"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Inject delay, jitter, loss and reordering deliberately",
+          "criterion": "correctness",
+          "keywords": [
+            "packet loss",
+            "jitter",
+            "reordering",
+            "bandwidth",
+            "inject"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Tools: tc netem, a fault-injecting proxy, browser throttling",
+          "criterion": "mechanism",
+          "keywords": [
+            "netem",
+            "tc qdisc",
+            "toxiproxy",
+            "proxy",
+            "throttle"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Watch timeouts, duplicate retries, partial reads, reconnects",
+          "criterion": "mechanism",
+          "keywords": [
+            "timeouts",
+            "duplicate",
+            "partial",
+            "reconnect",
+            "whole message"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Repeatable automated tests, plus real devices",
+          "criterion": "trade-offs",
+          "keywords": [
+            "repeatable",
+            "automated",
+            "test environment",
+            "real devices",
+            "fixed profile"
+          ]
+        }
+      ],
+      "modelAnswer": "Local networks have almost no delay or loss, so code paths for slow or failing connections are never exercised. I would reproduce the conditions deliberately. On Linux, tc with the netem queueing discipline adds latency, jitter, packet loss, duplication and reordering to an interface, for example tc qdisc add dev eth0 root netem delay 200ms 50ms loss 2%, and a rate limit can cap bandwidth. To inject faults for one dependency at a time, a proxy such as Toxiproxy adds latency or cuts connections between the service and that dependency, and browser developer tools can throttle a web client. Then I watch the behaviour that usually breaks: timeouts that are too short or missing, retries that duplicate non-idempotent requests, code that assumes one read returns a whole message, reconnect logic, and how the user interface shows a slow request. I would make these repeatable automated tests in a test environment, applying netem only to a test interface or container, and still check on real devices, because real networks vary more than any fixed profile."
+    },
+    {
+      "id": "qa-catching-performance-regressions-in-ci",
+      "title": "Catching performance regressions before release",
+      "prompt": "A release made a core endpoint 30 percent slower, and nobody noticed until customers complained. How would you catch performance regressions before release?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "testing-and-quality-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "testing-and-quality-engineering",
+        "one-minute",
+        "performance"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Automated benchmarks on every change, against a baseline",
+          "criterion": "correctness",
+          "keywords": [
+            "baseline",
+            "benchmark suite",
+            "every change",
+            "each commit",
+            "in ci"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Control noise: consistent machine, repeated runs, statistical threshold",
+          "criterion": "mechanism",
+          "keywords": [
+            "noise",
+            "dedicated",
+            "repeat",
+            "variance",
+            "statistical",
+            "threshold"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Track percentiles, throughput and allocations; canary in production",
+          "criterion": "mechanism",
+          "keywords": [
+            "percentiles",
+            "allocation counts",
+            "throughput",
+            "canary",
+            "trends"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Tight thresholds cause false alarms; make failures easy to investigate",
+          "criterion": "trade-offs",
+          "keywords": [
+            "false alarm",
+            "false positive",
+            "ignoring",
+            "bisect",
+            "too tight"
+          ]
+        }
+      ],
+      "modelAnswer": "Performance only stays good if it is measured on every change, the same way correctness is. I would add an automated benchmark suite for the critical paths, such as the endpoint handler and its hot functions, and run it in CI against a baseline from the main branch. The hard part is noise: shared CI runners vary a lot, so run benchmarks on a dedicated or at least consistent machine, repeat each one several times, and compare distributions with a statistical test or a threshold larger than the normal variance, rather than comparing single numbers. Track latency percentiles, throughput and allocation counts, because allocation counts are stable and often reveal a regression before time does, and store results to see slow trends that no single change crosses. A threshold that is too tight causes false alarms and people start ignoring the job, so tune it and make failures easy to investigate, for example by bisecting between the baseline and the change. Finally, CI cannot reproduce production, so a canary that compares the latency of the new version with the old one is the last safety net."
+    },
+    {
+      "id": "dpdk-packet-rate-and-cycle-budget",
+      "title": "Packet rate and the per-packet cycle budget",
+      "prompt": "Before writing a DPDK application for a 10 Gbit/s link, estimate how many packets per second it must handle with minimum-size frames and how many CPU cycles each packet can use. What does the result tell you about the design?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "64-byte frames plus preamble and gap: 84 bytes, about 14.88 million per second",
+          "criterion": "correctness",
+          "keywords": [
+            "84 bytes",
+            "preamble",
+            "inter-frame gap",
+            "interframe gap",
+            "million packets"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "About 67 ns, or roughly 200 cycles, per packet",
+          "criterion": "mechanism",
+          "keywords": [
+            "67 nanoseconds",
+            "nanoseconds per packet",
+            "200 cycles",
+            "cycle budget",
+            "cycles per packet"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "No cache misses, syscalls or locks per packet; batch and spread over cores",
+          "criterion": "trade-offs",
+          "keywords": [
+            "cache miss",
+            "bursts",
+            "system call",
+            "no locks",
+            "several cores",
+            "worst case"
+          ]
+        }
+      ],
+      "modelAnswer": "A minimum Ethernet frame is 64 bytes, but on the wire each frame also takes 8 bytes of preamble and a 12-byte inter-frame gap, so 84 bytes, or 672 bits. 10 Gbit/s divided by 672 bits is about 14.88 million packets per second, which leaves roughly 67 nanoseconds per packet. On a 3 GHz core that is a cycle budget of about 200 cycles per packet for receiving, processing and transmitting. That shapes the design. A single cache miss to main memory costs around 100 nanoseconds, more than the whole budget, and a system call or a contended lock is far too expensive, so the fast path must avoid them: process packets in bursts to amortise per-call costs, prefetch, keep lookup tables small and NUMA-local, and use no locks. If the work per packet is larger, spread flows over several cores with RSS so each core handles a share of the rate. Real traffic usually has a larger average packet size and a lower packet rate, but the worst case of minimum-size packets is what you design and test for."
+    },
+    {
+      "id": "dpdk-measuring-load-on-a-polling-core",
+      "title": "Measuring the real load on a polling core",
+      "prompt": "Every DPDK worker core shows 100 percent CPU in top, even at night when traffic is low. How do you measure how busy a polling core really is, and how much headroom is left?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Poll-mode cores spin constantly, so OS CPU usage is meaningless",
+          "criterion": "correctness",
+          "keywords": [
+            "never blocks",
+            "tight loop",
+            "spinning",
+            "meaningless",
+            "busy polling"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Count cycles in productive versus empty polls with the TSC",
+          "criterion": "mechanism",
+          "keywords": [
+            "empty",
+            "rte_rdtsc",
+            "time stamp counter",
+            "useful cycles",
+            "busy percentage",
+            "telemetry"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Full bursts and ring occupancy show when headroom runs out; idle spinning wastes power",
+          "criterion": "trade-offs",
+          "keywords": [
+            "burst size",
+            "full bursts",
+            "headroom",
+            "imissed",
+            "power",
+            "interrupt mode"
+          ]
+        }
+      ],
+      "modelAnswer": "A poll-mode core never blocks: it calls rte_eth_rx_burst in a tight loop whether packets arrive or not, so the operating system sees it busy all the time and top reports 100 percent at any traffic level. CPU utilisation from the OS is therefore meaningless for these cores. Instead, measure inside the loop. Read the time stamp counter with rte_rdtsc and accumulate the cycles spent on iterations that received packets separately from iterations that came back empty; useful cycles divided by total cycles is the real busy percentage, and the rest is headroom. Recent DPDK versions can expose this through lcore telemetry when the application reports its busy cycles. Two other signals help: the average burst size, because bursts that are always full, such as 32 of 32, mean the core is falling behind and packets are queuing in the ring; and RX ring occupancy or imissed counters, which show when the headroom has run out. Spinning at low traffic wastes power, so if latency allows, an application can back off with short sleeps or switch to RX interrupt mode after many empty polls."
+    },
+    {
+      "id": "dpdk-control-plane-traffic-exception-path",
+      "title": "Handling control-plane traffic in a DPDK application",
+      "prompt": "Your DPDK application owns the NIC, so the Linux kernel no longer sees ARP, ICMP or routing-protocol packets on that port. How would you handle this control-plane traffic?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "With kernel bypass the kernel stack sees nothing on that port",
+          "criterion": "correctness",
+          "keywords": [
+            "kernel stack never sees",
+            "kernel bypass",
+            "bypass",
+            "control-plane",
+            "control plane"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Exception path to the kernel through a TAP or virtio-user interface",
+          "criterion": "mechanism",
+          "keywords": [
+            "exception path",
+            "tap",
+            "virtio-user",
+            "virtio user",
+            "virtual interface"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Or answer ARP and ICMP directly, or steer to a dedicated queue with rte_flow",
+          "criterion": "mechanism",
+          "keywords": [
+            "answered directly",
+            "rte_flow",
+            "dedicated queue",
+            "separate core",
+            "arp"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Keep it off the fast path and rate limit it; KNI is removed",
+          "criterion": "trade-offs",
+          "keywords": [
+            "fast path",
+            "rate limit",
+            "flood",
+            "kni",
+            "deprecated"
+          ]
+        }
+      ],
+      "modelAnswer": "Once a port is bound to a DPDK driver, the kernel stack never sees its packets, so ARP replies, ping and routing protocols such as BGP stop working unless the application handles them. The usual design is an exception path. The fast path classifies each packet; data traffic stays in DPDK, while control-plane packets are forwarded to the kernel through a virtual interface, typically a TAP device or a virtio-user port, both available as DPDK virtual devices. The kernel and normal daemons then answer ARP or run BGP on that interface, and their replies are read back from it and transmitted on the physical port. The older KNI module did this job but was deprecated and has been removed from recent DPDK releases. Simple protocols such as ARP and ICMP echo can instead be answered directly in the application, and rte_flow rules can steer control packets to a dedicated queue served by a separate core. Whichever approach you choose, keep it off the fast path's critical loop and rate limit it, so a flood of control traffic cannot steal cycles from forwarding."
+    },
+    {
+      "id": "dpdk-jumbo-frames-and-multi-segment-mbufs",
+      "title": "Jumbo frames and multi-segment mbufs",
+      "prompt": "After enabling 9000-byte jumbo frames, a DPDK application that worked with normal traffic starts corrupting or dropping large packets. What changes with jumbo frames, and what must the code handle?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "packet-processing",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "packet-processing",
+        "one-minute",
+        "dpdk"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A jumbo frame exceeds one mbuf data room and arrives as a chain",
+          "criterion": "correctness",
+          "keywords": [
+            "data room",
+            "chain of mbufs",
+            "chained",
+            "multi-segment",
+            "segments"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Raise the MTU and enable scattered RX and multi-segment TX",
+          "criterion": "mechanism",
+          "keywords": [
+            "mtu",
+            "scattered receive",
+            "scatter",
+            "multi-segment offload",
+            "offload"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Use pkt_len, walk next pointers, use rte_pktmbuf_read",
+          "criterion": "mechanism",
+          "keywords": [
+            "pkt_len",
+            "pkt len",
+            "data_len",
+            "next pointers",
+            "rte_pktmbuf_read",
+            "nb_segs"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Bigger mbufs keep code simple but waste memory",
+          "criterion": "trade-offs",
+          "keywords": [
+            "wastes memory",
+            "big enough",
+            "fewer buffers",
+            "linearise",
+            "linearize"
+          ]
+        }
+      ],
+      "modelAnswer": "With default mempools each mbuf has a data room of about 2 kilobytes, so a 9000-byte frame does not fit in one buffer. If the port's MTU is raised and scattered receive is enabled, the driver stores the frame as a chain of mbufs: the first segment's pkt_len is the whole packet length, each segment's data_len is the bytes in that segment, nb_segs gives the count, and next pointers link them. Without scatter support or a matching MTU, large frames are dropped or the port configuration fails. Code written for small packets often assumes the whole packet is contiguous at rte_pktmbuf_mtod and uses data_len as the length, so it parses or copies only the first segment, which looks like corruption. The application must handle chains: walk the next pointers, use pkt_len for the total, and use rte_pktmbuf_read for headers that may span segments; on transmit, enable the multi-segment offload or linearise the packet. The alternative is a mempool whose mbufs are big enough for a whole jumbo frame, which keeps processing simple but wastes memory for small packets, so the pool holds fewer buffers."
+    },
+    {
+      "id": "ds-limiting-blast-radius-with-cells-and-shuffle-sharding",
+      "title": "Limiting blast radius with cells and shuffle sharding",
+      "prompt": "One customer's bad traffic pattern overloaded a shared fleet and caused an outage for every customer. Explain how cell-based architecture and shuffle sharding limit the blast radius of such failures.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "distributed-systems",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "distributed-systems",
+        "one-minute",
+        "reliability"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Blast radius: the share of customers one failure can affect",
+          "criterion": "correctness",
+          "keywords": [
+            "blast radius",
+            "share of customers",
+            "takes everyone down",
+            "contain",
+            "isolat"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Cells: independent copies of the stack, each serving a subset",
+          "criterion": "mechanism",
+          "keywords": [
+            "cell",
+            "complete copy",
+            "subset of customers",
+            "routing layer",
+            "cell by cell"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Shuffle sharding: each customer gets a random combination of workers",
+          "criterion": "mechanism",
+          "keywords": [
+            "shuffle shard",
+            "random combination",
+            "two out of eight",
+            "same combination",
+            "healthy worker"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Costs: spare capacity, critical routing layer, cross-cell features",
+          "criterion": "trade-offs",
+          "keywords": [
+            "spare capacity",
+            "highly available",
+            "cross-cell",
+            "cross cell",
+            "more units"
+          ]
+        }
+      ],
+      "modelAnswer": "Blast radius is the share of customers a single failure can affect. With one shared fleet, a poison request or one tenant's overload takes everyone down. A cell-based architecture splits the system into several independent cells, each a complete copy of the stack with its own servers, queues and databases, serving a fixed subset of customers. A thin routing layer maps each customer to a cell, so a bad customer, a bad deployment or a corrupted database affects only that cell, and changes are rolled out cell by cell. Shuffle sharding applies the same idea inside a shared fleet: instead of assigning each customer to one fixed group, give each customer a random combination of a few workers, for example two out of eight. Two customers rarely share the same combination, so if one customer's traffic kills its workers, almost every other customer still has at least one healthy worker. The costs are spare capacity in every cell, a routing layer that must be very simple and highly available, harder cross-cell features such as global queries, and more units to deploy and monitor."
+    },
+    {
+      "id": "api-adding-an-enum-value-without-breaking-clients",
+      "title": "Adding an enum value without breaking clients",
+      "prompt": "You add a new value, REFUNDED, to the order status enum in your API, and several older clients start crashing. Why does adding an enum value break clients, and how should both sides handle it?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "api-design",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "api-design",
+        "one-minute",
+        "compatibility"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Clients treat the enum as a closed set and fail on unknown values",
+          "criterion": "correctness",
+          "keywords": [
+            "closed set",
+            "does not recognise",
+            "does not recognize",
+            "strict deserialisation",
+            "strict deserialization",
+            "default case"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Clients as tolerant readers: map unknown values to a safe default",
+          "criterion": "mechanism",
+          "keywords": [
+            "tolerant reader",
+            "unknown value",
+            "degrades safely",
+            "fallback"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Servers document enums as open; protobuf keeps unknown values",
+          "criterion": "mechanism",
+          "keywords": [
+            "open",
+            "unspecified",
+            "proto3",
+            "protocol buffers",
+            "unknown numeric"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "For strict clients, treat it as breaking: version or opt in",
+          "criterion": "trade-offs",
+          "keywords": [
+            "breaking change",
+            "opt in",
+            "new api version",
+            "capability flag",
+            "map it to an existing"
+          ]
+        }
+      ],
+      "modelAnswer": "Adding a value looks backward compatible from the server's side, but clients often treat an enum as a closed set. A generated client may reject the whole response when strict deserialisation meets a value it does not recognise, a switch statement with no default case may throw, and business logic such as 'if not shipped, show the cancel button' silently does the wrong thing for REFUNDED. So clients should be tolerant readers: map any unknown value to an UNKNOWN or default case that degrades safely instead of crashing. On the server side, document enums as open from the start so client authors expect new values. In Protocol Buffers, proto3 enums are open and keep unknown numeric values, and the zero value should be an UNSPECIFIED placeholder. For an enum that clients already parse strictly, treat the new value as a breaking change: return it only to clients that opt in through a new API version or a capability flag, or map it to an existing value for old clients, and check how clients actually use the field before rolling it out."
+    },
+    {
+      "id": "db-migrating-to-a-new-datastore",
+      "title": "Migrating a live service to a new database",
+      "prompt": "You must move a live service from one database to another, for example from MySQL to Cassandra, without downtime or data loss. Walk through the migration plan.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "databases-and-storage",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "databases-and-storage",
+        "one-minute",
+        "migrations"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Keep the new store in sync with dual writes or CDC, then backfill",
+          "criterion": "correctness",
+          "keywords": [
+            "dual write",
+            "change data capture",
+            "cdc",
+            "backfill",
+            "in sync"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Shadow reads compare results before reads move",
+          "criterion": "mechanism",
+          "keywords": [
+            "shadow read",
+            "compare the results",
+            "mismatches",
+            "verify"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Cut over gradually; old store stays the source of truth; keep rollback",
+          "criterion": "mechanism",
+          "keywords": [
+            "gradually",
+            "percentage of traffic",
+            "source of truth",
+            "roll back",
+            "rollback"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Risks: divergence, backfill overwriting newer data; weeks of two systems",
+          "criterion": "trade-offs",
+          "keywords": [
+            "diverge",
+            "overwrite",
+            "newer",
+            "versions or timestamps",
+            "two databases"
+          ]
+        }
+      ],
+      "modelAnswer": "I would migrate in phases so that each step can be verified and undone. First, keep the new store in sync with every new change, either by dual writing from the application or, more safely, by consuming change data capture from the old database, because application dual writes can fail halfway and diverge. Second, backfill historical data with an idempotent copy job, and make sure a backfilled row cannot overwrite a newer live change, for example by comparing versions or timestamps. Third, run shadow reads: serve from the old store but also read from the new one, compare the results and track mismatches until they are close to zero and explained. Fourth, cut over reads gradually, a percentage of traffic at a time, while the old database stays the source of truth. Only then switch writes so the new store becomes the source of truth, and keep syncing changes back to the old one for a while so you can roll back. The cost is time and complexity, running two databases for weeks, but every step is reversible."
+    },
+    {
+      "id": "perf-data-layout-and-cache-misses",
+      "title": "Data layout, cache lines and structure of arrays",
+      "prompt": "A loop sums one field across ten million objects and is much slower than expected. Explain how data layout causes this, and compare an array of structures with a structure of arrays.",
+      "categoryId": "tech-ai",
+      "subcategoryId": "performance-engineering",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "performance-engineering",
+        "one-minute",
+        "cpu-caches"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Memory moves in 64-byte cache lines; unused fields waste bandwidth",
+          "criterion": "correctness",
+          "keywords": [
+            "cache line",
+            "64-byte",
+            "64 byte",
+            "memory bandwidth",
+            "wasted"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Structure of arrays keeps each field contiguous, so prefetching and SIMD work",
+          "criterion": "mechanism",
+          "keywords": [
+            "structure of arrays",
+            "array of structures",
+            "contiguous",
+            "prefetch",
+            "simd",
+            "vectoris"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Pointer chasing is worst; SoA hurts whole-object access; measure",
+          "criterion": "trade-offs",
+          "keywords": [
+            "pointers scattered",
+            "cache miss",
+            "whole objects",
+            "hot and cold",
+            "perf stat"
+          ]
+        }
+      ],
+      "modelAnswer": "The CPU does not read single fields from memory; it moves whole 64-byte cache lines. If each object is 128 bytes and the loop needs one 8-byte field, almost all the bytes it pulls through the cache are wasted, so the loop is limited by memory bandwidth rather than arithmetic. It is worse if the objects are reached through pointers scattered across the heap, because the hardware prefetcher cannot predict the next address and every element can be a cache miss. An array of structures stores each object's fields together, which is good when code uses most fields of one object at a time. A structure of arrays stores each field in its own contiguous array, so this loop reads only the values it needs, sequentially, which the prefetcher handles well and the compiler can vectorise with SIMD. The trade-off is that code which touches whole objects now reads from several arrays and is less natural to write. A middle ground is splitting hot and cold fields into separate structures. I would confirm the diagnosis with perf stat, comparing cache misses before and after."
+    },
+    {
+      "id": "perf-hardware-counters-for-a-slow-loop",
+      "title": "Explaining a slowdown with hardware counters",
+      "prompt": "A CPU-bound function got slower after a refactor, but the profiler shows the same hot lines. How would you use hardware performance counters with perf stat to find out why?",
+      "categoryId": "tech-ai",
+      "subcategoryId": "performance-engineering",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "performance-engineering",
+        "one-minute",
+        "cpu-counters"
+      ],
+      "rubricId": "technical-concept",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Counters explain why cycles are spent, not just where",
+          "criterion": "correctness",
+          "keywords": [
+            "hardware counters",
+            "perf stat",
+            "instructions per cycle",
+            "ipc",
+            "shows why"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "More instructions = extra work; low IPC = stalls on cache or branch misses",
+          "criterion": "mechanism",
+          "keywords": [
+            "instruction count",
+            "stalling",
+            "cache misses",
+            "memory bound",
+            "branch miss",
+            "mispredict"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Same input, repeated runs; perf record on the event; multiplexing",
+          "criterion": "trade-offs",
+          "keywords": [
+            "same input",
+            "perf record",
+            "multiplex",
+            "top-down",
+            "repeated runs"
+          ]
+        }
+      ],
+      "modelAnswer": "A profiler shows where time goes, but hardware counters show why. I would run perf stat on the old and new versions with the same input and compare cycles, instructions, instructions per cycle, cache misses at each level, and branch misses. Each pattern points somewhere different. If the instruction count rose, the code does more work, for example because a function is no longer inlined or extra checks were added. If instructions are similar but IPC fell, the CPU is stalling: many last-level cache misses mean it is memory bound, perhaps because the refactor changed the data layout or added pointer indirection; a jump in the branch miss rate means mispredictions, often because a predictable branch became data dependent. Then perf record on the specific event, such as cache misses, shows which instructions cause them. Top-down analysis, available through perf metrics or Intel VTune, classifies stalls into front end, back end, bad speculation and retiring. When you request more events than there are hardware counters, the kernel multiplexes them and scales the estimates, so compare repeated runs rather than single numbers."
     }
   ]
 }

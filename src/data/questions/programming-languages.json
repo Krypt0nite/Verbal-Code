@@ -14997,6 +14997,507 @@
         }
       ],
       "modelAnswer": "A data race is two goroutines accessing the same memory at the same time without synchronisation, with at least one of them writing. Building with -race compiles the program with ThreadSanitizer instrumentation: every memory access and every synchronisation operation, such as channel operations, mutexes, WaitGroups and atomics, is recorded, and the runtime tracks happens-before relationships between goroutines. When two accesses conflict and neither happens before the other, it prints both stack traces and where the goroutines were created. It reports races that actually occur during that run, so it has essentially no false positives, but it cannot find races in code paths that did not execute or interleavings that did not happen, so a clean run is not a proof. It typically increases memory use five to ten times and execution time two to twenty times, so it is rarely used in production. Run all tests with -race in CI, write tests that really exercise concurrency, repeat them with the -count flag, and run a race-enabled build in a staging load test. Treat every report as a bug."
+    },
+    {
+      "id": "cpp-seqlock-for-read-mostly-data",
+      "title": "Seqlocks for read-mostly data in C++",
+      "prompt": "A market-data thread updates a small struct of prices thousands of times a second and many threads read it. Explain how a seqlock works, why it suits this case, and what makes it tricky to implement correctly in C++.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Writer makes the sequence odd, writes, makes it even; readers retry",
+          "criterion": "correctness",
+          "keywords": [
+            "sequence counter",
+            "odd value",
+            "even value",
+            "retries",
+            "seqlock"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Readers never write shared memory; the writer never waits",
+          "criterion": "terminology",
+          "keywords": [
+            "never write to shared",
+            "writer never waits",
+            "cache line",
+            "reader count"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Suits small, read-mostly data with a single writer",
+          "criterion": "practical-implications",
+          "keywords": [
+            "single writer",
+            "read-mostly",
+            "read mostly",
+            "latest prices"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "A torn read is a data race: use atomics and fences; no pointers",
+          "criterion": "pitfalls",
+          "keywords": [
+            "data race",
+            "undefined behaviour",
+            "undefined behavior",
+            "fences",
+            "relaxed atomics",
+            "torn"
+          ]
+        }
+      ],
+      "modelAnswer": "A seqlock protects data with a sequence counter instead of a lock. The writer increments the counter to an odd value, writes the fields, then increments it to an even value. A reader loads the counter, copies the data, loads the counter again, and retries if the value changed or was odd, because that means a write overlapped its copy. The appeal is that readers never write to shared memory, so many readers do not bounce a cache line between cores the way a reader-writer lock's reader count does, and the writer never waits for readers. That suits small, read-mostly data with a single writer, such as the latest prices. The tricky part is the C++ memory model: the reader's copy may overlap a write, and a plain non-atomic read racing with a write is a data race and undefined behaviour even though the result is discarded. A correct version reads and writes the fields as relaxed atomics and places acquire and release fences around the copy. The data must also be safe to copy while torn, so never follow a pointer read inside the retry loop."
+    },
+    {
+      "id": "cpp-async-callbacks-capturing-this",
+      "title": "Asynchronous callbacks that capture this",
+      "prompt": "An object starts an asynchronous operation with a lambda that captures this, and the program sometimes crashes when the callback runs. Explain the bug and how shared_from_this or weak_ptr fixes it.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The object can be destroyed first, leaving this dangling",
+          "criterion": "correctness",
+          "keywords": [
+            "dangling",
+            "destroyed",
+            "use-after-free",
+            "use after free",
+            "lifetime"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "enable_shared_from_this keeps it alive; weak_ptr checks it",
+          "criterion": "terminology",
+          "keywords": [
+            "shared_from_this",
+            "shared from this",
+            "weak_ptr",
+            "weak pointer",
+            "enable_shared_from_this"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Choose: keep alive, skip if gone, or cancel in the destructor",
+          "criterion": "practical-implications",
+          "keywords": [
+            "keeps the object alive",
+            "keep it alive",
+            "skipped",
+            "cancel pending",
+            "asio"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Needs existing shared_ptr ownership; self-references leak",
+          "criterion": "pitfalls",
+          "keywords": [
+            "bad_weak_ptr",
+            "bad weak ptr",
+            "already owned",
+            "reference cycle",
+            "leaks"
+          ]
+        }
+      ],
+      "modelAnswer": "Capturing this copies a raw pointer into the lambda; it does not extend the object's lifetime. If the object is destroyed before the asynchronous operation completes, for example a connection closed while a timer or read is pending, the callback runs with a dangling pointer and touches freed memory: a use-after-free that crashes only sometimes, depending on timing. One fix is to inherit from enable_shared_from_this and capture shared_from_this() instead, so the pending operation holds a shared_ptr and keeps the object alive until the callback has run; this is the usual Boost.Asio pattern. If the callback should simply be skipped when the object is gone, capture a weak_ptr and convert it to a shared_ptr at the start, returning if that fails. Another option is to cancel pending operations in the destructor and wait until their callbacks finish. Pitfalls: shared_from_this works only when the object is already owned by a shared_ptr, otherwise it throws bad_weak_ptr since C++17, and storing a shared_ptr to yourself in a long-lived member creates a reference cycle that leaks."
+    },
+    {
+      "id": "cpp-race-that-only-appears-on-arm",
+      "title": "A race that only appears on ARM",
+      "prompt": "Code that publishes data by setting a plain bool flag ran correctly for years on x86 servers but fails intermittently after moving to ARM. Explain why, and how to fix it.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "A plain shared bool is a data race: undefined behaviour anywhere",
+          "criterion": "correctness",
+          "keywords": [
+            "data race",
+            "undefined behaviour",
+            "undefined behavior",
+            "plain bool",
+            "non-atomic"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "x86 is strongly ordered (TSO); ARM is weakly ordered",
+          "criterion": "terminology",
+          "keywords": [
+            "total store order",
+            "tso",
+            "strong memory model",
+            "weakly ordered",
+            "reorder"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Fix: std::atomic<bool> with a release store and an acquire load",
+          "criterion": "practical-implications",
+          "keywords": [
+            "memory_order_release",
+            "release",
+            "acquire",
+            "std::atomic",
+            "atomic bool"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "The compiler reorders too; volatile is no fix; TSan finds it",
+          "criterion": "pitfalls",
+          "keywords": [
+            "volatile",
+            "compiler can also reorder",
+            "hoist",
+            "threadsanitizer",
+            "thread sanitizer",
+            "tsan"
+          ]
+        }
+      ],
+      "modelAnswer": "Writing data and then setting a plain bool that another thread polls is a data race, which is undefined behaviour in C++ on any hardware. It seemed to work on x86 because x86 has a strong memory model, total store order, where stores become visible in program order and loads are not reordered with other loads, so the reader usually saw the data before the flag. ARM is weakly ordered: the CPU may make the flag store visible before the data stores, or perform the reader's data load before its flag load, so the reader sees the flag set but stale data. The compiler can also reorder the accesses, or hoist the flag read out of a loop, on either architecture. The fix is to make the flag a std::atomic<bool>: the writer stores it with memory_order_release after writing the data, and the reader loads it with memory_order_acquire before reading, which guarantees the data writes are visible. volatile does not help, because it gives neither atomicity nor ordering between threads. ThreadSanitizer would have reported this race even on x86."
+    },
+    {
+      "id": "cpp-contended-atomic-counters",
+      "title": "Why a shared atomic counter stops scaling",
+      "prompt": "Sixteen threads each increment one shared std::atomic counter for every request, and throughput stops scaling past a few cores. Explain why an atomic can be a bottleneck and how you would fix it.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "advanced",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "performance"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Each increment needs the cache line exclusively, so it bounces between cores",
+          "criterion": "correctness",
+          "keywords": [
+            "cache line",
+            "bounces",
+            "exclusive state",
+            "coherence",
+            "ping-pong"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Lock-free read-modify-write is still serialised in hardware",
+          "criterion": "terminology",
+          "keywords": [
+            "read-modify-write",
+            "fetch_add",
+            "fetch add",
+            "lock-free",
+            "serialised",
+            "serialized"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Shard per thread and sum on read",
+          "criterion": "practical-implications",
+          "keywords": [
+            "own counter",
+            "per thread",
+            "thread_local",
+            "thread local",
+            "sum all slots",
+            "shard"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Pad shards to avoid false sharing; relaxed ordering suffices",
+          "criterion": "pitfalls",
+          "keywords": [
+            "false sharing",
+            "alignas",
+            "padded",
+            "memory_order_relaxed",
+            "relaxed"
+          ]
+        }
+      ],
+      "modelAnswer": "An atomic increment is lock-free, but it is still serialised in hardware. A fetch_add is a read-modify-write that needs the cache line holding the counter in exclusive state in the core that executes it, so with sixteen threads the line bounces between cores through the cache-coherence protocol on every increment, and each transfer costs tens to hundreds of cycles. Throughput is limited by how fast that one line can move, so adding cores adds waiting rather than work. The fix is to stop sharing the write: give each thread its own counter, as a thread_local or one slot per thread in an array, and sum all slots only when someone reads the total, which for metrics is rare. Each slot must be padded to its own cache line, with alignas(64) or std::hardware_destructive_interference_size, otherwise neighbouring slots cause false sharing and the problem returns. Statistics counters need no ordering with other data, so memory_order_relaxed is enough. The trade-off is that a read is slower and only approximately current, which is fine for monitoring."
+    },
+    {
+      "id": "cpp-thread-local-storage",
+      "title": "thread_local storage in C++",
+      "prompt": "Explain thread_local in C++. When is per-thread state a good design, and what problems appear with thread pools and with destructors?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "cpp",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "cpp",
+        "one-minute",
+        "concurrency"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "Each thread gets its own instance, destroyed when the thread exits",
+          "criterion": "correctness",
+          "keywords": [
+            "own instance",
+            "own copy",
+            "per thread",
+            "thread exits",
+            "each thread"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "Thread storage duration, initialised on first use in that thread",
+          "criterion": "terminology",
+          "keywords": [
+            "thread storage duration",
+            "thread_local",
+            "thread local",
+            "first use"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Uses: per-thread RNGs, scratch buffers, allocator caches, no locking",
+          "criterion": "practical-implications",
+          "keywords": [
+            "random number generator",
+            "scratch buffer",
+            "allocator cache",
+            "errno",
+            "no locking"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Pools reuse threads, so state leaks between tasks; late destructors",
+          "criterion": "pitfalls",
+          "keywords": [
+            "thread pool",
+            "reused",
+            "reset it",
+            "never frees",
+            "destruction order"
+          ]
+        }
+      ],
+      "modelAnswer": "A variable declared thread_local has thread storage duration: every thread gets its own instance, initialised before that thread first uses it and destroyed when the thread exits. It suits state that is expensive or contended to share but does not need to be shared: a per-thread random number generator, a scratch buffer reused across calls, a per-thread allocator cache, or errno, of which each thread has its own copy. Each thread works on its own copy with no locking and no cache-line contention. The pitfalls come from the lifetime being tied to threads, not tasks. In a thread pool, threads are reused, so state left by one task is visible to the next, which can leak one request's data into another unless you reset it. Destructors run only when the thread exits, so a long-lived pool never frees that memory, and destruction order at exit can touch objects that were already destroyed. Access can also be slightly slower, for example from dynamically loaded shared libraries, so measure before using it on the hottest path."
+    },
+    {
+      "id": "go-http-server-timeouts",
+      "title": "Timeouts on a Go HTTP server",
+      "prompt": "A Go service started with http.ListenAndServe runs out of file descriptors when slow clients connect. Why do the default server settings allow this, and which timeouts would you set?",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "production"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "The default server has no timeouts, so slow clients hold connections forever",
+          "criterion": "correctness",
+          "keywords": [
+            "no timeout",
+            "all zero",
+            "slowloris",
+            "slow clients",
+            "forever"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ReadHeaderTimeout, ReadTimeout, WriteTimeout, IdleTimeout",
+          "criterion": "terminology",
+          "keywords": [
+            "readheadertimeout",
+            "readtimeout",
+            "writetimeout",
+            "idletimeout",
+            "maxheaderbytes"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Per-handler limits with the request context or TimeoutHandler",
+          "criterion": "practical-implications",
+          "keywords": [
+            "request context",
+            "timeouthandler",
+            "timeout handler",
+            "downstream calls",
+            "deadline"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "WriteTimeout breaks streaming; idle timeout longer than the load balancer",
+          "criterion": "pitfalls",
+          "keywords": [
+            "streaming",
+            "long polls",
+            "responsecontroller",
+            "load balancer",
+            "502"
+          ]
+        }
+      ],
+      "modelAnswer": "http.ListenAndServe uses an http.Server whose timeouts are all zero, and zero means no timeout. A client that opens a connection and sends headers very slowly, or never finishes, keeps a goroutine and a file descriptor forever, so a slowloris attack or a crowd of slow mobile clients exhausts descriptors. I would build an explicit http.Server: ReadHeaderTimeout of a few seconds limits how long headers may take; ReadTimeout covers reading the whole request including the body; WriteTimeout bounds how long writing the response may take; and IdleTimeout closes keep-alive connections that sit unused. MaxHeaderBytes limits header size. Inside handlers, use the request context with a deadline for downstream calls, or wrap a handler in http.TimeoutHandler. Pitfalls: a server-wide WriteTimeout cuts off streaming responses and long polls, so those routes need http.ResponseController to extend their deadline per request. And the server's idle timeout should be longer than the load balancer's, so the load balancer never reuses a connection the server has just closed, which shows up as sporadic 502 errors."
+    },
+    {
+      "id": "go-panics-in-background-goroutines",
+      "title": "Panics in background goroutines",
+      "prompt": "A panic in a goroutine started by your HTTP handler crashed the whole Go service, even though the server recovers panics in handlers. Explain why, and how you would protect background goroutines.",
+      "categoryId": "programming-languages",
+      "subcategoryId": "go",
+      "difficulty": "intermediate",
+      "suggestedDurationSec": 60,
+      "tags": [
+        "go",
+        "one-minute",
+        "production"
+      ],
+      "rubricId": "programming-language",
+      "modes": [
+        "interview",
+        "deep-research",
+        "mock-interview",
+        "off-the-cuff"
+      ],
+      "expectedConcepts": [
+        {
+          "id": "c1",
+          "label": "An unrecovered panic in any goroutine terminates the whole process",
+          "criterion": "correctness",
+          "keywords": [
+            "entire process",
+            "whole process",
+            "terminates",
+            "crashes the process",
+            "whichever goroutine"
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "recover works only in a deferred call in the same goroutine",
+          "criterion": "terminology",
+          "keywords": [
+            "same goroutine",
+            "deferred function",
+            "recover",
+            "parent goroutine"
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "Start goroutines through a helper that recovers, logs and reports",
+          "criterion": "practical-implications",
+          "keywords": [
+            "helper",
+            "stack trace",
+            "metric",
+            "errgroup",
+            "result channel"
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "Recovering can hide broken invariants; prefer errors and restarts",
+          "criterion": "pitfalls",
+          "keywords": [
+            "invariant",
+            "half-updated",
+            "corrupt",
+            "returning errors",
+            "restart"
+          ]
+        }
+      ],
+      "modelAnswer": "In Go, a panic unwinds only the goroutine it happens in, and if nothing in that goroutine recovers it, the runtime terminates the entire process, whichever goroutine panicked. recover only has an effect when it is called inside a deferred function in the same goroutine that is panicking. net/http recovers panics in the goroutine that runs the handler, so a goroutine the handler started with the go statement is outside that protection, and no parent goroutine can catch its panic. To protect background work, start goroutines through a small helper whose first statement defers a function that calls recover, logs the panic with its stack trace, increments a metric and turns it into an error for the caller, for example through an errgroup or a result channel. Be careful about what you recover from: a panic often means an invariant was broken or shared state is half-updated, so silently continuing can corrupt data. Prefer returning errors for expected failures, recover at goroutine boundaries to report and fail the task, and let the process restart when its state cannot be trusted."
     }
   ]
 }

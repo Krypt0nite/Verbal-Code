@@ -354,3 +354,100 @@ Per category: tech-ai 39, interview-skills 2. The HLD drills deliberately follow
 - 432 questions suggest more than 120 seconds. They suit deep-research and mock-interview practice better than one-minute interview mode.
 - Only 29 questions have deep-research notes.
 - Security (2), cloud (2) and developer tools (1) now have advanced questions; compilers still has none. All four remain thinner than the core areas.
+
+## Engineering judgement expansion (21 October 2026)
+
+Goal: more questions on practical engineering judgement: debugging, incidents, concurrency, runtime behaviour, Linux networking, DPDK, distributed failures, migrations, testing and interview communication. The original list of 56 candidate questions was cut off when it was pasted in, and it could not be found in the repository or in earlier session files. So a new list of 56 candidates was built from the same gap areas. Each candidate was compared by meaning against all 1,420 existing questions, using keyword searches over titles, prompts, model answers and tags, and by reading the closest existing questions.
+
+| | Questions |
+| --- | ---: |
+| Bank before | 1,420 |
+| Added | **25** |
+| Bank after | **1,445** |
+
+| Candidates | Count |
+| --- | ---: |
+| Added | 25 |
+| Merged into an added question | 1 |
+| Already covered | 27 |
+| Rejected | 3 |
+
+All 25 are one-minute questions (60 seconds, a `one-minute` tag, model answers of 156–187 words) and follow the existing schema; no schema or taxonomy change was needed. Advanced questions leave out off-the-cuff mode. Run through the local evaluator, every model answer is credited with every one of its own expected concepts. Word-overlap similarity between each new question and its nearest existing one is at most 0.22 (`be-rolling-out-a-configuration-change-safely` and `ds-rolling-out-schema-changes-across-services`), below the 0.35 near-duplicate threshold.
+
+### Added
+
+| Subcategory | Id | Difficulty | Type |
+| --- | --- | --- | --- |
+| tech-ai / backend-engineering | `be-a-service-that-hangs-with-idle-cpu` | intermediate | Debugging |
+| tech-ai / backend-engineering | `be-diagnosing-periodic-latency-spikes` | intermediate | Root-cause analysis |
+| tech-ai / backend-engineering | `be-rolling-out-a-configuration-change-safely` | intermediate | Incident prevention |
+| tech-ai / networking | `net-close-wait-connections-piling-up` | intermediate | Debugging |
+| tech-ai / networking | `net-conntrack-table-full` | advanced | Production incident |
+| tech-ai / networking | `net-locating-packet-drops-in-the-linux-receive-path` | advanced | Debugging |
+| tech-ai / testing-and-quality-engineering | `qa-testing-under-latency-and-packet-loss` | intermediate | Testing and reliability |
+| tech-ai / testing-and-quality-engineering | `qa-catching-performance-regressions-in-ci` | intermediate | Regression prevention |
+| programming-languages / cpp | `cpp-seqlock-for-read-mostly-data` | advanced | Implementation reasoning |
+| programming-languages / cpp | `cpp-async-callbacks-capturing-this` | intermediate | Debugging |
+| programming-languages / cpp | `cpp-race-that-only-appears-on-arm` | advanced | Root-cause analysis |
+| programming-languages / cpp | `cpp-contended-atomic-counters` | advanced | Performance |
+| programming-languages / cpp | `cpp-thread-local-storage` | intermediate | Concept and pitfalls |
+| programming-languages / go | `go-http-server-timeouts` | intermediate | Production hardening |
+| programming-languages / go | `go-panics-in-background-goroutines` | intermediate | Production incident |
+| tech-ai / packet-processing | `dpdk-packet-rate-and-cycle-budget` | intermediate | Design reasoning |
+| tech-ai / packet-processing | `dpdk-measuring-load-on-a-polling-core` | intermediate | Diagnostics |
+| tech-ai / packet-processing | `dpdk-control-plane-traffic-exception-path` | advanced | Architecture |
+| tech-ai / packet-processing | `dpdk-jumbo-frames-and-multi-segment-mbufs` | advanced | Debugging |
+| tech-ai / distributed-systems | `ds-limiting-blast-radius-with-cells-and-shuffle-sharding` | advanced | Architecture trade-offs |
+| tech-ai / api-design | `api-adding-an-enum-value-without-breaking-clients` | intermediate | Backward compatibility |
+| tech-ai / databases-and-storage | `db-migrating-to-a-new-datastore` | advanced | Data migration |
+| tech-ai / performance-engineering | `perf-data-layout-and-cache-misses` | intermediate | Comparison and trade-offs |
+| tech-ai / performance-engineering | `perf-hardware-counters-for-a-slow-loop` | advanced | Diagnostics |
+| interview-skills / technical-communication | `techcomm-when-an-interviewer-challenges-your-design` | intermediate | Technical communication |
+
+Per category: tech-ai 17, programming-languages 7, interview-skills 1. By difficulty: 15 intermediate, 10 advanced. The "Type" column is descriptive only; the schema has no question-type field.
+
+### Merged
+
+- "One CPU core saturated by softirq while others are idle" → part of `net-locating-packet-drops-in-the-linux-receive-path`, which covers the softnet backlog, RSS and RPS.
+
+### Already covered
+
+| Candidate | Existing question |
+| --- | --- |
+| Deadline and timeout budgets across a call chain | `api-grpc-deadlines-streaming`, `be-retries-timeouts-circuit-breakers` |
+| Writing a blameless postmortem | `lead-a-blameless-postmortem-that-drives-action` |
+| Cache stampede when a hot key expires | `go-singleflight-cache-stampede`, `sd-cache-invalidation` |
+| Rolling back a release that ran a migration | `devops-rollback-strategy-for-a-failed-deployment`, `db-zero-downtime-migrations` |
+| Mitigate first or find the root cause first | `be-first-steps-in-a-production-incident`, `be-investigating-rising-5xx-errors-after-a-release` |
+| Spinlock versus mutex | `os-sync-primitives` |
+| The ABA problem | `cpp-lock-free-spsc-queue` |
+| Spurious and lost wakeups | `cpp-condition-variable` |
+| Finding a deadlock with gdb | `cpp-deadlocks-lock-ordering` |
+| Thread safety of shared_ptr | `cpp-shared-ptr-internals` |
+| GOMAXPROCS and CPU quotas in containers | `go-scheduler-gmp` |
+| GOMEMLIMIT and OOM kills | `go-memory-leaks`, `go-sync-pool-allocations` |
+| Copying a struct that contains a mutex | `go-pointer-value-receivers` |
+| A nil pointer inside a non-nil error interface | `go-interfaces-nil`, `go-error-wrapping` |
+| Goroutine dumps for a hung Go service | `go-profiling-pprof`, `go-goroutine-leaks` |
+| go tool trace for scheduling latency | `go-profiling-pprof` |
+| Connection refused versus connection timed out | `net-debugging-tools` |
+| Half-open connections and TCP keepalive | `net-idle-timeouts` |
+| Isolating cores for polling threads | `os-cpu-affinity-and-performance`, `os-cpu-scheduling` |
+| AF_XDP versus DPDK | `dpdk-when-kernel-bypass-is-worth-it` |
+| Dual writes to a database and a broker | `ds-transactional-outbox`, `db-change-data-capture` |
+| Duplicates after a consumer rebalance | `de-consumer-group-rebalance-storms`, `ds-duplicate-events-in-analytics-and-billing` |
+| Retry budgets | `ds-retry-storms-metastable` |
+| Clock skew breaking expiry logic | `ds-clock-skew-ntp` |
+| Old and new versions running side by side during a rollout | `ds-rolling-out-schema-changes-across-services` |
+| Backfilling historical data | `de-backfilling-a-year-of-data-safely` |
+| Walking through an incident you handled | `deepdive-a-production-bug-you-investigated-and-fixed`, `lead-leading-an-incident-without-formal-authority` |
+
+### Rejected
+
+- "A dependency returns success but wrong data": too open-ended to answer usefully in one minute.
+- "sync.Cond versus channels in Go": rarely the right tool in practice; the choice between channels and mutexes is already covered by `go-mutexes-versus-channels-for-shared-state`.
+- "mbuf reference counts for packet cloning": too niche compared with the DPDK topics that were added.
+
+### Not part of this batch
+
+The "Batch 2" topic list (about 1,500 one-line topic titles across 29 sections) exists only in the chat, not in the repository, and was not processed here. Many of its engineering titles match questions already in the bank. Mapping all of it is a separate job.
